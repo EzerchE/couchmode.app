@@ -65,7 +65,13 @@ export function Features() {
   return (
     <section id="features" className="relative py-24 sm:py-32" aria-labelledby="features-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-14 max-w-2xl">
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-14 max-w-2xl"
+        >
           <p className="mb-4 text-sm font-medium text-aurora">Highlights</p>
           <h2
             id="features-heading"
@@ -78,16 +84,43 @@ export function Features() {
             HDR setup, restore desktop flow, and the rest of the Windows couch
             gaming polish you normally do by hand.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.12 }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                delayChildren: 0.06,
+                staggerChildren: 0.08,
+              },
+            },
+          }}
+          className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+        >
           {items.map((item, index) => (
             <motion.article
               key={item.title}
-              initial={false}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: index * 0.04 }}
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  y: 34,
+                  scale: 0.96,
+                },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                  transition: {
+                    duration: 0.55,
+                    delay: index * 0.01,
+                    ease: [0.22, 1, 0.36, 1],
+                  },
+                },
+              }}
               className="group relative rounded-2xl glass p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.06]"
             >
               <div className="mb-5 flex items-start justify-between">
@@ -108,7 +141,7 @@ export function Features() {
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
             </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

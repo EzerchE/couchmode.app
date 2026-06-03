@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
 import { Power, Sparkles, Tv, Undo2 } from "lucide-react";
+import { useRef, useState } from "react";
 import howitworksFlow from "@/assets/howitworks-flow.jpg";
 
 const steps = [
@@ -34,8 +35,31 @@ const steps = [
 ];
 
 export function HowItWorks() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [activeStep, setActiveStep] = useState(0);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start 35%", "end 75%"],
+  });
+  const imageScale = useTransform(scrollYProgress, [0, 1], [0.98, 1.02]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, -24]);
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    const nextStep = Math.min(
+      steps.length - 1,
+      Math.max(0, Math.round(latest * (steps.length - 1))),
+    );
+
+    setActiveStep((current) => (current === nextStep ? current : nextStep));
+  });
+
   return (
-    <section id="how" className="relative py-24 sm:py-32" aria-labelledby="how-heading">
+    <section
+      ref={sectionRef}
+      id="how"
+      className="relative py-24 sm:py-32"
+      aria-labelledby="how-heading"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 max-w-2xl">
           <p className="mb-4 text-sm font-medium text-aurora">How it works</p>
@@ -51,58 +75,104 @@ export function HowItWorks() {
           </p>
         </div>
 
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
-          <div className="hidden lg:block">
-            <div className="sticky top-32">
-              <div className="relative aspect-square w-full">
-                <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-[var(--violet-accent)]/35 to-[var(--blue-accent)]/25 blur-3xl" />
-                <div className="relative h-full w-full overflow-hidden rounded-3xl border border-white/10 glow-strong">
-                  <img
-                    src={howitworksFlow}
-                    alt="A controller and PC connected by blue and violet light to suggest an automated couch gaming flow"
-                    width={1280}
-                    height={1280}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-full w-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-start lg:gap-16">
+          <div className="lg:self-start">
+            <motion.div
+              style={{ scale: imageScale, y: imageY }}
+              className="relative mx-auto aspect-square w-full max-w-xl lg:sticky lg:top-28 lg:max-w-none"
+            >
+              <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-[var(--violet-accent)]/35 to-[var(--blue-accent)]/25 blur-3xl" />
+              <div className="relative h-full w-full overflow-hidden rounded-3xl border border-white/10 glow-strong">
+                <img
+                  src={howitworksFlow}
+                  alt="A controller and PC connected by blue and violet light to suggest an automated couch gaming flow"
+                  width={1280}
+                  height={1280}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/45 via-transparent to-transparent" />
+              </div>
+
+              <div className="pointer-events-none absolute bottom-5 left-5 right-5 rounded-2xl border border-white/10 bg-background/55 px-4 py-3 backdrop-blur-md">
+                <div className="text-[11px] uppercase tracking-[0.28em] text-muted-foreground">
+                  Session flow
+                </div>
+                <div className="mt-2 flex items-center justify-between gap-4">
+                  <div>
+                    <div className="text-sm font-medium text-foreground">
+                      Step {steps[activeStep]?.n}
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      {steps[activeStep]?.title}
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    {steps.map((step, index) => (
+                      <span
+                        key={step.n}
+                        className={`h-2.5 rounded-full transition-all duration-300 ${
+                          index === activeStep
+                            ? "w-8 bg-aurora"
+                            : "w-2.5 bg-white/20"
+                        }`}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
 
-          <ol className="space-y-12 sm:space-y-16">
-            {steps.map((step, index) => (
-              <motion.li
-                key={step.n}
-                initial={false}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6, delay: index * 0.05 }}
-                className="relative"
-              >
-                <div className="mb-4 flex items-center gap-4">
-                  <span className="grid h-10 w-10 place-items-center rounded-xl glass">
-                    <step.icon className="h-4 w-4 text-aurora" />
-                  </span>
-                  <span className="font-display text-sm tracking-widest text-muted-foreground">
-                    STEP {step.n}
-                  </span>
-                  <div className="h-px flex-1 bg-border" />
-                </div>
-                <h3 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-                  {step.title}
-                </h3>
-                <p className="mt-3 max-w-lg leading-relaxed text-muted-foreground">
-                  {step.body}
-                </p>
-                <p className="mt-3 text-xs uppercase tracking-widest text-aurora/90">
-                  {step.detail}
-                </p>
-              </motion.li>
-            ))}
-          </ol>
+          <div className="relative">
+            <div className="absolute left-5 top-0 hidden h-full w-px bg-gradient-to-b from-white/0 via-white/10 to-white/0 lg:block" />
+            <ol className="relative lg:space-y-0">
+              {steps.map((step, index) => (
+                <motion.li
+                  key={step.n}
+                  initial={{ opacity: 0, y: 56 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.35 }}
+                  transition={{ duration: 0.65, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                  className="relative lg:flex lg:min-h-[72vh] lg:items-center"
+                >
+                  <article
+                    className={`relative w-full rounded-[1.75rem] border p-6 transition-all duration-500 sm:p-7 lg:ml-10 lg:max-w-xl ${
+                      index === activeStep
+                        ? "border-white/14 bg-white/[0.05] shadow-[0_0_0_1px_rgba(255,255,255,0.02),0_24px_80px_-40px_rgba(135,107,255,0.85)]"
+                        : "border-white/8 bg-white/[0.02]"
+                    }`}
+                  >
+                    <div className="mb-4 flex items-center gap-4">
+                      <span
+                        className={`grid h-10 w-10 place-items-center rounded-xl border transition-all duration-300 ${
+                          index === activeStep
+                            ? "border-white/12 bg-aurora text-primary-foreground"
+                            : "border-white/10 bg-white/[0.03] text-aurora"
+                        }`}
+                      >
+                        <step.icon className="h-4 w-4" />
+                      </span>
+                      <span className="font-display text-sm tracking-widest text-muted-foreground">
+                        STEP {step.n}
+                      </span>
+                      <div className="h-px flex-1 bg-border" />
+                    </div>
+                    <h3 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+                      {step.title}
+                    </h3>
+                    <p className="mt-3 max-w-lg leading-relaxed text-muted-foreground">
+                      {step.body}
+                    </p>
+                    <p className="mt-4 text-xs uppercase tracking-[0.24em] text-aurora/90">
+                      {step.detail}
+                    </p>
+                  </article>
+                </motion.li>
+              ))}
+            </ol>
+          </div>
         </div>
       </div>
     </section>

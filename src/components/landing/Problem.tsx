@@ -26,10 +26,10 @@ export function Problem() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <motion.div
-            initial={false}
+            initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
             <p className="mb-4 text-sm font-medium text-aurora">The gap</p>
             <h2
@@ -65,10 +65,10 @@ export function Problem() {
           </motion.div>
 
           <motion.div
-            initial={false}
+            initial={{ opacity: 0, scale: 0.96, y: 24 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="relative"
           >
             <div className="relative aspect-[4/3] w-full">

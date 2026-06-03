@@ -64,10 +64,10 @@ export function Comparison() {
 
         <div className="grid items-stretch gap-6 md:grid-cols-2">
           <motion.div
-            initial={false}
+            initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="glass flex flex-col rounded-3xl p-8 sm:p-10"
           >
             <div className="mb-6">
@@ -100,10 +100,10 @@ export function Comparison() {
           </motion.div>
 
           <motion.div
-            initial={false}
+            initial={{ opacity: 0, y: 32, scale: 0.98 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, delay: 0.08 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.65, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
             className="relative rounded-3xl bg-aurora p-[1px] glow-strong"
           >
             <div className="relative flex h-full flex-col rounded-[calc(1.5rem-1px)] bg-card p-8 sm:p-10">
