@@ -27,8 +27,7 @@ jobs:
         with:
           enablement: true
       - run: npm install
-      - run: npm install @rollup/rollup-linux-x64-gnu@4.60.2 --no-save
-      - run: npm install lightningcss-linux-x64-gnu@1.32.0 --no-save
+      - run: npm install @rollup/rollup-linux-x64-gnu@4.60.2 lightningcss-linux-x64-gnu@1.32.0 --no-save
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
