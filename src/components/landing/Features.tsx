@@ -14,7 +14,7 @@ const items = [
   {
     icon: Gamepad2,
     title: "Start from your controller",
-    body: "Power on your Xbox or compatible controller — CouchMode picks up the signal instantly.",
+    body: "Power on your Xbox or compatible controller. CouchMode picks up the signal instantly.",
     tag: "Free",
   },
   {

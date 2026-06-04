@@ -8,9 +8,9 @@ import { Features } from "@/components/landing/Features";
 import { FinalCTA } from "@/components/landing/FinalCTA";
 import { Footer } from "@/components/landing/Footer";
 
-const TITLE = "CouchMode — PC Power. Console Comfort.";
+const TITLE = "CouchMode: PC Power. Console Comfort.";
 const DESC =
-  "Turn your Windows PC into a couch gaming setup. Start from your controller, automate your session with Pro, and return to your desktop when you're done.";
+  "CouchMode is a Windows couch gaming utility that turns a desk-first PC into a controller-ready living room setup. Start free, upgrade to Pro for full automation.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
