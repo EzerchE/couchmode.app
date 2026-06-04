@@ -5,7 +5,7 @@ const free = [
   { t: "Controller-triggered couch mode", d: "Xbox full-screen launches the moment your pad wakes" },
   { t: "Start with Windows", d: "Runs silently in the background, ready when you are" },
   { t: "Language & theme", d: "Match your system look, pick your language" },
-  { t: "Manual basic use", d: "Tweak it yourself — Free is hands-on" },
+  { t: "Manual basic use", d: "Tweak it yourself. Free is hands-on" },
 ];
 
 const pro = [

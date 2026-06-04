@@ -21,7 +21,7 @@ const steps = [
     n: "03",
     icon: Sparkles,
     title: "Pro automates your setup",
-    body: "Audio output, HDR, display, power plan, notifications, resources — tuned for play in a single move.",
+    body: "Audio output, HDR, display, power plan, notifications, and resources are tuned for play in a single move.",
     detail: "Pro · 7-day trial included",
   },
   {
