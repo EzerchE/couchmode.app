@@ -49,14 +49,14 @@ const items = [
   },
   {
     icon: Undo2,
-    title: "Safe restore",
-    body: "When you power down, every setting flips back to where it was. No surprises.",
+    title: "Session restore",
+    body: "CouchMode restores the advanced session settings it changed when your session ends.",
     tag: "Pro",
   },
   {
     icon: ShieldCheck,
     title: "Lightweight & local",
-    body: "Runs quietly in the background. No accounts, no telemetry, no cloud.",
+    body: "Runs quietly in the background. No gameplay tracking. No cloud sync. Pro license validation only when needed.",
     tag: "Free",
   },
 ];
