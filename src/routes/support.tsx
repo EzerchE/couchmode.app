@@ -4,18 +4,30 @@ import { InfoPage } from "@/components/utility/InfoPage";
 const TITLE = "Support";
 const DESC =
   "Need help with CouchMode? Email support with your Windows version, controller type, and a short description of the issue.";
+const META_TITLE = "CouchMode Support | Help for Windows Couch Gaming";
+const META_DESC =
+  "Get help with CouchMode. Contact support with your Windows version, controller type, CouchMode version, and Free, Trial, or Pro status.";
+const CANONICAL = "https://couchmode.app/support";
+const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 
 export const Route = createFileRoute("/support")({
   head: () => ({
     meta: [
-      { title: TITLE },
-      { name: "description", content: DESC },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESC },
-      { property: "og:url", content: "/support" },
+      { title: META_TITLE },
+      { name: "description", content: META_DESC },
+      { name: "robots", content: "index,follow" },
+      { property: "og:site_name", content: "CouchMode" },
+      { property: "og:title", content: META_TITLE },
+      { property: "og:description", content: META_DESC },
+      { property: "og:url", content: CANONICAL },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: META_TITLE },
+      { name: "twitter:description", content: META_DESC },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: "/support" }],
+    links: [{ rel: "canonical", href: CANONICAL }],
   }),
   component: Support,
 });

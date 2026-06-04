@@ -11,10 +11,6 @@ import { type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 
-const SITE_TITLE = "CouchMode: PC Power. Console Comfort.";
-const SITE_DESC =
-  "CouchMode is a Windows couch gaming utility that turns a desk-first PC into a controller-ready living room setup. Start free, upgrade to Pro for full automation.";
-
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -77,15 +73,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: SITE_TITLE },
-      { name: "description", content: SITE_DESC },
       { name: "author", content: "CouchMode" },
-      { property: "og:title", content: SITE_TITLE },
-      { property: "og:description", content: SITE_DESC },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:title", content: SITE_TITLE },
-      { name: "twitter:description", content: SITE_DESC },
     ],
     links: [
       {

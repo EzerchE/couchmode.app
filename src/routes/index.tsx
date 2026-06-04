@@ -13,16 +13,25 @@ const DESC =
   "CouchMode is a Windows couch gaming utility that turns a desk-first PC into a controller-ready living room setup. Start free, upgrade to Pro for full automation.";
 const SHORT_DESC =
   "CouchMode is a Windows couch gaming utility that turns a desk-first PC into a controller-ready living room setup.";
+const CANONICAL = "https://couchmode.app/";
+const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: TITLE },
       { name: "description", content: DESC },
+      { name: "robots", content: "index,follow" },
+      { property: "og:site_name", content: "CouchMode" },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: CANONICAL },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESC },
+      { name: "twitter:image", content: OG_IMAGE },
       {
         "script:ld+json": {
           "@context": "https://schema.org",
@@ -51,7 +60,7 @@ export const Route = createFileRoute("/")({
         },
       },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: CANONICAL }],
   }),
   component: Index,
 });
