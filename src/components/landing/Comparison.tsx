@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
 const free = [
-  { t: "Controller-triggered couch mode", d: "Xbox full-screen launches the moment your pad wakes" },
+  { t: "Controller-triggered couch mode", d: "Xbox full-screen starts when your controller wakes" },
   { t: "Start with Windows", d: "Runs silently in the background, ready when you are" },
   { t: "Language & theme", d: "Match your system look, pick your language" },
-  { t: "Manual basic use", d: "Tweak it yourself. Free is hands-on" },
+  { t: "Basic session exit", d: "Exit couch mode when the controller turns off and return to desktop" },
 ];
 
 const pro = [
@@ -14,7 +14,7 @@ const pro = [
   { t: "Session Tweaks", d: "Per-session overrides for the way you actually play" },
   { t: "Audio / HDR / display / power automation", d: "Outputs, monitors, color, and power plan flip together" },
   { t: "Notifications control", d: "Focus Assist + alerts off for the duration of the session" },
-  { t: "Restore automation", d: "Every change rolls back the moment you stop playing" },
+  { t: "Session restore", d: "CouchMode rolls back the session changes it made when your session ends." },
 ];
 
 export function Comparison() {
@@ -51,7 +51,8 @@ export function Comparison() {
               </div>
             </div>
             <p className="text-sm text-muted-foreground mb-8">
-              Everything you need to start a couch session from your controller.
+              Everything you need to start, exit, and return from a basic couch
+              session with your controller.
             </p>
             <ul className="space-y-4 mb-10 flex-1">
               {free.map((f) => (
@@ -100,8 +101,8 @@ export function Comparison() {
                 </div>
               </div>
               <p className="text-sm text-muted-foreground mb-8">
-                Full session automation. Your PC adapts itself, plays, then puts
-                everything back.
+                Full session automation. CouchMode applies advanced session
+                settings, then restores the changes it made.
               </p>
               <ul className="space-y-4 mb-10 flex-1">
                 {pro.map((f) => (

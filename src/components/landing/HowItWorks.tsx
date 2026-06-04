@@ -28,8 +28,8 @@ const steps = [
     n: "04",
     icon: Undo2,
     title: "Your desktop comes back when you're done",
-    body: "Power off the controller. Every system setting is safely restored exactly how you left it.",
-    detail: "Pro · Safe restore guarantee",
+    body: "Free returns from the basic couch session. Pro also restores the audio, display, power, notification, and resource changes it applied.",
+    detail: "Free + Pro · Session restore",
   },
 ];
 
