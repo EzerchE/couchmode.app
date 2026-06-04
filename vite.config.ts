@@ -24,6 +24,42 @@ export default defineConfig({
           enabled: true,
         },
       },
+      {
+        path: "/download",
+        prerender: {
+          enabled: true,
+        },
+      },
+      {
+        path: "/support",
+        prerender: {
+          enabled: true,
+        },
+      },
+      {
+        path: "/buy",
+        prerender: {
+          enabled: true,
+        },
+      },
+      {
+        path: "/privacy",
+        prerender: {
+          enabled: true,
+        },
+      },
+      {
+        path: "/terms",
+        prerender: {
+          enabled: true,
+        },
+      },
+      {
+        path: "/refund",
+        prerender: {
+          enabled: true,
+        },
+      },
     ],
   },
 });
