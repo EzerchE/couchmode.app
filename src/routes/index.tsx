@@ -11,6 +11,8 @@ import { Footer } from "@/components/landing/Footer";
 const TITLE = "CouchMode: PC Power. Console Comfort.";
 const DESC =
   "CouchMode is a Windows couch gaming utility that turns a desk-first PC into a controller-ready living room setup. Start free, upgrade to Pro for full automation.";
+const SHORT_DESC =
+  "CouchMode is a Windows couch gaming utility that turns a desk-first PC into a controller-ready living room setup.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -21,6 +23,33 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: DESC },
       { property: "og:url", content: "/" },
       { property: "og:type", content: "website" },
+      {
+        "script:ld+json": {
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          name: "CouchMode",
+          applicationCategory: "UtilitiesApplication",
+          operatingSystem: "Windows 10, Windows 11",
+          url: "https://couchmode.app/",
+          description: SHORT_DESC,
+          offers: {
+            "@type": "Offer",
+            price: 0,
+            priceCurrency: "USD",
+            category: "Free",
+            name: "Free",
+          },
+        },
+      },
+      {
+        "script:ld+json": {
+          "@context": "https://schema.org",
+          "@type": "Brand",
+          name: "CouchMode",
+          url: "https://couchmode.app/",
+          logo: "https://couchmode.app/icon-512.png",
+        },
+      },
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
