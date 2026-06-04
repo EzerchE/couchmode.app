@@ -117,7 +117,7 @@ export function Hero() {
                 className="absolute -bottom-5 left-4 sm:left-8 glass rounded-2xl px-4 py-3 flex items-center gap-3 shadow-2xl"
               >
                 <span className="relative grid place-items-center h-8 w-8 rounded-full bg-aurora">
-                  <span className="absolute inset-0 rounded-full bg-aurora animate-ping opacity-40" />
+                  <span className="absolute inset-0 rounded-full bg-aurora animate-[ping_2.6s_cubic-bezier(0,0,.2,1)_infinite] opacity-40" />
                   <Gamepad2 className="h-4 w-4 text-primary-foreground relative" />
                 </span>
                 <div className="text-xs">
