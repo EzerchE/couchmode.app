@@ -30,7 +30,9 @@ export function FinalCTA() {
               Ready to make your PC <span className="text-aurora">couch-native</span>?
             </h2>
             <p className="mt-5 text-muted-foreground max-w-xl mx-auto">
-              Download free, or jump straight to Pro with a 7-day trial.
+              Download free. Your 7-day Pro trial starts automatically. No
+              credit card, no subscription, nothing to cancel. After that, keep
+              using Free or upgrade anytime.
             </p>
 
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto">

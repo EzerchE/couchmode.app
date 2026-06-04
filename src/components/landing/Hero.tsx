@@ -77,11 +77,11 @@ export function Hero() {
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-muted-foreground">
               <span className="inline-flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-aurora" />
-                7-day Pro trial
+                7-day Pro trial starts in app
               </span>
               <span className="inline-flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-aurora" />
-                No account required
+                No payment or account required
               </span>
               <span className="inline-flex items-center gap-2">
                 <Gamepad2 className="h-3.5 w-3.5" />
