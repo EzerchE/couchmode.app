@@ -17,7 +17,7 @@ const faqs = [
   {
     question: "Can CouchMode start Steam Big Picture automatically?",
     answer:
-      "With Pro, you can choose how your session starts, including Steam Big Picture or a custom launcher. Free mode keeps the default Xbox full-screen flow.",
+      "With Pro, you can choose how your session starts. Use Steam Big Picture, Playnite, LaunchBox, GOG Galaxy, or point CouchMode at another compatible launcher. Free mode keeps the default Xbox full-screen flow.",
   },
   {
     question: "Can it prepare my TV gaming setup automatically?",

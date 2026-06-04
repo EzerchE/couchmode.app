@@ -36,7 +36,9 @@ export function Footer() {
           CouchMode is an independent product and is not affiliated with
           Microsoft, Xbox, Valve, or Steam. Microsoft, Windows, and Xbox are
           trademarks of the Microsoft group of companies. Steam and Steam Big
-          Picture are trademarks of Valve Corporation.
+          Picture are trademarks of Valve Corporation. Other product names are
+          used for compatibility reference only and may be trademarks of their
+          respective owners.
         </p>
       </div>
     </footer>
