@@ -32,6 +32,12 @@ export function Footer() {
           <span aria-hidden="true">·</span>
           <a href="/refund" className="transition hover:text-foreground">Refund</a>
         </nav>
+        <p className="mt-4 max-w-4xl text-xs leading-relaxed text-muted-foreground/70">
+          CouchMode is an independent product and is not affiliated with
+          Microsoft, Xbox, Valve, or Steam. Microsoft, Windows, and Xbox are
+          trademarks of the Microsoft group of companies. Steam and Steam Big
+          Picture are trademarks of Valve Corporation.
+        </p>
       </div>
     </footer>
   );
