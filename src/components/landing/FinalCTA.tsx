@@ -55,6 +55,25 @@ export function FinalCTA() {
             <p className="mt-8 text-xs text-muted-foreground">
               Windows 10 & 11 · 64-bit
             </p>
+
+            <div className="mt-8 mx-auto max-w-2xl rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-left">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-foreground/60">
+                Xbox mode availability
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Xbox mode is provided by Windows and may depend on your Windows
+                version, device type, region, and Microsoft rollout status.
+                CouchMode detects and helps manage it when it is available on
+                your device. If Xbox mode is not available, you can still use
+                supported launch options such as Steam Big Picture or a custom
+                launcher where available.
+              </p>
+              <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+                Not sure your PC supports it? Try CouchMode Free first. Pro
+                unlocks automation features, but it does not guarantee Xbox mode
+                availability on unsupported Windows installations.
+              </p>
+            </div>
           </div>
         </motion.div>
       </div>
