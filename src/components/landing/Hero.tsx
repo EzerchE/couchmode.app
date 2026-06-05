@@ -51,10 +51,8 @@ export function Hero() {
             </h1>
 
             <p className="mt-6 text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
-              CouchMode is a Windows couch gaming utility that turns a
-              desk-first PC into a controller-ready living room setup. Start
-              with the free basic mode, then upgrade to Pro for full automation:
-              audio, HDR, display, power, and notifications.
+              Turn on your controller and CouchMode prepares the session around
+              you. Start free with a 7-day Pro trial, no credit card required.
             </p>
 
             <div className="mt-9 flex flex-wrap gap-3">
