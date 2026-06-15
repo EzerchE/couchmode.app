@@ -3,10 +3,10 @@ import { InfoPage } from "@/components/utility/InfoPage";
 
 const TITLE = "Refund Policy";
 const DESC =
-  "CouchMode standard purchases are not open yet. Patreon billing, cancellation, and refunds may be handled through Patreon during beta.";
+  "CouchMode standard purchases are not open yet. Supporter membership billing and refunds may be handled by the membership platform during beta.";
 const META_TITLE = "Refund Policy | CouchMode";
 const META_DESC =
-  "Read the CouchMode refund policy status for Patreon supporter access during beta and future standard purchases.";
+  "Read the CouchMode refund policy status for beta Pro access and future standard purchases.";
 const CANONICAL = "https://couchmode.app/refund";
 const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 
@@ -41,16 +41,13 @@ function Refund() {
         checkout goes live.
       </p>
       <p>
-        If Pro access is provided through Patreon membership, billing,
-        cancellation, and refund handling may be managed through Patreon
-        according to Patreon's policies and your membership settings.
+        If Pro access is provided through supporter membership, billing,
+        cancellation, and refund handling may be managed by the membership
+        platform according to its policies.
       </p>
       <p>
-        CouchMode does not directly store payment card details.
-      </p>
-      <p>
-        If a Patreon membership is canceled, refunded, or becomes inactive, Pro
-        access may return to Free mode after a short grace period.
+        If membership is canceled, refunded, or becomes inactive, Pro access may
+        return to Free mode after a short grace period.
       </p>
       <p>
         Questions can be sent to{" "}
@@ -58,10 +55,6 @@ function Refund() {
           support@couchmode.app
         </a>
         .
-      </p>
-      <p>
-        Future payment providers may handle refund processing for future
-        standard checkout options if those options are added later.
       </p>
     </InfoPage>
   );

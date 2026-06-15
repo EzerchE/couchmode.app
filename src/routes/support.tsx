@@ -3,10 +3,10 @@ import { InfoPage } from "@/components/utility/InfoPage";
 
 const TITLE = "Support";
 const DESC =
-  "Need help with CouchMode? Email support with your Windows version, CouchMode version, launch mode, controller details, Patreon tier if relevant, and support bundle.";
+  "Need help with CouchMode? Email support with your Windows version, CouchMode version, launch mode, controller details, membership tier if relevant, and support bundle.";
 const META_TITLE = "CouchMode Support | Help for Windows Couch Gaming";
 const META_DESC =
-  "Get help with CouchMode. Contact support with your Windows version, CouchMode version, launch mode, device type, Patreon tier if relevant, controller details, and support bundle.";
+  "Get help with CouchMode. Contact support with your Windows version, CouchMode version, launch mode, device type, membership tier if relevant, controller details, and support bundle.";
 const CANONICAL = "https://couchmode.app/support";
 const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 
@@ -54,10 +54,9 @@ function Support() {
           <li>Whether Windows Xbox full-screen experience is enabled on startup</li>
           <li>What happened</li>
           <li>Whether it happened in Free, Trial, or Pro</li>
-          <li>For Patreon Pro access issues, your tier: Pro Version or Pro Supporter</li>
-          <li>Patreon account email if relevant</li>
+          <li>For Pro access issues, your tier: Pro Version or Pro Supporter</li>
           <li>Number of devices already activated</li>
-          <li>Screenshot or description of the activation error</li>
+          <li>Activation error screenshot or message</li>
           <li>
             In CouchMode, open About &gt; Export support bundle and attach the
             generated file if you can.
