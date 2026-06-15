@@ -3,10 +3,10 @@ import { InfoPage } from "@/components/utility/InfoPage";
 
 const TITLE = "Refund Policy";
 const DESC =
-  "CouchMode Pro purchases are not open yet. Refund terms will be finalized before paid checkout goes live.";
+  "CouchMode standard purchases are not open yet. Patreon billing, cancellation, and refunds may be handled through Patreon during beta.";
 const META_TITLE = "Refund Policy | CouchMode";
 const META_DESC =
-  "Read the CouchMode refund policy status for future Pro purchases, payment-provider processing, and support requests.";
+  "Read the CouchMode refund policy status for Patreon supporter access during beta and future standard purchases.";
 const CANONICAL = "https://couchmode.app/refund";
 const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 
@@ -36,16 +36,21 @@ function Refund() {
   return (
     <InfoPage title={TITLE}>
       <p>
-        CouchMode Pro purchases are not open yet. Refund terms will be
-        finalized before paid checkout goes live.
+        Standard one-time CouchMode purchases are not open yet. Refund terms for
+        future standard purchases will be published before any standard paid
+        checkout goes live.
       </p>
       <p>
-        Future refund windows and policy details will be announced before the
-        public paid release.
+        If Pro access is provided through Patreon membership, billing,
+        cancellation, and refund handling may be managed through Patreon
+        according to Patreon's policies and your membership settings.
       </p>
       <p>
-        If an authorized merchant of record or payment provider is used, refund
-        processing may happen through that provider.
+        CouchMode does not directly store payment card details.
+      </p>
+      <p>
+        If a Patreon membership is canceled, refunded, or becomes inactive, Pro
+        access may return to Free mode after a short grace period.
       </p>
       <p>
         Questions can be sent to{" "}
@@ -55,8 +60,8 @@ function Refund() {
         .
       </p>
       <p>
-        Once paid licensing opens, refund requests may require the order email
-        and order ID. Approved refunds may disable the related Pro license.
+        Future payment providers may handle refund processing for future
+        standard checkout options if those options are added later.
       </p>
     </InfoPage>
   );

@@ -3,10 +3,10 @@ import { InfoPage } from "@/components/utility/InfoPage";
 
 const TITLE = "Privacy";
 const DESC =
-  "CouchMode is a Windows desktop utility. Free use does not require an account, and future Pro license validation will run only when needed.";
+  "CouchMode is a Windows desktop utility. Free use does not require an account, and Pro access validation runs only when needed.";
 const META_TITLE = "Privacy Policy | CouchMode";
 const META_DESC =
-  "Learn how CouchMode handles privacy, gameplay tracking, support emails, payments, and Pro license validation.";
+  "Learn how CouchMode handles privacy, gameplay tracking, support emails, Patreon membership validation, payments, and Pro access.";
 const CANONICAL = "https://couchmode.app/privacy";
 const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 
@@ -74,21 +74,34 @@ function Privacy() {
         </p>
       </section>
       <section>
+        <h2 className="font-medium text-foreground">Patreon membership validation</h2>
+        <p className="mt-2">
+          If you connect a Patreon membership to CouchMode, license validation
+          may process your Patreon account identifier, Patreon email address if
+          provided by Patreon, membership tier, membership status, activation
+          token, installation or device identifier, app version, activation
+          timestamp, and entitlement status.
+        </p>
+        <p className="mt-2">
+          CouchMode uses this information only to verify Pro access, enforce
+          device limits, troubleshoot activation issues, and maintain account
+          and security records.
+        </p>
+      </section>
+      <section>
         <h2 className="font-medium text-foreground">Payments and licenses</h2>
         <p className="mt-2">
-          CouchMode does not store payment card details. Payments may be
-          processed by an authorized merchant of record or payment provider when
-          paid licensing opens.
+          CouchMode does not store payment card details. Patreon billing is
+          handled by Patreon.
+        </p>
+        <p className="mt-2">
+          Future payment or license providers may process payment, billing,
+          refund, or entitlement information as needed to provide Pro access.
         </p>
         <p className="mt-2">
           Future Pro license activation may validate license keys through an
           authorized payment or licensing provider, or a CouchMode-operated
           entitlement service.
-        </p>
-        <p className="mt-2">
-          License validation may include a license key or activation token,
-          installation or device identifier, app version, activation timestamp,
-          and entitlement status.
         </p>
       </section>
     </InfoPage>

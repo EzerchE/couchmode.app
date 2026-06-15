@@ -3,10 +3,10 @@ import { InfoPage } from "@/components/utility/InfoPage";
 
 const TITLE = "Support";
 const DESC =
-  "Need help with CouchMode? Email support with your Windows version, CouchMode version, launch mode, controller details, and support bundle.";
+  "Need help with CouchMode? Email support with your Windows version, CouchMode version, launch mode, controller details, Patreon tier if relevant, and support bundle.";
 const META_TITLE = "CouchMode Support | Help for Windows Couch Gaming";
 const META_DESC =
-  "Get help with CouchMode. Contact support with your Windows version, CouchMode version, launch mode, device type, controller details, and support bundle.";
+  "Get help with CouchMode. Contact support with your Windows version, CouchMode version, launch mode, device type, Patreon tier if relevant, controller details, and support bundle.";
 const CANONICAL = "https://couchmode.app/support";
 const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 
@@ -54,12 +54,24 @@ function Support() {
           <li>Whether Windows Xbox full-screen experience is enabled on startup</li>
           <li>What happened</li>
           <li>Whether it happened in Free, Trial, or Pro</li>
+          <li>For Patreon Pro access issues, your tier: Pro Version or Pro Supporter</li>
+          <li>Patreon account email if relevant</li>
+          <li>Number of devices already activated</li>
+          <li>Screenshot or description of the activation error</li>
           <li>
             In CouchMode, open About &gt; Export support bundle and attach the
             generated file if you can.
           </li>
         </ul>
       </div>
+      <p>
+        Do not post private billing details publicly. If you prefer community
+        discussion, you can also visit{" "}
+        <a className="text-foreground underline-offset-4 hover:underline" href="https://www.reddit.com/r/CouchMode/">
+          r/CouchMode
+        </a>
+        .
+      </p>
     </InfoPage>
   );
 }

@@ -51,7 +51,8 @@ export function HowItWorks() {
           </h2>
           <p className="mt-5 text-muted-foreground max-w-xl">
             Four steps, two of them automatic. Free covers the basic session
-            flow; Pro handles deeper automation when paid licensing opens.
+            flow; Pro handles deeper automation through the trial or active
+            Patreon supporter access during beta.
           </p>
         </div>
 

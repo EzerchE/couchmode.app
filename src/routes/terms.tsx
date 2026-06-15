@@ -3,10 +3,10 @@ import { InfoPage } from "@/components/utility/InfoPage";
 
 const TITLE = "Terms";
 const DESC =
-  "Basic terms for using CouchMode Free, the 7-day Pro trial, and future Pro licensing.";
+  "Basic terms for using CouchMode Free, the 7-day Pro trial, and Patreon-based Pro supporter access during beta.";
 const META_TITLE = "Terms of Use | CouchMode";
 const META_DESC =
-  "Read the CouchMode terms covering Free use, the 7-day Pro trial, future Pro licensing, Xbox Mode availability, warranty, liability, and third-party services.";
+  "Read the CouchMode terms covering Free use, the 7-day Pro trial, Patreon supporter access, Xbox Mode availability, warranty, liability, and third-party services.";
 const CANONICAL = "https://couchmode.app/terms";
 const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 
@@ -44,7 +44,11 @@ function Terms() {
         </p>
         <p className="mt-2">
           CouchMode does not replace the Windows shell and does not take over
-          your PC startup flow.
+          your PC startup flow. CouchMode does not hijack startup.
+        </p>
+        <p className="mt-2">
+          CouchMode does not modify Windows internals, install kernel drivers,
+          bypass security features, or patch games or Windows.
         </p>
       </section>
       <section>
@@ -52,7 +56,8 @@ function Terms() {
         <p className="mt-2">
           One installer may include Free features, the 7-day Pro trial, and Pro
           activation. Free features are available without purchase. Pro features
-          require an active trial or valid license once paid licensing opens.
+          require an active trial or active Patreon supporter access during
+          beta.
         </p>
       </section>
       <section>
@@ -63,11 +68,25 @@ function Terms() {
         </p>
       </section>
       <section>
-        <h2 className="font-medium text-foreground">Paid checkout status</h2>
+        <h2 className="font-medium text-foreground">Patreon supporter access</h2>
         <p className="mt-2">
-          CouchMode Pro purchase flow is not currently live. Future purchases
-          may be handled by an authorized merchant of record or payment
-          provider.
+          During beta, CouchMode Pro access may be provided through Patreon
+          membership. Patreon-based Pro access is active-membership based and is
+          not a lifetime license.
+        </p>
+        <p className="mt-2">
+          If membership ends, fails, is refunded, or is canceled, Pro access may
+          return to Free mode after a short grace period.
+        </p>
+        <p className="mt-2">
+          Pro Version is planned at $3/month and includes personal Pro access
+          on up to 2 active Windows devices. Pro Supporter is planned at
+          $5/month and includes personal Pro access on up to 5 active Windows
+          devices.
+        </p>
+        <p className="mt-2">
+          CouchMode may provide a standard one-time license or other payment
+          options later, but these are not currently open.
         </p>
       </section>
       <section>
@@ -94,7 +113,7 @@ function Terms() {
       <section>
         <h2 className="font-medium text-foreground">Activation limit</h2>
         <p className="mt-2">
-          Pro licenses may have activation limits to prevent abuse. Contact
+          Pro access may have activation limits to prevent abuse. Contact
           support if you need help with a legitimate device change.
         </p>
       </section>
@@ -115,8 +134,11 @@ function Terms() {
       <section>
         <h2 className="font-medium text-foreground">Third-party services</h2>
         <p className="mt-2">
-          Payments and license validation may be handled by authorized
-          third-party services. CouchMode does not store payment card details.
+          Patreon may handle billing, membership, cancellation, and refund
+          details for Patreon-based Pro access. Future payment or license
+          providers may process payment, billing, refund, or entitlement
+          information as needed to provide Pro access. CouchMode does not store
+          payment card details.
         </p>
       </section>
       <section>

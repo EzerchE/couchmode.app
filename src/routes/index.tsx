@@ -11,9 +11,9 @@ import { Footer } from "@/components/landing/Footer";
 
 const TITLE = "CouchMode: PC Power. Console Comfort.";
 const DESC =
-  "CouchMode is a Windows couch gaming utility for controller-ready living room PCs and supported handheld Xbox Mode setups. Beta access and Pro licensing are being prepared.";
+  "CouchMode is a Windows couch gaming utility for controller-ready living room PCs and supported handheld Xbox Mode setups. Beta access is being prepared, with Patreon supporter access for Pro during beta.";
 const SHORT_DESC =
-  "CouchMode is a Windows couch gaming utility for controller-ready living room PCs and supported handheld Xbox Mode setups.";
+  "CouchMode is a Windows couch gaming utility for controller-ready living room PCs, supported handheld Xbox Mode setups, and Patreon supporter Pro access during beta.";
 const CANONICAL = "https://couchmode.app/";
 const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 

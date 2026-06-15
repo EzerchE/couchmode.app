@@ -32,8 +32,8 @@ export function FinalCTA() {
             <p className="mt-5 text-muted-foreground max-w-xl mx-auto">
               Public beta access is being prepared. The app will include Free
               mode and an automatic 7-day Pro trial with no credit card, no
-              subscription, and nothing to cancel. Paid Pro licensing will open
-              after provider review.
+              account, no subscription, and nothing to cancel. Ongoing Pro
+              access during beta will be available through Patreon membership.
             </p>
 
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto">
@@ -49,7 +49,7 @@ export function FinalCTA() {
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] hover:bg-white/[0.08] px-6 py-3.5 text-sm font-medium transition"
               >
                 <Sparkles className="h-4 w-4" />
-                Pro coming soon
+                Patreon coming soon
               </a>
               <DisabledButton icon={Store} label="Microsoft Store" hint="Coming soon" />
               <DisabledButton icon={Gamepad} label="Steam" hint="Coming soon" />
