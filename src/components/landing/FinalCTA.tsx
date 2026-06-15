@@ -32,8 +32,7 @@ export function FinalCTA() {
             <p className="mt-5 text-muted-foreground max-w-xl mx-auto">
               Public beta access is being prepared. The app will include Free
               mode and an automatic 7-day Pro trial with no credit card, no
-              account, no subscription, and nothing to cancel. Ongoing Pro
-              access during beta will be available through Patreon membership.
+              account, no subscription, and nothing to cancel.
             </p>
 
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto">
@@ -49,7 +48,7 @@ export function FinalCTA() {
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] hover:bg-white/[0.08] px-6 py-3.5 text-sm font-medium transition"
               >
                 <Sparkles className="h-4 w-4" />
-                Patreon coming soon
+                Pro access coming soon
               </a>
               <DisabledButton icon={Store} label="Microsoft Store" hint="Coming soon" />
               <DisabledButton icon={Gamepad} label="Steam" hint="Coming soon" />
@@ -68,11 +67,6 @@ export function FinalCTA() {
                 inside Windows Xbox Mode, adopt the full-screen session, apply
                 display and session settings, and restore your desktop when the
                 controller turns off.
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Start inside Xbox Mode uses a one-time admin-approved Windows
-                scheduled task for supported handheld setups. Normal desktop
-                startup remains separate and does not require admin approval.
               </p>
               <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
                 Xbox Mode is provided by Windows and Microsoft. Availability and

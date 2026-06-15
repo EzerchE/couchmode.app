@@ -2,17 +2,17 @@ export const faqs = [
   {
     question: "Does CouchMode replace the Windows shell?",
     answer:
-      "No. CouchMode does not replace the Windows shell and does not hijack startup. It prepares and restores sessions around Windows and existing gaming frontends.",
+      "No. CouchMode prepares and restores sessions around Windows and existing gaming frontends. It does not replace the Windows shell or hijack startup.",
   },
   {
     question: "What does CouchMode change on my PC?",
     answer:
-      "CouchMode is a Windows gaming session automation utility. It does not modify Windows internals, install kernel drivers, bypass security features, patch games, or promise FPS boosts. It automates user-configurable Windows session actions, then restores the changes it applies when the session ends.",
+      "CouchMode is a Windows gaming session automation utility. It does not modify Windows internals, replace the Windows shell, install kernel drivers, bypass security features, patch games, or promise FPS boosts. It automates user-configurable session actions and restores the changes it applies when the session ends.",
   },
   {
     question: "Does CouchMode support Windows Xbox Mode?",
     answer:
-      "CouchMode is designed to work with Windows Xbox Mode where available. Xbox Mode itself is provided by Windows and Microsoft and depends on device, OS, Xbox app support, and rollout status.",
+      "CouchMode can help start and manage Windows Xbox Mode where it is available on the device.",
   },
   {
     question: "Does CouchMode work on ROG Ally?",
@@ -37,22 +37,22 @@ export const faqs = [
   {
     question: "Is paid checkout available?",
     answer:
-      "Standard one-time checkout is not open yet. During beta, CouchMode Pro access will be available through Patreon membership. Active Patreon Pro Version and Pro Supporter members can unlock Pro while their membership is active.",
+      "Standard one-time checkout is not open yet. During beta, Pro access will be available through active supporter membership.",
   },
   {
-    question: "How does Patreon Pro access work?",
+    question: "How does Pro access work during beta?",
     answer:
-      "During beta, active Patreon Pro Version and Pro Supporter members will be able to connect Patreon in CouchMode to unlock Pro. Pro Version includes personal use on up to 2 active Windows devices. Pro Supporter includes personal use on up to 5 active Windows devices.",
+      "Connect an active membership in the app to keep Pro after the trial. Device limits are shown in Pricing.",
   },
   {
-    question: "Is Patreon Pro access a lifetime license?",
+    question: "Is Pro access a lifetime license?",
     answer:
-      "No. Patreon-based Pro access is active-membership based. If membership ends, fails, or is canceled, Pro access may return to Free mode after a short grace period. Standard one-time licensing may be added later.",
+      "Not during beta supporter access. Standard one-time licensing may be added later.",
   },
   {
     question: "Does CouchMode boost FPS?",
     answer:
-      "CouchMode does not promise FPS boosts. It can reduce background clutter and restore session settings, which may help reduce interruptions or background load depending on the system.",
+      "No. CouchMode focuses on session setup, cleanup, and restore rather than performance claims.",
   },
 ];
 

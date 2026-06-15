@@ -6,7 +6,7 @@ const DESC =
   "CouchMode for Windows is getting ready for public beta access. The installer is not public yet.";
 const META_TITLE = "CouchMode Beta Download Status | CouchMode";
 const META_DESC =
-  "CouchMode for Windows 10 and Windows 11 is preparing public beta access. The app will include Free mode, a 7-day Pro trial, and Patreon Pro access during beta.";
+  "CouchMode for Windows 10 and Windows 11 is preparing public beta access with Free mode and a 7-day Pro trial.";
 const CANONICAL = "https://couchmode.app/download";
 const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 
@@ -43,9 +43,8 @@ function Download() {
       </p>
       <p>
         The app will include Free mode and an automatic 7-day Pro trial with no
-        credit card, no account, no subscription, and nothing to cancel.
-        Patreon-based Pro access will be available during beta once supporter
-        access is opened.
+        credit card, no account, no subscription, and nothing to cancel. Pro
+        supporter access will be available during beta.
       </p>
       <p>
         Windows may show SmartScreen warnings for early beta builds until the

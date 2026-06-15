@@ -38,7 +38,7 @@ const items = [
   {
     icon: Zap,
     title: "Resource Control",
-    body: "Pause selected background apps and apply session policy without promising FPS boosts.",
+    body: "Pause selected background apps and apply session policy for a cleaner play session.",
     tag: "Pro",
   },
   {
