@@ -14,13 +14,13 @@ const items = [
   {
     icon: Gamepad2,
     title: "Start from your controller",
-    body: "Power on your Xbox or compatible controller. CouchMode picks up the signal instantly.",
+    body: "Power on your Xbox or compatible controller. CouchMode can prepare a couch session when support is available.",
     tag: "Free",
   },
   {
     icon: Layers,
     title: "Launch Mode selection",
-    body: "Pick how a session begins: Xbox full-screen, Steam Big Picture, or a custom launcher of choice.",
+    body: "Pick how a session begins: Windows Xbox Mode, Steam Big Picture, or a compatible launcher.",
     tag: "Pro",
   },
   {
@@ -32,19 +32,19 @@ const items = [
   {
     icon: Monitor,
     title: "HDR & display handled",
-    body: "Display, HDR, refresh rate, and active monitor reconfigure for the living room.",
+    body: "Apply supported display, HDR, refresh rate, and monitor choices for the living room.",
     tag: "Pro",
   },
   {
     icon: Zap,
-    title: "Performance tuned",
-    body: "Power plan, resource control, and session tweaks tilt the system toward play.",
+    title: "Resource Control",
+    body: "Pause selected background apps and apply session policy without promising FPS boosts.",
     tag: "Pro",
   },
   {
     icon: BellOff,
     title: "Notifications silenced",
-    body: "Focus Assist takes over so chat pings and alerts don't crash your session.",
+    body: "Focus Assist can reduce chat pings and alerts for the duration of the session.",
     tag: "Pro",
   },
   {
@@ -55,9 +55,9 @@ const items = [
   },
   {
     icon: ShieldCheck,
-    title: "Lightweight & local",
-    body: "Runs quietly in the background. No gameplay tracking. No cloud sync. Pro license validation only when needed.",
-    tag: "Free",
+    title: "Handheld Xbox Mode companion",
+    body: "On supported handhelds such as ROG Ally, CouchMode can start inside Windows Xbox Mode with one-time admin approval.",
+    tag: "Beta",
   },
 ];
 

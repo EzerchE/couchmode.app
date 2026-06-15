@@ -3,7 +3,7 @@ import { InfoPage } from "@/components/utility/InfoPage";
 
 const TITLE = "Privacy";
 const DESC =
-  "CouchMode is a Windows desktop utility. Free use does not require an account, and Pro license validation runs only when needed.";
+  "CouchMode is a Windows desktop utility. Free use does not require an account, and future Pro license validation will run only when needed.";
 const META_TITLE = "Privacy Policy | CouchMode";
 const META_DESC =
   "Learn how CouchMode handles privacy, gameplay tracking, support emails, payments, and Pro license validation.";
@@ -35,25 +35,62 @@ export const Route = createFileRoute("/privacy")({
 function Privacy() {
   return (
     <InfoPage title={TITLE}>
-      <p>
-        CouchMode is a Windows desktop utility designed to help you start and
-        manage couch gaming sessions from your PC.
-      </p>
-      <p>Free use does not require an account.</p>
-      <p>CouchMode does not collect gameplay data or track what games you play.</p>
-      <p>No gameplay tracking. No cloud sync. Pro license validation only when needed.</p>
-      <p>
-        Pro license activation may validate a license key, install identifier,
-        and activation metadata through the Lemon Squeezy license API.
-      </p>
-      <p>
-        CouchMode does not store payment details. Payments are processed by
-        Lemon Squeezy.
-      </p>
-      <p>
-        If you contact support, your email address and message contents may be
-        used to respond to your request.
-      </p>
+      <section>
+        <h2 className="font-medium text-foreground">Desktop utility</h2>
+        <p className="mt-2">
+          CouchMode is a Windows desktop utility designed to help you prepare,
+          manage, and restore couch gaming sessions from your PC. Free use does
+          not require an account.
+        </p>
+      </section>
+      <section>
+        <h2 className="font-medium text-foreground">Local app data</h2>
+        <p className="mt-2">
+          CouchMode may store local app settings and logs on your device so the
+          app can remember preferences, diagnose issues, and restore session
+          state.
+        </p>
+      </section>
+      <section>
+        <h2 className="font-medium text-foreground">Gameplay privacy</h2>
+        <p className="mt-2">
+          CouchMode does not collect gameplay data or track what games you play.
+        </p>
+        <p className="mt-2">
+          No gameplay tracking. No cloud sync. Pro license validation only when
+          needed.
+        </p>
+      </section>
+      <section>
+        <h2 className="font-medium text-foreground">Diagnostics and support</h2>
+        <p className="mt-2">
+          If you contact support or export a diagnostic bundle, it may include
+          app logs, Windows version, CouchMode version, launch mode, controller
+          count or state, display topology, and error or status messages.
+        </p>
+        <p className="mt-2">
+          If you email support, your email address and message contents may be
+          used to respond to your request.
+        </p>
+      </section>
+      <section>
+        <h2 className="font-medium text-foreground">Payments and licenses</h2>
+        <p className="mt-2">
+          CouchMode does not store payment card details. Payments may be
+          processed by an authorized merchant of record or payment provider when
+          paid licensing opens.
+        </p>
+        <p className="mt-2">
+          Future Pro license activation may validate license keys through an
+          authorized payment or licensing provider, or a CouchMode-operated
+          entitlement service.
+        </p>
+        <p className="mt-2">
+          License validation may include a license key or activation token,
+          installation or device identifier, app version, activation timestamp,
+          and entitlement status.
+        </p>
+      </section>
     </InfoPage>
   );
 }

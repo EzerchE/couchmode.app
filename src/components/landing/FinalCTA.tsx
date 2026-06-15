@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Download, ShoppingBag, Store, Gamepad } from "lucide-react";
+import { Download, Sparkles, Store, Gamepad } from "lucide-react";
 
 export function FinalCTA() {
   return (
@@ -30,25 +30,26 @@ export function FinalCTA() {
               Ready to make your PC <span className="text-aurora">couch-native</span>?
             </h2>
             <p className="mt-5 text-muted-foreground max-w-xl mx-auto">
-              Download free. Your 7-day Pro trial starts automatically. No
-              credit card, no subscription, nothing to cancel. After that, keep
-              using Free or upgrade anytime.
+              Public beta access is being prepared. The app will include Free
+              mode and an automatic 7-day Pro trial with no credit card, no
+              subscription, and nothing to cancel. Paid Pro licensing will open
+              after provider review.
             </p>
 
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto">
               <a
-                href="#download"
+                href="/download"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-aurora text-primary-foreground px-6 py-3.5 text-sm font-medium glow-violet hover:brightness-110 transition"
               >
                 <Download className="h-4 w-4" />
-                Download Free
+                Download coming soon
               </a>
               <a
-                href="https://couchmode.app/buy?source=web"
+                href="/buy"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] hover:bg-white/[0.08] px-6 py-3.5 text-sm font-medium transition"
               >
-                <ShoppingBag className="h-4 w-4" />
-                Buy Pro
+                <Sparkles className="h-4 w-4" />
+                Pro coming soon
               </a>
               <DisabledButton icon={Store} label="Microsoft Store" hint="Coming soon" />
               <DisabledButton icon={Gamepad} label="Steam" hint="Coming soon" />
@@ -60,20 +61,23 @@ export function FinalCTA() {
 
             <div className="mt-8 mx-auto max-w-2xl rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-left">
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-foreground/60">
-                Xbox mode availability
+                Built for handheld Xbox Mode
               </p>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Xbox mode is provided by Windows and may depend on your Windows
-                version, device type, region, and Microsoft rollout status.
-                CouchMode detects and helps manage it when it is available on
-                your device. If Xbox mode is not available, you can still use
-                supported launch options such as Steam Big Picture or a custom
-                launcher where available.
+                On supported handhelds such as ROG Ally, CouchMode can start
+                inside Windows Xbox Mode, adopt the full-screen session, apply
+                display and session settings, and restore your desktop when the
+                controller turns off.
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Start inside Xbox Mode uses a one-time admin-approved Windows
+                scheduled task for supported handheld setups. Normal desktop
+                startup remains separate and does not require admin approval.
               </p>
               <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
-                Not sure your PC supports it? Try CouchMode Free first. Pro
-                unlocks automation features, but it does not guarantee Xbox mode
-                availability on unsupported Windows installations.
+                Xbox Mode is provided by Windows and Microsoft. Availability and
+                behavior depend on your device, Windows version, Xbox app
+                support, and Microsoft rollout.
               </p>
             </div>
           </div>

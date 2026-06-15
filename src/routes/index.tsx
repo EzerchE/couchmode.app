@@ -5,15 +5,15 @@ import { Problem } from "@/components/landing/Problem";
 import { HowItWorks } from "@/components/landing/HowItWorks";
 import { Comparison } from "@/components/landing/Comparison";
 import { Features } from "@/components/landing/Features";
-import { SearchIntentFAQ } from "@/components/landing/SearchIntentFAQ";
+import { SearchIntentFAQ, faqs } from "@/components/landing/SearchIntentFAQ";
 import { FinalCTA } from "@/components/landing/FinalCTA";
 import { Footer } from "@/components/landing/Footer";
 
 const TITLE = "CouchMode: PC Power. Console Comfort.";
 const DESC =
-  "CouchMode is a Windows couch gaming utility that turns a desk-first PC into a controller-ready living room setup. Start free, upgrade to Pro for full automation.";
+  "CouchMode is a Windows couch gaming utility for controller-ready living room PCs and supported handheld Xbox Mode setups. Beta access and Pro licensing are being prepared.";
 const SHORT_DESC =
-  "CouchMode is a Windows couch gaming utility that turns a desk-first PC into a controller-ready living room setup.";
+  "CouchMode is a Windows couch gaming utility for controller-ready living room PCs and supported handheld Xbox Mode setups.";
 const CANONICAL = "https://couchmode.app/";
 const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 
@@ -49,6 +49,20 @@ export const Route = createFileRoute("/")({
             category: "Free",
             name: "Free",
           },
+        },
+      },
+      {
+        "script:ld+json": {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: faq.answer,
+            },
+          })),
         },
       },
       {

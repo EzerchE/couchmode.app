@@ -3,10 +3,10 @@ import { InfoPage } from "@/components/utility/InfoPage";
 
 const TITLE = "Support";
 const DESC =
-  "Need help with CouchMode? Email support with your Windows version, controller type, and a short description of the issue.";
+  "Need help with CouchMode? Email support with your Windows version, CouchMode version, launch mode, controller details, and support bundle.";
 const META_TITLE = "CouchMode Support | Help for Windows Couch Gaming";
 const META_DESC =
-  "Get help with CouchMode. Contact support with your Windows version, controller type, CouchMode version, and Free, Trial, or Pro status.";
+  "Get help with CouchMode. Contact support with your Windows version, CouchMode version, launch mode, device type, controller details, and support bundle.";
 const CANONICAL = "https://couchmode.app/support";
 const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 
@@ -40,17 +40,24 @@ function Support() {
         <a className="text-foreground underline-offset-4 hover:underline" href="mailto:support@couchmode.app">
           support@couchmode.app
         </a>{" "}
-        with your Windows version, controller type, and a short description of
-        the issue.
+        with your Windows version, CouchMode version, launch mode, controller
+        details, and a short description of the issue.
       </p>
       <div>
         <p className="font-medium text-foreground">Please include:</p>
         <ul className="mt-3 list-disc space-y-2 pl-5">
           <li>Windows version</li>
-          <li>Controller type</li>
           <li>CouchMode version</li>
+          <li>Whether you are using ROG Ally, another handheld, or a desktop PC</li>
+          <li>Controller type</li>
+          <li>Launch mode: Xbox Mode, Steam Big Picture, or custom launcher</li>
+          <li>Whether Windows Xbox full-screen experience is enabled on startup</li>
           <li>What happened</li>
           <li>Whether it happened in Free, Trial, or Pro</li>
+          <li>
+            In CouchMode, open About &gt; Export support bundle and attach the
+            generated file if you can.
+          </li>
         </ul>
       </div>
     </InfoPage>

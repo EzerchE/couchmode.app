@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Download, ShoppingBag, Gamepad2 } from "lucide-react";
+import { Download, Gamepad2, Sparkles } from "lucide-react";
 import heroCouch from "@/assets/hero-couch.jpg";
 
 export function Hero() {
@@ -39,7 +39,7 @@ export function Hero() {
           >
             <div className="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs text-muted-foreground mb-6">
               <span className="h-1.5 w-1.5 rounded-full bg-aurora" />
-              For Windows 10 & 11 · Free & Pro
+              For Windows 10 & 11 · Beta in preparation
             </div>
 
             <h1
@@ -51,24 +51,25 @@ export function Hero() {
             </h1>
 
             <p className="mt-6 text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
-              Turn on your controller and CouchMode prepares the session around
-              you. Start free with a 7-day Pro trial, no credit card required.
+              CouchMode prepares controller-first Windows sessions for TVs and
+              supported handhelds. Public beta access is being prepared, with
+              Free mode and a 7-day Pro trial included in one app.
             </p>
 
             <div className="mt-9 flex flex-wrap gap-3">
               <a
-                href="#download"
+                href="/download"
                 className="inline-flex items-center gap-2 rounded-full bg-aurora text-primary-foreground px-6 py-3 text-sm font-medium glow-violet hover:brightness-110 transition"
               >
                 <Download className="h-4 w-4" />
-                Download Free
+                Download coming soon
               </a>
               <a
-                href="https://couchmode.app/buy?source=web"
+                href="#pricing"
                 className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-sm font-medium text-foreground hover:bg-white/[0.08] transition"
               >
-                <ShoppingBag className="h-4 w-4" />
-                Buy Pro
+                <Sparkles className="h-4 w-4" />
+                View Pro features
               </a>
             </div>
 
@@ -79,7 +80,7 @@ export function Hero() {
               </span>
               <span className="inline-flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-aurora" />
-                No payment or account required
+                No credit card or account required
               </span>
               <span className="inline-flex items-center gap-2">
                 <Gamepad2 className="h-3.5 w-3.5" />

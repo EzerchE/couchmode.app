@@ -3,14 +3,14 @@ import { Check } from "lucide-react";
 
 const free = [
   { t: "Controller-triggered couch mode", d: "Xbox full-screen starts when your controller wakes" },
-  { t: "Start with Windows", d: "Runs silently in the background, ready when you are" },
+  { t: "Start with Windows", d: "Runs in the background, ready when you are" },
   { t: "Language & theme", d: "Match your system look, pick your language" },
   { t: "Basic session exit", d: "Exit couch mode when the controller turns off and return to desktop" },
 ];
 
 const pro = [
-  { t: "Launch Mode selection", d: "Xbox, Steam Big Picture, or a custom launcher per session" },
-  { t: "Resource Control", d: "Pause background apps so games get the whole machine" },
+  { t: "Launch Mode selection", d: "Xbox Mode, Steam Big Picture, or a custom launcher per session" },
+  { t: "Resource Control", d: "Pause selected background apps during the session" },
   { t: "Session Tweaks", d: "Per-session overrides for the way you actually play" },
   { t: "Audio / HDR / display / power automation", d: "Outputs, monitors, color, and power plan flip together" },
   { t: "Notifications control", d: "Focus Assist + alerts off for the duration of the session" },
@@ -31,7 +31,7 @@ export function Comparison() {
             id="pricing-heading"
             className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight tracking-tight"
           >
-            Start free. Upgrade when you want the whole session handled.
+            Start free. Upgrade when paid licensing opens.
           </h2>
         </div>
 
@@ -69,7 +69,7 @@ export function Comparison() {
               href="#download"
               className="inline-flex w-full justify-center items-center rounded-full border border-white/10 bg-white/[0.04] hover:bg-white/[0.08] px-6 py-3 text-sm font-medium transition"
             >
-              Download Free
+              Download coming soon
             </a>
           </motion.div>
 
@@ -83,7 +83,7 @@ export function Comparison() {
             <div className="relative rounded-[calc(1.5rem-1px)] bg-card p-8 sm:p-10 h-full flex flex-col">
               <div className="absolute -top-3 left-8">
                 <span className="rounded-full bg-aurora text-primary-foreground px-3 py-1 text-xs font-medium">
-                  7-day Pro trial included
+                  7-day Pro trial in app
                 </span>
               </div>
 
@@ -96,7 +96,7 @@ export function Comparison() {
                 </div>
                 <div className="mt-3 flex items-baseline gap-1">
                   <span className="text-4xl font-display font-semibold">
-                    One-time
+                    Coming soon
                   </span>
                 </div>
               </div>
@@ -118,10 +118,10 @@ export function Comparison() {
                 ))}
               </ul>
               <a
-                href="https://couchmode.app/buy?source=web"
+                href="/buy"
                 className="inline-flex w-full justify-center items-center rounded-full bg-aurora text-primary-foreground px-6 py-3 text-sm font-medium glow-violet hover:brightness-110 transition"
               >
-                Buy Pro
+                Pro licensing coming soon
               </a>
             </div>
           </motion.div>
