@@ -14,15 +14,15 @@ const steps = [
     n: "02",
     icon: Tv,
     title: "CouchMode starts basic couch mode",
-    body: "Your PC launches the Xbox full-screen experience, ready for controller input from the couch.",
-    detail: "Free · Available to everyone",
+    body: "Where Windows Xbox Mode is available, CouchMode can adopt the full-screen session for controller input from the couch.",
+    detail: "Free · Depends on Windows support",
   },
   {
     n: "03",
     icon: Sparkles,
     title: "Pro automates your setup",
     body: "Audio output, HDR, display, power plan, notifications, and resources are tuned for play in a single move.",
-    detail: "Pro · 7-day trial included",
+    detail: "Pro · 7-day trial in app",
   },
   {
     n: "04",
@@ -50,8 +50,8 @@ export function HowItWorks() {
             From controller to couch in seconds.
           </h2>
           <p className="mt-5 text-muted-foreground max-w-xl">
-            Four steps, two of them automatic. The first two ship in Free; Pro
-            handles the rest.
+            Four steps, two of them automatic. Free covers the basic session
+            flow; Pro handles deeper automation when paid licensing opens.
           </p>
         </div>
 

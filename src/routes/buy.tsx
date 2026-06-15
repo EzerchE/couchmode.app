@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InfoPage } from "@/components/utility/InfoPage";
 
-const TITLE = "Buy CouchMode Pro";
+const TITLE = "CouchMode Pro coming soon";
 const DESC =
-  "CouchMode Pro purchases are being prepared. Pro unlocks launch mode selection, Resource Control, Session Tweaks, audio, HDR, display, power, notifications, and restore automation.";
-const META_TITLE = "Buy CouchMode Pro | CouchMode";
+  "CouchMode Pro checkout is not open yet. Paid Pro licensing will be added after beta and payment-provider review are complete.";
+const META_TITLE = "CouchMode Pro Coming Soon | CouchMode";
 const META_DESC =
-  "CouchMode Pro unlocks launch mode selection, resource control, session tweaks, audio, HDR, display, power, notifications, and restore automation.";
+  "CouchMode Pro checkout is being prepared. The app includes a 7-day Pro trial with no credit card required.";
 const CANONICAL = "https://couchmode.app/buy";
 const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 
@@ -37,7 +37,17 @@ function Buy() {
     <InfoPage title={TITLE}>
       <p>{DESC}</p>
       <p>
-        A live checkout link will be added here when public purchases are ready.
+        The app includes a 7-day Pro trial with no credit card required. After
+        the trial, users can keep using Free or activate Pro when paid licensing
+        opens.
+      </p>
+      <p>
+        A one-time Pro license is planned, but final pricing and the payment
+        provider are not live yet.
+      </p>
+      <p>
+        Paid checkout will be added here only after beta and payment-provider
+        review are complete.
       </p>
     </InfoPage>
   );

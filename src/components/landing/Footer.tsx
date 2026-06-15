@@ -16,7 +16,7 @@ export function Footer() {
             <a href="#how" className="hover:text-foreground transition">How it works</a>
             <a href="#features" className="hover:text-foreground transition">Features</a>
             <a href="#pricing" className="hover:text-foreground transition">Pricing</a>
-            <a href="#download" className="hover:text-foreground transition">Download</a>
+            <a href="#download" className="hover:text-foreground transition">Beta status</a>
           </nav>
 
           <p className="text-xs text-muted-foreground">

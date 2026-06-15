@@ -3,10 +3,10 @@ import { InfoPage } from "@/components/utility/InfoPage";
 
 const TITLE = "Refund Policy";
 const DESC =
-  "CouchMode purchases are processed by Lemon Squeezy. Refund requests are reviewed case by case.";
+  "CouchMode Pro purchases are not open yet. Refund terms will be finalized before paid checkout goes live.";
 const META_TITLE = "Refund Policy | CouchMode";
 const META_DESC =
-  "Read the CouchMode refund policy for Lemon Squeezy purchases, support requests, order details, and license handling.";
+  "Read the CouchMode refund policy status for future Pro purchases, payment-provider processing, and support requests.";
 const CANONICAL = "https://couchmode.app/refund";
 const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 
@@ -35,17 +35,29 @@ export const Route = createFileRoute("/refund")({
 function Refund() {
   return (
     <InfoPage title={TITLE}>
-      <p>Purchases are processed by Lemon Squeezy.</p>
       <p>
-        Refund requests should be sent to{" "}
+        CouchMode Pro purchases are not open yet. Refund terms will be
+        finalized before paid checkout goes live.
+      </p>
+      <p>
+        Future refund windows and policy details will be announced before the
+        public paid release.
+      </p>
+      <p>
+        If an authorized merchant of record or payment provider is used, refund
+        processing may happen through that provider.
+      </p>
+      <p>
+        Questions can be sent to{" "}
         <a className="text-foreground underline-offset-4 hover:underline" href="mailto:support@couchmode.app">
           support@couchmode.app
         </a>
         .
       </p>
-      <p>Please include your order email and order ID.</p>
-      <p>Refunds are reviewed case by case.</p>
-      <p>If a refund is approved, the Pro license may be disabled.</p>
+      <p>
+        Once paid licensing opens, refund requests may require the order email
+        and order ID. Approved refunds may disable the related Pro license.
+      </p>
     </InfoPage>
   );
 }
