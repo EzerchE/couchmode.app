@@ -31,7 +31,7 @@ export function Comparison() {
             id="pricing-heading"
             className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight tracking-tight"
           >
-            Start free. Upgrade when paid licensing opens.
+            Start free. Support development to unlock Pro during beta.
           </h2>
         </div>
 
@@ -96,7 +96,10 @@ export function Comparison() {
                 </div>
                 <div className="mt-3 flex items-baseline gap-1">
                   <span className="text-4xl font-display font-semibold">
-                    Coming soon
+                    via Patreon
+                  </span>
+                  <span className="text-sm text-muted-foreground ml-1">
+                    active membership
                   </span>
                 </div>
               </div>
@@ -121,10 +124,41 @@ export function Comparison() {
                 href="/buy"
                 className="inline-flex w-full justify-center items-center rounded-full bg-aurora text-primary-foreground px-6 py-3 text-sm font-medium glow-violet hover:brightness-110 transition"
               >
-                Pro licensing coming soon
+                Patreon coming soon
               </a>
             </div>
           </motion.div>
+        </div>
+
+        <div className="mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-6 sm:p-8">
+          <p className="text-sm font-medium text-aurora">
+            Pro access during beta
+          </p>
+          <div className="mt-4 grid gap-4 text-sm leading-relaxed text-muted-foreground lg:grid-cols-3">
+            <p>
+              During beta, CouchMode Pro access will be available through
+              Patreon membership. The app still includes a 7-day Pro trial with
+              no credit card required.
+            </p>
+            <p>
+              Pro Version is planned at $3/month and includes personal Pro
+              access on up to 2 active Windows devices. Pro Supporter is planned
+              at $5/month and includes personal Pro access on up to 5 active
+              Windows devices.
+            </p>
+            <p>
+              Pro Supporter also adds extra supporter perks such as earlier
+              experimental builds when available, development updates, feature
+              polls, priority review for clear bug reports, optional supporter
+              recognition, and occasional supporter Q&A posts.
+              Patreon-based Pro access is not a lifetime license.
+            </p>
+          </div>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+            If membership ends, fails, or is canceled, Pro access may return to
+            Free mode after a short grace period. Standard one-time licensing may
+            be added later.
+          </p>
         </div>
       </div>
     </section>

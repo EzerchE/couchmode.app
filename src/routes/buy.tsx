@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InfoPage } from "@/components/utility/InfoPage";
 
-const TITLE = "CouchMode Pro coming soon";
+const TITLE = "CouchMode Pro supporter access";
 const DESC =
-  "CouchMode Pro checkout is not open yet. Paid Pro licensing will be added after beta and payment-provider review are complete.";
-const META_TITLE = "CouchMode Pro Coming Soon | CouchMode";
+  "CouchMode Pro is not available as a standard one-time purchase yet. During beta, Pro access will be available through Patreon membership.";
+const META_TITLE = "CouchMode Pro Supporter Access | CouchMode";
 const META_DESC =
-  "CouchMode Pro checkout is being prepared. The app includes a 7-day Pro trial with no credit card required.";
+  "CouchMode Pro supporter access will be available through Patreon membership during beta, with a 7-day in-app Pro trial and no credit card required.";
 const CANONICAL = "https://couchmode.app/buy";
 const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 
@@ -37,17 +37,31 @@ function Buy() {
     <InfoPage title={TITLE}>
       <p>{DESC}</p>
       <p>
-        The app includes a 7-day Pro trial with no credit card required. After
-        the trial, users can keep using Free or activate Pro when paid licensing
-        opens.
+        Active Pro Version and Pro Supporter members will be able to connect
+        Patreon in the app and unlock CouchMode Pro while their membership is
+        active. Patreon-based Pro access is active-membership based and is not
+        a lifetime license.
       </p>
       <p>
-        A one-time Pro license is planned, but final pricing and the payment
-        provider are not live yet.
+        Pro Version is planned at $3/month for personal Pro access on up to 2
+        active Windows devices. Pro Supporter is planned at $5/month for
+        personal Pro access on up to 5 active Windows devices plus extra
+        supporter perks.
       </p>
       <p>
-        Paid checkout will be added here only after beta and payment-provider
-        review are complete.
+        The app will still include a 7-day Pro trial with no credit card, no
+        account, no subscription, and nothing to cancel. After the trial, users
+        can keep using Free mode or unlock Pro through Patreon supporter access.
+      </p>
+      <p>
+        Patreon coming soon.
+      </p>
+      <p>
+        Download coming soon.
+      </p>
+      <p>
+        Standard one-time licensing may be added later if CouchMode grows beyond
+        the beta supporter model.
       </p>
     </InfoPage>
   );
