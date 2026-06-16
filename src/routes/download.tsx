@@ -43,8 +43,8 @@ function Download() {
       </p>
       <p>
         The app will include Free mode and an automatic 7-day Pro trial with no
-        credit card, no account, no subscription, and nothing to cancel. Pro
-        supporter access will be available during beta.
+        credit card, no account, no subscription, and nothing to cancel.
+        Supporter-based Pro access will be available during beta once it opens.
       </p>
       <p>
         Windows may show SmartScreen warnings for early beta builds until the

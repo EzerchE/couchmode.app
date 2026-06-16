@@ -37,7 +37,7 @@ function Buy() {
     <InfoPage title={TITLE}>
       <p>{DESC}</p>
       <p>
-        During beta, Pro access will be available through active supporter
+        During beta, Pro access will be available through Patreon supporter
         membership. Pro Version includes up to 2 active Windows devices. Pro
         Supporter includes up to 5.
       </p>
