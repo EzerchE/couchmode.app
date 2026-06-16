@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
 const free = [
-  { t: "Controller-triggered couch mode", d: "Xbox full-screen starts when your controller wakes" },
+  { t: "Basic Xbox Mode flow where supported", d: "Starts the supported couch flow when your controller wakes" },
   { t: "Start with Windows", d: "Runs in the background, ready when you are" },
   { t: "Language & theme", d: "Match your system look, pick your language" },
   { t: "Basic session exit", d: "Exit couch mode when the controller turns off and return to desktop" },
@@ -96,7 +96,7 @@ export function Comparison() {
                 </div>
                 <div className="mt-3 flex items-baseline gap-1">
                   <span className="text-4xl font-display font-semibold">
-                    beta access
+                    Pro access
                   </span>
                   <span className="text-sm text-muted-foreground ml-1">
                     coming soon
@@ -131,9 +131,10 @@ export function Comparison() {
         </div>
 
         <p className="mt-6 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-          During beta, ongoing Pro access uses active supporter membership. Pro
-          Version supports 2 active Windows devices; Pro Supporter supports 5.
-          The app still includes a 7-day Pro trial with no credit card required.
+          During beta, Pro access is unlocked through active supporter
+          membership. Pro Version supports 2 active Windows devices; Pro
+          Supporter supports 5. The app still includes a 7-day Pro trial with
+          no credit card required.
         </p>
       </div>
     </section>
