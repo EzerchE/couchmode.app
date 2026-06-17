@@ -15,6 +15,18 @@ org/
 !.env.example
 *.local
 
+# Secret/key/database files
+*.pem
+*.key
+*.pfx
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+license.sqlite
+*service-account*.json
+*service_account*.json
+
 # Logs
 logs/
 *.log
