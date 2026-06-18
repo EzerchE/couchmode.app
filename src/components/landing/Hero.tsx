@@ -52,8 +52,9 @@ export function Hero() {
 
             <p className="mt-6 text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
               CouchMode prepares controller-first Windows sessions for TVs and
-              supported handhelds. Public beta access is being prepared, with
-              Free mode and a 7-day Pro trial included in one app.
+              supported handhelds. CouchMode includes Free mode and a 7-day Pro
+              trial in one app. No account or credit card required for the
+              in-app trial.
             </p>
 
             <div className="mt-9 flex flex-wrap gap-3">

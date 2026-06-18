@@ -30,9 +30,9 @@ export function FinalCTA() {
               Ready to make your PC <span className="text-aurora">couch-native</span>?
             </h2>
             <p className="mt-5 text-muted-foreground max-w-xl mx-auto">
-              Public beta access is being prepared. The app will include Free
-              mode and an automatic 7-day Pro trial with no credit card, no
-              account, no subscription, and nothing to cancel.
+              CouchMode includes Free mode and an automatic 7-day Pro trial in
+              one app. No credit card, account, subscription, or cancellation
+              required for the trial.
             </p>
 
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto">

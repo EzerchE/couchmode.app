@@ -3,10 +3,10 @@ import { InfoPage } from "@/components/utility/InfoPage";
 
 const TITLE = "Download coming soon";
 const DESC =
-  "CouchMode for Windows is getting ready for public beta access. The installer is not public yet.";
-const META_TITLE = "CouchMode Beta Download Status | CouchMode";
+  "CouchMode for Windows is getting ready for public access. The installer is not public yet.";
+const META_TITLE = "CouchMode Download Status | CouchMode";
 const META_DESC =
-  "CouchMode for Windows 10 and Windows 11 is preparing public beta access with Free mode and a 7-day Pro trial.";
+  "CouchMode for Windows 10 and Windows 11 is preparing public access with Free mode and a 7-day Pro trial.";
 const CANONICAL = "https://couchmode.app/download";
 const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 
@@ -38,7 +38,7 @@ function Download() {
       <p>{DESC}</p>
       <p>Windows 10 and Windows 11, 64-bit</p>
       <p>
-        When a public beta build is ready, this page will include the installer,
+        When a public build is ready, this page will include the installer,
         version, release date, SHA256 checksum, and install notes.
       </p>
       <p>
@@ -47,8 +47,8 @@ function Download() {
         Supporter-based Pro access will be available during beta once it opens.
       </p>
       <p>
-        Windows may show SmartScreen warnings for early beta builds until the
-        app is code-signed and reputation builds.
+        Windows may show SmartScreen warnings for early builds until the app is
+        code-signed and reputation builds.
       </p>
       <p>
         If you are testing CouchMode privately and need help, email{" "}
