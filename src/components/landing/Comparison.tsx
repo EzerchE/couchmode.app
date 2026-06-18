@@ -128,8 +128,8 @@ export function Comparison() {
         </div>
 
         <p className="mt-6 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-          Pro access is tied to an active supporter membership. Pro Version
-          supports 2 active Windows devices; Pro Supporter supports 5.
+          Pro access requires an active membership. Pro Version includes 2
+          active Windows devices; Pro Supporter includes 5.
         </p>
       </div>
     </section>

@@ -37,12 +37,12 @@ export const faqs = [
   {
     question: "How does supporter access work?",
     answer:
-      "After the trial, an active supporter membership can keep Pro access enabled. Pro Version supports 2 devices; Pro Supporter supports 5.",
+      "After the trial, an active membership can keep Pro access enabled. Pro Version includes 2 devices; Pro Supporter includes 5.",
   },
   {
     question: "Is Pro access a lifetime license?",
     answer:
-      "No. Current Pro access is based on active supporter membership. One-time licensing may be considered later.",
+      "No. Current Pro access uses active membership. One-time licensing may be considered later.",
   },
   {
     question: "Does CouchMode boost FPS?",
