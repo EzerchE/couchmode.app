@@ -2,32 +2,32 @@ export const faqs = [
   {
     question: "Does CouchMode replace the Windows shell?",
     answer:
-      "No. CouchMode prepares and restores sessions around Windows and existing gaming frontends. It does not replace the Windows shell or hijack startup.",
+      "No. CouchMode prepares sessions around Windows and your existing gaming frontends. It does not replace the shell or hijack startup.",
   },
   {
     question: "What does CouchMode change on my PC?",
     answer:
-      "CouchMode is a Windows gaming session automation utility. It does not modify Windows internals, replace the Windows shell, install kernel drivers, bypass security features, patch games, or promise FPS boosts. It automates user-configurable session actions and restores the changes it applies when the session ends.",
+      "It automates user-configurable session actions such as launch, cleanup, audio, display, power, and notifications, then restores the changes it applies.",
   },
   {
     question: "Does CouchMode support Windows Xbox Mode?",
     answer:
-      "CouchMode can help start and manage Windows Xbox Mode where it is available on the device.",
+      "CouchMode can help start and manage Windows Xbox Mode where it is available. Support depends on Windows, device, Xbox app, region, and rollout status.",
   },
   {
     question: "Does CouchMode work on ROG Ally?",
     answer:
-      "CouchMode is being tested on ROG Ally and includes Xbox Mode startup companion support for supported handheld setups.",
+      "CouchMode is being tested on ROG Ally and includes Xbox Mode startup companion support for compatible handheld setups.",
   },
   {
     question: "What does Start inside Xbox Mode mean?",
     answer:
-      "For supported handheld setups, CouchMode can use a one-time admin-approved Windows scheduled task to start inside the Windows Xbox full-screen experience at logon. Normal desktop startup remains separate.",
+      "On supported handhelds, CouchMode can use an admin-approved scheduled task to start inside Windows Xbox Mode. Normal desktop startup remains separate.",
   },
   {
     question: "Can CouchMode start Steam Big Picture or another launcher?",
     answer:
-      "With Pro, you can choose how your session starts. Use Steam Big Picture, Playnite, LaunchBox, GOG Galaxy, or point CouchMode at another compatible launcher. Free mode keeps the default Xbox full-screen flow.",
+      "With Pro, choose Steam Big Picture, Playnite, LaunchBox, GOG Galaxy, or another compatible launcher. Free keeps the default Xbox full-screen flow.",
   },
   {
     question: "Do I need a credit card for the trial?",
@@ -35,19 +35,14 @@ export const faqs = [
       "No. The Pro trial starts automatically in the app and does not require a credit card, account, subscription, or cancellation.",
   },
   {
-    question: "Is paid checkout available?",
+    question: "How does supporter access work?",
     answer:
-      "Standard one-time checkout is not open yet. During beta, Pro access will be available through active supporter membership.",
-  },
-  {
-    question: "How does Pro access work during beta?",
-    answer:
-      "Connect an active membership in the app to keep Pro after the trial. Device limits are shown in Pricing.",
+      "After the trial, an active supporter membership can keep Pro access enabled. Pro Version supports 2 devices; Pro Supporter supports 5.",
   },
   {
     question: "Is Pro access a lifetime license?",
     answer:
-      "Not during beta supporter access. Standard one-time licensing may be added later.",
+      "No. Current Pro access is based on active supporter membership. One-time licensing may be considered later.",
   },
   {
     question: "Does CouchMode boost FPS?",

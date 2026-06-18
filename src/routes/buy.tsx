@@ -6,7 +6,7 @@ const DESC =
   "CouchMode Pro is not available as a standard one-time purchase yet.";
 const META_TITLE = "CouchMode Pro Access | CouchMode";
 const META_DESC =
-  "CouchMode Pro access is being prepared for beta, with a 7-day in-app Pro trial and no credit card required.";
+  "CouchMode Pro access is being prepared with a 7-day in-app trial and no credit card required.";
 const CANONICAL = "https://couchmode.app/buy";
 const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 
@@ -37,9 +37,9 @@ function Buy() {
     <InfoPage title={TITLE}>
       <p>{DESC}</p>
       <p>
-        During beta, Pro access will be available through Patreon supporter
-        membership. Pro Version includes up to 2 active Windows devices. Pro
-        Supporter includes up to 5.
+        During beta, Pro access will be available through active Patreon
+        supporter membership. Pro Version includes up to 2 active Windows
+        devices. Pro Supporter includes up to 5.
       </p>
       <p>
         The app still includes a 7-day Pro trial with no credit card required.

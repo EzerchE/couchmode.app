@@ -39,7 +39,7 @@ export function Hero() {
           >
             <div className="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs text-muted-foreground mb-6">
               <span className="h-1.5 w-1.5 rounded-full bg-aurora" />
-              For Windows 10 & 11 · Beta in preparation
+              For Windows 10 & 11 · Public access in preparation
             </div>
 
             <h1
@@ -52,8 +52,9 @@ export function Hero() {
 
             <p className="mt-6 text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
               CouchMode prepares controller-first Windows sessions for TVs and
-              supported handhelds. Public beta access is being prepared, with
-              Free mode and a 7-day Pro trial included in one app.
+              supported handhelds. CouchMode includes Free mode and a 7-day Pro
+              trial in one app. No account or credit card required for the
+              in-app trial.
             </p>
 
             <div className="mt-9 flex flex-wrap gap-3">

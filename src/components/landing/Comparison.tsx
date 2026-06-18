@@ -31,7 +31,7 @@ export function Comparison() {
             id="pricing-heading"
             className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight tracking-tight"
           >
-            Start free. Unlock Pro during beta.
+            Start free. Unlock more when you’re ready.
           </h2>
         </div>
 
@@ -83,7 +83,7 @@ export function Comparison() {
             <div className="relative rounded-[calc(1.5rem-1px)] bg-card p-8 sm:p-10 h-full flex flex-col">
               <div className="absolute -top-3 left-8">
                 <span className="rounded-full bg-aurora text-primary-foreground px-3 py-1 text-xs font-medium">
-                  7-day Pro trial in app
+                  7-day trial included
                 </span>
               </div>
 
@@ -96,16 +96,13 @@ export function Comparison() {
                 </div>
                 <div className="mt-3 flex items-baseline gap-1">
                   <span className="text-4xl font-display font-semibold">
-                    Pro access
-                  </span>
-                  <span className="text-sm text-muted-foreground ml-1">
-                    coming soon
+                    Full session automation
                   </span>
                 </div>
               </div>
               <p className="text-sm text-muted-foreground mb-8">
-                Full session automation. CouchMode applies advanced session
-                settings, then restores the changes it made.
+                CouchMode applies advanced session settings, then restores the
+                changes it made.
               </p>
               <ul className="space-y-4 mb-10 flex-1">
                 {pro.map((f) => (
@@ -131,10 +128,8 @@ export function Comparison() {
         </div>
 
         <p className="mt-6 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-          During beta, Pro access is unlocked through active supporter
-          membership. Pro Version supports 2 active Windows devices; Pro
-          Supporter supports 5. The app still includes a 7-day Pro trial with
-          no credit card required.
+          Pro access is tied to an active supporter membership. Pro Version
+          supports 2 active Windows devices; Pro Supporter supports 5.
         </p>
       </div>
     </section>

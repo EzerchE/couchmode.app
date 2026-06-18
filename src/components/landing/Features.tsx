@@ -57,7 +57,7 @@ const items = [
     icon: ShieldCheck,
     title: "Handheld Xbox Mode companion",
     body: "On supported handhelds such as ROG Ally, CouchMode can start inside Windows Xbox Mode with one-time admin approval.",
-    tag: "Beta",
+    tag: "Handhelds",
   },
 ];
 
