@@ -4,7 +4,7 @@ const links = [
   { href: "#how", label: "How it works" },
   { href: "#pricing", label: "Pricing" },
   { href: "#features", label: "Features" },
-  { href: "#download", label: "Beta" },
+  { href: "#download", label: "Status" },
 ];
 
 export function Navbar() {

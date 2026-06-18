@@ -42,7 +42,7 @@ export const faqs = [
   {
     question: "Is Pro access a lifetime license?",
     answer:
-      "Not through supporter access. Standard one-time licensing may be added later when public checkout opens.",
+      "No. Current Pro access is based on active supporter membership. One-time licensing may be considered later.",
   },
   {
     question: "Does CouchMode boost FPS?",
