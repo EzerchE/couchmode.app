@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const screenshots = [
   {
-    src: "/screenshots/couchmode-general.webp",
+    src: "/screenshots/shot-general.png",
     screen: "General",
     title: "Start the session your way",
     alt: "CouchMode app showing general session controls, controller status, launch mode, and startup settings",
@@ -12,7 +12,7 @@ const screenshots = [
       "Arm CouchMode from controller connect, app start, or manual launch.",
   },
   {
-    src: "/screenshots/couchmode-resource-control-compact.webp",
+    src: "/screenshots/shot-resource-control.png",
     screen: "Resource Control",
     title: "Close and restore selected apps",
     alt: "CouchMode app showing Resource Control settings for closing, reopening, and launching apps around a session",
@@ -20,7 +20,7 @@ const screenshots = [
       "Choose what CouchMode closes before play and restores when the session ends.",
   },
   {
-    src: "/screenshots/couchmode-app-picker.webp",
+    src: "/screenshots/shot-resource-picker.png",
     screen: "App Picker",
     title: "Pick apps with more control",
     alt: "CouchMode app picker showing common apps that can be selected for session management",
@@ -28,7 +28,7 @@ const screenshots = [
       "See common background apps and choose exactly what should be managed.",
   },
   {
-    src: "/screenshots/couchmode-session-tweaks.webp",
+    src: "/screenshots/shot-session-tweaks.png",
     screen: "Session Tweaks",
     title: "Tune Windows for couch play",
     alt: "CouchMode app showing Session Tweaks for notifications, power plan, display, HDR, and audio options",
@@ -104,11 +104,11 @@ export function ProductScreenshots() {
 
       <div
         ref={trackRef}
-        className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-4 pb-8 [scrollbar-width:none] sm:px-6 lg:px-8 [&::-webkit-scrollbar]:hidden"
+        className="flex snap-x snap-mandatory scroll-px-4 gap-6 overflow-x-auto scroll-smooth px-4 pb-8 [scrollbar-width:none] sm:scroll-px-6 sm:px-6 lg:scroll-px-8 lg:px-8 [&::-webkit-scrollbar]:hidden"
         aria-label="CouchMode app screenshots"
       >
         <div
-          className="shrink-0 w-[max(0px,calc((100vw-80rem)/2))]"
+          className="shrink-0 w-[max(1rem,calc((100vw-80rem)/2))]"
           aria-hidden
         />
         {screenshots.map((screenshot, index) => (
