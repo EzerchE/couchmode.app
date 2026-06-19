@@ -89,9 +89,9 @@ function Index() {
         <Hero />
         <Problem />
         <HowItWorks />
+        <ProductScreenshots />
         <Comparison />
         <Features />
-        <ProductScreenshots />
         <SearchIntentFAQ />
         <FinalCTA />
       </main>
