@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InfoPage } from "@/components/utility/InfoPage";
+import { productScreenshots } from "@/components/landing/ProductScreenshots";
 
 const TITLE = "Download public beta";
 const DESC =
@@ -73,6 +74,35 @@ function Download() {
         ready, use this page to verify the expected beta version and SHA256
         hash.
       </p>
+      <section>
+        <h2 className="font-medium text-foreground">App screenshots</h2>
+        <p className="mt-2">
+          Screens from the current 0.4.10-beta.1 UI.
+        </p>
+        <div className="mt-4 grid gap-4">
+          {productScreenshots.map((screenshot) => (
+            <figure
+              key={screenshot.src}
+              className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]"
+            >
+              <img
+                src={screenshot.src}
+                alt={screenshot.alt}
+                loading="lazy"
+                className="w-full object-cover"
+              />
+              <figcaption className="border-t border-white/10 p-4">
+                <span className="text-sm font-medium text-foreground">
+                  {screenshot.title}
+                </span>
+                <span className="mt-1 block text-sm text-muted-foreground">
+                  {screenshot.caption}
+                </span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
       <p>
         Start with a 7-day in-app Pro trial. No account or credit card is
         required for the in-app trial. If you continue with Patreon, the
