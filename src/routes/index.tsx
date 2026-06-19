@@ -5,6 +5,7 @@ import { Problem } from "@/components/landing/Problem";
 import { HowItWorks } from "@/components/landing/HowItWorks";
 import { Comparison } from "@/components/landing/Comparison";
 import { Features } from "@/components/landing/Features";
+import { ProductScreenshots } from "@/components/landing/ProductScreenshots";
 import { SearchIntentFAQ, faqs } from "@/components/landing/SearchIntentFAQ";
 import { FinalCTA } from "@/components/landing/FinalCTA";
 import { Footer } from "@/components/landing/Footer";
@@ -90,6 +91,7 @@ function Index() {
         <HowItWorks />
         <Comparison />
         <Features />
+        <ProductScreenshots />
         <SearchIntentFAQ />
         <FinalCTA />
       </main>
