@@ -75,31 +75,23 @@ function Download() {
         hash.
       </p>
       <section>
-        <h2 className="font-medium text-foreground">App screenshots</h2>
+        <h2 className="font-medium text-foreground">App preview</h2>
         <p className="mt-2">
-          Screens from the current 0.4.10-beta.1 UI.
+          A quick look at the current UI. For the full showcase, see{" "}
+          <a className="text-foreground underline-offset-4 hover:underline" href="/#product">
+            Inside the app
+          </a>
+          .
         </p>
-        <div className="mt-4 grid gap-4">
+        <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
           {productScreenshots.map((screenshot) => (
-            <figure
+            <img
               key={screenshot.src}
-              className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]"
-            >
-              <img
-                src={screenshot.src}
-                alt={screenshot.alt}
-                loading="lazy"
-                className="w-full object-cover"
-              />
-              <figcaption className="border-t border-white/10 p-4">
-                <span className="text-sm font-medium text-foreground">
-                  {screenshot.title}
-                </span>
-                <span className="mt-1 block text-sm text-muted-foreground">
-                  {screenshot.caption}
-                </span>
-              </figcaption>
-            </figure>
+              src={screenshot.src}
+              alt={screenshot.alt}
+              loading="lazy"
+              className="aspect-[16/10] rounded-xl border border-white/10 object-cover"
+            />
           ))}
         </div>
       </section>
