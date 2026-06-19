@@ -30,9 +30,9 @@ export function FinalCTA() {
               Ready to make your PC <span className="text-aurora">couch-native</span>?
             </h2>
             <p className="mt-5 text-muted-foreground max-w-xl mx-auto">
-              CouchMode includes Free mode and an automatic 7-day Pro trial in
-              one app. No credit card, account, subscription, or cancellation
-              required for the trial.
+              Start with a 7-day in-app Pro trial. No account or credit card
+              required. If you continue with Patreon, membership keeps Pro
+              active after the trial.
             </p>
 
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto">

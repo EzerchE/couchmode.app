@@ -6,7 +6,7 @@ const DESC =
   "CouchMode Pro access is available during public beta through active Patreon membership.";
 const META_TITLE = "CouchMode Pro Access | CouchMode";
 const META_DESC =
-  "CouchMode Pro access uses active Patreon membership during public beta. The app includes a 7-day in-app Pro trial with no account or credit card required.";
+  "CouchMode Pro access uses active Patreon membership during public beta. Start with a 7-day in-app Pro trial, then connect Patreon to continue.";
 const CANONICAL = "https://couchmode.app/buy";
 const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 
@@ -37,12 +37,13 @@ function Buy() {
     <InfoPage title={TITLE}>
       <p>{DESC}</p>
       <p>
-        Download CouchMode, start the in-app 7-day Pro trial, and connect
-        Patreon in the app when you are ready to keep Pro active.
+        Start with a 7-day in-app Pro trial. No account or credit card is
+        required for the in-app trial.
       </p>
       <p>
-        No account or credit card is required for the in-app trial. After the
-        trial, the Pro license remains active while your Patreon membership is
+        If you continue with Patreon, the membership may include another 7-day
+        trial before billing. Patreon membership requires a Patreon account and
+        payment method. The Pro license remains active while your membership is
         active.
       </p>
       <p>

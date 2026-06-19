@@ -63,8 +63,13 @@ function Terms() {
       <section>
         <h2 className="font-medium text-foreground">7-day Pro trial</h2>
         <p className="mt-2">
-          The Pro trial starts automatically in the app and does not require a
-          credit card, subscription, or cancellation.
+          The 7-day in-app Pro trial starts in CouchMode and does not require an
+          account or credit card.
+        </p>
+        <p className="mt-2">
+          Patreon membership may include a separate trial before billing.
+          Patreon membership requires a Patreon account and payment method and
+          is managed by Patreon.
         </p>
       </section>
       <section>

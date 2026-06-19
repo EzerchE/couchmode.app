@@ -39,7 +39,7 @@ export function Hero() {
           >
             <div className="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs text-muted-foreground mb-6">
               <span className="h-1.5 w-1.5 rounded-full bg-aurora" />
-              Public beta · 0.4.10-beta.1
+              Public beta preparation for Windows 10 & 11
             </div>
 
             <h1
@@ -52,8 +52,8 @@ export function Hero() {
 
             <p className="mt-6 text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
               CouchMode prepares controller-first Windows sessions for TVs and
-              supported handhelds. CouchMode includes Free mode and a 7-day Pro
-              trial in one app. No account or credit card required for the
+              supported handhelds. CouchMode includes Free mode and a 7-day
+              in-app Pro trial. No account or credit card is required for the
               in-app trial.
             </p>
 
@@ -77,11 +77,11 @@ export function Hero() {
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-muted-foreground">
               <span className="inline-flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-aurora" />
-                7-day Pro trial starts in app
+                7-day in-app Pro trial
               </span>
               <span className="inline-flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-aurora" />
-                No credit card or account required
+                No account or card for trial
               </span>
               <span className="inline-flex items-center gap-2">
                 <Gamepad2 className="h-3.5 w-3.5" />

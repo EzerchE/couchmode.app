@@ -32,12 +32,12 @@ export const faqs = [
   {
     question: "Do I need a credit card for the trial?",
     answer:
-      "No. The Pro trial starts automatically in the app and does not require a credit card, account, subscription, or cancellation.",
+      "Not for the in-app trial. If you continue with Patreon, membership may have its own trial and requires a Patreon account and payment method.",
   },
   {
     question: "How does supporter access work?",
     answer:
-      "After the trial, connect Patreon in the app to keep Pro active. Pro Version is $3/month for 2 devices; Pro Supporter is $5/month for 5.",
+      "After the in-app trial, connect Patreon to keep Pro active. Patreon requires an account and payment method for membership billing.",
   },
   {
     question: "What happens if my membership ends?",

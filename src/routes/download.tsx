@@ -38,10 +38,10 @@ function Download() {
       <p>{DESC}</p>
       <p>Windows 10 and Windows 11, 64-bit</p>
       <section>
-        <h2 className="font-medium text-foreground">Latest beta</h2>
+        <h2 className="font-medium text-foreground">Releases / Changelog</h2>
         <dl className="mt-3 space-y-2">
           <div>
-            <dt className="text-foreground">Version</dt>
+            <dt className="text-foreground">Latest version</dt>
             <dd>0.4.10-beta.1</dd>
           </div>
           <div>
@@ -58,7 +58,7 @@ function Download() {
           </div>
           <div>
             <dt className="text-foreground">Release date</dt>
-            <dd>To be announced</dd>
+            <dd>To be announced before public installer hosting opens</dd>
           </div>
           <div>
             <dt className="text-foreground">SHA256</dt>
@@ -74,16 +74,22 @@ function Download() {
         hash.
       </p>
       <p>
-        CouchMode includes Free mode and an automatic 7-day Pro trial in the
-        app. No account or credit card is required for the in-app trial. After
-        the trial, active Patreon membership keeps Pro access enabled.
+        Start with a 7-day in-app Pro trial. No account or credit card is
+        required for the in-app trial. If you continue with Patreon, the
+        membership may include another 7-day trial before billing and requires
+        a Patreon account and payment method.
+      </p>
+      <p>
+        Ongoing Pro access requires active Patreon membership. Pro Version is
+        $3/month and includes 2 active Windows devices. Pro Supporter is
+        $5/month and includes 5 active Windows devices.
       </p>
       <p>
         This beta installer may show a Windows SmartScreen warning while code
         signing is being prepared. Verify the SHA256 hash before installing.
       </p>
       <section>
-        <h2 className="font-medium text-foreground">Short changelog</h2>
+        <h2 className="font-medium text-foreground">0.4.10-beta.1 changes</h2>
         <ul className="mt-3 list-disc space-y-2 pl-5">
           <li>Patreon Pro unlock works end-to-end.</li>
           <li>No-tier Patreon state is handled correctly.</li>

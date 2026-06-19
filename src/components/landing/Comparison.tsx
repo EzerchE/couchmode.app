@@ -83,7 +83,7 @@ export function Comparison() {
             <div className="relative rounded-[calc(1.5rem-1px)] bg-card p-8 sm:p-10 h-full flex flex-col">
               <div className="absolute -top-3 left-8">
                 <span className="rounded-full bg-aurora text-primary-foreground px-3 py-1 text-xs font-medium">
-                  7-day trial included
+                  7-day in-app trial
                 </span>
               </div>
 
