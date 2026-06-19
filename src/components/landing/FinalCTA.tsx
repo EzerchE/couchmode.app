@@ -30,9 +30,9 @@ export function FinalCTA() {
               Ready to make your PC <span className="text-aurora">couch-native</span>?
             </h2>
             <p className="mt-5 text-muted-foreground max-w-xl mx-auto">
-              CouchMode includes Free mode and an automatic 7-day Pro trial in
-              one app. No credit card, account, subscription, or cancellation
-              required for the trial.
+              Start with a 7-day in-app Pro trial. No account or credit card
+              required. If you continue with Patreon, membership keeps Pro
+              active after the trial.
             </p>
 
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto">
@@ -41,14 +41,14 @@ export function FinalCTA() {
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-aurora text-primary-foreground px-6 py-3.5 text-sm font-medium glow-violet hover:brightness-110 transition"
               >
                 <Download className="h-4 w-4" />
-                Download coming soon
+                Download public beta
               </a>
               <a
                 href="/buy"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] hover:bg-white/[0.08] px-6 py-3.5 text-sm font-medium transition"
               >
                 <Sparkles className="h-4 w-4" />
-                Pro access coming soon
+                Connect Patreon in the app
               </a>
               <DisabledButton icon={Store} label="Microsoft Store" hint="Coming soon" />
               <DisabledButton icon={Gamepad} label="Steam" hint="Coming soon" />

@@ -2,7 +2,7 @@ export const faqs = [
   {
     question: "Does CouchMode replace the Windows shell?",
     answer:
-      "No. CouchMode prepares sessions around Windows and your existing gaming frontends. It does not replace the shell or hijack startup.",
+      "No. CouchMode is not a launcher or shell replacement. It prepares sessions around Windows and your existing gaming frontends.",
   },
   {
     question: "What does CouchMode change on my PC?",
@@ -32,20 +32,20 @@ export const faqs = [
   {
     question: "Do I need a credit card for the trial?",
     answer:
-      "No. The Pro trial starts automatically in the app and does not require a credit card, account, subscription, or cancellation.",
+      "Not for the in-app trial. If you continue with Patreon, membership may have its own trial and requires a Patreon account and payment method.",
   },
   {
     question: "How does supporter access work?",
     answer:
-      "After the trial, an active supporter membership can keep Pro access enabled. Pro Version supports 2 devices; Pro Supporter supports 5.",
+      "After the in-app trial, connect Patreon to keep Pro active. Patreon requires an account and payment method for membership billing.",
   },
   {
-    question: "Is Pro access a lifetime license?",
+    question: "What happens if my membership ends?",
     answer:
-      "No. Current Pro access is based on active supporter membership. One-time licensing may be considered later.",
+      "The Pro license remains active while your Patreon membership is active. If membership ends, CouchMode continues in Free mode.",
   },
   {
-    question: "Does CouchMode boost FPS?",
+    question: "Does CouchMode improve game performance?",
     answer:
       "No. CouchMode focuses on session setup, cleanup, and restore rather than performance claims.",
   },

@@ -3,10 +3,10 @@ import { InfoPage } from "@/components/utility/InfoPage";
 
 const TITLE = "Refund Policy";
 const DESC =
-  "CouchMode standard purchases are not open yet. Supporter membership billing and refunds may be handled by the membership platform during beta.";
+  "During public beta, CouchMode Pro access is handled through Patreon membership.";
 const META_TITLE = "Refund Policy | CouchMode";
 const META_DESC =
-  "Read the CouchMode refund policy status for beta Pro access and future standard purchases.";
+  "Read the CouchMode refund policy status for public beta Pro access through Patreon membership.";
 const CANONICAL = "https://couchmode.app/refund";
 const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 
@@ -36,14 +36,9 @@ function Refund() {
   return (
     <InfoPage title={TITLE}>
       <p>
-        Standard one-time CouchMode purchases are not open yet. Refund terms for
-        future standard purchases will be published before any standard paid
-        checkout goes live.
-      </p>
-      <p>
-        If Pro access is provided through supporter membership, billing,
-        cancellation, and refund handling may be managed by the membership
-        platform according to its policies.
+        During public beta, ongoing Pro access is handled through Patreon
+        membership. Billing, cancellation, and refund handling may be managed by
+        Patreon according to its policies.
       </p>
       <p>
         If membership is canceled, refunded, or becomes inactive, Pro access may

@@ -58,7 +58,7 @@ export function Navbar() {
             href="#download"
             className="hidden sm:inline-flex items-center gap-2 rounded-full bg-aurora text-primary-foreground px-4 py-2 text-sm font-medium glow-violet hover:brightness-110 transition"
           >
-            Download soon
+            Download beta
           </a>
         </div>
       </div>

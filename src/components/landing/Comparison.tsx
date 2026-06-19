@@ -69,7 +69,7 @@ export function Comparison() {
               href="#download"
               className="inline-flex w-full justify-center items-center rounded-full border border-white/10 bg-white/[0.04] hover:bg-white/[0.08] px-6 py-3 text-sm font-medium transition"
             >
-              Download coming soon
+              Download beta
             </a>
           </motion.div>
 
@@ -83,7 +83,7 @@ export function Comparison() {
             <div className="relative rounded-[calc(1.5rem-1px)] bg-card p-8 sm:p-10 h-full flex flex-col">
               <div className="absolute -top-3 left-8">
                 <span className="rounded-full bg-aurora text-primary-foreground px-3 py-1 text-xs font-medium">
-                  7-day trial included
+                  7-day in-app trial
                 </span>
               </div>
 
@@ -121,15 +121,16 @@ export function Comparison() {
                 href="/buy"
                 className="inline-flex w-full justify-center items-center rounded-full bg-aurora text-primary-foreground px-6 py-3 text-sm font-medium glow-violet hover:brightness-110 transition"
               >
-                Pro access coming soon
+                Unlock Pro with Patreon
               </a>
             </div>
           </motion.div>
         </div>
 
         <p className="mt-6 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-          Pro access is tied to an active supporter membership. Pro Version
-          supports 2 active Windows devices; Pro Supporter supports 5.
+          Pro access requires an active Patreon membership after the trial. Pro
+          Version is $3/month and includes 2 active Windows devices; Pro
+          Supporter is $5/month and includes 5.
         </p>
       </div>
     </section>
