@@ -39,7 +39,7 @@ export function Hero() {
           >
             <div className="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs text-muted-foreground mb-6">
               <span className="h-1.5 w-1.5 rounded-full bg-aurora" />
-              For Windows 10 & 11 · Public access in preparation
+              Public beta · 0.4.10-beta.1
             </div>
 
             <h1
@@ -63,7 +63,7 @@ export function Hero() {
                 className="inline-flex items-center gap-2 rounded-full bg-aurora text-primary-foreground px-6 py-3 text-sm font-medium glow-violet hover:brightness-110 transition"
               >
                 <Download className="h-4 w-4" />
-                Download coming soon
+                Download public beta
               </a>
               <a
                 href="#pricing"

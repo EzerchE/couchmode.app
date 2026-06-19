@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InfoPage } from "@/components/utility/InfoPage";
 
-const TITLE = "CouchMode Pro access";
+const TITLE = "Unlock Pro with Patreon";
 const DESC =
-  "CouchMode Pro is not available as a standard one-time purchase yet.";
+  "CouchMode Pro access is available during public beta through active Patreon membership.";
 const META_TITLE = "CouchMode Pro Access | CouchMode";
 const META_DESC =
-  "CouchMode Pro access is being prepared with a 7-day in-app trial and no credit card required.";
+  "CouchMode Pro access uses active Patreon membership during public beta. The app includes a 7-day in-app Pro trial with no account or credit card required.";
 const CANONICAL = "https://couchmode.app/buy";
 const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 
@@ -37,19 +37,20 @@ function Buy() {
     <InfoPage title={TITLE}>
       <p>{DESC}</p>
       <p>
-        During beta, Pro access will be available through active Patreon
-        supporter membership. Pro Version includes up to 2 active Windows
-        devices. Pro Supporter includes up to 5.
+        Download CouchMode, start the in-app 7-day Pro trial, and connect
+        Patreon in the app when you are ready to keep Pro active.
       </p>
       <p>
-        The app still includes a 7-day Pro trial with no credit card required.
-        Standard one-time licensing may be added later.
+        No account or credit card is required for the in-app trial. After the
+        trial, the Pro license remains active while your Patreon membership is
+        active.
       </p>
       <p>
-        Supporter access coming soon.
+        Pro Version is $3/month and includes 2 active Windows devices. Pro
+        Supporter is $5/month and includes 5 active Windows devices.
       </p>
       <p>
-        Download coming soon.
+        There is no direct purchase button on this site during public beta.
       </p>
     </InfoPage>
   );

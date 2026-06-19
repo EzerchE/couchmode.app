@@ -3,7 +3,7 @@ import { InfoPage } from "@/components/utility/InfoPage";
 
 const TITLE = "Terms";
 const DESC =
-  "Basic terms for using CouchMode Free, the 7-day Pro trial, and Patreon-based Pro supporter access during beta.";
+  "Basic terms for using CouchMode Free, the 7-day Pro trial, and Patreon-based Pro access during public beta.";
 const META_TITLE = "Terms of Use | CouchMode";
 const META_DESC =
   "Read the CouchMode terms covering Free use, the 7-day Pro trial, Patreon supporter access, Xbox Mode availability, warranty, liability, and third-party services.";
@@ -56,7 +56,7 @@ function Terms() {
         <p className="mt-2">
           One installer may include Free features, the 7-day Pro trial, and Pro
           activation. Free features are available without purchase. Pro features
-          require an active trial or active Patreon supporter access during
+          require an active trial or active Patreon membership during public
           beta.
         </p>
       </section>
@@ -70,23 +70,17 @@ function Terms() {
       <section>
         <h2 className="font-medium text-foreground">Patreon supporter access</h2>
         <p className="mt-2">
-          During beta, CouchMode Pro access may be provided through Patreon
-          membership. Patreon-based Pro access is active-membership based and is
-          not a lifetime license.
+          During public beta, CouchMode Pro access is provided through Patreon
+          membership. The Pro license remains active while membership is active.
         </p>
         <p className="mt-2">
           If membership ends, fails, is refunded, or is canceled, Pro access may
           return to Free mode after a short grace period.
         </p>
         <p className="mt-2">
-          Pro Version is planned at $3/month and includes personal Pro access
-          on up to 2 active Windows devices. Pro Supporter is planned at
-          $5/month and includes personal Pro access on up to 5 active Windows
-          devices.
-        </p>
-        <p className="mt-2">
-          CouchMode may provide a standard one-time license or other payment
-          options later, but these are not currently open.
+          Pro Version is $3/month and includes personal Pro access on up to 2
+          active Windows devices. Pro Supporter is $5/month and includes
+          personal Pro access on up to 5 active Windows devices.
         </p>
       </section>
       <section>
@@ -106,8 +100,8 @@ function Terms() {
           startup, and resource-control options.
         </p>
         <p className="mt-2">
-          CouchMode does not promise FPS boosts or identical behavior on every
-          Windows device.
+          CouchMode does not promise performance boosts or identical behavior
+          on every Windows device.
         </p>
       </section>
       <section>
@@ -135,9 +129,7 @@ function Terms() {
         <h2 className="font-medium text-foreground">Third-party services</h2>
         <p className="mt-2">
           Patreon may handle billing, membership, cancellation, and refund
-          details for Patreon-based Pro access. Future payment or license
-          providers may process payment, billing, refund, or entitlement
-          information as needed to provide Pro access. CouchMode does not store
+          details for Patreon-based Pro access. CouchMode does not store
           payment card details.
         </p>
       </section>

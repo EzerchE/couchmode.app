@@ -95,13 +95,12 @@ function Privacy() {
           handled by Patreon.
         </p>
         <p className="mt-2">
-          Future payment or license providers may process payment, billing,
-          refund, or entitlement information as needed to provide Pro access.
-        </p>
-        <p className="mt-2">
-          Future Pro license activation may validate license keys through an
-          authorized payment or licensing provider, or a CouchMode-operated
-          entitlement service.
+          CouchMode may contact{" "}
+          <a className="text-foreground underline-offset-4 hover:underline" href="https://license.couchmode.app">
+            license.couchmode.app
+          </a>{" "}
+          only when needed to validate Pro access, refresh entitlement status,
+          or deactivate devices.
         </p>
       </section>
     </InfoPage>

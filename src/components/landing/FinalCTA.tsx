@@ -41,14 +41,14 @@ export function FinalCTA() {
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-aurora text-primary-foreground px-6 py-3.5 text-sm font-medium glow-violet hover:brightness-110 transition"
               >
                 <Download className="h-4 w-4" />
-                Download coming soon
+                Download public beta
               </a>
               <a
                 href="/buy"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] hover:bg-white/[0.08] px-6 py-3.5 text-sm font-medium transition"
               >
                 <Sparkles className="h-4 w-4" />
-                Pro access coming soon
+                Connect Patreon in the app
               </a>
               <DisabledButton icon={Store} label="Microsoft Store" hint="Coming soon" />
               <DisabledButton icon={Gamepad} label="Steam" hint="Coming soon" />
