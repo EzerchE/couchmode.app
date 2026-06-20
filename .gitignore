@@ -40,6 +40,16 @@ lerna-debug.log*
 .wrangler/
 .dev.vars
 
+# Tooling / internal project artifacts (keep out of the public repo)
+.claude/
+*.asset.json
+lovable-project-*.zip
+# Bun is the package manager here; never commit an npm lockfile.
+package-lock.json
+# Internal Lovable planning files; keep only the minimal project marker.
+.lovable/
+!.lovable/project.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
