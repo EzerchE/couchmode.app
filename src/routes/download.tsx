@@ -3,11 +3,10 @@ import { InfoPage } from "@/components/utility/InfoPage";
 import { productScreenshots } from "@/components/landing/ProductScreenshots";
 
 const TITLE = "Download public beta";
-const DESC =
-  "CouchMode public beta is being prepared for Windows 10 and Windows 11.";
+const DESC = "CouchMode public beta for Windows 11, 64-bit.";
 const META_TITLE = "Download CouchMode Public Beta | CouchMode";
 const META_DESC =
-  "Download information for CouchMode 0.4.10-beta.1, including SHA256 verification, beta notes, and the 7-day in-app Pro trial.";
+  "Download information for CouchMode 0.4.10-beta.7, including SHA256 verification, beta notes, and the 7-day in-app Pro trial.";
 const CANONICAL = "https://couchmode.app/download";
 const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 
@@ -37,25 +36,29 @@ function Download() {
   return (
     <InfoPage title={TITLE}>
       <p>{DESC}</p>
-      <p>Windows 10 and Windows 11, 64-bit</p>
+      <p>Windows 11, 64-bit</p>
       <section>
         <h2 className="font-medium text-foreground">Releases / Changelog</h2>
         <dl className="mt-3 space-y-2">
           <div>
             <dt className="text-foreground">Latest version</dt>
-            <dd>0.4.10-beta.1</dd>
+            <dd>0.4.10-beta.7</dd>
           </div>
           <div>
             <dt className="text-foreground">Build commit</dt>
             <dd>
-              <code>ea63937</code>
+              <code>466c918</code>
             </dd>
           </div>
           <div>
             <dt className="text-foreground">Installer</dt>
             <dd>
-              <code>CouchMode-Setup-0.4.10-beta.1.exe</code>
+              <code>CouchMode-Setup-0.4.10-beta.7.exe</code>
             </dd>
+          </div>
+          <div>
+            <dt className="text-foreground">File size</dt>
+            <dd>2,741,742 bytes</dd>
           </div>
           <div>
             <dt className="text-foreground">Release date</dt>
@@ -64,16 +67,22 @@ function Download() {
           <div>
             <dt className="text-foreground">SHA256</dt>
             <dd className="break-all">
-              <code>D27526EFF406A3A8FC32ABA42DDE50B8EE72C4A4B583D670BFCA815CFED5A896</code>
+              <code>0CBD1D8DFF0E240DEBA5FB8F0AEC4276DE4BB5ECB444915A29374E839C4F359F</code>
             </dd>
           </div>
         </dl>
       </section>
-      <p>
-        Installer hosting is being finalized. Until the final download URL is
-        ready, use this page to verify the expected beta version and SHA256
-        hash.
-      </p>
+      <section>
+        <h2 className="font-medium text-foreground">Download</h2>
+        <p className="mt-2">
+          Public beta download is being prepared. The installer link will be
+          enabled at launch.
+        </p>
+        <p className="mt-2">
+          When the link is enabled, verify the SHA256 above matches before
+          running.
+        </p>
+      </section>
       <section>
         <h2 className="font-medium text-foreground">App preview</h2>
         <p className="mt-2">
@@ -111,14 +120,15 @@ function Download() {
         signing is being prepared. Verify the SHA256 hash before installing.
       </p>
       <section>
-        <h2 className="font-medium text-foreground">0.4.10-beta.1 changes</h2>
+        <h2 className="font-medium text-foreground">0.4.10-beta.7 changes</h2>
         <ul className="mt-3 list-disc space-y-2 pl-5">
-          <li>Patreon Pro unlock works end-to-end.</li>
-          <li>No-tier Patreon state is handled correctly.</li>
-          <li>Refresh and deactivate flows are available for active devices.</li>
-          <li>Pro gates update live without restarting the app.</li>
-          <li>External controller connect and disconnect lifecycle improved.</li>
-          <li>ROG Ally built-in controller is ignored correctly.</li>
+          <li>Patreon Pro unlock works end-to-end; Pro gates update live without restarting the app.</li>
+          <li>Device-limit fix: on a device over your plan limit, Refresh Membership keeps the connected "device limit reached" state instead of showing the membership as inactive, and activates the device once a slot frees.</li>
+          <li>Clearer controller status on handhelds: "Built-in only" when just the built-in pad is present, "Connected" with an external controller.</li>
+          <li>"Start inside Xbox Mode" admin status reflects the actual elevated startup task and updates live after the Windows admin prompt.</li>
+          <li>More consistent, compact settings layout across all tabs.</li>
+          <li>7-day trial hardened: relocks to Free promptly when it expires while running, and a normal uninstall/reinstall no longer restarts the trial.</li>
+          <li>External controller connect/disconnect lifecycle; ROG Ally built-in controller ignored.</li>
         </ul>
       </section>
       <section>
