@@ -1,0 +1,63 @@
+# Dependency and build output
+node_modules/
+dist/
+dist-ssr/
+.cache/
+.output/
+.vinxi/
+.tanstack/
+.nitro/
+org/
+
+# Environment files
+.env
+.env.*
+!.env.example
+*.local
+
+# Secret/key/database files
+*.pem
+*.key
+*.pfx
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+license.sqlite
+*service-account*.json
+*service_account*.json
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Wrangler / Cloudflare
+.wrangler/
+.dev.vars
+
+# Tooling / internal project artifacts (keep out of the public repo)
+.claude/
+*.asset.json
+lovable-project-*.zip
+# Bun is the package manager here; never commit an npm lockfile.
+package-lock.json
+# Internal Lovable planning files; keep only the minimal project marker.
+.lovable/
+!.lovable/project.json
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
