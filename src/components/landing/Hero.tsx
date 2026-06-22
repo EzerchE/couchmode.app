@@ -51,7 +51,7 @@ export function Hero() {
           >
             <div className="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs text-foreground/85 mb-6 shadow-xl shadow-background/20">
               <span className="h-1.5 w-1.5 rounded-full bg-aurora" />
-              Public beta preparation for Windows 11 gaming PCs and handhelds
+              Public beta coming soon
             </div>
 
             <h1
