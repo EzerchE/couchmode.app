@@ -31,8 +31,13 @@ export function Comparison() {
             id="pricing-heading"
             className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight tracking-tight"
           >
-            Start free. Unlock more when you’re ready.
+            Free for the essentials. Pro for deeper automation.
           </h2>
+          <p className="mt-5 text-muted-foreground">
+            CouchMode’s core session flow is free. Pro adds launcher choices,
+            Resource Control, session tweaks, and restore automation for
+            supporters.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 items-stretch">
