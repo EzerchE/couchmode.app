@@ -10,7 +10,7 @@ const free = [
 
 const pro = [
   { t: "Launch Mode selection", d: "Xbox Mode, Steam Big Picture, or a custom launcher per session" },
-  { t: "Resource Control", d: "Pause selected background apps during the session" },
+  { t: "Resource Control", d: "Close selected desktop apps around the session" },
   { t: "Session Tweaks", d: "Per-session overrides for the way you actually play" },
   { t: "Audio / HDR / display / power automation", d: "Outputs, monitors, color, and power plan flip together" },
   { t: "Notifications control", d: "Focus Assist + alerts off for the duration of the session" },
@@ -31,8 +31,13 @@ export function Comparison() {
             id="pricing-heading"
             className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight tracking-tight"
           >
-            Start free. Unlock more when you’re ready.
+            Free for the essentials. Pro for deeper automation.
           </h2>
+          <p className="mt-5 text-muted-foreground">
+            CouchMode’s core session flow is free. Pro adds launcher choices,
+            Resource Control, session tweaks, and restore automation for
+            supporters.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 items-stretch">
@@ -69,7 +74,7 @@ export function Comparison() {
               href="#download"
               className="inline-flex w-full justify-center items-center rounded-full border border-white/10 bg-white/[0.04] hover:bg-white/[0.08] px-6 py-3 text-sm font-medium transition"
             >
-              Download beta
+              Download opening soon
             </a>
           </motion.div>
 

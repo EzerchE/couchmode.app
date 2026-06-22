@@ -38,7 +38,7 @@ const items = [
   {
     icon: Zap,
     title: "Resource Control",
-    body: "Pause selected background apps and apply session policy for a cleaner play session.",
+    body: "Close selected open desktop apps for a cleaner session. Services, elevated apps, and protected system components may remain.",
     tag: "Pro",
   },
   {

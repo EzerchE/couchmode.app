@@ -2,12 +2,19 @@ import { createFileRoute } from "@tanstack/react-router";
 import { InfoPage } from "@/components/utility/InfoPage";
 import { productScreenshots } from "@/components/landing/ProductScreenshots";
 
-const TITLE = "Download public beta";
+const RELEASE = {
+  version: "0.4.10-beta.30",
+  installer: "CouchMode-Setup-0.4.10-beta.30.exe",
+  size: "2,752,951 bytes",
+  sha256: "75997DCA6C3CCCFA87457D2163804DD9E35DCFCC58FB0BCBB2E76D4355D2433D",
+};
+
+const TITLE = "Download CouchMode beta";
 const DESC =
-  "CouchMode public beta is being prepared for Windows 10 and Windows 11.";
+  `Version ${RELEASE.version} for Windows 11 gaming PCs and handhelds.`;
 const META_TITLE = "Download CouchMode Public Beta | CouchMode";
 const META_DESC =
-  "Download information for CouchMode 0.4.10-beta.1, including SHA256 verification, beta notes, and the 7-day in-app Pro trial.";
+  `Download information for CouchMode ${RELEASE.version}, including SHA256 verification, beta notes, and the 7-day in-app Pro trial.`;
 const CANONICAL = "https://couchmode.app/download";
 const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 
@@ -37,42 +44,40 @@ function Download() {
   return (
     <InfoPage title={TITLE}>
       <p>{DESC}</p>
-      <p>Windows 10 and Windows 11, 64-bit</p>
+      <p>Windows 11, 64-bit</p>
       <section>
         <h2 className="font-medium text-foreground">Releases / Changelog</h2>
         <dl className="mt-3 space-y-2">
           <div>
             <dt className="text-foreground">Latest version</dt>
-            <dd>0.4.10-beta.1</dd>
-          </div>
-          <div>
-            <dt className="text-foreground">Build commit</dt>
-            <dd>
-              <code>ea63937</code>
-            </dd>
+            <dd>{RELEASE.version}</dd>
           </div>
           <div>
             <dt className="text-foreground">Installer</dt>
             <dd>
-              <code>CouchMode-Setup-0.4.10-beta.1.exe</code>
+              <code>{RELEASE.installer}</code>
             </dd>
           </div>
           <div>
-            <dt className="text-foreground">Release date</dt>
-            <dd>To be announced before public installer hosting opens</dd>
+            <dt className="text-foreground">Size</dt>
+            <dd>{RELEASE.size}</dd>
           </div>
           <div>
             <dt className="text-foreground">SHA256</dt>
             <dd className="break-all">
-              <code>D27526EFF406A3A8FC32ABA42DDE50B8EE72C4A4B583D670BFCA815CFED5A896</code>
+              <code>{RELEASE.sha256}</code>
             </dd>
+          </div>
+          <div>
+            <dt className="text-foreground">Release date</dt>
+            <dd>To be announced before public beta opens</dd>
           </div>
         </dl>
       </section>
       <p>
-        Installer hosting is being finalized. Until the final download URL is
-        ready, use this page to verify the expected beta version and SHA256
-        hash.
+        Public installer hosting is not enabled on this site yet. Until the
+        final download URL is approved, use this page to verify the expected
+        beta version and SHA256 hash.
       </p>
       <section>
         <h2 className="font-medium text-foreground">App preview</h2>
@@ -97,9 +102,8 @@ function Download() {
       </section>
       <p>
         Start with a 7-day in-app Pro trial. No account or credit card is
-        required for the in-app trial. If you continue with Patreon, the
-        membership may include another 7-day trial before billing and requires
-        a Patreon account and payment method.
+        required for the in-app trial. Ongoing Pro access is handled through
+        Patreon.
       </p>
       <p>
         Ongoing Pro access requires active Patreon membership. Pro Version is
@@ -111,14 +115,18 @@ function Download() {
         signing is being prepared. Verify the SHA256 hash before installing.
       </p>
       <section>
-        <h2 className="font-medium text-foreground">0.4.10-beta.1 changes</h2>
+        <h2 className="font-medium text-foreground">{RELEASE.version} changes</h2>
         <ul className="mt-3 list-disc space-y-2 pl-5">
-          <li>Patreon Pro unlock works end-to-end.</li>
-          <li>No-tier Patreon state is handled correctly.</li>
-          <li>Refresh and deactivate flows are available for active devices.</li>
-          <li>Pro gates update live without restarting the app.</li>
-          <li>External controller connect and disconnect lifecycle improved.</li>
-          <li>ROG Ally built-in controller is ignored correctly.</li>
+          <li>Controller-driven couch sessions.</li>
+          <li>Xbox, Steam Big Picture, Playnite, and custom launcher support.</li>
+          <li>Smart desktop app cleanup.</li>
+          <li>Fullscreen game and launch-target protection.</li>
+          <li>Reliable PC/Desktop restore when the controller turns off.</li>
+          <li>
+            Safer handling when Xbox or a launcher is closed while a fullscreen
+            game is running.
+          </li>
+          <li>Patreon Pro licensing with device-limit handling.</li>
         </ul>
       </section>
       <section>

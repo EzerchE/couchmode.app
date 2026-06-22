@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 
 const links = [
   { href: "#how", label: "How it works" },
-  { href: "#product", label: "Product" },
   { href: "#pricing", label: "Pricing" },
-  { href: "#features", label: "Features" },
   { href: "#download", label: "Status" },
 ];
 
@@ -21,19 +19,11 @@ export function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "py-3" : "py-5"
+        scrolled ? "py-2 nav-blur" : "py-5 bg-transparent"
       }`}
     >
-      <div
-        className={`mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 transition-all duration-300 ${
-          scrolled ? "" : ""
-        }`}
-      >
-        <div
-          className={`flex items-center justify-between rounded-2xl px-4 sm:px-6 py-3 transition-all duration-300 ${
-            scrolled ? "glass" : "bg-transparent"
-          }`}
-        >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between py-2">
           <a href="#" className="flex items-center gap-2 group">
             <span className="grid place-items-center h-8 w-8 rounded-lg bg-aurora glow-violet">
               <span className="h-3 w-3 rounded-sm bg-background" />
@@ -59,7 +49,7 @@ export function Navbar() {
             href="#download"
             className="hidden sm:inline-flex items-center gap-2 rounded-full bg-aurora text-primary-foreground px-4 py-2 text-sm font-medium glow-violet hover:brightness-110 transition"
           >
-            Download beta
+            Download opening soon
           </a>
         </div>
       </div>
