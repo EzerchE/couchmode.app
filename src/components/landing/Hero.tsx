@@ -58,18 +58,17 @@ export function Hero() {
               id="hero-heading"
               className="hero-text-shadow text-4xl sm:text-5xl lg:text-[3.75rem] font-semibold leading-[1.05] tracking-tight"
             >
-              CouchMode turns your Windows gaming PC into a{" "}
-              <span className="text-aurora hero-aurora-text">cleaner console-like session</span>{" "}
-              when your controller connects.
+              Turn your gaming PC into{" "}
+              <span className="text-aurora hero-aurora-text">couch mode.</span>
             </h1>
 
             <p className="hero-text-shadow mt-6 text-base sm:text-lg text-foreground/78 max-w-xl leading-relaxed">
-              Open Xbox, Steam Big Picture, Playnite, or your custom launcher.
-              Clean up desktop apps, protect fullscreen games, and restore your
-              PC when you&apos;re done.
+              CouchMode opens your favorite launcher, cleans up desktop clutter,
+              protects fullscreen games, and restores your PC when the
+              controller turns off.
             </p>
 
-            <ul className="hero-text-shadow mt-7 grid max-w-xl gap-2 text-sm text-foreground/76">
+            <ul className="hero-text-shadow mt-7 grid max-w-xl gap-2 text-sm text-foreground/68">
               {featureBullets.map((bullet) => (
                 <li key={bullet} className="flex gap-3">
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-aurora" />
