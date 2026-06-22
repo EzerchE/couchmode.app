@@ -12,7 +12,7 @@ export const faqs = [
   {
     question: "Does CouchMode support Windows Xbox Mode?",
     answer:
-      "CouchMode can help start and manage Windows Xbox Mode where it is available. Support depends on Windows, device, Xbox app, region, and rollout status.",
+      "CouchMode can help start and manage Windows Xbox Mode where it is available. Xbox Mode availability depends on Windows version, device support, Xbox app support, region, and Microsoft rollout status.",
   },
   {
     question: "Does CouchMode work on ROG Ally?",
@@ -32,12 +32,12 @@ export const faqs = [
   {
     question: "Do I need a credit card for the trial?",
     answer:
-      "Not for the in-app trial. If you continue with Patreon, membership may have its own trial and requires a Patreon account and payment method.",
+      "Not for the in-app trial. The in-app Pro trial does not require an account or credit card. Ongoing Pro access is handled through Patreon and requires an active Patreon membership.",
   },
   {
     question: "How does supporter access work?",
     answer:
-      "After the in-app trial, connect Patreon to keep Pro active. Patreon requires an account and payment method for membership billing.",
+      "After the in-app trial, connect Patreon to keep Pro active. Pro Version is $3/month and includes 2 active Windows devices. Pro Supporter is $5/month and includes 5 active Windows devices.",
   },
   {
     question: "What happens if my membership ends?",
