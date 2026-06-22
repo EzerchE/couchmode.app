@@ -27,7 +27,7 @@ export const faqs = [
   {
     question: "Can CouchMode start Steam Big Picture or another launcher?",
     answer:
-      "With Pro, choose Steam Big Picture, Playnite, LaunchBox, GOG Galaxy, or another compatible launcher. Free keeps the default Xbox full-screen flow.",
+      "With Pro, choose Steam Big Picture, Playnite, LaunchBox, GOG Galaxy, or another compatible launcher. Free keeps the default Xbox full-screen flow where supported.",
   },
   {
     question: "Do I need a credit card for the trial?",

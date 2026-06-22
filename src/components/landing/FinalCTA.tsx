@@ -55,7 +55,7 @@ export function FinalCTA() {
             </div>
 
             <p className="mt-8 text-xs text-muted-foreground">
-              Windows 10 & 11 · 64-bit
+              Windows 11 recommended · 64-bit
             </p>
 
             <div className="mt-8 mx-auto max-w-2xl rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-left">
