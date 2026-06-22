@@ -41,10 +41,9 @@ function Buy() {
         required for the in-app trial.
       </p>
       <p>
-        If you continue with Patreon, the membership may include another 7-day
-        trial before billing. Patreon membership requires a Patreon account and
-        payment method. The Pro license remains active while your membership is
-        active.
+        Ongoing Pro access is handled through Patreon. Patreon membership
+        requires a Patreon account and payment method. The Pro license remains
+        active while your membership is active.
       </p>
       <p>
         Pro Version is $3/month and includes 2 active Windows devices. Pro

@@ -83,7 +83,7 @@ export function Hero() {
                 className="inline-flex items-center gap-2 rounded-full bg-aurora text-primary-foreground px-6 py-3 text-sm font-medium glow-violet hover:brightness-110 transition"
               >
                 <Download className="h-4 w-4" />
-                Download public beta
+                Download opening soon
               </a>
               <a
                 href="#pricing"

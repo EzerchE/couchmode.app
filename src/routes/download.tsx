@@ -102,9 +102,8 @@ function Download() {
       </section>
       <p>
         Start with a 7-day in-app Pro trial. No account or credit card is
-        required for the in-app trial. If you continue with Patreon, the
-        membership may include another 7-day trial before billing and requires
-        a Patreon account and payment method.
+        required for the in-app trial. Ongoing Pro access is handled through
+        Patreon.
       </p>
       <p>
         Ongoing Pro access requires active Patreon membership. Pro Version is
@@ -118,11 +117,16 @@ function Download() {
       <section>
         <h2 className="font-medium text-foreground">{RELEASE.version} changes</h2>
         <ul className="mt-3 list-disc space-y-2 pl-5">
-          <li>Public beta release candidate for the Patreon Pro access flow.</li>
-          <li>Free mode and the 7-day in-app Pro trial are included in one app.</li>
-          <li>Pro gates update live without restarting the app.</li>
-          <li>External controller connect and disconnect lifecycle is validated.</li>
-          <li>ROG Ally built-in controller is ignored correctly.</li>
+          <li>Controller-driven couch sessions.</li>
+          <li>Xbox, Steam Big Picture, Playnite, and custom launcher support.</li>
+          <li>Smart desktop app cleanup.</li>
+          <li>Fullscreen game and launch-target protection.</li>
+          <li>Reliable PC/Desktop restore when the controller turns off.</li>
+          <li>
+            Safer handling when Xbox or a launcher is closed while a fullscreen
+            game is running.
+          </li>
+          <li>Patreon Pro licensing with device-limit handling.</li>
         </ul>
       </section>
       <section>

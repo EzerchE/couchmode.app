@@ -69,7 +69,7 @@ export function Comparison() {
               href="#download"
               className="inline-flex w-full justify-center items-center rounded-full border border-white/10 bg-white/[0.04] hover:bg-white/[0.08] px-6 py-3 text-sm font-medium transition"
             >
-              Download beta
+              Download opening soon
             </a>
           </motion.div>
 
