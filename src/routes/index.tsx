@@ -12,9 +12,9 @@ import { Footer } from "@/components/landing/Footer";
 
 const TITLE = "CouchMode: PC Power. Console Comfort.";
 const DESC =
-  "CouchMode is a Windows couch gaming utility for controller-ready living room PCs and supported handheld Xbox Mode setups. Public beta includes Free mode and a 7-day in-app Pro trial.";
+  "CouchMode turns your Windows gaming PC into a cleaner console-like session when your controller connects.";
 const SHORT_DESC =
-  "CouchMode is a Windows couch gaming utility for controller-ready living room PCs and supported handheld Xbox Mode setups.";
+  "CouchMode turns your Windows gaming PC into a cleaner console-like session when your controller connects.";
 const CANONICAL = "https://couchmode.app/";
 const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 

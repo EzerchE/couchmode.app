@@ -10,7 +10,7 @@ const free = [
 
 const pro = [
   { t: "Launch Mode selection", d: "Xbox Mode, Steam Big Picture, or a custom launcher per session" },
-  { t: "Resource Control", d: "Pause selected background apps during the session" },
+  { t: "Resource Control", d: "Close selected desktop apps around the session" },
   { t: "Session Tweaks", d: "Per-session overrides for the way you actually play" },
   { t: "Audio / HDR / display / power automation", d: "Outputs, monitors, color, and power plan flip together" },
   { t: "Notifications control", d: "Focus Assist + alerts off for the duration of the session" },

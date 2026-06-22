@@ -7,7 +7,7 @@ export const faqs = [
   {
     question: "What does CouchMode change on my PC?",
     answer:
-      "It automates user-configurable session actions such as launch, cleanup, audio, display, power, and notifications, then restores the changes it applies.",
+      "It automates user-configurable session actions such as launch, cleanup, audio, display, power, and notifications. Services, elevated apps, and protected system components may remain.",
   },
   {
     question: "Does CouchMode support Windows Xbox Mode?",

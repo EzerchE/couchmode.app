@@ -3,6 +3,14 @@ import { useRef } from "react";
 import { Download, Gamepad2, Sparkles } from "lucide-react";
 import heroCouch from "@/assets/hero-couch.jpg";
 
+const featureBullets = [
+  "Controller connects \u2192 couch session starts",
+  "Open Xbox, Steam Big Picture, Playnite, or custom launchers",
+  "Close visible and minimized desktop apps before gaming",
+  "Protect fullscreen games and launch targets",
+  "Return to PC/Desktop mode when the controller turns off",
+];
+
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -16,18 +24,22 @@ export function Hero() {
   return (
     <section
       ref={ref}
-      className="relative pt-32 sm:pt-40 pb-20 lg:pb-28 overflow-hidden"
+      className="relative pt-32 sm:pt-40 pb-28 sm:pb-32 lg:pb-40 overflow-x-hidden"
       aria-labelledby="hero-heading"
     >
+      <div className="hero-top-veil" />
       <div className="absolute inset-0 grid-bg opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
-      <motion.div
-        style={{ y, opacity }}
-        className="absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full bg-[var(--violet-accent)] opacity-25 blur-[140px]"
-      />
-      <motion.div
-        style={{ y, opacity }}
-        className="absolute -top-20 right-0 h-[500px] w-[500px] rounded-full bg-[var(--blue-accent)] opacity-20 blur-[140px]"
-      />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none [mask-image:linear-gradient(180deg,black_55%,transparent_100%)]">
+        <motion.div
+          style={{ y, opacity }}
+          className="absolute -top-40 -left-40 h-[720px] w-[720px] rounded-full bg-[var(--violet-accent)] opacity-[0.18] blur-[180px]"
+        />
+        <motion.div
+          style={{ y, opacity }}
+          className="absolute -top-20 right-0 h-[620px] w-[620px] rounded-full bg-[var(--blue-accent)] opacity-[0.16] blur-[180px]"
+        />
+      </div>
+      <div className="hero-bottom-blend" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
@@ -37,25 +49,34 @@ export function Hero() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="lg:col-span-6"
           >
-            <div className="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs text-muted-foreground mb-6">
+            <div className="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs text-foreground/85 mb-6 shadow-xl shadow-background/20">
               <span className="h-1.5 w-1.5 rounded-full bg-aurora" />
-              Public beta preparation for Windows 10 & 11
+              Public beta preparation for Windows 11 gaming PCs and handhelds
             </div>
 
             <h1
               id="hero-heading"
-              className="text-4xl sm:text-5xl lg:text-[3.75rem] font-semibold leading-[1.05] tracking-tight"
+              className="hero-text-shadow text-4xl sm:text-5xl lg:text-[3.75rem] font-semibold leading-[1.05] tracking-tight"
             >
-              Your PC. Your couch.{" "}
-              <span className="text-aurora">One controller</span> away.
+              CouchMode turns your Windows gaming PC into a{" "}
+              <span className="text-aurora hero-aurora-text">cleaner console-like session</span>{" "}
+              when your controller connects.
             </h1>
 
-            <p className="mt-6 text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
-              CouchMode prepares controller-first Windows sessions for TVs and
-              supported handhelds. CouchMode includes Free mode and a 7-day
-              in-app Pro trial. No account or credit card is required for the
-              in-app trial.
+            <p className="hero-text-shadow mt-6 text-base sm:text-lg text-foreground/78 max-w-xl leading-relaxed">
+              Open Xbox, Steam Big Picture, Playnite, or your custom launcher.
+              Clean up desktop apps, protect fullscreen games, and restore your
+              PC when you&apos;re done.
             </p>
+
+            <ul className="hero-text-shadow mt-7 grid max-w-xl gap-2 text-sm text-foreground/76">
+              {featureBullets.map((bullet) => (
+                <li key={bullet} className="flex gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-aurora" />
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
 
             <div className="mt-9 flex flex-wrap gap-3">
               <a
@@ -74,7 +95,7 @@ export function Hero() {
               </a>
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-muted-foreground">
+            <div className="hero-text-shadow mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-foreground/72">
               <span className="inline-flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-aurora" />
                 7-day in-app Pro trial
