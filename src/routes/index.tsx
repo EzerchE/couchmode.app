@@ -72,7 +72,7 @@ export const Route = createFileRoute("/")({
           "@type": "Brand",
           name: "CouchMode",
           url: "https://couchmode.app/",
-          logo: "https://couchmode.app/icon-512.png",
+          logo: "https://couchmode.app/apple-touch-icon.png",
         },
       },
     ],

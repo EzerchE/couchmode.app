@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="88" viewBox="0 0 360 88" role="img" aria-label="CouchMode">
+  <defs>
+    <linearGradient id="cmMark" x1="14" y1="14" x2="74" y2="74" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9B6BFF"></stop><stop offset="1" stop-color="#4F7DF7"></stop>
+    </linearGradient>
+    <linearGradient id="cmText" x1="232" y1="30" x2="350" y2="62" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#B79BFF"></stop><stop offset="1" stop-color="#7AA0FF"></stop>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="14" width="60" height="60" rx="15" fill="url(#cmMark)"></rect>
+  <g transform="translate(8,14) scale(0.9375)">
+    <path d="M42.7 23 A14 14 0 1 0 42.7 41" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"></path>
+    <circle cx="32" cy="32" r="6" fill="#FFFFFF"></circle>
+  </g>
+  <text x="88" y="57" font-family="&#39;Space Grotesk&#39;, &#39;Segoe UI&#39;, Arial, sans-serif" font-size="40" font-weight="600" letter-spacing="-1">
+    <tspan fill="#FFFFFF">Couch</tspan><tspan fill="url(#cmText)">Mode</tspan>
+  </text>
+</svg>

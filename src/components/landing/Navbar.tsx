@@ -24,13 +24,14 @@ export function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-2">
-          <a href="#" className="flex items-center gap-2 group">
-            <span className="grid place-items-center h-8 w-8 rounded-lg bg-aurora glow-violet">
-              <span className="h-3 w-3 rounded-sm bg-background" />
-            </span>
-            <span className="font-display font-semibold text-lg tracking-tight">
-              CouchMode
-            </span>
+          <a href="#" className="flex items-center group" aria-label="CouchMode home">
+            <img
+              src="/brand/logo-lockup-dark.svg"
+              alt="CouchMode"
+              width={131}
+              height={32}
+              className="h-8 w-auto"
+            />
           </a>
 
           <nav className="hidden md:flex items-center gap-8">
