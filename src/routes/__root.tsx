@@ -103,6 +103,11 @@ function RootShell({ children }: { children: ReactNode }) {
       <body>
         {children}
         <Scripts />
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token":"dbb8be77b9d4459f89813f20cdf6bc30"}'
+        />
       </body>
     </html>
   );
