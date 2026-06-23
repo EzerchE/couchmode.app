@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Download, Gamepad2, Sparkles } from "lucide-react";
 import heroCouch from "@/assets/hero-couch.jpg";
+import { trackEvent } from "@/lib/analytics";
 
 const featureBullets = [
   "Controller connects \u2192 couch session starts",
@@ -81,6 +82,14 @@ export function Hero() {
               <a
                 href="/download"
                 className="inline-flex items-center gap-2 rounded-full bg-aurora text-primary-foreground px-6 py-3 text-sm font-medium glow-violet hover:brightness-110 transition"
+                onClick={() => {
+                  trackEvent("download_opening_soon_click", {
+                    section: "hero",
+                    label: "Download opening soon",
+                    target: "/download",
+                    source: "hero",
+                  });
+                }}
               >
                 <Download className="h-4 w-4" />
                 Download opening soon
