@@ -92,8 +92,8 @@ function Index() {
         <ProductScreenshots />
         <Comparison />
         <Features />
-        <SearchIntentFAQ />
         <FinalCTA />
+        <SearchIntentFAQ />
       </main>
       <Footer />
     </div>
