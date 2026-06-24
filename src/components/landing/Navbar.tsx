@@ -25,12 +25,18 @@ export function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-2">
-          <a href="#" className="flex items-center gap-2.5 group">
+          <a href="#" className="flex items-center gap-2.5 group" aria-label="CouchMode home">
             <CouchModeMark
-              size={36}
-              className="h-8 w-8 sm:h-9 sm:w-9 shrink-0 rounded-[10px] glow-violet"
+              size={48}
+              className={`shrink-0 rounded-[12px] shadow-[0_6px_22px_-8px_rgba(155,107,255,0.7)] transition-all duration-300 ${
+                scrolled ? "h-8 w-8 sm:h-9 sm:w-9" : "h-10 w-10 sm:h-12 sm:w-12"
+              }`}
             />
-            <CouchModeWordmark className="text-[17px] sm:text-lg" />
+            <CouchModeWordmark
+              className={`transition-all duration-300 ${
+                scrolled ? "text-[17px] sm:text-lg" : "text-xl sm:text-2xl"
+              }`}
+            />
           </a>
 
           <nav className="hidden md:flex items-center gap-8">
