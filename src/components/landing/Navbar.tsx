@@ -19,6 +19,7 @@ export function Navbar() {
 
   return (
     <header
+      data-brand-header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? "py-2 nav-blur" : "py-5 bg-transparent"
       }`}
@@ -28,7 +29,7 @@ export function Navbar() {
           <a href="#" className="flex items-center gap-2.5 group" aria-label="CouchMode home">
             <CouchModeMark
               size={48}
-              className={`shrink-0 rounded-[12px] shadow-[0_6px_22px_-8px_rgba(155,107,255,0.7)] transition-all duration-300 ${
+              className={`rounded-[12px] shadow-[0_6px_22px_-8px_rgba(155,107,255,0.7)] transition-all duration-300 ${
                 scrolled ? "h-8 w-8 sm:h-9 sm:w-9" : "h-10 w-10 sm:h-12 sm:w-12"
               }`}
             />
