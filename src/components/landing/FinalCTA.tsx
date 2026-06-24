@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Download, Sparkles, Store, Gamepad } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 export function FinalCTA() {
   return (
@@ -39,6 +40,14 @@ export function FinalCTA() {
               <a
                 href="/download"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-aurora text-primary-foreground px-6 py-3.5 text-sm font-medium glow-violet hover:brightness-110 transition"
+                onClick={() => {
+                  trackEvent("download_opening_soon_click", {
+                    section: "download",
+                    label: "Download opening soon",
+                    target: "/download",
+                    source: "final_cta",
+                  });
+                }}
               >
                 <Download className="h-4 w-4" />
                 Download opening soon
@@ -46,6 +55,14 @@ export function FinalCTA() {
               <a
                 href="/buy"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] hover:bg-white/[0.08] px-6 py-3.5 text-sm font-medium transition"
+                onClick={() => {
+                  trackEvent("patreon_click", {
+                    section: "download",
+                    label: "Connect Patreon in the app",
+                    target: "/buy",
+                    source: "final_cta",
+                  });
+                }}
               >
                 <Sparkles className="h-4 w-4" />
                 Connect Patreon in the app

@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { InfoPage } from "@/components/utility/InfoPage";
 import { productScreenshots } from "@/components/landing/ProductScreenshots";
+import { trackEvent } from "@/lib/analytics";
 
 const RELEASE = {
   version: "0.4.10-beta.30",
@@ -41,6 +43,27 @@ export const Route = createFileRoute("/download")({
 });
 
 function Download() {
+  useEffect(() => {
+    trackEvent("download_page_view", {
+      section: "download",
+      version: RELEASE.version,
+      channel: "public_beta",
+      source: "download_page",
+    });
+  }, []);
+
+  const copySha = () => {
+    void navigator.clipboard?.writeText(RELEASE.sha256);
+    trackEvent("copy_sha_click", {
+      section: "release_metadata",
+      label: "SHA256",
+      target: "sha256",
+      version: RELEASE.version,
+      channel: "public_beta",
+      source: "download_page",
+    });
+  };
+
   return (
     <InfoPage title={TITLE}>
       <p>{DESC}</p>
@@ -65,7 +88,17 @@ function Download() {
           <div>
             <dt className="text-foreground">SHA256</dt>
             <dd className="break-all">
-              <code>{RELEASE.sha256}</code>
+              <code
+                role="button"
+                tabIndex={0}
+                title="Copy SHA256"
+                onClick={copySha}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") copySha();
+                }}
+              >
+                {RELEASE.sha256}
+              </code>
             </dd>
           </div>
           <div>

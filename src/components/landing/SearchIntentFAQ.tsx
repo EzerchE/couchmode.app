@@ -1,3 +1,5 @@
+import { trackEvent } from "@/lib/analytics";
+
 export const faqs = [
   {
     question: "Does CouchMode replace the Windows shell?",
@@ -78,6 +80,13 @@ export function SearchIntentFAQ() {
             <article
               key={faq.question}
               className="rounded-2xl border border-white/10 bg-white/[0.03] p-6"
+              onClick={() =>
+                trackEvent("faq_open", {
+                  section: "questions",
+                  label: faq.question,
+                  source: "faq",
+                })
+              }
             >
               <h3 className="text-sm font-medium text-foreground">
                 {faq.question}

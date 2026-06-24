@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { CouchModeMark, CouchModeWordmark } from "@/components/brand/CouchModeMark";
+import { trackEvent } from "@/lib/analytics";
 
 const links = [
   { href: "#how", label: "How it works" },
@@ -55,6 +56,14 @@ export function Navbar() {
           <a
             href="#download"
             className="hidden sm:inline-flex items-center gap-2 rounded-full bg-aurora text-primary-foreground px-4 py-2 text-sm font-medium glow-violet hover:brightness-110 transition"
+            onClick={() => {
+              trackEvent("download_opening_soon_click", {
+                section: "header",
+                label: "Download opening soon",
+                target: "#download",
+                source: "header",
+              });
+            }}
           >
             Download opening soon
           </a>

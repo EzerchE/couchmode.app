@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 const free = [
   { t: "Basic Xbox Mode flow where supported", d: "Starts the supported couch flow when your controller wakes" },
@@ -73,6 +74,14 @@ export function Comparison() {
             <a
               href="#download"
               className="inline-flex w-full justify-center items-center rounded-full border border-white/10 bg-white/[0.04] hover:bg-white/[0.08] px-6 py-3 text-sm font-medium transition"
+              onClick={() => {
+                trackEvent("download_opening_soon_click", {
+                  section: "pricing",
+                  label: "Download opening soon",
+                  target: "#download",
+                  source: "free_card",
+                });
+              }}
             >
               Download opening soon
             </a>
@@ -125,6 +134,14 @@ export function Comparison() {
               <a
                 href="/buy"
                 className="inline-flex w-full justify-center items-center rounded-full bg-aurora text-primary-foreground px-6 py-3 text-sm font-medium glow-violet hover:brightness-110 transition"
+                onClick={() => {
+                  trackEvent("patreon_click", {
+                    section: "pricing",
+                    label: "Unlock Pro with Patreon",
+                    target: "/buy",
+                    source: "pro_card",
+                  });
+                }}
               >
                 Unlock Pro with Patreon
               </a>
