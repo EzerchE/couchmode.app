@@ -190,5 +190,13 @@
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+
+  [data-brand-header],
+  [data-brand-header] svg,
+  [data-brand-header] span {
+    transition-duration: 300ms !important;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
   html { scroll-behavior: auto; }
 }

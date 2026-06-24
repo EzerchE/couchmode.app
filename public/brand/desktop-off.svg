@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="CouchMode — Desktop OFF">
+  <rect x="8" y="8" width="240" height="240" rx="56" fill="#272B36" stroke="#363B49" stroke-width="2"></rect>
+  <path d="M170.9 92 A56 56 0 1 0 170.9 164" fill="none" stroke="#6E727E" stroke-width="32" stroke-linecap="round"></path>
+  <circle cx="128" cy="128" r="24" fill="#6E727E"></circle>
+</svg>
