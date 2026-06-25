@@ -8,7 +8,7 @@ const META_TITLE = "CouchMode Pro Access | CouchMode";
 const META_DESC =
   "CouchMode Pro access uses active Patreon membership during public beta. Start with a 7-day in-app Pro trial, then connect Patreon to continue.";
 const CANONICAL = "https://couchmode.app/buy";
-const OG_IMAGE = "https://couchmode.app/og-image.jpg";
+const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v2.png";
 
 export const Route = createFileRoute("/buy")({
   head: () => ({

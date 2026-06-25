@@ -8,7 +8,7 @@ const META_TITLE = "CouchMode Support | Help for Windows Couch Gaming";
 const META_DESC =
   "Get help with CouchMode. Contact support with your Windows version, CouchMode version, launch mode, device type, membership tier if relevant, controller details, and support bundle.";
 const CANONICAL = "https://couchmode.app/support";
-const OG_IMAGE = "https://couchmode.app/og-image.jpg";
+const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v2.png";
 
 export const Route = createFileRoute("/support")({
   head: () => ({

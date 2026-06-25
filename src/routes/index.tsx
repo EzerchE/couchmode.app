@@ -10,13 +10,13 @@ import { SearchIntentFAQ, faqs } from "@/components/landing/SearchIntentFAQ";
 import { FinalCTA } from "@/components/landing/FinalCTA";
 import { Footer } from "@/components/landing/Footer";
 
-const TITLE = "CouchMode: PC Power. Console Comfort.";
+const TITLE = "CouchMode — Turn your gaming PC into couch mode";
 const DESC =
-  "CouchMode turns your Windows gaming PC into a cleaner console-like session when your controller connects.";
+  "Connect your controller and CouchMode starts a cleaner, console-like couch session: it opens your launcher, protects fullscreen games, and restores your PC when you're done.";
 const SHORT_DESC =
-  "CouchMode turns your Windows gaming PC into a cleaner console-like session when your controller connects.";
+  "Connect your controller and CouchMode starts a cleaner, console-like couch session: it opens your launcher, protects fullscreen games, and restores your PC when you're done.";
 const CANONICAL = "https://couchmode.app/";
-const OG_IMAGE = "https://couchmode.app/og-image.jpg";
+const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v2.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
