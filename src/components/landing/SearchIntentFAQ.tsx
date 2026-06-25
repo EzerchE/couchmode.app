@@ -8,7 +8,7 @@ import {
 import { trackEvent } from "@/lib/analytics";
 
 // Content source of truth: production couchmode.app. Do not rewrite the
-// questions or answers — production copy wins. `faqs` is also consumed by the
+// questions or answers; production copy wins. `faqs` is also consumed by the
 // FAQPage structured data in src/routes/index.tsx, so keep the shape
 // ({ question, answer }) stable.
 export const faqs = [

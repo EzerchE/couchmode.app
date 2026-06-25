@@ -10,7 +10,7 @@ import { SearchIntentFAQ, faqs } from "@/components/landing/SearchIntentFAQ";
 import { FinalCTA } from "@/components/landing/FinalCTA";
 import { Footer } from "@/components/landing/Footer";
 
-const TITLE = "CouchMode — Turn your gaming PC into couch mode";
+const TITLE = "CouchMode | Turn your gaming PC into couch mode";
 const DESC =
   "Connect your controller and CouchMode starts a cleaner, console-like couch session: it opens your launcher, protects fullscreen games, and restores your PC when you're done.";
 const SHORT_DESC =

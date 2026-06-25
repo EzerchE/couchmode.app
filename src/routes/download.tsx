@@ -62,7 +62,7 @@ function Download() {
 
           <p className="mx-auto mt-5 max-w-md text-muted-foreground">
             CouchMode is in a controlled pre-public beta. Public installer
-            hosting isn&apos;t open yet — when the build is approved, the official
+            hosting isn&apos;t open yet. When the build is approved, the official
             download will appear right here on couchmode.app.
           </p>
 
@@ -99,7 +99,7 @@ function Download() {
               </div>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 There&apos;s no public download link right now. Any CouchMode
-                installer offered elsewhere is not from us — please wait for the
+                installer offered elsewhere is not from us. Please wait for the
                 official build to appear here.
               </p>
             </div>
