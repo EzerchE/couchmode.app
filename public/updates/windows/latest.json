@@ -1,0 +1,12 @@
+{
+  "channel": "public-beta",
+  "latestVersion": "0.4.10-beta.34",
+  "fileVersion": "0.4.10.34",
+  "minimumSupportedVersion": "0.4.10-beta.30",
+  "releasedAt": "2026-06-25T00:00:00Z",
+  "downloadPageUrl": "https://couchmode.app/download",
+  "sha256": "AFE1F13419384F20192C36A174B8615F930CD1323A1E7AFE5CB35CF80AF94BEC",
+  "notesUrl": "https://couchmode.app/download",
+  "critical": false,
+  "message": "A newer CouchMode beta is available."
+}
