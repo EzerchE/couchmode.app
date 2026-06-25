@@ -54,13 +54,13 @@ export function Navbar() {
           </nav>
 
           <a
-            href="#download"
-            className="hidden sm:inline-flex items-center gap-2 rounded-full bg-aurora text-primary-foreground px-4 py-2 text-sm font-medium glow-violet hover:brightness-110 transition"
+            href="/download"
+            className="hidden sm:inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] hover:bg-white/[0.08] text-foreground/85 px-4 py-2 text-sm font-medium transition"
             onClick={() => {
               trackEvent("download_opening_soon_click", {
                 section: "header",
                 label: "Download opening soon",
-                target: "#download",
+                target: "/download",
                 source: "header",
               });
             }}
