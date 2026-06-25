@@ -64,10 +64,10 @@ function Support() {
         </ul>
       </div>
       <p>
-        Do not post private billing details publicly. If you prefer community
-        discussion, you can also visit{" "}
-        <a className="text-foreground underline-offset-4 hover:underline" href="https://www.reddit.com/r/CouchMode/">
-          r/CouchMode
+        Do not post private billing details publicly. For account or membership
+        questions, email{" "}
+        <a className="text-foreground underline-offset-4 hover:underline" href="mailto:support@couchmode.app">
+          support@couchmode.app
         </a>
         .
       </p>
