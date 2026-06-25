@@ -14,10 +14,10 @@ export function Footer() {
           </div>
 
           <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
-            <a href="#how" className="hover:text-foreground transition">How it works</a>
-            <a href="#features" className="hover:text-foreground transition">Features</a>
-            <a href="#pricing" className="hover:text-foreground transition">Pricing</a>
-            <a href="#download" className="hover:text-foreground transition">Status</a>
+            <a href="/#how" className="hover:text-foreground transition">How it works</a>
+            <a href="/#features" className="hover:text-foreground transition">Features</a>
+            <a href="/#pricing" className="hover:text-foreground transition">Pricing</a>
+            <a href="/#download" className="hover:text-foreground transition">Status</a>
           </nav>
 
           <p className="text-xs text-muted-foreground">
