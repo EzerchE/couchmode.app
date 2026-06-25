@@ -1,4 +1,6 @@
 import type { ReactNode } from "react";
+import { Navbar } from "@/components/landing/Navbar";
+import { Footer } from "@/components/landing/Footer";
 
 type InfoPageProps = {
   title: string;
@@ -8,7 +10,8 @@ type InfoPageProps = {
 export function InfoPage({ title, children }: InfoPageProps) {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <main className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
+      <Navbar />
+      <main className="mx-auto max-w-3xl px-4 pt-28 pb-16 sm:px-6 sm:pt-36 sm:pb-24">
         <a
           href="/"
           className="text-sm text-muted-foreground transition hover:text-foreground"
@@ -16,7 +19,7 @@ export function InfoPage({ title, children }: InfoPageProps) {
           Back to homepage
         </a>
 
-        <div className="mt-10 rounded-3xl border border-white/10 bg-card/60 p-6 sm:p-10">
+        <div className="mt-8 rounded-3xl border border-white/10 bg-card/60 p-6 sm:p-10">
           <p className="text-xs uppercase tracking-widest text-aurora">
             Last updated: June 2026
           </p>
@@ -28,7 +31,7 @@ export function InfoPage({ title, children }: InfoPageProps) {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }
-

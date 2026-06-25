@@ -1,5 +1,16 @@
+import { motion } from "framer-motion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { trackEvent } from "@/lib/analytics";
 
+// Content source of truth: production couchmode.app. Do not rewrite the
+// questions or answers — production copy wins. `faqs` is also consumed by the
+// FAQPage structured data in src/routes/index.tsx, so keep the shape
+// ({ question, answer }) stable.
 export const faqs = [
   {
     question: "Does CouchMode replace the Windows shell?",
@@ -54,49 +65,70 @@ export const faqs = [
 ];
 
 export function SearchIntentFAQ() {
+  // Fires when an item opens. Radix passes "" on collapse, which we ignore.
+  const handleValueChange = (value: string) => {
+    if (!value) return;
+    const index = Number(value.replace("item-", ""));
+    const faq = faqs[index];
+    if (!faq) return;
+    trackEvent("faq_open", {
+      section: "questions",
+      label: faq.question,
+      source: "faq",
+    });
+  };
+
   return (
     <section
+      id="faq"
       className="relative py-20 sm:py-28"
       aria-labelledby="questions-heading"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl">
-          <p className="mb-4 text-sm font-medium text-aurora">Questions</p>
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 text-center"
+        >
+          <p className="mb-3 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            Questions
+          </p>
           <h2
             id="questions-heading"
-            className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl lg:text-5xl"
+            className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
           >
             Built for the way PC players actually start a couch session.
           </h2>
-          <p className="mt-5 max-w-2xl text-muted-foreground">
+          <p className="mt-4 text-muted-foreground">
             CouchMode is designed for Windows PCs connected to a TV, couch, or
             controller-first setup. These answers explain what it can start,
             what it can automate, and what depends on Windows support.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="mt-12 grid gap-4 md:grid-cols-2">
-          {faqs.map((faq) => (
-            <article
+        <Accordion
+          type="single"
+          collapsible
+          onValueChange={handleValueChange}
+          className="glass rounded-2xl px-2 sm:px-4"
+        >
+          {faqs.map((faq, i) => (
+            <AccordionItem
               key={faq.question}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] p-6"
-              onClick={() =>
-                trackEvent("faq_open", {
-                  section: "questions",
-                  label: faq.question,
-                  source: "faq",
-                })
-              }
+              value={`item-${i}`}
+              className="border-border/60 last:border-b-0"
             >
-              <h3 className="text-sm font-medium text-foreground">
+              <AccordionTrigger className="px-3 text-left text-base font-medium hover:no-underline sm:px-4">
                 {faq.question}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              </AccordionTrigger>
+              <AccordionContent className="px-3 text-sm leading-relaxed text-muted-foreground sm:px-4">
                 {faq.answer}
-              </p>
-            </article>
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </div>
+        </Accordion>
       </div>
     </section>
   );

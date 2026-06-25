@@ -3,9 +3,9 @@ import { CouchModeMark, CouchModeWordmark } from "@/components/brand/CouchModeMa
 import { trackEvent } from "@/lib/analytics";
 
 const links = [
-  { href: "#how", label: "How it works" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#download", label: "Status" },
+  { href: "/#how", label: "How it works" },
+  { href: "/#pricing", label: "Pricing" },
+  { href: "/#download", label: "Status" },
 ];
 
 export function Navbar() {
@@ -27,7 +27,7 @@ export function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-2">
-          <a href="#" className="flex items-center gap-2.5 group" aria-label="CouchMode home">
+          <a href="/" className="flex items-center gap-2.5 group" aria-label="CouchMode home">
             <CouchModeMark
               size={48}
               className={`rounded-[12px] shadow-[0_6px_22px_-8px_rgba(155,107,255,0.7)] transition-all duration-300 ${
