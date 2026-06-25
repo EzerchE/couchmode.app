@@ -3,10 +3,10 @@ import { InfoPage } from "@/components/utility/InfoPage";
 
 const TITLE = "Support";
 const DESC =
-  "Need help with CouchMode? Email support with your Windows version, CouchMode version, launch mode, controller details, membership tier if relevant, and support bundle.";
+  "Need help with CouchMode? Email support with a short bug report, your CouchMode version, Windows version, controller details, and diagnostic report if available.";
 const META_TITLE = "CouchMode Support | Help for Windows Couch Gaming";
 const META_DESC =
-  "Get help with CouchMode. Contact support with your Windows version, CouchMode version, launch mode, device type, membership tier if relevant, controller details, and support bundle.";
+  "Get help with CouchMode. Report bugs with your CouchMode version, Windows version, controller details, and diagnostic report if available.";
 const CANONICAL = "https://couchmode.app/support";
 const OG_IMAGE = "https://couchmode.app/og-image.jpg";
 
@@ -36,40 +36,32 @@ function Support() {
   return (
     <InfoPage title={TITLE}>
       <p>
-        Need help with CouchMode? Email us at{" "}
+        To report a bug or get help with CouchMode, email{" "}
         <a className="text-foreground underline-offset-4 hover:underline" href="mailto:support@couchmode.app">
           support@couchmode.app
         </a>{" "}
-        with your Windows version, CouchMode version, launch mode, controller
-        details, and a short description of the issue.
+        with a short description of what happened.
       </p>
       <div>
-        <p className="font-medium text-foreground">Please include:</p>
+        <p className="font-medium text-foreground">Helpful details to include:</p>
         <ul className="mt-3 list-disc space-y-2 pl-5">
-          <li>Windows version</li>
           <li>CouchMode version</li>
-          <li>Whether you are using ROG Ally, another handheld, or a desktop PC</li>
+          <li>Windows version</li>
+          <li>Device type, such as desktop PC, ROG Ally, or another handheld</li>
           <li>Controller type</li>
-          <li>Launch mode: Xbox Mode, Steam Big Picture, or custom launcher</li>
-          <li>Whether Windows Xbox full-screen experience is enabled on startup</li>
-          <li>What happened</li>
-          <li>Whether it happened in Free, Trial, or Pro</li>
-          <li>For Pro access issues, your tier: Pro Version or Pro Supporter</li>
-          <li>Number of devices already activated</li>
-          <li>Activation error screenshot or message</li>
+          <li>Launch mode, such as Xbox Mode, Steam Big Picture, Playnite, or custom launcher</li>
+          <li>What you expected to happen and what happened instead</li>
+          <li>Whether it happened in Free, Trial, or Pro access</li>
           <li>
-            In CouchMode, open About &gt; Export support bundle and attach the
-            generated file if you can.
+            If available, copy the diagnostic report from the app and include
+            it with your email.
           </li>
         </ul>
       </div>
       <p>
-        Do not post private billing details publicly. If you prefer community
-        discussion, you can also visit{" "}
-        <a className="text-foreground underline-offset-4 hover:underline" href="https://www.reddit.com/r/CouchMode/">
-          r/CouchMode
-        </a>
-        .
+        Do not paste license tokens, private keys, payment details, or other
+        private credentials into public posts or screenshots. Support will never
+        ask for private keys.
       </p>
     </InfoPage>
   );
