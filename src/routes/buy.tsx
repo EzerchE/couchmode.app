@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InfoPage } from "@/components/utility/InfoPage";
 
-const TITLE = "Unlock Pro with Patreon";
+const TITLE = "Get Pro with Patreon";
 const DESC =
   "CouchMode Pro access is available during public beta through active Patreon membership.";
 const META_TITLE = "CouchMode Pro Access | CouchMode";

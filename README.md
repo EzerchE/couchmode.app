@@ -1,11 +1,11 @@
 # couchmode.app
 
-Public marketing website for **CouchMode** — <https://couchmode.app>.
+Public marketing website for **CouchMode**: <https://couchmode.app>.
 
 CouchMode is a Windows 11 couch & handheld gaming session utility: it automatically
 enters the Windows Xbox full-screen experience when you connect a controller, and
-restores your desktop when the controller disconnects — built for handhelds like the
-ROG Ally and for living-room PCs.
+restores your desktop when the controller disconnects. It is built for handhelds like
+the ROG Ally and for living-room PCs.
 
 ## Status
 

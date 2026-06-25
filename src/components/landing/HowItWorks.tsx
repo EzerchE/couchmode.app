@@ -51,7 +51,7 @@ export function HowItWorks() {
           </h2>
           <p className="mt-5 text-muted-foreground max-w-xl">
             Four steps, two of them automatic. Free covers the basic session
-            flow. Pro adds deeper automation during the trial or after unlock.
+            flow. Pro adds deeper automation during the trial or once Pro is active.
           </p>
         </div>
 

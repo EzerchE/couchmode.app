@@ -143,7 +143,7 @@ export function Comparison() {
                   });
                 }}
               >
-                Unlock Pro with Patreon
+                Get Pro with Patreon
               </a>
             </div>
           </motion.div>
