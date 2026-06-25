@@ -12,9 +12,9 @@ import { Footer } from "@/components/landing/Footer";
 
 const TITLE = "CouchMode | Turn your gaming PC into couch mode";
 const DESC =
-  "Connect your controller and CouchMode starts a cleaner, console-like couch session: it opens your launcher, protects fullscreen games, and restores your PC when you're done.";
-const SHORT_DESC =
-  "Connect your controller and CouchMode starts a cleaner, console-like couch session: it opens your launcher, protects fullscreen games, and restores your PC when you're done.";
+  "CouchMode is a Windows utility for controller-first couch gaming. Open your launcher, clean up selected desktop apps, protect fullscreen games, and restore your PC when the session ends.";
+const SOFTWARE_DESC =
+  "CouchMode is a Windows utility for controller-first couch gaming sessions. It can open your preferred launcher, clean up selected desktop apps, protect fullscreen games, and restore the changes it made when the session ends.";
 const CANONICAL = "https://couchmode.app/";
 const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v2.png";
 
@@ -39,16 +39,16 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "SoftwareApplication",
           name: "CouchMode",
-          applicationCategory: "UtilitiesApplication",
           operatingSystem: "Windows 10, Windows 11",
+          applicationCategory: "UtilityApplication",
+          applicationSubCategory: "Gaming utility",
+          description: SOFTWARE_DESC,
           url: "https://couchmode.app/",
-          description: SHORT_DESC,
+          image: OG_IMAGE,
           offers: {
             "@type": "Offer",
-            price: 0,
+            price: "0.00",
             priceCurrency: "USD",
-            category: "Free",
-            name: "Free",
           },
         },
       },
