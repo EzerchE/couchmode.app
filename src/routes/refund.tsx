@@ -8,7 +8,7 @@ const META_TITLE = "Refund Policy | CouchMode";
 const META_DESC =
   "Read the CouchMode refund policy status for public beta Pro access through Patreon membership.";
 const CANONICAL = "https://couchmode.app/refund";
-const OG_IMAGE = "https://couchmode.app/og-image.jpg";
+const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v2.png";
 
 export const Route = createFileRoute("/refund")({
   head: () => ({

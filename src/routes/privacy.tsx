@@ -8,7 +8,7 @@ const META_TITLE = "Privacy Policy | CouchMode";
 const META_DESC =
   "Learn how CouchMode handles privacy, gameplay tracking, support emails, Patreon membership validation, payments, and Pro access.";
 const CANONICAL = "https://couchmode.app/privacy";
-const OG_IMAGE = "https://couchmode.app/og-image.jpg";
+const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v2.png";
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({

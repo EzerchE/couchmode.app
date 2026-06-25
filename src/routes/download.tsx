@@ -9,7 +9,7 @@ const META_TITLE = "Download CouchMode | CouchMode";
 const META_DESC =
   "CouchMode is in a controlled pre-public beta. The public download will open here on couchmode.app when the build is approved.";
 const CANONICAL = "https://couchmode.app/download";
-const OG_IMAGE = "https://couchmode.app/og-image.jpg";
+const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v2.png";
 
 export const Route = createFileRoute("/download")({
   head: () => ({

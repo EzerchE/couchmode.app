@@ -8,7 +8,7 @@ const META_TITLE = "Terms of Use | CouchMode";
 const META_DESC =
   "Read the CouchMode terms covering Free use, the 7-day Pro trial, Patreon supporter access, Xbox Mode availability, warranty, liability, and third-party services.";
 const CANONICAL = "https://couchmode.app/terms";
-const OG_IMAGE = "https://couchmode.app/og-image.jpg";
+const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v2.png";
 
 export const Route = createFileRoute("/terms")({
   head: () => ({
