@@ -11,6 +11,16 @@ const META_DESC =
 const CANONICAL = "https://couchmode.app/download";
 const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v2.png";
 
+const LATEST_BETA = "0.4.10-beta.45";
+const SHA256 =
+  "3FA4E82C3CBAA9CBBE3F81130432FA3326FF37DE2EE8952C01983A7FB40D1CA2";
+const RELEASE_NOTES = [
+  "Report a problem can send user-approved reports.",
+  "Update check added.",
+  "Xbox full-screen unavailable state is calmer and persistent.",
+  "Installer and app identity use CouchMode branding.",
+];
+
 export const Route = createFileRoute("/download")({
   head: () => ({
     meta: [
@@ -103,6 +113,40 @@ function Download() {
                 official build to appear here.
               </p>
             </div>
+          </div>
+
+          <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-left">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <h2 className="text-sm font-medium text-foreground">Latest beta</h2>
+              <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-foreground/85">
+                {LATEST_BETA}
+              </span>
+            </div>
+
+            <div className="mt-4">
+              <p className="text-xs uppercase tracking-wider text-muted-foreground">
+                SHA256 (for verifying a build you already have)
+              </p>
+              <code className="mt-1 block break-all font-mono text-xs text-foreground/80">
+                {SHA256}
+              </code>
+            </div>
+
+            <div className="mt-5">
+              <p className="text-xs uppercase tracking-wider text-muted-foreground">
+                What&apos;s new
+              </p>
+              <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm text-muted-foreground">
+                {RELEASE_NOTES.map((note) => (
+                  <li key={note}>{note}</li>
+                ))}
+              </ul>
+            </div>
+
+            <p className="mt-4 text-xs text-muted-foreground">
+              No public installer is hosted yet. This information is for
+              verifying the beta build you already have.
+            </p>
           </div>
 
           <p className="mt-8 text-xs text-muted-foreground">
