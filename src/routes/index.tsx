@@ -13,9 +13,9 @@ import { Footer } from "@/components/landing/Footer";
 
 const TITLE = "CouchMode | Turn your gaming PC into couch mode";
 const DESC =
-  "CouchMode is a Windows utility for controller-first couch gaming. Open your launcher, clean up selected desktop apps, protect fullscreen games, and restore your PC when the session ends.";
+  "CouchMode is a Windows utility for controller-first couch gaming. Open your launcher, clean up selected desktop apps, and restore your PC when the session ends.";
 const SOFTWARE_DESC =
-  "CouchMode is a Windows utility for controller-first couch gaming sessions. It can open your preferred launcher, clean up selected desktop apps, protect fullscreen games, and restore the changes it made when the session ends.";
+  "CouchMode is a Windows utility for controller-first couch gaming sessions. It can open your preferred launcher, clean up selected desktop apps, and restore the changes it made when the session ends.";
 const CANONICAL = "https://couchmode.app/";
 const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v2.png";
 

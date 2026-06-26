@@ -5,11 +5,10 @@ import heroCouch from "@/assets/hero-couch.jpg";
 import { trackEvent } from "@/lib/analytics";
 
 const featureBullets = [
-  "Controller connects \u2192 couch session starts",
-  "Open Xbox, Steam Big Picture, Playnite, or custom launchers",
-  "Close visible and minimized desktop apps before gaming",
-  "Protect fullscreen games and launch targets",
-  "Return to PC/Desktop mode when the controller turns off",
+  "Controller connects, couch session starts",
+  "Open Xbox, Steam Big Picture, Playnite, or a custom launcher",
+  "Pro can close selected desktop apps before play",
+  "Return to your desktop when the controller turns off",
 ];
 
 export function Hero() {
@@ -64,9 +63,9 @@ export function Hero() {
             </h1>
 
             <p className="hero-text-shadow mt-6 text-base sm:text-lg text-foreground/78 max-w-xl leading-relaxed">
-              Connect your controller to start a cleaner couch session.
-              CouchMode opens your launcher, protects fullscreen games, and
-              restores your PC when you’re done.
+              Turn on your controller and CouchMode starts your chosen launcher
+              for the couch. Pro can close selected desktop apps before play and
+              restore the changes it made when your session ends.
             </p>
 
             <ul className="hero-text-shadow mt-7 grid max-w-xl gap-2 text-sm text-foreground/68">
@@ -77,6 +76,11 @@ export function Hero() {
                 </li>
               ))}
             </ul>
+
+            <p className="hero-text-shadow mt-6 max-w-xl text-sm text-foreground/60">
+              Choose what opens, what closes, and what comes back when the
+              session ends.
+            </p>
 
             <div className="mt-9 flex flex-wrap gap-3">
               <a
