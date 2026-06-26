@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "vite dev",
     "gen:releases": "node scripts/gen-releases.mjs",
-    "build": "bun scripts/gen-releases.mjs && vite build",
-    "build:dev": "bun scripts/gen-releases.mjs && vite build --mode development",
+    "validate:release-safety": "node scripts/validate-release-safety.mjs",
+    "build": "bun scripts/gen-releases.mjs && vite build && bun scripts/validate-release-safety.mjs",
+    "build:dev": "bun scripts/gen-releases.mjs && vite build --mode development && bun scripts/validate-release-safety.mjs",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write ."
