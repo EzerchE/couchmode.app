@@ -1,0 +1,22 @@
+[
+  {
+    "version": "0.4.10-beta.45",
+    "versionNumeric": "0.4.10.45",
+    "fileVersion": "0.4.10.45",
+    "channel": "standalone",
+    "releasedAt": "2026-06-25T00:00:00Z",
+    "sha256": "3FA4E82C3CBAA9CBBE3F81130432FA3326FF37DE2EE8952C01983A7FB40D1CA2",
+    "sizeBytes": null,
+    "critical": false,
+    "minimumSupportedVersion": "0.4.10-beta.30",
+    "downloadPageUrl": "https://couchmode.app/download",
+    "installerUrl": null,
+    "notes": [
+      "Report a problem can send user-approved reports.",
+      "Update check added.",
+      "Xbox full-screen unavailable state is calmer and persistent.",
+      "Installer and app identity use CouchMode branding."
+    ],
+    "knownIssues": []
+  }
+]

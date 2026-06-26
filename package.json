@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
-    "build:dev": "vite build --mode development",
+    "gen:releases": "node scripts/gen-releases.mjs",
+    "build": "bun scripts/gen-releases.mjs && vite build",
+    "build:dev": "bun scripts/gen-releases.mjs && vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write ."
