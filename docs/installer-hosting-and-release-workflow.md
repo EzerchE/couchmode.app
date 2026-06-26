@@ -153,6 +153,51 @@ produced, update the release metadata (`sha256`, `sizeBytes`, and the installer
 filename if it changes) from the signed artifact. Never publish the unsigned
 hash for a signed file.
 
+## Chosen signing path
+
+Decision:
+
+- Use SSL.com Individual Validation (IV) code signing with eSigner / cloud HSM.
+- Azure Artifact Signing (formerly Trusted Signing) remains documented as the
+  preferred option in supported regions, but current research indicates it is
+  not the practical path for Turkey-based individual distribution. Public-trust
+  availability is limited to organizations in the USA, Canada, the EU, and the
+  UK, and to individual developers in the USA and Canada.
+- OV or EV company signing is deferred until a registered legal entity exists
+  for CouchMode.
+- Individual validation is accepted for beta.
+
+Publisher:
+
+- The Authenticode publisher will show the project owner's verified legal
+  individual name from individual validation. This is acceptable for the Windows
+  installer trust surfaces (UAC, file properties, SmartScreen).
+- The public website, UI, and product copy remain CouchMode branded.
+- Do not expose the personal legal name in website marketing copy, metadata,
+  release notes, changelog, or support pages unless required by a legal,
+  payment, or security surface.
+
+Signing workflow:
+
+1. Complete SSL.com IV verification.
+2. Set up eSigner / cloud HSM access.
+3. Add CI secrets only to the app build repository, not the website repository.
+4. Sign installer builds with an RFC3161 timestamp.
+5. Verify Authenticode `Status=Valid`.
+6. Verify the publisher name.
+7. Generate the SHA256 and size after signing.
+8. Upload only signed artifacts to R2 under immutable versioned paths.
+9. Retest Defender, Chrome, Edge, SmartScreen, and VirusTotal.
+10. Update `src/data/releases.json` only after signed artifact validation passes.
+
+Important:
+
+- Signing changes the binary hash. The unsigned beta.45 hash must not be reused
+  for signed beta.46.
+- Do not upload unsigned installers again.
+- Do not zip installers as a workaround.
+- Do not tell users to bypass browser warnings.
+
 ## Validation checklist
 
 Before enabling a public installer:
