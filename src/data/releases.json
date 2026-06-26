@@ -11,6 +11,7 @@
     "minimumSupportedVersion": "0.4.10-beta.30",
     "downloadPageUrl": "https://couchmode.app/download",
     "installerUrl": null,
+    "summary": "Report sending, update checks, calmer Xbox full-screen unavailable state, and CouchMode branding updates.",
     "notes": [
       "Report a problem can send user-approved reports.",
       "Update check added.",
