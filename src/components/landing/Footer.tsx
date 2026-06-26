@@ -27,6 +27,8 @@ export function Footer() {
         <nav className="mt-6 flex flex-wrap gap-x-3 gap-y-2 text-xs text-muted-foreground">
           <a href="/support" className="transition hover:text-foreground">Support</a>
           <span aria-hidden="true">·</span>
+          <a href="/changelog" className="transition hover:text-foreground">Changelog</a>
+          <span aria-hidden="true">·</span>
           <a href="/privacy" className="transition hover:text-foreground">Privacy</a>
           <span aria-hidden="true">·</span>
           <a href="/terms" className="transition hover:text-foreground">Terms</a>
