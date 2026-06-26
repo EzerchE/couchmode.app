@@ -27,6 +27,8 @@ export interface Release {
   downloadPageUrl: string;
   /** Hosted installer URL. Null while public download is disabled. */
   installerUrl: string | null;
+  /** Optional one-line summary for compact changelog rows. */
+  summary?: string;
   notes: string[];
   knownIssues: string[];
 }

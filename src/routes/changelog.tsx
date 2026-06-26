@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { ChevronDown } from "lucide-react";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { releases } from "@/data/releases";
@@ -52,73 +53,98 @@ function Changelog() {
           <div className="absolute left-1/2 top-0 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-aurora opacity-[0.12] blur-[160px]" />
         </div>
 
-        <header className="mb-10">
+        <header className="mb-8">
           <p className="text-sm font-medium text-aurora">Changelog</p>
-          <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
+          <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
             What&apos;s new in CouchMode
           </h1>
-          <p className="mt-4 text-muted-foreground">
+          <p className="mt-3 text-sm text-muted-foreground sm:text-base">
             Release notes and known issues for CouchMode Windows beta builds,
             newest first.
           </p>
         </header>
 
-        <ol className="space-y-6">
-          {releases.map((release) => (
-            <li
-              key={release.version}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-left sm:p-8"
-            >
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <h2 className="text-lg font-semibold tracking-tight">
-                  {release.version}
-                </h2>
-                <time
-                  dateTime={release.releasedAt}
-                  className="text-xs text-muted-foreground"
+        <ol className="space-y-2.5">
+          {releases.map((release, index) => {
+            const isLatest = index === 0;
+            const teaser = release.summary ?? release.notes[0] ?? "";
+            return (
+              <li key={release.version}>
+                <details
+                  open={isLatest}
+                  className="group rounded-xl border border-white/10 bg-white/[0.03] transition-colors open:bg-white/[0.05]"
                 >
-                  {formatDate(release.releasedAt)}
-                </time>
-              </div>
+                  <summary className="flex cursor-pointer list-none flex-col gap-1 px-4 py-3 [&::-webkit-details-marker]:hidden sm:px-5">
+                    <div className="flex items-center gap-2.5">
+                      <span className="font-semibold tracking-tight">
+                        {release.version}
+                      </span>
+                      <span
+                        className={
+                          isLatest
+                            ? "rounded-full bg-primary/15 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-primary"
+                            : "rounded-full border border-white/10 bg-white/[0.04] px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-muted-foreground"
+                        }
+                      >
+                        {isLatest ? "Latest" : "Previous"}
+                      </span>
+                      <time
+                        dateTime={release.releasedAt}
+                        className="text-xs text-muted-foreground"
+                      >
+                        {formatDate(release.releasedAt)}
+                      </time>
+                      <ChevronDown className="ml-auto h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180" />
+                    </div>
+                    {teaser && (
+                      <p className="line-clamp-1 pr-6 text-sm text-muted-foreground group-open:hidden">
+                        {teaser}
+                      </p>
+                    )}
+                  </summary>
 
-              {release.notes.length > 0 && (
-                <div className="mt-4">
-                  <p className="text-xs uppercase tracking-wider text-muted-foreground">
-                    What&apos;s new
-                  </p>
-                  <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm text-muted-foreground">
-                    {release.notes.map((note) => (
-                      <li key={note}>{note}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+                  <div className="border-t border-white/10 px-4 py-4 sm:px-5">
+                    {release.notes.length > 0 && (
+                      <div>
+                        <p className="text-xs uppercase tracking-wider text-muted-foreground">
+                          What&apos;s new
+                        </p>
+                        <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm text-muted-foreground">
+                          {release.notes.map((note) => (
+                            <li key={note}>{note}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
 
-              {release.knownIssues.length > 0 && (
-                <div className="mt-5">
-                  <p className="text-xs uppercase tracking-wider text-muted-foreground">
-                    Known issues
-                  </p>
-                  <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm text-muted-foreground">
-                    {release.knownIssues.map((issue) => (
-                      <li key={issue}>{issue}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+                    {release.knownIssues.length > 0 && (
+                      <div className="mt-4">
+                        <p className="text-xs uppercase tracking-wider text-muted-foreground">
+                          Known issues
+                        </p>
+                        <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm text-muted-foreground">
+                          {release.knownIssues.map((issue) => (
+                            <li key={issue}>{issue}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
 
-              {release.sha256 && (
-                <div className="mt-5">
-                  <p className="text-xs uppercase tracking-wider text-muted-foreground">
-                    SHA256
-                  </p>
-                  <code className="mt-1 block break-all font-mono text-xs text-foreground/80">
-                    {release.sha256}
-                  </code>
-                </div>
-              )}
-            </li>
-          ))}
+                    {release.sha256 && (
+                      <div className="mt-4">
+                        <p className="text-xs uppercase tracking-wider text-muted-foreground">
+                          SHA256
+                        </p>
+                        <code className="mt-1 block break-all font-mono text-xs text-foreground/80">
+                          {release.sha256}
+                        </code>
+                      </div>
+                    )}
+                  </div>
+                </details>
+              </li>
+            );
+          })}
         </ol>
       </main>
       <Footer />
