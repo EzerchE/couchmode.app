@@ -17,6 +17,8 @@
       "Xbox full-screen unavailable state is calmer and persistent.",
       "Installer and app identity use CouchMode branding."
     ],
-    "knownIssues": []
+    "knownIssues": [
+      "Public download is not enabled yet."
+    ]
   }
 ]
