@@ -116,6 +116,43 @@ Options, in order of preference:
 Optional controls for a bad build: raise `minimumSupportedVersion`, or set
 `critical` on the replacement release.
 
+## Code signing and browser reputation
+
+Current state (beta.45), from hidden hosting validation:
+
+- The installer `CouchMode-Setup-0.4.10-beta.45.exe` is NotSigned: no
+  Authenticode signature, no publisher, and no timestamp.
+- Its SHA256 matches the release data.
+- A Microsoft Defender scan of the file is clean (no threats).
+- Chrome and Edge still block the download as suspicious. This is expected for
+  an unsigned binary on a new download domain with no reputation yet.
+
+While signing is unsolved:
+
+- Public download must remain disabled.
+- Do not zip the installer as a workaround. Archives can be treated as an
+  evasion signal by browser security systems.
+- Do not tell users to bypass browser warnings.
+- Do not add `installerUrl` to release data.
+- Do not expose the `.exe` URL on `/download`.
+
+Recommended next path:
+
+1. Choose a code signing method. Prefer one that can be automated in CI. Do not
+   assume an EV certificate removes SmartScreen warnings; reputation is earned
+   over time. Candidate directions to evaluate: Azure Trusted Signing (managed,
+   CI-friendly), or an OV certificate via a cloud HSM signing service.
+2. Sign future installer builds, including an RFC3161 timestamp.
+3. Verify the Authenticode status is Valid.
+4. Verify the SHA256 of the signed file.
+5. Upload the signed artifact to R2 under a versioned, immutable path.
+6. Retest Chrome, Edge, Defender, and Windows SmartScreen behavior.
+
+Signing changes the binary, so the SHA256 changes. After a signed build is
+produced, update the release metadata (`sha256`, `sizeBytes`, and the installer
+filename if it changes) from the signed artifact. Never publish the unsigned
+hash for a signed file.
+
 ## Validation checklist
 
 Before enabling a public installer:
