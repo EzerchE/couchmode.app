@@ -3,19 +3,21 @@ import { Check } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
 const free = [
-  { t: "Basic Xbox Mode flow where supported", d: "Starts the supported couch flow when your controller wakes" },
-  { t: "Start with Windows", d: "Runs in the background, ready when you are" },
-  { t: "Language & theme", d: "Match your system look, pick your language" },
-  { t: "Basic session exit", d: "Exit couch mode when the controller turns off and return to desktop" },
+  "Start from your controller",
+  "Xbox flow where supported",
+  "Start with Windows",
+  "Basic session exit",
+  "Language and theme",
 ];
 
 const pro = [
-  { t: "Launch Mode selection", d: "Xbox Mode, Steam Big Picture, or a custom launcher per session" },
-  { t: "Resource Control", d: "Close selected desktop apps around the session" },
-  { t: "Session Tweaks", d: "Per-session overrides for the way you actually play" },
-  { t: "Audio / HDR / display / power automation", d: "Outputs, monitors, color, and power plan flip together" },
-  { t: "Notifications control", d: "Focus Assist + alerts off for the duration of the session" },
-  { t: "Session restore", d: "CouchMode rolls back the session changes it made when your session ends." },
+  "Launcher selection",
+  "Resource Control",
+  "Session Tweaks",
+  "Audio, HDR, display, notification, and power automation where supported",
+  "Session restore",
+  "Up to 2 active Windows devices with Pro",
+  "Up to 5 active Windows devices with Pro Supporter",
 ];
 
 export function Comparison() {
@@ -57,17 +59,13 @@ export function Comparison() {
               </div>
             </div>
             <p className="text-sm text-muted-foreground mb-8">
-              Everything you need to start, exit, and return from a basic couch
-              session with your controller.
+              Core controller-first session flow.
             </p>
             <ul className="space-y-4 mb-10 flex-1">
               {free.map((f) => (
-                <li key={f.t} className="flex items-start gap-3 text-sm">
+                <li key={f} className="flex items-start gap-3 text-sm">
                   <Check className="h-4 w-4 text-foreground/70 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <div className="text-foreground/90">{f.t}</div>
-                    <div className="text-xs text-muted-foreground mt-0.5">{f.d}</div>
-                  </div>
+                  <span className="text-foreground/90">{f}</span>
                 </li>
               ))}
             </ul>
@@ -102,32 +100,24 @@ export function Comparison() {
               </div>
 
               <div className="mb-6">
-                <div className="flex items-center gap-2">
-                  <h3 className="text-2xl font-semibold tracking-tight">Pro</h3>
-                  <span className="text-aurora text-xs font-medium uppercase tracking-wider">
-                    Everything in Free, plus
-                  </span>
-                </div>
-                <div className="mt-3 flex items-baseline gap-1">
-                  <span className="text-4xl font-display font-semibold">
-                    Full session automation
+                <h3 className="text-2xl font-semibold tracking-tight">Pro</h3>
+                <div className="mt-3">
+                  <span className="text-2xl sm:text-3xl font-display font-semibold">
+                    Everything in Free, plus deeper automation.
                   </span>
                 </div>
               </div>
               <p className="text-sm text-muted-foreground mb-8">
-                CouchMode applies advanced session settings, then restores the
+                CouchMode applies supported session settings, then restores the
                 changes it made.
               </p>
               <ul className="space-y-4 mb-10 flex-1">
                 {pro.map((f) => (
-                  <li key={f.t} className="flex items-start gap-3 text-sm">
+                  <li key={f} className="flex items-start gap-3 text-sm">
                     <span className="grid place-items-center h-4 w-4 rounded-full bg-aurora flex-shrink-0 mt-0.5">
                       <Check className="h-3 w-3 text-primary-foreground" />
                     </span>
-                    <div>
-                      <div className="text-foreground">{f.t}</div>
-                      <div className="text-xs text-muted-foreground mt-0.5">{f.d}</div>
-                    </div>
+                    <span className="text-foreground">{f}</span>
                   </li>
                 ))}
               </ul>
@@ -151,8 +141,8 @@ export function Comparison() {
 
         <p className="mt-6 max-w-3xl text-sm leading-relaxed text-muted-foreground">
           Pro access requires an active Patreon membership after the trial. Pro
-          Version is $3/month and includes 2 active Windows devices; Pro
-          Supporter is $5/month and includes 5.
+          is $3/month and includes 2 active Windows devices. Pro Supporter is
+          $5/month and includes 5 active Windows devices.
         </p>
       </div>
     </section>

@@ -82,7 +82,7 @@ export function FinalCTA() {
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 On supported handhelds such as ROG Ally, CouchMode can start
                 inside Windows Xbox Mode, adopt the full-screen session, apply
-                display and session settings, and restore your desktop when the
+                supported session settings, and restore your desktop when the
                 controller turns off.
               </p>
               <p className="mt-3 text-xs leading-relaxed text-muted-foreground">

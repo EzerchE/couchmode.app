@@ -43,8 +43,8 @@ export function Problem() {
             <p className="mt-6 text-muted-foreground leading-relaxed max-w-xl">
               Your desktop is fine at a desk. From the couch, tiny text,
               mouse-first menus, and background apps get in the way of a proper
-              gaming session. CouchMode bridges the gap. No rewiring, no
-              compromises.
+              gaming session. CouchMode bridges the gap without replacing
+              Windows or taking over your PC.
             </p>
 
             <ul className="mt-10 space-y-5">
