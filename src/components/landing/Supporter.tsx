@@ -6,51 +6,49 @@ export function Supporter() {
   return (
     <section
       id="support-dev"
-      className="relative py-20 sm:py-28"
+      className="relative py-14 sm:py-16"
       aria-labelledby="supporter-heading"
     >
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="rounded-3xl glass p-8 text-center sm:p-12"
+          transition={{ duration: 0.5 }}
+          className="flex flex-col items-center gap-4 rounded-2xl glass px-6 py-6 text-center sm:flex-row sm:justify-between sm:gap-6 sm:text-left"
         >
-          <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-foreground/85">
-            <Heart className="h-3.5 w-3.5 text-aurora" />
-            Supporter-powered
+          <div className="flex items-start gap-3">
+            <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white/[0.04] border border-white/10">
+              <Heart className="h-4 w-4 text-primary" />
+            </span>
+            <div>
+              <h2
+                id="supporter-heading"
+                className="text-base font-semibold tracking-tight"
+              >
+                Free to start, supporter-powered.
+              </h2>
+              <p className="mt-1 text-sm text-muted-foreground">
+                The free core stays free. Supporter memberships fund
+                development and bring Pro access when the public beta opens.
+              </p>
+            </div>
           </div>
 
-          <h2
-            id="supporter-heading"
-            className="mt-6 text-3xl font-semibold tracking-tight sm:text-4xl"
+          <a
+            href="/buy"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-5 py-2.5 text-sm font-medium text-foreground/85 transition hover:bg-white/[0.08]"
+            onClick={() => {
+              trackEvent("patreon_click", {
+                section: "supporter",
+                label: "Learn about Pro",
+                target: "/buy",
+                source: "supporter_section",
+              });
+            }}
           >
-            Free to start, <span className="text-aurora">supporter-powered</span>.
-          </h2>
-
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            CouchMode is built for controller-first living-room PCs. The free
-            version keeps the core workflow available. Supporter memberships help
-            fund development and bring Pro access when the public beta opens.
-          </p>
-
-          <div className="mt-8 flex justify-center">
-            <a
-              href="/buy"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-6 py-3 text-sm font-medium text-foreground/85 transition hover:bg-white/[0.08]"
-              onClick={() => {
-                trackEvent("patreon_click", {
-                  section: "supporter",
-                  label: "Learn about Pro",
-                  target: "/buy",
-                  source: "supporter_section",
-                });
-              }}
-            >
-              Learn about Pro
-            </a>
-          </div>
+            Learn about Pro
+          </a>
         </motion.div>
       </div>
     </section>

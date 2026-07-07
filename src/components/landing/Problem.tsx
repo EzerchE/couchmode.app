@@ -51,7 +51,7 @@ export function Problem() {
               {points.map((p) => (
                 <li key={p.title} className="flex gap-4">
                   <span className="grid place-items-center h-10 w-10 rounded-xl glass flex-shrink-0">
-                    <p.icon className="h-4 w-4 text-aurora" />
+                    <p.icon className="h-4 w-4 text-primary" />
                   </span>
                   <div>
                     <h3 className="text-sm font-medium">{p.title}</h3>

@@ -87,7 +87,7 @@ export function HowItWorks() {
               >
                 <div className="flex items-center gap-4 mb-4">
                   <span className="grid place-items-center h-10 w-10 rounded-xl glass">
-                    <s.icon className="h-4 w-4 text-aurora" />
+                    <s.icon className="h-4 w-4 text-primary" />
                   </span>
                   <span className="font-display text-sm text-muted-foreground tracking-widest">
                     STEP {s.n}

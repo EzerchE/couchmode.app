@@ -1,14 +1,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Download, Gamepad2, Sparkles } from "lucide-react";
+import { Download, Sparkles } from "lucide-react";
 import heroCouch from "@/assets/hero-couch.jpg";
 import { trackEvent } from "@/lib/analytics";
-
-const featureBullets = [
-  "Start from your controller",
-  "Choose Xbox, Steam Big Picture, Playnite, or a custom launcher",
-  "Return to your desktop when the controller turns off",
-];
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -66,25 +60,9 @@ export function Hero() {
             </h1>
 
             <p className="hero-text-shadow mt-6 text-base sm:text-lg text-foreground/78 max-w-xl leading-relaxed">
-              Turn on your controller and CouchMode starts your couch session
-              automatically. Choose Xbox, Steam Big Picture, Playnite, or a
-              custom launcher, then return to your desktop when your controller
-              turns off.
+              Turn on your controller and CouchMode opens your chosen launcher,
+              then brings your desktop back when the controller turns off.
             </p>
-
-            <p className="hero-text-shadow mt-4 text-sm text-foreground/65 max-w-xl leading-relaxed">
-              Pro can close selected desktop apps, apply supported session
-              tweaks, and restore the changes it made when your session ends.
-            </p>
-
-            <ul className="hero-text-shadow mt-7 grid max-w-xl gap-2 text-sm text-foreground/68">
-              {featureBullets.map((bullet) => (
-                <li key={bullet} className="flex gap-3">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-aurora" />
-                  <span>{bullet}</span>
-                </li>
-              ))}
-            </ul>
 
             <div className="mt-9 flex flex-wrap gap-3">
               <a
@@ -110,21 +88,6 @@ export function Hero() {
                 View Pro features
               </a>
             </div>
-
-            <div className="hero-text-shadow mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-foreground/72">
-              <span className="inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-aurora" />
-                7-day in-app Pro trial
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-aurora" />
-                No account or card for trial
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <Gamepad2 className="h-3.5 w-3.5" />
-                Xbox & compatible controllers
-              </span>
-            </div>
           </motion.div>
 
           <motion.div
@@ -146,23 +109,6 @@ export function Hero() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent pointer-events-none" />
               </div>
-
-              {/* Floating status chip */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.6 }}
-                className="absolute -bottom-5 left-4 sm:left-8 glass rounded-2xl px-4 py-3 flex items-center gap-3 shadow-2xl"
-              >
-                <span className="relative grid place-items-center h-8 w-8 rounded-full bg-aurora">
-                  <span className="absolute inset-0 rounded-full bg-aurora animate-[ping_2.6s_cubic-bezier(0,0,.2,1)_infinite] opacity-40" />
-                  <Gamepad2 className="h-4 w-4 text-primary-foreground relative" />
-                </span>
-                <div className="text-xs">
-                  <div className="font-medium">Controller connected</div>
-                  <div className="text-muted-foreground">Launching couch mode…</div>
-                </div>
-              </motion.div>
             </div>
           </motion.div>
         </div>
