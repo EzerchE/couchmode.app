@@ -69,20 +69,9 @@ export function Comparison() {
                 </li>
               ))}
             </ul>
-            <a
-              href="#download"
-              className="inline-flex w-full justify-center items-center rounded-full border border-white/10 bg-white/[0.04] hover:bg-white/[0.08] px-6 py-3 text-sm font-medium transition"
-              onClick={() => {
-                trackEvent("download_opening_soon_click", {
-                  section: "pricing",
-                  label: "Download opening soon",
-                  target: "#download",
-                  source: "free_card",
-                });
-              }}
-            >
-              Download opening soon
-            </a>
+            <div className="inline-flex w-full justify-center items-center rounded-full border border-white/10 bg-white/[0.02] px-6 py-3 text-sm font-medium text-muted-foreground">
+              Included in Free
+            </div>
           </motion.div>
 
           <motion.div

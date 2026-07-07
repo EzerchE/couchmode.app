@@ -3,9 +3,9 @@ import { Download, Sparkles } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
 const channels = [
-  { label: "Website", status: "Opening soon" },
-  { label: "Microsoft Store", status: "Coming soon" },
-  { label: "Steam", status: "Coming soon" },
+  { label: "Direct download", status: "Not open yet" },
+  { label: "Microsoft Store", status: "Planned" },
+  { label: "Steam", status: "Planned" },
 ];
 
 export function FinalCTA() {
@@ -49,14 +49,14 @@ export function FinalCTA() {
                 onClick={() => {
                   trackEvent("download_opening_soon_click", {
                     section: "download",
-                    label: "Download opening soon",
+                    label: "Check release status",
                     target: "/download",
                     source: "final_cta",
                   });
                 }}
               >
                 <Download className="h-4 w-4" />
-                Download opening soon
+                Check release status
               </a>
               <a
                 href="/buy"

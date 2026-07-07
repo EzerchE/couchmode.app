@@ -59,13 +59,13 @@ export function Navbar() {
             onClick={() => {
               trackEvent("download_opening_soon_click", {
                 section: "header",
-                label: "Download opening soon",
+                label: "Release status",
                 target: "/download",
                 source: "header",
               });
             }}
           >
-            Download opening soon
+            Release status
           </a>
         </div>
       </div>

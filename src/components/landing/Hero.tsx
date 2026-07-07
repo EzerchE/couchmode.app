@@ -29,7 +29,7 @@ export function Hero() {
 
           <div className="mt-4 inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs text-foreground/85 shadow-xl shadow-background/20">
             <span className="h-1.5 w-1.5 rounded-full bg-aurora" />
-            Public beta coming soon
+            Public beta in preparation
           </div>
 
           <h1
@@ -76,7 +76,7 @@ export function Hero() {
         initial={{ opacity: 0, y: 40, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-        className="relative mx-auto mt-16 max-w-5xl px-4 sm:px-6 lg:px-8"
+        className="relative mx-auto mt-16 max-w-4xl px-4 sm:px-6 lg:px-8"
       >
         <div className="pointer-events-none absolute -inset-x-10 -top-10 bottom-0 rounded-[2.5rem] bg-gradient-to-br from-[var(--violet-accent)]/25 to-[var(--blue-accent)]/20 blur-3xl" />
 
@@ -89,13 +89,16 @@ export function Hero() {
               CouchMode · Resource Control
             </span>
           </div>
-          <img
-            src="/screenshots/hero-resource-control.png"
-            alt="The CouchMode app on the Resource Control screen, where you choose which desktop apps close and reopen around a play session."
-            width={1176}
-            height={902}
-            className="block h-auto w-full"
-          />
+          <div className="relative aspect-[16/10] w-full overflow-hidden">
+            <img
+              src="/screenshots/hero-resource-control.png"
+              alt="The CouchMode app on the Resource Control screen, where you choose which desktop apps close and reopen around a play session."
+              width={1176}
+              height={902}
+              className="absolute inset-0 h-full w-full object-cover object-top"
+            />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[oklch(0.14_0.02_270)] to-transparent" />
+          </div>
         </figure>
 
         <figcaption className="mt-4 text-center text-xs text-muted-foreground">
