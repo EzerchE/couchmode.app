@@ -53,7 +53,7 @@ function Download() {
 
         <div className="mx-auto w-full max-w-2xl rounded-3xl glass p-8 text-center sm:p-12">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-foreground/85">
-            <Clock className="h-3.5 w-3.5 text-aurora" />
+            <Clock className="h-3.5 w-3.5 text-primary" />
             Controlled pre-public beta
           </div>
 
@@ -81,7 +81,7 @@ function Download() {
           <div className="mt-10 grid gap-4 text-left sm:grid-cols-2">
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
               <div className="flex items-center gap-2">
-                <PackageOpen className="h-4 w-4 text-aurora" />
+                <PackageOpen className="h-4 w-4 text-primary" />
                 <h2 className="text-sm font-medium text-foreground">
                   What you&apos;ll get
                 </h2>
@@ -93,7 +93,7 @@ function Download() {
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
               <div className="flex items-center gap-2">
-                <ShieldAlert className="h-4 w-4 text-aurora" />
+                <ShieldAlert className="h-4 w-4 text-primary" />
                 <h2 className="text-sm font-medium text-foreground">
                   No public installer yet
                 </h2>
