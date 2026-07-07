@@ -53,6 +53,10 @@ export function Hero() {
               Public beta coming soon
             </div>
 
+            <p className="hero-text-shadow text-sm font-medium text-aurora mb-3">
+              Controller-first gaming utility for Windows.
+            </p>
+
             <h1
               id="hero-heading"
               className="hero-text-shadow text-4xl sm:text-5xl lg:text-[3.75rem] font-semibold leading-[1.05] tracking-tight"
@@ -62,9 +66,15 @@ export function Hero() {
             </h1>
 
             <p className="hero-text-shadow mt-6 text-base sm:text-lg text-foreground/78 max-w-xl leading-relaxed">
-              Turn on your controller and CouchMode opens your chosen launcher
-              for the couch. Pro can close selected desktop apps and restore the
-              changes it made when your session ends.
+              Turn on your controller and CouchMode starts your couch session
+              automatically. Choose Xbox, Steam Big Picture, Playnite, or a
+              custom launcher, then return to your desktop when your controller
+              turns off.
+            </p>
+
+            <p className="hero-text-shadow mt-4 text-sm text-foreground/65 max-w-xl leading-relaxed">
+              Pro can close selected desktop apps, apply supported session
+              tweaks, and restore the changes it made when your session ends.
             </p>
 
             <ul className="hero-text-shadow mt-7 grid max-w-xl gap-2 text-sm text-foreground/68">

@@ -20,17 +20,17 @@ export const faqs = [
   {
     question: "What does CouchMode change on my PC?",
     answer:
-      "It automates user-configurable session actions such as launch, cleanup, audio, display, power, and notifications. Services, elevated apps, and protected system components may remain.",
+      "It changes only the selected and supported session settings you enable, such as launch, cleanup, audio, display, power, and notifications, and it restores the changes it made. Services, elevated apps, and protected system components may remain.",
   },
   {
     question: "Does CouchMode support Windows Xbox Mode?",
     answer:
-      "CouchMode can help start and manage Windows Xbox Mode where it is available. Xbox Mode availability depends on Windows version, device support, Xbox app support, region, and Microsoft rollout status.",
+      "CouchMode can help start and manage Windows Xbox Mode where Windows provides it. Otherwise CouchMode can open the Xbox app normally. Xbox Mode availability depends on Windows version, device support, Xbox app support, region, and Microsoft rollout status.",
   },
   {
     question: "Does CouchMode work on ROG Ally?",
     answer:
-      "CouchMode is being tested on ROG Ally and includes Xbox Mode startup companion support for compatible handheld setups.",
+      "Supported handheld behavior is a focus, including Xbox Mode startup companion support. Actual behavior depends on Windows and Xbox app support.",
   },
   {
     question: "What does Start inside Xbox Mode mean?",
@@ -50,17 +50,17 @@ export const faqs = [
   {
     question: "How does supporter access work?",
     answer:
-      "After the in-app trial, connect Patreon to keep Pro active. Pro Version is $3/month and includes 2 active Windows devices. Pro Supporter is $5/month and includes 5 active Windows devices.",
+      "After the in-app trial, connect Patreon to keep Pro active. Pro is $3/month and includes 2 active Windows devices. Pro Supporter is $5/month and includes 5 active Windows devices.",
   },
   {
     question: "What happens if my membership ends?",
     answer:
-      "The Pro license remains active while your Patreon membership is active. If membership ends, CouchMode continues in Free mode.",
+      "Pro features return to Free after an entitlement refresh, and the core Free flow remains available.",
   },
   {
     question: "Does CouchMode improve game performance?",
     answer:
-      "No. CouchMode focuses on session setup, cleanup, and restore rather than performance claims.",
+      "No. CouchMode does not promise FPS gains. It can reduce session clutter and apply supported session tweaks.",
   },
 ];
 

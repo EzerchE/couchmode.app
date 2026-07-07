@@ -11,9 +11,9 @@ import { SearchIntentFAQ, faqs } from "@/components/landing/SearchIntentFAQ";
 import { FinalCTA } from "@/components/landing/FinalCTA";
 import { Footer } from "@/components/landing/Footer";
 
-const TITLE = "CouchMode | Turn your gaming PC into couch mode";
+const TITLE = "CouchMode - Controller-first gaming utility for Windows";
 const DESC =
-  "CouchMode is a Windows utility for controller-first couch gaming. Open your launcher, clean up selected desktop apps, and restore your PC when the session ends.";
+  "CouchMode starts a couch gaming session when your controller connects, opens your chosen launcher, and restores the changes it made when your session ends.";
 const SOFTWARE_DESC =
   "CouchMode is a Windows utility for controller-first couch gaming sessions. It can open your preferred launcher, clean up selected desktop apps, and restore the changes it made when the session ends.";
 const CANONICAL = "https://couchmode.app/";
