@@ -1,14 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InfoPage } from "@/components/utility/InfoPage";
+import { breadcrumbLd } from "@/lib/seo";
 
 const TITLE = "Refund Policy";
-const DESC =
-  "During public beta, CouchMode Pro access is handled through Patreon membership.";
-const META_TITLE = "Refund Policy | CouchMode";
+const META_TITLE = "CouchMode Refund Policy";
 const META_DESC =
-  "Read the CouchMode refund policy status for public beta Pro access through Patreon membership.";
-const CANONICAL = "https://couchmode.app/refund";
-const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v2.png";
+  "The CouchMode refund policy for public beta Pro access: Patreon handles billing, cancellation, and refunds, and Pro may return to Free after an entitlement refresh.";
+const CANONICAL = "https://couchmode.app/refund/";
+const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v3.png";
 
 export const Route = createFileRoute("/refund")({
   head: () => ({
@@ -26,6 +25,7 @@ export const Route = createFileRoute("/refund")({
       { name: "twitter:title", content: META_TITLE },
       { name: "twitter:description", content: META_DESC },
       { name: "twitter:image", content: OG_IMAGE },
+      breadcrumbLd("Refund Policy", CANONICAL),
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
   }),
@@ -42,7 +42,13 @@ function Refund() {
       </p>
       <p>
         If membership is canceled, refunded, or becomes inactive, Pro access may
-        return to Free mode after a short grace period.
+        return to Free mode after an entitlement refresh. The core Free flow
+        remains available.
+      </p>
+      <p>
+        Refund eligibility and processing are decided by Patreon under its own
+        policies. CouchMode cannot override Patreon&apos;s billing or refund
+        decisions.
       </p>
       <p>
         Questions can be sent to{" "}

@@ -1,14 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InfoPage } from "@/components/utility/InfoPage";
+import { breadcrumbLd } from "@/lib/seo";
 
 const TITLE = "Support";
-const DESC =
-  "Need help with CouchMode? Email support with your Windows version, CouchMode version, launch mode, controller details, membership tier if relevant, and support bundle.";
-const META_TITLE = "CouchMode Support | Help for Windows Couch Gaming";
+const META_TITLE = "CouchMode Support - Help for Windows couch gaming";
 const META_DESC =
-  "Get help with CouchMode. Contact support with your Windows version, CouchMode version, launch mode, device type, membership tier if relevant, controller details, and support bundle.";
-const CANONICAL = "https://couchmode.app/support";
-const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v2.png";
+  "Get help with CouchMode. Contact support with your Windows version, CouchMode version, launch target, device type, controller details, membership state if relevant, and a support bundle.";
+const CANONICAL = "https://couchmode.app/support/";
+const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v3.png";
 
 export const Route = createFileRoute("/support")({
   head: () => ({
@@ -26,6 +25,7 @@ export const Route = createFileRoute("/support")({
       { name: "twitter:title", content: META_TITLE },
       { name: "twitter:description", content: META_DESC },
       { name: "twitter:image", content: OG_IMAGE },
+      breadcrumbLd("Support", CANONICAL),
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
   }),
@@ -40,7 +40,7 @@ function Support() {
         <a className="text-foreground underline-offset-4 hover:underline" href="mailto:support@couchmode.app">
           support@couchmode.app
         </a>{" "}
-        with your Windows version, CouchMode version, launch mode, controller
+        with your Windows version, CouchMode version, launch target, controller
         details, and a short description of the issue.
       </p>
       <div>
@@ -50,8 +50,15 @@ function Support() {
           <li>CouchMode version</li>
           <li>Whether you are using ROG Ally, another handheld, or a desktop PC</li>
           <li>Controller type</li>
-          <li>Launch mode: Xbox Mode, Steam Big Picture, or custom launcher</li>
-          <li>Whether Windows Xbox full-screen experience is enabled on startup</li>
+          <li>
+            Launch target: Xbox full-screen where supported, Steam Big Picture,
+            Playnite, or a custom launcher
+          </li>
+          <li>
+            Whether Windows Xbox full-screen is available, or a fallback launcher
+            is used
+          </li>
+          <li>Whether this is a bug report, feature request, or compatibility issue</li>
           <li>What happened</li>
           <li>Whether it happened in Free, Trial, or Pro</li>
           <li>For Pro access issues, your tier: Pro Version or Pro Supporter</li>

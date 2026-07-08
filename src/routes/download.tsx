@@ -6,18 +6,31 @@ import { Footer } from "@/components/landing/Footer";
 import { trackEvent } from "@/lib/analytics";
 import { latestRelease } from "@/data/releases";
 
-const META_TITLE = "Download CouchMode | CouchMode";
+const META_TITLE = "CouchMode Download Status - Windows public beta";
 const META_DESC =
-  "CouchMode is in a controlled pre-public beta. The public download will open here on couchmode.app when the build is approved.";
-const CANONICAL = "https://couchmode.app/download";
-const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v2.png";
+  "CouchMode for Windows is in private testing while the signed public beta build is prepared. The public download opens here on couchmode.app once the signed build, checksum, and release notes are ready.";
+const CANONICAL = "https://couchmode.app/download/";
+const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v3.png";
+
+const releaseFacts = [
+  { label: "Direct download", value: "Not open yet" },
+  { label: "Platform", value: "Windows 11 recommended · 64-bit" },
+  {
+    label: "Public beta will include",
+    value: "Version, release date, SHA256 checksum, signed status, and install notes",
+  },
+  {
+    label: "Pricing",
+    value: "Free mode with a 7-day in-app Pro trial. No account or card for the trial",
+  },
+];
 
 export const Route = createFileRoute("/download")({
   head: () => ({
     meta: [
       { title: META_TITLE },
       { name: "description", content: META_DESC },
-      { name: "robots", content: "noindex,follow" },
+      { name: "robots", content: "index,follow" },
       { property: "og:site_name", content: "CouchMode" },
       { property: "og:title", content: META_TITLE },
       { property: "og:description", content: META_DESC },
@@ -28,6 +41,26 @@ export const Route = createFileRoute("/download")({
       { name: "twitter:title", content: META_TITLE },
       { name: "twitter:description", content: META_DESC },
       { name: "twitter:image", content: OG_IMAGE },
+      {
+        "script:ld+json": {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://couchmode.app/",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Download status",
+              item: CANONICAL,
+            },
+          ],
+        },
+      },
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
   }),
@@ -58,13 +91,13 @@ function Download() {
           </div>
 
           <h1 className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">
-            Download <span className="text-aurora">opening soon</span>
+            Release <span className="text-aurora">status</span>
           </h1>
 
           <p className="mx-auto mt-5 max-w-md text-muted-foreground">
-            CouchMode is in a controlled pre-public beta. Public installer
-            hosting isn&apos;t open yet. When the build is approved, the official
-            download will appear right here on couchmode.app.
+            CouchMode for Windows is in private testing while the signed public
+            beta build is prepared. Public download will open here once the
+            signed build, SHA256 checksum, and release notes are ready.
           </p>
 
           <div className="mt-8 flex justify-center">
@@ -78,7 +111,23 @@ function Download() {
             </button>
           </div>
 
-          <div className="mt-10 grid gap-4 text-left sm:grid-cols-2">
+          <dl className="mt-10 grid gap-3 text-left">
+            {releaseFacts.map((fact) => (
+              <div
+                key={fact.label}
+                className="flex flex-col gap-1 rounded-2xl border border-white/10 bg-white/[0.03] p-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
+              >
+                <dt className="text-xs uppercase tracking-wider text-muted-foreground">
+                  {fact.label}
+                </dt>
+                <dd className="text-sm text-foreground/90 sm:text-right">
+                  {fact.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+
+          <div className="mt-6 grid gap-4 text-left sm:grid-cols-2">
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
               <div className="flex items-center gap-2">
                 <PackageOpen className="h-4 w-4 text-primary" />
@@ -108,11 +157,19 @@ function Download() {
 
           <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-left">
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <h2 className="text-sm font-medium text-foreground">Latest beta</h2>
+              <h2 className="text-sm font-medium text-foreground">
+                Latest internal / pre-public metadata
+              </h2>
               <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-foreground/85">
                 {latestRelease.version}
               </span>
             </div>
+
+            <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+              This is internal pre-public build metadata, not the public
+              download candidate. It is published so you can verify a build you
+              already have during private testing.
+            </p>
 
             <div className="mt-4">
               <p className="text-xs uppercase tracking-wider text-muted-foreground">
@@ -146,11 +203,6 @@ function Download() {
                 </ul>
               </div>
             )}
-
-            <p className="mt-4 text-xs text-muted-foreground">
-              No public installer is hosted yet. This information is for
-              verifying the beta build you already have.
-            </p>
           </div>
 
           <p className="mt-8 text-xs text-muted-foreground">

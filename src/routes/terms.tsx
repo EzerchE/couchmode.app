@@ -1,14 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InfoPage } from "@/components/utility/InfoPage";
+import { breadcrumbLd } from "@/lib/seo";
 
 const TITLE = "Terms";
-const DESC =
-  "Basic terms for using CouchMode Free, the 7-day Pro trial, and Patreon-based Pro access during public beta.";
-const META_TITLE = "Terms of Use | CouchMode";
+const META_TITLE = "CouchMode Terms of Use";
 const META_DESC =
-  "Read the CouchMode terms covering Free use, the 7-day Pro trial, Patreon supporter access, Xbox Mode availability, warranty, liability, and third-party services.";
-const CANONICAL = "https://couchmode.app/terms";
-const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v2.png";
+  "The CouchMode terms covering Free use, the 7-day Pro trial, Patreon supporter access, Xbox Mode availability, warranty, liability, and third-party services.";
+const CANONICAL = "https://couchmode.app/terms/";
+const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v3.png";
 
 export const Route = createFileRoute("/terms")({
   head: () => ({
@@ -26,6 +25,7 @@ export const Route = createFileRoute("/terms")({
       { name: "twitter:title", content: META_TITLE },
       { name: "twitter:description", content: META_DESC },
       { name: "twitter:image", content: OG_IMAGE },
+      breadcrumbLd("Terms", CANONICAL),
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
   }),
@@ -43,8 +43,9 @@ function Terms() {
           frontends.
         </p>
         <p className="mt-2">
-          CouchMode does not replace the Windows shell and does not take over
-          your PC startup flow. CouchMode does not hijack startup.
+          CouchMode does not replace the Windows shell and does not replace your
+          Windows startup flow. Startup automation is optional and controlled by
+          the user.
         </p>
         <p className="mt-2">
           CouchMode does not modify Windows internals, install kernel drivers,

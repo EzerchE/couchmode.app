@@ -4,11 +4,11 @@ import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { releases } from "@/data/releases";
 
-const META_TITLE = "CouchMode changelog | CouchMode";
+const META_TITLE = "CouchMode Changelog - Windows beta release notes";
 const META_DESC =
   "Release notes and known issues for CouchMode Windows beta builds, newest first.";
-const CANONICAL = "https://couchmode.app/changelog";
-const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v2.png";
+const CANONICAL = "https://couchmode.app/changelog/";
+const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v3.png";
 
 const dateFormat = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
@@ -38,6 +38,26 @@ export const Route = createFileRoute("/changelog")({
       { name: "twitter:title", content: META_TITLE },
       { name: "twitter:description", content: META_DESC },
       { name: "twitter:image", content: OG_IMAGE },
+      {
+        "script:ld+json": {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://couchmode.app/",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Changelog",
+              item: CANONICAL,
+            },
+          ],
+        },
+      },
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
   }),
@@ -61,6 +81,11 @@ function Changelog() {
           <p className="mt-3 text-sm text-muted-foreground sm:text-base">
             Release notes and known issues for CouchMode Windows beta builds,
             newest first.
+          </p>
+          <p className="mt-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-xs leading-relaxed text-muted-foreground">
+            Public download is not enabled yet. This page reflects the currently
+            published release metadata, which may differ from the internal
+            build in preparation for the signed public beta.
           </p>
         </header>
 

@@ -99,7 +99,7 @@ export function HeroShowcase() {
         <div className="relative">
           <div className="aspect-[16/10] w-full overflow-hidden" ref={emblaRef}>
             <div className="flex h-full">
-              {slides.map((s) => (
+              {slides.map((s, i) => (
                 <div key={s.src} className="relative h-full min-w-0 flex-[0_0_100%]">
                   <img
                     src={s.src}
@@ -107,6 +107,11 @@ export function HeroShowcase() {
                     width={956}
                     height={758}
                     draggable={false}
+                    // Only the first (default) slide is eager + high priority; the
+                    // rest lazy-load so the hero ships one screenshot up front.
+                    loading={i === 0 ? "eager" : "lazy"}
+                    fetchPriority={i === 0 ? "high" : "low"}
+                    decoding="async"
                     className="h-full w-full select-none object-cover object-top"
                   />
                 </div>

@@ -1,21 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InfoPage } from "@/components/utility/InfoPage";
+import { breadcrumbLd } from "@/lib/seo";
 
 const TITLE = "Get Pro with Patreon";
 const DESC =
   "CouchMode Pro access is available during public beta through active Patreon membership.";
-const META_TITLE = "CouchMode Pro Access | CouchMode";
+const META_TITLE = "CouchMode Pro - Patreon supporter access";
 const META_DESC =
   "CouchMode Pro access uses active Patreon membership during public beta. Start with a 7-day in-app Pro trial, then connect Patreon to continue.";
-const CANONICAL = "https://couchmode.app/buy";
-const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v2.png";
+const CANONICAL = "https://couchmode.app/buy/";
+const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v3.png";
 
 export const Route = createFileRoute("/buy")({
   head: () => ({
     meta: [
       { title: META_TITLE },
       { name: "description", content: META_DESC },
-      { name: "robots", content: "noindex,follow" },
+      { name: "robots", content: "index,follow" },
       { property: "og:site_name", content: "CouchMode" },
       { property: "og:title", content: META_TITLE },
       { property: "og:description", content: META_DESC },
@@ -26,6 +27,7 @@ export const Route = createFileRoute("/buy")({
       { name: "twitter:title", content: META_TITLE },
       { name: "twitter:description", content: META_DESC },
       { name: "twitter:image", content: OG_IMAGE },
+      breadcrumbLd("Pro", CANONICAL),
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
   }),
