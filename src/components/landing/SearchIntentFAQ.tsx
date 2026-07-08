@@ -7,11 +7,17 @@ import {
 } from "@/components/ui/accordion";
 import { trackEvent } from "@/lib/analytics";
 
-// Content source of truth: production couchmode.app. Do not rewrite the
-// questions or answers; production copy wins. `faqs` is also consumed by the
-// FAQPage structured data in src/routes/index.tsx, so keep the shape
-// ({ question, answer }) stable.
+// Content source of truth for the on-page FAQ and the FAQPage structured data
+// in src/routes/index.tsx. Keep the shape ({ question, answer }) stable, keep
+// answers factual, and avoid overclaims (no FPS/performance promises, no
+// shell-replacement wording). Answers are rendered server-side (see the
+// forceMount on AccordionContent below) so crawlers see them in the HTML.
 export const faqs = [
+  {
+    question: "What is CouchMode?",
+    answer:
+      "CouchMode is a controller-first gaming utility for Windows. It starts a couch gaming session when your controller connects, opens your chosen launcher, and restores the changes it made when the session ends.",
+  },
   {
     question: "Does CouchMode replace the Windows shell?",
     answer:
@@ -23,9 +29,29 @@ export const faqs = [
       "It changes only the selected and supported session settings you enable, such as launch, cleanup, audio, display, power, and notifications, and it restores the changes it made. Services, elevated apps, and protected system components may remain.",
   },
   {
+    question: "Can CouchMode close Discord, Chrome, or other desktop apps before gaming?",
+    answer:
+      "With Pro Resource Control, you can choose selected desktop apps to close around a session and reopen them afterward. Services, elevated apps, protected system components, and some apps that relaunch themselves may remain.",
+  },
+  {
+    question: "Can CouchMode start Steam Big Picture or another launcher?",
+    answer:
+      "With Pro, choose Steam Big Picture, Playnite, LaunchBox, GOG Galaxy, or another compatible launcher. Free keeps the default Xbox full-screen flow where supported.",
+  },
+  {
+    question: "Does CouchMode support Playnite?",
+    answer:
+      "Yes. Playnite can be used as a launch target with Pro. CouchMode is designed to work around existing launchers rather than replace them.",
+  },
+  {
     question: "Does CouchMode support Windows Xbox Mode?",
     answer:
       "CouchMode can help start and manage Windows Xbox Mode where Windows provides it. Otherwise CouchMode can open the Xbox app normally. Xbox Mode availability depends on Windows version, device support, Xbox app support, region, and Microsoft rollout status.",
+  },
+  {
+    question: "What happens if Windows Xbox full-screen is not available?",
+    answer:
+      "If Windows Xbox full-screen is not available on your device, CouchMode can open the Xbox app normally instead. Xbox full-screen availability depends on Windows, the Xbox app, the device, and Microsoft rollout.",
   },
   {
     question: "Does CouchMode work on ROG Ally?",
@@ -36,11 +62,6 @@ export const faqs = [
     question: "What does Start inside Xbox Mode mean?",
     answer:
       "On supported handhelds, CouchMode can use an admin-approved scheduled task to start inside Windows Xbox Mode. Normal desktop startup remains separate.",
-  },
-  {
-    question: "Can CouchMode start Steam Big Picture or another launcher?",
-    answer:
-      "With Pro, choose Steam Big Picture, Playnite, LaunchBox, GOG Galaxy, or another compatible launcher. Free keeps the default Xbox full-screen flow where supported.",
   },
   {
     question: "Do I need a credit card for the trial?",
@@ -123,7 +144,13 @@ export function SearchIntentFAQ() {
               <AccordionTrigger className="px-3 text-left text-base font-medium hover:no-underline sm:px-4">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="px-3 text-sm leading-relaxed text-muted-foreground sm:px-4">
+              {/* forceMount keeps the answer text in the SSR HTML (collapsed
+                  via Radix's hidden attribute) so crawlers and the FAQ rich
+                  result see it, not only client JS after hydration. */}
+              <AccordionContent
+                forceMount
+                className="px-3 text-sm leading-relaxed text-muted-foreground sm:px-4"
+              >
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>

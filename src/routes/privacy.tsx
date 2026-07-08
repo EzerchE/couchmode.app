@@ -1,14 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InfoPage } from "@/components/utility/InfoPage";
+import { breadcrumbLd } from "@/lib/seo";
 
 const TITLE = "Privacy";
-const DESC =
-  "CouchMode is a Windows desktop utility. Free use does not require an account, and Pro access validation runs only when needed.";
-const META_TITLE = "Privacy Policy | CouchMode";
+const META_TITLE = "CouchMode Privacy Policy";
 const META_DESC =
-  "Learn how CouchMode handles privacy, gameplay tracking, support emails, Patreon membership validation, payments, and Pro access.";
-const CANONICAL = "https://couchmode.app/privacy";
-const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v2.png";
+  "How CouchMode handles privacy: local app data, no gameplay tracking, diagnostics and support bundles, Patreon entitlement validation, website analytics, and payments.";
+const CANONICAL = "https://couchmode.app/privacy/";
+const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v3.png";
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({
@@ -26,6 +25,7 @@ export const Route = createFileRoute("/privacy")({
       { name: "twitter:title", content: META_TITLE },
       { name: "twitter:description", content: META_DESC },
       { name: "twitter:image", content: OG_IMAGE },
+      breadcrumbLd("Privacy", CANONICAL),
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
   }),
@@ -86,6 +86,16 @@ function Privacy() {
           CouchMode uses this information only to verify Pro access, enforce
           device limits, troubleshoot activation issues, and maintain account
           and security records.
+        </p>
+      </section>
+      <section>
+        <h2 className="font-medium text-foreground">Website analytics</h2>
+        <p className="mt-2">
+          This website uses Cloudflare Web Analytics and a Google tag through
+          Google Tag Manager to understand aggregate traffic, such as page views
+          and referrers. These are used for website measurement only and are
+          separate from the CouchMode desktop app, which does not track
+          gameplay.
         </p>
       </section>
       <section>

@@ -5,9 +5,14 @@ import { Footer } from "@/components/landing/Footer";
 type InfoPageProps = {
   title: string;
   children: ReactNode;
+  lastUpdated?: string;
 };
 
-export function InfoPage({ title, children }: InfoPageProps) {
+export function InfoPage({
+  title,
+  children,
+  lastUpdated = "July 2026",
+}: InfoPageProps) {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
@@ -21,7 +26,7 @@ export function InfoPage({ title, children }: InfoPageProps) {
 
         <div className="mt-8 rounded-3xl border border-white/10 bg-card/60 p-6 sm:p-10">
           <p className="text-xs uppercase tracking-widest text-aurora">
-            Last updated: June 2026
+            Last updated: {lastUpdated}
           </p>
           <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
             {title}

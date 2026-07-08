@@ -15,9 +15,9 @@ export function Footer() {
 
           <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
             <a href="/#how" className="hover:text-foreground transition">How it works</a>
-            <a href="/#features" className="hover:text-foreground transition">Features</a>
             <a href="/#pricing" className="hover:text-foreground transition">Pricing</a>
             <a href="/#download" className="hover:text-foreground transition">Status</a>
+            <a href="/changelog" className="hover:text-foreground transition">Changelog</a>
           </nav>
 
           <p className="text-xs text-muted-foreground">
@@ -26,8 +26,6 @@ export function Footer() {
         </div>
         <nav className="mt-6 flex flex-wrap gap-x-3 gap-y-2 text-xs text-muted-foreground">
           <a href="/support" className="transition hover:text-foreground">Support</a>
-          <span aria-hidden="true">·</span>
-          <a href="/changelog" className="transition hover:text-foreground">Changelog</a>
           <span aria-hidden="true">·</span>
           <a href="/privacy" className="transition hover:text-foreground">Privacy</a>
           <span aria-hidden="true">·</span>

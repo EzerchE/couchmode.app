@@ -2,30 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://couchmode.app/</loc>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-07-08</lastmod>
   </url>
   <url>
-    <loc>https://couchmode.app/download</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://couchmode.app/download/</loc>
+    <lastmod>2026-07-08</lastmod>
   </url>
   <url>
-    <loc>https://couchmode.app/buy</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://couchmode.app/support/</loc>
+    <lastmod>2026-07-08</lastmod>
   </url>
   <url>
-    <loc>https://couchmode.app/support</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://couchmode.app/changelog/</loc>
+    <lastmod>2026-07-08</lastmod>
   </url>
   <url>
-    <loc>https://couchmode.app/privacy</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://couchmode.app/privacy/</loc>
+    <lastmod>2026-07-08</lastmod>
   </url>
   <url>
-    <loc>https://couchmode.app/terms</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://couchmode.app/terms/</loc>
+    <lastmod>2026-07-08</lastmod>
   </url>
   <url>
-    <loc>https://couchmode.app/refund</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://couchmode.app/refund/</loc>
+    <lastmod>2026-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://couchmode.app/buy/</loc>
+    <lastmod>2026-07-08</lastmod>
   </url>
 </urlset>

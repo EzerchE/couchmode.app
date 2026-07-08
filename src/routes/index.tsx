@@ -14,7 +14,7 @@ const DESC =
 const SOFTWARE_DESC =
   "CouchMode is a Windows utility for controller-first couch gaming sessions. It can open your preferred launcher, clean up selected desktop apps, and restore the changes it made when the session ends.";
 const CANONICAL = "https://couchmode.app/";
-const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v2.png";
+const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v3.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -37,7 +37,7 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "SoftwareApplication",
           name: "CouchMode",
-          operatingSystem: "Windows 10, Windows 11",
+          operatingSystem: "Windows 11",
           applicationCategory: "UtilityApplication",
           applicationSubCategory: "Gaming utility",
           description: SOFTWARE_DESC,
@@ -73,7 +73,18 @@ export const Route = createFileRoute("/")({
           logo: "https://couchmode.app/icon-512.png",
         },
       },
+      {
+        "script:ld+json": {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "CouchMode",
+          url: "https://couchmode.app/",
+        },
+      },
     ],
+    // The first hero <img> carries fetchpriority="high" (HeroShowcase), which
+    // React hoists into a high-priority image preload automatically; the other
+    // carousel screenshots lazy-load, so no manual preload link is needed here.
     links: [{ rel: "canonical", href: CANONICAL }],
   }),
   component: Index,
