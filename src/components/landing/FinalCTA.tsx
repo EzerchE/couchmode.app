@@ -12,10 +12,10 @@ export function FinalCTA() {
   return (
     <section
       id="download"
-      className="relative py-24 sm:py-32"
+      className="relative overflow-x-clip py-24 sm:py-32"
       aria-labelledby="cta-heading"
     >
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="pointer-events-none absolute inset-0">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[800px] rounded-full bg-aurora opacity-15 blur-[160px]" />
       </div>
 

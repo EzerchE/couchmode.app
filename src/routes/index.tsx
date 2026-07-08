@@ -4,7 +4,6 @@ import { Hero } from "@/components/landing/Hero";
 import { Problem } from "@/components/landing/Problem";
 import { HowItWorks } from "@/components/landing/HowItWorks";
 import { Comparison } from "@/components/landing/Comparison";
-import { ProductScreenshots } from "@/components/landing/ProductScreenshots";
 import { SearchIntentFAQ, faqs } from "@/components/landing/SearchIntentFAQ";
 import { FinalCTA } from "@/components/landing/FinalCTA";
 import { Footer } from "@/components/landing/Footer";
@@ -88,7 +87,6 @@ function Index() {
         <Hero />
         <Problem />
         <HowItWorks />
-        <ProductScreenshots />
         <Comparison />
         <FinalCTA />
         <SearchIntentFAQ />
