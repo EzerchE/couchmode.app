@@ -39,8 +39,8 @@ export function HowItWorks() {
       className="relative py-24 sm:py-32"
       aria-labelledby="how-heading"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 max-w-2xl">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-14">
           <p className="mb-4 text-sm font-medium text-aurora">How it works</p>
           <h2
             id="how-heading"
@@ -55,31 +55,37 @@ export function HowItWorks() {
           </p>
         </div>
 
-        <ol className="grid gap-4 sm:grid-cols-2">
+        <ol className="relative">
+          <div
+            aria-hidden
+            className="absolute bottom-6 left-5 top-3 w-px bg-gradient-to-b from-white/15 via-white/10 to-transparent"
+          />
           {steps.map((s, i) => (
             <motion.li
               key={s.n}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="rounded-2xl glass p-6"
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
+              className="relative flex gap-6 pb-10 last:pb-0"
             >
-              <div className="mb-4 flex items-center gap-3">
-                <span className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/[0.04]">
-                  <s.icon className="h-4 w-4 text-primary" />
-                </span>
+              <span className="relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/10 bg-card">
+                <s.icon className="h-4 w-4 text-primary" />
+              </span>
+              <div className="pt-1">
                 <span className="font-display text-xs tracking-widest text-muted-foreground">
                   STEP {s.n}
                 </span>
+                <h3 className="mt-1 text-xl font-semibold tracking-tight sm:text-2xl">
+                  {s.title}
+                </h3>
+                <p className="mt-2 max-w-lg leading-relaxed text-muted-foreground">
+                  {s.body}
+                </p>
+                <p className="mt-3 text-[11px] uppercase tracking-widest text-aurora/90">
+                  {s.detail}
+                </p>
               </div>
-              <h3 className="text-xl font-semibold tracking-tight">{s.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {s.body}
-              </p>
-              <p className="mt-3 text-[11px] uppercase tracking-widest text-aurora/90">
-                {s.detail}
-              </p>
             </motion.li>
           ))}
         </ol>

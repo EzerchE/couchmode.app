@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Download, Sparkles } from "lucide-react";
 
 import { trackEvent } from "@/lib/analytics";
+import { HeroShowcase } from "@/components/landing/HeroShowcase";
 
 export function Hero() {
   return (
@@ -15,7 +16,6 @@ export function Hero() {
         <div className="absolute -top-40 left-1/2 h-[680px] w-[680px] -translate-x-1/2 rounded-full bg-[var(--violet-accent)] opacity-[0.16] blur-[180px]" />
         <div className="absolute top-10 right-0 h-[560px] w-[560px] rounded-full bg-[var(--blue-accent)] opacity-[0.14] blur-[180px]" />
       </div>
-      <div className="hero-bottom-blend" />
 
       <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
         <motion.div
@@ -78,32 +78,7 @@ export function Hero() {
         transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
         className="relative mx-auto mt-16 max-w-4xl px-4 sm:px-6 lg:px-8"
       >
-        <div className="pointer-events-none absolute -inset-x-10 -top-10 bottom-0 rounded-[2.5rem] bg-gradient-to-br from-[var(--violet-accent)]/25 to-[var(--blue-accent)]/20 blur-3xl" />
-
-        <figure className="relative overflow-hidden rounded-2xl border border-white/10 bg-[oklch(0.14_0.02_270)] shadow-2xl shadow-black/60 glow-strong">
-          <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.02] px-4 py-2.5">
-            <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-            <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-            <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-            <span className="ml-2 text-[11px] tracking-wide text-foreground/50">
-              CouchMode · Resource Control
-            </span>
-          </div>
-          <div className="relative aspect-[16/10] w-full overflow-hidden">
-            <img
-              src="/screenshots/hero-resource-control.png"
-              alt="The CouchMode app on the Resource Control screen, where you choose which desktop apps close and reopen around a play session."
-              width={1176}
-              height={902}
-              className="absolute inset-0 h-full w-full object-cover object-top"
-            />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[oklch(0.14_0.02_270)] to-transparent" />
-          </div>
-        </figure>
-
-        <figcaption className="mt-4 text-center text-xs text-muted-foreground">
-          Resource Control: pick what closes before play and comes back after.
-        </figcaption>
+        <HeroShowcase />
       </motion.div>
     </section>
   );
