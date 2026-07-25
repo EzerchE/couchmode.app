@@ -19,8 +19,8 @@ const steps = [
   {
     n: "03",
     icon: Sparkles,
-    title: "Pro tidies up for the session",
-    body: "Pro can pick the launcher and close the desktop apps you select (Resource Control), so your session starts clean.",
+    title: "Pro sets the scene",
+    body: "Pro can close the desktop apps you select (Resource Control) and apply the session settings you choose - notifications, Game Bar recording, visual effects, Game Mode, power plan, HDR, display, and audio - then restore them afterward.",
     detail: "Pro · 7-day trial in app",
   },
   {
