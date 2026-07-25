@@ -22,11 +22,6 @@ const slides = [
     label: "Session Tweaks",
     alt: "CouchMode Session Tweaks performance and Windows settings.",
   },
-  {
-    src: "/screenshots/app-tray.png",
-    label: "System Tray",
-    alt: "CouchMode system tray controls.",
-  },
 ];
 
 const AUTOPLAY_MS = 4500;
