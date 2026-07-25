@@ -3,6 +3,7 @@ import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
 import { Problem } from "@/components/landing/Problem";
 import { HowItWorks } from "@/components/landing/HowItWorks";
+import { FeatureShots } from "@/components/landing/FeatureShots";
 import { Comparison } from "@/components/landing/Comparison";
 import { SearchIntentFAQ, faqs } from "@/components/landing/SearchIntentFAQ";
 import { FinalCTA } from "@/components/landing/FinalCTA";
@@ -98,6 +99,7 @@ function Index() {
         <Hero />
         <Problem />
         <HowItWorks />
+        <FeatureShots />
         <Comparison />
         <FinalCTA />
         <SearchIntentFAQ />

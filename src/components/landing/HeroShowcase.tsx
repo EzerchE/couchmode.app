@@ -1,22 +1,31 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { ChevronLeft, ChevronRight, Gamepad2 } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
+// Authentic beta.176 captures, each normalized to a 1122x714 dark canvas so
+// every slide occupies the exact same space with no size jumping. The frame
+// aspect ratio matches the canvas (1122/714) and images use object-contain, so
+// the full screenshot stays visible and nothing meaningful is cropped.
 const slides = [
-  {
-    src: "/screenshots/app-resource-control.png",
-    label: "Resource Control",
-    alt: "CouchMode Resource Control: choose which desktop apps close before a session and reopen after.",
-  },
-  {
-    src: "/screenshots/app-picker.png",
-    label: "App Picker",
-    alt: "CouchMode app picker: pick the running apps to close for a couch session.",
-  },
   {
     src: "/screenshots/app-general.png",
     label: "General",
-    alt: "CouchMode General: arm CouchMode when a controller connects and pick your launcher.",
+    alt: "CouchMode General controller and launcher settings.",
+  },
+  {
+    src: "/screenshots/app-resource-control.png",
+    label: "Resource Control",
+    alt: "CouchMode Resource Control application cleanup settings.",
+  },
+  {
+    src: "/screenshots/app-session-tweaks.png",
+    label: "Session Tweaks",
+    alt: "CouchMode Session Tweaks performance and Windows settings.",
+  },
+  {
+    src: "/screenshots/app-tray.png",
+    label: "System Tray",
+    alt: "CouchMode system tray controls.",
   },
 ];
 
@@ -81,7 +90,7 @@ export function HeroShowcase() {
     >
       <div className="pointer-events-none absolute -inset-x-10 -top-10 bottom-0 rounded-[2.5rem] bg-gradient-to-br from-[var(--violet-accent)]/25 to-[var(--blue-accent)]/20 blur-3xl" />
 
-      <figure className="relative overflow-hidden rounded-2xl border border-white/10 bg-[oklch(0.14_0.02_270)] shadow-2xl shadow-black/60 glow-strong">
+      <figure className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#12161d] shadow-2xl shadow-black/60 glow-strong">
         <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.02] px-4 py-2.5">
           <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
           <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
@@ -92,44 +101,29 @@ export function HeroShowcase() {
         </div>
 
         <div className="relative">
-          <div className="aspect-[16/10] w-full overflow-hidden" ref={emblaRef}>
+          {/* Frame aspect equals the shared 1122x714 canvas so slides never
+              resize between transitions; object-contain keeps every screenshot
+              fully visible with no cropping or stretching. */}
+          <div className="aspect-[1122/714] w-full overflow-hidden" ref={emblaRef}>
             <div className="flex h-full">
               {slides.map((s, i) => (
                 <div key={s.src} className="relative h-full min-w-0 flex-[0_0_100%]">
                   <img
                     src={s.src}
                     alt={s.alt}
-                    width={956}
-                    height={758}
+                    width={1122}
+                    height={714}
                     draggable={false}
                     // Only the first (default) slide is eager + high priority; the
                     // rest lazy-load so the hero ships one screenshot up front.
                     loading={i === 0 ? "eager" : "lazy"}
                     fetchPriority={i === 0 ? "high" : "low"}
                     decoding="async"
-                    className="h-full w-full select-none object-cover object-top"
+                    className="h-full w-full select-none bg-[#12161d] object-contain"
                   />
                 </div>
               ))}
             </div>
-          </div>
-
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[oklch(0.14_0.02_270)] to-transparent" />
-
-          {/* Connected-state micro moment */}
-          <div className="pointer-events-none absolute bottom-4 left-4 inline-flex items-center gap-2.5 rounded-xl border border-white/10 bg-black/40 px-3 py-2 backdrop-blur-md">
-            <span className="relative grid h-7 w-7 place-items-center rounded-full bg-aurora">
-              <span className="absolute inset-0 animate-[ping_2.6s_cubic-bezier(0,0,.2,1)_infinite] rounded-full bg-aurora opacity-40" />
-              <Gamepad2 className="relative h-3.5 w-3.5 text-primary-foreground" />
-            </span>
-            <span className="text-[11px] leading-tight">
-              <span className="block font-medium text-foreground">
-                Controller connected
-              </span>
-              <span className="block text-muted-foreground">
-                Launching couch mode…
-              </span>
-            </span>
           </div>
 
           <button
