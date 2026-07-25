@@ -102,8 +102,8 @@ function Terms() {
         <h2 className="font-medium text-foreground">Automation and restore</h2>
         <p className="mt-2">
           CouchMode attempts safe, reversible session changes. Review your
-          settings before enabling automation, especially display, audio, power,
-          startup, and resource-control options.
+          settings before enabling automation, especially launcher, startup,
+          and Resource Control options.
         </p>
         <p className="mt-2">
           CouchMode does not promise performance boosts or identical behavior

@@ -36,7 +36,13 @@ function Support() {
   return (
     <InfoPage title={TITLE}>
       <p>
-        Need help with CouchMode? Email us at{" "}
+        Need help with CouchMode? The quickest way is from the app itself:
+        CouchMode can submit a bug report, compatibility issue, or feature
+        request. Submitting is always your choice, and you see what is included
+        before it is sent.
+      </p>
+      <p>
+        You can also email us at{" "}
         <a className="text-foreground underline-offset-4 hover:underline" href="mailto:support@couchmode.app">
           support@couchmode.app
         </a>{" "}

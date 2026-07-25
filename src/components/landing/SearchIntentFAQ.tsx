@@ -26,7 +26,7 @@ export const faqs = [
   {
     question: "What does CouchMode change on my PC?",
     answer:
-      "It changes only the selected and supported session settings you enable, such as launch, cleanup, audio, display, power, and notifications, and it restores the changes it made. Services, elevated apps, and protected system components may remain.",
+      "Only what you enable: it can enter the Xbox full screen experience or open your chosen launcher, and with Pro Resource Control it closes the desktop apps you select. It snapshots your desktop first and restores the changes it made when the session ends. Services, elevated apps, and protected system components may remain.",
   },
   {
     question: "Can CouchMode close Discord, Chrome, or other desktop apps before gaming?",
@@ -81,7 +81,7 @@ export const faqs = [
   {
     question: "Does CouchMode improve game performance?",
     answer:
-      "No. CouchMode does not promise FPS gains. It can reduce session clutter and apply supported session tweaks.",
+      "No. CouchMode does not promise FPS gains. With Pro Resource Control it can reduce session clutter by closing the desktop apps you select.",
   },
 ];
 

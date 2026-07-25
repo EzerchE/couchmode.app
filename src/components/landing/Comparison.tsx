@@ -11,11 +11,9 @@ const free = [
 ];
 
 const pro = [
-  "Launcher selection",
-  "Resource Control",
-  "Session Tweaks",
-  "Audio, HDR, display, notification, and power automation where supported",
-  "Session restore",
+  "Launcher selection (Xbox, Steam Big Picture, Playnite, or a custom launcher)",
+  "Resource Control for apps you select",
+  "Desktop snapshot and exact restore",
   "Up to 2 active Windows devices with Pro",
   "Up to 5 active Windows devices with Pro Supporter",
 ];
@@ -37,8 +35,8 @@ export function Comparison() {
             Free for the essentials. Pro for deeper automation.
           </h2>
           <p className="mt-5 text-muted-foreground">
-            CouchMode’s core session flow is free. Pro adds launcher choices,
-            Resource Control, session tweaks, and restore automation for
+            CouchMode’s core session flow is free. Pro adds launcher selection,
+            Resource Control for selected apps, and exact desktop restore for
             supporters.
           </p>
         </div>
@@ -97,8 +95,8 @@ export function Comparison() {
                 </div>
               </div>
               <p className="text-sm text-muted-foreground mb-8">
-                CouchMode applies supported session settings, then restores the
-                changes it made.
+                CouchMode manages the session it starts, then restores the
+                desktop changes it made.
               </p>
               <ul className="space-y-4 mb-10 flex-1">
                 {pro.map((f) => (

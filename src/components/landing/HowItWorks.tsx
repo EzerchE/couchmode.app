@@ -19,8 +19,8 @@ const steps = [
   {
     n: "03",
     icon: Sparkles,
-    title: "Pro automates the setup",
-    body: "Pro can close selected desktop apps and apply supported audio, HDR, display, notification, and power settings for the session.",
+    title: "Pro tidies up for the session",
+    body: "Pro can pick the launcher and close the desktop apps you select (Resource Control), so your session starts clean.",
     detail: "Pro · 7-day trial in app",
   },
   {

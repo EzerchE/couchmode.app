@@ -14,11 +14,6 @@ const slides = [
     alt: "CouchMode app picker: pick the running apps to close for a couch session.",
   },
   {
-    src: "/screenshots/app-session-tweaks.png",
-    label: "Session Tweaks",
-    alt: "CouchMode Session Tweaks: supported notification, display, and power settings for the session.",
-  },
-  {
     src: "/screenshots/app-general.png",
     label: "General",
     alt: "CouchMode General: arm CouchMode when a controller connects and pick your launcher.",

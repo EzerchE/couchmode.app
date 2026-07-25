@@ -15,9 +15,11 @@ const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v3.png";
 const releaseFacts = [
   { label: "Direct download", value: "Not open yet" },
   { label: "Platform", value: "Windows 11 recommended · 64-bit" },
+  { label: "Install", value: "Per-user installer, no admin rights, built-in update check" },
+  { label: "Code signing", value: "Being set up; builds are unsigned until it is enabled" },
   {
     label: "Public beta will include",
-    value: "Version, release date, SHA256 checksum, signed status, and install notes",
+    value: "Version, release date, SHA256 checksum, signing status, and install notes",
   },
   {
     label: "Pricing",
@@ -95,9 +97,10 @@ function Download() {
           </h1>
 
           <p className="mx-auto mt-5 max-w-md text-muted-foreground">
-            CouchMode for Windows is in private testing while the signed public
-            beta build is prepared. Public download will open here once the
-            signed build, SHA256 checksum, and release notes are ready.
+            CouchMode for Windows is in private testing. Code signing is still
+            being set up, so builds are unsigned for now. The public download
+            opens here only once a signed build, its SHA256 checksum, and release
+            notes are approved.
           </p>
 
           <div className="mt-8 flex justify-center">
