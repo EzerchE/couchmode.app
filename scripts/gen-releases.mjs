@@ -43,7 +43,9 @@ function toPublicRelease(r) {
     sha256: r.sha256,
     sizeBytes: r.sizeBytes,
     critical: r.critical,
+    signed: r.signed,
     minimumSupportedVersion: r.minimumSupportedVersion,
+    minimumSupportedVersionNumeric: r.minimumSupportedVersionNumeric,
     summary: r.summary ?? null,
     notes: r.notes,
     knownIssues: r.knownIssues,
@@ -59,6 +61,12 @@ const latestManifest = {
   latestVersionNumeric: latest.versionNumeric,
   fileVersion: latest.fileVersion,
   minimumSupportedVersion: latest.minimumSupportedVersion,
+  // The app compares THIS field (UpdateCheck.cs reads minimumSupportedVersionNumeric).
+  // Without it the below-minimum gate silently never fires: the client deliberately
+  // refuses to infer a minimum from the display string, so `below` stays false.
+  // Both are emitted so any older reader keeps working.
+  minimumSupportedVersionNumeric: latest.minimumSupportedVersionNumeric,
+  signed: latest.signed,
   publishedUtc: latest.releasedAt,
   downloadPageUrl: latest.downloadPageUrl,
   sha256: latest.sha256,

@@ -22,7 +22,15 @@ export interface Release {
   /** Installer size in bytes, or null until the installer is built. */
   sizeBytes: number | null;
   critical: boolean;
+  /** True once the installer for this release is Authenticode-signed. */
+  signed: boolean;
   minimumSupportedVersion: string;
+  /**
+   * Dotted numeric minimum, e.g. "0.4.10.30". This is the field the app's update
+   * check actually compares (UpdateCheck.cs reads minimumSupportedVersionNumeric);
+   * the display string above is kept for readability and older readers.
+   */
+  minimumSupportedVersionNumeric: string;
   /** Public page that describes this release. */
   downloadPageUrl: string;
   /** Hosted installer URL. Null while public download is disabled. */

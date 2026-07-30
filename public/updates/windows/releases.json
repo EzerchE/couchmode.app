@@ -1,6 +1,35 @@
 [
   {
     "channel": "standalone",
+    "version": "0.4.10-beta.182",
+    "fileVersion": "0.4.10.182",
+    "releasedAt": "2026-07-30T00:00:00Z",
+    "downloadPageUrl": "https://couchmode.app/download",
+    "sha256": "1A4880AFAD411033E0228197CA4AABCA4A0DBDE4F23CD1318652D1D6555401FD",
+    "sizeBytes": 3078112,
+    "critical": false,
+    "signed": true,
+    "minimumSupportedVersion": "0.4.10-beta.30",
+    "minimumSupportedVersionNumeric": "0.4.10.30",
+    "summary": "Signed installer, corrected licensing: one 7-day in-app Pro trial, then Free unless an active Patreon membership applies.",
+    "notes": [
+      "The installer is code-signed and timestamped.",
+      "Every installation gets one 7-day in-app Pro trial with a visible countdown; when it ends CouchMode returns to Free.",
+      "Pro access comes only from an active Patreon membership: Pro Version is $3/month for up to 2 active Windows devices, Pro Supporter is $5/month for up to 5.",
+      "A connected Patreon account without a qualifying tier no longer grants Pro.",
+      "Disconnect Patreon from this PC now completes even when the licensing service cannot be reached.",
+      "Connecting Patreon works out of the box on beta builds.",
+      "Patreon status messages describe the membership only, and no longer imply that your CouchMode licence expired.",
+      "If your device limit drops, the extra devices are released automatically instead of staying active."
+    ],
+    "knownIssues": [
+      "Public download is not enabled yet.",
+      "Devices can only be released from the PC they are on; there is no in-app option to sign out of all devices.",
+      "Xbox full-screen availability depends on your Windows version, device support, region, and Microsoft rollout status."
+    ]
+  },
+  {
+    "channel": "standalone",
     "version": "0.4.10-beta.45",
     "fileVersion": "0.4.10.45",
     "releasedAt": "2026-06-25T00:00:00Z",
@@ -8,7 +37,9 @@
     "sha256": "3FA4E82C3CBAA9CBBE3F81130432FA3326FF37DE2EE8952C01983A7FB40D1CA2",
     "sizeBytes": null,
     "critical": false,
+    "signed": false,
     "minimumSupportedVersion": "0.4.10-beta.30",
+    "minimumSupportedVersionNumeric": "0.4.10.30",
     "summary": "Report sending, update checks, calmer Xbox full-screen unavailable state, and CouchMode branding updates.",
     "notes": [
       "Report a problem can send user-approved reports.",
