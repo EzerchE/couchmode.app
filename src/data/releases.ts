@@ -35,6 +35,12 @@ export interface Release {
   downloadPageUrl: string;
   /** Hosted installer URL. Null while public download is disabled. */
   installerUrl: string | null;
+  /**
+   * Gates the public download link. While false the site shows no installer URL
+   * and validate-release-safety refuses ANY installer reference in the built
+   * output; when true only this release's exact installerUrl is allowed.
+   */
+  downloadEnabled: boolean;
   /** Optional one-line summary for compact changelog rows. */
   summary?: string;
   notes: string[];

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { Clock, PackageOpen, ShieldAlert } from "lucide-react";
+import { Clock, Download as DownloadIcon, PackageOpen, ShieldAlert } from "lucide-react";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { trackEvent } from "@/lib/analytics";
@@ -8,18 +8,27 @@ import { latestRelease } from "@/data/releases";
 
 const META_TITLE = "CouchMode Download Status - Windows public beta";
 const META_DESC =
-  "CouchMode for Windows is in private testing while the signed public beta build is prepared. The public download opens here on couchmode.app once the signed build, checksum, and release notes are ready.";
+  "Download CouchMode for Windows. Signed public beta installer with its SHA256 checksum, release notes, and a 7-day in-app Pro trial.";
 const CANONICAL = "https://couchmode.app/download/";
 const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v3.png";
 
+const downloadOpen = latestRelease.downloadEnabled && !!latestRelease.installerUrl;
+
 const releaseFacts = [
-  { label: "Direct download", value: "Not open yet" },
+  {
+    label: "Direct download",
+    value: downloadOpen ? `Open · ${latestRelease.version}` : "Not open yet",
+  },
   { label: "Platform", value: "Windows 11 recommended · 64-bit" },
   { label: "Install", value: "Per-user installer, no admin rights, built-in update check" },
-  { label: "Code signing", value: "Being set up; builds are unsigned until it is enabled" },
   {
-    label: "Public beta will include",
-    value: "Version, release date, SHA256 checksum, signing status, and install notes",
+    label: "Code signing",
+    // Only the fact that the build is signed and timestamped. The certificate
+    // subject carries a personal address and is deliberately never published;
+    // trust comes from the SHA256 below plus Windows' own signature check.
+    value: latestRelease.signed
+      ? "Authenticode signed and timestamped"
+      : "Being set up; builds are unsigned until it is enabled",
   },
   {
     label: "Pricing",
@@ -97,21 +106,36 @@ function Download() {
           </h1>
 
           <p className="mx-auto mt-5 max-w-md text-muted-foreground">
-            CouchMode for Windows is in private testing. Code signing is still
-            being set up, so builds are unsigned for now. The public download
-            opens here only once a signed build, its SHA256 checksum, and release
-            notes are approved.
+            {downloadOpen
+              ? "CouchMode for Windows is in public beta. The installer below is signed and timestamped; its SHA256 checksum and release notes are published so you can verify the file before you run it."
+              : "CouchMode for Windows is in private testing. The public download opens here only once a signed build, its SHA256 checksum, and release notes are approved."}
           </p>
 
           <div className="mt-8 flex justify-center">
-            <button
-              type="button"
-              aria-disabled="true"
-              disabled
-              className="inline-flex cursor-not-allowed items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-muted-foreground"
-            >
-              Download opening soon
-            </button>
+            {downloadOpen ? (
+              <a
+                href={latestRelease.installerUrl ?? undefined}
+                onClick={() =>
+                  trackEvent("download_click", {
+                    section: "download",
+                    version: latestRelease.version,
+                  })
+                }
+                className="inline-flex items-center gap-2 rounded-full bg-aurora px-6 py-3 text-sm font-medium text-background transition hover:opacity-90"
+              >
+                <DownloadIcon className="h-4 w-4" />
+                Download for Windows · {latestRelease.version}
+              </a>
+            ) : (
+              <button
+                type="button"
+                aria-disabled="true"
+                disabled
+                className="inline-flex cursor-not-allowed items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-muted-foreground"
+              >
+                Download opening soon
+              </button>
+            )}
           </div>
 
           <dl className="mt-10 grid gap-3 text-left">
@@ -147,13 +171,13 @@ function Download() {
               <div className="flex items-center gap-2">
                 <ShieldAlert className="h-4 w-4 text-primary" />
                 <h2 className="text-sm font-medium text-foreground">
-                  No public installer yet
+                  {downloadOpen ? "Download only from here" : "No public installer yet"}
                 </h2>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                There&apos;s no public download link right now. Any CouchMode
-                installer offered elsewhere is not from us. Please wait for the
-                official build to appear here.
+                {downloadOpen
+                  ? "This page links to the only official CouchMode installer. Any CouchMode installer offered elsewhere is not from us; check the SHA256 below and the publisher Windows shows when you run it."
+                  : "There's no public download link right now. Any CouchMode installer offered elsewhere is not from us. Please wait for the official build to appear here."}
               </p>
             </div>
           </div>
@@ -161,7 +185,7 @@ function Download() {
           <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-left">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <h2 className="text-sm font-medium text-foreground">
-                Latest internal / pre-public metadata
+                {downloadOpen ? "Build details" : "Latest internal / pre-public metadata"}
               </h2>
               <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-foreground/85">
                 {latestRelease.version}
@@ -169,14 +193,16 @@ function Download() {
             </div>
 
             <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
-              This is internal pre-public build metadata, not the public
-              download candidate. It is published so you can verify a build you
-              already have during private testing.
+              {downloadOpen
+                ? "Compare this checksum with the file you downloaded before running it. Windows will also show the publisher when you launch the installer."
+                : "This is internal pre-public build metadata, not the public download candidate. It is published so you can verify a build you already have during private testing."}
             </p>
 
             <div className="mt-4">
               <p className="text-xs uppercase tracking-wider text-muted-foreground">
-                SHA256 (for verifying a build you already have)
+                {downloadOpen
+                  ? "SHA256 (verify before running)"
+                  : "SHA256 (for verifying a build you already have)"}
               </p>
               <code className="mt-1 block break-all font-mono text-xs text-foreground/80">
                 {latestRelease.sha256}

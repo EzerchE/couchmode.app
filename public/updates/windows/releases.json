@@ -9,6 +9,8 @@
     "sizeBytes": 3078112,
     "critical": false,
     "signed": true,
+    "downloadEnabled": true,
+    "installerUrl": "https://github.com/EzerchE/couchmode-releases/releases/download/v0.4.10-beta.182/CouchMode-Setup-0.4.10-beta.182.exe",
     "minimumSupportedVersion": "0.4.10-beta.30",
     "minimumSupportedVersionNumeric": "0.4.10.30",
     "summary": "Signed installer, corrected licensing: one 7-day in-app Pro trial, then Free unless an active Patreon membership applies.",
@@ -23,7 +25,6 @@
       "If your device limit drops, the extra devices are released automatically instead of staying active."
     ],
     "knownIssues": [
-      "Public download is not enabled yet.",
       "Devices can only be released from the PC they are on; there is no in-app option to sign out of all devices.",
       "Xbox full-screen availability depends on your Windows version, device support, region, and Microsoft rollout status."
     ]
@@ -38,6 +39,8 @@
     "sizeBytes": null,
     "critical": false,
     "signed": false,
+    "downloadEnabled": false,
+    "installerUrl": null,
     "minimumSupportedVersion": "0.4.10-beta.30",
     "minimumSupportedVersionNumeric": "0.4.10.30",
     "summary": "Report sending, update checks, calmer Xbox full-screen unavailable state, and CouchMode branding updates.",

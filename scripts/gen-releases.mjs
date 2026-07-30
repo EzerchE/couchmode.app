@@ -31,8 +31,8 @@ function writeJson(name, data) {
   return outPath;
 }
 
-// Public-only view of a release. Deliberately omits installerUrl (public
-// download is disabled) and any non-public/internal fields.
+// Public-only view of a release. installerUrl is published ONLY when this release
+// has downloadEnabled set; otherwise it stays null so no installer is exposed.
 function toPublicRelease(r) {
   return {
     channel: r.channel,
@@ -44,6 +44,8 @@ function toPublicRelease(r) {
     sizeBytes: r.sizeBytes,
     critical: r.critical,
     signed: r.signed,
+    downloadEnabled: r.downloadEnabled === true,
+    installerUrl: r.downloadEnabled === true ? r.installerUrl : null,
     minimumSupportedVersion: r.minimumSupportedVersion,
     minimumSupportedVersionNumeric: r.minimumSupportedVersionNumeric,
     summary: r.summary ?? null,
