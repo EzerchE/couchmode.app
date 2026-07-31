@@ -98,7 +98,7 @@ function Download() {
         <div className="mx-auto w-full max-w-2xl rounded-3xl glass p-8 text-center sm:p-12">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-foreground/85">
             <Clock className="h-3.5 w-3.5 text-primary" />
-            Controlled pre-public beta
+            {downloadOpen ? "Public beta" : "Controlled pre-public beta"}
           </div>
 
           <h1 className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">

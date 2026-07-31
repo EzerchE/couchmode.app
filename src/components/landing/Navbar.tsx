@@ -5,7 +5,7 @@ import { trackEvent } from "@/lib/analytics";
 const links = [
   { href: "/#how", label: "How it works" },
   { href: "/#pricing", label: "Pricing" },
-  { href: "/#download", label: "Status" },
+  { href: "/#download", label: "Get CouchMode" },
 ];
 
 export function Navbar() {

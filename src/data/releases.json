@@ -1,28 +1,26 @@
 [
   {
-    "version": "0.4.10-beta.182",
-    "versionNumeric": "0.4.10.182",
-    "fileVersion": "0.4.10.182",
+    "version": "0.4.10-beta.183",
+    "versionNumeric": "0.4.10.183",
+    "fileVersion": "0.4.10.183",
     "channel": "standalone",
-    "releasedAt": "2026-07-30T00:00:00Z",
-    "sha256": "1A4880AFAD411033E0228197CA4AABCA4A0DBDE4F23CD1318652D1D6555401FD",
-    "sizeBytes": 3078112,
+    "releasedAt": "2026-07-31T00:00:00Z",
+    "sha256": "96DA0200919D927B2325FE4F90F65A1F142AA33D1FC21F4361DF707E4E5C67E5",
+    "sizeBytes": 3079696,
     "signed": true,
     "critical": false,
     "minimumSupportedVersion": "0.4.10-beta.30",
     "minimumSupportedVersionNumeric": "0.4.10.30",
     "downloadPageUrl": "https://couchmode.app/download",
-    "installerUrl": "https://github.com/EzerchE/couchmode-releases/releases/download/v0.4.10-beta.182/CouchMode-Setup-0.4.10-beta.182.exe",
-    "summary": "Signed installer, corrected licensing: one 7-day in-app Pro trial, then Free unless an active Patreon membership applies.",
+    "installerUrl": "https://github.com/EzerchE/couchmode-releases/releases/download/v0.4.10-beta.183/CouchMode-Setup-0.4.10-beta.183.exe",
+    "summary": "Startup licensing now recovers on its own and says what it did: Pro is restored after a failed first read instead of silently dropping to Free.",
     "notes": [
-      "The installer is code-signed and timestamped.",
-      "Every installation gets one 7-day in-app Pro trial with a visible countdown; when it ends CouchMode returns to Free.",
-      "Pro access comes only from an active Patreon membership: Pro Version is $3/month for up to 2 active Windows devices, Pro Supporter is $5/month for up to 5.",
-      "A connected Patreon account without a qualifying tier no longer grants Pro.",
-      "Disconnect Patreon from this PC now completes even when the licensing service cannot be reached.",
-      "Connecting Patreon works out of the box on beta builds.",
-      "Patreon status messages describe the membership only, and no longer imply that your CouchMode licence expired.",
-      "If your device limit drops, the extra devices are released automatically instead of staying active."
+      "If CouchMode cannot read your saved Pro entitlement when it starts, it now retries the membership check automatically instead of leaving you on Free.",
+      "The retry is bounded: four attempts spread over about seven minutes, then it stops.",
+      "It stops immediately on a settled answer - a lapsed membership, an account with no qualifying tier, or a device limit - so it never keeps asking pointlessly.",
+      "Startup licensing decisions are now written to the log with a reason, so a failure can be diagnosed afterwards instead of disappearing silently.",
+      "The entitlement file is only reported as saved once it has been read back and verified.",
+      "Pricing, the 7-day trial, offline grace, tiers and device limits are unchanged."
     ],
     "knownIssues": [
       "Devices can only be released from the PC they are on; there is no in-app option to sign out of all devices.",
@@ -50,7 +48,7 @@
       "Installer and app identity use CouchMode branding."
     ],
     "knownIssues": [
-      "Public download is not enabled yet."
+      "Public download was not enabled for this build."
     ],
     "signed": false,
     "minimumSupportedVersionNumeric": "0.4.10.30",

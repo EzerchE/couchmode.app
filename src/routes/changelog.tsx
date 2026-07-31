@@ -4,6 +4,11 @@ import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { releases } from "@/data/releases";
 
+// Same rule the download page uses, so the two can never contradict each other:
+// a release counts as downloadable only when it opts in AND carries a URL.
+const downloadOpen =
+  releases[0]?.downloadEnabled === true && !!releases[0]?.installerUrl;
+
 const META_TITLE = "CouchMode Changelog - Windows beta release notes";
 const META_DESC =
   "Release notes and known issues for CouchMode Windows beta builds, newest first.";
@@ -83,9 +88,9 @@ function Changelog() {
             newest first.
           </p>
           <p className="mt-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-xs leading-relaxed text-muted-foreground">
-            Public download is not enabled yet. This page reflects the currently
-            published release metadata, which may differ from the internal
-            build in preparation for the signed public beta.
+            {downloadOpen
+              ? "The latest signed public beta is available on the download page. Earlier entries are kept here as release history."
+              : "Public download is not enabled yet. This page reflects the currently published release metadata, which may differ from the internal build in preparation for the signed public beta."}
           </p>
         </header>
 
