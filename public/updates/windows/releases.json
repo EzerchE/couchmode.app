@@ -24,7 +24,8 @@
     ],
     "knownIssues": [
       "Devices can only be released from the PC they are on; there is no in-app option to sign out of all devices.",
-      "Xbox full-screen availability depends on your Windows version, device support, region, and Microsoft rollout status."
+      "Xbox full-screen availability depends on your Windows version, device support, region, and Microsoft rollout status.",
+      "Experimental: Xbox Full-Screen Experience depends on Windows system behavior. On some devices, controller navigation may not receive focus automatically and may require pressing the Xbox button once."
     ]
   },
   {
