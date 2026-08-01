@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "@tanstack/react-router";
 import { CouchModeMark, CouchModeWordmark } from "@/components/brand/CouchModeMark";
 import { trackEvent } from "@/lib/analytics";
 
@@ -6,10 +7,19 @@ const links = [
   { href: "/#how", label: "How it works" },
   { href: "/#pricing", label: "Pricing" },
   { href: "/#download", label: "Get CouchMode" },
+  { href: "/changelog", label: "Changelog" },
 ];
+
+// A link is "current" only when it points at a real page and that page is open.
+// The in-page anchors (/#how, /#pricing, /#download) are never current: they are
+// positions on the home page, not destinations, so marking them would be wrong.
+const normalizePath = (p: string) => (p.length > 1 ? p.replace(/\/+$/, "") : p);
+const isCurrentPage = (href: string, pathname: string) =>
+  !href.includes("#") && normalizePath(href) === normalizePath(pathname);
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = useLocation({ select: (l) => l.pathname });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -41,21 +51,32 @@ export function Navbar() {
             />
           </a>
 
-          <nav className="hidden md:flex items-center gap-8">
-            {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {l.label}
-              </a>
-            ))}
+          {/* gap tightens at md so a fourth item cannot crowd the CTA on the
+              narrowest screen this nav is shown at; lg keeps the original spacing. */}
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+            {links.map((l) => {
+              const current = isCurrentPage(l.href, pathname);
+              return (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  aria-current={current ? "page" : undefined}
+                  className={`whitespace-nowrap text-sm transition-colors ${
+                    current
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {l.label}
+                </a>
+              );
+            })}
           </nav>
 
           <a
             href="/download"
-            className="hidden sm:inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] hover:bg-white/[0.08] text-foreground/85 px-4 py-2 text-sm font-medium transition"
+            aria-current={isCurrentPage("/download", pathname) ? "page" : undefined}
+            className="hidden sm:inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] hover:bg-white/[0.08] text-foreground/85 px-4 py-2 text-sm font-medium transition whitespace-nowrap"
             onClick={() => {
               trackEvent("download_opening_soon_click", {
                 section: "header",
