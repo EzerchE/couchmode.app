@@ -81,7 +81,7 @@ export const faqs = [
   {
     question: "How do I capture diagnostics if something looks wrong on screen?",
     answer:
-      "Press Ctrl+Alt+Shift+F12 while the problem is still visible. CouchMode saves a snapshot of the current window state to its own file in %APPDATA%\\CouchMode, alongside app.log. It changes nothing on screen, and it works whether or not debug logging is turned on. Attach that file, and app.log, when you contact support.",
+      "Press Ctrl+Alt+Shift+F12 while the problem is still visible. CouchMode saves a snapshot of the current window state to its own file in %APPDATA%\\CouchMode, alongside app.log. It changes nothing on screen, and it works whether or not debug logging is turned on. Nothing is uploaded automatically: the file stays on your PC, and you choose what to send. Attach it, and app.log, when you contact support.",
   },
   {
     question: "Does CouchMode improve game performance?",

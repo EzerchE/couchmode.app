@@ -18,7 +18,7 @@
       "Steam Big Picture, Playnite fullscreen and a custom app of your choice are sessions CouchMode owns: they close reliably when the controller disconnects, and the desktop comes back.",
       "The return to the desktop is verified on every exit, not assumed.",
       "Optional Resource Control closes the apps you selected for the session and reopens them afterwards. It works from a list frozen before the session starts, so nothing you open later is ever touched.",
-      "If your Pro entitlement cannot be read at startup, CouchMode now retries the membership check automatically instead of silently dropping to Free.",
+      "General reliability improvements for Pro access, membership checks, and startup licensing.",
       "Pricing, the 7-day trial, offline grace, tiers and device limits are unchanged."
     ],
     "knownIssues": [
