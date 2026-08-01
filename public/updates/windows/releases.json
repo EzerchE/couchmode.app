@@ -13,18 +13,16 @@
     "installerUrl": "https://github.com/EzerchE/couchmode-releases/releases/download/v0.4.10-beta.183/CouchMode-Setup-0.4.10-beta.183.exe",
     "minimumSupportedVersion": "0.4.10-beta.30",
     "minimumSupportedVersionNumeric": "0.4.10.30",
-    "summary": "Startup licensing now recovers on its own and says what it did: Pro is restored after a failed first read instead of silently dropping to Free.",
+    "summary": "Plug in a controller and Steam Big Picture, Playnite or the app you chose opens full screen; unplug it and CouchMode closes the session and brings the desktop back.",
     "notes": [
-      "If CouchMode cannot read your saved Pro entitlement when it starts, it now retries the membership check automatically instead of leaving you on Free.",
-      "The retry is bounded: four attempts spread over about seven minutes, then it stops.",
-      "It stops immediately on a settled answer - a lapsed membership, an account with no qualifying tier, or a device limit - so it never keeps asking pointlessly.",
-      "Startup licensing decisions are now written to the log with a reason, so a failure can be diagnosed afterwards instead of disappearing silently.",
-      "The entitlement file is only reported as saved once it has been read back and verified.",
+      "Steam Big Picture, Playnite fullscreen and a custom app of your choice are sessions CouchMode owns: they close reliably when the controller disconnects, and the desktop comes back.",
+      "The return to the desktop is verified on every exit, not assumed.",
+      "Optional Resource Control closes the apps you selected for the session and reopens them afterwards. It works from a list frozen before the session starts, so nothing you open later is ever touched.",
+      "If your Pro entitlement cannot be read at startup, CouchMode now retries the membership check automatically instead of silently dropping to Free.",
       "Pricing, the 7-day trial, offline grace, tiers and device limits are unchanged."
     ],
     "knownIssues": [
       "Devices can only be released from the PC they are on; there is no in-app option to sign out of all devices.",
-      "Xbox full-screen availability depends on your Windows version, device support, region, and Microsoft rollout status.",
       "Experimental: Xbox Full-Screen Experience depends on Windows system behavior. On some devices, controller navigation may not receive focus automatically and may require pressing the Xbox button once."
     ]
   },

@@ -79,6 +79,11 @@ export const faqs = [
       "Pro features return to Free after an entitlement refresh, and the core Free flow remains available.",
   },
   {
+    question: "How do I capture diagnostics if something looks wrong on screen?",
+    answer:
+      "Press Ctrl+Alt+Shift+F12 while the problem is still visible. CouchMode saves a snapshot of the current window state to its own file in %APPDATA%\\CouchMode, alongside app.log. It changes nothing on screen, and it works whether or not debug logging is turned on. Attach that file, and app.log, when you contact support.",
+  },
+  {
     question: "Does CouchMode improve game performance?",
     answer:
       "No. CouchMode does not promise FPS gains. With Pro it can reduce session clutter (close selected apps) and apply supported session settings such as Windows Game Mode and a high-performance power plan, then restore them when the session ends.",

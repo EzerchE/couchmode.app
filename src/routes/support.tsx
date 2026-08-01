@@ -74,6 +74,15 @@ function Support() {
             In CouchMode, open About &gt; Export support bundle and attach the
             generated file if you can.
           </li>
+          <li>
+            If something looks wrong on screen, a window that should not be
+            there or a controller that will not navigate a full-screen session,
+            press Ctrl+Alt+Shift+F12 while it is still visible. CouchMode saves
+            a snapshot of the current window state to its own file in
+            %APPDATA%\CouchMode, alongside app.log. It changes nothing on
+            screen, and it works whether or not debug logging is turned on.
+            Attach that file and app.log.
+          </li>
         </ul>
       </div>
       <p>
