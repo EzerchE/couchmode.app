@@ -68,9 +68,26 @@ function Terms() {
           account or credit card.
         </p>
         <p className="mt-2">
-          Patreon membership may include a separate trial before billing.
-          Patreon membership requires a Patreon account and payment method and
-          is managed by Patreon.
+          Eligible first-time members can start a separate 7-day Patreon trial on
+          the available paid tiers. Patreon requires a payment method but does not
+          charge the membership fee until that trial ends. The Patreon trial is
+          separate from CouchMode&apos;s 7-day in-app Pro trial, and Patreon
+          decides who is eligible for it.
+        </p>
+        <ul className="mt-2 list-disc space-y-1 pl-5">
+          <li>
+            In-app trial: 7 days, no CouchMode account and no credit card
+            required.
+          </li>
+          <li>
+            Patreon trial: a separate 7 days, administered by Patreon, payment
+            method required, billing begins after the trial if the membership
+            continues.
+          </li>
+        </ul>
+        <p className="mt-2">
+          Patreon membership requires a Patreon account and payment method and is
+          managed by Patreon.
         </p>
       </section>
       <section>

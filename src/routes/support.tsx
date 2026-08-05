@@ -38,8 +38,13 @@ function Support() {
       <p>
         Need help with CouchMode? The quickest way is from the app itself:
         CouchMode can submit a bug report, compatibility issue, or feature
-        request. Submitting is always your choice, and you see what is included
-        before it is sent.
+        request. Submitting is always your choice, you can review exactly what is
+        included before it is sent, and nothing is sent automatically.
+      </p>
+      <p>
+        CouchMode is a signed public beta for Windows 11 &middot; 64-bit.
+        Diagnostics are generated locally on your PC, and a report reaches us
+        only when you submit it.
       </p>
       <p>
         You can also email us at{" "}

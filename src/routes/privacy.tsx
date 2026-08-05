@@ -69,8 +69,22 @@ function Privacy() {
           count or state, display topology, and error or status messages.
         </p>
         <p className="mt-2">
-          If you email support, your email address and message contents may be
-          used to respond to your request.
+          CouchMode can send a problem report only when you choose to submit one
+          from the app. You can review the exact report before sending it, and it
+          may include the diagnostic details described above. Nothing is sent
+          automatically, and cancelling or closing the report without submitting
+          it sends nothing.
+        </p>
+        <p className="mt-2">
+          If you email support at{" "}
+          <a
+            className="text-foreground underline-offset-4 hover:underline"
+            href="mailto:support@couchmode.app"
+          >
+            support@couchmode.app
+          </a>
+          , your email address and message contents may be used to respond to
+          your request.
         </p>
       </section>
       <section>

@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { InfoPage } from "@/components/utility/InfoPage";
 import { breadcrumbLd } from "@/lib/seo";
 
-const TITLE = "Refund Policy";
-const META_TITLE = "CouchMode Refund Policy";
+const TITLE = "Patreon billing and refunds";
+const META_TITLE = "CouchMode Patreon billing and refunds";
 const META_DESC =
   "The CouchMode refund policy for public beta Pro access: Patreon handles billing, cancellation, and refunds, and Pro may return to Free after an entitlement refresh.";
 const CANONICAL = "https://couchmode.app/refund/";
@@ -35,23 +35,44 @@ export const Route = createFileRoute("/refund")({
 function Refund() {
   return (
     <InfoPage title={TITLE}>
+      <p>CouchMode Free does not require a purchase.</p>
       <p>
-        During public beta, ongoing Pro access is handled through Patreon
-        membership. Billing, cancellation, and refund handling may be managed by
-        Patreon according to its policies.
+        CouchMode Pro and Pro Supporter memberships are billed and managed
+        through Patreon. CouchMode does not operate a separate refund programme
+        outside Patreon, and CouchMode does not store card details or process
+        Patreon charges.
       </p>
       <p>
-        If membership is canceled, refunded, or becomes inactive, Pro access may
-        return to Free mode after an entitlement refresh. The core Free flow
-        remains available.
+        Refund eligibility, requests and decisions are governed by Patreon&apos;s
+        current policies and processes. To review an eligible charge or ask for
+        assistance, use your{" "}
+        <a
+          className="text-foreground underline-offset-4 hover:underline"
+          href="https://support.patreon.com/hc/en-us/articles/360029123511"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Patreon billing history or Patreon Support
+        </a>
+        .
       </p>
       <p>
-        Refund eligibility and processing are decided by Patreon under its own
-        policies. CouchMode cannot override Patreon&apos;s billing or refund
-        decisions.
+        Cancelling a Patreon membership prevents future renewals according to
+        Patreon&apos;s billing rules. Cancellation does not itself create a
+        retroactive refund.
       </p>
       <p>
-        Questions can be sent to{" "}
+        Patreon may apply VAT, GST, sales tax or similar charges based on the
+        member&apos;s location and the benefits included in the membership. These
+        amounts are calculated and handled through Patreon.
+      </p>
+      <p>
+        If membership is cancelled, refunded, or becomes inactive, Pro access
+        returns to Free after an entitlement refresh. Your CouchMode settings
+        remain stored and the Free session flow remains available.
+      </p>
+      <p>
+        For CouchMode product support, contact{" "}
         <a className="text-foreground underline-offset-4 hover:underline" href="mailto:support@couchmode.app">
           support@couchmode.app
         </a>
