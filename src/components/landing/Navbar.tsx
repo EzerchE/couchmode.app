@@ -76,17 +76,34 @@ export function Navbar() {
           <a
             href="/download"
             aria-current={isCurrentPage("/download", pathname) ? "page" : undefined}
-            className="hidden sm:inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] hover:bg-white/[0.08] text-foreground/85 px-4 py-2 text-sm font-medium transition whitespace-nowrap"
+            /* The beta download is open, so the header action is a primary CTA. Padding is
+               unchanged from the previous outlined pill, so the header cannot shift; only the
+               fill, text colour and glow change.
+               The gradient is the brand purple-to-blue at a DARKER lightness (0.55 on both
+               stops) rather than the shared bg-aurora utility: measured against white text,
+               bg-aurora gives 3.49 at the purple end and 2.65 at the blue end, both below the
+               4.5 WCAG AA threshold for 14px text. At 0.55 the same hues measure 5.23 and 4.68.
+               An explicit focus ring is added because the site has no global focus style and
+               the browser default sits poorly on a filled gradient. */
+            className="hidden sm:inline-flex items-center gap-2 rounded-full text-primary-foreground glow-violet px-4 py-2 text-sm font-medium transition hover:brightness-110 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            /* Inline rather than an arbitrary Tailwind class: a nested
+               linear-gradient(...oklch(...)...) arbitrary value produces no rule at all, which
+               would leave the button with no background. Inline keeps the change in this one
+               file and cannot be dropped by the class scanner. */
+            style={{
+              backgroundImage:
+                "linear-gradient(135deg, oklch(0.55 0.22 295), oklch(0.55 0.18 250))",
+            }}
             onClick={() => {
-              trackEvent("download_opening_soon_click", {
+              trackEvent("download_click", {
                 section: "header",
-                label: "Release status",
+                label: "Download",
                 target: "/download",
                 source: "header",
               });
             }}
           >
-            Release status
+            Download
           </a>
         </div>
       </div>
