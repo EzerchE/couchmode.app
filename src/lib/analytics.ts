@@ -1,8 +1,18 @@
+// THE allowlist. trackEvent drops any name that is not here, silently, so this list
+// and the real call sites must stay in step: when the public beta opened, the download
+// CTAs were renamed to download_click and every one of those events stopped reaching
+// dataLayer. Nothing surfaced it because the production build does not type-check.
+// `bun run typecheck` now runs before the Vite build, so a name that is not in this
+// union fails the build instead of going quietly missing.
+//
+// download_opening_soon_click and copy_sha_click were removed: both had zero call
+// sites after the download opened. Dead names are not kept for compatibility, because
+// a name nobody sends measures nothing.
 export const analyticsEvents = [
-  "download_opening_soon_click",
+  "download_click",
   "download_page_view",
+  "release_notes_click",
   "patreon_click",
-  "copy_sha_click",
   "faq_open",
   "scroll_75",
 ] as const;
