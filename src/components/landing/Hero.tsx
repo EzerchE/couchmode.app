@@ -29,7 +29,7 @@ export function Hero() {
 
           <div className="mt-4 inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs text-foreground/85 shadow-xl shadow-background/20">
             <span className="h-1.5 w-1.5 rounded-full bg-aurora" />
-            Public beta in preparation
+            Public beta now available
           </div>
 
           <h1
@@ -41,8 +41,9 @@ export function Hero() {
           </h1>
 
           <p className="hero-text-shadow mx-auto mt-6 max-w-xl text-base leading-relaxed text-foreground/78 sm:text-lg">
-            Turn on your controller and CouchMode opens your chosen launcher,
-            then brings your desktop back when the controller turns off.
+            Turn on your controller and CouchMode opens your chosen gaming
+            experience, prepares the session around your preferences, and brings
+            you back to a usable desktop when you&rsquo;re done.
           </p>
 
           <div className="mt-9 flex flex-wrap justify-center gap-3">
@@ -50,25 +51,29 @@ export function Hero() {
               href="/download"
               className="inline-flex items-center gap-2 rounded-full bg-aurora px-6 py-3 text-sm font-medium text-primary-foreground glow-violet transition hover:brightness-110"
               onClick={() => {
-                trackEvent("download_opening_soon_click", {
+                trackEvent("download_click", {
                   section: "hero",
-                  label: "Download opening soon",
+                  label: "Download for Windows",
                   target: "/download",
                   source: "hero",
                 });
               }}
             >
               <Download className="h-4 w-4" />
-              Download opening soon
+              Download for Windows
             </a>
             <a
               href="#pricing"
               className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-sm font-medium text-foreground transition hover:bg-white/[0.08]"
             >
               <Sparkles className="h-4 w-4" />
-              View Pro features
+              Explore Pro features
             </a>
           </div>
+
+          <p className="hero-text-shadow mt-4 text-xs text-foreground/60">
+            Windows 11 &middot; 64-bit &middot; Signed public beta
+          </p>
         </motion.div>
       </div>
 

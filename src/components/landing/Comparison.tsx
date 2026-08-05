@@ -11,11 +11,11 @@ const free = [
 ];
 
 const pro = [
-  "Launcher selection (Xbox, Steam Big Picture, Playnite, or a custom launcher)",
-  "Resource Control for apps you select",
+  "Launcher selection: Xbox, Steam Big Picture, Playnite, LaunchBox, GOG Galaxy, or a compatible custom launcher",
+  "Resource Control for the apps you select",
   "Session Tweaks: notifications, Game Bar recording, visual effects, Game Mode, power plan, HDR, display, and audio",
-  "Desktop snapshot and exact restore",
-  "Restores your previous Windows settings when the session ends",
+  "Restores the supported Windows settings CouchMode changed",
+  "Reopens selected Resource Control apps when configured",
   "Up to 2 active Windows devices with Pro",
   "Up to 5 active Windows devices with Pro Supporter",
 ];
@@ -37,9 +37,9 @@ export function Comparison() {
             Free for the essentials. Pro for deeper automation.
           </h2>
           <p className="mt-5 text-muted-foreground">
-            CouchMode’s core session flow is free. Pro adds launcher selection,
-            Resource Control for selected apps, Session Tweaks, and exact restore
-            of your Windows settings for supporters.
+            CouchMode’s core controller-first session flow is free. Pro adds
+            launcher selection, Resource Control, Session Tweaks, and deeper
+            restore automation.
           </p>
         </div>
 

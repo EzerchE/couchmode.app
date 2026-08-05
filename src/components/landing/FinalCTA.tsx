@@ -1,9 +1,18 @@
 import { motion } from "framer-motion";
 import { Download, Sparkles } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
+import { latestRelease } from "@/data/releases";
+
+// Read the direct-download state from the same release data the download page and
+// the update manifests are generated from, so this card can never advertise a
+// state the release data does not actually have.
+const downloadOpen = latestRelease.downloadEnabled && !!latestRelease.installerUrl;
 
 const channels = [
-  { label: "Direct download", status: "Not open yet" },
+  {
+    label: "Direct download",
+    status: downloadOpen ? `Open · ${latestRelease.version}` : "Preparing",
+  },
   { label: "Microsoft Store", status: "Planned" },
   { label: "Steam", status: "Planned" },
 ];
@@ -38,8 +47,9 @@ export function FinalCTA() {
               <span className="text-aurora">couch-native</span>?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-              Start with a 7-day in-app Pro trial. No account or credit card
-              required.
+              Download the signed Windows public beta and start with a 7-day
+              in-app Pro trial. No account or credit card is required for the
+              in-app trial.
             </p>
 
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
@@ -47,31 +57,31 @@ export function FinalCTA() {
                 href="/download"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-aurora text-primary-foreground px-6 py-3.5 text-sm font-medium glow-violet hover:brightness-110 transition"
                 onClick={() => {
-                  trackEvent("download_opening_soon_click", {
+                  trackEvent("download_click", {
                     section: "download",
-                    label: "Check release status",
+                    label: "Download for Windows",
                     target: "/download",
                     source: "final_cta",
                   });
                 }}
               >
                 <Download className="h-4 w-4" />
-                Check release status
+                Download for Windows
               </a>
               <a
-                href="/buy"
+                href="/changelog"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-6 py-3.5 text-sm font-medium hover:bg-white/[0.08] transition"
                 onClick={() => {
-                  trackEvent("patreon_click", {
+                  trackEvent("release_notes_click", {
                     section: "download",
-                    label: "Connect Patreon in the app",
-                    target: "/buy",
+                    label: "View release notes",
+                    target: "/changelog",
                     source: "final_cta",
                   });
                 }}
               >
                 <Sparkles className="h-4 w-4" />
-                Connect Patreon in the app
+                View release notes
               </a>
             </div>
 
