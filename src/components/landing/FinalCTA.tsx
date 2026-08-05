@@ -100,12 +100,12 @@ export function FinalCTA() {
         </motion.div>
 
         <p className="mx-auto mt-6 max-w-2xl text-center text-xs leading-relaxed text-muted-foreground/70">
-          Built for handheld Xbox Mode: on supported handhelds such as ROG Ally,
-          CouchMode can start inside Windows Xbox Mode, adopt the full-screen
-          session, apply supported session settings, and restore your desktop
-          when the controller turns off. Xbox Mode is provided by Windows and
-          Microsoft; availability and behavior depend on your device, Windows
-          version, Xbox app support, and Microsoft rollout.
+          CouchMode supports controller-first Windows handheld setups, including
+          devices such as ROG Ally. Where Windows provides the Xbox full-screen
+          experience, CouchMode can start or adopt that session and return control
+          to the desktop when the session ends. Availability and behavior depend on
+          the device, Windows version, Xbox app support, region and Microsoft
+          rollout.
         </p>
       </div>
     </section>

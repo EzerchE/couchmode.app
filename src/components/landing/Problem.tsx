@@ -4,18 +4,20 @@ import { Eye, Gamepad2, RotateCcw } from "lucide-react";
 const points = [
   {
     icon: Eye,
-    title: "Designed for 10-foot viewing",
-    body: "Desktop UI is built for arms-length. From the couch, everything's too small.",
+    title: "Designed for the big screen",
+    body: "Windows desktop interfaces are built for close viewing. CouchMode helps move the session into a controller-friendly gaming experience.",
   },
   {
     icon: Gamepad2,
-    title: "Controller-first, keyboard-free",
-    body: "Standard Windows doesn't take you into a controller-native experience automatically.",
+    // Deliberately not "keyboard-free": some Windows, launcher and device flows
+    // still ask for input, and this card must not promise otherwise.
+    title: "Controller-first",
+    body: "CouchMode can react when a compatible controller connects and start the gaming experience you selected.",
   },
   {
     icon: RotateCcw,
     title: "Leaves your setup intact",
-    body: "Most workarounds change your settings and forget to put them back.",
+    body: "CouchMode changes only the supported session settings you enable and restores the settings it changed when the session ends.",
   },
 ];
 
@@ -40,10 +42,10 @@ export function Problem() {
               It just wasn't built for the couch.
             </h2>
             <p className="mt-6 max-w-md leading-relaxed text-muted-foreground">
-              Your desktop is fine at a desk. From the couch, tiny text,
-              mouse-first menus, and background apps get in the way of a proper
-              gaming session. CouchMode bridges the gap without replacing Windows
-              or taking over your PC.
+              Your desktop works well at a desk. From the couch, small text,
+              mouse-first menus, and background apps can get in the way of a
+              controller-first gaming session. CouchMode bridges that gap without
+              replacing Windows or taking over your PC.
             </p>
           </motion.div>
 

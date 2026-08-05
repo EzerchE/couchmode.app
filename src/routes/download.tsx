@@ -6,9 +6,9 @@ import { Footer } from "@/components/landing/Footer";
 import { trackEvent } from "@/lib/analytics";
 import { latestRelease } from "@/data/releases";
 
-const META_TITLE = "CouchMode Download Status - Windows public beta";
+const META_TITLE = "Download CouchMode for Windows";
 const META_DESC =
-  "Download CouchMode for Windows. Signed public beta installer with its SHA256 checksum, release notes, and a 7-day in-app Pro trial.";
+  "Download the signed CouchMode public beta for Windows 11. Verify the published SHA-256 checksum and view the latest release notes.";
 const CANONICAL = "https://couchmode.app/download/";
 const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v3.png";
 

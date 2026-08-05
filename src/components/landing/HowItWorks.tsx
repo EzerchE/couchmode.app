@@ -12,23 +12,25 @@ const steps = [
   {
     n: "02",
     icon: Tv,
-    title: "CouchMode opens your chosen launcher",
-    body: "Use Xbox where supported, Steam Big Picture, Playnite, or a custom launcher.",
-    detail: "Free · Depends on Windows support",
+    title: "CouchMode opens your chosen gaming experience",
+    body: "Use the Windows Xbox full-screen experience where supported, or choose Steam Big Picture, Playnite, LaunchBox, GOG Galaxy or a compatible custom launcher with Pro.",
+    detail: "Free Xbox flow · More launchers with Pro",
   },
   {
     n: "03",
     icon: Sparkles,
-    title: "Pro sets the scene",
-    body: "Pro can close the desktop apps you select (Resource Control) and apply the session settings you choose - notifications, Game Bar recording, visual effects, Game Mode, power plan, HDR, display, and audio - then restore them afterward.",
-    detail: "Pro · 7-day trial in app",
+    title: "Pro prepares the session",
+    body: "Pro can close the desktop apps you select through Resource Control and apply the supported session settings you choose, including notifications, Game Bar recording, visual effects, Game Mode, power plan, HDR, display and audio.",
+    detail: "Pro · 7-day in-app trial",
   },
   {
     n: "04",
     icon: Undo2,
-    title: "Your desktop comes back when you're done",
-    body: "When the controller turns off, CouchMode exits the session and restores the changes it made.",
-    detail: "Free + Pro · Session restore",
+    // Usability-based, not geometry-based: no promise about window position, size,
+    // snap membership, minimised/maximised state or foreground order.
+    title: "Return to your desktop",
+    body: "When the session ends, CouchMode exits the gaming experience it started, restores the Windows settings it changed and returns control to the desktop.",
+    detail: "Free + Pro · Safe session return",
   },
 ];
 
@@ -49,9 +51,9 @@ export function HowItWorks() {
             From controller to couch in seconds.
           </h2>
           <p className="mt-5 max-w-xl text-muted-foreground">
-            Four steps, two of them automatic. Free covers the basic session
-            flow. Pro adds deeper automation during the trial or once Pro is
-            active.
+            CouchMode handles the session flow around the launcher and Windows
+            settings you choose. Free covers the essential controller-first flow.
+            Pro adds deeper session automation.
           </p>
         </div>
 

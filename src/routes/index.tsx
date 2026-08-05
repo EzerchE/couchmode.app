@@ -11,9 +11,9 @@ import { Footer } from "@/components/landing/Footer";
 
 const TITLE = "CouchMode - Controller-first gaming utility for Windows";
 const DESC =
-  "CouchMode starts a couch gaming session when your controller connects, opens your chosen launcher, and restores the changes it made when your session ends.";
+  "Turn on your controller, start your preferred gaming experience and return to a usable Windows desktop when the session ends. Download the signed CouchMode public beta.";
 const SOFTWARE_DESC =
-  "CouchMode is a Windows utility for controller-first couch gaming sessions. It can open your preferred launcher, clean up selected desktop apps, and restore the changes it made when the session ends.";
+  "CouchMode is a Windows utility for controller-first couch gaming sessions. It can open your preferred gaming experience, close the desktop apps you select, and restore the supported Windows settings it changed when the session ends.";
 const CANONICAL = "https://couchmode.app/";
 const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v3.png";
 

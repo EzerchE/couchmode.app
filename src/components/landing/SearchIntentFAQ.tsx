@@ -16,27 +16,27 @@ export const faqs = [
   {
     question: "What is CouchMode?",
     answer:
-      "CouchMode is a controller-first gaming utility for Windows. It starts a couch gaming session when your controller connects, opens your chosen launcher, and restores the changes it made when the session ends.",
+      "CouchMode is a controller-first gaming utility for Windows. It can start a couch gaming session when a compatible controller connects, open your chosen gaming experience and restore the supported session changes it made when the session ends.",
   },
   {
     question: "Does CouchMode replace the Windows shell?",
     answer:
-      "No. CouchMode is not a launcher or shell replacement. It prepares sessions around Windows and your existing gaming frontends.",
+      "No. CouchMode does not replace Explorer, the Windows shell or your launcher. It works around Windows and your existing gaming applications.",
   },
   {
     question: "What does CouchMode change on my PC?",
     answer:
-      "Only what you enable: it can enter the Xbox full screen experience or open your chosen launcher, and with Pro it can close the desktop apps you select (Resource Control) and apply supported session settings you choose - notifications, Game Bar recording, visual effects, Game Mode, power plan, HDR, display, and audio. It snapshots your setup first and restores the changes it made when the session ends. Services, elevated apps, and protected system components may remain.",
+      "Only the supported session actions you enable. CouchMode can open a gaming experience, close selected apps through Resource Control, and temporarily apply supported notification, display, audio, HDR, power and gaming settings. It restores the settings it changed when the session ends.",
   },
   {
     question: "Can CouchMode close Discord, Chrome, or other desktop apps before gaming?",
     answer:
-      "With Pro Resource Control, you can choose selected desktop apps to close around a session and reopen them afterward. Services, elevated apps, protected system components, and some apps that relaunch themselves may remain.",
+      "With Pro Resource Control, you choose which supported apps CouchMode may close for the session and whether they should reopen afterward. Apps you do not select are not intentionally closed. Services, elevated apps, protected system components and apps that relaunch themselves may remain.",
   },
   {
     question: "Can CouchMode start Steam Big Picture or another launcher?",
     answer:
-      "With Pro, choose Steam Big Picture, Playnite, LaunchBox, GOG Galaxy, or another compatible launcher. Free keeps the default Xbox full-screen flow where supported.",
+      "Yes, with Pro. Supported choices include Steam Big Picture, Playnite, LaunchBox, GOG Galaxy and compatible custom launchers. Free includes the default Xbox flow where supported.",
   },
   {
     question: "Does CouchMode support Playnite?",
@@ -46,7 +46,7 @@ export const faqs = [
   {
     question: "Does CouchMode support Windows Xbox Mode?",
     answer:
-      "CouchMode can help start and manage Windows Xbox Mode where Windows provides it. Otherwise CouchMode can open the Xbox app normally. Xbox Mode availability depends on Windows version, device support, Xbox app support, region, and Microsoft rollout status.",
+      "CouchMode can work with the Windows Xbox full-screen experience where Windows provides it. If it is unavailable, CouchMode can open the normal Xbox app instead. Availability depends on Windows, the Xbox app, device support, region and Microsoft rollout.",
   },
   {
     question: "What happens if Windows Xbox full-screen is not available?",
@@ -56,27 +56,27 @@ export const faqs = [
   {
     question: "Does CouchMode work on ROG Ally?",
     answer:
-      "Supported handheld behavior is a focus, including Xbox Mode startup companion support. Actual behavior depends on Windows and Xbox app support.",
+      "ROG Ally and similar Windows handhelds are an important supported device class. Actual Xbox full-screen behavior still depends on Windows and Xbox app support on that device.",
   },
   {
     question: "What does Start inside Xbox Mode mean?",
     answer:
-      "On supported handhelds, CouchMode can use an admin-approved scheduled task to start inside Windows Xbox Mode. Normal desktop startup remains separate.",
+      "On supported handhelds, CouchMode can use an admin-approved scheduled task to start alongside the Windows Xbox full-screen experience. Normal desktop startup remains separate.",
   },
   {
     question: "Do I need a credit card for the trial?",
     answer:
-      "Not for the in-app trial. The in-app Pro trial does not require an account or credit card. Ongoing Pro access is handled through Patreon and requires an active Patreon membership.",
+      "No. The 7-day in-app Pro trial requires no account and no credit card. Ongoing Pro access is handled through Patreon and requires an active Patreon membership.",
   },
   {
     question: "How does supporter access work?",
     answer:
-      "After the in-app trial, connect Patreon to keep Pro active. Pro is $3/month and includes 2 active Windows devices. Pro Supporter is $5/month and includes 5 active Windows devices.",
+      "After the in-app trial, connect Patreon in CouchMode to keep Pro active. Pro is $3/month for up to 2 active Windows devices. Pro Supporter is $5/month for up to 5 active Windows devices.",
   },
   {
     question: "What happens if my membership ends?",
     answer:
-      "Pro features return to Free after an entitlement refresh, and the core Free flow remains available.",
+      "Pro features return to Free after the entitlement refresh and grace behavior defined by the app. Your settings remain stored, and the Free session flow remains available.",
   },
   {
     question: "How do I capture diagnostics if something looks wrong on screen?",
@@ -86,7 +86,7 @@ export const faqs = [
   {
     question: "Does CouchMode improve game performance?",
     answer:
-      "No. CouchMode does not promise FPS gains. With Pro it can reduce session clutter (close selected apps) and apply supported session settings such as Windows Game Mode and a high-performance power plan, then restore them when the session ends.",
+      "CouchMode does not promise FPS gains. Pro can reduce session clutter by closing selected apps and can apply supported Windows session settings such as Game Mode and a selected power plan, then restore them when the session ends.",
   },
 ];
 
