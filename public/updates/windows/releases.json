@@ -1,6 +1,34 @@
 [
   {
     "channel": "standalone",
+    "version": "0.4.10-beta.190",
+    "fileVersion": "0.4.10.190",
+    "releasedAt": "2026-08-05T00:00:00Z",
+    "downloadPageUrl": "https://couchmode.app/download",
+    "sha256": "347FE4D4FF4DE135C5C16FA129B98B11880D77CA70962630298CB6DC473CEBCB",
+    "sizeBytes": 3094832,
+    "critical": false,
+    "signed": true,
+    "downloadEnabled": true,
+    "installerUrl": "https://github.com/EzerchE/couchmode-releases/releases/download/v0.4.10-beta.190/CouchMode-Setup-0.4.10-beta.190.exe",
+    "minimumSupportedVersion": "0.4.10-beta.30",
+    "minimumSupportedVersionNumeric": "0.4.10.30",
+    "summary": "Plug in a controller and Steam Big Picture, Playnite or the app you chose opens full screen; unplug it and CouchMode closes the session and brings the desktop back.",
+    "notes": [
+      "Fixed an issue that could prevent Exit from responding from the tray menu.",
+      "Improved the reliability of keeping open applications running and accessible after leaving Xbox mode.",
+      "Improved safe recovery for windows that could otherwise remain off-screen or unusable.",
+      "Improved built-in and external controller detection on handheld devices.",
+      "Improved desktop-return verification and overall session stability.",
+      "General reliability improvements."
+    ],
+    "knownIssues": [
+      "Devices can only be released from the PC they are on; there is no in-app option to sign out of all devices.",
+      "Experimental: Xbox Full-Screen Experience depends on Windows system behavior. On some devices, controller navigation may not receive focus automatically and may require pressing the Xbox button once."
+    ]
+  },
+  {
+    "channel": "standalone",
     "version": "0.4.10-beta.183",
     "fileVersion": "0.4.10.183",
     "releasedAt": "2026-07-31T00:00:00Z",
