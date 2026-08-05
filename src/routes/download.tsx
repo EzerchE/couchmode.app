@@ -19,7 +19,7 @@ const releaseFacts = [
     label: "Direct download",
     value: downloadOpen ? `Open · ${latestRelease.version}` : "Not open yet",
   },
-  { label: "Platform", value: "Windows 11 recommended · 64-bit" },
+  { label: "Platform", value: "Windows 11 · 64-bit" },
   { label: "Install", value: "Per-user installer, no admin rights, built-in update check" },
   {
     label: "Code signing",
