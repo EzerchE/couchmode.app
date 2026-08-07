@@ -15,6 +15,13 @@ export const analyticsEvents = [
   "patreon_click",
   "faq_open",
   "scroll_75",
+  // Microsoft Store went live as a second install channel. Each surface is its own name so the
+  // question "which placement actually sends people to the Store" has an answer, rather than one
+  // bucket that only says "someone clicked something".
+  "cta_home_direct_download",
+  "cta_home_microsoft_store",
+  "cta_home_channel_microsoft_store",
+  "cta_downloadpage_microsoft_store",
 ] as const;
 
 export type AnalyticsEventName = (typeof analyticsEvents)[number];

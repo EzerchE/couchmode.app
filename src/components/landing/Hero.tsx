@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Download, Sparkles } from "lucide-react";
 
 import { trackEvent } from "@/lib/analytics";
+import { MICROSOFT_STORE_URL, MICROSOFT_STORE_LABEL } from "@/lib/channels";
+import { MicrosoftStoreIcon } from "@/components/MicrosoftStoreIcon";
 import { HeroShowcase } from "@/components/landing/HeroShowcase";
 
 export function Hero() {
@@ -51,7 +53,7 @@ export function Hero() {
               href="/download"
               className="inline-flex items-center gap-2 rounded-full bg-aurora px-6 py-3 text-sm font-medium text-primary-foreground glow-violet transition hover:brightness-110"
               onClick={() => {
-                trackEvent("download_click", {
+                trackEvent("cta_home_direct_download", {
                   section: "hero",
                   label: "Download for Windows",
                   target: "/download",
@@ -61,6 +63,23 @@ export function Hero() {
             >
               <Download className="h-4 w-4" />
               Download for Windows
+            </a>
+            <a
+              href={MICROSOFT_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-sm font-medium text-foreground transition hover:bg-white/[0.08]"
+              onClick={() => {
+                trackEvent("cta_home_microsoft_store", {
+                  section: "hero",
+                  label: MICROSOFT_STORE_LABEL,
+                  target: MICROSOFT_STORE_URL,
+                  source: "hero",
+                });
+              }}
+            >
+              <MicrosoftStoreIcon className="h-4 w-4" />
+              {MICROSOFT_STORE_LABEL}
             </a>
             <a
               href="#pricing"

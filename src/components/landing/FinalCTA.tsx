@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Download, Sparkles } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
+import { MICROSOFT_STORE_URL, MICROSOFT_STORE_LABEL } from "@/lib/channels";
 import { latestRelease } from "@/data/releases";
 
 // Read the direct-download state from the same release data the download page and
@@ -13,7 +14,9 @@ const channels = [
     label: "Direct download",
     status: downloadOpen ? `Open · ${latestRelease.version}` : "Preparing",
   },
-  { label: "Microsoft Store", status: "Planned" },
+  // Live, and a link rather than a label: this row is where someone scanning for "can I get it
+  // from the Store" looks, so it should take them there.
+  { label: MICROSOFT_STORE_LABEL, status: "Live", href: MICROSOFT_STORE_URL },
   { label: "Steam", status: "Planned" },
 ];
 
@@ -86,14 +89,39 @@ export function FinalCTA() {
             </div>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 border-t border-white/10 pt-6 text-xs text-muted-foreground">
-              {channels.map((c) => (
-                <span key={c.label} className="inline-flex items-center gap-1.5">
-                  <span className="text-foreground/80">{c.label}</span>
-                  <span className="rounded-full bg-white/5 px-2 py-0.5 text-[10px] uppercase tracking-wider">
-                    {c.status}
+              {channels.map((c) => {
+                const body = (
+                  <>
+                    <span className="text-foreground/80">{c.label}</span>
+                    <span className="rounded-full bg-white/5 px-2 py-0.5 text-[10px] uppercase tracking-wider">
+                      {c.status}
+                    </span>
+                  </>
+                );
+                return c.href ? (
+                  <a
+                    key={c.label}
+                    href={c.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-full transition hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    onClick={() => {
+                      trackEvent("cta_home_channel_microsoft_store", {
+                        section: "final-cta",
+                        label: c.label,
+                        target: c.href,
+                        source: "channel_row",
+                      });
+                    }}
+                  >
+                    {body}
+                  </a>
+                ) : (
+                  <span key={c.label} className="inline-flex items-center gap-1.5">
+                    {body}
                   </span>
-                </span>
-              ))}
+                );
+              })}
               <span className="text-foreground/50">Windows 11 · 64-bit</span>
             </div>
           </div>

@@ -88,6 +88,31 @@ export const faqs = [
     answer:
       "CouchMode does not promise FPS gains. Pro can reduce session clutter by closing selected apps and can apply supported Windows session settings such as Game Mode and a selected power plan, then restore them when the session ends.",
   },
+  {
+    question: "Can I install CouchMode from Microsoft Store?",
+    answer:
+      "Yes. CouchMode is on Microsoft Store at apps.microsoft.com/detail/XPFML8N0ZRFLX9, alongside the signed installer on couchmode.app/download.",
+  },
+  {
+    question: "What is the difference between the direct download and the Microsoft Store version?",
+    answer:
+      "Nothing in the app itself: both are official builds of the same CouchMode. The Store handles installing and updating for you; the direct download gives you a signed installer whose SHA256 is published so you can verify it yourself. Pick whichever you prefer.",
+  },
+  {
+    question: "Do I still get the 7-day Pro trial from the Microsoft Store version?",
+    answer:
+      "Yes. The 7-day in-app Pro trial works the same way in both, with no account and no card.",
+  },
+  {
+    question: "Do Patreon and Pro features work with the Microsoft Store version?",
+    answer:
+      "Yes. Pro access is tied to your CouchMode licence, not to where you installed it from, so connecting Patreon works identically in both.",
+  },
+  {
+    question: "Is CouchMode on Steam?",
+    answer:
+      "Not yet. Steam is still planned. Today CouchMode is available as a direct download and on Microsoft Store.",
+  },
 ];
 
 export function SearchIntentFAQ() {

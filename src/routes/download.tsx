@@ -4,6 +4,8 @@ import { Clock, Download as DownloadIcon, PackageOpen, ShieldAlert } from "lucid
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { trackEvent } from "@/lib/analytics";
+import { MICROSOFT_STORE_URL, MICROSOFT_STORE_LABEL } from "@/lib/channels";
+import { MicrosoftStoreIcon } from "@/components/MicrosoftStoreIcon";
 import { latestRelease } from "@/data/releases";
 
 const META_TITLE = "Download CouchMode for Windows";
@@ -20,6 +22,7 @@ const releaseFacts = [
     value: downloadOpen ? `Open · ${latestRelease.version}` : "Not open yet",
   },
   { label: "Platform", value: "Windows 11 · 64-bit" },
+  { label: "Install channels", value: "Direct download or Microsoft Store" },
   { label: "Install", value: "Per-user installer, no admin rights, built-in update check" },
   {
     label: "Code signing",
@@ -138,6 +141,33 @@ function Download() {
             )}
           </div>
 
+          {/* Deliberately outside the downloadOpen branch and not derived from latestRelease: the
+              Store listing is an install channel, not release metadata, so it must survive a version
+              bump, a paused direct download, and any future change to the release JSON. */}
+          <div className="mt-4 flex justify-center">
+            <a
+              href={MICROSOFT_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-sm font-medium text-foreground transition hover:bg-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              onClick={() => {
+                trackEvent("cta_downloadpage_microsoft_store", {
+                  section: "download",
+                  label: MICROSOFT_STORE_LABEL,
+                  target: MICROSOFT_STORE_URL,
+                  source: "download_page",
+                });
+              }}
+            >
+              <MicrosoftStoreIcon className="h-4 w-4" />
+              Get CouchMode from Microsoft Store
+            </a>
+          </div>
+
+          <p className="mt-3 text-xs text-muted-foreground">
+            Two ways to install, both official: the signed installer above, or Microsoft Store.
+          </p>
+
           <dl className="mt-10 grid gap-3 text-left">
             {releaseFacts.map((fact) => (
               <div
@@ -171,12 +201,12 @@ function Download() {
               <div className="flex items-center gap-2">
                 <ShieldAlert className="h-4 w-4 text-primary" />
                 <h2 className="text-sm font-medium text-foreground">
-                  {downloadOpen ? "Download only from here" : "No public installer yet"}
+                  {downloadOpen ? "Two official sources" : "No public installer yet"}
                 </h2>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 {downloadOpen
-                  ? "This page links to the only official CouchMode installer. Any CouchMode installer offered elsewhere is not from us; check the SHA256 below and the publisher Windows shows when you run it."
+                  ? "CouchMode comes from this page or from Microsoft Store, and nowhere else. A copy offered anywhere else is not ours: check the SHA256 below and the publisher Windows shows when you run the installer."
                   : "There's no public download link right now. Any CouchMode installer offered elsewhere is not from us. Please wait for the official build to appear here."}
               </p>
             </div>
