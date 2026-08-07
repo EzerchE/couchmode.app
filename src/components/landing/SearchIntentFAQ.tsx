@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { MICROSOFT_STORE_URL } from "@/lib/channels";
 import {
   Accordion,
   AccordionContent,
@@ -8,7 +9,7 @@ import {
 import { trackEvent } from "@/lib/analytics";
 
 // Content source of truth for the on-page FAQ and the FAQPage structured data
-// in src/routes/index.tsx. Keep the shape ({ question, answer }) stable, keep
+// in src/routes/index.tsx. Keep the shape ({ question, answer, link? }) stable, keep
 // answers factual, and avoid overclaims (no FPS/performance promises, no
 // shell-replacement wording). Answers are rendered server-side (see the
 // forceMount on AccordionContent below) so crawlers see them in the HTML.
@@ -91,12 +92,13 @@ export const faqs = [
   {
     question: "Can I install CouchMode from Microsoft Store?",
     answer:
-      "Yes. CouchMode is on Microsoft Store at apps.microsoft.com/detail/XPFML8N0ZRFLX9, alongside the signed installer on couchmode.app/download.",
+      "Yes. CouchMode is on Microsoft Store, alongside the signed installer on couchmode.app/download.",
+    link: { href: MICROSOFT_STORE_URL, label: "View CouchMode on Microsoft Store" },
   },
   {
     question: "What is the difference between the direct download and the Microsoft Store version?",
     answer:
-      "Both are official ways to install CouchMode and give you the same CouchMode. Direct download installs it from couchmode.app, with a published SHA256 you can verify yourself; Microsoft Store is an additional trusted place to find and install it. CouchMode's built-in updater handles application updates either way.",
+      "Both are official ways to install CouchMode and provide the same CouchMode experience. Direct download installs it from couchmode.app, with a published SHA256 you can verify yourself; Microsoft Store is an additional trusted place to find and install it. CouchMode's built-in updater handles application updates either way.",
   },
   {
     question: "Will the Microsoft Store version update automatically through the Store?",
@@ -187,6 +189,22 @@ export function SearchIntentFAQ() {
                 className="px-3 text-sm leading-relaxed text-muted-foreground sm:px-4"
               >
                 {faq.answer}
+                {/* Optional link, kept OUT of `answer`: that string is also serialised into the
+                    FAQPage JSON-LD, which takes plain text. Rendering it here keeps the structured
+                    data valid while giving readers something to click. */}
+                {faq.link ? (
+                  <>
+                    {" "}
+                    <a
+                      href={faq.link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-foreground underline underline-offset-4 transition hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    >
+                      {faq.link.label}
+                    </a>
+                  </>
+                ) : null}
               </AccordionContent>
             </AccordionItem>
           ))}
