@@ -96,7 +96,12 @@ export const faqs = [
   {
     question: "What is the difference between the direct download and the Microsoft Store version?",
     answer:
-      "Nothing in the app itself: both are official builds of the same CouchMode. The Store handles installing and updating for you; the direct download gives you a signed installer whose SHA256 is published so you can verify it yourself. Pick whichever you prefer.",
+      "Both are official ways to install CouchMode and give you the same CouchMode. Direct download installs it from couchmode.app, with a published SHA256 you can verify yourself; Microsoft Store is an additional trusted place to find and install it. CouchMode's built-in updater handles application updates either way.",
+  },
+  {
+    question: "Will the Microsoft Store version update automatically through the Store?",
+    answer:
+      "CouchMode uses its own built-in update system. Microsoft Store is an additional official installation channel; application updates are handled by CouchMode itself.",
   },
   {
     question: "Do I still get the 7-day Pro trial from the Microsoft Store version?",

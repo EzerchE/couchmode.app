@@ -165,7 +165,7 @@ function Download() {
           </div>
 
           <p className="mt-3 text-xs text-muted-foreground">
-            Two ways to install, both official: the signed installer above, or Microsoft Store.
+            Two official ways to install CouchMode: the signed installer above, or Microsoft Store.
           </p>
 
           <dl className="mt-10 grid gap-3 text-left">
@@ -206,7 +206,7 @@ function Download() {
               </div>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 {downloadOpen
-                  ? "CouchMode comes from this page or from Microsoft Store, and nowhere else. A copy offered anywhere else is not ours: check the SHA256 below and the publisher Windows shows when you run the installer."
+                  ? "Download CouchMode from couchmode.app or Microsoft Store. If you got an installer somewhere else, check the SHA256 below and the publisher Windows shows when you run it."
                   : "There's no public download link right now. Any CouchMode installer offered elsewhere is not from us. Please wait for the official build to appear here."}
               </p>
             </div>
