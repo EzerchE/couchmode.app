@@ -42,19 +42,15 @@ function Refund() {
         outside Patreon, and CouchMode does not store card details or process
         Patreon charges.
       </p>
+      {/* This paragraph used to link a Patreon help-centre article by its article id.
+          Patreon moved that help centre and the link stopped resolving, which is the
+          failure mode of any deep link into someone else's site: it is correct on the
+          day you write it and silently rots afterwards. The sentence now stands on its
+          own, and a reader who needs Patreon's billing tools reaches them from their
+          own Patreon account, where the path is always current. */}
       <p>
-        Refund eligibility, requests and decisions are governed by Patreon&apos;s
-        current policies and processes. To review an eligible charge or ask for
-        assistance, use your{" "}
-        <a
-          className="text-foreground underline-offset-4 hover:underline"
-          href="https://support.patreon.com/hc/en-us/articles/360029123511"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          Patreon billing history or Patreon Support
-        </a>
-        .
+        Refund eligibility and processing are handled according to Patreon&apos;s
+        policies.
       </p>
       <p>
         Cancelling a Patreon membership prevents future renewals according to
