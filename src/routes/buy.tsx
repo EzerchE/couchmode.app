@@ -1,15 +1,24 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InfoPage } from "@/components/utility/InfoPage";
 import { breadcrumbLd } from "@/lib/seo";
+import { trackEvent } from "@/lib/analytics";
+import { PATREON_CTA_LABEL, PATREON_MEMBERSHIP_URL } from "@/lib/patreon";
 
-const TITLE = "Get Pro with Patreon";
+const TITLE = "Get CouchMode Pro";
 const DESC =
-  "CouchMode Pro access is available during public beta through active Patreon membership.";
+  "CouchMode Free includes the core controller-first gaming flow. Pro adds deeper Windows and session automation.";
 const META_TITLE = "CouchMode Pro - Patreon supporter access";
 const META_DESC =
   "CouchMode Pro access uses active Patreon membership during public beta. Start with a 7-day in-app Pro trial, then connect Patreon to continue.";
 const CANONICAL = "https://couchmode.app/buy/";
 const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v3.png";
+
+// Device limits are the only thing that differs between the tiers. Kept as data so the two
+// cards cannot drift apart in wording, and so a future third tier is one entry, not a copy.
+const plans = [
+  { name: "Pro Version", price: "$3/month", devices: "Up to 2 active Windows devices" },
+  { name: "Pro Supporter", price: "$5/month", devices: "Up to 5 active Windows devices" },
+];
 
 export const Route = createFileRoute("/buy")({
   head: () => ({
@@ -38,23 +47,60 @@ function Buy() {
   return (
     <InfoPage title={TITLE}>
       <p>{DESC}</p>
+
+      <div className="grid gap-4 sm:grid-cols-2">
+        {plans.map((plan) => (
+          <div
+            key={plan.name}
+            className="rounded-2xl border border-white/10 bg-white/[0.03] p-5"
+          >
+            <h2 className="text-base font-medium text-foreground">{plan.name}</h2>
+            <p className="mt-1 text-2xl font-semibold tracking-tight text-foreground">
+              {plan.price}
+            </p>
+            <p className="mt-2 text-sm text-muted-foreground">{plan.devices}</p>
+          </div>
+        ))}
+      </div>
+
       <p>
-        Start with a 7-day in-app Pro trial. No account or credit card is
-        required for the in-app trial.
+        Both tiers include Resource Control, Session Tweaks, after-session
+        actions, and other Pro session automation.
+      </p>
+
+      {/* The one outbound step. Everything above exists so nobody arrives at Patreon
+          without knowing which tier they want and that a free trial exists first. */}
+      <div>
+        <a
+          href={PATREON_MEMBERSHIP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-full bg-aurora px-6 py-3 text-sm font-medium text-primary-foreground glow-violet transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          onClick={() => {
+            trackEvent("cta_buypage_patreon", {
+              section: "buy",
+              label: PATREON_CTA_LABEL,
+              target: "patreon",
+              source: "buy_page",
+            });
+          }}
+        >
+          {PATREON_CTA_LABEL}
+        </a>
+      </div>
+
+      <p>
+        Pro access is provided through an active Patreon membership during the
+        public beta. Patreon requires an account and payment method.
       </p>
       <p>
-        Ongoing Pro access is handled through Patreon. Patreon membership
-        requires a Patreon account and payment method. The Pro license remains
-        active while your membership is active.
+        New installations include a 7-day in-app Pro trial. No CouchMode account
+        or credit card is required for the in-app trial.
       </p>
       <p>
-        Pro Version is $3/month and includes 2 active Windows devices. Pro
-        Supporter is $5/month and includes 5 active Windows devices.
-      </p>
-      <p>
-        There is no direct purchase button on this site during public beta.
+        Already a member? Open CouchMode and choose{" "}
+        <span className="text-foreground">Connect Patreon</span>.
       </p>
     </InfoPage>
   );
 }
-

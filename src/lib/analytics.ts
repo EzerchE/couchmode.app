@@ -22,6 +22,10 @@ export const analyticsEvents = [
   "cta_home_microsoft_store",
   "cta_home_channel_microsoft_store",
   "cta_downloadpage_microsoft_store",
+  // The outbound Patreon click on /buy/. Distinct from patreon_click, which measures
+  // ENTRY into /buy/ from the pricing card: two events, so the drop-off between
+  // "wanted Pro" and "actually went to Patreon" is visible instead of inferred.
+  "cta_buypage_patreon",
 ] as const;
 
 export type AnalyticsEventName = (typeof analyticsEvents)[number];
