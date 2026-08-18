@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import { MICROSOFT_STORE_URL } from "@/lib/channels";
 import {
   Accordion,
@@ -37,12 +37,12 @@ export const faqs = [
   {
     question: "Can CouchMode start Steam Big Picture or another launcher?",
     answer:
-      "Yes, with Pro. Supported choices include Steam Big Picture, Playnite, LaunchBox, GOG Galaxy and compatible custom launchers. Free includes the default Xbox flow where supported.",
+      "Yes, and Steam Big Picture is free. Xbox full-screen where Windows supports it, Steam Big Picture and Playnite Fullscreen are all available without Pro. LaunchBox, GOG Galaxy and other custom launchers are set up through the custom-launcher option, which needs Pro.",
   },
   {
     question: "Does CouchMode support Playnite?",
     answer:
-      "Yes. Playnite can be used as a launch target with Pro. CouchMode is designed to work around existing launchers rather than replace them.",
+      "Yes, and it is free. Playnite Fullscreen can be used as a launch target without Pro. CouchMode is designed to work around existing launchers rather than replace them.",
   },
   {
     question: "Does CouchMode support Windows Xbox Mode?",

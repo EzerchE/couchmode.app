@@ -30,6 +30,38 @@
     "downloadEnabled": true
   },
   {
+    "version": "0.6.0-rc.8",
+    "versionNumeric": "0.6.0.8",
+    "fileVersion": "0.6.0.8",
+    "channel": "standalone",
+    "releasedAt": "2026-08-18T00:00:00Z",
+    "sha256": "A7F33F1295C2BB370ED8F0E2590D2D5CCB138343F9FC02CA43CB536F42464765",
+    "sizeBytes": 3117040,
+    "signed": true,
+    "critical": false,
+    "minimumSupportedVersion": "0.4.10-beta.30",
+    "minimumSupportedVersionNumeric": "0.4.10.30",
+    "downloadPageUrl": "https://couchmode.app/download",
+    "installerUrl": null,
+    "summary": "Steam Big Picture and Playnite Fullscreen are now free, alongside the Xbox full-screen experience. Custom launchers, Resource Control and Session Tweaks remain Pro.",
+    "notes": [
+      "Steam Big Picture and Playnite Fullscreen are now available without Pro, alongside the Xbox full-screen experience.",
+      "Custom launchers, Resource Control and Session Tweaks remain Pro features.",
+      "More reliable launcher ownership: CouchMode closes only the session it started and leaves a launcher you were already using alone.",
+      "Improved Steam Big Picture and Playnite handling, including sessions you started yourself.",
+      "Improved built-in and external controller classification using device topology rather than manufacturer.",
+      "Controller presence is now reported the same way everywhere, so a gamepad that cannot start a session is explained rather than shown as connected.",
+      "Clearer guidance for controllers Windows does not expose as Xbox controllers.",
+      "Improved Resource Control and after-session action reliability.",
+      "General reliability and diagnostics improvements."
+    ],
+    "knownIssues": [
+      "Devices can only be released from the PC they are on; there is no in-app option to sign out of all devices.",
+      "Experimental: Xbox Full-Screen Experience depends on Windows system behavior. On some devices, controller navigation may not receive focus automatically and may require pressing the Xbox button once."
+    ],
+    "downloadEnabled": false
+  },
+  {
     "version": "0.4.10-beta.190",
     "versionNumeric": "0.4.10.190",
     "fileVersion": "0.4.10.190",

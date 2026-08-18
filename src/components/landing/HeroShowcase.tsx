@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+﻿import { useCallback, useEffect, useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -6,6 +6,10 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 // every slide occupies the exact same space with no size jumping. The frame
 // aspect ratio matches the canvas (1122/714) and images use object-contain, so
 // the full screenshot stays visible and nothing meaningful is cropped.
+// PENDING RE-CAPTURE for 0.6.0-rc.8. The files on disk are beta.176 captures: they stamp
+// v0.4.10-beta.176 in the footer, and app-general.png still shows the launcher row carrying
+// a Pro badge, which is now WRONG - Xbox, Steam Big Picture and Playnite are Free. Do not
+// ship this page until rc.8 captures replace them, and do not retouch the old images.
 const slides = [
   {
     src: "/screenshots/app-general.png",

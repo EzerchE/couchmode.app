@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+﻿import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ZoomIn } from "lucide-react";
 
@@ -7,6 +7,10 @@ import {
   type LightboxShot,
 } from "@/components/landing/ScreenshotLightbox";
 
+// PENDING RE-CAPTURE for 0.6.0-rc.8. The files on disk are beta.176 captures: they stamp
+// v0.4.10-beta.176 in the footer, and app-general.png still shows the launcher row carrying
+// a Pro badge, which is now WRONG - Xbox, Steam Big Picture and Playnite are Free. Do not
+// ship this page until rc.8 captures replace them, and do not retouch the old images.
 // Authentic beta.176 detail captures, each normalized to the same 1122x714
 // dark canvas used by the hero so the grid stays orderly. object-contain keeps
 // every screenshot fully visible on desktop, tablet, and mobile. Cards open an

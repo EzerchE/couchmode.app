@@ -1,17 +1,19 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
 const free = [
   "Start from your controller",
-  "Xbox flow where supported",
+  "Xbox full-screen experience where Windows supports it",
+  "Steam Big Picture",
+  "Playnite Fullscreen",
   "Start with Windows",
-  "Basic session exit",
+  "Safe session exit and desktop return",
   "Language and theme",
 ];
 
 const pro = [
-  "Launcher selection: Xbox, Steam Big Picture, Playnite, LaunchBox, GOG Galaxy, or a compatible custom launcher",
+  "Compatible custom launchers, including LaunchBox and GOG Galaxy",
   "Resource Control for the apps you select",
   "Session Tweaks: notifications, Game Bar recording, visual effects, Game Mode, power plan, HDR, display, and audio",
   "Restores the supported Windows settings CouchMode changed",
@@ -34,12 +36,12 @@ export function Comparison() {
             id="pricing-heading"
             className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight tracking-tight"
           >
-            Free for the essentials. Pro for deeper automation.
+            Free for the launchers you use. Pro for deeper automation.
           </h2>
           <p className="mt-5 text-muted-foreground">
-            CouchMode’s core controller-first session flow is free. Pro adds
-            launcher selection, Resource Control, Session Tweaks, and deeper
-            restore automation.
+            The controller-first session flow is free, and so are Xbox, Steam Big
+            Picture and Playnite. Pro adds custom launchers, Resource Control,
+            Session Tweaks, and deeper restore automation.
           </p>
         </div>
 
