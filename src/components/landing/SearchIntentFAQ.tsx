@@ -1,4 +1,4 @@
-﻿import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { MICROSOFT_STORE_URL } from "@/lib/channels";
 import {
   Accordion,

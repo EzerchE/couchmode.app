@@ -35,7 +35,8 @@ const releaseFacts = [
   },
   {
     label: "Pricing",
-    value: "Free mode with a 7-day in-app Pro trial. No account or card for the trial",
+    value:
+      "Free includes Xbox full-screen, Steam Big Picture and Playnite. A 7-day in-app Pro trial unlocks deeper automation, with no account or card",
   },
 ];
 

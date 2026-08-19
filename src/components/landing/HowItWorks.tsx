@@ -1,4 +1,4 @@
-﻿import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Power, Tv, Sparkles, Undo2 } from "lucide-react";
 
 const steps = [

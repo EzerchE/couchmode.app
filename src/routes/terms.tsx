@@ -60,6 +60,13 @@ function Terms() {
           require an active trial or active Patreon membership during public
           beta.
         </p>
+        <p className="mt-2">
+          Free includes the controller-first session flow, the Windows Xbox
+          full-screen experience where supported, Steam Big Picture, Playnite,
+          and the return to your desktop when a session ends. Pro covers
+          compatible custom launchers, Resource Control, Session Tweaks, and the
+          deeper session automation.
+        </p>
       </section>
       <section>
         <h2 className="font-medium text-foreground">7-day Pro trial</h2>

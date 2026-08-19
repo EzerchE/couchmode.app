@@ -17,13 +17,20 @@
     "notes": [
       "Steam Big Picture and Playnite Fullscreen are now available without Pro, alongside the Xbox full-screen experience.",
       "Custom launchers, Resource Control and Session Tweaks remain Pro features.",
-      "More reliable launcher ownership: CouchMode closes only the session it started and leaves a launcher you were already using alone.",
-      "Improved Steam Big Picture and Playnite handling, including sessions you started yourself.",
-      "Improved built-in and external controller classification using device topology rather than manufacturer.",
-      "Controller presence is now reported the same way everywhere, so a gamepad that cannot start a session is explained rather than shown as connected.",
-      "Clearer guidance for controllers Windows does not expose as Xbox controllers.",
-      "Improved Resource Control and after-session action reliability.",
-      "General reliability and diagnostics improvements."
+      "A Steam Big Picture session you were already in is preserved: CouchMode no longer closes a launcher it did not start.",
+      "More reliable Playnite handling: an already-open Playnite is recognised, including a minimized window, adopted instead of started a second time, and restored the way it was found.",
+      "More reliable custom launchers: better focus handling, clearer process ownership and cleaner shutdown.",
+      "Custom launchers now start in their own folder, so launchers that expect to run from their install directory work correctly.",
+      "A launcher counts as ready only when one of its real windows is in front, so the controller can actually drive it.",
+      "Improved Xbox full-screen detection across desktop PCs and Windows handhelds.",
+      "Fixed cases where supported devices could appear unsupported or ask to be verified repeatedly.",
+      "More accurate built-in and external controller detection, based on how a controller is connected rather than who made it.",
+      "Clearer messaging when Windows does not present a controller as an Xbox (XInput) controller.",
+      "More reliable Resource Control: better detection of the apps you selected, more dependable closing and reopening, and more accurate reporting of what was actually closed.",
+      "More reliable Launch on Enter, Close on Exit, Launch on Exit and Display on Exit.",
+      "Safer return to your desktop when a session ends.",
+      "Improved diagnostics and problem reporting.",
+      "General update and session reliability improvements."
     ],
     "knownIssues": [
       "Devices can only be released from the PC they are on; there is no in-app option to sign out of all devices.",
