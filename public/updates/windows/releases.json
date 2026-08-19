@@ -1,35 +1,6 @@
 [
   {
     "channel": "standalone",
-    "version": "0.4.10-beta.191",
-    "fileVersion": "0.4.10.191",
-    "releasedAt": "2026-08-08T00:00:00Z",
-    "downloadPageUrl": "https://couchmode.app/download",
-    "sha256": "C6B1B4CE9AB8512DD8E4DB8F77404862D863662BDFC7D3C5E9EB33143EF572D0",
-    "sizeBytes": 3102232,
-    "critical": false,
-    "signed": true,
-    "downloadEnabled": true,
-    "installerUrl": "https://github.com/EzerchE/couchmode-releases/releases/download/v0.4.10-beta.191/CouchMode-Setup-0.4.10-beta.191.exe",
-    "minimumSupportedVersion": "0.4.10-beta.30",
-    "minimumSupportedVersionNumeric": "0.4.10.30",
-    "summary": "Plug in a controller and Steam Big Picture, Playnite or the app you chose opens full screen; unplug it and CouchMode closes the session and brings the desktop back.",
-    "notes": [
-      "Improved Xbox full-screen detection across desktop PCs and Windows handhelds.",
-      "Fixed cases where supported devices could incorrectly appear as unsupported or require repeated verification.",
-      "Improved reliability when entering, leaving, and returning from Xbox full-screen sessions.",
-      "Improved detection of built-in and external controllers, including external controllers that could be treated as integrated handheld controllers.",
-      "Improved desktop restoration after a gaming session; CouchMode now avoids unnecessarily changing windows that are already accessible.",
-      "Improved diagnostic information available with bug reports.",
-      "Improved update-state handling and general reliability."
-    ],
-    "knownIssues": [
-      "Devices can only be released from the PC they are on; there is no in-app option to sign out of all devices.",
-      "Experimental: Xbox Full-Screen Experience depends on Windows system behavior. On some devices, controller navigation may not receive focus automatically and may require pressing the Xbox button once."
-    ]
-  },
-  {
-    "channel": "standalone",
     "version": "0.6.0-rc.8",
     "fileVersion": "0.6.0.8",
     "releasedAt": "2026-08-18T00:00:00Z",
@@ -38,8 +9,8 @@
     "sizeBytes": 3117040,
     "critical": false,
     "signed": true,
-    "downloadEnabled": false,
-    "installerUrl": null,
+    "downloadEnabled": true,
+    "installerUrl": "https://github.com/EzerchE/couchmode-releases/releases/download/v0.6.0-rc.8/CouchMode-Setup-0.6.0-rc.8.exe",
     "minimumSupportedVersion": "0.4.10-beta.30",
     "minimumSupportedVersionNumeric": "0.4.10.30",
     "summary": "Steam Big Picture and Playnite Fullscreen are now free, alongside the Xbox full-screen experience. Custom launchers, Resource Control and Session Tweaks remain Pro.",
@@ -53,6 +24,35 @@
       "Clearer guidance for controllers Windows does not expose as Xbox controllers.",
       "Improved Resource Control and after-session action reliability.",
       "General reliability and diagnostics improvements."
+    ],
+    "knownIssues": [
+      "Devices can only be released from the PC they are on; there is no in-app option to sign out of all devices.",
+      "Experimental: Xbox Full-Screen Experience depends on Windows system behavior. On some devices, controller navigation may not receive focus automatically and may require pressing the Xbox button once."
+    ]
+  },
+  {
+    "channel": "standalone",
+    "version": "0.4.10-beta.191",
+    "fileVersion": "0.4.10.191",
+    "releasedAt": "2026-08-08T00:00:00Z",
+    "downloadPageUrl": "https://couchmode.app/download",
+    "sha256": "C6B1B4CE9AB8512DD8E4DB8F77404862D863662BDFC7D3C5E9EB33143EF572D0",
+    "sizeBytes": 3102232,
+    "critical": false,
+    "signed": true,
+    "downloadEnabled": false,
+    "installerUrl": null,
+    "minimumSupportedVersion": "0.4.10-beta.30",
+    "minimumSupportedVersionNumeric": "0.4.10.30",
+    "summary": "Plug in a controller and Steam Big Picture, Playnite or the app you chose opens full screen; unplug it and CouchMode closes the session and brings the desktop back.",
+    "notes": [
+      "Improved Xbox full-screen detection across desktop PCs and Windows handhelds.",
+      "Fixed cases where supported devices could incorrectly appear as unsupported or require repeated verification.",
+      "Improved reliability when entering, leaving, and returning from Xbox full-screen sessions.",
+      "Improved detection of built-in and external controllers, including external controllers that could be treated as integrated handheld controllers.",
+      "Improved desktop restoration after a gaming session; CouchMode now avoids unnecessarily changing windows that are already accessible.",
+      "Improved diagnostic information available with bug reports.",
+      "Improved update-state handling and general reliability."
     ],
     "knownIssues": [
       "Devices can only be released from the PC they are on; there is no in-app option to sign out of all devices.",

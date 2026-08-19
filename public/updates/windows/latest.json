@@ -1,14 +1,14 @@
 {
   "channel": "standalone",
-  "latestVersion": "0.4.10-beta.191",
-  "latestVersionNumeric": "0.4.10.191",
-  "fileVersion": "0.4.10.191",
+  "latestVersion": "0.6.0-rc.8",
+  "latestVersionNumeric": "0.6.0.8",
+  "fileVersion": "0.6.0.8",
   "minimumSupportedVersion": "0.4.10-beta.30",
   "minimumSupportedVersionNumeric": "0.4.10.30",
   "signed": true,
-  "publishedUtc": "2026-08-08T00:00:00Z",
+  "publishedUtc": "2026-08-18T00:00:00Z",
   "downloadPageUrl": "https://couchmode.app/download",
-  "sha256": "C6B1B4CE9AB8512DD8E4DB8F77404862D863662BDFC7D3C5E9EB33143EF572D0",
+  "sha256": "A7F33F1295C2BB370ED8F0E2590D2D5CCB138343F9FC02CA43CB536F42464765",
   "critical": false,
   "message": "A newer CouchMode beta is available."
 }
