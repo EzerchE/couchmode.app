@@ -13,7 +13,7 @@ const steps = [
     n: "02",
     icon: Tv,
     title: "CouchMode opens your chosen gaming experience",
-    body: "Use the Windows Xbox full-screen experience where supported, or choose Steam Big Picture or Playnite. All three are free. LaunchBox, GOG Galaxy and other custom launchers need Pro.",
+    body: "Use the Windows Xbox full-screen experience where supported, or choose Steam Big Picture or Playnite. All three are free. Other compatible custom launchers are available with Pro.",
     detail: "Xbox, Steam and Playnite are Free · Custom launchers with Pro",
   },
   {

@@ -13,7 +13,7 @@ const free = [
 ];
 
 const pro = [
-  "Compatible custom launchers, including LaunchBox and GOG Galaxy",
+  "Compatible custom launchers",
   "Resource Control for the apps you select",
   "Session Tweaks: notifications, Game Bar recording, visual effects, Game Mode, power plan, HDR, display, and audio",
   "Restores the supported Windows settings CouchMode changed",

@@ -11,7 +11,7 @@ type InfoPageProps = {
 export function InfoPage({
   title,
   children,
-  lastUpdated = "July 2026",
+  lastUpdated = "August 2026",
 }: InfoPageProps) {
   return (
     <div className="min-h-screen bg-background text-foreground">

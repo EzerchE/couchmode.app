@@ -5,7 +5,7 @@ import { breadcrumbLd } from "@/lib/seo";
 const TITLE = "Patreon billing and refunds";
 const META_TITLE = "CouchMode Patreon billing and refunds";
 const META_DESC =
-  "The CouchMode refund policy for public beta Pro access: Patreon handles billing, cancellation, and refunds, and Pro may return to Free after an entitlement refresh.";
+  "The CouchMode refund policy for public beta Pro access: Patreon handles billing, cancellation, and refunds, and Pro may return to Free after an entitlement refresh and any applicable grace period.";
 const CANONICAL = "https://couchmode.app/refund/";
 const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v3.png";
 
@@ -64,7 +64,8 @@ function Refund() {
       </p>
       <p>
         If membership is cancelled, refunded, or becomes inactive, Pro access
-        returns to Free after an entitlement refresh. Your CouchMode settings
+        returns to Free after an entitlement refresh and any applicable grace
+        period. Your CouchMode settings
         remain stored and the Free session flow remains available.
       </p>
       <p>

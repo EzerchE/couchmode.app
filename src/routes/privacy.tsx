@@ -57,8 +57,8 @@ function Privacy() {
           CouchMode does not collect gameplay data or track what games you play.
         </p>
         <p className="mt-2">
-          No gameplay tracking. No cloud sync. Pro license validation only when
-          needed.
+          No gameplay tracking. No settings cloud sync. Pro license validation is
+          performed only when needed.
         </p>
       </section>
       <section>

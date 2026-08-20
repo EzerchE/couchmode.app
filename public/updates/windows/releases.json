@@ -17,8 +17,8 @@
     "notes": [
       "Steam Big Picture and Playnite Fullscreen are now available without Pro, alongside the Xbox full-screen experience.",
       "Custom launchers, Resource Control and Session Tweaks remain Pro features.",
-      "A Steam Big Picture session you were already in is preserved: CouchMode no longer closes a launcher it did not start.",
-      "More reliable Playnite handling: an already-open Playnite is recognised, including a minimized window, adopted instead of started a second time, and restored the way it was found.",
+      "Pre-existing Steam Big Picture sessions are preserved when the CouchMode session ends.",
+      "More reliable Playnite handling: an already-open Playnite is recognised, including a minimized window, adopted instead of starting a second copy, and preserved when the CouchMode session ends.",
       "More reliable custom launchers: better focus handling, clearer process ownership and cleaner shutdown.",
       "Custom launchers now start in their own folder, so launchers that expect to run from their install directory work correctly.",
       "A launcher counts as ready only when one of its real windows is in front, so the controller can actually drive it.",

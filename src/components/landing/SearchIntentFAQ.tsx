@@ -37,7 +37,24 @@ export const faqs = [
   {
     question: "Can CouchMode start Steam Big Picture or another launcher?",
     answer:
-      "Yes, and Steam Big Picture is free. Xbox full-screen where Windows supports it, Steam Big Picture and Playnite Fullscreen are all available without Pro. LaunchBox, GOG Galaxy and other custom launchers are set up through the custom-launcher option, which needs Pro.",
+      "Yes, and Steam Big Picture is free. Xbox full-screen where Windows supports it, Steam Big Picture and Playnite Fullscreen are all available without Pro. Other launchers are set up through the compatible custom launcher option, which needs Pro.",
+  },
+  {
+    question: "Can CouchMode launch Playnite when I turn on my controller?",
+    answer:
+      "Yes, and it is free. Choose Playnite as your launch target, and CouchMode opens Playnite Fullscreen when a compatible controller connects. If Playnite is already open, CouchMode uses the instance you already have instead of starting a second copy.",
+  },
+  {
+    // Deliberately says what the trigger is built on, and what a PlayStation pad does NOT do.
+    // No claim of native PlayStation triggering, and no translation layer is named.
+    question: "Does CouchMode work with PS5 / DualSense controllers?",
+    answer:
+      "CouchMode starts and ends sessions using controllers that Windows exposes as Xbox (XInput) controllers. A PlayStation controller connected in its native mode is not used to start or end a session, and CouchMode says so rather than showing it as connected. Where a setup presents a PlayStation controller to Windows as an XInput controller, CouchMode treats it like any other XInput controller.",
+  },
+  {
+    question: "What happens if my controller disconnects during a gaming session?",
+    answer:
+      "That is the normal way to end a session. When the controller disconnects, CouchMode closes the gaming experience it opened, restores the supported Windows settings it changed, and returns you to your desktop.",
   },
   {
     question: "Does CouchMode support Playnite?",
@@ -118,7 +135,7 @@ export const faqs = [
   {
     question: "Is CouchMode on Steam?",
     answer:
-      "Not yet. Steam is still planned. Today CouchMode is available as a direct download and on Microsoft Store.",
+      "No. CouchMode is available as a direct download and on Microsoft Store. Note that CouchMode can open Steam Big Picture for you; that is separate from CouchMode itself being distributed on Steam.",
   },
 ];
 

@@ -17,7 +17,8 @@ const channels = [
   // Live, and a link rather than a label: this row is where someone scanning for "can I get it
   // from the Store" looks, so it should take them there.
   { label: MICROSOFT_STORE_LABEL, status: "Live", href: MICROSOFT_STORE_URL },
-  { label: "Steam", status: "Planned" },
+  // No Steam row. Steam distribution is being explored, not committed, and a "Planned"
+  // badge on the distribution list reads as a roadmap promise.
 ];
 
 export function FinalCTA() {
