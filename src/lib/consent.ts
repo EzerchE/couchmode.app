@@ -69,17 +69,47 @@ export function hasAnalyticsConsent() {
   return readConsentChoice()?.analytics === true;
 }
 
+function hasPersistedConsent(choice: ConsentChoice) {
+  const persisted = readConsentChoice();
+  return persisted?.analytics === choice.analytics && persisted.advertising === choice.advertising;
+}
+
+function emitConsentUpdate(choice: ConsentChoice) {
+  const consentState = toGoogleConsent(choice);
+
+  try {
+    window.dataLayer = window.dataLayer ?? [];
+    window.gtag = window.gtag ?? ((...args: unknown[]) => window.dataLayer?.push(args));
+    window.gtag("consent", "update", consentState);
+  } catch {
+    // Consent persistence has already succeeded. A blocked analytics runtime must not
+    // affect the visitor's choice or prevent the app from continuing.
+  }
+
+  try {
+    window.dispatchEvent(new CustomEvent("couchmode:consent-updated", { detail: choice }));
+  } catch {
+    // Listeners are optional analytics follow-up work, never part of saving consent.
+  }
+}
+
 export function saveConsentChoice(choice: ConsentChoice) {
-  if (typeof window === "undefined") return;
+  if (typeof window === "undefined") return false;
 
-  const encoded = encodeURIComponent(JSON.stringify(choice));
-  const secure = window.location.protocol === "https:" ? "; Secure" : "";
-  document.cookie = `${CONSENT_COOKIE}=${encoded}; Path=/; Max-Age=${CONSENT_MAX_AGE_SECONDS}; SameSite=Lax${secure}`;
+  try {
+    const encoded = encodeURIComponent(JSON.stringify(choice));
+    const secure = window.location.protocol === "https:" ? "; Secure" : "";
+    document.cookie = `${CONSENT_COOKIE}=${encoded}; Path=/; Max-Age=${CONSENT_MAX_AGE_SECONDS}; SameSite=Lax${secure}`;
+  } catch {
+    return false;
+  }
 
-  window.dataLayer = window.dataLayer ?? [];
-  window.gtag = window.gtag ?? ((...args: unknown[]) => window.dataLayer?.push(args));
-  window.gtag("consent", "update", toGoogleConsent(choice));
-  window.dispatchEvent(new CustomEvent("couchmode:consent-updated", { detail: choice }));
+  if (!hasPersistedConsent(choice)) return false;
+
+  // Persist and dismiss before analytics follow-up work. The update is still queued
+  // immediately, but Cloudflare, GTM, or an event listener cannot block the UI.
+  window.setTimeout(() => emitConsentUpdate(choice), 0);
+  return true;
 }
 
 // This is the single Consent Mode default and must run before the GTM snippet

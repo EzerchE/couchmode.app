@@ -33,6 +33,10 @@ export const Route = createFileRoute("/privacy")({
 });
 
 function Privacy() {
+  const openPrivacyChoices = () => {
+    window.dispatchEvent(new Event("couchmode:open-consent"));
+  };
+
   return (
     <InfoPage title={TITLE}>
       <section>
@@ -104,6 +108,13 @@ function Privacy() {
           prompt. Those tools help us understand aggregate website traffic, such as page views and
           referrers, and are separate from the CouchMode desktop app, which does not track gameplay.
         </p>
+        <button
+          type="button"
+          onClick={openPrivacyChoices}
+          className="mt-3 text-sm text-foreground underline-offset-4 transition hover:underline"
+        >
+          Manage privacy choices
+        </button>
       </section>
       <section>
         <h2 className="font-medium text-foreground">Payments and licenses</h2>
