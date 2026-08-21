@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { useLocation } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { CouchModeMark, CouchModeWordmark } from "@/components/brand/CouchModeMark";
+import { RedditIcon } from "@/components/RedditIcon";
+import { REDDIT_URL, trackRedditClick } from "@/lib/community";
 
 const links = [
   { href: "/#how", label: "How it works" },
@@ -96,6 +98,16 @@ export function Navbar() {
 
           <div ref={menuRef} className="flex items-center gap-2">
             <a
+              href={REDDIT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackRedditClick("navbar")}
+              className="hidden lg:inline-flex items-center gap-2 rounded-full border border-white/10 bg-card/70 px-3.5 py-2 text-sm font-medium text-muted-foreground transition duration-200 hover:-translate-y-0.5 hover:border-[#ff6b35]/45 hover:bg-card hover:text-foreground hover:shadow-[0_10px_28px_-14px_rgba(255,107,53,0.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b35]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              <RedditIcon className="h-4 w-4 text-[#ff6b35]" />
+              Join r/CouchMode
+            </a>
+            <a
               href="/download"
               aria-current={isCurrentPage("/download", pathname) ? "page" : undefined}
               /* The beta download is open, so the header action is a primary CTA. Padding is
@@ -156,6 +168,19 @@ export function Navbar() {
                     </a>
                   );
                 })}
+                <a
+                  href={REDDIT_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-1 flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b35]/80"
+                  onClick={() => {
+                    trackRedditClick("navbar");
+                    setMenuOpen(false);
+                  }}
+                >
+                  <RedditIcon className="h-4 w-4 text-[#ff6b35]" />
+                  Join r/CouchMode
+                </a>
                 <a
                   href="/download"
                   aria-current={isCurrentPage("/download", pathname) ? "page" : undefined}

@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { latestRelease } from "@/data/releases";
+import { RedditIcon } from "@/components/RedditIcon";
 import { trackDistributionIntent, trackEvent } from "@/lib/analytics";
 import { useMicrosoftStoreUrl } from "@/lib/campaign-attribution";
+import { REDDIT_URL, trackRedditClick } from "@/lib/community";
 import {
   Accordion,
   AccordionContent,
@@ -230,6 +232,36 @@ export function SearchIntentFAQ() {
             </AccordionItem>
           ))}
         </Accordion>
+
+        <motion.aside
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.45 }}
+          className="mt-6 flex flex-col gap-5 rounded-2xl border border-white/10 bg-card/60 p-5 shadow-[0_18px_45px_-30px_rgba(125,99,255,0.75)] sm:flex-row sm:items-center sm:justify-between sm:p-6"
+        >
+          <div className="flex gap-3">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#ff6b35]/25 bg-[#ff6b35]/10">
+              <RedditIcon className="h-5 w-5 text-[#ff6b35]" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-foreground">Join the CouchMode community</h3>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                Ask questions, share setups, report issues, and follow CouchMode updates on Reddit.
+              </p>
+            </div>
+          </div>
+          <a
+            href={REDDIT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackRedditClick("faq")}
+            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-[#ff6b35]/30 bg-[#ff6b35]/10 px-4 py-2.5 text-sm font-semibold text-foreground transition duration-200 hover:-translate-y-0.5 hover:border-[#ff6b35]/60 hover:bg-[#ff6b35]/15 hover:shadow-[0_12px_28px_-14px_rgba(255,107,53,0.85)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b35]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
+            <RedditIcon className="h-4 w-4 text-[#ff6b35]" />
+            Visit r/CouchMode
+          </a>
+        </motion.aside>
       </div>
     </section>
   );
