@@ -2,34 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://couchmode.app/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-08-21</lastmod>
   </url>
   <url>
     <loc>https://couchmode.app/download/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-08-19</lastmod>
   </url>
   <url>
     <loc>https://couchmode.app/support/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-08-05</lastmod>
   </url>
   <url>
     <loc>https://couchmode.app/changelog/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-08-20</lastmod>
   </url>
   <url>
     <loc>https://couchmode.app/privacy/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-08-21</lastmod>
   </url>
   <url>
     <loc>https://couchmode.app/terms/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-08-19</lastmod>
   </url>
   <url>
     <loc>https://couchmode.app/refund/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-08-20</lastmod>
   </url>
   <url>
-    <loc>https://couchmode.app/buy/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <loc>https://couchmode.app/guides/</loc>
+    <lastmod>2026-08-21</lastmod>
+  </url>
+  <url>
+    <loc>https://couchmode.app/guides/launch-playnite-with-controller/</loc>
+    <lastmod>2026-08-21</lastmod>
+  </url>
+  <url>
+    <loc>https://couchmode.app/guides/playnite-controller-focus/</loc>
+    <lastmod>2026-08-21</lastmod>
+  </url>
+  <url>
+    <loc>https://couchmode.app/guides/start-steam-big-picture-with-controller/</loc>
+    <lastmod>2026-08-21</lastmod>
+  </url>
+  <url>
+    <loc>https://couchmode.app/guides/windows-11-console-like-pc/</loc>
+    <lastmod>2026-08-21</lastmod>
+  </url>
+  <url>
+    <loc>https://couchmode.app/guides/windows-handheld-couch-gaming/</loc>
+    <lastmod>2026-08-21</lastmod>
   </url>
 </urlset>

@@ -59,7 +59,7 @@ function Support() {
         <ul className="mt-3 list-disc space-y-2 pl-5">
           <li>Windows version</li>
           <li>CouchMode version</li>
-          <li>Whether you are using ROG Ally, another handheld, or a desktop PC</li>
+          <li>Device type: ROG Ally, another handheld, or a desktop PC</li>
           <li>Controller type</li>
           <li>
             Launch target: Xbox full-screen where supported, Steam Big Picture,
@@ -102,4 +102,3 @@ function Support() {
     </InfoPage>
   );
 }
-

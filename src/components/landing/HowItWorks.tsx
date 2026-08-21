@@ -48,7 +48,7 @@ export function HowItWorks() {
             id="how-heading"
             className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl lg:text-5xl"
           >
-            From controller to couch in seconds.
+            From controller to couch.
           </h2>
           <p className="mt-5 max-w-xl text-muted-foreground">
             CouchMode handles the session flow around the launcher and Windows

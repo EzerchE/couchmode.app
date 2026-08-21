@@ -5,6 +5,14 @@
 //     error logger plugins, and sandbox detection (port/host/strictPort).
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+// This build-only helper intentionally remains JavaScript so Bun can run it before
+// Vite starts. The manifest shape is declared here for the Vite configuration.
+// @ts-expect-error JavaScript build helper has no declaration file.
+import { getGuideManifest } from "./scripts/guides.mjs";
+
+const guidePages = getGuideManifest()
+  .filter((guide: { locale: string }) => guide.locale === "en")
+  .map((guide: { slug: string }) => ({ path: `/guides/${guide.slug}` }));
 
 export default defineConfig({
   tanstackStart: {
@@ -60,6 +68,8 @@ export default defineConfig({
           enabled: true,
         },
       },
+      { path: "/guides", prerender: { enabled: true } },
+      ...guidePages.map((page: { path: string }) => ({ ...page, prerender: { enabled: true } })),
     ],
   },
 });

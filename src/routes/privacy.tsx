@@ -122,15 +122,8 @@ function Privacy() {
           CouchMode does not store payment card details. Patreon billing is handled by Patreon.
         </p>
         <p className="mt-2">
-          CouchMode may contact{" "}
-          <a
-            className="text-foreground underline-offset-4 hover:underline"
-            href="https://license.couchmode.app"
-          >
-            license.couchmode.app
-          </a>{" "}
-          only when needed to validate Pro access, refresh entitlement status, or deactivate
-          devices.
+          CouchMode may contact license.couchmode.app only when needed to validate Pro access,
+          refresh entitlement status, or deactivate devices.
         </p>
       </section>
     </InfoPage>

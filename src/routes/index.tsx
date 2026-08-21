@@ -8,6 +8,8 @@ import { Comparison } from "@/components/landing/Comparison";
 import { SearchIntentFAQ, faqs } from "@/components/landing/SearchIntentFAQ";
 import { FinalCTA } from "@/components/landing/FinalCTA";
 import { Footer } from "@/components/landing/Footer";
+import { GuidesPreview } from "@/components/landing/GuidesPreview";
+import { latestRelease } from "@/data/releases";
 
 const TITLE = "CouchMode - Controller-first gaming utility for Windows";
 const DESC =
@@ -44,6 +46,8 @@ export const Route = createFileRoute("/")({
           description: SOFTWARE_DESC,
           url: "https://couchmode.app/",
           image: OG_IMAGE,
+          softwareVersion: latestRelease.version,
+          downloadUrl: "https://couchmode.app/download",
           offers: {
             "@type": "Offer",
             price: "0.00",
@@ -101,6 +105,7 @@ function Index() {
         <HowItWorks />
         <FeatureShots />
         <Comparison />
+        <GuidesPreview />
         <FinalCTA />
         <SearchIntentFAQ />
       </main>

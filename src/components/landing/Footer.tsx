@@ -22,6 +22,9 @@ export function Footer() {
             <a href="/#download" className="hover:text-foreground transition">
               Get CouchMode
             </a>
+            <a href="/guides/" className="hover:text-foreground transition">
+              Guides
+            </a>
             <a href="/changelog" className="hover:text-foreground transition">
               Changelog
             </a>

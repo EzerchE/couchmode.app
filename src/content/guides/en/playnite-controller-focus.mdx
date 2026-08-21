@@ -1,0 +1,41 @@
+---
+title: "Playnite Is Open but the Controller Does Not Respond: Fullscreen Focus Explained"
+description: "Understand why a visible Playnite window may not receive controller input, especially after it was already open or minimized."
+slug: playnite-controller-focus
+published: 2026-08-21
+updated: 2026-08-21
+locale: en
+category: Playnite
+featured: false
+related: ["launch-playnite-with-controller"]
+heroImage: "/screenshots/app-general.png"
+ogImage: "/social/og-couchmode-v3.png"
+---
+
+If Playnite is visible but the controller does not respond, check whether the user-facing Playnite window has focus. A process can be running while its window is minimized, behind another app, or not receiving controller input. That is why a mouse click can appear to fix the issue.
+
+This is a common living-room problem because launching an application and bringing it into the foreground are different jobs. A session can start successfully while a notification, browser, overlay, or previously minimized window still owns the interaction.
+
+## Process running is not the same as Fullscreen ready
+
+Windows can report that Playnite is running even when it is not the frontmost experience. The same is true if Playnite was already open before a session began. A library window on screen is only useful from the couch when controller input reaches it, the intended display is active, and another application is not sitting on top of it.
+
+Start by looking for the simplest clues. Is Playnite minimized? Is a Windows prompt, game launcher, or overlay in front? Does a single mouse click on Playnite make the controller respond? If it does, the controller is not necessarily broken; the active window was probably somewhere else.
+
+## How the existing Playnite state matters
+
+CouchMode avoids opening a second Playnite instance when Playnite is already open. It works with the existing application state instead of treating every controller connection as an instruction to duplicate the launcher. That protects the state of a library session that may already be in use.
+
+An existing minimized or background Playnite window can therefore need the same focus checks as a newly started window. Close the competing window, restore Playnite, and test controller navigation again. Avoid repeatedly changing launch settings before you know whether the actual problem is focus, a controller connection, or a separate game overlay.
+
+## Safe troubleshooting order
+
+First, confirm that Windows and Playnite can both see the controller. Next, open Playnite manually in Fullscreen mode and test input with no other launcher in front. Then test the same path through CouchMode with one compatible controller and the TV or monitor you normally use.
+
+If the issue returns only after a particular overlay, remote desktop session, or launcher is present, remove that condition for the next test. This is safer than applying unsupported focus workarounds that may interfere with accessibility tools, game anti-cheat, or your normal desktop workflow.
+
+## Where CouchMode helps and where it stops
+
+CouchMode uses a compatible controller to begin the selected gaming session and can bring the chosen user-facing experience forward as part of that flow. It does not promise to force focus through every Windows security prompt, third-party overlay, or application-specific limitation. Native PlayStation controller connections also have a current limitation as session triggers, so verify the Windows controller path when diagnosing a start problem.
+
+Playnite is included in CouchMode Free. Once the manual Fullscreen path is reliable, use the Playnite launch guide to build the controller-first session. If your setup has a repeatable focus edge case, share the exact controller, display, launcher, and Windows details on r/CouchMode so it can be compared with real installations.

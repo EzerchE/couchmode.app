@@ -26,7 +26,7 @@ export const Route = createFileRoute("/buy")({
     meta: [
       { title: META_TITLE },
       { name: "description", content: META_DESC },
-      { name: "robots", content: "index,follow" },
+      { name: "robots", content: "noindex,follow" },
       { property: "og:site_name", content: "CouchMode" },
       { property: "og:title", content: META_TITLE },
       { property: "og:description", content: META_DESC },

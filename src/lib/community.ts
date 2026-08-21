@@ -4,7 +4,7 @@ import { getCampaignAttribution } from "@/lib/campaign-attribution";
 
 export const REDDIT_URL = "https://www.reddit.com/r/CouchMode/";
 
-type RedditPlacement = "navbar" | "faq" | "footer";
+type RedditPlacement = "navbar" | "faq" | "footer" | "guide";
 
 export function trackRedditClick(placement: RedditPlacement) {
   const attribution = getCampaignAttribution();

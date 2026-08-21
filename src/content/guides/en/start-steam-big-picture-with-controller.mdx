@@ -1,0 +1,43 @@
+---
+title: "How to Start Steam Big Picture When a Controller Connects"
+description: "Set up a controller-first Steam Big Picture flow while keeping ownership of Steam sessions that were already open."
+slug: start-steam-big-picture-with-controller
+published: 2026-08-21
+updated: 2026-08-21
+locale: en
+category: Steam Big Picture
+featured: true
+related: ["windows-11-console-like-pc", "windows-handheld-couch-gaming"]
+heroImage: "/screenshots/app-session-tweaks.png"
+ogImage: "/social/og-couchmode-v3.png"
+---
+
+To start Steam Big Picture when a controller connects, select Steam Big Picture as the CouchMode gaming experience and use a compatible controller to begin the session. Steam Big Picture is available in CouchMode Free, so the basic controller-to-Big-Picture path does not require a Pro plan.
+
+That arrangement is useful for a PC connected to a television because Steam can remain installed, updated, and signed in as usual. The controller becomes the deliberate start signal, instead of asking you to navigate the Windows desktop each time you want to play.
+
+## Steam may already be running
+
+Steam is often running in the notification area long before a couch session begins. That is normal. A controller-first flow should not assume that a running Steam process means Big Picture is already the active experience, and it should not launch duplicate Steam processes just to get there.
+
+First make sure Steam can open Big Picture normally on its own. Sign in, complete any pending update, and check that the TV is the display you expect to use. Those checks rule out account prompts and first-run dialogs that no session launcher can safely answer for you.
+
+## Start Big Picture, then keep session ownership clear
+
+CouchMode can launch Steam Big Picture as part of a session it begins. If Big Picture is already open from before CouchMode starts, CouchMode preserves that pre-existing session instead of claiming ownership of it. This prevents a session utility from closing or changing an experience it did not create.
+
+That behavior can look conservative, but it is intentional. A pre-existing Big Picture session may contain an active game, a download, a remote-play connection, or a person using Steam at the desk. Preserving it is safer than trying to infer that every open Steam window should be reset when a controller disconnects.
+
+## Use a compatible controller for the trigger
+
+Use a controller that Windows exposes through the supported compatibility path, such as an Xbox controller. Some controllers can be configured to appear Xbox-compatible on Windows, but that configuration is outside CouchMode itself. Verify that Windows and Steam both see the controller before expecting it to start a session.
+
+Every controller connection does not work natively as a session trigger. In particular, native PlayStation controller connections have a current trigger limitation. If your hardware needs an adapter or another Windows compatibility layer, test the complete path before making it the only way to access the PC from the couch.
+
+## Return to a usable desktop
+
+When the session CouchMode started is finished, it returns the supported settings it changed. Your normal Windows desktop remains your desktop; CouchMode is not a replacement shell and does not turn Steam into the operating system. This makes the same machine practical for a desk during the day and a controller-led TV setup later.
+
+Pro can automate additional session preferences such as available audio, display, power, notification, resource, and app-cleanup choices. Those options are separate from the Free Big Picture launch flow, so start with the simple route and add automation only where it solves a real repeatable step.
+
+For a broader living-room setup, see the Windows console-style guide. If your PC is a docked handheld, the handheld guide explains why display and controller choices deserve an extra test before relying on a single button press.
