@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
-import { type Guide, guideUrl } from "@/content/guides";
+import type { CSSProperties } from "react";
+import { guideCategoryMeta, type Guide, guideUrl } from "@/content/guides";
 
 type GuideCardProps = {
   guide: Guide;
@@ -15,16 +16,25 @@ function formatDate(value: string) {
 }
 
 export function GuideCard({ guide, compact = false }: GuideCardProps) {
+  const { accent } = guideCategoryMeta[guide.category];
+
   return (
     <a
       href={guideUrl(guide.slug, guide.locale)}
-      className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-card/65 p-5 transition duration-200 hover:-translate-y-1 hover:border-primary/45 hover:bg-card hover:shadow-[0_20px_48px_-28px_rgba(99,102,241,0.8)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+      style={{ "--guide-accent": accent, borderColor: `${accent}33` } as CSSProperties}
+      className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-card/65 p-5 transition duration-200 hover:-translate-y-1 hover:border-[var(--guide-accent)] hover:bg-card hover:shadow-[0_20px_48px_-28px_var(--guide-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
         compact ? "sm:p-6" : "sm:p-7"
       }`}
     >
-      <div className="pointer-events-none absolute -right-8 -top-8 h-28 w-28 rounded-full bg-primary/15 blur-3xl transition-opacity duration-200 group-hover:opacity-100" />
+      <div
+        className="pointer-events-none absolute -right-8 -top-8 h-28 w-28 rounded-full blur-3xl transition-opacity duration-200 group-hover:opacity-100"
+        style={{ backgroundColor: accent, opacity: 0.14 }}
+      />
       <div className="relative flex items-center justify-between gap-3">
-        <span className="rounded-full border border-primary/20 bg-primary/10 px-2.5 py-1 text-[11px] font-medium text-primary">
+        <span
+          className="rounded-full border px-2.5 py-1 text-[11px] font-medium"
+          style={{ backgroundColor: `${accent}18`, borderColor: `${accent}55`, color: accent }}
+        >
           {guide.category}
         </span>
         <ArrowUpRight className="h-4 w-4 text-muted-foreground transition group-hover:text-foreground" />

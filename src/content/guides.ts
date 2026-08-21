@@ -4,6 +4,20 @@ export type GuideCategory =
   | "Windows Couch Gaming"
   | "Windows Handhelds";
 
+export const guideCategories: GuideCategory[] = [
+  "Playnite",
+  "Steam Big Picture",
+  "Windows Couch Gaming",
+  "Windows Handhelds",
+];
+
+export const guideCategoryMeta: Record<GuideCategory, { accent: string; hash: string }> = {
+  Playnite: { accent: "#8B5CF6", hash: "playnite" },
+  "Steam Big Picture": { accent: "#3B82F6", hash: "steam-big-picture" },
+  "Windows Couch Gaming": { accent: "#06B6D4", hash: "windows-couch-gaming" },
+  "Windows Handhelds": { accent: "#14B8A6", hash: "windows-handhelds" },
+};
+
 export type GuideFrontmatter = {
   title: string;
   description: string;

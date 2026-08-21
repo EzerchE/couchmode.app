@@ -1,22 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { BookOpen } from "lucide-react";
-import { GuideCard } from "@/components/guides/GuideCard";
+import { GuideBrowser } from "@/components/guides/GuideBrowser";
 import { Footer } from "@/components/landing/Footer";
 import { Navbar } from "@/components/landing/Navbar";
-import { type GuideCategory, guides } from "@/content/guides";
 
 const TITLE = "Windows Couch Gaming Guides | CouchMode";
 const DESCRIPTION =
   "Practical Windows couch-gaming guides for Playnite, Steam Big Picture, controllers, TV setups, and docked handhelds.";
 const CANONICAL = "https://couchmode.app/guides/";
 const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v3.png";
-const categories: GuideCategory[] = [
-  "Playnite",
-  "Steam Big Picture",
-  "Windows Couch Gaming",
-  "Windows Handhelds",
-];
-
 export const Route = createFileRoute("/guides/")({
   head: () => ({
     meta: [
@@ -77,30 +69,7 @@ function GuidesIndex() {
             Practical guides for controller-first sessions, TV setups, Steam Big Picture, Playnite,
             and docked Windows handhelds.
           </p>
-          <div className="mt-16 space-y-14">
-            {categories.map((category) => {
-              const categoryGuides = guides.filter((guide) => guide.category === category);
-              if (!categoryGuides.length) return null;
-              return (
-                <section
-                  key={category}
-                  aria-labelledby={`category-${category.replaceAll(" ", "-")}`}
-                >
-                  <h2
-                    id={`category-${category.replaceAll(" ", "-")}`}
-                    className="text-xl font-semibold tracking-tight"
-                  >
-                    {category}
-                  </h2>
-                  <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-                    {categoryGuides.map((guide) => (
-                      <GuideCard key={guide.slug} guide={guide} />
-                    ))}
-                  </div>
-                </section>
-              );
-            })}
-          </div>
+          <GuideBrowser />
         </div>
       </main>
       <Footer />
