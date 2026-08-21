@@ -9,6 +9,9 @@ import {
 } from "@tanstack/react-router";
 import { type ReactNode } from "react";
 import { AnalyticsLifecycle } from "@/components/analytics/AnalyticsLifecycle";
+import { CloudflareAnalytics } from "@/components/analytics/CloudflareAnalytics";
+import { ConsentBanner } from "@/components/analytics/ConsentBanner";
+import { consentBootstrapScript } from "@/lib/consent";
 
 import appCss from "../styles.css?url";
 
@@ -110,6 +113,7 @@ function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className="dark">
       <head>
+        <script dangerouslySetInnerHTML={{ __html: consentBootstrapScript }} />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -135,11 +139,6 @@ function RootShell({ children }: { children: ReactNode }) {
         </noscript>
         {children}
         <Scripts />
-        <script
-          defer
-          src="https://static.cloudflareinsights.com/beacon.min.js"
-          data-cf-beacon='{"token":"dbb8be77b9d4459f89813f20cdf6bc30"}'
-        />
       </body>
     </html>
   );
@@ -151,8 +150,10 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <AnalyticsLifecycle />
+      <CloudflareAnalytics />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <ConsentBanner />
     </QueryClientProvider>
   );
 }

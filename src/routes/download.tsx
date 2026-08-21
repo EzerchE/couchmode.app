@@ -3,8 +3,9 @@ import { useEffect } from "react";
 import { Clock, Download as DownloadIcon, PackageOpen, ShieldAlert } from "lucide-react";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
-import { trackEvent } from "@/lib/analytics";
-import { MICROSOFT_STORE_URL, MICROSOFT_STORE_LABEL } from "@/lib/channels";
+import { trackDistributionIntent, trackEvent } from "@/lib/analytics";
+import { MICROSOFT_STORE_LABEL } from "@/lib/channels";
+import { useMicrosoftStoreUrl } from "@/lib/campaign-attribution";
 import { MicrosoftStoreIcon } from "@/components/MicrosoftStoreIcon";
 import { latestRelease } from "@/data/releases";
 
@@ -83,11 +84,12 @@ export const Route = createFileRoute("/download")({
 });
 
 function Download() {
+  const microsoftStoreUrl = useMicrosoftStoreUrl();
+
   useEffect(() => {
-    trackEvent("download_page_view", {
-      section: "download",
-      channel: "pre_public_beta",
-      source: "download_page",
+    trackEvent("download_page_open", {
+      placement: "download_page",
+      version: latestRelease.version,
     });
   }, []);
 
@@ -120,10 +122,12 @@ function Download() {
               <a
                 href={latestRelease.installerUrl ?? undefined}
                 onClick={() =>
-                  trackEvent("download_click", {
-                    section: "download",
-                    version: latestRelease.version,
-                  })
+                  trackDistributionIntent(
+                    "direct",
+                    "download_page",
+                    latestRelease.version,
+                    latestRelease.installerUrl ?? "",
+                  )
                 }
                 className="inline-flex items-center gap-2 rounded-full bg-aurora px-6 py-3 text-sm font-medium text-background transition hover:opacity-90"
               >
@@ -147,17 +151,17 @@ function Download() {
               bump, a paused direct download, and any future change to the release JSON. */}
           <div className="mt-4 flex justify-center">
             <a
-              href={MICROSOFT_STORE_URL}
+              href={microsoftStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-sm font-medium text-foreground transition hover:bg-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               onClick={() => {
-                trackEvent("cta_downloadpage_microsoft_store", {
-                  section: "download",
-                  label: MICROSOFT_STORE_LABEL,
-                  target: MICROSOFT_STORE_URL,
-                  source: "download_page",
-                });
+                trackDistributionIntent(
+                  "microsoft_store",
+                  "download_page",
+                  latestRelease.version,
+                  microsoftStoreUrl,
+                );
               }}
             >
               <MicrosoftStoreIcon className="h-4 w-4" />
@@ -178,9 +182,7 @@ function Download() {
                 <dt className="text-xs uppercase tracking-wider text-muted-foreground">
                   {fact.label}
                 </dt>
-                <dd className="text-sm text-foreground/90 sm:text-right">
-                  {fact.value}
-                </dd>
+                <dd className="text-sm text-foreground/90 sm:text-right">{fact.value}</dd>
               </div>
             ))}
           </dl>
@@ -189,13 +191,11 @@ function Download() {
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
               <div className="flex items-center gap-2">
                 <PackageOpen className="h-4 w-4 text-primary" />
-                <h2 className="text-sm font-medium text-foreground">
-                  What you&apos;ll get
-                </h2>
+                <h2 className="text-sm font-medium text-foreground">What you&apos;ll get</h2>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                A single Windows installer for CouchMode, with a 7-day in-app Pro
-                trial. No account or credit card is needed to try Pro.
+                A single Windows installer for CouchMode, with a 7-day in-app Pro trial. No account
+                or credit card is needed to try Pro.
               </p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">

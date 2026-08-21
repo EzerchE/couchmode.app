@@ -3,6 +3,7 @@ import { InfoPage } from "@/components/utility/InfoPage";
 import { breadcrumbLd } from "@/lib/seo";
 import { trackEvent } from "@/lib/analytics";
 import { PATREON_CTA_LABEL, PATREON_MEMBERSHIP_URL } from "@/lib/patreon";
+import { latestRelease } from "@/data/releases";
 
 const TITLE = "Get CouchMode Pro";
 const DESC =
@@ -50,10 +51,7 @@ function Buy() {
 
       <div className="grid gap-4 sm:grid-cols-2">
         {plans.map((plan) => (
-          <div
-            key={plan.name}
-            className="rounded-2xl border border-white/10 bg-white/[0.03] p-5"
-          >
+          <div key={plan.name} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
             <h2 className="text-base font-medium text-foreground">{plan.name}</h2>
             <p className="mt-1 text-2xl font-semibold tracking-tight text-foreground">
               {plan.price}
@@ -64,8 +62,8 @@ function Buy() {
       </div>
 
       <p>
-        Both tiers include Resource Control, Session Tweaks, after-session
-        actions, and other Pro session automation.
+        Both tiers include Resource Control, Session Tweaks, after-session actions, and other Pro
+        session automation.
       </p>
 
       {/* The one outbound step. Everything above exists so nobody arrives at Patreon
@@ -77,11 +75,11 @@ function Buy() {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 rounded-full bg-aurora px-6 py-3 text-sm font-medium text-primary-foreground glow-violet transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           onClick={() => {
-            trackEvent("cta_buypage_patreon", {
-              section: "buy",
+            trackEvent("patreon_click", {
+              placement: "buy_page",
               label: PATREON_CTA_LABEL,
-              target: "patreon",
-              source: "buy_page",
+              target: PATREON_MEMBERSHIP_URL,
+              version: latestRelease.version,
             });
           }}
         >
@@ -90,12 +88,12 @@ function Buy() {
       </div>
 
       <p>
-        Pro access is provided through an active Patreon membership during the
-        public beta. Patreon requires an account and payment method.
+        Pro access is provided through an active Patreon membership during the public beta. Patreon
+        requires an account and payment method.
       </p>
       <p>
-        New installations include a 7-day in-app Pro trial. No CouchMode account
-        or credit card is required for the in-app trial.
+        New installations include a 7-day in-app Pro trial. No CouchMode account or credit card is
+        required for the in-app trial.
       </p>
       <p>
         Already a member? Open CouchMode and choose{" "}

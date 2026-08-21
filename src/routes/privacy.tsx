@@ -38,17 +38,15 @@ function Privacy() {
       <section>
         <h2 className="font-medium text-foreground">Desktop utility</h2>
         <p className="mt-2">
-          CouchMode is a Windows desktop utility designed to help you prepare,
-          manage, and restore couch gaming sessions from your PC. Free use does
-          not require an account.
+          CouchMode is a Windows desktop utility designed to help you prepare, manage, and restore
+          couch gaming sessions from your PC. Free use does not require an account.
         </p>
       </section>
       <section>
         <h2 className="font-medium text-foreground">Local app data</h2>
         <p className="mt-2">
-          CouchMode may store local app settings and logs on your device so the
-          app can remember preferences, diagnose issues, and restore session
-          state.
+          CouchMode may store local app settings and logs on your device so the app can remember
+          preferences, diagnose issues, and restore session state.
         </p>
       </section>
       <section>
@@ -57,23 +55,22 @@ function Privacy() {
           CouchMode does not collect gameplay data or track what games you play.
         </p>
         <p className="mt-2">
-          No gameplay tracking. No settings cloud sync. Pro license validation is
-          performed only when needed.
+          No gameplay tracking. No settings cloud sync. Pro license validation is performed only
+          when needed.
         </p>
       </section>
       <section>
         <h2 className="font-medium text-foreground">Diagnostics and support</h2>
         <p className="mt-2">
-          If you contact support or export a diagnostic bundle, it may include
-          app logs, Windows version, CouchMode version, launch mode, controller
-          count or state, display topology, and error or status messages.
+          If you contact support or export a diagnostic bundle, it may include app logs, Windows
+          version, CouchMode version, launch mode, controller count or state, display topology, and
+          error or status messages.
         </p>
         <p className="mt-2">
-          CouchMode can send a problem report only when you choose to submit one
-          from the app. You can review the exact report before sending it, and it
-          may include the diagnostic details described above. Nothing is sent
-          automatically, and cancelling or closing the report without submitting
-          it sends nothing.
+          CouchMode can send a problem report only when you choose to submit one from the app. You
+          can review the exact report before sending it, and it may include the diagnostic details
+          described above. Nothing is sent automatically, and cancelling or closing the report
+          without submitting it sends nothing.
         </p>
         <p className="mt-2">
           If you email support at{" "}
@@ -83,51 +80,48 @@ function Privacy() {
           >
             support@couchmode.app
           </a>
-          , your email address and message contents may be used to respond to
-          your request.
+          , your email address and message contents may be used to respond to your request.
         </p>
       </section>
       <section>
         <h2 className="font-medium text-foreground">Patreon membership validation</h2>
         <p className="mt-2">
-          If you connect a Patreon membership to CouchMode, license validation
-          may process your Patreon account identifier, Patreon email address if
-          provided by Patreon, membership tier, membership status, activation
-          token, installation or device identifier, app version, activation
-          timestamp, and entitlement status.
+          If you connect a Patreon membership to CouchMode, license validation may process your
+          Patreon account identifier, Patreon email address if provided by Patreon, membership tier,
+          membership status, activation token, installation or device identifier, app version,
+          activation timestamp, and entitlement status.
         </p>
         <p className="mt-2">
-          CouchMode uses this information only to verify Pro access, enforce
-          device limits, troubleshoot activation issues, and maintain account
-          and security records.
+          CouchMode uses this information only to verify Pro access, enforce device limits,
+          troubleshoot activation issues, and maintain account and security records.
         </p>
       </section>
       <section>
         <h2 className="font-medium text-foreground">Website analytics</h2>
         <p className="mt-2">
-          This website uses Cloudflare Web Analytics and a Google tag through
-          Google Tag Manager to understand aggregate traffic, such as page views
-          and referrers. These are used for website measurement only and are
-          separate from the CouchMode desktop app, which does not track
-          gameplay.
+          Essential site functionality is used by default. Cloudflare Web Analytics and the Google
+          tag delivered through Google Tag Manager run only after you allow Analytics in the consent
+          prompt. Those tools help us understand aggregate website traffic, such as page views and
+          referrers, and are separate from the CouchMode desktop app, which does not track gameplay.
         </p>
       </section>
       <section>
         <h2 className="font-medium text-foreground">Payments and licenses</h2>
         <p className="mt-2">
-          CouchMode does not store payment card details. Patreon billing is
-          handled by Patreon.
+          CouchMode does not store payment card details. Patreon billing is handled by Patreon.
         </p>
         <p className="mt-2">
           CouchMode may contact{" "}
-          <a className="text-foreground underline-offset-4 hover:underline" href="https://license.couchmode.app">
+          <a
+            className="text-foreground underline-offset-4 hover:underline"
+            href="https://license.couchmode.app"
+          >
             license.couchmode.app
           </a>{" "}
-          only when needed to validate Pro access, refresh entitlement status,
-          or deactivate devices.
+          only when needed to validate Pro access, refresh entitlement status, or deactivate
+          devices.
         </p>
       </section>
     </InfoPage>
   );
 }
-

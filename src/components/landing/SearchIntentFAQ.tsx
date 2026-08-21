@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
-import { MICROSOFT_STORE_URL } from "@/lib/channels";
+import { latestRelease } from "@/data/releases";
+import { trackDistributionIntent, trackEvent } from "@/lib/analytics";
+import { useMicrosoftStoreUrl } from "@/lib/campaign-attribution";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { trackEvent } from "@/lib/analytics";
 
 // Content source of truth for the on-page FAQ and the FAQPage structured data
 // in src/routes/index.tsx. Keep the shape ({ question, answer, link? }) stable, keep
@@ -110,7 +111,7 @@ export const faqs = [
     question: "Can I install CouchMode from Microsoft Store?",
     answer:
       "Yes. CouchMode is on Microsoft Store, alongside the signed installer on couchmode.app/download.",
-    link: { href: MICROSOFT_STORE_URL, label: "View CouchMode on Microsoft Store" },
+    link: { label: "View CouchMode on Microsoft Store" },
   },
   {
     question: "What is the difference between the direct download and the Microsoft Store version?",
@@ -140,6 +141,8 @@ export const faqs = [
 ];
 
 export function SearchIntentFAQ() {
+  const microsoftStoreUrl = useMicrosoftStoreUrl();
+
   // Fires when an item opens. Radix passes "" on collapse, which we ignore.
   const handleValueChange = (value: string) => {
     if (!value) return;
@@ -147,18 +150,13 @@ export function SearchIntentFAQ() {
     const faq = faqs[index];
     if (!faq) return;
     trackEvent("faq_open", {
-      section: "questions",
+      placement: "faq",
       label: faq.question,
-      source: "faq",
     });
   };
 
   return (
-    <section
-      id="faq"
-      className="relative py-20 sm:py-28"
-      aria-labelledby="questions-heading"
-    >
+    <section id="faq" className="relative py-20 sm:py-28" aria-labelledby="questions-heading">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -167,9 +165,7 @@ export function SearchIntentFAQ() {
           transition={{ duration: 0.6 }}
           className="mb-12 text-center"
         >
-          <p className="mb-3 text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            Questions
-          </p>
+          <p className="mb-3 text-xs uppercase tracking-[0.2em] text-muted-foreground">Questions</p>
           <h2
             id="questions-heading"
             className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
@@ -177,9 +173,9 @@ export function SearchIntentFAQ() {
             Built for the way PC players actually start a couch session.
           </h2>
           <p className="mt-4 text-muted-foreground">
-            CouchMode is designed for Windows PCs connected to a TV, couch, or
-            controller-first setup. These answers explain what it can start,
-            what it can automate, and what depends on Windows support.
+            CouchMode is designed for Windows PCs connected to a TV, couch, or controller-first
+            setup. These answers explain what it can start, what it can automate, and what depends
+            on Windows support.
           </p>
         </motion.div>
 
@@ -213,9 +209,17 @@ export function SearchIntentFAQ() {
                   <>
                     {" "}
                     <a
-                      href={faq.link.href}
+                      href={microsoftStoreUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() =>
+                        trackDistributionIntent(
+                          "microsoft_store",
+                          "faq",
+                          latestRelease.version,
+                          microsoftStoreUrl,
+                        )
+                      }
                       className="text-foreground underline underline-offset-4 transition hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     >
                       {faq.link.label}

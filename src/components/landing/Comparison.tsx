@@ -24,11 +24,7 @@ const pro = [
 
 export function Comparison() {
   return (
-    <section
-      id="pricing"
-      className="relative py-24 sm:py-32"
-      aria-labelledby="pricing-heading"
-    >
+    <section id="pricing" className="relative py-24 sm:py-32" aria-labelledby="pricing-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mb-14">
           <p className="text-sm font-medium text-aurora mb-4">Free vs Pro</p>
@@ -39,9 +35,9 @@ export function Comparison() {
             Free for the launchers you use. Pro for deeper automation.
           </h2>
           <p className="mt-5 text-muted-foreground">
-            The controller-first session flow is free, and so are Xbox, Steam Big
-            Picture and Playnite. Pro adds custom launchers, Resource Control,
-            Session Tweaks, and deeper restore automation.
+            The controller-first session flow is free, and so are Xbox, Steam Big Picture and
+            Playnite. Pro adds custom launchers, Resource Control, Session Tweaks, and deeper
+            restore automation.
           </p>
         </div>
 
@@ -99,8 +95,7 @@ export function Comparison() {
                 </div>
               </div>
               <p className="text-sm text-muted-foreground mb-8">
-                CouchMode manages the session it starts, then restores the
-                desktop changes it made.
+                CouchMode manages the session it starts, then restores the desktop changes it made.
               </p>
               <ul className="space-y-4 mb-10 flex-1">
                 {pro.map((f) => (
@@ -116,11 +111,10 @@ export function Comparison() {
                 href="/buy"
                 className="inline-flex w-full justify-center items-center rounded-full bg-aurora text-primary-foreground px-6 py-3 text-sm font-medium glow-violet hover:brightness-110 transition"
                 onClick={() => {
-                  trackEvent("patreon_click", {
-                    section: "pricing",
+                  trackEvent("pro_info_click", {
+                    placement: "pricing",
                     label: "Unlock Pro with Patreon",
                     target: "/buy",
-                    source: "pro_card",
                   });
                 }}
               >
@@ -131,9 +125,9 @@ export function Comparison() {
         </div>
 
         <p className="mt-6 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-          Pro access requires an active Patreon membership after the trial. Pro
-          is $3/month and includes 2 active Windows devices. Pro Supporter is
-          $5/month and includes 5 active Windows devices.
+          Pro access requires an active Patreon membership after the trial. Pro is $3/month and
+          includes 2 active Windows devices. Pro Supporter is $5/month and includes 5 active Windows
+          devices.
         </p>
       </div>
     </section>

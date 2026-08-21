@@ -1,27 +1,25 @@
 import { motion } from "framer-motion";
 import { Download, Sparkles } from "lucide-react";
-import { trackEvent } from "@/lib/analytics";
-import { MICROSOFT_STORE_URL, MICROSOFT_STORE_LABEL } from "@/lib/channels";
+import { trackDistributionIntent, trackEvent } from "@/lib/analytics";
+import { MICROSOFT_STORE_LABEL } from "@/lib/channels";
 import { latestRelease } from "@/data/releases";
+import { useMicrosoftStoreUrl } from "@/lib/campaign-attribution";
 
 // Read the direct-download state from the same release data the download page and
 // the update manifests are generated from, so this card can never advertise a
 // state the release data does not actually have.
 const downloadOpen = latestRelease.downloadEnabled && !!latestRelease.installerUrl;
 
-const channels = [
-  {
-    label: "Direct download",
-    status: downloadOpen ? `Open · ${latestRelease.version}` : "Preparing",
-  },
-  // Live, and a link rather than a label: this row is where someone scanning for "can I get it
-  // from the Store" looks, so it should take them there.
-  { label: MICROSOFT_STORE_LABEL, status: "Live", href: MICROSOFT_STORE_URL },
-  // No Steam row. Steam distribution is being explored, not committed, and a "Planned"
-  // badge on the distribution list reads as a roadmap promise.
-];
-
 export function FinalCTA() {
+  const storeUrl = useMicrosoftStoreUrl();
+  const channels = [
+    {
+      label: "Direct download",
+      status: downloadOpen ? `Open · ${latestRelease.version}` : "Preparing",
+    },
+    { label: MICROSOFT_STORE_LABEL, status: "Live", href: storeUrl },
+  ];
+
   return (
     <section
       id="download"
@@ -47,27 +45,17 @@ export function FinalCTA() {
               id="cta-heading"
               className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
             >
-              Ready to make your PC{" "}
-              <span className="text-aurora">couch-native</span>?
+              Ready to make your PC <span className="text-aurora">couch-native</span>?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-              Download the signed Windows public beta and start with a 7-day
-              in-app Pro trial. No account or credit card is required for the
-              in-app trial.
+              Download the signed Windows public beta and start with a 7-day in-app Pro trial. No
+              account or credit card is required for the in-app trial.
             </p>
 
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <a
                 href="/download"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-aurora text-primary-foreground px-6 py-3.5 text-sm font-medium glow-violet hover:brightness-110 transition"
-                onClick={() => {
-                  trackEvent("download_click", {
-                    section: "download",
-                    label: "Download for Windows",
-                    target: "/download",
-                    source: "final_cta",
-                  });
-                }}
               >
                 <Download className="h-4 w-4" />
                 Download for Windows
@@ -77,10 +65,10 @@ export function FinalCTA() {
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-6 py-3.5 text-sm font-medium hover:bg-white/[0.08] transition"
                 onClick={() => {
                   trackEvent("release_notes_click", {
-                    section: "download",
+                    placement: "final_cta",
                     label: "View release notes",
                     target: "/changelog",
-                    source: "final_cta",
+                    version: latestRelease.version,
                   });
                 }}
               >
@@ -107,12 +95,12 @@ export function FinalCTA() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 rounded-full transition hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     onClick={() => {
-                      trackEvent("cta_home_channel_microsoft_store", {
-                        section: "final-cta",
-                        label: c.label,
-                        target: c.href,
-                        source: "channel_row",
-                      });
+                      trackDistributionIntent(
+                        "microsoft_store",
+                        "final_cta",
+                        latestRelease.version,
+                        c.href,
+                      );
                     }}
                   >
                     {body}
@@ -129,11 +117,10 @@ export function FinalCTA() {
         </motion.div>
 
         <p className="mx-auto mt-6 max-w-2xl text-center text-xs leading-relaxed text-muted-foreground/70">
-          CouchMode supports controller-first Windows handheld setups, including
-          devices such as ROG Ally. Where Windows provides the Xbox full-screen
-          experience, CouchMode can start or adopt that session and return control
-          to the desktop when the session ends. Availability and behavior depend on
-          the device, Windows version, Xbox app support, region and Microsoft
+          CouchMode supports controller-first Windows handheld setups, including devices such as ROG
+          Ally. Where Windows provides the Xbox full-screen experience, CouchMode can start or adopt
+          that session and return control to the desktop when the session ends. Availability and
+          behavior depend on the device, Windows version, Xbox app support, region and Microsoft
           rollout.
         </p>
       </div>

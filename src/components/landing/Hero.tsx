@@ -1,12 +1,16 @@
 import { motion } from "framer-motion";
 import { Download, Sparkles } from "lucide-react";
 
-import { trackEvent } from "@/lib/analytics";
-import { MICROSOFT_STORE_URL, MICROSOFT_STORE_LABEL } from "@/lib/channels";
+import { trackDistributionIntent } from "@/lib/analytics";
+import { MICROSOFT_STORE_LABEL } from "@/lib/channels";
+import { useMicrosoftStoreUrl } from "@/lib/campaign-attribution";
 import { MicrosoftStoreIcon } from "@/components/MicrosoftStoreIcon";
 import { HeroShowcase } from "@/components/landing/HeroShowcase";
+import { latestRelease } from "@/data/releases";
 
 export function Hero() {
+  const storeUrl = useMicrosoftStoreUrl();
+
   return (
     <section
       className="relative overflow-x-hidden pt-32 pb-24 sm:pt-40 sm:pb-28"
@@ -43,40 +47,27 @@ export function Hero() {
           </h1>
 
           <p className="hero-text-shadow mx-auto mt-6 max-w-xl text-base leading-relaxed text-foreground/78 sm:text-lg">
-            Turn on your controller and CouchMode opens your chosen gaming
-            experience, prepares the session around your preferences, and brings
-            you back to a usable desktop when you&rsquo;re done.
+            Turn on your controller and CouchMode opens your chosen gaming experience, prepares the
+            session around your preferences, and brings you back to a usable desktop when
+            you&rsquo;re done.
           </p>
 
           <div className="mt-9 flex flex-wrap justify-center gap-3">
             <a
               href="/download"
               className="inline-flex items-center gap-2 rounded-full bg-aurora px-6 py-3 text-sm font-medium text-primary-foreground glow-violet transition hover:brightness-110"
-              onClick={() => {
-                trackEvent("cta_home_direct_download", {
-                  section: "hero",
-                  label: "Download for Windows",
-                  target: "/download",
-                  source: "hero",
-                });
-              }}
             >
               <Download className="h-4 w-4" />
               Download for Windows
             </a>
             <a
-              href={MICROSOFT_STORE_URL}
+              href={storeUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-sm font-medium text-foreground transition hover:bg-white/[0.08]"
-              onClick={() => {
-                trackEvent("cta_home_microsoft_store", {
-                  section: "hero",
-                  label: MICROSOFT_STORE_LABEL,
-                  target: MICROSOFT_STORE_URL,
-                  source: "hero",
-                });
-              }}
+              onClick={() =>
+                trackDistributionIntent("microsoft_store", "hero", latestRelease.version, storeUrl)
+              }
             >
               <MicrosoftStoreIcon className="h-4 w-4" />
               {MICROSOFT_STORE_LABEL}

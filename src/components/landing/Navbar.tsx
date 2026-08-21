@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "@tanstack/react-router";
 import { CouchModeMark, CouchModeWordmark } from "@/components/brand/CouchModeMark";
-import { trackEvent } from "@/lib/analytics";
 
 const links = [
   { href: "/#how", label: "How it works" },
@@ -62,9 +61,7 @@ export function Navbar() {
                   href={l.href}
                   aria-current={current ? "page" : undefined}
                   className={`whitespace-nowrap text-sm transition-colors ${
-                    current
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
+                    current ? "text-foreground" : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {l.label}
@@ -93,14 +90,6 @@ export function Navbar() {
             style={{
               backgroundImage:
                 "linear-gradient(135deg, oklch(0.55 0.22 295), oklch(0.55 0.18 250))",
-            }}
-            onClick={() => {
-              trackEvent("download_click", {
-                section: "header",
-                label: "Download",
-                target: "/download",
-                source: "header",
-              });
             }}
           >
             Download

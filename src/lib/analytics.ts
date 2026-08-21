@@ -1,31 +1,17 @@
-// THE allowlist. trackEvent drops any name that is not here, silently, so this list
-// and the real call sites must stay in step: when the public beta opened, the download
-// CTAs were renamed to download_click and every one of those events stopped reaching
-// dataLayer. Nothing surfaced it because the production build does not type-check.
-// `bun run typecheck` now runs before the Vite build, so a name that is not in this
-// union fails the build instead of going quietly missing.
-//
-// download_opening_soon_click and copy_sha_click were removed: both had zero call
-// sites after the download opened. Dead names are not kept for compatibility, because
-// a name nobody sends measures nothing.
+import { hasAnalyticsConsent } from "@/lib/consent";
+import { getCampaignAttribution } from "@/lib/campaign-attribution";
+
 export const analyticsEvents = [
-  "download_click",
-  "download_page_view",
+  "page_view",
+  "download_page_open",
+  "download_intent",
+  "direct_download_click",
+  "microsoft_store_click",
+  "pro_info_click",
   "release_notes_click",
   "patreon_click",
   "faq_open",
   "scroll_75",
-  // Microsoft Store went live as a second install channel. Each surface is its own name so the
-  // question "which placement actually sends people to the Store" has an answer, rather than one
-  // bucket that only says "someone clicked something".
-  "cta_home_direct_download",
-  "cta_home_microsoft_store",
-  "cta_home_channel_microsoft_store",
-  "cta_downloadpage_microsoft_store",
-  // The outbound Patreon click on /buy/. Distinct from patreon_click, which measures
-  // ENTRY into /buy/ from the pricing card: two events, so the drop-off between
-  // "wanted Pro" and "actually went to Patreon" is visible instead of inferred.
-  "cta_buypage_patreon",
 ] as const;
 
 export type AnalyticsEventName = (typeof analyticsEvents)[number];
@@ -38,10 +24,19 @@ const allowedProperties = [
   "version",
   "channel",
   "source",
+  "destination",
+  "placement",
+  "campaign_id",
+  "attribution_source",
+  "page_path",
+  "page_location",
+  "page_title",
 ] as const;
 
 type AnalyticsPropertyKey = (typeof allowedProperties)[number];
-export type AnalyticsProperties = Partial<Record<AnalyticsPropertyKey, string | number | boolean | null>>;
+export type AnalyticsProperties = Partial<
+  Record<AnalyticsPropertyKey, string | number | boolean | null>
+>;
 
 export type AnalyticsPayload = {
   name: AnalyticsEventName;
@@ -49,9 +44,20 @@ export type AnalyticsPayload = {
   timestamp: string;
 };
 
+export type DistributionDestination = "direct" | "microsoft_store";
+export type AnalyticsPlacement =
+  | "hero"
+  | "nav"
+  | "pricing"
+  | "final_cta"
+  | "download_page"
+  | "faq"
+  | "buy_page"
+  | "footer";
+
 declare global {
   interface Window {
-    dataLayer?: Array<Record<string, unknown>>;
+    dataLayer?: Array<Record<string, unknown> | unknown[]>;
   }
 }
 
@@ -89,6 +95,7 @@ function sanitizeValue(key: string, value: string | number | boolean | null | un
 
 export function trackEvent(name: AnalyticsEventName, properties: AnalyticsProperties = {}) {
   if (typeof window === "undefined" || !eventNames.has(name)) return;
+  if (!hasAnalyticsConsent()) return;
 
   const sanitized: Record<string, string> = {};
   const withPage: AnalyticsProperties = { page: getPage(), ...properties };
@@ -114,4 +121,38 @@ export function trackEvent(name: AnalyticsEventName, properties: AnalyticsProper
   window.dispatchEvent(new CustomEvent("couchmode:analytics", { detail: payload }));
 
   return payload;
+}
+
+export function trackPageView() {
+  if (typeof window === "undefined" || !hasAnalyticsConsent()) return;
+
+  // Raw query strings are intentionally excluded from the dataLayer.
+  return trackEvent("page_view", {
+    page_path: window.location.pathname || "/",
+    page_location: `${window.location.origin}${window.location.pathname}`,
+    page_title: document.title,
+  });
+}
+
+export function trackDistributionIntent(
+  destination: DistributionDestination,
+  placement: AnalyticsPlacement,
+  version: string,
+  target: string,
+) {
+  const attribution = getCampaignAttribution();
+  const properties: AnalyticsProperties = {
+    destination,
+    placement,
+    version,
+    campaign_id: attribution.campaignId,
+    attribution_source: attribution.attributionSource,
+    target,
+  };
+
+  trackEvent("download_intent", properties);
+  trackEvent(
+    destination === "direct" ? "direct_download_click" : "microsoft_store_click",
+    properties,
+  );
 }
