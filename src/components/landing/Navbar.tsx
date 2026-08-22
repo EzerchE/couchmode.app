@@ -83,7 +83,7 @@ export function Navbar() {
 
           {/* The full navigation starts at lg; below that the compact menu avoids
               crowding the logo and primary download action. */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-8">
             {navigation.links.map((l) => {
               const href = localizedLinkHref(locale, l);
               const current = isCurrentPage(href, pathname);
@@ -108,7 +108,7 @@ export function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackRedditClick("navbar")}
-              className="hidden lg:inline-flex items-center gap-2 rounded-full border border-white/10 bg-card/70 px-3.5 py-2 text-sm font-medium text-muted-foreground transition duration-200 hover:-translate-y-0.5 hover:border-[#ff6b35]/45 hover:bg-card hover:text-foreground hover:shadow-[0_10px_28px_-14px_rgba(255,107,53,0.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b35]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="hidden lg:inline-flex items-center gap-2 rounded-full border border-white/10 bg-card/70 px-3 py-2 text-sm font-medium text-muted-foreground transition duration-200 hover:-translate-y-0.5 hover:border-[#ff6b35]/45 hover:bg-card hover:text-foreground hover:shadow-[0_10px_28px_-14px_rgba(255,107,53,0.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b35]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background xl:px-3.5"
             >
               <RedditIcon className="h-4 w-4 text-[#ff6b35]" />
               {navigation.redditLabel}
@@ -125,7 +125,7 @@ export function Navbar() {
                  4.5 WCAG AA threshold for 14px text. At 0.55 the same hues measure 5.23 and 4.68.
                  An explicit focus ring is added because the site has no global focus style and
                  the browser default sits poorly on a filled gradient. */
-              className="hidden min-[360px]:inline-flex items-center gap-2 rounded-full text-primary-foreground glow-violet px-4 py-2 text-sm font-medium transition hover:brightness-110 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="hidden min-[360px]:inline-flex items-center gap-2 rounded-full text-primary-foreground glow-violet px-3 py-2 text-sm font-medium transition hover:brightness-110 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background xl:px-4"
               /* Inline rather than an arbitrary Tailwind class: a nested
                  linear-gradient(...oklch(...)...) arbitrary value produces no rule at all, which
                  would leave the button with no background. Inline keeps the change in this one

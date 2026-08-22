@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit",
     "validate:release-safety": "node scripts/validate-release-safety.mjs",
     "validate:i18n": "bun scripts/validate-i18n.ts",
+    "validate:pending-core-locales": "bun scripts/validate-pending-core-locales.ts",
     "build": "bun scripts/gen-sitemap.mjs && bun scripts/validate-i18n.ts && bun scripts/gen-releases.mjs && vite build && bun scripts/validate-release-safety.mjs",
     "build:dev": "bun scripts/gen-sitemap.mjs && bun scripts/gen-releases.mjs && vite build --mode development && bun scripts/validate-release-safety.mjs",
     "preview": "vite preview",

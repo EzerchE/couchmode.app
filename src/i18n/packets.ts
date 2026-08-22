@@ -10,6 +10,18 @@ import {
   type GuideContentId,
 } from "@/content/guides";
 import type { ReleaseEditorialOverlay } from "./release-editorial";
+import {
+  germanDownloadPacket,
+  germanGuideHubPacket,
+  germanHomePacket,
+  germanLocaleContent,
+  germanSupportPacket,
+  turkishDownloadPacket,
+  turkishGuideHubPacket,
+  turkishHomePacket,
+  turkishLocaleContent,
+  turkishSupportPacket,
+} from "./pending-core-packets";
 
 type SeoCopy = { title: string; description: string; ogTitle: string; ogDescription: string; ogImage?: string };
 type DocumentSection = { heading?: string; paragraphs: string[]; list?: string[] };
@@ -1042,6 +1054,30 @@ export const localePackets: LocalePacketRegistry = {
       buy: englishCheckoutPacket,
       guides: englishGuideHubPacket,
       ...englishGuideArticlePackets,
+    },
+  },
+  // Pending packets are validated as editorial drafts only. Public route and URL
+  // resolution below remains limited to locales whose manifest state is active.
+  de: {
+    locale: "de",
+    sourceRevision: localeManifest.sourceRevision,
+    shared: germanLocaleContent,
+    surfaces: {
+      home: germanHomePacket,
+      download: germanDownloadPacket,
+      guides: germanGuideHubPacket,
+      support: germanSupportPacket,
+    },
+  },
+  tr: {
+    locale: "tr",
+    sourceRevision: localeManifest.sourceRevision,
+    shared: turkishLocaleContent,
+    surfaces: {
+      home: turkishHomePacket,
+      download: turkishDownloadPacket,
+      guides: turkishGuideHubPacket,
+      support: turkishSupportPacket,
     },
   },
 };
