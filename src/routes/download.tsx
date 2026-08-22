@@ -8,55 +8,60 @@ import { MICROSOFT_STORE_LABEL } from "@/lib/channels";
 import { useMicrosoftStoreUrl } from "@/lib/campaign-attribution";
 import { MicrosoftStoreIcon } from "@/components/MicrosoftStoreIcon";
 import { latestRelease } from "@/data/releases";
+import { hrefFor, metadataFor, packetForKind } from "@/i18n/packets";
 
-const META_TITLE = "Download CouchMode for Windows";
-const META_DESC =
-  "Download the signed CouchMode public beta for Windows 11. Verify the published SHA-256 checksum and view the latest release notes.";
-const CANONICAL = "https://couchmode.app/download/";
-const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v3.png";
+const downloadPacket =
+  packetForKind("en", "download", "download") ??
+  (() => {
+    throw new Error("The active English download packet is missing");
+  })();
+const downloadMetadata = metadataFor(downloadPacket);
+const canonical = downloadMetadata.canonical;
+const homeUrl = hrefFor(downloadPacket.locale, "home");
+if (!canonical || !homeUrl) throw new Error("The active English download URLs are missing");
 
 const downloadOpen = latestRelease.downloadEnabled && !!latestRelease.installerUrl;
+const copy = downloadPacket.payload;
 
 const releaseFacts = [
   {
-    label: "Direct download",
-    value: downloadOpen ? `Open · ${latestRelease.version}` : "Not open yet",
+    label: copy.facts.directDownload,
+    value: downloadOpen
+      ? `${copy.facts.directDownloadOpen} · ${latestRelease.version}`
+      : copy.facts.directDownloadClosed,
   },
-  { label: "Platform", value: "Windows 11 · 64-bit" },
-  { label: "Install channels", value: "Direct download or Microsoft Store" },
-  { label: "Install", value: "Per-user installer, no admin rights, built-in update check" },
+  { label: copy.facts.platform, value: copy.facts.platformValue },
+  { label: copy.facts.installChannels, value: copy.facts.installChannelsValue },
+  { label: copy.facts.install, value: copy.facts.installValue },
   {
-    label: "Code signing",
+    label: copy.facts.codeSigning,
     // Only the fact that the build is signed and timestamped. The certificate
     // subject carries a personal address and is deliberately never published;
     // trust comes from the SHA256 below plus Windows' own signature check.
-    value: latestRelease.signed
-      ? "Authenticode signed and timestamped"
-      : "Being set up; builds are unsigned until it is enabled",
+    value: latestRelease.signed ? copy.facts.signedValue : copy.facts.unsignedValue,
   },
   {
-    label: "Pricing",
-    value:
-      "Free includes Xbox full-screen, Steam Big Picture and Playnite. A 7-day in-app Pro trial adds deeper automation, with no account or card",
+    label: copy.facts.pricing,
+    value: copy.facts.pricingValue,
   },
 ];
 
 export const Route = createFileRoute("/download")({
   head: () => ({
     meta: [
-      { title: META_TITLE },
-      { name: "description", content: META_DESC },
-      { name: "robots", content: "index,follow" },
+      { title: downloadMetadata.title },
+      { name: "description", content: downloadMetadata.description },
+      { name: "robots", content: downloadMetadata.robots },
       { property: "og:site_name", content: "CouchMode" },
-      { property: "og:title", content: META_TITLE },
-      { property: "og:description", content: META_DESC },
-      { property: "og:url", content: CANONICAL },
+      { property: "og:title", content: downloadMetadata.ogTitle },
+      { property: "og:description", content: downloadMetadata.ogDescription },
+      { property: "og:url", content: canonical },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image", content: downloadMetadata.ogImage },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: META_TITLE },
-      { name: "twitter:description", content: META_DESC },
-      { name: "twitter:image", content: OG_IMAGE },
+      { name: "twitter:title", content: downloadMetadata.ogTitle },
+      { name: "twitter:description", content: downloadMetadata.ogDescription },
+      { name: "twitter:image", content: downloadMetadata.ogImage },
       {
         "script:ld+json": {
           "@context": "https://schema.org",
@@ -65,20 +70,20 @@ export const Route = createFileRoute("/download")({
             {
               "@type": "ListItem",
               position: 1,
-              name: "Home",
-              item: "https://couchmode.app/",
+              name: downloadPacket.schema.homeBreadcrumbLabel,
+              item: homeUrl,
             },
             {
               "@type": "ListItem",
               position: 2,
-              name: "Download status",
-              item: CANONICAL,
+              name: downloadPacket.schema.currentBreadcrumbLabel,
+              item: canonical,
             },
           ],
         },
       },
     ],
-    links: [{ rel: "canonical", href: CANONICAL }],
+    links: [{ rel: "canonical", href: canonical }],
   }),
   component: Download,
 });
@@ -104,17 +109,15 @@ function Download() {
         <div className="mx-auto w-full max-w-2xl rounded-3xl glass p-8 text-center sm:p-12">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-foreground/85">
             <Clock className="h-3.5 w-3.5 text-primary" />
-            {downloadOpen ? "Public beta" : "Controlled pre-public beta"}
+            {downloadOpen ? copy.badge.open : copy.badge.closed}
           </div>
 
           <h1 className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">
-            Release <span className="text-aurora">status</span>
+            {copy.heading.before} <span className="text-aurora">{copy.heading.accent}</span>
           </h1>
 
           <p className="mx-auto mt-5 max-w-md text-muted-foreground">
-            {downloadOpen
-              ? "CouchMode for Windows is in public beta. The installer below is signed and timestamped; its SHA256 checksum and release notes are published so you can verify the file before you run it."
-              : "CouchMode for Windows is in private testing. The public download opens here only once a signed build, its SHA256 checksum, and release notes are approved."}
+            {downloadOpen ? copy.statusDescription.open : copy.statusDescription.closed}
           </p>
 
           <div className="mt-8 flex justify-center">
@@ -132,7 +135,7 @@ function Download() {
                 className="inline-flex items-center gap-2 rounded-full bg-aurora px-6 py-3 text-sm font-medium text-background transition hover:opacity-90"
               >
                 <DownloadIcon className="h-4 w-4" />
-                Download for Windows · {latestRelease.version}
+                {copy.directDownload.label} · {latestRelease.version}
               </a>
             ) : (
               <button
@@ -141,7 +144,7 @@ function Download() {
                 disabled
                 className="inline-flex cursor-not-allowed items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-muted-foreground"
               >
-                Download opening soon
+                {copy.directDownload.unavailableLabel}
               </button>
             )}
           </div>
@@ -165,13 +168,11 @@ function Download() {
               }}
             >
               <MicrosoftStoreIcon className="h-4 w-4" />
-              Get CouchMode from Microsoft Store
+              {copy.microsoftStore.label}
             </a>
           </div>
 
-          <p className="mt-3 text-xs text-muted-foreground">
-            Two official ways to install CouchMode: the signed installer above, or Microsoft Store.
-          </p>
+          <p className="mt-3 text-xs text-muted-foreground">{copy.microsoftStore.supportingText}</p>
 
           <dl className="mt-10 grid gap-3 text-left">
             {releaseFacts.map((fact) => (
@@ -191,24 +192,25 @@ function Download() {
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
               <div className="flex items-center gap-2">
                 <PackageOpen className="h-4 w-4 text-primary" />
-                <h2 className="text-sm font-medium text-foreground">What you&apos;ll get</h2>
+                <h2 className="text-sm font-medium text-foreground">
+                  {copy.cards.included.heading}
+                </h2>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                A single Windows installer for CouchMode, with a 7-day in-app Pro trial. No account
-                or credit card is needed to try Pro.
+                {copy.cards.included.body}
               </p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
               <div className="flex items-center gap-2">
                 <ShieldAlert className="h-4 w-4 text-primary" />
                 <h2 className="text-sm font-medium text-foreground">
-                  {downloadOpen ? "Two official sources" : "No public installer yet"}
+                  {downloadOpen
+                    ? copy.cards.officialSources.heading
+                    : copy.cards.noPublicInstaller.heading}
                 </h2>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                {downloadOpen
-                  ? "Download CouchMode from couchmode.app or Microsoft Store. If you got an installer somewhere else, check the SHA256 below and the publisher Windows shows when you run it."
-                  : "There's no public download link right now. Any CouchMode installer offered elsewhere is not from us. Please wait for the official build to appear here."}
+                {downloadOpen ? copy.cards.officialSources.body : copy.cards.noPublicInstaller.body}
               </p>
             </div>
           </div>
@@ -216,7 +218,7 @@ function Download() {
           <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-left">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <h2 className="text-sm font-medium text-foreground">
-                {downloadOpen ? "Build details" : "Latest internal / pre-public metadata"}
+                {downloadOpen ? copy.build.openHeading : copy.build.closedHeading}
               </h2>
               <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-foreground/85">
                 {latestRelease.version}
@@ -224,16 +226,12 @@ function Download() {
             </div>
 
             <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
-              {downloadOpen
-                ? "Compare this checksum with the file you downloaded before running it. Windows will also show the publisher when you launch the installer."
-                : "This is internal pre-public build metadata, not the public download candidate. It is published so you can verify a build you already have during private testing."}
+              {downloadOpen ? copy.build.openDescription : copy.build.closedDescription}
             </p>
 
             <div className="mt-4">
               <p className="text-xs uppercase tracking-wider text-muted-foreground">
-                {downloadOpen
-                  ? "SHA256 (verify before running)"
-                  : "SHA256 (for verifying a build you already have)"}
+                {downloadOpen ? copy.build.openChecksumLabel : copy.build.closedChecksumLabel}
               </p>
               <code className="mt-1 block break-all font-mono text-xs text-foreground/80">
                 {latestRelease.sha256}
@@ -242,7 +240,7 @@ function Download() {
 
             <div className="mt-5">
               <p className="text-xs uppercase tracking-wider text-muted-foreground">
-                What&apos;s new
+                {copy.build.notesLabel}
               </p>
               <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm text-muted-foreground">
                 {latestRelease.notes.map((note) => (
@@ -254,7 +252,7 @@ function Download() {
             {latestRelease.knownIssues.length > 0 && (
               <div className="mt-5">
                 <p className="text-xs uppercase tracking-wider text-muted-foreground">
-                  Known issues
+                  {copy.build.knownIssuesLabel}
                 </p>
                 <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm text-muted-foreground">
                   {latestRelease.knownIssues.map((issue) => (
@@ -266,14 +264,14 @@ function Download() {
           </div>
 
           <p className="mt-8 text-xs text-muted-foreground">
-            Testing CouchMode privately and need help? Email{" "}
+            {copy.support.beforeEmail}{" "}
             <a
               className="text-foreground underline-offset-4 hover:underline"
               href="mailto:support@couchmode.app"
             >
               support@couchmode.app
             </a>
-            .
+            {copy.support.afterEmail}
           </p>
         </div>
       </main>

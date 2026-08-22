@@ -95,25 +95,112 @@ export type GuideArticlePayload = {
   introduction: string[];
   sections: DocumentSection[];
 };
-export type DownloadPayload = { heading: string; description: string; labels: Record<string, string> };
-export type ChangelogPayload = { heading: string; description: string; labels: Record<string, string> };
-export type SupportPayload = { heading: string; description: string; sections: DocumentSection[] };
-export type LegalDocumentPayload = { eyebrow: string; heading: string; lastUpdated: string; sections: DocumentSection[] };
-export type CheckoutPayload = { heading: string; description: string; labels: Record<string, string> };
+export type DownloadPayload = {
+  badge: { open: string; closed: string };
+  heading: { before: string; accent: string };
+  statusDescription: { open: string; closed: string };
+  directDownload: { label: string; unavailableLabel: string };
+  microsoftStore: { label: string; supportingText: string };
+  facts: {
+    directDownload: string;
+    directDownloadOpen: string;
+    directDownloadClosed: string;
+    platform: string;
+    platformValue: string;
+    installChannels: string;
+    installChannelsValue: string;
+    install: string;
+    installValue: string;
+    codeSigning: string;
+    signedValue: string;
+    unsignedValue: string;
+    pricing: string;
+    pricingValue: string;
+  };
+  cards: {
+    included: { heading: string; body: string };
+    officialSources: { heading: string; body: string };
+    noPublicInstaller: { heading: string; body: string };
+  };
+  build: {
+    openHeading: string;
+    closedHeading: string;
+    openDescription: string;
+    closedDescription: string;
+    openChecksumLabel: string;
+    closedChecksumLabel: string;
+    notesLabel: string;
+    knownIssuesLabel: string;
+  };
+  support: { beforeEmail: string; afterEmail: string };
+};
+export type ChangelogPayload = {
+  eyebrow: string;
+  heading: string;
+  description: string;
+  downloadStatus: { open: string; closed: string };
+  release: {
+    latestLabel: string;
+    previousLabel: string;
+    notesLabel: string;
+    knownIssuesLabel: string;
+    checksumLabel: string;
+  };
+};
+export type SupportPayload = {
+  title: string;
+  chrome: { backToHomepageLabel: string; lastUpdatedLabel: string; lastUpdated: string };
+  introduction: string[];
+  contact: { beforeEmail: string; afterEmail: string };
+  include: {
+    heading: string;
+    items: string[];
+    diagnostics: {
+      beforeShortcut: string;
+      afterShortcutBeforePath: string;
+      afterPathBeforeLog: string;
+      betweenLogReferences: string;
+      afterLog: string;
+    };
+  };
+  privacy: { beforeEmail: string; afterEmail: string };
+};
+export type LegalDocumentPayload = {
+  eyebrow: string;
+  heading: string;
+  lastUpdated: string;
+  sections: DocumentSection[];
+};
+export type CheckoutPayload = {
+  heading: string;
+  description: string;
+  labels: Record<string, string>;
+};
 
 export type PayloadByKind = {
-  home: HomePayload; "guide-hub": GuideHubPayload; "guide-article": GuideArticlePayload;
-  download: DownloadPayload; changelog: ChangelogPayload; support: SupportPayload;
-  legal: LegalDocumentPayload; checkout: CheckoutPayload;
+  home: HomePayload;
+  "guide-hub": GuideHubPayload;
+  "guide-article": GuideArticlePayload;
+  download: DownloadPayload;
+  changelog: ChangelogPayload;
+  support: SupportPayload;
+  legal: LegalDocumentPayload;
+  checkout: CheckoutPayload;
 };
+
+type BreadcrumbSchemaInput = { homeBreadcrumbLabel: string; currentBreadcrumbLabel: string };
 
 type SchemaByKind = {
   home: HomeSchemaInput;
-  "guide-hub": { collectionName: string; homeBreadcrumbLabel: string; guidesBreadcrumbLabel: string };
+  "guide-hub": {
+    collectionName: string;
+    homeBreadcrumbLabel: string;
+    guidesBreadcrumbLabel: string;
+  };
   "guide-article": { headline: string; description: string };
-  download: SchemaInput;
-  changelog: SchemaInput;
-  support: SchemaInput;
+  download: BreadcrumbSchemaInput;
+  changelog: BreadcrumbSchemaInput;
+  support: BreadcrumbSchemaInput;
   legal: SchemaInput;
   checkout: SchemaInput;
 };
@@ -405,6 +492,152 @@ const englishHomePacket: SurfacePacketBase<"home"> = {
   },
 };
 
+const englishDownloadPacket: SurfacePacketBase<"download"> = {
+  contentId: "download",
+  kind: "download",
+  locale: "en",
+  path: "/download/",
+  sourceRevision: localeManifest.sourceRevision,
+  seo: {
+    title: "Download CouchMode for Windows",
+    description: "Download the signed CouchMode public beta for Windows 11. Verify the published SHA-256 checksum and view the latest release notes.",
+    ogTitle: "Download CouchMode for Windows",
+    ogDescription: "Download the signed CouchMode public beta for Windows 11. Verify the published SHA-256 checksum and view the latest release notes.",
+  },
+  schema: { homeBreadcrumbLabel: "Home", currentBreadcrumbLabel: "Download status" },
+  internalLinks: ["home", "changelog", "support"],
+  payload: {
+    badge: { open: "Public beta", closed: "Controlled pre-public beta" },
+    heading: { before: "Release", accent: "status" },
+    statusDescription: {
+      open: "CouchMode for Windows is in public beta. The installer below is signed and timestamped; its SHA256 checksum and release notes are published so you can verify the file before you run it.",
+      closed: "CouchMode for Windows is in private testing. The public download opens here only once a signed build, its SHA256 checksum, and release notes are approved.",
+    },
+    directDownload: { label: "Download for Windows", unavailableLabel: "Download opening soon" },
+    microsoftStore: {
+      label: "Get CouchMode from Microsoft Store",
+      supportingText: "Two official ways to install CouchMode: the signed installer above, or Microsoft Store.",
+    },
+    facts: {
+      directDownload: "Direct download",
+      directDownloadOpen: "Open",
+      directDownloadClosed: "Not open yet",
+      platform: "Platform",
+      platformValue: "Windows 11 · 64-bit",
+      installChannels: "Install channels",
+      installChannelsValue: "Direct download or Microsoft Store",
+      install: "Install",
+      installValue: "Per-user installer, no admin rights, built-in update check",
+      codeSigning: "Code signing",
+      signedValue: "Authenticode signed and timestamped",
+      unsignedValue: "Being set up; builds are unsigned until it is enabled",
+      pricing: "Pricing",
+      pricingValue: "Free includes Xbox full-screen, Steam Big Picture and Playnite. A 7-day in-app Pro trial adds deeper automation, with no account or card",
+    },
+    cards: {
+      included: {
+        heading: "What you'll get",
+        body: "A single Windows installer for CouchMode, with a 7-day in-app Pro trial. No account or credit card is needed to try Pro.",
+      },
+      officialSources: {
+        heading: "Two official sources",
+        body: "Download CouchMode from couchmode.app or Microsoft Store. If you got an installer somewhere else, check the SHA256 below and the publisher Windows shows when you run it.",
+      },
+      noPublicInstaller: {
+        heading: "No public installer yet",
+        body: "There's no public download link right now. Any CouchMode installer offered elsewhere is not from us. Please wait for the official build to appear here.",
+      },
+    },
+    build: {
+      openHeading: "Build details",
+      closedHeading: "Latest internal / pre-public metadata",
+      openDescription: "Compare this checksum with the file you downloaded before running it. Windows will also show the publisher when you launch the installer.",
+      closedDescription: "This is internal pre-public build metadata, not the public download candidate. It is published so you can verify a build you already have during private testing.",
+      openChecksumLabel: "SHA256 (verify before running)",
+      closedChecksumLabel: "SHA256 (for verifying a build you already have)",
+      notesLabel: "What's new",
+      knownIssuesLabel: "Known issues",
+    },
+    support: { beforeEmail: "Testing CouchMode privately and need help? Email", afterEmail: "." },
+  },
+};
+
+const englishChangelogPacket: SurfacePacketBase<"changelog"> = {
+  contentId: "changelog",
+  kind: "changelog",
+  locale: "en",
+  path: "/changelog/",
+  sourceRevision: localeManifest.sourceRevision,
+  seo: {
+    title: "CouchMode Changelog - Windows beta release notes",
+    description: "Release notes and known issues for CouchMode Windows beta builds, newest first.",
+    ogTitle: "CouchMode Changelog - Windows beta release notes",
+    ogDescription: "Release notes and known issues for CouchMode Windows beta builds, newest first.",
+  },
+  schema: { homeBreadcrumbLabel: "Home", currentBreadcrumbLabel: "Changelog" },
+  internalLinks: ["home", "download"],
+  payload: {
+    eyebrow: "Changelog",
+    heading: "What's new in CouchMode",
+    description: "Release notes and known issues for CouchMode Windows beta builds, newest first.",
+    downloadStatus: {
+      open: "The latest signed public beta is available on the download page. Earlier entries are kept here as release history.",
+      closed: "Public download is not enabled yet. This page reflects the currently published release metadata, which may differ from the internal build in preparation for the signed public beta.",
+    },
+    release: {
+      latestLabel: "Latest",
+      previousLabel: "Previous",
+      notesLabel: "What's new",
+      knownIssuesLabel: "Known issues",
+      checksumLabel: "SHA256",
+    },
+  },
+};
+
+const englishSupportPacket: SurfacePacketBase<"support"> = {
+  contentId: "support",
+  kind: "support",
+  locale: "en",
+  path: "/support/",
+  sourceRevision: localeManifest.sourceRevision,
+  seo: {
+    title: "CouchMode Support - Help for Windows couch gaming",
+    description: "Get help with CouchMode. Contact support with your Windows version, CouchMode version, launch target, device type, controller details, membership state if relevant, and a support bundle.",
+    ogTitle: "CouchMode Support - Help for Windows couch gaming",
+    ogDescription: "Get help with CouchMode. Contact support with your Windows version, CouchMode version, launch target, device type, controller details, membership state if relevant, and a support bundle.",
+  },
+  schema: { homeBreadcrumbLabel: "Home", currentBreadcrumbLabel: "Support" },
+  internalLinks: ["home"],
+  payload: {
+    title: "Support",
+    chrome: {
+      backToHomepageLabel: "Back to homepage",
+      lastUpdatedLabel: "Last updated",
+      lastUpdated: "August 2026",
+    },
+    introduction: ["Need help with CouchMode? The quickest way is from the app itself: CouchMode can submit a bug report, compatibility issue, or feature request. Submitting is always your choice, you can review exactly what is included before it is sent, and nothing is sent automatically.", "CouchMode is a signed public beta for Windows 11 · 64-bit. Diagnostics are generated locally on your PC, and a report reaches us only when you submit it."],
+    contact: {
+      beforeEmail: "You can also email us at",
+      afterEmail: "with your Windows version, CouchMode version, launch target, controller details, and a short description of the issue.",
+    },
+    include: {
+      heading: "Please include:",
+      items: ["Windows version", "CouchMode version", "Device type: ROG Ally, another handheld, or a desktop PC", "Controller type", "Launch target: Xbox full-screen where supported, Steam Big Picture, Playnite, or a custom launcher", "Whether Windows Xbox full-screen is available, or a fallback launcher is used", "Whether this is a bug report, feature request, or compatibility issue", "What happened", "Whether it happened in Free, Trial, or Pro", "For Pro access issues, your tier: Pro Version or Pro Supporter", "Number of devices already activated", "Activation error screenshot or message", "In CouchMode, open About > Export support bundle and attach the generated file if you can."],
+      diagnostics: {
+        beforeShortcut: "If something looks wrong on screen, a window that should not be there or a controller that will not navigate a full-screen session, press",
+        afterShortcutBeforePath: "while it is still visible. CouchMode saves a snapshot of the current window state to its own file in",
+        afterPathBeforeLog: ", alongside ",
+        betweenLogReferences: ". It changes nothing on screen, and it works whether or not debug logging is turned on. Nothing is uploaded automatically: the file stays on your PC, and you choose what to send. Attach it and ",
+        afterLog: ".",
+      },
+    },
+    privacy: {
+      beforeEmail: "Do not post private billing details publicly. For account or membership questions, email",
+      afterEmail: ".",
+    },
+  },
+};
+
 const englishGuideHubPacket: SurfacePacketBase<"guide-hub"> = {
   contentId: "guides",
   kind: "guide-hub",
@@ -515,7 +748,7 @@ export const localePackets: LocalePacketRegistry = {
     locale: "en",
     sourceRevision: localeManifest.sourceRevision,
     shared: englishLocaleContent,
-    surfaces: { home: englishHomePacket, guides: englishGuideHubPacket, ...englishGuideArticlePackets },
+    surfaces: { home: englishHomePacket, download: englishDownloadPacket, changelog: englishChangelogPacket, support: englishSupportPacket, guides: englishGuideHubPacket, ...englishGuideArticlePackets },
   },
 };
 

@@ -1,5 +1,5 @@
 {
-  "sourceRevision": "133a85dca783fc7803dadf4687a36389e56ebd36d1554fc384b49de83b7ebf3d",
+  "sourceRevision": "be0d669b42c90f952b6473883cf51da965182c5ba7858ecef1e1dc79656e268d",
   "requiredSurfaces": [
     { "id": "home", "path": "/", "kind": "landing", "indexability": "index" },
     { "id": "download", "path": "/download/", "kind": "utility", "indexability": "index" },
@@ -31,7 +31,7 @@
   "contentPackets": [
     {
       "locale": "en",
-      "sourceRevision": "133a85dca783fc7803dadf4687a36389e56ebd36d1554fc384b49de83b7ebf3d",
+      "sourceRevision": "be0d669b42c90f952b6473883cf51da965182c5ba7858ecef1e1dc79656e268d",
       "surfaces": [
         "home", "download", "support", "changelog", "privacy", "terms", "refund", "guides",
         "guide-playnite-launch", "guide-playnite-focus", "guide-steam-big-picture", "guide-windows-console",

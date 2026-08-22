@@ -9,7 +9,9 @@ import { surfaceRegistry } from "../src/i18n/surface-registry";
 const root = path.resolve(import.meta.dirname, "..");
 const activeLocales = manifest.locales.filter((locale) => locale.state === "active");
 const surfaceIds = manifest.requiredSurfaces.map((surface) => surface.id).sort();
-const indexableSurfaces = manifest.requiredSurfaces.filter((surface) => surface.indexability === "index");
+const indexableSurfaces = manifest.requiredSurfaces.filter(
+  (surface) => surface.indexability === "index",
+);
 const guideSurfaceIds = manifest.requiredSurfaces
   .filter((surface) => surface.kind === "guide-index" || surface.kind === "guide")
   .map((surface) => surface.id as SurfaceId);
@@ -25,16 +27,22 @@ const localizedSourceRoots = [
   "src/routes",
   "src/components/landing",
   "src/components/guides",
+  "src/components/utility",
   "src/content/guides",
 ];
 const localizedSourceFiles = [
   ...localizedSourceRoots.flatMap((directory) => collectFiles(path.join(root, directory))),
   path.join(root, "src/content/guides.ts"),
+  path.join(root, "src/i18n/packets.ts"),
   path.join(root, "src/data/releases.json"),
 ].sort();
 const actualSourceRevision = crypto
   .createHash("sha256")
-  .update(localizedSourceFiles.map((file) => `${path.relative(root, file)}\0${fs.readFileSync(file)}`).join("\0"))
+  .update(
+    localizedSourceFiles
+      .map((file) => `${path.relative(root, file)}\0${fs.readFileSync(file)}`)
+      .join("\0"),
+  )
   .digest("hex");
 
 function fail(message: string): never {
@@ -50,15 +58,23 @@ const vite = await createServer({
 });
 const packetModule = await vite.ssrLoadModule("/src/i18n/packets.ts");
 await vite.close();
-const { hrefFor, isCompleteSurfacePacket, localePacketFor, localizedGuides, packetFor, resolveLocalizedRoute } =
-  packetModule as typeof import("../src/i18n/packets");
+const {
+  hrefFor,
+  isCompleteSurfacePacket,
+  localePacketFor,
+  localizedGuides,
+  packetFor,
+  resolveLocalizedRoute,
+} = packetModule as typeof import("../src/i18n/packets");
 
 for (const locale of manifest.locales) {
   if (locale.id === "pt-BR" && locale.urlPrefix !== "/pt-br") fail("pt-BR must use /pt-br URLs");
-  if (locale.state !== "active" && locale.urlPrefix === "") fail(`${locale.id} cannot use root URLs`);
+  if (locale.state !== "active" && locale.urlPrefix === "")
+    fail(`${locale.id} cannot use root URLs`);
 }
 
-if (indexableSurfaces.length !== 13) fail(`expected 13 indexable surfaces, found ${indexableSurfaces.length}`);
+if (indexableSurfaces.length !== 13)
+  fail(`expected 13 indexable surfaces, found ${indexableSurfaces.length}`);
 const buy = manifest.requiredSurfaces.find((surface) => surface.id === "buy");
 if (buy?.indexability !== "noindex" || buy.sitemap !== "exclude" || buy.kind !== "checkout")
   fail("buy must be an explicit noindex checkout surface excluded from sitemaps");
@@ -97,12 +113,15 @@ for (const locale of activeLocales) {
     const localizedPacket = renderPacket;
     for (const contentId of surfaceIds) {
       const route = localizedPacket.surfaces[contentId];
-      if (!isCompleteSurfacePacket(route)) fail(`${locale.id}/${contentId} has an incomplete render packet`);
-      if (route.contentId !== contentId) fail(`${locale.id}/${contentId} has unstable content identity`);
+      if (!isCompleteSurfacePacket(route))
+        fail(`${locale.id}/${contentId} has an incomplete render packet`);
+      if (route.contentId !== contentId)
+        fail(`${locale.id}/${contentId} has unstable content identity`);
       if (route.kind !== surfaceRegistry[contentId].kind)
         fail(`${locale.id}/${contentId} has a kind that does not match surface policy`);
       for (const target of route.internalLinks) {
-        if (!hrefFor(locale.id, target)) fail(`${locale.id}/${contentId} links outside its locale packet`);
+        if (!hrefFor(locale.id, target))
+          fail(`${locale.id}/${contentId} links outside its locale packet`);
       }
     }
   }
@@ -111,13 +130,24 @@ for (const locale of activeLocales) {
 const englishGuideHub = packetFor("en", "guides");
 if (!isCompleteSurfacePacket(englishGuideHub) || englishGuideHub.kind !== "guide-hub")
   fail("English guide hub is not a complete guide-hub packet");
+const englishPacketBackedSurfaceIds: SurfaceId[] = [
+  "home",
+  "download",
+  "changelog",
+  "support",
+  ...guideSurfaceIds,
+];
+for (const contentId of englishPacketBackedSurfaceIds) {
+  const packet = packetFor("en", contentId);
+  if (!isCompleteSurfacePacket(packet)) fail(`English ${contentId} is not packet-backed`);
+  for (const target of packet.internalLinks) {
+    if (!hrefFor("en", target))
+      fail(`English ${contentId} links outside its active locale packet: ${target}`);
+  }
+}
 const englishGuides = localizedGuides("en");
 if (englishGuides.length !== guideSurfaceIds.length - 1)
   fail(`English guide packet count is incomplete (${englishGuides.length})`);
-for (const contentId of guideSurfaceIds) {
-  const packet = packetFor("en", contentId);
-  if (!isCompleteSurfacePacket(packet)) fail(`English ${contentId} is not packet-backed`);
-}
 for (const guide of englishGuides) {
   if (guide.source.contentId !== guide.packet.contentId)
     fail(`English guide identity drifted for ${guide.source.slug}`);
@@ -125,9 +155,13 @@ for (const guide of englishGuides) {
     fail(`English guide has no resolvable internal URL: ${guide.packet.contentId}`);
   for (const relatedContentId of guide.source.related) {
     if (!englishGuides.some((candidate) => candidate.packet.contentId === relatedContentId))
-      fail(`English guide relationship is unresolved: ${guide.packet.contentId} -> ${relatedContentId}`);
+      fail(
+        `English guide relationship is unresolved: ${guide.packet.contentId} -> ${relatedContentId}`,
+      );
     if (!hrefFor("en", relatedContentId))
-      fail(`English guide relationship has no localized URL: ${guide.packet.contentId} -> ${relatedContentId}`);
+      fail(
+        `English guide relationship has no localized URL: ${guide.packet.contentId} -> ${relatedContentId}`,
+      );
   }
 }
 
@@ -140,8 +174,12 @@ for (const locale of manifest.locales.filter((item) => item.state !== "active"))
   }
 }
 
-const sitemapFiles = fs.readdirSync(path.join(root, "public")).filter((file) => /^sitemap-[a-z-]+\.xml$/.test(file));
-const expectedSitemapFiles = activeLocales.map((locale) => `sitemap-${locale.urlPrefix ? locale.urlPrefix.slice(1) : "en"}.xml`);
+const sitemapFiles = fs
+  .readdirSync(path.join(root, "public"))
+  .filter((file) => /^sitemap-[a-z-]+\.xml$/.test(file));
+const expectedSitemapFiles = activeLocales.map(
+  (locale) => `sitemap-${locale.urlPrefix ? locale.urlPrefix.slice(1) : "en"}.xml`,
+);
 if (JSON.stringify(sitemapFiles.sort()) !== JSON.stringify(expectedSitemapFiles.sort()))
   fail(`locale sitemap inventory is not active-only: ${sitemapFiles.join(", ") || "none"}`);
 
@@ -152,4 +190,6 @@ for (const file of sitemapFiles) {
     fail(`${file} does not contain every indexable surface`);
 }
 
-console.log(`validate-i18n: OK (${activeLocales.map((locale) => locale.id).join(", ")} active; ${manifest.locales.length - activeLocales.length} non-public; revision ${actualSourceRevision})`);
+console.log(
+  `validate-i18n: OK (${activeLocales.map((locale) => locale.id).join(", ")} active; ${manifest.locales.length - activeLocales.length} non-public; revision ${actualSourceRevision})`,
+);

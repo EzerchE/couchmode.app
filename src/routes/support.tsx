@@ -1,103 +1,116 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InfoPage } from "@/components/utility/InfoPage";
-import { breadcrumbLd } from "@/lib/seo";
+import { hrefFor, metadataFor, packetForKind, relativeHrefFor } from "@/i18n/packets";
 
-const TITLE = "Support";
-const META_TITLE = "CouchMode Support - Help for Windows couch gaming";
-const META_DESC =
-  "Get help with CouchMode. Contact support with your Windows version, CouchMode version, launch target, device type, controller details, membership state if relevant, and a support bundle.";
-const CANONICAL = "https://couchmode.app/support/";
-const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v3.png";
+const supportPacket =
+  packetForKind("en", "support", "support") ??
+  (() => {
+    throw new Error("The active English support packet is missing");
+  })();
+const supportMetadata = metadataFor(supportPacket);
+const canonical = supportMetadata.canonical;
+const homeUrl = hrefFor(supportPacket.locale, "home");
+if (!canonical || !homeUrl) throw new Error("The active English support URLs are missing");
+
+const SUPPORT_EMAIL = "support@couchmode.app";
+const SNAPSHOT_SHORTCUT = "Ctrl+Alt+Shift+F12";
+const SUPPORT_DIRECTORY = "%APPDATA%\\CouchMode";
+const SUPPORT_LOG = "app.log";
 
 export const Route = createFileRoute("/support")({
   head: () => ({
     meta: [
-      { title: META_TITLE },
-      { name: "description", content: META_DESC },
-      { name: "robots", content: "index,follow" },
+      { title: supportMetadata.title },
+      { name: "description", content: supportMetadata.description },
+      { name: "robots", content: supportMetadata.robots },
       { property: "og:site_name", content: "CouchMode" },
-      { property: "og:title", content: META_TITLE },
-      { property: "og:description", content: META_DESC },
-      { property: "og:url", content: CANONICAL },
+      { property: "og:title", content: supportMetadata.ogTitle },
+      { property: "og:description", content: supportMetadata.ogDescription },
+      { property: "og:url", content: canonical },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image", content: supportMetadata.ogImage },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: META_TITLE },
-      { name: "twitter:description", content: META_DESC },
-      { name: "twitter:image", content: OG_IMAGE },
-      breadcrumbLd("Support", CANONICAL),
+      { name: "twitter:title", content: supportMetadata.ogTitle },
+      { name: "twitter:description", content: supportMetadata.ogDescription },
+      { name: "twitter:image", content: supportMetadata.ogImage },
+      {
+        "script:ld+json": {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: supportPacket.schema.homeBreadcrumbLabel,
+              item: homeUrl,
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: supportPacket.schema.currentBreadcrumbLabel,
+              item: canonical,
+            },
+          ],
+        },
+      },
     ],
-    links: [{ rel: "canonical", href: CANONICAL }],
+    links: [{ rel: "canonical", href: canonical }],
   }),
   component: Support,
 });
 
 function Support() {
+  const copy = supportPacket.payload;
+  const homeHref = relativeHrefFor(supportPacket.locale, "home");
+  if (!homeHref) throw new Error("Missing support home href");
+
   return (
-    <InfoPage title={TITLE}>
+    <InfoPage
+      title={copy.title}
+      lastUpdated={copy.chrome.lastUpdated}
+      lastUpdatedLabel={copy.chrome.lastUpdatedLabel}
+      homeHref={homeHref}
+      backToHomepageLabel={copy.chrome.backToHomepageLabel}
+    >
+      {copy.introduction.map((paragraph) => (
+        <p key={paragraph}>{paragraph}</p>
+      ))}
       <p>
-        Need help with CouchMode? The quickest way is from the app itself:
-        CouchMode can submit a bug report, compatibility issue, or feature
-        request. Submitting is always your choice, you can review exactly what is
-        included before it is sent, and nothing is sent automatically.
-      </p>
-      <p>
-        CouchMode is a signed public beta for Windows 11 &middot; 64-bit.
-        Diagnostics are generated locally on your PC, and a report reaches us
-        only when you submit it.
-      </p>
-      <p>
-        You can also email us at{" "}
-        <a className="text-foreground underline-offset-4 hover:underline" href="mailto:support@couchmode.app">
-          support@couchmode.app
+        {copy.contact.beforeEmail}{" "}
+        <a
+          className="text-foreground underline-offset-4 hover:underline"
+          href={`mailto:${SUPPORT_EMAIL}`}
+        >
+          {SUPPORT_EMAIL}
         </a>{" "}
-        with your Windows version, CouchMode version, launch target, controller
-        details, and a short description of the issue.
+        {copy.contact.afterEmail}
       </p>
       <div>
-        <p className="font-medium text-foreground">Please include:</p>
+        <p className="font-medium text-foreground">{copy.include.heading}</p>
         <ul className="mt-3 list-disc space-y-2 pl-5">
-          <li>Windows version</li>
-          <li>CouchMode version</li>
-          <li>Device type: ROG Ally, another handheld, or a desktop PC</li>
-          <li>Controller type</li>
+          {copy.include.items.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
           <li>
-            Launch target: Xbox full-screen where supported, Steam Big Picture,
-            Playnite, or a custom launcher
-          </li>
-          <li>
-            Whether Windows Xbox full-screen is available, or a fallback launcher
-            is used
-          </li>
-          <li>Whether this is a bug report, feature request, or compatibility issue</li>
-          <li>What happened</li>
-          <li>Whether it happened in Free, Trial, or Pro</li>
-          <li>For Pro access issues, your tier: Pro Version or Pro Supporter</li>
-          <li>Number of devices already activated</li>
-          <li>Activation error screenshot or message</li>
-          <li>
-            In CouchMode, open About &gt; Export support bundle and attach the
-            generated file if you can.
-          </li>
-          <li>
-            If something looks wrong on screen, a window that should not be
-            there or a controller that will not navigate a full-screen session,
-            press Ctrl+Alt+Shift+F12 while it is still visible. CouchMode saves
-            a snapshot of the current window state to its own file in
-            %APPDATA%\CouchMode, alongside app.log. It changes nothing on
-            screen, and it works whether or not debug logging is turned on.
-            Nothing is uploaded automatically: the file stays on your PC, and
-            you choose what to send. Attach it and app.log.
+            {copy.include.diagnostics.beforeShortcut} {SNAPSHOT_SHORTCUT}{" "}
+            {copy.include.diagnostics.afterShortcutBeforePath} {SUPPORT_DIRECTORY}
+            {copy.include.diagnostics.afterPathBeforeLog}
+            {SUPPORT_LOG}
+            {copy.include.diagnostics.betweenLogReferences}
+            {SUPPORT_LOG}
+            {copy.include.diagnostics.afterLog}
           </li>
         </ul>
       </div>
       <p>
-        Do not post private billing details publicly. For account or membership
-        questions, email{" "}
-        <a className="text-foreground underline-offset-4 hover:underline" href="mailto:support@couchmode.app">
-          support@couchmode.app
+        {copy.privacy.beforeEmail}{" "}
+        <a
+          className="text-foreground underline-offset-4 hover:underline"
+          href={`mailto:${SUPPORT_EMAIL}`}
+        >
+          {SUPPORT_EMAIL}
         </a>
-        .
+        {copy.privacy.afterEmail}
       </p>
     </InfoPage>
   );
