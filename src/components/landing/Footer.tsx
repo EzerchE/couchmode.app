@@ -1,8 +1,10 @@
 import { CouchModeMark, CouchModeWordmark } from "@/components/brand/CouchModeMark";
 import { RedditIcon } from "@/components/RedditIcon";
 import { REDDIT_URL, trackRedditClick } from "@/lib/community";
+import { useLocaleContent } from "@/i18n/content";
 
 export function Footer() {
+  const { footer } = useLocaleContent().shared;
   return (
     <footer className="relative border-t border-border py-12 mt-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -13,26 +15,16 @@ export function Footer() {
           </div>
 
           <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
-            <a href="/#how" className="hover:text-foreground transition">
-              How it works
-            </a>
-            <a href="/#pricing" className="hover:text-foreground transition">
-              Pricing
-            </a>
-            <a href="/#download" className="hover:text-foreground transition">
-              Get CouchMode
-            </a>
-            <a href="/guides/" className="hover:text-foreground transition">
-              Guides
-            </a>
-            <a href="/changelog" className="hover:text-foreground transition">
-              Changelog
-            </a>
+            {footer.links.map((link) => (
+              <a key={link.href} href={link.href} className="hover:text-foreground transition">
+                {link.label}
+              </a>
+            ))}
             <a
               href={REDDIT_URL}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Join the CouchMode community on Reddit"
+              aria-label={footer.redditAriaLabel}
               onClick={() => trackRedditClick("footer")}
               className="inline-flex items-center gap-1.5 transition hover:-translate-y-0.5 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b35]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
@@ -42,31 +34,28 @@ export function Footer() {
           </nav>
 
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} CouchMode. All rights reserved.
+            © {new Date().getFullYear()} {footer.copyright}
           </p>
         </div>
         <nav className="mt-6 flex flex-wrap gap-x-3 gap-y-2 text-xs text-muted-foreground">
           <a href="/support" className="transition hover:text-foreground">
-            Support
+            {footer.supportLabel}
           </a>
           <span aria-hidden="true">·</span>
           <a href="/privacy" className="transition hover:text-foreground">
-            Privacy
+            {footer.privacyLabel}
           </a>
           <span aria-hidden="true">·</span>
           <a href="/terms" className="transition hover:text-foreground">
-            Terms
+            {footer.termsLabel}
           </a>
           <span aria-hidden="true">·</span>
           <a href="/refund" className="transition hover:text-foreground">
-            Refund
+            {footer.refundLabel}
           </a>
         </nav>
         <p className="mt-4 max-w-4xl text-xs leading-relaxed text-muted-foreground/70">
-          CouchMode is an independent product and is not affiliated with Microsoft, Xbox, Valve, or
-          Steam. Microsoft, Windows, and Xbox are trademarks of the Microsoft group of companies.
-          Steam and Steam Big Picture are trademarks of Valve Corporation. Other product names are
-          used for compatibility reference only and may be trademarks of their respective owners.
+          {footer.trademarkNotice}
         </p>
       </div>
     </footer>

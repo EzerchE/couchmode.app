@@ -4,13 +4,7 @@ import { Menu, X } from "lucide-react";
 import { CouchModeMark, CouchModeWordmark } from "@/components/brand/CouchModeMark";
 import { RedditIcon } from "@/components/RedditIcon";
 import { REDDIT_URL, trackRedditClick } from "@/lib/community";
-
-const links = [
-  { href: "/#how", label: "How it works" },
-  { href: "/#pricing", label: "Pricing" },
-  { href: "/#download", label: "Get CouchMode" },
-  { href: "/changelog", label: "Changelog" },
-];
+import { useLocaleContent } from "@/i18n/content";
 
 // A link is "current" only when it points at a real page and that page is open.
 // The in-page anchors (/#how, /#pricing, /#download) are never current: they are
@@ -20,6 +14,8 @@ const isCurrentPage = (href: string, pathname: string) =>
   !href.includes("#") && normalizePath(href) === normalizePath(pathname);
 
 export function Navbar() {
+  const { shared } = useLocaleContent();
+  const { navigation } = shared;
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -62,7 +58,7 @@ export function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-2">
-          <a href="/" className="flex items-center gap-2.5 group" aria-label="CouchMode home">
+          <a href="/" className="flex items-center gap-2.5 group" aria-label={navigation.homeLabel}>
             <CouchModeMark
               size={48}
               className={`rounded-[12px] shadow-[0_6px_22px_-8px_rgba(155,107,255,0.7)] transition-all duration-300 ${
@@ -79,7 +75,7 @@ export function Navbar() {
           {/* The full navigation starts at lg; below that the compact menu avoids
               crowding the logo and primary download action. */}
           <nav className="hidden lg:flex items-center gap-8">
-            {links.map((l) => {
+            {navigation.links.map((l) => {
               const current = isCurrentPage(l.href, pathname);
               return (
                 <a
@@ -105,7 +101,7 @@ export function Navbar() {
               className="hidden lg:inline-flex items-center gap-2 rounded-full border border-white/10 bg-card/70 px-3.5 py-2 text-sm font-medium text-muted-foreground transition duration-200 hover:-translate-y-0.5 hover:border-[#ff6b35]/45 hover:bg-card hover:text-foreground hover:shadow-[0_10px_28px_-14px_rgba(255,107,53,0.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b35]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               <RedditIcon className="h-4 w-4 text-[#ff6b35]" />
-              Join r/CouchMode
+              {navigation.redditLabel}
             </a>
             <a
               href="/download"
@@ -129,14 +125,14 @@ export function Navbar() {
                   "linear-gradient(135deg, oklch(0.55 0.22 295), oklch(0.55 0.18 250))",
               }}
             >
-              Download
+              {navigation.downloadLabel}
             </a>
 
             <button
               ref={menuButtonRef}
               type="button"
               className="inline-flex lg:hidden h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-card/70 text-foreground transition hover:border-primary/60 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-              aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-label={menuOpen ? navigation.closeMenuLabel : navigation.openMenuLabel}
               aria-expanded={menuOpen}
               aria-controls="site-navigation-menu"
               onClick={() => setMenuOpen((open) => !open)}
@@ -147,10 +143,10 @@ export function Navbar() {
             {menuOpen && (
               <nav
                 id="site-navigation-menu"
-                aria-label="Mobile navigation"
+                aria-label={navigation.mobileMenuLabel}
                 className="absolute right-4 top-full mt-2 w-72 max-w-[calc(100vw-2rem)] rounded-2xl border border-white/12 bg-card/95 p-2 shadow-[0_22px_60px_-24px_rgba(72,92,255,0.7)] backdrop-blur-xl lg:hidden"
               >
-                {links.map((l) => {
+                {navigation.links.map((l) => {
                   const current = isCurrentPage(l.href, pathname);
                   return (
                     <a
@@ -179,7 +175,7 @@ export function Navbar() {
                   }}
                 >
                   <RedditIcon className="h-4 w-4 text-[#ff6b35]" />
-                  Join r/CouchMode
+                  {navigation.redditLabel}
                 </a>
                 <a
                   href="/download"
@@ -187,7 +183,7 @@ export function Navbar() {
                   className="mt-1 block rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
                   onClick={() => setMenuOpen(false)}
                 >
-                  Download
+                  {navigation.downloadLabel}
                 </a>
               </nav>
             )}
