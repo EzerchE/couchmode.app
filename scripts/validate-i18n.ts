@@ -2,7 +2,9 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import manifest from "../src/i18n/manifest.json";
-import { isCompleteLocalizedRoute, localePackets, localizedUrl, resolveLocalizedRoute } from "../src/i18n/routing";
+import type { SurfaceId } from "../src/i18n/config";
+import { hrefFor, isCompleteSurfacePacket, localePacketFor, packetFor, resolveLocalizedRoute } from "../src/i18n/packets";
+import { surfaceRegistry } from "../src/i18n/surface-registry";
 
 const root = path.resolve(import.meta.dirname, "..");
 const activeLocales = manifest.locales.filter((locale) => locale.state === "active");
@@ -45,6 +47,9 @@ if (indexableSurfaces.length !== 13) fail(`expected 13 indexable surfaces, found
 const buy = manifest.requiredSurfaces.find((surface) => surface.id === "buy");
 if (buy?.indexability !== "noindex" || buy.sitemap !== "exclude" || buy.kind !== "checkout")
   fail("buy must be an explicit noindex checkout surface excluded from sitemaps");
+const buyPolicy = surfaceRegistry.buy;
+if (buyPolicy.indexability !== "noindex,follow" || buyPolicy.sitemap !== "exclude")
+  fail("buy must inherit noindex and sitemap exclusion from surface policy");
 
 if (manifest.sourceRevision !== actualSourceRevision)
   fail(`English source revision is stale (${manifest.sourceRevision} != ${actualSourceRevision})`);
@@ -57,16 +62,32 @@ for (const locale of activeLocales) {
   if (JSON.stringify([...packet.surfaces].sort()) !== JSON.stringify(surfaceIds))
     fail(`${locale.id} does not own every required surface`);
 
+  const renderPacket = localePacketFor(locale.id);
+  if (!renderPacket || renderPacket.sourceRevision !== manifest.sourceRevision)
+    fail(`${locale.id} is active without a current locale packet`);
+  for (const [contentId, surface] of Object.entries(renderPacket.surfaces)) {
+    if (surface && !packetFor(locale.id, contentId as SurfaceId))
+      fail(`${locale.id}/${contentId} does not match its packet policy`);
+  }
+  for (const link of [
+    ...renderPacket.shared.navigation.links,
+    ...renderPacket.shared.footer.links,
+    ...renderPacket.shared.footer.legalLinks,
+  ]) {
+    if (!hrefFor(locale.id, link.contentId))
+      fail(`${locale.id} shared content links outside its public locale routes`);
+  }
+
   if (locale.id !== "en") {
-    const localizedPacket = localePackets[locale.id];
-    if (!localizedPacket || localizedPacket.sourceRevision !== manifest.sourceRevision)
-      fail(`${locale.id} is active without a current render packet`);
+    const localizedPacket = renderPacket;
     for (const contentId of surfaceIds) {
-      const route = localizedPacket.routes[contentId];
-      if (!isCompleteLocalizedRoute(route)) fail(`${locale.id}/${contentId} has an incomplete render packet`);
+      const route = localizedPacket.surfaces[contentId];
+      if (!isCompleteSurfacePacket(route)) fail(`${locale.id}/${contentId} has an incomplete render packet`);
       if (route.contentId !== contentId) fail(`${locale.id}/${contentId} has unstable content identity`);
+      if (route.kind !== surfaceRegistry[contentId].kind)
+        fail(`${locale.id}/${contentId} has a kind that does not match surface policy`);
       for (const target of route.internalLinks) {
-        if (!localizedUrl(locale.id, target)) fail(`${locale.id}/${contentId} links outside its locale packet`);
+        if (!hrefFor(locale.id, target)) fail(`${locale.id}/${contentId} links outside its locale packet`);
       }
     }
   }
@@ -75,6 +96,7 @@ for (const locale of activeLocales) {
 for (const locale of manifest.locales.filter((item) => item.state !== "active")) {
   if (resolveLocalizedRoute(locale.id, "/") || resolveLocalizedRoute(locale.id, "/guides/"))
     fail(`${locale.id} is non-public but resolves a localized route`);
+  if (hrefFor(locale.id, "home")) fail(`${locale.id} is non-public but resolves a public href`);
 }
 
 const sitemapFiles = fs.readdirSync(path.join(root, "public")).filter((file) => /^sitemap-[a-z-]+\.xml$/.test(file));

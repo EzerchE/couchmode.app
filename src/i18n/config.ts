@@ -14,14 +14,3 @@ export function localePath(localeId: LocaleId, path: string) {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
   return `${locale.urlPrefix}${normalizedPath}`.replace(/\/\/{2,}/g, "/");
 }
-
-export function alternateLocaleLinks(path: string) {
-  return [
-    ...activeLocales.map((locale) => ({
-      rel: "alternate",
-      hrefLang: locale.id,
-      href: `${SITE_ORIGIN}${localePath(locale.id, path)}`,
-    })),
-    { rel: "alternate", hrefLang: "x-default", href: `${SITE_ORIGIN}${localePath("en", path)}` },
-  ];
-}

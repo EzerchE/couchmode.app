@@ -1,5 +1,5 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
-import { resolveLocalizedRoute } from "@/i18n/routing";
+import { resolveLocalizedRoute } from "@/i18n/packets";
 
 export const Route = createFileRoute("/$locale/$")({
   beforeLoad: ({ params }) => {

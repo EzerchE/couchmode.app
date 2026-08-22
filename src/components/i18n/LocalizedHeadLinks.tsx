@@ -1,5 +1,5 @@
 import { useRouterState } from "@tanstack/react-router";
-import { contentIdForEnglishPath, hreflangLinks } from "@/i18n/routing";
+import { contentIdForEnglishPath, hreflangLinks } from "@/i18n/packets";
 
 export function LocalizedHeadLinks() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
