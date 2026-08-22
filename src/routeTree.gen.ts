@@ -18,7 +18,9 @@ import { Route as ChangelogRouteImport } from './routes/changelog'
 import { Route as BuyRouteImport } from './routes/buy'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as GuidesIndexRouteImport } from './routes/guides/index'
+import { Route as LocaleIndexRouteImport } from './routes/$locale.index'
 import { Route as GuidesSlugRouteImport } from './routes/guides/$slug'
+import { Route as LocaleSplatRouteImport } from './routes/$locale.$'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -65,9 +67,19 @@ const GuidesIndexRoute = GuidesIndexRouteImport.update({
   path: '/guides/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LocaleIndexRoute = LocaleIndexRouteImport.update({
+  id: '/$locale/',
+  path: '/$locale/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GuidesSlugRoute = GuidesSlugRouteImport.update({
   id: '/guides/$slug',
   path: '/guides/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocaleSplatRoute = LocaleSplatRouteImport.update({
+  id: '/$locale/$',
+  path: '/$locale/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -80,7 +92,9 @@ export interface FileRoutesByFullPath {
   '/refund': typeof RefundRoute
   '/support': typeof SupportRoute
   '/terms': typeof TermsRoute
+  '/$locale/$': typeof LocaleSplatRoute
   '/guides/$slug': typeof GuidesSlugRoute
+  '/$locale/': typeof LocaleIndexRoute
   '/guides/': typeof GuidesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -92,7 +106,9 @@ export interface FileRoutesByTo {
   '/refund': typeof RefundRoute
   '/support': typeof SupportRoute
   '/terms': typeof TermsRoute
+  '/$locale/$': typeof LocaleSplatRoute
   '/guides/$slug': typeof GuidesSlugRoute
+  '/$locale': typeof LocaleIndexRoute
   '/guides': typeof GuidesIndexRoute
 }
 export interface FileRoutesById {
@@ -105,7 +121,9 @@ export interface FileRoutesById {
   '/refund': typeof RefundRoute
   '/support': typeof SupportRoute
   '/terms': typeof TermsRoute
+  '/$locale/$': typeof LocaleSplatRoute
   '/guides/$slug': typeof GuidesSlugRoute
+  '/$locale/': typeof LocaleIndexRoute
   '/guides/': typeof GuidesIndexRoute
 }
 export interface FileRouteTypes {
@@ -119,7 +137,9 @@ export interface FileRouteTypes {
     | '/refund'
     | '/support'
     | '/terms'
+    | '/$locale/$'
     | '/guides/$slug'
+    | '/$locale/'
     | '/guides/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -131,7 +151,9 @@ export interface FileRouteTypes {
     | '/refund'
     | '/support'
     | '/terms'
+    | '/$locale/$'
     | '/guides/$slug'
+    | '/$locale'
     | '/guides'
   id:
     | '__root__'
@@ -143,7 +165,9 @@ export interface FileRouteTypes {
     | '/refund'
     | '/support'
     | '/terms'
+    | '/$locale/$'
     | '/guides/$slug'
+    | '/$locale/'
     | '/guides/'
   fileRoutesById: FileRoutesById
 }
@@ -156,7 +180,9 @@ export interface RootRouteChildren {
   RefundRoute: typeof RefundRoute
   SupportRoute: typeof SupportRoute
   TermsRoute: typeof TermsRoute
+  LocaleSplatRoute: typeof LocaleSplatRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
+  LocaleIndexRoute: typeof LocaleIndexRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
 }
 
@@ -225,11 +251,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuidesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$locale/': {
+      id: '/$locale/'
+      path: '/$locale'
+      fullPath: '/$locale/'
+      preLoaderRoute: typeof LocaleIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/guides/$slug': {
       id: '/guides/$slug'
       path: '/guides/$slug'
       fullPath: '/guides/$slug'
       preLoaderRoute: typeof GuidesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$locale/$': {
+      id: '/$locale/$'
+      path: '/$locale/$'
+      fullPath: '/$locale/$'
+      preLoaderRoute: typeof LocaleSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -244,7 +284,9 @@ const rootRouteChildren: RootRouteChildren = {
   RefundRoute: RefundRoute,
   SupportRoute: SupportRoute,
   TermsRoute: TermsRoute,
+  LocaleSplatRoute: LocaleSplatRoute,
   GuidesSlugRoute: GuidesSlugRoute,
+  LocaleIndexRoute: LocaleIndexRoute,
   GuidesIndexRoute: GuidesIndexRoute,
 }
 export const routeTree = rootRouteImport

@@ -11,6 +11,7 @@ import { type ReactNode } from "react";
 import { AnalyticsLifecycle } from "@/components/analytics/AnalyticsLifecycle";
 import { CloudflareAnalytics } from "@/components/analytics/CloudflareAnalytics";
 import { ConsentBanner } from "@/components/analytics/ConsentBanner";
+import { LocalizedHeadLinks } from "@/components/i18n/LocalizedHeadLinks";
 import { consentBootstrapScript } from "@/lib/consent";
 
 import appCss from "../styles.css?url";
@@ -126,6 +127,7 @@ function RootShell({ children }: { children: ReactNode }) {
           }}
         />
         <HeadContent />
+        <LocalizedHeadLinks />
       </head>
       <body>
         <noscript>
