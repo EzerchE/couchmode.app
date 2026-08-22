@@ -2,9 +2,10 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { getGuideManifest } from "./guides.mjs";
+import localeManifest from "../src/i18n/manifest.json" with { type: "json" };
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
-const outputPath = path.resolve(scriptDir, "../public/sitemap.xml");
+const publicDir = path.resolve(scriptDir, "../public");
 const siteUrl = "https://couchmode.app";
 
 // Static pages use a source-controlled last updated value. Guide entries use
@@ -31,7 +32,17 @@ const entries = [
   ...guides.map((guide) => ({ path: `/guides/${guide.slug}/`, updated: guide.updated })),
 ];
 
-const xml = `<?xml version="1.0" encoding="UTF-8"?>
+const activeLocales = localeManifest.locales.filter((locale) => locale.state === "active");
+
+for (const entry of fs.readdirSync(publicDir)) {
+  if (/^sitemap-[a-z-]+\.xml$/.test(entry)) fs.unlinkSync(path.join(publicDir, entry));
+}
+
+const sitemapFiles = activeLocales.map((locale) => {
+  if (locale.id !== "en")
+    throw new Error(`Cannot generate ${locale.id} sitemap until its localized packet is implemented`);
+  const fileName = "sitemap-en.xml";
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${entries
   .map(
@@ -41,6 +52,15 @@ ${entries
   .join("\n")}
 </urlset>
 `;
+  fs.writeFileSync(path.join(publicDir, fileName), xml);
+  return fileName;
+});
 
-fs.writeFileSync(outputPath, xml);
-console.log(`gen-sitemap: wrote ${entries.length} URLs`);
+const indexXml = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemapFiles.map((fileName) => `  <sitemap><loc>${siteUrl}/${fileName}</loc></sitemap>`).join("\n")}
+</sitemapindex>
+`;
+
+fs.writeFileSync(path.join(publicDir, "sitemap.xml"), indexXml);
+console.log(`gen-sitemap: wrote ${entries.length} URLs across ${sitemapFiles.length} active locale sitemap(s)`);

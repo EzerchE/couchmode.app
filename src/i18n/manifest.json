@@ -1,0 +1,42 @@
+{
+  "sourceRevision": "2ea15a00af8fe1b755065598cf6bee1d0cb8bb1ff335aa2f37cb0e2538b7fe09",
+  "requiredSurfaces": [
+    { "id": "home", "path": "/" },
+    { "id": "download", "path": "/download/" },
+    { "id": "support", "path": "/support/" },
+    { "id": "changelog", "path": "/changelog/" },
+    { "id": "privacy", "path": "/privacy/" },
+    { "id": "terms", "path": "/terms/" },
+    { "id": "refund", "path": "/refund/" },
+    { "id": "guides", "path": "/guides/" },
+    { "id": "guide-playnite-launch", "path": "/guides/launch-playnite-with-controller/" },
+    { "id": "guide-playnite-focus", "path": "/guides/playnite-controller-focus/" },
+    { "id": "guide-steam-big-picture", "path": "/guides/start-steam-big-picture-with-controller/" },
+    { "id": "guide-windows-console", "path": "/guides/windows-11-console-like-pc/" },
+    { "id": "guide-windows-handheld", "path": "/guides/windows-handheld-couch-gaming/" },
+    { "id": "buy", "path": "/buy/", "indexable": false }
+  ],
+  "locales": [
+    { "id": "en", "urlPrefix": "", "state": "active", "label": "English" },
+    { "id": "de", "urlPrefix": "/de", "state": "pending", "phase1Target": true, "label": "Deutsch" },
+    { "id": "tr", "urlPrefix": "/tr", "state": "pending", "phase1Target": true, "label": "Turkce" },
+    { "id": "fr", "urlPrefix": "/fr", "state": "planned", "label": "Francais" },
+    { "id": "es", "urlPrefix": "/es", "state": "planned", "label": "Espanol" },
+    { "id": "it", "urlPrefix": "/it", "state": "planned", "label": "Italiano" },
+    { "id": "pt-BR", "urlPrefix": "/pt-br", "state": "planned", "label": "Portugues (Brasil)" },
+    { "id": "pl", "urlPrefix": "/pl", "state": "planned", "label": "Polski" },
+    { "id": "ja", "urlPrefix": "/ja", "state": "planned", "label": "Japanese" },
+    { "id": "ko", "urlPrefix": "/ko", "state": "planned", "label": "Korean" }
+  ],
+  "contentPackets": [
+    {
+      "locale": "en",
+      "sourceRevision": "2ea15a00af8fe1b755065598cf6bee1d0cb8bb1ff335aa2f37cb0e2538b7fe09",
+      "surfaces": [
+        "home", "download", "support", "changelog", "privacy", "terms", "refund", "guides",
+        "guide-playnite-launch", "guide-playnite-focus", "guide-steam-big-picture", "guide-windows-console",
+        "guide-windows-handheld", "buy"
+      ]
+    }
+  ]
+}
