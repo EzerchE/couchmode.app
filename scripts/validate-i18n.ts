@@ -135,6 +135,10 @@ const englishPacketBackedSurfaceIds: SurfaceId[] = [
   "download",
   "changelog",
   "support",
+  "privacy",
+  "terms",
+  "refund",
+  "buy",
   ...guideSurfaceIds,
 ];
 for (const contentId of englishPacketBackedSurfaceIds) {
@@ -166,7 +170,7 @@ for (const guide of englishGuides) {
 }
 
 for (const locale of manifest.locales.filter((item) => item.state !== "active")) {
-  for (const contentId of ["home", ...guideSurfaceIds]) {
+  for (const contentId of surfaceIds) {
     if (resolveLocalizedRoute(locale.id, surfaceRegistry[contentId].defaultPath))
       fail(`${locale.id} is non-public but resolves ${contentId}`);
     if (hrefFor(locale.id, contentId))

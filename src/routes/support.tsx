@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InfoPage } from "@/components/utility/InfoPage";
 import { hrefFor, metadataFor, packetForKind, relativeHrefFor } from "@/i18n/packets";
+import { SUPPORT_EMAIL } from "@/lib/contact";
 
 const supportPacket =
   packetForKind("en", "support", "support") ??
@@ -12,7 +13,6 @@ const canonical = supportMetadata.canonical;
 const homeUrl = hrefFor(supportPacket.locale, "home");
 if (!canonical || !homeUrl) throw new Error("The active English support URLs are missing");
 
-const SUPPORT_EMAIL = "support@couchmode.app";
 const SNAPSHOT_SHORTCUT = "Ctrl+Alt+Shift+F12";
 const SUPPORT_DIRECTORY = "%APPDATA%\\CouchMode";
 const SUPPORT_LOG = "app.log";

@@ -1,179 +1,74 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InfoPage } from "@/components/utility/InfoPage";
-import { breadcrumbLd } from "@/lib/seo";
+import { LegalDocument } from "@/components/utility/LegalDocument";
+import { hrefFor, metadataFor, packetForKind, relativeHrefFor } from "@/i18n/packets";
 
-const TITLE = "Terms";
-const META_TITLE = "CouchMode Terms of Use";
-const META_DESC =
-  "The CouchMode terms covering Free use, the 7-day Pro trial, Patreon supporter access, Xbox Mode availability, warranty, liability, and third-party services.";
-const CANONICAL = "https://couchmode.app/terms/";
-const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v3.png";
+const termsPacket =
+  packetForKind("en", "terms", "legal") ??
+  (() => {
+    throw new Error("The active English terms packet is missing");
+  })();
+const termsMetadata = metadataFor(termsPacket);
+const canonical = termsMetadata.canonical;
+const homeUrl = hrefFor(termsPacket.locale, "home");
+if (!canonical || !homeUrl) throw new Error("The active English terms URLs are missing");
 
 export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
-      { title: META_TITLE },
-      { name: "description", content: META_DESC },
-      { name: "robots", content: "index,follow" },
+      { title: termsMetadata.title },
+      { name: "description", content: termsMetadata.description },
+      { name: "robots", content: termsMetadata.robots },
       { property: "og:site_name", content: "CouchMode" },
-      { property: "og:title", content: META_TITLE },
-      { property: "og:description", content: META_DESC },
-      { property: "og:url", content: CANONICAL },
+      { property: "og:title", content: termsMetadata.ogTitle },
+      { property: "og:description", content: termsMetadata.ogDescription },
+      { property: "og:url", content: canonical },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image", content: termsMetadata.ogImage },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: META_TITLE },
-      { name: "twitter:description", content: META_DESC },
-      { name: "twitter:image", content: OG_IMAGE },
-      breadcrumbLd("Terms", CANONICAL),
+      { name: "twitter:title", content: termsMetadata.ogTitle },
+      { name: "twitter:description", content: termsMetadata.ogDescription },
+      { name: "twitter:image", content: termsMetadata.ogImage },
+      {
+        "script:ld+json": {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: termsPacket.schema.homeBreadcrumbLabel,
+              item: homeUrl,
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: termsPacket.schema.currentBreadcrumbLabel,
+              item: canonical,
+            },
+          ],
+        },
+      },
     ],
-    links: [{ rel: "canonical", href: CANONICAL }],
+    links: [{ rel: "canonical", href: canonical }],
   }),
   component: Terms,
 });
 
 function Terms() {
+  const copy = termsPacket.payload;
+  const homeHref = relativeHrefFor(termsPacket.locale, "home");
+  if (!homeHref) throw new Error("Missing terms home href");
+
   return (
-    <InfoPage title={TITLE}>
-      <section>
-        <h2 className="font-medium text-foreground">License</h2>
-        <p className="mt-2">
-          CouchMode is licensed, not sold. It is a Windows utility for session
-          preparation and restoration around Windows and existing gaming
-          frontends.
-        </p>
-        <p className="mt-2">
-          CouchMode does not replace the Windows shell and does not replace your
-          Windows startup flow. Startup automation is optional and controlled by
-          the user.
-        </p>
-        <p className="mt-2">
-          CouchMode does not modify Windows internals, install kernel drivers,
-          bypass security features, or patch games or Windows.
-        </p>
-      </section>
-      <section>
-        <h2 className="font-medium text-foreground">Free and Pro</h2>
-        <p className="mt-2">
-          One installer may include Free features, the 7-day Pro trial, and Pro
-          activation. Free features are available without purchase. Pro features
-          require an active trial or active Patreon membership during public
-          beta.
-        </p>
-        <p className="mt-2">
-          Free includes the controller-first session flow, the Windows Xbox
-          full-screen experience where supported, Steam Big Picture, Playnite,
-          and the return to your desktop when a session ends. Pro covers
-          compatible custom launchers, Resource Control, Session Tweaks, and the
-          deeper session automation.
-        </p>
-      </section>
-      <section>
-        <h2 className="font-medium text-foreground">7-day Pro trial</h2>
-        <p className="mt-2">
-          The 7-day in-app Pro trial starts in CouchMode and does not require an
-          account or credit card.
-        </p>
-        <p className="mt-2">
-          Eligible first-time members can start a separate 7-day Patreon trial on
-          the available paid tiers. Patreon requires a payment method but does not
-          charge the membership fee until that trial ends. The Patreon trial is
-          separate from CouchMode&apos;s 7-day in-app Pro trial, and Patreon
-          decides who is eligible for it.
-        </p>
-        <ul className="mt-2 list-disc space-y-1 pl-5">
-          <li>
-            In-app trial: 7 days, no CouchMode account and no credit card
-            required.
-          </li>
-          <li>
-            Patreon trial: a separate 7 days, administered by Patreon, payment
-            method required, billing begins after the trial if the membership
-            continues.
-          </li>
-        </ul>
-        <p className="mt-2">
-          Patreon membership requires a Patreon account and payment method and is
-          managed by Patreon.
-        </p>
-      </section>
-      <section>
-        <h2 className="font-medium text-foreground">Patreon supporter access</h2>
-        <p className="mt-2">
-          During public beta, CouchMode Pro access is provided through Patreon
-          membership. The Pro license remains active while membership is active.
-        </p>
-        <p className="mt-2">
-          If membership ends, fails, is refunded, or is canceled, Pro access may
-          return to Free mode after a short grace period.
-        </p>
-        <p className="mt-2">
-          Pro Version is $3/month and includes personal Pro access on up to 2
-          active Windows devices. Pro Supporter is $5/month and includes
-          personal Pro access on up to 5 active Windows devices.
-        </p>
-      </section>
-      <section>
-        <h2 className="font-medium text-foreground">Xbox Mode availability</h2>
-        <p className="mt-2">
-          Xbox Mode and the Xbox full-screen experience are provided by Windows
-          and Microsoft. Availability and behavior depend on device, Windows
-          version, Xbox app support, rollout status, and system support.
-          CouchMode cannot make Xbox Mode available on unsupported systems.
-        </p>
-      </section>
-      <section>
-        <h2 className="font-medium text-foreground">Automation and restore</h2>
-        <p className="mt-2">
-          CouchMode attempts safe, reversible session changes. Review your
-          settings before enabling automation, especially display, audio, power,
-          startup, and Resource Control options.
-        </p>
-        <p className="mt-2">
-          CouchMode does not promise performance boosts or identical behavior
-          on every Windows device.
-        </p>
-      </section>
-      <section>
-        <h2 className="font-medium text-foreground">Activation limit</h2>
-        <p className="mt-2">
-          Pro access may have activation limits to prevent abuse. Contact
-          support if you need help with a legitimate device change.
-        </p>
-      </section>
-      <section>
-        <h2 className="font-medium text-foreground">No warranty</h2>
-        <p className="mt-2">
-          CouchMode is provided as-is. We work to keep it reliable, but cannot
-          promise uninterrupted or error-free operation on every PC setup.
-        </p>
-      </section>
-      <section>
-        <h2 className="font-medium text-foreground">Limitation of liability</h2>
-        <p className="mt-2">
-          To the maximum extent allowed by law, CouchMode is not liable for
-          indirect, incidental, or consequential damages.
-        </p>
-      </section>
-      <section>
-        <h2 className="font-medium text-foreground">Third-party services</h2>
-        <p className="mt-2">
-          Patreon may handle billing, membership, cancellation, and refund
-          details for Patreon-based Pro access. CouchMode does not store
-          payment card details.
-        </p>
-      </section>
-      <section>
-        <h2 className="font-medium text-foreground">Contact</h2>
-        <p className="mt-2">
-          Questions can be sent to{" "}
-          <a className="text-foreground underline-offset-4 hover:underline" href="mailto:support@couchmode.app">
-            support@couchmode.app
-          </a>
-          .
-        </p>
-      </section>
+    <InfoPage
+      title={copy.title}
+      lastUpdated={copy.chrome.lastUpdated}
+      lastUpdatedLabel={copy.chrome.lastUpdatedLabel}
+      homeHref={homeHref}
+      backToHomepageLabel={copy.chrome.backToHomepageLabel}
+    >
+      <LegalDocument sections={copy.sections} />
     </InfoPage>
   );
 }
-

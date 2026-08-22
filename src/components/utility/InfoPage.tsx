@@ -5,19 +5,19 @@ import { Footer } from "@/components/landing/Footer";
 type InfoPageProps = {
   title: string;
   children: ReactNode;
-  lastUpdated?: string;
-  lastUpdatedLabel?: string;
-  homeHref?: string;
-  backToHomepageLabel?: string;
+  lastUpdated: string;
+  lastUpdatedLabel: string;
+  homeHref: string;
+  backToHomepageLabel: string;
 };
 
 export function InfoPage({
   title,
   children,
-  lastUpdated = "August 2026",
-  lastUpdatedLabel = "Last updated",
-  homeHref = "/",
-  backToHomepageLabel = "Back to homepage",
+  lastUpdated,
+  lastUpdatedLabel,
+  homeHref,
+  backToHomepageLabel,
 }: InfoPageProps) {
   return (
     <div className="min-h-screen bg-background text-foreground">

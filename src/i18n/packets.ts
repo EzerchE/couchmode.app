@@ -11,8 +11,14 @@ import {
 } from "@/content/guides";
 
 type SeoCopy = { title: string; description: string; ogTitle: string; ogDescription: string; ogImage?: string };
-type SchemaInput = Record<string, unknown>;
 type DocumentSection = { heading?: string; paragraphs: string[]; list?: string[] };
+export type LegalInline = { kind: "text"; text: string } | { kind: "support-email" };
+export type LegalDocumentSection = {
+  heading?: string;
+  paragraphs: LegalInline[][];
+  list?: LegalInline[][];
+  action?: { kind: "open-consent"; label: string };
+};
 
 export type HomeFaqItem = { question: string; answer: string; linkLabel?: string };
 
@@ -166,15 +172,24 @@ export type SupportPayload = {
   privacy: { beforeEmail: string; afterEmail: string };
 };
 export type LegalDocumentPayload = {
-  eyebrow: string;
-  heading: string;
-  lastUpdated: string;
-  sections: DocumentSection[];
+  title: string;
+  chrome: { backToHomepageLabel: string; lastUpdatedLabel: string; lastUpdated: string };
+  sections: LegalDocumentSection[];
 };
 export type CheckoutPayload = {
-  heading: string;
+  title: string;
+  chrome: { backToHomepageLabel: string; lastUpdatedLabel: string; lastUpdated: string };
   description: string;
-  labels: Record<string, string>;
+  deviceLimit: { beforeCount: string; afterCount: string };
+  automationDescription: string;
+  patreonCtaLabel: string;
+  membership: {
+    description: string;
+    trialDescription: string;
+    connectBefore: string;
+    connectAction: string;
+    connectAfter: string;
+  };
 };
 
 export type PayloadByKind = {
@@ -201,8 +216,8 @@ type SchemaByKind = {
   download: BreadcrumbSchemaInput;
   changelog: BreadcrumbSchemaInput;
   support: BreadcrumbSchemaInput;
-  legal: SchemaInput;
-  checkout: SchemaInput;
+  legal: BreadcrumbSchemaInput;
+  checkout: BreadcrumbSchemaInput;
 };
 
 export type LocaleLink = {
@@ -283,6 +298,13 @@ export const englishLocaleContent: SharedLocaleContent = {
       "CouchMode is an independent product and is not affiliated with Microsoft, Xbox, Valve, or Steam. Microsoft, Windows, and Xbox are trademarks of the Microsoft group of companies. Steam and Steam Big Picture are trademarks of Valve Corporation. Other product names are used for compatibility reference only and may be trademarks of their respective owners.",
   },
 };
+
+const legalText = (text: string): LegalInline[] => [{ kind: "text", text }];
+const legalSupportEmail = (before: string, after: string): LegalInline[] => [
+  { kind: "text", text: before },
+  { kind: "support-email" },
+  { kind: "text", text: after },
+];
 
 const englishHomePacket: SurfacePacketBase<"home"> = {
   contentId: "home",
@@ -638,6 +660,265 @@ const englishSupportPacket: SurfacePacketBase<"support"> = {
   },
 };
 
+const englishPrivacyPacket: SurfacePacketBase<"legal"> = {
+  contentId: "privacy",
+  kind: "legal",
+  locale: "en",
+  path: "/privacy/",
+  sourceRevision: localeManifest.sourceRevision,
+  seo: {
+    title: "CouchMode Privacy Policy",
+    description: "How CouchMode handles privacy: local app data, no gameplay tracking, diagnostics and support bundles, Patreon entitlement validation, website analytics, and payments.",
+    ogTitle: "CouchMode Privacy Policy",
+    ogDescription: "How CouchMode handles privacy: local app data, no gameplay tracking, diagnostics and support bundles, Patreon entitlement validation, website analytics, and payments.",
+  },
+  schema: { homeBreadcrumbLabel: "Home", currentBreadcrumbLabel: "Privacy" },
+  internalLinks: ["home"],
+  payload: {
+    title: "Privacy",
+    chrome: {
+      backToHomepageLabel: "Back to homepage",
+      lastUpdatedLabel: "Last updated",
+      lastUpdated: "August 2026",
+    },
+    sections: [
+      {
+        heading: "Desktop utility",
+        paragraphs: [
+          legalText("CouchMode is a Windows desktop utility designed to help you prepare, manage, and restore couch gaming sessions from your PC. Free use does not require an account."),
+        ],
+      },
+      {
+        heading: "Local app data",
+        paragraphs: [
+          legalText("CouchMode may store local app settings and logs on your device so the app can remember preferences, diagnose issues, and restore session state."),
+        ],
+      },
+      {
+        heading: "Gameplay privacy",
+        paragraphs: [
+          legalText("CouchMode does not collect gameplay data or track what games you play."),
+          legalText("No gameplay tracking. No settings cloud sync. Pro license validation is performed only when needed."),
+        ],
+      },
+      {
+        heading: "Diagnostics and support",
+        paragraphs: [
+          legalText("If you contact support or export a diagnostic bundle, it may include app logs, Windows version, CouchMode version, launch mode, controller count or state, display topology, and error or status messages."),
+          legalText("CouchMode can send a problem report only when you choose to submit one from the app. You can review the exact report before sending it, and it may include the diagnostic details described above. Nothing is sent automatically, and cancelling or closing the report without submitting it sends nothing."),
+          legalSupportEmail("If you email support at ", ", your email address and message contents may be used to respond to your request."),
+        ],
+      },
+      {
+        heading: "Patreon membership validation",
+        paragraphs: [
+          legalText("If you connect a Patreon membership to CouchMode, license validation may process your Patreon account identifier, Patreon email address if provided by Patreon, membership tier, membership status, activation token, installation or device identifier, app version, activation timestamp, and entitlement status."),
+          legalText("CouchMode uses this information only to verify Pro access, enforce device limits, troubleshoot activation issues, and maintain account and security records."),
+        ],
+      },
+      {
+        heading: "Website analytics",
+        paragraphs: [
+          legalText("Essential site functionality is used by default. Cloudflare Web Analytics and the Google tag delivered through Google Tag Manager run only after you allow Analytics in the consent prompt. Those tools help us understand aggregate website traffic, such as page views and referrers, and are separate from the CouchMode desktop app, which does not track gameplay."),
+        ],
+        action: { kind: "open-consent", label: "Manage privacy choices" },
+      },
+      {
+        heading: "Payments and licenses",
+        paragraphs: [
+          legalText("CouchMode does not store payment card details. Patreon billing is handled by Patreon."),
+          legalText("CouchMode may contact license.couchmode.app only when needed to validate Pro access, refresh entitlement status, or deactivate devices."),
+        ],
+      },
+    ],
+  },
+};
+
+const englishTermsPacket: SurfacePacketBase<"legal"> = {
+  contentId: "terms",
+  kind: "legal",
+  locale: "en",
+  path: "/terms/",
+  sourceRevision: localeManifest.sourceRevision,
+  seo: {
+    title: "CouchMode Terms of Use",
+    description: "The CouchMode terms covering Free use, the 7-day Pro trial, Patreon supporter access, Xbox Mode availability, warranty, liability, and third-party services.",
+    ogTitle: "CouchMode Terms of Use",
+    ogDescription: "The CouchMode terms covering Free use, the 7-day Pro trial, Patreon supporter access, Xbox Mode availability, warranty, liability, and third-party services.",
+  },
+  schema: { homeBreadcrumbLabel: "Home", currentBreadcrumbLabel: "Terms" },
+  internalLinks: ["home"],
+  payload: {
+    title: "Terms",
+    chrome: {
+      backToHomepageLabel: "Back to homepage",
+      lastUpdatedLabel: "Last updated",
+      lastUpdated: "August 2026",
+    },
+    sections: [
+      {
+        heading: "License",
+        paragraphs: [
+          legalText("CouchMode is licensed, not sold. It is a Windows utility for session preparation and restoration around Windows and existing gaming frontends."),
+          legalText("CouchMode does not replace the Windows shell and does not replace your Windows startup flow. Startup automation is optional and controlled by the user."),
+          legalText("CouchMode does not modify Windows internals, install kernel drivers, bypass security features, or patch games or Windows."),
+        ],
+      },
+      {
+        heading: "Free and Pro",
+        paragraphs: [
+          legalText("One installer may include Free features, the 7-day Pro trial, and Pro activation. Free features are available without purchase. Pro features require an active trial or active Patreon membership during public beta."),
+          legalText("Free includes the controller-first session flow, the Windows Xbox full-screen experience where supported, Steam Big Picture, Playnite, and the return to your desktop when a session ends. Pro covers compatible custom launchers, Resource Control, Session Tweaks, and the deeper session automation."),
+        ],
+      },
+      {
+        heading: "7-day Pro trial",
+        paragraphs: [
+          legalText("The 7-day in-app Pro trial starts in CouchMode and does not require an account or credit card."),
+          legalText("Eligible first-time members can start a separate 7-day Patreon trial on the available paid tiers. Patreon requires a payment method but does not charge the membership fee until that trial ends. The Patreon trial is separate from CouchMode's 7-day in-app Pro trial, and Patreon decides who is eligible for it."),
+        ],
+        list: [
+          legalText("In-app trial: 7 days, no CouchMode account and no credit card required."),
+          legalText("Patreon trial: a separate 7 days, administered by Patreon, payment method required, billing begins after the trial if the membership continues."),
+        ],
+      },
+      {
+        heading: "Patreon supporter access",
+        paragraphs: [
+          legalText("During public beta, CouchMode Pro access is provided through Patreon membership. The Pro license remains active while membership is active."),
+          legalText("If membership ends, fails, is refunded, or is canceled, Pro access may return to Free mode after a short grace period."),
+          legalText("Pro Version is $3/month and includes personal Pro access on up to 2 active Windows devices. Pro Supporter is $5/month and includes personal Pro access on up to 5 active Windows devices."),
+        ],
+      },
+      {
+        heading: "Xbox Mode availability",
+        paragraphs: [
+          legalText("Xbox Mode and the Xbox full-screen experience are provided by Windows and Microsoft. Availability and behavior depend on device, Windows version, Xbox app support, rollout status, and system support. CouchMode cannot make Xbox Mode available on unsupported systems."),
+        ],
+      },
+      {
+        heading: "Automation and restore",
+        paragraphs: [
+          legalText("CouchMode attempts safe, reversible session changes. Review your settings before enabling automation, especially display, audio, power, startup, and Resource Control options."),
+          legalText("CouchMode does not promise performance boosts or identical behavior on every Windows device."),
+        ],
+      },
+      {
+        heading: "Activation limit",
+        paragraphs: [
+          legalText("Pro access may have activation limits to prevent abuse. Contact support if you need help with a legitimate device change."),
+        ],
+      },
+      {
+        heading: "No warranty",
+        paragraphs: [
+          legalText("CouchMode is provided as-is. We work to keep it reliable, but cannot promise uninterrupted or error-free operation on every PC setup."),
+        ],
+      },
+      {
+        heading: "Limitation of liability",
+        paragraphs: [
+          legalText("To the maximum extent allowed by law, CouchMode is not liable for indirect, incidental, or consequential damages."),
+        ],
+      },
+      {
+        heading: "Third-party services",
+        paragraphs: [
+          legalText("Patreon may handle billing, membership, cancellation, and refund details for Patreon-based Pro access. CouchMode does not store payment card details."),
+        ],
+      },
+      {
+        heading: "Contact",
+        paragraphs: [legalSupportEmail("Questions can be sent to ", ".")],
+      },
+    ],
+  },
+};
+
+const englishRefundPacket: SurfacePacketBase<"legal"> = {
+  contentId: "refund",
+  kind: "legal",
+  locale: "en",
+  path: "/refund/",
+  sourceRevision: localeManifest.sourceRevision,
+  seo: {
+    title: "CouchMode Patreon billing and refunds",
+    description: "The CouchMode refund policy for public beta Pro access: Patreon handles billing, cancellation, and refunds, and Pro may return to Free after an entitlement refresh and any applicable grace period.",
+    ogTitle: "CouchMode Patreon billing and refunds",
+    ogDescription: "The CouchMode refund policy for public beta Pro access: Patreon handles billing, cancellation, and refunds, and Pro may return to Free after an entitlement refresh and any applicable grace period.",
+  },
+  schema: { homeBreadcrumbLabel: "Home", currentBreadcrumbLabel: "Refund Policy" },
+  internalLinks: ["home"],
+  payload: {
+    title: "Patreon billing and refunds",
+    chrome: {
+      backToHomepageLabel: "Back to homepage",
+      lastUpdatedLabel: "Last updated",
+      lastUpdated: "August 2026",
+    },
+    sections: [
+      { paragraphs: [legalText("CouchMode Free does not require a purchase.")] },
+      {
+        paragraphs: [
+          legalText("CouchMode Pro and Pro Supporter memberships are billed and managed through Patreon. CouchMode does not operate a separate refund programme outside Patreon, and CouchMode does not store card details or process Patreon charges."),
+        ],
+      },
+      { paragraphs: [legalText("Refund eligibility and processing are handled according to Patreon's policies.")] },
+      {
+        paragraphs: [
+          legalText("Cancelling a Patreon membership prevents future renewals according to Patreon's billing rules. Cancellation does not itself create a retroactive refund."),
+        ],
+      },
+      {
+        paragraphs: [
+          legalText("Patreon may apply VAT, GST, sales tax or similar charges based on the member's location and the benefits included in the membership. These amounts are calculated and handled through Patreon."),
+        ],
+      },
+      {
+        paragraphs: [
+          legalText("If membership is cancelled, refunded, or becomes inactive, Pro access returns to Free after an entitlement refresh and any applicable grace period. Your CouchMode settings remain stored and the Free session flow remains available."),
+        ],
+      },
+      { paragraphs: [legalSupportEmail("For CouchMode product support, contact ", ".")] },
+    ],
+  },
+};
+
+const englishCheckoutPacket: SurfacePacketBase<"checkout"> = {
+  contentId: "buy",
+  kind: "checkout",
+  locale: "en",
+  path: "/buy/",
+  sourceRevision: localeManifest.sourceRevision,
+  seo: {
+    title: "CouchMode Pro - Patreon supporter access",
+    description: "CouchMode Pro access uses active Patreon membership during public beta. Start with a 7-day in-app Pro trial, then connect Patreon to continue.",
+    ogTitle: "CouchMode Pro - Patreon supporter access",
+    ogDescription: "CouchMode Pro access uses active Patreon membership during public beta. Start with a 7-day in-app Pro trial, then connect Patreon to continue.",
+  },
+  schema: { homeBreadcrumbLabel: "Home", currentBreadcrumbLabel: "Pro" },
+  internalLinks: ["home"],
+  payload: {
+    title: "Get CouchMode Pro",
+    chrome: {
+      backToHomepageLabel: "Back to homepage",
+      lastUpdatedLabel: "Last updated",
+      lastUpdated: "August 2026",
+    },
+    description: "CouchMode Free includes the core controller-first gaming flow. Pro adds deeper Windows and session automation.",
+    deviceLimit: { beforeCount: "Up to", afterCount: "active Windows devices" },
+    automationDescription: "Both tiers include Resource Control, Session Tweaks, after-session actions, and other Pro session automation.",
+    patreonCtaLabel: "Continue on Patreon",
+    membership: {
+      description: "Pro access is provided through an active Patreon membership during the public beta. Patreon requires an account and payment method.",
+      trialDescription: "New installations include a 7-day in-app Pro trial. No CouchMode account or credit card is required for the in-app trial.",
+      connectBefore: "Already a member? Open CouchMode and choose",
+      connectAction: "Connect Patreon",
+      connectAfter: ".",
+    },
+  },
+};
+
 const englishGuideHubPacket: SurfacePacketBase<"guide-hub"> = {
   contentId: "guides",
   kind: "guide-hub",
@@ -748,7 +1029,18 @@ export const localePackets: LocalePacketRegistry = {
     locale: "en",
     sourceRevision: localeManifest.sourceRevision,
     shared: englishLocaleContent,
-    surfaces: { home: englishHomePacket, download: englishDownloadPacket, changelog: englishChangelogPacket, support: englishSupportPacket, guides: englishGuideHubPacket, ...englishGuideArticlePackets },
+    surfaces: {
+      home: englishHomePacket,
+      download: englishDownloadPacket,
+      changelog: englishChangelogPacket,
+      support: englishSupportPacket,
+      privacy: englishPrivacyPacket,
+      terms: englishTermsPacket,
+      refund: englishRefundPacket,
+      buy: englishCheckoutPacket,
+      guides: englishGuideHubPacket,
+      ...englishGuideArticlePackets,
+    },
   },
 };
 
@@ -819,10 +1111,7 @@ export function isCompleteSurfacePacket(packet: SurfacePacketBase | undefined) {
 export function pathFor(locale: LocaleId, contentId: SurfaceId) {
   if (!isActiveLocale(locale)) return undefined;
   const packet = packetFor(locale, contentId);
-  if (packet) return packet.path;
-  // Only the source locale may derive its root URL from policy while its
-  // payloads migrate. Other locales always need their own complete packet.
-  return locale === "en" ? surfaceRegistry[contentId].defaultPath : undefined;
+  return packet?.path;
 }
 
 export function hrefFor(locale: LocaleId, contentId: SurfaceId) {

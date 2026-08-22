@@ -7,5 +7,10 @@
 // pointing at nothing. Import the constant. Do not paste the address into copy.
 export const PATREON_MEMBERSHIP_URL = "https://www.patreon.com/c/CouchMode";
 
-/** The outbound call to action. Deliberately not "Buy" - Patreon takes over from here. */
+/** The canonical analytics label. The packet owns the localized visible CTA label. */
 export const PATREON_CTA_LABEL = "Continue on Patreon";
+
+export const PATREON_TIERS = [
+  { id: "pro-version", name: "Pro Version", price: "$3/month", deviceLimit: 2 },
+  { id: "pro-supporter", name: "Pro Supporter", price: "$5/month", deviceLimit: 5 },
+] as const;

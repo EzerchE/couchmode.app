@@ -1,73 +1,93 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InfoPage } from "@/components/utility/InfoPage";
-import { breadcrumbLd } from "@/lib/seo";
 import { trackEvent } from "@/lib/analytics";
-import { PATREON_CTA_LABEL, PATREON_MEMBERSHIP_URL } from "@/lib/patreon";
 import { latestRelease } from "@/data/releases";
+import { PATREON_CTA_LABEL, PATREON_MEMBERSHIP_URL, PATREON_TIERS } from "@/lib/patreon";
+import { hrefFor, metadataFor, packetForKind, relativeHrefFor } from "@/i18n/packets";
 
-const TITLE = "Get CouchMode Pro";
-const DESC =
-  "CouchMode Free includes the core controller-first gaming flow. Pro adds deeper Windows and session automation.";
-const META_TITLE = "CouchMode Pro - Patreon supporter access";
-const META_DESC =
-  "CouchMode Pro access uses active Patreon membership during public beta. Start with a 7-day in-app Pro trial, then connect Patreon to continue.";
-const CANONICAL = "https://couchmode.app/buy/";
-const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v3.png";
-
-// Device limits are the only thing that differs between the tiers. Kept as data so the two
-// cards cannot drift apart in wording, and so a future third tier is one entry, not a copy.
-const plans = [
-  { name: "Pro Version", price: "$3/month", devices: "Up to 2 active Windows devices" },
-  { name: "Pro Supporter", price: "$5/month", devices: "Up to 5 active Windows devices" },
-];
+const checkoutPacket =
+  packetForKind("en", "buy", "checkout") ??
+  (() => {
+    throw new Error("The active English checkout packet is missing");
+  })();
+const checkoutMetadata = metadataFor(checkoutPacket);
+const canonical = checkoutMetadata.canonical;
+const homeUrl = hrefFor(checkoutPacket.locale, "home");
+if (!canonical || !homeUrl) throw new Error("The active English checkout URLs are missing");
 
 export const Route = createFileRoute("/buy")({
   head: () => ({
     meta: [
-      { title: META_TITLE },
-      { name: "description", content: META_DESC },
-      { name: "robots", content: "noindex,follow" },
+      { title: checkoutMetadata.title },
+      { name: "description", content: checkoutMetadata.description },
+      { name: "robots", content: checkoutMetadata.robots },
       { property: "og:site_name", content: "CouchMode" },
-      { property: "og:title", content: META_TITLE },
-      { property: "og:description", content: META_DESC },
-      { property: "og:url", content: CANONICAL },
+      { property: "og:title", content: checkoutMetadata.ogTitle },
+      { property: "og:description", content: checkoutMetadata.ogDescription },
+      { property: "og:url", content: canonical },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image", content: checkoutMetadata.ogImage },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: META_TITLE },
-      { name: "twitter:description", content: META_DESC },
-      { name: "twitter:image", content: OG_IMAGE },
-      breadcrumbLd("Pro", CANONICAL),
+      { name: "twitter:title", content: checkoutMetadata.ogTitle },
+      { name: "twitter:description", content: checkoutMetadata.ogDescription },
+      { name: "twitter:image", content: checkoutMetadata.ogImage },
+      {
+        "script:ld+json": {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: checkoutPacket.schema.homeBreadcrumbLabel,
+              item: homeUrl,
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: checkoutPacket.schema.currentBreadcrumbLabel,
+              item: canonical,
+            },
+          ],
+        },
+      },
     ],
-    links: [{ rel: "canonical", href: CANONICAL }],
+    links: [{ rel: "canonical", href: canonical }],
   }),
   component: Buy,
 });
 
 function Buy() {
+  const copy = checkoutPacket.payload;
+  const homeHref = relativeHrefFor(checkoutPacket.locale, "home");
+  if (!homeHref) throw new Error("Missing checkout home href");
+
   return (
-    <InfoPage title={TITLE}>
-      <p>{DESC}</p>
+    <InfoPage
+      title={copy.title}
+      lastUpdated={copy.chrome.lastUpdated}
+      lastUpdatedLabel={copy.chrome.lastUpdatedLabel}
+      homeHref={homeHref}
+      backToHomepageLabel={copy.chrome.backToHomepageLabel}
+    >
+      <p>{copy.description}</p>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        {plans.map((plan) => (
-          <div key={plan.name} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-            <h2 className="text-base font-medium text-foreground">{plan.name}</h2>
+        {PATREON_TIERS.map((tier) => (
+          <div key={tier.id} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+            <h2 className="text-base font-medium text-foreground">{tier.name}</h2>
             <p className="mt-1 text-2xl font-semibold tracking-tight text-foreground">
-              {plan.price}
+              {tier.price}
             </p>
-            <p className="mt-2 text-sm text-muted-foreground">{plan.devices}</p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              {copy.deviceLimit.beforeCount} {tier.deviceLimit} {copy.deviceLimit.afterCount}
+            </p>
           </div>
         ))}
       </div>
 
-      <p>
-        Both tiers include Resource Control, Session Tweaks, after-session actions, and other Pro
-        session automation.
-      </p>
+      <p>{copy.automationDescription}</p>
 
-      {/* The one outbound step. Everything above exists so nobody arrives at Patreon
-          without knowing which tier they want and that a free trial exists first. */}
       <div>
         <a
           href={PATREON_MEMBERSHIP_URL}
@@ -83,21 +103,16 @@ function Buy() {
             });
           }}
         >
-          {PATREON_CTA_LABEL}
+          {copy.patreonCtaLabel}
         </a>
       </div>
 
+      <p>{copy.membership.description}</p>
+      <p>{copy.membership.trialDescription}</p>
       <p>
-        Pro access is provided through an active Patreon membership during the public beta. Patreon
-        requires an account and payment method.
-      </p>
-      <p>
-        New installations include a 7-day in-app Pro trial. No CouchMode account or credit card is
-        required for the in-app trial.
-      </p>
-      <p>
-        Already a member? Open CouchMode and choose{" "}
-        <span className="text-foreground">Connect Patreon</span>.
+        {copy.membership.connectBefore}{" "}
+        <span className="text-foreground">{copy.membership.connectAction}</span>
+        {copy.membership.connectAfter}
       </p>
     </InfoPage>
   );
