@@ -4,6 +4,7 @@ import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { releases } from "@/data/releases";
 import { hrefFor, metadataFor, packetForKind } from "@/i18n/packets";
+import { releaseEditorialFor } from "@/i18n/release-editorial";
 
 // Same rule the download page uses, so the two can never contradict each other:
 // a release counts as downloadable only when it opts in AND carries a URL.
@@ -96,7 +97,17 @@ function Changelog() {
         <ol className="space-y-2.5">
           {releases.map((release, index) => {
             const isLatest = index === 0;
-            const teaser = release.summary ?? release.notes[0] ?? "";
+            const editorial = releaseEditorialFor(
+              changelogPacket.locale,
+              release,
+              copy.release.editorial,
+            );
+            if (!editorial) {
+              throw new Error(
+                `Missing ${changelogPacket.locale} editorial copy for ${release.version}`,
+              );
+            }
+            const teaser = editorial.summary ?? editorial.notes[0] ?? "";
             return (
               <li key={release.version}>
                 <details
@@ -128,26 +139,26 @@ function Changelog() {
                   </summary>
 
                   <div className="border-t border-white/10 px-4 py-4 sm:px-5">
-                    {release.notes.length > 0 && (
+                    {editorial.notes.length > 0 && (
                       <div>
                         <p className="text-xs uppercase tracking-wider text-muted-foreground">
                           {copy.release.notesLabel}
                         </p>
                         <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm text-muted-foreground">
-                          {release.notes.map((note) => (
+                          {editorial.notes.map((note) => (
                             <li key={note}>{note}</li>
                           ))}
                         </ul>
                       </div>
                     )}
 
-                    {release.knownIssues.length > 0 && (
+                    {editorial.knownIssues.length > 0 && (
                       <div className="mt-4">
                         <p className="text-xs uppercase tracking-wider text-muted-foreground">
                           {copy.release.knownIssuesLabel}
                         </p>
                         <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm text-muted-foreground">
-                          {release.knownIssues.map((issue) => (
+                          {editorial.knownIssues.map((issue) => (
                             <li key={issue}>{issue}</li>
                           ))}
                         </ul>

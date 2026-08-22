@@ -3,7 +3,9 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { createServer } from "vite";
 import manifest from "../src/i18n/manifest.json";
+import { releases } from "../src/data/releases";
 import type { SurfaceId } from "../src/i18n/config";
+import { validateReleaseEditorialOverlay } from "../src/i18n/release-editorial";
 import { surfaceRegistry } from "../src/i18n/surface-registry";
 
 const root = path.resolve(import.meta.dirname, "..");
@@ -34,6 +36,7 @@ const localizedSourceFiles = [
   ...localizedSourceRoots.flatMap((directory) => collectFiles(path.join(root, directory))),
   path.join(root, "src/content/guides.ts"),
   path.join(root, "src/i18n/packets.ts"),
+  path.join(root, "src/i18n/release-editorial.ts"),
   path.join(root, "src/data/releases.json"),
 ].sort();
 const actualSourceRevision = crypto
@@ -123,6 +126,18 @@ for (const locale of activeLocales) {
         if (!hrefFor(locale.id, target))
           fail(`${locale.id}/${contentId} links outside its locale packet`);
       }
+    }
+
+    const changelog = renderPacket.surfaces.changelog;
+    if (!changelog || changelog.kind !== "changelog") {
+      fail(`${locale.id} is missing a changelog packet for release editorial validation`);
+    }
+    const overlayErrors = validateReleaseEditorialOverlay(
+      releases,
+      changelog.payload.release.editorial,
+    );
+    if (overlayErrors.length > 0) {
+      fail(`${locale.id} release editorial overlay is invalid: ${overlayErrors.join("; ")}`);
     }
   }
 }

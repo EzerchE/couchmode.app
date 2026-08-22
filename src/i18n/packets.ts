@@ -9,6 +9,7 @@ import {
   type GuideCategoryId,
   type GuideContentId,
 } from "@/content/guides";
+import type { ReleaseEditorialOverlay } from "./release-editorial";
 
 type SeoCopy = { title: string; description: string; ogTitle: string; ogDescription: string; ogImage?: string };
 type DocumentSection = { heading?: string; paragraphs: string[]; list?: string[] };
@@ -151,6 +152,7 @@ export type ChangelogPayload = {
     notesLabel: string;
     knownIssuesLabel: string;
     checksumLabel: string;
+    editorial?: ReleaseEditorialOverlay;
   };
 };
 export type SupportPayload = {
