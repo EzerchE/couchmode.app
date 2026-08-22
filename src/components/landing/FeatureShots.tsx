@@ -6,6 +6,7 @@ import {
   ScreenshotLightbox,
   type LightboxShot,
 } from "@/components/landing/ScreenshotLightbox";
+import type { HomePayload } from "@/i18n/packets";
 
 // Screenshots are beta.176 captures, KEPT DELIBERATELY for the 0.6.0-rc.8 release by owner
 // decision: they show the Pro-enabled surfaces accurately, and the older version string in the
@@ -13,34 +14,15 @@ import {
 // rather than rediscover: the footer reads v0.4.10-beta.176, and app-general.png shows the
 // launch-target row carrying a Pro badge, which rc.8 changed - Xbox, Steam Big Picture and
 // Playnite are Free. Accepted, not overlooked. Re-capture when a release justifies it.
-const shots: LightboxShot[] = [
-  {
-    src: "/screenshots/app-general-advanced.png",
-    label: "General",
-    caption: "Startup and advanced settings",
-    alt: "CouchMode General startup and advanced settings.",
-  },
-  {
-    src: "/screenshots/app-resource-control-picker.png",
-    label: "Resource Control",
-    caption: "Running-app selection",
-    alt: "CouchMode running application selector.",
-  },
-  {
-    src: "/screenshots/app-resource-control-after.png",
-    label: "Resource Control",
-    caption: "After-session actions",
-    alt: "CouchMode Resource Control after-session actions.",
-  },
-  {
-    src: "/screenshots/app-session-tweaks-display.png",
-    label: "Session Tweaks",
-    caption: "Display, HDR, and audio",
-    alt: "CouchMode HDR, display and audio settings.",
-  },
+const shotSources = [
+  "/screenshots/app-general-advanced.png",
+  "/screenshots/app-resource-control-picker.png",
+  "/screenshots/app-resource-control-after.png",
+  "/screenshots/app-session-tweaks-display.png",
 ];
 
-export function FeatureShots() {
+export function FeatureShots({ copy }: { copy: HomePayload["featureShots"] }) {
+  const shots: LightboxShot[] = copy.shots.map((shot, index) => ({ ...shot, src: shotSources[index] }));
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   // The card that opened the lightbox, so focus can return to it on close.
   const openerRef = useRef<HTMLButtonElement | null>(null);
@@ -53,16 +35,15 @@ export function FeatureShots() {
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 max-w-2xl">
-          <p className="mb-4 text-sm font-medium text-aurora">A closer look</p>
+          <p className="mb-4 text-sm font-medium text-aurora">{copy.eyebrow}</p>
           <h2
             id="screens-heading"
             className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
           >
-            More of the Pro settings, straight from the app.
+            {copy.heading}
           </h2>
           <p className="mt-4 text-muted-foreground">
-            These are real CouchMode screens, not mockups. Select any screen to
-            view it larger.
+            {copy.description}
           </p>
         </div>
 
@@ -81,7 +62,7 @@ export function FeatureShots() {
                   openerRef.current = e.currentTarget;
                   setOpenIndex(i);
                 }}
-                aria-label={`Open larger screenshot: ${s.label}, ${s.caption}`}
+                aria-label={`${copy.openShotLabel}: ${s.label}, ${s.caption}`}
                 className="group block w-full cursor-zoom-in overflow-hidden rounded-2xl border border-white/10 bg-[#12161d] text-left shadow-xl shadow-black/40 transition hover:border-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-aurora focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 <div className="relative aspect-[1122/714] w-full">
@@ -124,6 +105,7 @@ export function FeatureShots() {
         }}
         onNavigate={setOpenIndex}
         returnFocusRef={openerRef}
+        controls={copy.lightbox}
       />
     </section>
   );

@@ -1,6 +1,7 @@
 import type { RefObject } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import type { HomePayload } from "@/i18n/packets";
 
 // Accessible full-screen viewer for the detail screenshots. Built on the Radix
 // Dialog primitives already used by the project (no new dependency), which give
@@ -21,6 +22,7 @@ export function ScreenshotLightbox({
   onOpenChange,
   onNavigate,
   returnFocusRef,
+  controls,
 }: {
   shots: LightboxShot[];
   index: number | null;
@@ -30,6 +32,7 @@ export function ScreenshotLightbox({
   // trigger to restore focus to on close. We return focus to the card that
   // opened it via this ref.
   returnFocusRef?: RefObject<HTMLElement | null>;
+  controls: HomePayload["featureShots"]["lightbox"];
 }) {
   const open = index !== null;
   const count = shots.length;
@@ -75,7 +78,7 @@ export function ScreenshotLightbox({
               <Dialog.Description className="sr-only">{shot.alt}</Dialog.Description>
 
               <Dialog.Close
-                aria-label="Close screenshot viewer"
+                aria-label={controls.closeLabel}
                 className="absolute right-3 top-3 z-10 grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-black/50 text-white/90 backdrop-blur-md transition hover:bg-black/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 sm:right-5 sm:top-5"
               >
                 <X className="h-5 w-5" />
@@ -85,7 +88,7 @@ export function ScreenshotLightbox({
                 <>
                   <button
                     type="button"
-                    aria-label="Previous screenshot"
+                    aria-label={controls.previousLabel}
                     onClick={(e) => {
                       e.stopPropagation();
                       go(-1);
@@ -96,7 +99,7 @@ export function ScreenshotLightbox({
                   </button>
                   <button
                     type="button"
-                    aria-label="Next screenshot"
+                    aria-label={controls.nextLabel}
                     onClick={(e) => {
                       e.stopPropagation();
                       go(1);

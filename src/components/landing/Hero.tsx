@@ -7,9 +7,14 @@ import { useMicrosoftStoreUrl } from "@/lib/campaign-attribution";
 import { MicrosoftStoreIcon } from "@/components/MicrosoftStoreIcon";
 import { HeroShowcase } from "@/components/landing/HeroShowcase";
 import { latestRelease } from "@/data/releases";
+import type { LocaleId } from "@/i18n/config";
+import { relativeHrefFor, type HomePayload } from "@/i18n/packets";
 
-export function Hero() {
+export function Hero({ copy, locale }: { copy: HomePayload["hero"]; locale: LocaleId }) {
   const storeUrl = useMicrosoftStoreUrl();
+  const downloadHref = relativeHrefFor(locale, "download");
+  const pricingHref = relativeHrefFor(locale, "home", "#pricing");
+  if (!downloadHref || !pricingHref) throw new Error(`Missing homepage CTA hrefs for ${locale}`);
 
   return (
     <section
@@ -30,35 +35,33 @@ export function Hero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           <p className="hero-text-shadow text-sm font-medium text-aurora">
-            Controller-first gaming utility for Windows.
+            {copy.eyebrow}
           </p>
 
           <div className="mt-4 inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs text-foreground/85 shadow-xl shadow-background/20">
             <span className="h-1.5 w-1.5 rounded-full bg-aurora" />
-            Public beta now available
+            {copy.badge}
           </div>
 
           <h1
             id="hero-heading"
             className="hero-text-shadow mt-5 text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl"
           >
-            Turn your gaming PC into{" "}
-            <span className="text-aurora hero-aurora-text">couch mode.</span>
+            {copy.headingBefore}{" "}
+            <span className="text-aurora hero-aurora-text">{copy.headingAccent}</span>
           </h1>
 
           <p className="hero-text-shadow mx-auto mt-6 max-w-xl text-base leading-relaxed text-foreground/78 sm:text-lg">
-            Turn on your controller and CouchMode opens your chosen gaming experience, prepares the
-            session around your preferences, and brings you back to a usable desktop when
-            you&rsquo;re done.
+            {copy.description}
           </p>
 
           <div className="mt-9 flex flex-wrap justify-center gap-3">
             <a
-              href="/download"
+              href={downloadHref}
               className="inline-flex items-center gap-2 rounded-full bg-aurora px-6 py-3 text-sm font-medium text-primary-foreground glow-violet transition hover:brightness-110"
             >
               <Download className="h-4 w-4" />
-              Download for Windows
+              {copy.downloadLabel}
             </a>
             <a
               href={storeUrl}
@@ -73,16 +76,16 @@ export function Hero() {
               {MICROSOFT_STORE_LABEL}
             </a>
             <a
-              href="#pricing"
+              href={pricingHref}
               className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-sm font-medium text-foreground transition hover:bg-white/[0.08]"
             >
               <Sparkles className="h-4 w-4" />
-              Explore Pro features
+              {copy.proLabel}
             </a>
           </div>
 
           <p className="hero-text-shadow mt-4 text-xs text-foreground/60">
-            Windows 11 &middot; 64-bit &middot; Signed public beta
+            {copy.platformNotice}
           </p>
         </motion.div>
       </div>
@@ -93,7 +96,7 @@ export function Hero() {
         transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
         className="relative mx-auto mt-16 max-w-4xl px-4 sm:px-6 lg:px-8"
       >
-        <HeroShowcase />
+        <HeroShowcase copy={copy.carousel} />
       </motion.div>
     </section>
   );

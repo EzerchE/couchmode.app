@@ -5,36 +5,37 @@ import { Problem } from "@/components/landing/Problem";
 import { HowItWorks } from "@/components/landing/HowItWorks";
 import { FeatureShots } from "@/components/landing/FeatureShots";
 import { Comparison } from "@/components/landing/Comparison";
-import { SearchIntentFAQ, faqs } from "@/components/landing/SearchIntentFAQ";
+import { SearchIntentFAQ } from "@/components/landing/SearchIntentFAQ";
 import { FinalCTA } from "@/components/landing/FinalCTA";
 import { Footer } from "@/components/landing/Footer";
 import { GuidesPreview } from "@/components/landing/GuidesPreview";
 import { latestRelease } from "@/data/releases";
+import { hrefFor, metadataFor, packetForKind } from "@/i18n/packets";
 
-const TITLE = "CouchMode - Controller-first gaming utility for Windows";
-const DESC =
-  "Turn on your controller, start your preferred gaming experience and return to a usable Windows desktop when the session ends. Download the signed CouchMode public beta.";
-const SOFTWARE_DESC =
-  "CouchMode is a Windows utility for controller-first couch gaming sessions. It can open your preferred gaming experience, close the desktop apps you select, and restore the supported Windows settings it changed when the session ends.";
-const CANONICAL = "https://couchmode.app/";
-const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v3.png";
+const homePacket = packetForKind("en", "home", "home") ?? (() => {
+  throw new Error("The active English home packet is missing");
+})();
+const homeMetadata = metadataFor(homePacket);
+const canonical = homeMetadata.canonical;
+const directDownloadUrl = hrefFor("en", "download")?.replace(/\/$/, "");
+if (!canonical || !directDownloadUrl) throw new Error("The active English home URLs are missing");
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: TITLE },
-      { name: "description", content: DESC },
-      { name: "robots", content: "index,follow" },
+      { title: homeMetadata.title },
+      { name: "description", content: homeMetadata.description },
+      { name: "robots", content: homeMetadata.robots },
       { property: "og:site_name", content: "CouchMode" },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESC },
-      { property: "og:url", content: CANONICAL },
+      { property: "og:title", content: homeMetadata.ogTitle },
+      { property: "og:description", content: homeMetadata.ogDescription },
+      { property: "og:url", content: canonical },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image", content: homeMetadata.ogImage },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: TITLE },
-      { name: "twitter:description", content: DESC },
-      { name: "twitter:image", content: OG_IMAGE },
+      { name: "twitter:title", content: homeMetadata.ogTitle },
+      { name: "twitter:description", content: homeMetadata.ogDescription },
+      { name: "twitter:image", content: homeMetadata.ogImage },
       {
         "script:ld+json": {
           "@context": "https://schema.org",
@@ -42,12 +43,12 @@ export const Route = createFileRoute("/")({
           name: "CouchMode",
           operatingSystem: "Windows 11",
           applicationCategory: "UtilityApplication",
-          applicationSubCategory: "Gaming utility",
-          description: SOFTWARE_DESC,
-          url: "https://couchmode.app/",
-          image: OG_IMAGE,
+          applicationSubCategory: homePacket.schema.applicationSubCategory,
+          description: homePacket.schema.softwareDescription,
+          url: canonical,
+          image: homeMetadata.ogImage,
           softwareVersion: latestRelease.version,
-          downloadUrl: "https://couchmode.app/download",
+          downloadUrl: directDownloadUrl,
           offers: {
             "@type": "Offer",
             price: "0.00",
@@ -59,7 +60,7 @@ export const Route = createFileRoute("/")({
         "script:ld+json": {
           "@context": "https://schema.org",
           "@type": "FAQPage",
-          mainEntity: faqs.map((faq) => ({
+          mainEntity: homePacket.payload.faq.items.map((faq) => ({
             "@type": "Question",
             name: faq.question,
             acceptedAnswer: {
@@ -74,7 +75,7 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "Brand",
           name: "CouchMode",
-          url: "https://couchmode.app/",
+          url: canonical,
           logo: "https://couchmode.app/icon-512.png",
         },
       },
@@ -83,14 +84,14 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "WebSite",
           name: "CouchMode",
-          url: "https://couchmode.app/",
+          url: canonical,
         },
       },
     ],
     // The first hero <img> carries fetchpriority="high" (HeroShowcase), which
     // React hoists into a high-priority image preload automatically; the other
     // carousel screenshots lazy-load, so no manual preload link is needed here.
-    links: [{ rel: "canonical", href: CANONICAL }],
+    links: [{ rel: "canonical", href: canonical }],
   }),
   component: Index,
 });
@@ -100,14 +101,14 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main>
-        <Hero />
-        <Problem />
-        <HowItWorks />
-        <FeatureShots />
-        <Comparison />
-        <GuidesPreview />
-        <FinalCTA />
-        <SearchIntentFAQ />
+        <Hero copy={homePacket.payload.hero} locale={homePacket.locale} />
+        <Problem copy={homePacket.payload.problem} />
+        <HowItWorks copy={homePacket.payload.howItWorks} />
+        <FeatureShots copy={homePacket.payload.featureShots} />
+        <Comparison copy={homePacket.payload.comparison} locale={homePacket.locale} />
+        <GuidesPreview copy={homePacket.payload.guidesPreview} locale={homePacket.locale} />
+        <FinalCTA copy={homePacket.payload.finalCta} locale={homePacket.locale} />
+        <SearchIntentFAQ copy={homePacket.payload.faq} />
       </main>
       <Footer />
     </div>

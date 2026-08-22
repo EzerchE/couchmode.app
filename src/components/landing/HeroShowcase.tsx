@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import type { HomePayload } from "@/i18n/packets";
 
 // Authentic beta.176 captures, each normalized to a 1122x714 dark canvas so
 // every slide occupies the exact same space with no size jumping. The frame
@@ -12,28 +13,17 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 // rather than rediscover: the footer reads v0.4.10-beta.176, and app-general.png shows the
 // launch-target row carrying a Pro badge, which rc.8 changed - Xbox, Steam Big Picture and
 // Playnite are Free. Accepted, not overlooked. Re-capture when a release justifies it.
-const slides = [
-  {
-    src: "/screenshots/app-general.png",
-    label: "General",
-    alt: "CouchMode General controller and launcher settings.",
-  },
-  {
-    src: "/screenshots/app-resource-control.png",
-    label: "Resource Control",
-    alt: "CouchMode Resource Control application cleanup settings.",
-  },
-  {
-    src: "/screenshots/app-session-tweaks.png",
-    label: "Session Tweaks",
-    alt: "CouchMode Session Tweaks performance and Windows settings.",
-  },
+const slideSources = [
+  "/screenshots/app-general.png",
+  "/screenshots/app-resource-control.png",
+  "/screenshots/app-session-tweaks.png",
 ];
 
 const AUTOPLAY_MS = 4500;
 const RESUME_MS = 7000;
 
-export function HeroShowcase() {
+export function HeroShowcase({ copy }: { copy: HomePayload["hero"]["carousel"] }) {
+  const slides = copy.slides.map((slide, index) => ({ ...slide, src: slideSources[index] }));
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "center" });
   const [selected, setSelected] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -130,7 +120,7 @@ export function HeroShowcase() {
           <button
             type="button"
             onClick={prev}
-            aria-label="Previous screenshot"
+            aria-label={copy.previousLabel}
             className="absolute left-3 top-1/2 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full border border-white/10 bg-black/40 text-foreground/80 backdrop-blur-md transition hover:bg-black/60"
           >
             <ChevronLeft className="h-4 w-4" />
@@ -138,7 +128,7 @@ export function HeroShowcase() {
           <button
             type="button"
             onClick={next}
-            aria-label="Next screenshot"
+            aria-label={copy.nextLabel}
             className="absolute right-3 top-1/2 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full border border-white/10 bg-black/40 text-foreground/80 backdrop-blur-md transition hover:bg-black/60"
           >
             <ChevronRight className="h-4 w-4" />
@@ -152,7 +142,7 @@ export function HeroShowcase() {
             key={s.src}
             type="button"
             onClick={() => goTo(i)}
-            aria-label={`Show ${s.label}`}
+            aria-label={`${copy.showLabel} ${s.label}`}
             aria-current={i === selected}
             className={
               "h-1.5 rounded-full transition-all " +

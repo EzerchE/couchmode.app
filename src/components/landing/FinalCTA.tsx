@@ -4,20 +4,25 @@ import { trackDistributionIntent, trackEvent } from "@/lib/analytics";
 import { MICROSOFT_STORE_LABEL } from "@/lib/channels";
 import { latestRelease } from "@/data/releases";
 import { useMicrosoftStoreUrl } from "@/lib/campaign-attribution";
+import type { LocaleId } from "@/i18n/config";
+import { relativeHrefFor, type HomePayload } from "@/i18n/packets";
 
 // Read the direct-download state from the same release data the download page and
 // the update manifests are generated from, so this card can never advertise a
 // state the release data does not actually have.
 const downloadOpen = latestRelease.downloadEnabled && !!latestRelease.installerUrl;
 
-export function FinalCTA() {
+export function FinalCTA({ copy, locale }: { copy: HomePayload["finalCta"]; locale: LocaleId }) {
   const storeUrl = useMicrosoftStoreUrl();
+  const downloadHref = relativeHrefFor(locale, "download");
+  const changelogHref = relativeHrefFor(locale, "changelog");
+  if (!downloadHref || !changelogHref) throw new Error(`Missing final CTA hrefs for ${locale}`);
   const channels = [
     {
-      label: "Direct download",
-      status: downloadOpen ? `Open · ${latestRelease.version}` : "Preparing",
+      label: copy.directDownloadLabel,
+      status: downloadOpen ? `${copy.openLabel} · ${latestRelease.version}` : copy.preparingLabel,
     },
-    { label: MICROSOFT_STORE_LABEL, status: "Live", href: storeUrl },
+    { label: MICROSOFT_STORE_LABEL, status: copy.liveLabel, href: storeUrl },
   ];
 
   return (
@@ -45,35 +50,34 @@ export function FinalCTA() {
               id="cta-heading"
               className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
             >
-              Ready to make your PC <span className="text-aurora">couch-native</span>?
+              {copy.headingBefore} <span className="text-aurora">{copy.headingAccent}</span>?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-              Download the signed Windows public beta and start with a 7-day in-app Pro trial. No
-              account or credit card is required for the in-app trial.
+              {copy.description}
             </p>
 
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <a
-                href="/download"
+                href={downloadHref}
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-aurora text-primary-foreground px-6 py-3.5 text-sm font-medium glow-violet hover:brightness-110 transition"
               >
                 <Download className="h-4 w-4" />
-                Download for Windows
+                {copy.downloadLabel}
               </a>
               <a
-                href="/changelog"
+                href={changelogHref}
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-6 py-3.5 text-sm font-medium hover:bg-white/[0.08] transition"
                 onClick={() => {
                   trackEvent("release_notes_click", {
                     placement: "final_cta",
-                    label: "View release notes",
-                    target: "/changelog",
+                    label: copy.releaseNotesLabel,
+                    target: changelogHref,
                     version: latestRelease.version,
                   });
                 }}
               >
                 <Sparkles className="h-4 w-4" />
-                View release notes
+                {copy.releaseNotesLabel}
               </a>
             </div>
 
@@ -111,17 +115,13 @@ export function FinalCTA() {
                   </span>
                 );
               })}
-              <span className="text-foreground/50">Windows 11 · 64-bit</span>
+              <span className="text-foreground/50">{copy.platformNotice}</span>
             </div>
           </div>
         </motion.div>
 
         <p className="mx-auto mt-6 max-w-2xl text-center text-xs leading-relaxed text-muted-foreground/70">
-          CouchMode supports controller-first Windows handheld setups, including devices such as ROG
-          Ally. Where Windows provides the Xbox full-screen experience, CouchMode can start or adopt
-          that session and return control to the desktop when the session ends. Availability and
-          behavior depend on the device, Windows version, Xbox app support, region and Microsoft
-          rollout.
+          {copy.compatibilityNote}
         </p>
       </div>
     </section>

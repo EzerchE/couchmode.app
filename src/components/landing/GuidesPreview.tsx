@@ -1,18 +1,20 @@
 import { ArrowRight, BookOpen } from "lucide-react";
 import { GuideCard } from "@/components/guides/GuideCard";
 import { type Guide, guides } from "@/content/guides";
+import type { LocaleId } from "@/i18n/config";
+import { pathFor, relativeHrefFor, type HomePayload } from "@/i18n/packets";
 
-const featuredSlugs = [
-  "launch-playnite-with-controller",
-  "start-steam-big-picture-with-controller",
-  "windows-11-console-like-pc",
-];
+function guideForContentId(locale: LocaleId, contentId: HomePayload["guidesPreview"]["featuredGuideIds"][number]) {
+  const slug = pathFor(locale, contentId)?.split("/").filter(Boolean).at(-1);
+  return guides.find((guide) => guide.slug === slug);
+}
 
-const featuredGuides = featuredSlugs
-  .map((slug) => guides.find((guide) => guide.slug === slug))
-  .filter((guide): guide is Guide => Boolean(guide));
-
-export function GuidesPreview() {
+export function GuidesPreview({ copy, locale }: { copy: HomePayload["guidesPreview"]; locale: LocaleId }) {
+  const guidesHref = relativeHrefFor(locale, "guides", "", true);
+  if (!guidesHref) throw new Error(`Missing guides href for ${locale}`);
+  const featuredGuides = copy.featuredGuideIds
+    .map((contentId) => guideForContentId(locale, contentId))
+    .filter((guide): guide is Guide => Boolean(guide));
   return (
     <section
       className="relative overflow-hidden py-20 sm:py-24"
@@ -26,24 +28,23 @@ export function GuidesPreview() {
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 text-sm font-medium text-primary">
               <BookOpen className="h-4 w-4" />
-              Practical setup notes
+              {copy.eyebrow}
             </div>
             <h2
               id="guides-preview-heading"
               className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl"
             >
-              Windows Couch Gaming Guides
+              {copy.heading}
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Straight answers for Playnite, Steam Big Picture, TV setups, controllers, and docked
-              Windows handhelds.
+              {copy.description}
             </p>
           </div>
           <a
-            href="/guides/"
+            href={guidesHref}
             className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-4 py-2.5 text-sm font-medium text-foreground transition hover:border-primary/50 hover:bg-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
-            View all guides
+            {copy.ctaLabel}
             <ArrowRight className="h-4 w-4" />
           </a>
         </div>
