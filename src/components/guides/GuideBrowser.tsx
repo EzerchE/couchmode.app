@@ -1,29 +1,38 @@
 import { useEffect, useState } from "react";
 import { GuideCard } from "@/components/guides/GuideCard";
 import {
-  guideCategories,
+  guideCategoryIds,
   guideCategoryMeta,
-  type GuideCategory,
-  guides,
+  type GuideCategoryId,
 } from "@/content/guides";
+import type { LocaleId } from "@/i18n/config";
+import type { GuideHubPayload, LocalizedGuide } from "@/i18n/packets";
 
-type GuideFilter = "All" | GuideCategory;
+type GuideFilter = "all" | GuideCategoryId;
 
 function filterFromHash(hash: string): GuideFilter {
   const normalizedHash = hash.replace(/^#/, "");
   return (
-    guideCategories.find((category) => guideCategoryMeta[category].hash === normalizedHash) ??
-    "All"
+    guideCategoryIds.find((category) => guideCategoryMeta[category].hash === normalizedHash) ??
+    "all"
   );
 }
 
-function categoryId(category: GuideCategory) {
+function categoryId(category: GuideCategoryId) {
   return `category-${guideCategoryMeta[category].hash}`;
 }
 
-export function GuideBrowser() {
+export function GuideBrowser({
+  copy,
+  guides,
+  locale,
+}: {
+  copy: GuideHubPayload;
+  guides: LocalizedGuide[];
+  locale: LocaleId;
+}) {
   // SSR intentionally starts on All so every guide stays in the prerendered document.
-  const [activeFilter, setActiveFilter] = useState<GuideFilter>("All");
+  const [activeFilter, setActiveFilter] = useState<GuideFilter>("all");
 
   useEffect(() => {
     const syncFilterFromHash = () => setActiveFilter(filterFromHash(window.location.hash));
@@ -34,19 +43,20 @@ export function GuideBrowser() {
 
   const selectFilter = (filter: GuideFilter) => {
     setActiveFilter(filter);
-    const hash = filter === "All" ? "" : `#${guideCategoryMeta[filter].hash}`;
+    const hash = filter === "all" ? "" : `#${guideCategoryMeta[filter].hash}`;
     window.history.replaceState(null, "", `${window.location.pathname}${hash}`);
   };
 
   const visibleCategories =
-    activeFilter === "All" ? guideCategories : guideCategories.filter((category) => category === activeFilter);
+    activeFilter === "all" ? guideCategoryIds : guideCategoryIds.filter((category) => category === activeFilter);
 
   return (
     <>
-      <div className="mt-10 flex flex-wrap gap-2" role="group" aria-label="Filter guides by category">
-        {(["All", ...guideCategories] as GuideFilter[]).map((filter) => {
+      <div className="mt-10 flex flex-wrap gap-2" role="group" aria-label={copy.filters.ariaLabel}>
+        {(["all", ...guideCategoryIds] as GuideFilter[]).map((filter) => {
           const active = filter === activeFilter;
-          const accent = filter === "All" ? undefined : guideCategoryMeta[filter].accent;
+          const accent = filter === "all" ? undefined : guideCategoryMeta[filter].accent;
+          const label = filter === "all" ? copy.filters.allLabel : copy.filters.categories[filter];
 
           return (
             <button
@@ -67,7 +77,7 @@ export function GuideBrowser() {
                     : undefined
               }
             >
-              {filter}
+              {label}
             </button>
           );
         })}
@@ -75,18 +85,18 @@ export function GuideBrowser() {
 
       <div key={activeFilter} className="mt-12 space-y-14 animate-in fade-in-0 duration-200">
         {visibleCategories.map((category) => {
-          const categoryGuides = guides.filter((guide) => guide.category === category);
+          const categoryGuides = guides.filter((guide) => guide.source.category === category);
           const { accent } = guideCategoryMeta[category];
 
           return (
             <section key={category} aria-labelledby={categoryId(category)}>
               <h2 id={categoryId(category)} className="flex items-center gap-3 text-xl font-semibold tracking-tight">
                 <span className="h-px w-7" style={{ backgroundColor: accent }} />
-                <span style={{ color: accent }}>{category}</span>
+                <span style={{ color: accent }}>{copy.filters.categories[category]}</span>
               </h2>
               <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
                 {categoryGuides.map((guide) => (
-                  <GuideCard key={guide.slug} guide={guide} />
+                  <GuideCard key={guide.packet.contentId} guide={guide} copy={copy} locale={locale} />
                 ))}
               </div>
             </section>

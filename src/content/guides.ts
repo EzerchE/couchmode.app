@@ -1,33 +1,39 @@
-export type GuideCategory =
-  | "Playnite"
-  | "Steam Big Picture"
-  | "Windows Couch Gaming"
-  | "Windows Handhelds";
+import type { LocaleId, SurfaceId } from "@/i18n/config";
+import { surfaceRegistry } from "@/i18n/surface-registry";
 
-export const guideCategories: GuideCategory[] = [
-  "Playnite",
-  "Steam Big Picture",
-  "Windows Couch Gaming",
-  "Windows Handhelds",
-];
+export const guideCategoryIds = [
+  "playnite",
+  "steam-big-picture",
+  "windows-couch-gaming",
+  "windows-handhelds",
+] as const;
 
-export const guideCategoryMeta: Record<GuideCategory, { accent: string; hash: string }> = {
-  Playnite: { accent: "#8B5CF6", hash: "playnite" },
-  "Steam Big Picture": { accent: "#3B82F6", hash: "steam-big-picture" },
-  "Windows Couch Gaming": { accent: "#06B6D4", hash: "windows-couch-gaming" },
-  "Windows Handhelds": { accent: "#14B8A6", hash: "windows-handhelds" },
+export type GuideCategoryId = (typeof guideCategoryIds)[number];
+export type GuideContentId =
+  | "guide-playnite-launch"
+  | "guide-playnite-focus"
+  | "guide-steam-big-picture"
+  | "guide-windows-console"
+  | "guide-windows-handheld";
+
+export const guideCategoryMeta: Record<GuideCategoryId, { accent: string; hash: string }> = {
+  playnite: { accent: "#8B5CF6", hash: "playnite" },
+  "steam-big-picture": { accent: "#3B82F6", hash: "steam-big-picture" },
+  "windows-couch-gaming": { accent: "#06B6D4", hash: "windows-couch-gaming" },
+  "windows-handhelds": { accent: "#14B8A6", hash: "windows-handhelds" },
 };
 
 export type GuideFrontmatter = {
   title: string;
   description: string;
+  contentId: GuideContentId;
   slug: string;
   published: string;
   updated: string;
-  locale: "en" | "tr" | "de" | "fr" | "es";
-  category: GuideCategory;
+  locale: LocaleId;
+  category: GuideCategoryId;
   featured: boolean;
-  related: string[];
+  related: GuideContentId[];
   heroImage: string;
   ogImage: string;
 };
@@ -45,6 +51,7 @@ export type Guide = GuideFrontmatter & {
 const requiredFields = [
   "title",
   "description",
+  "contentId",
   "slug",
   "published",
   "updated",
@@ -88,6 +95,7 @@ function parseFrontmatter(source: string, fileName: string): GuideFrontmatter {
   if (
     typeof fields.title !== "string" ||
     typeof fields.description !== "string" ||
+    typeof fields.contentId !== "string" ||
     typeof fields.slug !== "string" ||
     typeof fields.published !== "string" ||
     typeof fields.updated !== "string" ||
@@ -101,6 +109,13 @@ function parseFrontmatter(source: string, fileName: string): GuideFrontmatter {
   ) {
     throw new Error(`Invalid guide frontmatter types in ${fileName}`);
   }
+
+  if (surfaceRegistry[fields.contentId as SurfaceId]?.kind !== "guide-article")
+    throw new Error(`Guide contentId does not match a guide surface: ${fileName}`);
+  if (!guideCategoryIds.includes(fields.category as GuideCategoryId))
+    throw new Error(`Unknown guide category in ${fileName}`);
+  if (!fields.related.every((contentId) => surfaceRegistry[contentId as SurfaceId]?.kind === "guide-article"))
+    throw new Error(`Guide relationship does not match a guide surface: ${fileName}`);
 
   return fields as GuideFrontmatter;
 }
@@ -128,19 +143,18 @@ function parseGuide(source: string, fileName: string): Guide {
   return { ...frontmatter, introduction, sections };
 }
 
-export const guides = Object.entries(guideFiles)
+const guideSources = Object.entries(guideFiles)
   .map(([fileName, source]) => parseGuide(source, fileName))
-  .filter((guide) => guide.locale === "en")
   .sort((a, b) => a.title.localeCompare(b.title));
 
-export function getGuide(slug: string) {
-  return guides.find((guide) => guide.slug === slug);
+export function guideSourcesForLocale(locale: LocaleId) {
+  return guideSources.filter((guide) => guide.locale === locale);
 }
 
-export function getRelatedGuides(guide: Guide) {
-  return guide.related.map((slug) => getGuide(slug)).filter((item): item is Guide => Boolean(item));
+export function guideSourceForSlug(locale: LocaleId, slug: string) {
+  return guideSourcesForLocale(locale).find((guide) => guide.slug === slug);
 }
 
-export function guideUrl(slug: string, locale = "en") {
-  return locale === "en" ? `/guides/${slug}/` : `/${locale}/guides/${slug}/`;
+export function guideSourceForContentId(locale: LocaleId, contentId: GuideContentId) {
+  return guideSourcesForLocale(locale).find((guide) => guide.contentId === contentId);
 }

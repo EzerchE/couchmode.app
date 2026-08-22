@@ -1,6 +1,14 @@
 import type { LocaleId, SurfaceId } from "./config";
 import { activeLocales, localeManifest, localePath, SITE_ORIGIN } from "./config";
 import { surfaceRegistry, type SurfaceKind } from "./surface-registry";
+import {
+  guideSourceForContentId,
+  guideSourceForSlug,
+  guideSourcesForLocale,
+  type Guide,
+  type GuideCategoryId,
+  type GuideContentId,
+} from "@/content/guides";
 
 type SeoCopy = { title: string; description: string; ogTitle: string; ogDescription: string; ogImage?: string };
 type SchemaInput = Record<string, unknown>;
@@ -61,8 +69,32 @@ export type HomePayload = {
   };
 };
 export type HomeSchemaInput = { softwareDescription: string; applicationSubCategory: string };
-export type GuideHubPayload = { eyebrow: string; heading: string; description: string; filterLabel: string };
-export type GuideArticlePayload = { introduction: string[]; sections: DocumentSection[]; actionCopy: Record<string, string> };
+export type GuideHubPayload = {
+  eyebrow: string;
+  heading: string;
+  description: string;
+  filters: {
+    ariaLabel: string;
+    allLabel: string;
+    categories: Record<GuideCategoryId, string>;
+  };
+  card: { updatedLabel: string };
+  article: {
+    seoTitleSuffix: string;
+    breadcrumbs: { ariaLabel: string; homeLabel: string; guidesLabel: string };
+    updatedLabel: string;
+    relatedHeading: string;
+    allGuidesLabel: string;
+    actions: { ariaLabel: string; supportingText: string; downloadLabel: string; redditLabel: string };
+    notFound: { eyebrow: string; heading: string; description: string; browseLabel: string };
+  };
+};
+export type GuideArticlePayload = {
+  title: string;
+  description: string;
+  introduction: string[];
+  sections: DocumentSection[];
+};
 export type DownloadPayload = { heading: string; description: string; labels: Record<string, string> };
 export type ChangelogPayload = { heading: string; description: string; labels: Record<string, string> };
 export type SupportPayload = { heading: string; description: string; sections: DocumentSection[] };
@@ -77,8 +109,8 @@ export type PayloadByKind = {
 
 type SchemaByKind = {
   home: HomeSchemaInput;
-  "guide-hub": SchemaInput;
-  "guide-article": SchemaInput;
+  "guide-hub": { collectionName: string; homeBreadcrumbLabel: string; guidesBreadcrumbLabel: string };
+  "guide-article": { headline: string; description: string };
   download: SchemaInput;
   changelog: SchemaInput;
   support: SchemaInput;
@@ -373,6 +405,109 @@ const englishHomePacket: SurfacePacketBase<"home"> = {
   },
 };
 
+const englishGuideHubPacket: SurfacePacketBase<"guide-hub"> = {
+  contentId: "guides",
+  kind: "guide-hub",
+  locale: "en",
+  path: "/guides/",
+  sourceRevision: localeManifest.sourceRevision,
+  seo: {
+    title: "Windows Couch Gaming Guides | CouchMode",
+    description:
+      "Practical Windows couch-gaming guides for Playnite, Steam Big Picture, controllers, TV setups, and docked handhelds.",
+    ogTitle: "Windows Couch Gaming Guides | CouchMode",
+    ogDescription:
+      "Practical Windows couch-gaming guides for Playnite, Steam Big Picture, controllers, TV setups, and docked handhelds.",
+  },
+  schema: {
+    collectionName: "Windows Couch Gaming Guides",
+    homeBreadcrumbLabel: "Home",
+    guidesBreadcrumbLabel: "Guides",
+  },
+  internalLinks: [
+    "home",
+    "download",
+    "support",
+    "guide-playnite-launch",
+    "guide-playnite-focus",
+    "guide-steam-big-picture",
+    "guide-windows-console",
+    "guide-windows-handheld",
+  ],
+  payload: {
+    eyebrow: "Knowledge hub",
+    heading: "Windows couch gaming, explained without the filler.",
+    description:
+      "Practical guides for controller-first sessions, TV setups, Steam Big Picture, Playnite, and docked Windows handhelds.",
+    filters: {
+      ariaLabel: "Filter guides by category",
+      allLabel: "All",
+      categories: {
+        playnite: "Playnite",
+        "steam-big-picture": "Steam Big Picture",
+        "windows-couch-gaming": "Windows Couch Gaming",
+        "windows-handhelds": "Windows Handhelds",
+      },
+    },
+    card: { updatedLabel: "Updated" },
+    article: {
+      seoTitleSuffix: "CouchMode Guides",
+      breadcrumbs: { ariaLabel: "Breadcrumb", homeLabel: "Home", guidesLabel: "Guides" },
+      updatedLabel: "Updated",
+      relatedHeading: "Related guides",
+      allGuidesLabel: "All guides",
+      actions: {
+        ariaLabel: "Guide actions",
+        supportingText: "Continue with your own setup.",
+        downloadLabel: "Download CouchMode",
+        redditLabel: "Discuss on r/CouchMode",
+      },
+      notFound: {
+        eyebrow: "404",
+        heading: "Guide not found",
+        description: "This guide is not published or its address has changed.",
+        browseLabel: "Browse guides",
+      },
+    },
+  },
+};
+
+function guidePacketFromSource(
+  source: Guide,
+  guideHubPacket: SurfacePacketBase<"guide-hub">,
+): SurfacePacketBase<"guide-article"> {
+  const path = `/guides/${source.slug}/`;
+  if (source.locale === "en" && surfaceRegistry[source.contentId].defaultPath !== path)
+    throw new Error(`English guide path does not match its surface policy: ${source.contentId}`);
+
+  return {
+    contentId: source.contentId,
+    kind: "guide-article",
+    locale: source.locale,
+    path,
+    sourceRevision: localeManifest.sourceRevision,
+    seo: {
+      title: `${source.title} | ${guideHubPacket.payload.article.seoTitleSuffix}`,
+      description: source.description,
+      ogTitle: source.title,
+      ogDescription: source.description,
+      ogImage: new URL(source.ogImage, SITE_ORIGIN).toString(),
+    },
+    schema: { headline: source.title, description: source.description },
+    internalLinks: ["guides", "download", "support", ...source.related],
+    payload: {
+      title: source.title,
+      description: source.description,
+      introduction: source.introduction,
+      sections: source.sections,
+    },
+  };
+}
+
+const englishGuideArticlePackets = Object.fromEntries(
+  guideSourcesForLocale("en").map((source) => [source.contentId, guidePacketFromSource(source, englishGuideHubPacket)]),
+) as Partial<Record<SurfaceId, SurfacePacketBase>>;
+
 // English is the source locale while its surface payloads migrate incrementally.
 // Its root paths are surface policy, not a fallback packet for other locales.
 export const localePackets: LocalePacketRegistry = {
@@ -380,7 +515,7 @@ export const localePackets: LocalePacketRegistry = {
     locale: "en",
     sourceRevision: localeManifest.sourceRevision,
     shared: englishLocaleContent,
-    surfaces: { home: englishHomePacket },
+    surfaces: { home: englishHomePacket, guides: englishGuideHubPacket, ...englishGuideArticlePackets },
   },
 };
 
@@ -406,6 +541,32 @@ export function packetFor(locale: LocaleId, contentId: SurfaceId) {
 export function packetForKind<K extends SurfaceKind>(locale: LocaleId, contentId: SurfaceId, kind: K) {
   const packet = packetFor(locale, contentId);
   return packet?.kind === kind ? (packet as SurfacePacketBase<K>) : undefined;
+}
+
+export type LocalizedGuide = {
+  source: Guide;
+  packet: SurfacePacketBase<"guide-article">;
+};
+
+function localizedGuideFromSource(locale: LocaleId, source: Guide | undefined) {
+  if (!source) return undefined;
+  const packet = packetForKind(locale, source.contentId, "guide-article");
+  return packet ? { source, packet } : undefined;
+}
+
+export function localizedGuides(locale: LocaleId): LocalizedGuide[] {
+  if (!isActiveLocale(locale)) return [];
+  return guideSourcesForLocale(locale)
+    .map((source) => localizedGuideFromSource(locale, source))
+    .filter((guide): guide is LocalizedGuide => Boolean(guide));
+}
+
+export function localizedGuideForSlug(locale: LocaleId, slug: string) {
+  return localizedGuideFromSource(locale, guideSourceForSlug(locale, slug));
+}
+
+export function localizedGuideForContentId(locale: LocaleId, contentId: GuideContentId) {
+  return localizedGuideFromSource(locale, guideSourceForContentId(locale, contentId));
 }
 
 export function isCompleteSurfacePacket(packet: SurfacePacketBase | undefined) {

@@ -1,20 +1,25 @@
 import { ArrowRight, BookOpen } from "lucide-react";
 import { GuideCard } from "@/components/guides/GuideCard";
-import { type Guide, guides } from "@/content/guides";
 import type { LocaleId } from "@/i18n/config";
-import { pathFor, relativeHrefFor, type HomePayload } from "@/i18n/packets";
+import {
+  localizedGuides,
+  packetForKind,
+  relativeHrefFor,
+  type HomePayload,
+  type LocalizedGuide,
+} from "@/i18n/packets";
 
 function guideForContentId(locale: LocaleId, contentId: HomePayload["guidesPreview"]["featuredGuideIds"][number]) {
-  const slug = pathFor(locale, contentId)?.split("/").filter(Boolean).at(-1);
-  return guides.find((guide) => guide.slug === slug);
+  return localizedGuides(locale).find((guide) => guide.packet.contentId === contentId);
 }
 
 export function GuidesPreview({ copy, locale }: { copy: HomePayload["guidesPreview"]; locale: LocaleId }) {
   const guidesHref = relativeHrefFor(locale, "guides", "", true);
-  if (!guidesHref) throw new Error(`Missing guides href for ${locale}`);
+  const guideHubPacket = packetForKind(locale, "guides", "guide-hub");
+  if (!guidesHref || !guideHubPacket) throw new Error(`Missing guides packet or href for ${locale}`);
   const featuredGuides = copy.featuredGuideIds
     .map((contentId) => guideForContentId(locale, contentId))
-    .filter((guide): guide is Guide => Boolean(guide));
+    .filter((guide): guide is LocalizedGuide => Boolean(guide));
   return (
     <section
       className="relative overflow-hidden py-20 sm:py-24"
@@ -50,7 +55,13 @@ export function GuidesPreview({ copy, locale }: { copy: HomePayload["guidesPrevi
         </div>
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           {featuredGuides.map((guide) => (
-            <GuideCard key={guide.slug} guide={guide} compact />
+            <GuideCard
+              key={guide.packet.contentId}
+              guide={guide}
+              copy={guideHubPacket.payload}
+              locale={locale}
+              compact
+            />
           ))}
         </div>
       </div>

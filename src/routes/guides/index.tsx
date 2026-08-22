@@ -3,35 +3,38 @@ import { BookOpen } from "lucide-react";
 import { GuideBrowser } from "@/components/guides/GuideBrowser";
 import { Footer } from "@/components/landing/Footer";
 import { Navbar } from "@/components/landing/Navbar";
+import { localizedGuides, metadataFor, packetForKind } from "@/i18n/packets";
 
-const TITLE = "Windows Couch Gaming Guides | CouchMode";
-const DESCRIPTION =
-  "Practical Windows couch-gaming guides for Playnite, Steam Big Picture, controllers, TV setups, and docked handhelds.";
-const CANONICAL = "https://couchmode.app/guides/";
-const OG_IMAGE = "https://couchmode.app/social/og-couchmode-v3.png";
+const guideHubPacket = packetForKind("en", "guides", "guide-hub") ?? (() => {
+  throw new Error("The active English guides packet is missing");
+})();
+const guideHubMetadata = metadataFor(guideHubPacket);
+const canonical = guideHubMetadata.canonical;
+if (!canonical) throw new Error("The active English guides canonical is missing");
+
 export const Route = createFileRoute("/guides/")({
   head: () => ({
     meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { name: "robots", content: "index,follow" },
+      { title: guideHubMetadata.title },
+      { name: "description", content: guideHubMetadata.description },
+      { name: "robots", content: guideHubMetadata.robots },
       { property: "og:site_name", content: "CouchMode" },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:url", content: CANONICAL },
+      { property: "og:title", content: guideHubMetadata.ogTitle },
+      { property: "og:description", content: guideHubMetadata.ogDescription },
+      { property: "og:url", content: canonical },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image", content: guideHubMetadata.ogImage },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: TITLE },
-      { name: "twitter:description", content: DESCRIPTION },
-      { name: "twitter:image", content: OG_IMAGE },
+      { name: "twitter:title", content: guideHubMetadata.ogTitle },
+      { name: "twitter:description", content: guideHubMetadata.ogDescription },
+      { name: "twitter:image", content: guideHubMetadata.ogImage },
       {
         "script:ld+json": {
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: "Windows Couch Gaming Guides",
-          description: DESCRIPTION,
-          url: CANONICAL,
+          name: guideHubPacket.schema.collectionName,
+          description: guideHubMetadata.description,
+          url: canonical,
         },
       },
       {
@@ -39,13 +42,13 @@ export const Route = createFileRoute("/guides/")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://couchmode.app/" },
-            { "@type": "ListItem", position: 2, name: "Guides", item: CANONICAL },
+            { "@type": "ListItem", position: 1, name: guideHubPacket.schema.homeBreadcrumbLabel, item: "https://couchmode.app/" },
+            { "@type": "ListItem", position: 2, name: guideHubPacket.schema.guidesBreadcrumbLabel, item: canonical },
           ],
         },
       },
     ],
-    links: [{ rel: "canonical", href: CANONICAL }],
+    links: [{ rel: "canonical", href: canonical }],
   }),
   component: GuidesIndex,
 });
@@ -60,16 +63,19 @@ function GuidesIndex() {
         </div>
         <div className="mx-auto max-w-7xl">
           <p className="inline-flex items-center gap-2 text-sm font-medium text-primary">
-            <BookOpen className="h-4 w-4" /> Knowledge hub
+            <BookOpen className="h-4 w-4" /> {guideHubPacket.payload.eyebrow}
           </p>
           <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
-            Windows couch gaming, explained without the filler.
+            {guideHubPacket.payload.heading}
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Practical guides for controller-first sessions, TV setups, Steam Big Picture, Playnite,
-            and docked Windows handhelds.
+            {guideHubPacket.payload.description}
           </p>
-          <GuideBrowser />
+          <GuideBrowser
+            copy={guideHubPacket.payload}
+            guides={localizedGuides(guideHubPacket.locale)}
+            locale={guideHubPacket.locale}
+          />
         </div>
       </main>
       <Footer />

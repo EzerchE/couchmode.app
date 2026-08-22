@@ -1,15 +1,18 @@
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
+import { createServer } from "vite";
 import manifest from "../src/i18n/manifest.json";
 import type { SurfaceId } from "../src/i18n/config";
-import { hrefFor, isCompleteSurfacePacket, localePacketFor, packetFor, resolveLocalizedRoute } from "../src/i18n/packets";
 import { surfaceRegistry } from "../src/i18n/surface-registry";
 
 const root = path.resolve(import.meta.dirname, "..");
 const activeLocales = manifest.locales.filter((locale) => locale.state === "active");
 const surfaceIds = manifest.requiredSurfaces.map((surface) => surface.id).sort();
 const indexableSurfaces = manifest.requiredSurfaces.filter((surface) => surface.indexability === "index");
+const guideSurfaceIds = manifest.requiredSurfaces
+  .filter((surface) => surface.kind === "guide-index" || surface.kind === "guide")
+  .map((surface) => surface.id as SurfaceId);
 
 function collectFiles(directory: string): string[] {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -37,6 +40,18 @@ const actualSourceRevision = crypto
 function fail(message: string): never {
   throw new Error(`i18n parity: ${message}`);
 }
+
+// Guide packets consume MDX through Vite's raw glob transform. Load the same
+// module graph here so the validator verifies the production packet registry.
+const vite = await createServer({
+  logLevel: "error",
+  server: { middlewareMode: true },
+  optimizeDeps: { noDiscovery: true },
+});
+const packetModule = await vite.ssrLoadModule("/src/i18n/packets.ts");
+await vite.close();
+const { hrefFor, isCompleteSurfacePacket, localePacketFor, localizedGuides, packetFor, resolveLocalizedRoute } =
+  packetModule as typeof import("../src/i18n/packets");
 
 for (const locale of manifest.locales) {
   if (locale.id === "pt-BR" && locale.urlPrefix !== "/pt-br") fail("pt-BR must use /pt-br URLs");
@@ -93,10 +108,36 @@ for (const locale of activeLocales) {
   }
 }
 
+const englishGuideHub = packetFor("en", "guides");
+if (!isCompleteSurfacePacket(englishGuideHub) || englishGuideHub.kind !== "guide-hub")
+  fail("English guide hub is not a complete guide-hub packet");
+const englishGuides = localizedGuides("en");
+if (englishGuides.length !== guideSurfaceIds.length - 1)
+  fail(`English guide packet count is incomplete (${englishGuides.length})`);
+for (const contentId of guideSurfaceIds) {
+  const packet = packetFor("en", contentId);
+  if (!isCompleteSurfacePacket(packet)) fail(`English ${contentId} is not packet-backed`);
+}
+for (const guide of englishGuides) {
+  if (guide.source.contentId !== guide.packet.contentId)
+    fail(`English guide identity drifted for ${guide.source.slug}`);
+  if (!hrefFor("en", guide.packet.contentId))
+    fail(`English guide has no resolvable internal URL: ${guide.packet.contentId}`);
+  for (const relatedContentId of guide.source.related) {
+    if (!englishGuides.some((candidate) => candidate.packet.contentId === relatedContentId))
+      fail(`English guide relationship is unresolved: ${guide.packet.contentId} -> ${relatedContentId}`);
+    if (!hrefFor("en", relatedContentId))
+      fail(`English guide relationship has no localized URL: ${guide.packet.contentId} -> ${relatedContentId}`);
+  }
+}
+
 for (const locale of manifest.locales.filter((item) => item.state !== "active")) {
-  if (resolveLocalizedRoute(locale.id, "/") || resolveLocalizedRoute(locale.id, "/guides/"))
-    fail(`${locale.id} is non-public but resolves a localized route`);
-  if (hrefFor(locale.id, "home")) fail(`${locale.id} is non-public but resolves a public href`);
+  for (const contentId of ["home", ...guideSurfaceIds]) {
+    if (resolveLocalizedRoute(locale.id, surfaceRegistry[contentId].defaultPath))
+      fail(`${locale.id} is non-public but resolves ${contentId}`);
+    if (hrefFor(locale.id, contentId))
+      fail(`${locale.id} is non-public but resolves a public ${contentId} href`);
+  }
 }
 
 const sitemapFiles = fs.readdirSync(path.join(root, "public")).filter((file) => /^sitemap-[a-z-]+\.xml$/.test(file));

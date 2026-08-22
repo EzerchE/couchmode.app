@@ -8,6 +8,7 @@ const guidesDir = path.resolve(scriptDir, "../src/content/guides");
 const requiredFields = [
   "title",
   "description",
+  "contentId",
   "slug",
   "published",
   "updated",
