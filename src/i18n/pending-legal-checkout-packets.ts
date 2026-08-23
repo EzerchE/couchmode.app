@@ -384,7 +384,7 @@ export const turkishPrivacyPacket: SurfacePacketBase<"legal"> = {
         heading: "Masaüstü yardımcı programı",
         paragraphs: [
           legalText(
-            "CouchMode, bilgisayarınızda koltukta oyun oturumlarını hazırlamanıza, yönetmenize ve geri yüklemenize yardımcı olmak için tasarlanmış bir Windows masaüstü yardımcı programıdır. Free kullanımı hesap gerektirmez.",
+            "CouchMode, TV karşısında kumandayla oyun oynamak için oturum hazırlamanıza, yönetmenize ve sonrasında ayarları geri yüklemenize yardımcı olan bir Windows masaüstü yardımcı programıdır. Free kullanımı hesap gerektirmez.",
           ),
         ],
       },
@@ -399,7 +399,7 @@ export const turkishPrivacyPacket: SurfacePacketBase<"legal"> = {
       {
         heading: "Oyun gizliliği",
         paragraphs: [
-          legalText("CouchMode oyun verisi toplamaz ve hangi oyunları oynadığınızı izlemez."),
+          legalText("CouchMode oyun verisi toplamaz; hangi oyunları oynadığınızı izlemez."),
           legalText(
             "Oyun takibi yok. Ayarların bulut eşitlemesi yok. Pro lisans doğrulaması yalnızca gerektiğinde yapılır.",
           ),
@@ -486,7 +486,7 @@ export const turkishTermsPacket: SurfacePacketBase<"legal"> = {
             "CouchMode satılmaz, lisanslanır. Windows ve mevcut oyun arayüzleriyle birlikte oturum hazırlama ve geri yükleme için bir Windows yardımcı programıdır.",
           ),
           legalText(
-            "CouchMode Windows kabuğunun yerine geçmez ve Windows başlangıç akışınızın yerine geçmez. Başlangıç otomasyonu isteğe bağlıdır ve kullanıcı denetimindedir.",
+            "CouchMode, Windows kabuğunun veya Windows başlangıç düzeninizin yerine geçmez. Başlangıç otomasyonu isteğe bağlıdır ve kullanıcı denetimindedir.",
           ),
           legalText(
             "CouchMode Windows'un iç bileşenlerini değiştirmez, çekirdek sürücüsü yüklemez, güvenlik özelliklerini aşmaz ve oyunları veya Windows'u yamamaz.",
@@ -500,7 +500,7 @@ export const turkishTermsPacket: SurfacePacketBase<"legal"> = {
             "Tek bir yükleyici Free özelliklerini, 7 günlük Pro denemesini ve Pro etkinleştirmesini içerebilir. Free özellikleri satın alma olmadan kullanılabilir. Pro özellikleri herkese açık beta sırasında etkin bir deneme veya etkin bir Patreon üyeliği gerektirir.",
           ),
           legalText(
-            "Free; kumanda odaklı oturum akışını, Windows desteklediğinde Windows Xbox tam ekran deneyimini, Steam Big Picture'ı, Playnite'ı ve oturum bittiğinde masaüstüne dönüşü içerir. Pro; uyumlu özel başlatıcıları, Resource Control'ü, Session Tweaks'i ve daha derin oturum otomasyonunu kapsar.",
+            "Free; kumandayla oyun oturumu başlatmayı, Windows desteklediğinde Xbox tam ekran deneyimini, Steam Big Picture'ı, Playnite'ı ve oturum bittiğinde masaüstüne dönüşü içerir. Pro; uyumlu özel başlatıcıları, Resource Control'ü, Session Tweaks'i ve daha kapsamlı oturum otomasyonunu kapsar.",
           ),
         ],
       },
@@ -531,7 +531,7 @@ export const turkishTermsPacket: SurfacePacketBase<"legal"> = {
             "Üyelik biter, başarısız olur, iade edilir veya iptal edilirse Pro erişimi kısa bir tolerans süresinden sonra Free moduna dönebilir.",
           ),
           legalText(
-            "Pro Version aylık 3 ABD dolarıdır ve en fazla 2 etkin Windows cihazında kişisel Pro erişimi içerir. Pro Supporter aylık 5 ABD dolarıdır ve en fazla 5 etkin Windows cihazında kişisel Pro erişimi içerir.",
+            "Pro Version aylık 3 ABD dolarıdır ve en fazla 2 etkin Windows cihazında kişisel Pro erişimi sağlar. Pro Supporter aylık 5 ABD dolarıdır ve en fazla 5 etkin Windows cihazında kişisel Pro erişimi sağlar.",
           ),
         ],
       },
@@ -618,7 +618,7 @@ export const turkishRefundPacket: SurfacePacketBase<"legal"> = {
       lastUpdated: "Ağustos 2026",
     },
     sections: [
-      { paragraphs: [legalText("CouchMode Free satın alma gerektirmez.")] },
+      { paragraphs: [legalText("CouchMode Free için satın alma gerekmez.")] },
       {
         paragraphs: [
           legalText(
@@ -648,7 +648,7 @@ export const turkishRefundPacket: SurfacePacketBase<"legal"> = {
       {
         paragraphs: [
           legalText(
-            "Üyelik iptal edilir, iade edilir veya etkinliğini kaybederse Pro erişimi, yetkilendirme yenilendikten ve geçerli tolerans süresi uygulandıktan sonra Free moduna döner. CouchMode ayarlarınız depolanmış olarak kalır ve Free oturum akışı kullanılabilir olmaya devam eder.",
+            "Üyelik iptal edilir, iade edilir veya etkinliğini kaybederse Pro erişimi; yetkilendirme yenilendikten ve geçerli tolerans süresi uygulandıktan sonra Free moduna döner. CouchMode ayarlarınız saklanır ve Free'de temel oyun oturumu kullanılabilir kalır.",
           ),
         ],
       },
@@ -674,17 +674,17 @@ export const turkishCheckoutPacket: SurfacePacketBase<"checkout"> = {
   schema: { homeBreadcrumbLabel: "Ana sayfa", currentBreadcrumbLabel: "Pro" },
   internalLinks: ["home"],
   payload: {
-    title: "CouchMode Pro edinin",
+    title: "CouchMode Pro alın",
     chrome: {
       backToHomepageLabel: "Ana sayfaya dön",
       lastUpdatedLabel: "Son güncelleme",
       lastUpdated: "Ağustos 2026",
     },
     description:
-      "CouchMode Free temel kumanda odaklı oyun akışını içerir. Pro daha derin Windows ve oturum otomasyonu ekler.",
+      "CouchMode Free, kumandayla oyun oynamak için temel işlevleri içerir. Pro, Windows ve oyun oturumu için daha kapsamlı otomasyon ekler.",
     deviceLimit: { beforeCount: "En fazla", afterCount: "etkin Windows cihazı" },
     automationDescription:
-      "Her iki katman da Resource Control, Session Tweaks, oturum sonrası eylemler ve diğer Pro oturum otomasyonunu içerir.",
+      "Her iki Pro katmanı da Resource Control, Session Tweaks, oturum sonrası eylemler ve diğer Pro oturum otomasyonunu içerir.",
     patreonCtaLabel: "Patreon'da devam et",
     membership: {
       description:

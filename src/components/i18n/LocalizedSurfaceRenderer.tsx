@@ -587,7 +587,8 @@ function SupportSurface({ packet }: { packet: SurfacePacketBase<"support"> }) {
           ))}
           <li>
             {copy.include.diagnostics.beforeShortcut} {SNAPSHOT_SHORTCUT}{" "}
-            {copy.include.diagnostics.afterShortcutBeforePath} {SUPPORT_DIRECTORY}
+            {copy.include.diagnostics.afterShortcutBeforePath}{" "}
+            <span className="break-all">{SUPPORT_DIRECTORY}</span>
             {copy.include.diagnostics.afterPathBeforeLog}
             {SUPPORT_LOG}
             {copy.include.diagnostics.betweenLogReferences}

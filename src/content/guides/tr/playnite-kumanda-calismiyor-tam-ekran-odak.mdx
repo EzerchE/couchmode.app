@@ -1,10 +1,10 @@
 ---
 title: "Playnite kumandayla çalışmıyor: Tam ekran odak sorununu anlama"
-description: "Görünür bir Playnite penceresinin neden otomatik olarak kumanda girişi almadığını ve Fullscreen odağını güvenle nasıl kontrol edeceğinizi öğrenin."
+description: "Playnite penceresi görünürken neden kumanda girişi almayabileceğini ve Fullscreen odağını güvenle nasıl kontrol edeceğinizi öğrenin."
 contentId: guide-playnite-focus
 slug: playnite-kumanda-calismiyor-tam-ekran-odak
 published: 2026-08-21
-updated: 2026-08-21
+updated: 2026-08-23
 locale: tr
 category: playnite
 featured: false
@@ -13,30 +13,30 @@ heroImage: /screenshots/app-general.png
 ogImage: /social/og-couchmode-v3.png
 ---
 
-Playnite görünür olabilir, ancak yine de kumanda girişi almayabilir. Bu durum sıkça Playnite zaten açıkken, simge durumuna küçültüldüğünde veya başka bir pencere odağı aldığında görülür. Çalışan bir işlem, giriş alan bir tam ekran penceresiyle aynı şey değildir.
+Playnite penceresi görünür olduğu halde kumanda girişi almıyor olabilir. Bu durum genellikle Playnite zaten açıkken, simge durumuna küçültüldüğünde ya da başka bir pencere odağı aldığında görülür. Bir işlemin çalışıyor olması, tam ekran penceresinin giriş almaya hazır olduğu anlamına gelmez.
 
-Bu rehber, başlatıcının açılmasını Playnite'ın tam ekranda hazır olup olmamasından ayırır. Kumanda sürücülerine, cihaz eşlemelerine ya da kumanda yapılandırmanızı değiştirmeye değil, pencere odağına odaklanır.
+Bu rehber, başlatıcının açılmasıyla Playnite'ın tam ekranda kullanıma hazır olması arasındaki farkı açıklar. Kumanda sürücülerini, cihaz eşlemelerini ya da kumanda yapılandırmanızı değiştirmez; yalnızca pencere odağını incelemenize yardımcı olur.
 
 ## Çalışan işlem, odak almış tam ekran değildir
 
-Windows işlemi etkin olabilirken Playnite arka planda kalabilir veya başka bir pencere kumanda girişini alabilir. Önce Playnite Fullscreen'in gerçekten önde olup olmadığını ve arayüzün kumandanızla kullanılabildiğini kontrol edin.
+Windows'ta işlem çalışıyor olsa da Playnite arka planda kalabilir veya başka bir pencere kumanda girişini alabilir. Önce Playnite Fullscreen'in gerçekten önde olduğunu ve arayüzün kumandanızla kullanılabildiğini kontrol edin.
 
-Playnite elle tam ekranda tepki veriyor ancak CouchMode oturumundan sonra vermiyorsa, başlangıçtan önceki ve sonraki durumu karşılaştırın. Zaten açık bir pencere, yeni başlatılmış bir oturumdan farklı davranır.
+Playnite elle tam ekranda tepki veriyor, ancak CouchMode oturumundan sonra vermiyorsa başlangıçtan önceki ve sonraki durumu karşılaştırın. Zaten açık olan bir pencere, yeni başlatılmış bir oturumdan farklı davranabilir.
 
-## Mevcut Playnite durumu neden önemlidir?
+## Playnite'ın mevcut durumu neden önemlidir?
 
-CouchMode, Playnite zaten çalışıyorsa ikinci bir örnek başlatmaz. Bu, mevcut oturumunuzu korur; fakat simge durumuna küçültülmüş veya odak dışındaki bir pencerenin otomatik olarak yeni bir tam ekran oturumuna dönüşmeyeceği anlamına da gelir.
+CouchMode, Playnite zaten çalışıyorsa ikinci bir örnek başlatmaz. Bu mevcut oturumunuzu korur; ancak simge durumuna küçültülmüş veya odak dışında kalmış pencerenin otomatik olarak yeni bir tam ekran oturumuna dönüşeceği anlamına gelmez.
 
-Playnite'ı test için tamamen kapatın ve basit bir CouchMode oturumu başlatın. Bu çalışırsa, ardından zaten açık olan Playnite penceresiyle akışı kontrol edin. Böylece mevcut durumun girişi etkileyip etkilemediği anlaşılır.
+Test için Playnite'ı tamamen kapatın ve basit bir CouchMode oturumu başlatın. Bu çalışırsa daha sonra Playnite zaten açıkken aynı işlemi deneyin. Böylece mevcut pencere durumunun girişi etkileyip etkilemediğini anlayabilirsiniz.
 
 ## Güvenli sorun giderme sırası
 
-Önce Playnite'ın CouchMode dışında tam ekranda kumandaya tepki verdiğini doğrulayın. Ardından başka görünür bir pencerenin, katmanın veya iletişim kutusunun odağı tutup tutmadığını kontrol edin. Sonra yalnızca tek başlatıcı seçimiyle ve ek Session Tweaks olmadan testi tekrarlayın.
+Önce Playnite'ın CouchMode dışında tam ekranda kumandaya tepki verdiğini doğrulayın. Ardından görünür başka bir pencerenin, katmanın veya iletişim kutusunun odağı tutup tutmadığını kontrol edin. Sonra yalnızca tek bir başlatıcı seçimiyle ve ek Session Tweaks olmadan testi tekrarlayın.
 
-Xbox kumandası veya beklenen XInput yolu üzerinden algılanan başka bir kumanda, CouchMode başlangıcını test etmek için en güvenilir seçenektir. Yerel PlayStation kumandaları Playnite'ı kullanabilir, ancak CouchMode'un desteklediği otomatik başlatma tetikleyicisi değildir.
+Xbox kumandası veya beklenen XInput yolu üzerinden algılanan başka bir kumanda, CouchMode başlangıcını test etmek için en güvenilir seçenektir. Yerel PlayStation kumandaları Playnite'ı kullanabilir; ancak CouchMode'un desteklediği otomatik başlatma tetikleyicisi değildir.
 
-## CouchMode nerede yardımcı olur, nerede durur
+## CouchMode nerede yardımcı olur, nerede durur?
 
-CouchMode, oturumun parçası olarak Playnite'ı başlatabilir ve kendisinin başlattığı oturumu sonlandırabilir. Free sürümünde Playnite bulunur. Ancak CouchMode Playnite profillerini, sürücüleri, cihaz eşlemelerini veya giriş eşleştirmelerini düzeltmez.
+CouchMode, oturumun parçası olarak Playnite'ı başlatabilir ve kendisinin başlattığı oturumu sonlandırabilir. Playnite Free sürümünde desteklenir. Ancak CouchMode; Playnite profillerini, sürücüleri, cihaz eşlemelerini veya giriş eşleştirmelerini düzeltmez.
 
-Otomatik başlatmayı önce kurmanız gerekiyorsa aşağıdaki Playnite'ı kumandayla otomatik başlatma rehberinden başlayın. Odağı elle açtığınızda da alamıyorsanız Playnite ve Windows'u CouchMode'dan bağımsız olarak inceleyin.
+Otomatik başlatmayı önce ayarlamanız gerekiyorsa aşağıdaki Playnite'ı kumandayla otomatik başlatma rehberiyle başlayın. Playnite, odağı elle açtığınızda da giriş almıyorsa Playnite ve Windows tarafını CouchMode'dan bağımsız olarak inceleyin.

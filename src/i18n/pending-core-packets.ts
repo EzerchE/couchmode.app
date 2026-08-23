@@ -604,12 +604,12 @@ export const turkishLocaleContent: SharedLocaleContent = {
     closeMenuLabel: "Gezinme menüsünü kapat",
     mobileMenuLabel: "Mobil gezinme",
     downloadLabel: "İndir",
-    redditLabel: "r/CouchMode'a katıl",
+    redditLabel: "r/CouchMode topluluğuna katıl",
     languageMenuLabel: "Dil seçimi",
     links: [
       { contentId: "home", fragment: "#how", label: "Nasıl çalışır" },
       { contentId: "home", fragment: "#pricing", label: "Free ve Pro" },
-      { contentId: "home", fragment: "#download", label: "CouchMode'u edin" },
+      { contentId: "home", fragment: "#download", label: "CouchMode'u indirin" },
       { contentId: "changelog", label: "Sürüm notları" },
     ],
   },
@@ -617,7 +617,7 @@ export const turkishLocaleContent: SharedLocaleContent = {
     links: [
       { contentId: "home", fragment: "#how", label: "Nasıl çalışır" },
       { contentId: "home", fragment: "#pricing", label: "Free ve Pro" },
-      { contentId: "home", fragment: "#download", label: "CouchMode'u edin" },
+      { contentId: "home", fragment: "#download", label: "CouchMode'u indirin" },
       { contentId: "guides", trailingSlash: true, label: "Rehberler" },
       { contentId: "changelog", label: "Sürüm notları" },
     ],
@@ -650,18 +650,18 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
   },
   schema: {
     softwareDescription:
-      "CouchMode, kumanda odaklı oturma odası oyun oturumları için bir Windows yardımcı programıdır. Seçtiğiniz oyun deneyimini açabilir, belirlediğiniz masaüstü uygulamalarını kapatabilir ve oturum sonunda değiştirdiği desteklenen Windows ayarlarını geri yükleyebilir.",
+      "CouchMode, TV karşısında kumandayla oyun oynamak için tasarlanmış bir Windows yardımcı programıdır. Seçtiğiniz oyun deneyimini başlatabilir, belirlediğiniz masaüstü uygulamalarını kapatabilir ve oturum sonunda değiştirdiği desteklenen Windows ayarlarını geri yükleyebilir.",
     applicationSubCategory: "Oyun yardımcı programı",
   },
   internalLinks: ["download", "buy", "changelog", "guides"],
   payload: {
     hero: {
-      eyebrow: "Windows için kumanda odaklı oyun yardımcı programı.",
+      eyebrow: "Windows'ta kumandayla oyun oynamak için yardımcı program.",
       badge: "Herkese açık beta şimdi kullanılabilir",
       headingBefore: "Bilgisayarınızı",
       headingAccent: "oyun konsolu gibi kullanın.",
       description:
-        "Oyun kumandanızı açın; CouchMode seçtiğiniz oyun deneyimini başlatır, oturumu tercihlerinize göre hazırlar ve işiniz bittiğinde sizi kullanılabilir bir masaüstüne döndürür.",
+        "Oyun kumandanızı açın. CouchMode seçtiğiniz oyun deneyimini başlatır, oturumu tercihlerinize göre hazırlar ve işiniz bittiğinde masaüstünüze geri dönmenizi sağlar.",
       downloadLabel: "Windows için indir",
       proLabel: "Pro özelliklerini inceleyin",
       platformNotice: "Windows 11 · 64 bit · İmzalı herkese açık beta",
@@ -681,35 +681,35 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
     },
     problem: {
       eyebrow: "Boşluk",
-      headingLines: ["Windows çalışır.", "Oturma odası için tasarlanmadı."],
+      headingLines: ["Windows masa başında iş görür.", "TV karşısında değil."],
       description:
-        "Masa başında masaüstünüz iyi çalışır. Televizyonun karşısında küçük yazılar, fare odaklı menüler ve arka plan uygulamaları kumandayla oyun oturumunu aksatabilir. CouchMode Windows'un yerini almaz veya bilgisayarınızın kontrolünü devralmaz; bu boşluğu kapatır.",
+        "Windows masa başında rahat kullanılır. TV karşısında ise küçük yazılar, fare odaklı menüler ve arka planda çalışan uygulamalar kumandayla oyun oynamayı zorlaştırabilir. CouchMode Windows'un yerini almaz ya da bilgisayarınızın kontrolünü devralmaz; bu geçişi daha pratik hale getirir.",
       points: [
         {
           title: "Büyük ekran için düşünülmüş",
-          body: "Windows masaüstü arayüzleri kısa mesafe için tasarlanır. CouchMode oturumu kumandayla kullanılabilen bir oyun deneyimine yönlendirir.",
+          body: "Windows masaüstü arayüzü yakından kullanım için tasarlanır. CouchMode, oturumu kumandayla rahatça kullanılabilen bir oyun deneyimine taşır.",
         },
         {
           title: "Kumandayla kullanılabilir",
           body: "CouchMode uyumlu bir kumanda bağlandığında tepki verebilir ve seçtiğiniz oyun deneyimini başlatabilir.",
         },
         {
-          title: "Kurulumunuz korunur",
-          body: "CouchMode yalnızca etkinleştirdiğiniz desteklenen oturum ayarlarını değiştirir ve oturum sonunda değiştirdiği ayarları geri yükler.",
+          title: "Mevcut ayarlarınız korunur",
+          body: "CouchMode yalnızca etkinleştirdiğiniz desteklenen oturum ayarlarını değiştirir; oturum bitince değiştirdiği ayarları geri yükler.",
         },
       ],
     },
     howItWorks: {
       eyebrow: "Nasıl çalışır",
-      heading: "Kumandadan oturma odasına.",
+      heading: "Kumandayla başlayın, TV karşısında oynayın.",
       description:
-        "CouchMode, seçtiğiniz başlatıcı ve Windows ayarları çevresindeki akışı yönetir. Free, kumandayla temel oturum akışını sunar. Pro, daha kapsamlı oturum otomasyonu ekler.",
+        "CouchMode, seçtiğiniz başlatıcıyı açar ve etkinleştirdiğiniz Windows ayarlarını oyun oturumuna uygular. Free, kumandayla oyun oynamak için temel özellikleri sunar. Pro ise ek oturum otomasyonu sağlar.",
       stepLabel: "ADIM",
       steps: [
         {
           number: "01",
           title: "Kumandanızı açın",
-          body: "Xbox veya uyumlu kumandanızı uyandırın. CouchMode arka planda dinleyebilir ve oturumunuzu oturma odasından otomatik olarak başlatabilir.",
+          body: "Xbox veya uyumlu kumandanızı açın. CouchMode arka planda bu bağlantıyı bekleyebilir ve oyun oturumunuzu otomatik olarak başlatabilir.",
           detail: "Otomatik algılanır · Uygulama açmanız gerekmez",
         },
         {
@@ -727,7 +727,7 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
         {
           number: "04",
           title: "Masaüstünüze geri dönün",
-          body: "Oturum bittiğinde CouchMode başlattığı oyun deneyimini kapatır, değiştirdiği desteklenen Windows ayarlarını geri yükler ve denetimi masaüstüne bırakır.",
+          body: "Oturum bittiğinde CouchMode başlattığı oyun deneyimini kapatır ve değiştirdiği desteklenen Windows ayarlarını geri yükler. Ardından normal masaüstünüze dönersiniz.",
           detail: "Free + Pro · Oturum sonrası güvenli dönüş",
         },
       ],
@@ -768,13 +768,13 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
     },
     comparison: {
       eyebrow: "Free ve Pro",
-      heading: "Başlatıcılarınız için Free. Daha kapsamlı otomasyon için Pro.",
+      heading: "Temel oyun oturumları Free'de. Daha fazla otomasyon Pro'da.",
       description:
-        "Kumandayla temel akış ücretsizdir; Windows destekliyorsa Xbox modu, Steam Big Picture ve Playnite da ücretsizdir. Pro, özel başlatıcılar, Resource Control, Session Tweaks ve daha kapsamlı geri yükleme otomasyonu ekler.",
+        "Kumandayla oyun oturumunun temeli ücretsizdir. Windows destekliyorsa Xbox modu, Steam Big Picture ve Playnite da Free'de yer alır. Pro; özel başlatıcılar, Resource Control, Session Tweaks ve ek geri yükleme otomasyonu sunar.",
       free: {
         name: "Free",
         priceSuffix: "süresiz",
-        description: "Kumandayla oyun için temel akış.",
+        description: "Kumandayla oyun oynamak için temel özellikler.",
         features: [
           "Kumandayla başlatma",
           "Windows destekliyorsa Xbox modu",
@@ -791,7 +791,7 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
         name: "Pro",
         heading: "Free'deki her şey ve daha kapsamlı otomasyon.",
         description:
-          "CouchMode başlattığı oturumu yönetir ve değiştirdiği masaüstü ayarlarını geri yükler.",
+          "CouchMode, kendi başlattığı oturumda değiştirdiği masaüstü ayarlarını geri yükler.",
         features: [
           "Uyumlu özel başlatıcılar",
           "Seçtiğiniz uygulamalar için Resource Control",
@@ -810,7 +810,7 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
       eyebrow: "Pratik kurulum notları",
       heading: "Televizyonda Windows oyunları için rehberler",
       description:
-        "Playnite, Steam Big Picture, TV kurulumları, kumandalar ve bağlanmış Windows oyun el cihazları hakkında açık yanıtlar.",
+        "Playnite, Steam Big Picture, TV bağlantısı, kumandalar ve TV'ye bağlanan Windows el konsolları hakkında pratik rehberler.",
       ctaLabel: "Tüm rehberleri görün",
       featuredGuideIds: [
         "guide-playnite-launch",
@@ -820,7 +820,7 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
     },
     finalCta: {
       headingBefore: "Bilgisayarınızı",
-      headingAccent: "oturma odasına taşımaya hazır mısınız",
+      headingAccent: "TV karşısında oynamaya hazır mısınız",
       description:
         "Windows için imzalı herkese açık betayı indirin ve uygulama içi 7 günlük Pro denemesiyle başlayın. Deneme için hesap veya kredi kartı gerekmez.",
       downloadLabel: "Windows için indir",
@@ -831,19 +831,18 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
       liveLabel: "Canlı",
       platformNotice: "Windows 11 · 64 bit",
       compatibilityNote:
-        "CouchMode, ROG Ally gibi cihazlar dahil, kumandalı Windows oyun el cihazı kurulumlarını destekler. Windows Xbox modunu sunduğunda CouchMode bu oturumu başlatabilir veya devralabilir ve oturum bitince denetimi masaüstüne geri verebilir. Kullanılabilirlik ve davranış; cihaz, Windows sürümü, Xbox uygulaması desteği, bölge ve Microsoft dağıtımına bağlıdır.",
+        "CouchMode, ROG Ally gibi Windows el konsollarını TV'ye bağladığınız kurulumlarda harici kumandayla oyun oturumu başlatmayı destekler. Windows Xbox modunu sunduğunda CouchMode bu oturumu başlatabilir veya mevcut oturumu devralabilir; oturum bitince normal masaüstünüze dönersiniz. Kullanılabilirlik ve davranış cihazınıza, Windows sürümüne, Xbox uygulaması desteğine, bölgeye ve Microsoft dağıtımına bağlıdır.",
     },
     faq: {
       eyebrow: "Sorular",
-      heading:
-        "PC oyuncularının oturma odasından gerçekten oturum başlatma biçimi için tasarlandı.",
+      heading: "TV karşısında kumandayla PC oyunu oynayanlar için sık sorulan sorular.",
       description:
-        "CouchMode; televizyona, oturma odası kurulumuna veya kumandaya bağlı Windows bilgisayarları içindir. Bu yanıtlar neleri başlatıp otomatikleştirebildiğini ve nelerin Windows desteğine bağlı olduğunu açıklar.",
+        "CouchMode; TV'ye bağlanan, kumandayla kullanılan Windows oyun bilgisayarları ve el konsolları içindir. Bu yanıtlar, hangi deneyimleri başlatabildiğini, neleri otomatikleştirebildiğini ve hangi özelliklerin Windows desteğine bağlı olduğunu açıklar.",
       items: [
         {
           question: "CouchMode nedir?",
           answer:
-            "CouchMode, kumandayla oyun için bir Windows yardımcı programıdır. Uyumlu bir kumanda bağlandığında oturma odasından bir oturum başlatabilir, seçtiğiniz oyun deneyimini açabilir ve oturum sonunda yaptığı desteklenen değişiklikleri geri yükleyebilir.",
+            "CouchMode, kumandayla oyun oynamak için geliştirilmiş bir Windows yardımcı programıdır. Uyumlu bir kumanda bağlandığında oyun oturumu başlatabilir, seçtiğiniz oyun deneyimini açabilir ve oturum sonunda yaptığı desteklenen değişiklikleri geri yükleyebilir.",
         },
         {
           question: "CouchMode Windows kabuğunu değiştirir mi?",
@@ -884,7 +883,7 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "CouchMode Playnite'ı destekliyor mu?",
           answer:
-            "Evet, bu ücretsizdir. Playnite Fullscreen Pro olmadan başlatma hedefi olarak kullanılabilir. CouchMode mevcut başlatıcılarla çalışmak için tasarlanmıştır, onların yerini almak için değil.",
+            "Evet, bu ücretsizdir. Playnite Fullscreen, Pro gerektirmeden başlatma hedefi olarak kullanılabilir. CouchMode mevcut başlatıcılarla birlikte çalışır; onların yerine geçmez.",
         },
         {
           question: "CouchMode Windows'un Xbox modunu destekliyor mu?",
@@ -899,7 +898,7 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "CouchMode ROG Ally'de çalışır mı?",
           answer:
-            "ROG Ally ve benzeri Windows oyun el cihazları önemli bir desteklenen cihaz sınıfıdır. Xbox modunun gerçek davranışı yine de o cihazdaki Windows ve Xbox uygulaması desteğine bağlıdır.",
+            "ROG Ally ve benzeri Windows el konsolları desteklenen cihazlar arasındadır. Xbox modunun gerçek davranışı yine de o cihazdaki Windows ve Xbox uygulaması desteğine bağlıdır.",
         },
         {
           question: "Xbox modunda başlat ne anlama gelir?",
@@ -919,7 +918,7 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "Üyeliğim biterse ne olur?",
           answer:
-            "Pro özellikleri, uygulamanın tanımladığı yetki yenileme ve ek süre sonrasında Free'ye döner. Ayarlarınız kaydedilir ve ücretsiz oturum akışı kullanılabilir kalır.",
+            "Pro özellikleri, uygulamanın tanımladığı yetki yenileme ve ek süre sonrasında Free'ye döner. Ayarlarınız kaydedilir; Free'de temel oyun oturumu kullanılabilir kalır.",
         },
         {
           question: "Ekranda bir sorun olduğunda tanı verilerini nasıl yakalarım?",
@@ -981,10 +980,10 @@ export const turkishDownloadPacket: SurfacePacketBase<"download"> = {
   seo: {
     title: "CouchMode'u Windows için indirin",
     description:
-      "Windows 11 için imzalı CouchMode herkese açık betayı indirin; yayımlanmış SHA-256 sağlama toplamını ve sürüm notlarını doğrulayın.",
+      "Windows 11 için imzalı CouchMode herkese açık betayı indirin. Yayımlanan SHA-256 sağlama toplamını ve sürüm notlarını kontrol edin.",
     ogTitle: "CouchMode'u Windows için indirin",
     ogDescription:
-      "Windows 11 için imzalı CouchMode herkese açık betayı indirin; SHA-256 sağlama toplamını ve sürüm notlarını doğrulayın.",
+      "Windows 11 için imzalı CouchMode herkese açık betayı indirin. SHA-256 sağlama toplamını ve sürüm notlarını kontrol edin.",
   },
   schema: { homeBreadcrumbLabel: "Ana sayfa", currentBreadcrumbLabel: "İndirme durumu" },
   internalLinks: ["home", "changelog", "support"],
@@ -992,7 +991,7 @@ export const turkishDownloadPacket: SurfacePacketBase<"download"> = {
     badge: { open: "Herkese açık beta", closed: "Yayımlama öncesi kontrollü beta" },
     heading: { before: "Sürüm", accent: "durumu" },
     statusDescription: {
-      open: "Windows için CouchMode herkese açık betadadır. Aşağıdaki yükleyici imzalı ve zaman damgalıdır; dosyayı çalıştırmadan önce doğrulayabilmeniz için SHA256 sağlama toplamı ve sürüm notları yayımlanır.",
+      open: "CouchMode'un Windows herkese açık betası yayında. Aşağıdaki yükleyici imzalı ve zaman damgalıdır. Dosyayı çalıştırmadan önce kontrol edebilmeniz için SHA256 sağlama toplamı ve sürüm notları da yayımlanır.",
       closed:
         "Windows için CouchMode özel testtedir. İmzalı bir derleme, SHA256 sağlama toplamı ve sürüm notları onaylanana kadar genel indirme burada açılmaz.",
     },
@@ -1012,7 +1011,7 @@ export const turkishDownloadPacket: SurfacePacketBase<"download"> = {
       installChannelsValue: "Doğrudan indirme veya Microsoft Store",
       install: "Yükleme",
       installValue:
-        "Kullanıcı başına yükleyici, yönetici izni gerekmez, yerleşik güncelleme denetimi",
+        "Kullanıcı başına yüklenir, yönetici izni gerekmez, yerleşik güncelleme denetimi bulunur",
       codeSigning: "Kod imzalama",
       signedValue: "Authenticode ile imzalı ve zaman damgalı",
       unsignedValue: "Hazırlanıyor; etkinleştirilene kadar derlemeler imzasızdır",
@@ -1062,13 +1061,13 @@ export const turkishGuideHubPacket: SurfacePacketBase<"guide-hub"> = {
   seo: {
     title: "TV'de PC Oyunu ve Kumanda Rehberleri | CouchMode",
     description:
-      "TV'de Windows oyunları, Playnite, Steam Big Picture, kumandalar ve bağlanmış Windows oyun el cihazları için pratik rehberler.",
+      "TV karşısında Windows oyunları, Playnite, Steam Big Picture, kumandalar ve Windows el konsolları için pratik rehberler.",
     ogTitle: "TV'de PC Oyunu ve Kumanda Rehberleri | CouchMode",
     ogDescription:
-      "Windows'ta TV oyunları, Playnite, Steam Big Picture, kumandalar ve oyun el cihazları için pratik rehberler.",
+      "TV karşısında Windows oyunu, Playnite, Steam Big Picture, kumandalar ve Windows el konsolları için pratik rehberler.",
   },
   schema: {
-    collectionName: "TV'de Windows oyunları için rehberler",
+    collectionName: "TV karşısında Windows oyunları için rehberler",
     homeBreadcrumbLabel: "Ana sayfa",
     guidesBreadcrumbLabel: "Rehberler",
   },
@@ -1084,16 +1083,16 @@ export const turkishGuideHubPacket: SurfacePacketBase<"guide-hub"> = {
   ],
   payload: {
     eyebrow: "Bilgi merkezi",
-    heading: "Oturma odasında Windows oyunları, dolambaçsız anlatım.",
+    heading: "TV karşısında Windows oyunu için pratik rehberler.",
     description:
-      "Kumandalı oyun oturumları, TV kurulumları, Steam Big Picture, Playnite ve bağlanmış Windows oyun el cihazları için pratik rehberler.",
+      "Kumandayla oyun oturumları, TV bağlantısı, Steam Big Picture, Playnite ve Windows el konsolları için pratik rehberler.",
     filters: {
       ariaLabel: "Rehberleri kategoriye göre filtrele",
       allLabel: "Tümü",
       categories: {
         playnite: "Playnite",
         "steam-big-picture": "Steam Big Picture",
-        "windows-couch-gaming": "Windows'ta oturma odası oyunları",
+        "windows-couch-gaming": "TV karşısında Windows oyunu",
         "windows-handhelds": "Windows oyun el cihazları",
       },
     },
@@ -1106,7 +1105,7 @@ export const turkishGuideHubPacket: SurfacePacketBase<"guide-hub"> = {
       allGuidesLabel: "Tüm rehberler",
       actions: {
         ariaLabel: "CouchMode eylemleri",
-        supportingText: "CouchMode'u kurun veya topluluğa sorun.",
+        supportingText: "CouchMode'u kurun veya topluluğa danışın.",
         downloadLabel: "CouchMode'u indirin",
         redditLabel: "r/CouchMode'da tartışın",
       },
@@ -1143,7 +1142,7 @@ export const turkishSupportPacket: SurfacePacketBase<"support"> = {
       lastUpdated: "Ağustos 2026",
     },
     introduction: [
-      "CouchMode ile ilgili yardıma mı ihtiyacınız var? En hızlı yol uygulamanın kendisidir: CouchMode hata bildirimi, uyumluluk sorunu veya özellik isteği göndermenize olanak tanır. Göndermek her zaman sizin seçiminizdir; nelerin dahil olduğunu önceden inceleyebilirsiniz ve hiçbir şey otomatik gönderilmez.",
+      "CouchMode ile ilgili yardıma mı ihtiyacınız var? En hızlı yol uygulamanın kendisidir: CouchMode'da hata bildirimi, uyumluluk sorunu veya özellik isteği gönderebilirsiniz. Göndermek her zaman sizin seçiminizdir; nelerin dahil olduğunu önceden inceleyebilirsiniz ve hiçbir şey otomatik gönderilmez.",
       "CouchMode, Windows 11 · 64 bit için imzalı herkese açık betadır. Tanı verileri bilgisayarınızda yerel olarak oluşturulur; bir rapor ancak siz gönderdiğinizde bize ulaşır.",
     ],
     contact: {
@@ -1159,8 +1158,8 @@ export const turkishSupportPacket: SurfacePacketBase<"support"> = {
         "Cihaz türü: ROG Ally, başka bir el cihazı veya masaüstü bilgisayar",
         "Kumanda türü",
         "Başlatma hedefi: Windows destekliyorsa Xbox modu, Steam Big Picture, Playnite veya özel başlatıcı",
-        "Windows'un Xbox modunun kullanılabilir olup olmadığı veya yedek başlatıcının kullanılıp kullanılmadığı",
-        "Bunun hata bildirimi, özellik isteği veya uyumluluk sorunu olup olmadığı",
+        "Windows'ta Xbox modunun kullanılabilir olup olmadığı ve bir yedek başlatıcı kullanılıp kullanılmadığı",
+        "İsteğinizin hata bildirimi, özellik isteği veya uyumluluk sorunu olup olmadığı",
         "Ne olduğu",
         "Free, Trial veya Pro'da olup olmadığı",
         "Pro erişimi sorunları için: planınız, Pro veya Pro Supporter",
@@ -1233,10 +1232,10 @@ export const turkishChangelogPacket: SurfacePacketBase<"changelog"> = {
   seo: {
     title: "CouchMode sürüm notları - Windows beta güncellemeleri",
     description:
-      "CouchMode Windows beta derlemeleri için sürüm notları ve bilinen sorunlar, en yeniden eskiye.",
+      "CouchMode Windows beta derlemeleri için sürüm notları ve bilinen sorunlar, en yeni sürümden en eskiye.",
     ogTitle: "CouchMode sürüm notları - Windows beta güncellemeleri",
     ogDescription:
-      "CouchMode Windows beta derlemeleri için sürüm notları ve bilinen sorunlar, en yeniden eskiye.",
+      "CouchMode Windows beta derlemeleri için sürüm notları ve bilinen sorunlar, en yeni sürümden en eskiye.",
   },
   schema: { homeBreadcrumbLabel: "Ana sayfa", currentBreadcrumbLabel: "Sürüm notları" },
   internalLinks: ["home", "download"],
@@ -1244,7 +1243,7 @@ export const turkishChangelogPacket: SurfacePacketBase<"changelog"> = {
     eyebrow: "Sürüm notları",
     heading: "CouchMode'da neler yeni?",
     description:
-      "CouchMode Windows beta derlemeleri için sürüm notları ve bilinen sorunlar, en yeniden eskiye.",
+      "CouchMode Windows beta derlemeleri için sürüm notları ve bilinen sorunlar, en yeni sürümden en eskiye.",
     downloadStatus: {
       open: "En yeni imzalı herkese açık beta indirme sayfasında kullanılabilir. Önceki girişler sürüm geçmişi olarak burada korunur.",
       closed:

@@ -102,20 +102,20 @@ export const turkishReleaseEditorialOverlay = {
     {
       version: "0.6.0-rc.8",
       summary:
-        "Steam Big Picture ve Playnite Fullscreen artık Xbox tam ekran deneyimiyle birlikte ücretsiz kullanılabilir. Özel başlatıcılar, Resource Control ve Session Tweaks Pro özelliği olarak kalır.",
+        "Steam Big Picture, Playnite Fullscreen ve Xbox tam ekran deneyimi artık Pro olmadan kullanılabilir. Özel başlatıcılar, Resource Control ve Session Tweaks Pro özelliği olmaya devam eder.",
       notes: [
-        "Steam Big Picture ve Playnite Fullscreen artık Xbox tam ekran deneyimiyle birlikte Pro olmadan kullanılabilir.",
-        "Özel başlatıcılar, Resource Control ve Session Tweaks Pro özelliği olarak kalır.",
+        "Steam Big Picture, Playnite Fullscreen ve Xbox tam ekran deneyimi artık Pro olmadan kullanılabilir.",
+        "Özel başlatıcılar, Resource Control ve Session Tweaks Pro özelliği olmaya devam eder.",
         "CouchMode oturumu bittiğinde zaten açık olan Steam Big Picture oturumları korunur.",
-        "Zaten açık olan Playnite, küçültülmüş bir pencerede olsa bile ikinci bir işlem başlatmak yerine algılanır ve devralınır. CouchMode oturumu bittiğinde açık kalır.",
-        "Özel başlatıcılar daha güvenilir çalışır: odak daha iyi yönetilir, işlem sahipliği daha nettir ve kapatma daha temizdir.",
+        "Playnite zaten açıksa, simge durumuna küçültülmüş olsa bile ikinci bir işlem başlatılmaz. CouchMode mevcut örneği algılar; oturum bitince Playnite açık kalır.",
+        "Özel başlatıcılarda odak yönetimi, işlem sahipliği ve kapatma davranışı iyileştirildi.",
         "Özel başlatıcılar artık kendi klasörlerinden başlatılır; böylece kurulum dizinini bekleyen başlatıcılar doğru çalışır.",
-        "Bir başlatıcı, kumandanın gerçekten kullanabilmesi için gerçek pencerelerinden biri öndeyken hazır kabul edilir.",
+        "Başlatıcı, kumandayla kullanıma hazır sayılabilmesi için gerçek pencerelerinden biri öndeyken hazır kabul edilir.",
         "Masaüstü bilgisayarlarda ve Windows el cihazlarında Xbox tam ekran deneyimi algılaması iyileştirildi.",
         "Desteklenen cihazların desteklenmiyor görünmesine veya yeniden doğrulama istemlerinin tekrarlanmasına yol açabilen sorunlar düzeltildi.",
-        "Dahili ve harici kumandaların algılanması, üretici yerine bir kumandanın bağlantı durumuna göre daha doğru yapılır.",
+        "Dahili ve harici kumandalar, üretici adına değil kumandanın bağlantı durumuna göre daha doğru algılanır.",
         "Windows'un bir kumandayı Xbox veya XInput kumandası olarak sunmadığı durumlar için daha açık bilgiler eklendi.",
-        "Resource Control daha güvenilir çalışır: seçilen uygulamalar daha iyi algılanır; kapatma, yeniden açma ve gerçekte hangi uygulamaların kapatıldığını bildirme daha tutarlıdır.",
+        "Resource Control'da seçilen uygulamaların algılanması, kapatılması, yeniden açılması ve kapatılan uygulamaların bildirilmesi daha tutarlı hale getirildi.",
         "Launch on Enter, Close on Exit, Launch on Exit ve Display on Exit daha güvenilir çalışır.",
         "Bir oturumdan sonra masaüstüne daha güvenli dönüş sağlandı.",
         "Tanılama ve sorun bildirme iyileştirildi.",
@@ -129,11 +129,11 @@ export const turkishReleaseEditorialOverlay = {
     {
       version: "0.4.10-beta.191",
       summary:
-        "Bir kumandayı bağladığınızda Steam Big Picture, Playnite veya seçtiğiniz uygulama tam ekranda açılır; bağlantıyı kestiğinizde CouchMode oturumu kapatır ve masaüstünü geri getirir.",
+        "Kumanda bağlandığında Steam Big Picture, Playnite veya seçtiğiniz uygulama tam ekranda açılır. Bağlantı kesildiğinde CouchMode oturumu sonlandırır ve masaüstünüze dönersiniz.",
       notes: [
         "Masaüstü bilgisayarlarda ve Windows el cihazlarında Xbox tam ekran deneyimi algılaması iyileştirildi.",
         "Desteklenen cihazların desteklenmiyor görünmesine veya yeniden doğrulama istemlerinin tekrarlanmasına yol açabilen sorunlar düzeltildi.",
-        "Xbox oturumlarına girme, oturumdan çıkma ve geri dönme akışı iyileştirildi.",
+        "Xbox oturumlarına giriş, çıkış ve masaüstüne dönüş davranışı iyileştirildi.",
         "El cihazlarında yanlışlıkla dahili görünen harici kumandalar dahil, dahili ve harici kumandaların algılanması daha doğru yapılır.",
         "Masaüstü geri yüklenirken erişilebilir pencereler artık gereksiz şekilde değiştirilmez.",
         "Tanılama ve sorun bildirme iyileştirildi.",
@@ -147,7 +147,7 @@ export const turkishReleaseEditorialOverlay = {
     {
       version: "0.4.10-beta.190",
       summary:
-        "Bir kumandayı bağladığınızda Steam Big Picture, Playnite veya seçtiğiniz uygulama tam ekranda açılır; bağlantıyı kestiğinizde CouchMode oturumu kapatır ve masaüstünü geri getirir.",
+        "Kumanda bağlandığında Steam Big Picture, Playnite veya seçtiğiniz uygulama tam ekranda açılır. Bağlantı kesildiğinde CouchMode oturumu sonlandırır ve masaüstünüze dönersiniz.",
       notes: [
         "Sistem tepsisindeki Exit komutunun yanıt vermemesine yol açabilen sorun düzeltildi.",
         "Xbox modundan çıkıldıktan sonra açık uygulamaların çalışmaya ve erişilebilir olmaya devam etmesinin güvenilirliği iyileştirildi.",
@@ -164,9 +164,9 @@ export const turkishReleaseEditorialOverlay = {
     {
       version: "0.4.10-beta.183",
       summary:
-        "Bir kumandayı bağladığınızda Steam Big Picture, Playnite veya seçtiğiniz uygulama tam ekranda açılır; bağlantıyı kestiğinizde CouchMode oturumu kapatır ve masaüstünü geri getirir.",
+        "Kumanda bağlandığında Steam Big Picture, Playnite veya seçtiğiniz uygulama tam ekranda açılır. Bağlantı kesildiğinde CouchMode oturumu sonlandırır ve masaüstünüze dönersiniz.",
       notes: [
-        "Steam Big Picture, Playnite Fullscreen ve seçtiğiniz özel uygulama CouchMode'un yönettiği oturumlardır: kumanda bağlantısı kesildiğinde güvenilir şekilde kapanır ve masaüstüne dönülür.",
+        "Steam Big Picture, Playnite Fullscreen ve seçtiğiniz özel uygulama CouchMode'un yönettiği oturumlarda kullanılabilir. Kumanda bağlantısı kesildiğinde bu oturumlar güvenilir şekilde kapanır ve masaüstünüze dönersiniz.",
         "Her oturum çıkışında masaüstüne dönüş doğrulanır.",
         "İsteğe bağlı Resource Control, oturum için seçtiğiniz uygulamaları kapatır ve sonrasında yeniden açar. Oturum başlamadan önce sabitlenen bir listeyle çalıştığı için daha sonra açtığınız uygulamalara asla dokunmaz.",
         "Pro erişimi, üyelik kontrolleri ve başlangıçtaki lisanslama iyileştirildi.",
