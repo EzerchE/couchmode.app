@@ -1,4 +1,6 @@
 import { createServer } from "vite";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import manifest from "../src/i18n/manifest.json";
 import { releases } from "../src/data/releases";
 import { localePath, SITE_ORIGIN, type SurfaceId } from "../src/i18n/config";
@@ -8,6 +10,7 @@ import {
 } from "../src/i18n/release-editorial";
 import { surfaceRegistry } from "../src/i18n/surface-registry";
 import type { GuideContentId } from "../src/content/guides";
+import type { CheckoutPayload, LegalDocumentPayload } from "../src/i18n/packets";
 
 const expectedCorePaths: Record<"de" | "tr", Partial<Record<SurfaceId, string>>> = {
   de: {
@@ -45,6 +48,23 @@ const expectedChangelogPaths: Record<"de" | "tr", string> = {
   de: "/versionshinweise/",
   tr: "/surum-notlari/",
 };
+const expectedLegalCheckoutPaths: Record<
+  "de" | "tr",
+  Record<"privacy" | "terms" | "refund" | "buy", string>
+> = {
+  de: {
+    privacy: "/datenschutz/",
+    terms: "/nutzungsbedingungen/",
+    refund: "/erstattungen/",
+    buy: "/couchmode-pro/",
+  },
+  tr: {
+    privacy: "/gizlilik/",
+    terms: "/kullanim-kosullari/",
+    refund: "/iade/",
+    buy: "/couchmode-pro/",
+  },
+};
 const guideSurfaceIds = [
   "guide-playnite-launch",
   "guide-playnite-focus",
@@ -52,13 +72,20 @@ const guideSurfaceIds = [
   "guide-windows-console",
   "guide-windows-handheld",
 ] as const satisfies readonly GuideContentId[];
-const expectedDraftSurfaceIds = ["changelog", ...expectedCoreSurfaceIds, ...guideSurfaceIds];
+const legalCheckoutSurfaceIds = ["privacy", "terms", "refund", "buy"] as const;
+const expectedDraftSurfaceIds = [
+  "changelog",
+  ...expectedCoreSurfaceIds,
+  ...legalCheckoutSurfaceIds,
+  ...guideSurfaceIds,
+];
 const invariantEnglish = new Set([
   "About > Export support bundle",
   "August 2026",
   "app.log",
   "Authenticode",
   "CouchMode",
+  "Connect Patreon",
   "Ctrl+Alt+Shift+F12",
   "Free",
   "Game Bar",
@@ -127,6 +154,7 @@ const vite = await createServer({
 });
 const packetModule = await vite.ssrLoadModule("/src/i18n/packets.ts");
 const guideModule = await vite.ssrLoadModule("/src/content/guides.ts");
+const legalDocumentModule = await vite.ssrLoadModule("/src/components/utility/LegalDocument.tsx");
 await vite.close();
 
 const {
@@ -140,7 +168,10 @@ const {
   pathFor,
   resolveLocalizedRoute,
 } = packetModule as typeof import("../src/i18n/packets");
-const { guideSourceForContentId, guideSourcesForLocale } = guideModule as typeof import("../src/content/guides");
+const { guideSourceForContentId, guideSourcesForLocale } =
+  guideModule as typeof import("../src/content/guides");
+const { LegalDocument } =
+  legalDocumentModule as typeof import("../src/components/utility/LegalDocument");
 const englishStrings = new Set(collectStrings(localePackets.en));
 const allSurfaceIds = manifest.requiredSurfaces.map((surface) => surface.id as SurfaceId);
 
@@ -223,8 +254,84 @@ for (const localeId of ["de", "tr"] as const) {
       fail(`${localeId}/changelog has no localized editorial entry for ${release.version}`);
     return release.version;
   });
-  if (JSON.stringify(renderedVersions) !== JSON.stringify(releases.map((release) => release.version)))
+  if (
+    JSON.stringify(renderedVersions) !== JSON.stringify(releases.map((release) => release.version))
+  )
     fail(`${localeId}/changelog release ordering no longer comes from factual release data`);
+
+  for (const contentId of legalCheckoutSurfaceIds) {
+    const surface = packet.surfaces[contentId];
+    const englishSurface = localePackets.en.surfaces[contentId];
+    const expectedPath = expectedLegalCheckoutPaths[localeId][contentId];
+    if (!isCompleteSurfacePacket(surface) || !isCompleteSurfacePacket(englishSurface))
+      fail(`${localeId}/${contentId} is incomplete`);
+    if (surface.contentId !== contentId || surface.kind !== surfaceRegistry[contentId].kind)
+      fail(`${localeId}/${contentId} does not match its surface policy`);
+    if (surface.path !== expectedPath)
+      fail(`${localeId}/${contentId} has an unexpected localized path: ${surface.path}`);
+    if (!surface.internalLinks.every((target) => allSurfaceIds.includes(target)))
+      fail(`${localeId}/${contentId} has an unknown internal ContentId`);
+    assertNoBlankStrings(surface, `${localeId}/${contentId}`);
+
+    const previewCanonical = new URL(localePath(localeId, surface.path), SITE_ORIGIN).toString();
+    if (previewCanonical !== `${SITE_ORIGIN}/${localeId}${expectedPath}`)
+      fail(`${localeId}/${contentId} has an invalid localized route preview`);
+    const metadata = metadataFor(surface);
+    if (!metadata.title || !metadata.description || !metadata.ogTitle || !metadata.ogDescription)
+      fail(`${localeId}/${contentId} has incomplete localized metadata`);
+    if (!surface.schema.homeBreadcrumbLabel || !surface.schema.currentBreadcrumbLabel)
+      fail(`${localeId}/${contentId} has incomplete localized BreadcrumbList input`);
+    if (metadata.canonical !== undefined)
+      fail(`${localeId}/${contentId} received a public canonical while pending`);
+
+    if (contentId === "buy") {
+      if (metadata.robots !== "noindex,follow" || surfaceRegistry.buy.sitemap !== "exclude")
+        fail(`${localeId}/buy must inherit noindex,follow and sitemap exclusion from policy`);
+      const checkout = surface.payload as CheckoutPayload;
+      const englishCheckout = englishSurface.payload as CheckoutPayload;
+      if (!checkout.patreonCtaLabel || !checkout.membership.connectAction)
+        fail(`${localeId}/buy has incomplete localized checkout presentation`);
+      if (
+        JSON.stringify(Object.keys(checkout).sort()) !==
+        JSON.stringify(Object.keys(englishCheckout).sort())
+      )
+        fail(`${localeId}/buy does not preserve the checkout presentation contract`);
+      continue;
+    }
+
+    const legal = surface.payload as LegalDocumentPayload;
+    const englishLegal = englishSurface.payload as LegalDocumentPayload;
+    if (!legal.sections.length) fail(`${localeId}/${contentId} has no legal document sections`);
+    if (legal.sections.length !== englishLegal.sections.length)
+      fail(`${localeId}/${contentId} does not preserve legal section parity`);
+    legal.sections.forEach((section, index) => {
+      const englishSection = englishLegal.sections[index];
+      if (
+        section.paragraphs.length !== englishSection.paragraphs.length ||
+        section.list?.length !== englishSection.list?.length ||
+        section.action?.kind !== englishSection.action?.kind
+      )
+        fail(`${localeId}/${contentId} section ${index + 1} does not preserve legal structure`);
+    });
+    const renderedLegal = renderToStaticMarkup(
+      createElement(LegalDocument, {
+        sections: legal.sections,
+        onOpenConsent: contentId === "privacy" ? () => undefined : undefined,
+      }),
+    );
+    const firstText = legal.sections[0]?.paragraphs[0]?.find((part) => part.kind === "text")?.text;
+    if (!firstText || !renderedLegal.includes(firstText))
+      fail(`${localeId}/${contentId} did not render its localized legal content`);
+    if (contentId === "privacy") {
+      const consentAction = legal.sections.find(
+        (section) => section.action?.kind === "open-consent",
+      )?.action;
+      if (!consentAction?.label)
+        fail(`${localeId}/privacy is missing its localized manage-consent action`);
+      if (!renderedLegal.includes(`<button`) || !renderedLegal.includes(consentAction.label))
+        fail(`${localeId}/privacy did not render its localized manage-consent action`);
+    }
+  }
 
   const guideSources = guideSourcesForLocale(localeId);
   if (guideSources.length !== guideSurfaceIds.length)
@@ -249,7 +356,9 @@ for (const localeId of ["de", "tr"] as const) {
       ...source.sections.flatMap((section) => [section.heading, ...section.paragraphs]),
     ].join("\n");
     if (/\]\(\/(?:guides\/)?/.test(articleText))
-      fail(`${localeId}/${contentId} uses a hard-coded internal URL instead of a ContentId relationship`);
+      fail(
+        `${localeId}/${contentId} uses a hard-coded internal URL instead of a ContentId relationship`,
+      );
 
     if (
       source.category !== englishSource.category ||
@@ -315,6 +424,4 @@ for (const localeId of ["de", "tr"] as const) {
   }
 }
 
-console.log(
-  "validate-pending-core-locales: OK (de/tr core, changelog, and guide drafts complete and non-public)",
-);
+console.log("validate-pending-core-locales: OK (de/tr 14-surface packets complete and non-public)");

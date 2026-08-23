@@ -11,6 +11,16 @@ import {
 } from "@/content/guides";
 import type { ReleaseEditorialOverlay } from "./release-editorial";
 import {
+  germanCheckoutPacket,
+  germanPrivacyPacket,
+  germanRefundPacket,
+  germanTermsPacket,
+  turkishCheckoutPacket,
+  turkishPrivacyPacket,
+  turkishRefundPacket,
+  turkishTermsPacket,
+} from "./pending-legal-checkout-packets";
+import {
   germanChangelogPacket,
   germanDownloadPacket,
   germanGuideHubPacket,
@@ -1080,6 +1090,10 @@ export const localePackets: LocalePacketRegistry = {
       changelog: germanChangelogPacket,
       guides: germanGuideHubPacket,
       support: germanSupportPacket,
+      privacy: germanPrivacyPacket,
+      terms: germanTermsPacket,
+      refund: germanRefundPacket,
+      buy: germanCheckoutPacket,
       ...germanGuideArticlePackets,
     },
   },
@@ -1093,6 +1107,10 @@ export const localePackets: LocalePacketRegistry = {
       changelog: turkishChangelogPacket,
       guides: turkishGuideHubPacket,
       support: turkishSupportPacket,
+      privacy: turkishPrivacyPacket,
+      terms: turkishTermsPacket,
+      refund: turkishRefundPacket,
+      buy: turkishCheckoutPacket,
       ...turkishGuideArticlePackets,
     },
   },
