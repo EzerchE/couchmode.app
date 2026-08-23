@@ -1,5 +1,5 @@
 {
-  "sourceRevision": "c3f0be1ddd9464184331b39ab271e7f353cd07a66cee14fa4c45375371c1fe6f",
+  "sourceRevision": "3be68392c42503280a3288bd6d580be58a948cd1a1ffb952b656b33b0740e021",
   "requiredSurfaces": [
     { "id": "home", "path": "/", "kind": "landing", "indexability": "index" },
     { "id": "download", "path": "/download/", "kind": "utility", "indexability": "index" },
@@ -69,7 +69,7 @@
   "contentPackets": [
     {
       "locale": "en",
-      "sourceRevision": "c3f0be1ddd9464184331b39ab271e7f353cd07a66cee14fa4c45375371c1fe6f",
+      "sourceRevision": "3be68392c42503280a3288bd6d580be58a948cd1a1ffb952b656b33b0740e021",
       "surfaces": [
         "home",
         "download",
@@ -89,7 +89,7 @@
     },
     {
       "locale": "de",
-      "sourceRevision": "c3f0be1ddd9464184331b39ab271e7f353cd07a66cee14fa4c45375371c1fe6f",
+      "sourceRevision": "3be68392c42503280a3288bd6d580be58a948cd1a1ffb952b656b33b0740e021",
       "surfaces": [
         "home",
         "download",
@@ -109,7 +109,7 @@
     },
     {
       "locale": "tr",
-      "sourceRevision": "c3f0be1ddd9464184331b39ab271e7f353cd07a66cee14fa4c45375371c1fe6f",
+      "sourceRevision": "3be68392c42503280a3288bd6d580be58a948cd1a1ffb952b656b33b0740e021",
       "surfaces": [
         "home",
         "download",

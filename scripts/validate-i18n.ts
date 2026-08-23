@@ -51,7 +51,14 @@ const actualSourceRevision = crypto
   .createHash("sha256")
   .update(
     localizedSourceFiles
-      .map((file) => `${path.relative(root, file)}\0${fs.readFileSync(file)}`)
+      // GitHub Actions checks out LF while Windows can retain CRLF. The
+      // revision tracks authored content, so it must not vary by checkout EOL
+      // or the host-specific relative path separator.
+      .map((file) =>
+        `${path.relative(root, file).replace(/\\/g, "/")}\0${fs
+          .readFileSync(file, "utf8")
+          .replace(/\r\n?/g, "\n")}`,
+      )
       .join("\0"),
   )
   .digest("hex");
