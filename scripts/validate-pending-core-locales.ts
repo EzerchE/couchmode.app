@@ -1,6 +1,11 @@
 import { createServer } from "vite";
 import manifest from "../src/i18n/manifest.json";
+import { releases } from "../src/data/releases";
 import { localePath, SITE_ORIGIN, type SurfaceId } from "../src/i18n/config";
+import {
+  releaseEditorialFor,
+  validateReleaseEditorialOverlay,
+} from "../src/i18n/release-editorial";
 import { surfaceRegistry } from "../src/i18n/surface-registry";
 import type { GuideContentId } from "../src/content/guides";
 
@@ -36,6 +41,10 @@ const expectedGuidePaths: Record<"de" | "tr", Record<GuideContentId, string>> = 
   },
 };
 const expectedCoreSurfaceIds = ["home", "download", "guides", "support"] as const;
+const expectedChangelogPaths: Record<"de" | "tr", string> = {
+  de: "/versionshinweise/",
+  tr: "/surum-notlari/",
+};
 const guideSurfaceIds = [
   "guide-playnite-launch",
   "guide-playnite-focus",
@@ -43,7 +52,7 @@ const guideSurfaceIds = [
   "guide-windows-console",
   "guide-windows-handheld",
 ] as const satisfies readonly GuideContentId[];
-const expectedDraftSurfaceIds = [...expectedCoreSurfaceIds, ...guideSurfaceIds];
+const expectedDraftSurfaceIds = ["changelog", ...expectedCoreSurfaceIds, ...guideSurfaceIds];
 const invariantEnglish = new Set([
   "About > Export support bundle",
   "August 2026",
@@ -173,6 +182,50 @@ for (const localeId of ["de", "tr"] as const) {
       fail(`${localeId}/${contentId} received a public canonical while pending`);
   }
 
+  const changelog = packet.surfaces.changelog;
+  if (!isCompleteSurfacePacket(changelog) || changelog.kind !== "changelog")
+    fail(`${localeId}/changelog is incomplete`);
+  if (
+    changelog.contentId !== "changelog" ||
+    changelog.path !== expectedChangelogPaths[localeId] ||
+    changelog.kind !== surfaceRegistry.changelog.kind
+  )
+    fail(`${localeId}/changelog does not match its approved localized route or policy`);
+  if (!changelog.internalLinks.every((target) => allSurfaceIds.includes(target)))
+    fail(`${localeId}/changelog has an unknown internal ContentId`);
+  assertNoBlankStrings(changelog, `${localeId}/changelog`);
+
+  const changelogPreview = new URL(localePath(localeId, changelog.path), SITE_ORIGIN).toString();
+  if (changelogPreview !== `${SITE_ORIGIN}/${localeId}${expectedChangelogPaths[localeId]}`)
+    fail(`${localeId}/changelog has an invalid localized route preview`);
+  const changelogMetadata = metadataFor(changelog);
+  if (
+    !changelogMetadata.title ||
+    !changelogMetadata.description ||
+    !changelogMetadata.ogTitle ||
+    !changelogMetadata.ogDescription
+  )
+    fail(`${localeId}/changelog has incomplete localized metadata`);
+  if (!changelog.schema.homeBreadcrumbLabel || !changelog.schema.currentBreadcrumbLabel)
+    fail(`${localeId}/changelog has incomplete localized BreadcrumbList input`);
+  if (changelogMetadata.canonical !== undefined)
+    fail(`${localeId}/changelog received a public canonical while pending`);
+
+  const editorial = changelog.payload.release.editorial;
+  const overlayErrors = validateReleaseEditorialOverlay(releases, editorial);
+  if (overlayErrors.length)
+    fail(`${localeId}/changelog overlay is invalid: ${overlayErrors.join("; ")}`);
+  if (editorial?.entries.length !== releases.length)
+    fail(`${localeId}/changelog must have one editorial entry for every factual release`);
+  const renderedVersions = releases.map((release) => {
+    const localized = releaseEditorialFor(localeId, release, editorial);
+    if (!localized)
+      fail(`${localeId}/changelog has no localized editorial entry for ${release.version}`);
+    return release.version;
+  });
+  if (JSON.stringify(renderedVersions) !== JSON.stringify(releases.map((release) => release.version)))
+    fail(`${localeId}/changelog release ordering no longer comes from factual release data`);
+
   const guideSources = guideSourcesForLocale(localeId);
   if (guideSources.length !== guideSurfaceIds.length)
     fail(`${localeId} must contain all five localized guide sources`);
@@ -262,4 +315,6 @@ for (const localeId of ["de", "tr"] as const) {
   }
 }
 
-console.log("validate-pending-core-locales: OK (de/tr core and guide drafts complete and non-public)");
+console.log(
+  "validate-pending-core-locales: OK (de/tr core, changelog, and guide drafts complete and non-public)",
+);

@@ -37,6 +37,7 @@ const localizedSourceFiles = [
   path.join(root, "src/content/guides.ts"),
   path.join(root, "src/i18n/packets.ts"),
   path.join(root, "src/i18n/pending-core-packets.ts"),
+  path.join(root, "src/i18n/pending-release-editorial.ts"),
   path.join(root, "src/i18n/release-editorial.ts"),
   path.join(root, "src/data/releases.json"),
 ].sort();

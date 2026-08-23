@@ -1,5 +1,9 @@
 import { localeManifest } from "./config";
 import type { SharedLocaleContent, SurfacePacketBase } from "./packets";
+import {
+  germanReleaseEditorialOverlay,
+  turkishReleaseEditorialOverlay,
+} from "./pending-release-editorial";
 export const germanLocaleContent: SharedLocaleContent = {
   navigation: {
     homeLabel: "CouchMode-Startseite",
@@ -1177,6 +1181,80 @@ export const turkishSupportPacket: SurfacePacketBase<"support"> = {
       beforeEmail:
         "Özel ödeme bilgilerinizi paylaşmayın. Hesap veya üyelik sorularınız için şuraya yazın:",
       afterEmail: ".",
+    },
+  },
+};
+
+export const germanChangelogPacket: SurfacePacketBase<"changelog"> = {
+  contentId: "changelog",
+  kind: "changelog",
+  locale: "de",
+  path: "/versionshinweise/",
+  sourceRevision: localeManifest.sourceRevision,
+  seo: {
+    title: "CouchMode Versionshinweise - Windows-Beta-Release-Notes",
+    description:
+      "Versionshinweise und bekannte Probleme für CouchMode-Beta-Builds für Windows, neueste zuerst.",
+    ogTitle: "CouchMode Versionshinweise - Windows-Beta-Release-Notes",
+    ogDescription:
+      "Versionshinweise und bekannte Probleme für CouchMode-Beta-Builds für Windows, neueste zuerst.",
+  },
+  schema: { homeBreadcrumbLabel: "Startseite", currentBreadcrumbLabel: "Versionshinweise" },
+  internalLinks: ["home", "download"],
+  payload: {
+    eyebrow: "Versionshinweise",
+    heading: "Neu in CouchMode",
+    description:
+      "Versionshinweise und bekannte Probleme für CouchMode-Beta-Builds für Windows, neueste zuerst.",
+    downloadStatus: {
+      open: "Die aktuelle signierte öffentliche Beta ist auf der Download-Seite verfügbar. Frühere Einträge bleiben hier als Versionsverlauf erhalten.",
+      closed:
+        "Der öffentliche Download ist noch nicht aktiviert. Diese Seite zeigt die aktuell veröffentlichten Release-Metadaten, die von dem für die signierte öffentliche Beta vorbereiteten internen Build abweichen können.",
+    },
+    release: {
+      latestLabel: "Aktuell",
+      previousLabel: "Früher",
+      notesLabel: "Neuerungen",
+      knownIssuesLabel: "Bekannte Probleme",
+      checksumLabel: "SHA256",
+      editorial: germanReleaseEditorialOverlay,
+    },
+  },
+};
+
+export const turkishChangelogPacket: SurfacePacketBase<"changelog"> = {
+  contentId: "changelog",
+  kind: "changelog",
+  locale: "tr",
+  path: "/surum-notlari/",
+  sourceRevision: localeManifest.sourceRevision,
+  seo: {
+    title: "CouchMode sürüm notları - Windows beta güncellemeleri",
+    description:
+      "CouchMode Windows beta derlemeleri için sürüm notları ve bilinen sorunlar, en yeniden eskiye.",
+    ogTitle: "CouchMode sürüm notları - Windows beta güncellemeleri",
+    ogDescription:
+      "CouchMode Windows beta derlemeleri için sürüm notları ve bilinen sorunlar, en yeniden eskiye.",
+  },
+  schema: { homeBreadcrumbLabel: "Ana sayfa", currentBreadcrumbLabel: "Sürüm notları" },
+  internalLinks: ["home", "download"],
+  payload: {
+    eyebrow: "Sürüm notları",
+    heading: "CouchMode'da neler yeni?",
+    description:
+      "CouchMode Windows beta derlemeleri için sürüm notları ve bilinen sorunlar, en yeniden eskiye.",
+    downloadStatus: {
+      open: "En yeni imzalı herkese açık beta indirme sayfasında kullanılabilir. Önceki girişler sürüm geçmişi olarak burada korunur.",
+      closed:
+        "Herkese açık indirme henüz etkin değil. Bu sayfa, imzalı herkese açık beta için hazırlanan dahili derlemeden farklı olabilecek, şu anda yayımlanmış sürüm meta verilerini gösterir.",
+    },
+    release: {
+      latestLabel: "En yeni",
+      previousLabel: "Önceki",
+      notesLabel: "Yenilikler",
+      knownIssuesLabel: "Bilinen sorunlar",
+      checksumLabel: "SHA256",
+      editorial: turkishReleaseEditorialOverlay,
     },
   },
 };

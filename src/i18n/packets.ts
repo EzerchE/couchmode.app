@@ -11,11 +11,13 @@ import {
 } from "@/content/guides";
 import type { ReleaseEditorialOverlay } from "./release-editorial";
 import {
+  germanChangelogPacket,
   germanDownloadPacket,
   germanGuideHubPacket,
   germanHomePacket,
   germanLocaleContent,
   germanSupportPacket,
+  turkishChangelogPacket,
   turkishDownloadPacket,
   turkishGuideHubPacket,
   turkishHomePacket,
@@ -1075,6 +1077,7 @@ export const localePackets: LocalePacketRegistry = {
     surfaces: {
       home: germanHomePacket,
       download: germanDownloadPacket,
+      changelog: germanChangelogPacket,
       guides: germanGuideHubPacket,
       support: germanSupportPacket,
       ...germanGuideArticlePackets,
@@ -1087,6 +1090,7 @@ export const localePackets: LocalePacketRegistry = {
     surfaces: {
       home: turkishHomePacket,
       download: turkishDownloadPacket,
+      changelog: turkishChangelogPacket,
       guides: turkishGuideHubPacket,
       support: turkishSupportPacket,
       ...turkishGuideArticlePackets,
