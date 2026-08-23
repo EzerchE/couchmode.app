@@ -1,0 +1,42 @@
+---
+title: "Playnite reagiert nicht auf den Controller: Fokus im Vollbildmodus prüfen"
+description: "Warum ein sichtbares Playnite-Fenster nicht automatisch Controller-Eingaben erhält und wie du den Fullscreen-Fokus sicher prüfst."
+contentId: guide-playnite-focus
+slug: playnite-controller-reagiert-nicht-vollbildmodus
+published: 2026-08-21
+updated: 2026-08-21
+locale: de
+category: playnite
+featured: false
+related: ["guide-playnite-launch"]
+heroImage: /screenshots/app-general.png
+ogImage: /social/og-couchmode-v3.png
+---
+
+Playnite kann sichtbar sein und dennoch keine Controller-Eingaben erhalten. Das passiert oft, wenn Playnite schon geöffnet war, minimiert wurde oder ein anderes Fenster den Fokus übernommen hat. Ein laufender Prozess ist nicht dasselbe wie ein Fullscreen-Fenster, das Eingaben bekommt.
+
+Diese Anleitung trennt den Start des Launchers von der Frage, ob Playnite im Vollbildmodus bereit ist. Sie konzentriert sich auf den Fensterfokus, nicht auf Treiber, Gerätezuordnungen oder Änderungen an deiner Controller-Konfiguration.
+
+## Ein laufender Prozess ist nicht gleich Fullscreen mit Fokus
+
+Der Windows-Prozess kann aktiv sein, während Playnite im Hintergrund bleibt oder ein anderes Fenster die Controller-Eingabe empfängt. Prüfe zuerst, ob Playnite Fullscreen tatsächlich im Vordergrund ist und ob sich die Oberfläche mit deinem Controller bedienen lässt.
+
+Wenn Playnite manuell im Vollbildmodus reagiert, aber nach einer CouchMode-Session nicht, vergleiche den Zustand vor und nach dem Start. Ein bereits geöffnetes Fenster verhält sich anders als eine frisch gestartete Session.
+
+## Warum der vorhandene Playnite-Zustand wichtig ist
+
+CouchMode startet keine zweite Playnite-Instanz, wenn Playnite bereits läuft. Das schützt deine vorhandene Sitzung, bedeutet aber auch, dass ein minimiertes oder nicht fokussiertes Fenster nicht automatisch zu einer neuen Fullscreen-Sitzung wird.
+
+Schließe Playnite testweise vollständig und starte eine einfache CouchMode-Session. Funktioniert das, prüfe anschließend den Ablauf mit einem bereits geöffneten Playnite-Fenster. So bleibt klar, ob der vorhandene Zustand die Eingabe beeinflusst.
+
+## Sichere Reihenfolge für die Fehlersuche
+
+Bestätige zuerst, dass Playnite außerhalb von CouchMode im Vollbildmodus auf den Controller reagiert. Prüfe dann, ob ein anderes sichtbares Fenster, Overlay oder Dialogfenster den Fokus hält. Wiederhole danach den Test mit einer einzelnen Launcher-Auswahl und ohne zusätzliche Session Tweaks.
+
+Ein Xbox-Controller oder ein anderer Controller über den erwarteten XInput-Pfad ist der verlässlichste Test für den CouchMode-Start. Native PlayStation-Controller können Playnite bedienen, sind aber nicht der unterstützte automatische Startauslöser von CouchMode.
+
+## Wo CouchMode hilft und wo die Grenze liegt
+
+CouchMode kann Playnite als Teil der Session starten und die Session beenden, die es selbst begonnen hat. Die Free-Version enthält Playnite. CouchMode behebt jedoch keine Playnite-Profile, Treiber, Gerätezuordnungen oder Eingabemappings.
+
+Wenn du den automatischen Start erst einrichten musst, beginne mit der verwandten Anleitung zum automatischen Start von Playnite mit Controller. Wenn der Fokus bereits manuell fehlt, prüfe Playnite und Windows unabhängig von CouchMode.

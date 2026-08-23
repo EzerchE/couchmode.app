@@ -2,6 +2,7 @@ import { createServer } from "vite";
 import manifest from "../src/i18n/manifest.json";
 import { localePath, SITE_ORIGIN, type SurfaceId } from "../src/i18n/config";
 import { surfaceRegistry } from "../src/i18n/surface-registry";
+import type { GuideContentId } from "../src/content/guides";
 
 const expectedCorePaths: Record<"de" | "tr", Partial<Record<SurfaceId, string>>> = {
   de: {
@@ -17,7 +18,32 @@ const expectedCorePaths: Record<"de" | "tr", Partial<Record<SurfaceId, string>>>
     support: "/destek/",
   },
 };
+
+const expectedGuidePaths: Record<"de" | "tr", Record<GuideContentId, string>> = {
+  de: {
+    "guide-playnite-launch": "/playnite-mit-controller-automatisch-starten/",
+    "guide-playnite-focus": "/playnite-controller-reagiert-nicht-vollbildmodus/",
+    "guide-steam-big-picture": "/steam-big-picture-mit-controller-starten/",
+    "guide-windows-console": "/windows-11-gaming-pc-wie-konsole-nutzen/",
+    "guide-windows-handheld": "/windows-handheld-am-fernseher-spielen/",
+  },
+  tr: {
+    "guide-playnite-launch": "/playnite-kumanda-ile-otomatik-baslatma/",
+    "guide-playnite-focus": "/playnite-kumanda-calismiyor-tam-ekran-odak/",
+    "guide-steam-big-picture": "/steam-big-picture-kumanda-ile-baslatma/",
+    "guide-windows-console": "/windows-11-oyun-bilgisayarini-konsol-gibi-kullanma/",
+    "guide-windows-handheld": "/windows-el-konsolunu-tvye-baglayarak-oynama/",
+  },
+};
 const expectedCoreSurfaceIds = ["home", "download", "guides", "support"] as const;
+const guideSurfaceIds = [
+  "guide-playnite-launch",
+  "guide-playnite-focus",
+  "guide-steam-big-picture",
+  "guide-windows-console",
+  "guide-windows-handheld",
+] as const satisfies readonly GuideContentId[];
+const expectedDraftSurfaceIds = [...expectedCoreSurfaceIds, ...guideSurfaceIds];
 const invariantEnglish = new Set([
   "About > Export support bundle",
   "August 2026",
@@ -65,7 +91,9 @@ function collectStrings(value: unknown, strings: string[] = [], key?: string): s
         "internalLinks",
         "kind",
         "locale",
+        "ogImage",
         "path",
+        "related",
         "sourceRevision",
       ]).has(key ?? "")
     )
@@ -89,6 +117,7 @@ const vite = await createServer({
   optimizeDeps: { noDiscovery: true },
 });
 const packetModule = await vite.ssrLoadModule("/src/i18n/packets.ts");
+const guideModule = await vite.ssrLoadModule("/src/content/guides.ts");
 await vite.close();
 
 const {
@@ -102,6 +131,7 @@ const {
   pathFor,
   resolveLocalizedRoute,
 } = packetModule as typeof import("../src/i18n/packets");
+const { guideSourceForContentId, guideSourcesForLocale } = guideModule as typeof import("../src/content/guides");
 const englishStrings = new Set(collectStrings(localePackets.en));
 const allSurfaceIds = manifest.requiredSurfaces.map((surface) => surface.id as SurfaceId);
 
@@ -120,8 +150,8 @@ for (const localeId of ["de", "tr"] as const) {
     fail(`${localeId} draft has a stale source revision`);
 
   const draftSurfaceIds = Object.keys(packet.surfaces).sort();
-  if (JSON.stringify(draftSurfaceIds) !== JSON.stringify([...expectedCoreSurfaceIds].sort()))
-    fail(`${localeId} must contain only the four completed core discovery surfaces`);
+  if (JSON.stringify(draftSurfaceIds) !== JSON.stringify([...expectedDraftSurfaceIds].sort()))
+    fail(`${localeId} must contain exactly the completed core and guide surfaces`);
 
   assertNoBlankStrings(packet.shared, `${localeId} shared content`);
   for (const contentId of expectedCoreSurfaceIds) {
@@ -143,6 +173,71 @@ for (const localeId of ["de", "tr"] as const) {
       fail(`${localeId}/${contentId} received a public canonical while pending`);
   }
 
+  const guideSources = guideSourcesForLocale(localeId);
+  if (guideSources.length !== guideSurfaceIds.length)
+    fail(`${localeId} must contain all five localized guide sources`);
+
+  for (const contentId of guideSurfaceIds) {
+    const source = guideSourceForContentId(localeId, contentId);
+    const englishSource = guideSourceForContentId("en", contentId);
+    const surface = packet.surfaces[contentId];
+    const expectedPath = expectedGuidePaths[localeId][contentId];
+
+    if (!source || !englishSource) fail(`${localeId}/${contentId} guide source is missing`);
+    if (!isCompleteSurfacePacket(surface) || surface.kind !== "guide-article")
+      fail(`${localeId}/${contentId} guide packet is incomplete`);
+    if (surface.contentId !== contentId || surface.path !== expectedPath)
+      fail(`${localeId}/${contentId} guide packet has an unexpected localized path`);
+    if (`/${source.slug}/` !== expectedPath)
+      fail(`${localeId}/${contentId} guide frontmatter slug does not match its approved path`);
+
+    const articleText = [
+      ...source.introduction,
+      ...source.sections.flatMap((section) => [section.heading, ...section.paragraphs]),
+    ].join("\n");
+    if (/\]\(\/(?:guides\/)?/.test(articleText))
+      fail(`${localeId}/${contentId} uses a hard-coded internal URL instead of a ContentId relationship`);
+
+    if (
+      source.category !== englishSource.category ||
+      source.heroImage !== englishSource.heroImage ||
+      source.ogImage !== englishSource.ogImage ||
+      source.published !== englishSource.published ||
+      source.updated !== englishSource.updated ||
+      source.featured !== englishSource.featured ||
+      JSON.stringify(source.related) !== JSON.stringify(englishSource.related)
+    )
+      fail(`${localeId}/${contentId} changed invariant guide facts`);
+
+    if (
+      surface.payload.title !== source.title ||
+      surface.payload.description !== source.description ||
+      JSON.stringify(surface.payload.introduction) !== JSON.stringify(source.introduction) ||
+      JSON.stringify(surface.payload.sections) !== JSON.stringify(source.sections) ||
+      surface.schema.headline !== source.title ||
+      surface.schema.description !== source.description
+    )
+      fail(`${localeId}/${contentId} packet is not normalized from its localized source`);
+
+    const expectedInternalLinks = ["guides", "download", "support", ...source.related];
+    if (JSON.stringify(surface.internalLinks) !== JSON.stringify(expectedInternalLinks))
+      fail(`${localeId}/${contentId} guide relationships do not resolve through ContentIds`);
+    if (!source.related.every((relatedId) => guideSourceForContentId(localeId, relatedId)))
+      fail(`${localeId}/${contentId} points to a missing localized related guide`);
+
+    const previewCanonical = new URL(localePath(localeId, surface.path), SITE_ORIGIN).toString();
+    if (previewCanonical !== `${SITE_ORIGIN}/${localeId}${expectedPath}`)
+      fail(`${localeId}/${contentId} has an invalid localized route preview`);
+    if (metadataFor(surface).canonical !== undefined)
+      fail(`${localeId}/${contentId} received a public canonical while pending`);
+
+    assertNoBlankStrings(surface, `${localeId}/${contentId}`);
+  }
+
+  const guideHub = packet.surfaces.guides;
+  if ("cards" in guideHub.payload || "guides" in guideHub.payload)
+    fail(`${localeId} guide hub must not duplicate localized guide card copy`);
+
   const localizedStrings = collectStrings({ shared: packet.shared, surfaces: packet.surfaces });
   for (const text of localizedStrings) {
     if (text.length > 5 && englishStrings.has(text) && !invariantEnglish.has(text))
@@ -160,9 +255,11 @@ for (const localeId of ["de", "tr"] as const) {
       hrefFor(localeId, contentId)
     )
       fail(`${localeId}/${contentId} is publicly resolvable before activation`);
-    if (resolveLocalizedRoute(localeId, surfaceRegistry[contentId].defaultPath))
-      fail(`${localeId}/${contentId} resolves through an English fallback route`);
+  }
+  for (const surface of Object.values(packet.surfaces)) {
+    if (resolveLocalizedRoute(localeId, surface.path))
+      fail(`${localeId}/${surface.contentId} resolves before activation`);
   }
 }
 
-console.log("validate-pending-core-locales: OK (de/tr core drafts complete and non-public)");
+console.log("validate-pending-core-locales: OK (de/tr core and guide drafts complete and non-public)");

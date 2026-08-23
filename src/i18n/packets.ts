@@ -1004,7 +1004,9 @@ function guidePacketFromSource(
   source: Guide,
   guideHubPacket: SurfacePacketBase<"guide-hub">,
 ): SurfacePacketBase<"guide-article"> {
-  const path = `/guides/${source.slug}/`;
+  // English retains the established guide hub hierarchy. Localized guide
+  // packets own their public SEO paths beneath the locale prefix.
+  const path = source.locale === "en" ? `/guides/${source.slug}/` : `/${source.slug}/`;
   if (source.locale === "en" && surfaceRegistry[source.contentId].defaultPath !== path)
     throw new Error(`English guide path does not match its surface policy: ${source.contentId}`);
 
@@ -1034,6 +1036,14 @@ function guidePacketFromSource(
 
 const englishGuideArticlePackets = Object.fromEntries(
   guideSourcesForLocale("en").map((source) => [source.contentId, guidePacketFromSource(source, englishGuideHubPacket)]),
+) as Partial<Record<SurfaceId, SurfacePacketBase>>;
+
+const germanGuideArticlePackets = Object.fromEntries(
+  guideSourcesForLocale("de").map((source) => [source.contentId, guidePacketFromSource(source, germanGuideHubPacket)]),
+) as Partial<Record<SurfaceId, SurfacePacketBase>>;
+
+const turkishGuideArticlePackets = Object.fromEntries(
+  guideSourcesForLocale("tr").map((source) => [source.contentId, guidePacketFromSource(source, turkishGuideHubPacket)]),
 ) as Partial<Record<SurfaceId, SurfacePacketBase>>;
 
 // English is the source locale while its surface payloads migrate incrementally.
@@ -1067,6 +1077,7 @@ export const localePackets: LocalePacketRegistry = {
       download: germanDownloadPacket,
       guides: germanGuideHubPacket,
       support: germanSupportPacket,
+      ...germanGuideArticlePackets,
     },
   },
   tr: {
@@ -1078,6 +1089,7 @@ export const localePackets: LocalePacketRegistry = {
       download: turkishDownloadPacket,
       guides: turkishGuideHubPacket,
       support: turkishSupportPacket,
+      ...turkishGuideArticlePackets,
     },
   },
 };
