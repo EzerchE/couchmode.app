@@ -6,6 +6,14 @@ import manifest from "../src/i18n/manifest.json";
 import { releases } from "../src/data/releases";
 import type { SurfaceId } from "../src/i18n/config";
 import { validateReleaseEditorialOverlay } from "../src/i18n/release-editorial";
+import {
+  firstPublicIndexableDate,
+  indexableSurfaceIds,
+  sitemapLastmod,
+  sitemapLastmodErrors,
+  sitemapLastmodFor,
+  type IndexableSurfaceId,
+} from "../src/i18n/sitemap-lastmod";
 import { surfaceRegistry } from "../src/i18n/surface-registry";
 
 const root = path.resolve(import.meta.dirname, "..");
@@ -45,6 +53,7 @@ const localizedSourceFiles = [
   path.join(root, "src/i18n/pending-legal-checkout-packets.ts"),
   path.join(root, "src/i18n/pending-release-editorial.ts"),
   path.join(root, "src/i18n/release-editorial.ts"),
+  path.join(root, "src/i18n/sitemap-lastmod.ts"),
   path.join(root, "src/data/releases.json"),
 ].sort();
 const actualSourceRevision = crypto
@@ -54,10 +63,11 @@ const actualSourceRevision = crypto
       // GitHub Actions checks out LF while Windows can retain CRLF. The
       // revision tracks authored content, so it must not vary by checkout EOL
       // or the host-specific relative path separator.
-      .map((file) =>
-        `${path.relative(root, file).replace(/\\/g, "/")}\0${fs
-          .readFileSync(file, "utf8")
-          .replace(/\r\n?/g, "\n")}`,
+      .map(
+        (file) =>
+          `${path.relative(root, file).replace(/\\/g, "/")}\0${fs
+            .readFileSync(file, "utf8")
+            .replace(/\r\n?/g, "\n")}`,
       )
       .join("\0"),
   )
@@ -95,6 +105,11 @@ for (const locale of manifest.locales) {
 
 if (indexableSurfaces.length !== 13)
   fail(`expected 13 indexable surfaces, found ${indexableSurfaces.length}`);
+if (
+  JSON.stringify(indexableSurfaces.map((surface) => surface.id)) !==
+  JSON.stringify(indexableSurfaceIds)
+)
+  fail("sitemap lastmod metadata does not match the indexable surface inventory");
 const buy = manifest.requiredSurfaces.find((surface) => surface.id === "buy");
 if (buy?.indexability !== "noindex" || buy.sitemap !== "exclude" || buy.kind !== "checkout")
   fail("buy must be an explicit noindex checkout surface excluded from sitemaps");
@@ -106,6 +121,10 @@ if (manifest.sourceRevision !== actualSourceRevision)
   fail(`English source revision is stale (${manifest.sourceRevision} != ${actualSourceRevision})`);
 
 for (const locale of activeLocales) {
+  if (!(locale.id in sitemapLastmod))
+    fail(`${locale.id} is active without sitemap lastmod metadata`);
+  if (locale.id !== "en" && !firstPublicIndexableDate[locale.id])
+    fail(`${locale.id} is active without a first public indexable date`);
   const packet = manifest.contentPackets.find((item) => item.locale === locale.id);
   if (!packet) fail(`${locale.id} is active without a complete content packet`);
   if (packet.sourceRevision !== manifest.sourceRevision)
@@ -171,6 +190,11 @@ for (const locale of activeLocales) {
     }
   }
 }
+
+const sitemapLastmodLocales = Object.keys(sitemapLastmod).sort();
+const activeLocaleIds = activeLocales.map((locale) => locale.id).sort();
+if (JSON.stringify(sitemapLastmodLocales) !== JSON.stringify(activeLocaleIds))
+  fail("sitemap lastmod metadata is not active-locale only");
 
 for (const contentId of indexableSurfaces.map((surface) => surface.id as SurfaceId)) {
   const alternates = hreflangLinks(contentId);
@@ -256,7 +280,12 @@ for (const file of sitemapFiles) {
     (item) => file === `sitemap-${item.urlPrefix ? item.urlPrefix.slice(1) : "en"}.xml`,
   );
   if (!locale) fail(`${file} does not map to an active locale`);
-  const sitemapUrls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]).sort();
+  const sitemapEntries = [
+    ...xml.matchAll(/<url>\s*<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>\s*<\/url>/g),
+  ].map((match) => ({ url: match[1], lastmod: match[2] }));
+  if (sitemapEntries.length !== indexableSurfaces.length)
+    fail(`${file} has invalid or missing lastmod elements`);
+  const sitemapUrls = sitemapEntries.map((entry) => entry.url).sort();
   const expectedUrls = indexableSurfaces
     .map((surface) => hrefFor(locale.id, surface.id as SurfaceId))
     .filter((href): href is string => Boolean(href))
@@ -264,6 +293,17 @@ for (const file of sitemapFiles) {
   if (JSON.stringify(sitemapUrls) !== JSON.stringify(expectedUrls))
     fail(`${file} does not match its locale canonical inventory`);
   if (sitemapUrls.some((url) => new URL(url).search)) fail(`${file} contains a query-string URL`);
+  for (const surface of indexableSurfaces) {
+    const contentId = surface.id as IndexableSurfaceId;
+    const expectedUrl = hrefFor(locale.id, contentId);
+    const entry = sitemapEntries.find((item) => item.url === expectedUrl);
+    if (!entry) fail(`${file} is missing ${locale.id}/${contentId}`);
+    const errors = sitemapLastmodErrors(locale.id, contentId, entry.lastmod);
+    if (errors.length > 0) fail(errors.join("; "));
+    const expectedLastmod = sitemapLastmodFor(locale.id, contentId);
+    if (entry.lastmod !== expectedLastmod)
+      fail(`${file} has stale lastmod for ${locale.id}/${contentId}`);
+  }
 }
 
 console.log(

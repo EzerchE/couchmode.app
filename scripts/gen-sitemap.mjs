@@ -2,24 +2,12 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createServer } from "vite";
-import { getGuideManifest } from "./guides.mjs";
 import localeManifest from "../src/i18n/manifest.json" with { type: "json" };
+import { indexableSurfaceIds, sitemapLastmodFor } from "../src/i18n/sitemap-lastmod.ts";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = path.resolve(scriptDir, "../public");
 const siteUrl = "https://couchmode.app";
-
-// Static pages use source-controlled editorial dates. Guide entries use their
-// authored `updated` frontmatter, never the build date.
-const staticLastmodByContentId = {
-  home: "2026-08-21",
-  download: "2026-08-19",
-  support: "2026-08-05",
-  changelog: "2026-08-20",
-  privacy: "2026-08-21",
-  terms: "2026-08-19",
-  refund: "2026-08-20",
-};
 
 const activeLocales = localeManifest.locales.filter((locale) => locale.state === "active");
 const indexableSurfaces = localeManifest.requiredSurfaces.filter(
@@ -38,31 +26,11 @@ function sitemapFileName(locale) {
   return `sitemap-${locale.urlPrefix ? locale.urlPrefix.slice(1) : "en"}.xml`;
 }
 
-const guideLastmodByLocaleAndContentId = new Map(
-  getGuideManifest().map((guide) => [`${guide.locale}:${guide.contentId}`, guide.updated]),
-);
-const guideIndexLastmodByLocale = new Map();
-for (const guide of getGuideManifest()) {
-  const current = guideIndexLastmodByLocale.get(guide.locale);
-  if (!current || guide.updated > current) guideIndexLastmodByLocale.set(guide.locale, guide.updated);
-}
-
-function lastmodFor(locale, contentId) {
-  if (contentId === "guides") {
-    const updated = guideIndexLastmodByLocale.get(locale.id);
-    if (!updated) fail(`${locale.id}/guides has no authored guide updated date`);
-    return updated;
-  }
-
-  if (contentId.startsWith("guide-")) {
-    const updated = guideLastmodByLocaleAndContentId.get(`${locale.id}:${contentId}`);
-    if (!updated) fail(`${locale.id}/${contentId} has no authored guide updated date`);
-    return updated;
-  }
-
-  const updated = staticLastmodByContentId[contentId];
-  if (!updated) fail(`${contentId} has no source-controlled lastmod`);
-  return updated;
+if (
+  JSON.stringify(indexableSurfaces.map((surface) => surface.id)) !==
+  JSON.stringify(indexableSurfaceIds)
+) {
+  fail("sitemap lastmod metadata does not match the indexable surface inventory");
 }
 
 // Locale-owned paths live in the packet registry. Loading that registry through
@@ -82,7 +50,10 @@ try {
     const entries = indexableSurfaces.map((surface) => {
       const packet = packetFor(locale.id, surface.id);
       if (!packet) fail(`${locale.id}/${surface.id} is active without a public packet`);
-      return { path: localePath(locale, packet.path), updated: lastmodFor(locale, surface.id) };
+      return {
+        path: localePath(locale, packet.path),
+        updated: sitemapLastmodFor(locale.id, surface.id),
+      };
     });
     const paths = entries.map((entry) => entry.path);
     if (new Set(paths).size !== paths.length) fail(`${locale.id} has duplicate indexable paths`);
