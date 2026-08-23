@@ -1,5 +1,5 @@
 import { useLocation } from "@tanstack/react-router";
-import { Check, ChevronDown, Languages } from "lucide-react";
+import { Check, ChevronDown, Globe } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -44,7 +44,7 @@ export function LanguageSwitcher({ compact = false }: LanguageSwitcherProps) {
             }
           >
             <span className="flex min-w-0 items-center gap-1.5 whitespace-nowrap">
-              <Languages className="h-4 w-4 shrink-0 text-aurora" aria-hidden="true" />
+              <Globe className="h-4 w-4 shrink-0 text-aurora" aria-hidden="true" />
               {currentLanguage.label}
             </span>
             <ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />
