@@ -44,7 +44,7 @@ export function LanguageSwitcher({ compact = false }: LanguageSwitcherProps) {
             }
           >
             <span className="flex min-w-0 items-center gap-1.5 whitespace-nowrap">
-              <Globe className="h-4 w-4 shrink-0 text-aurora" aria-hidden="true" />
+              <Globe className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
               {currentLanguage.label}
             </span>
             <ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />
@@ -70,7 +70,7 @@ export function LanguageSwitcher({ compact = false }: LanguageSwitcherProps) {
               >
                 {language.label}
                 {language.id === locale ? (
-                  <Check className="h-4 w-4 shrink-0 text-aurora" aria-hidden="true" />
+                  <Check className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
                 ) : null}
               </a>
             </DropdownMenuItem>
