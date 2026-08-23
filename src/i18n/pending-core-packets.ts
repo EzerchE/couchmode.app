@@ -12,6 +12,7 @@ export const germanLocaleContent: SharedLocaleContent = {
     mobileMenuLabel: "Mobile Navigation",
     downloadLabel: "Herunterladen",
     redditLabel: "r/CouchMode beitreten",
+    languageMenuLabel: "Sprachauswahl",
     links: [
       { contentId: "home", fragment: "#how", label: "So funktioniert es" },
       { contentId: "home", fragment: "#pricing", label: "Free und Pro" },
@@ -604,6 +605,7 @@ export const turkishLocaleContent: SharedLocaleContent = {
     mobileMenuLabel: "Mobil gezinme",
     downloadLabel: "İndir",
     redditLabel: "r/CouchMode'a katıl",
+    languageMenuLabel: "Dil seçimi",
     links: [
       { contentId: "home", fragment: "#how", label: "Nasıl çalışır" },
       { contentId: "home", fragment: "#pricing", label: "Free ve Pro" },

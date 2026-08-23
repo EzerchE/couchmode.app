@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createServer } from "vite";
 import { getGuideManifest } from "./guides.mjs";
 import localeManifest from "../src/i18n/manifest.json" with { type: "json" };
 
@@ -8,41 +9,86 @@ const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = path.resolve(scriptDir, "../public");
 const siteUrl = "https://couchmode.app";
 
-// Static pages use a source-controlled last updated value. Guide entries use
-// their authored `updated` frontmatter, never the build date.
-const staticPages = [
-  { path: "/", updated: "2026-08-21" },
-  { path: "/download/", updated: "2026-08-19" },
-  { path: "/support/", updated: "2026-08-05" },
-  { path: "/changelog/", updated: "2026-08-20" },
-  { path: "/privacy/", updated: "2026-08-21" },
-  { path: "/terms/", updated: "2026-08-19" },
-  { path: "/refund/", updated: "2026-08-20" },
-];
-
-const guides = getGuideManifest().filter((guide) => guide.locale === "en");
-const guideIndexUpdated = guides.reduce(
-  (latest, guide) => (guide.updated > latest ? guide.updated : latest),
-  "2026-08-21",
-);
-
-const entries = [
-  ...staticPages,
-  { path: "/guides/", updated: guideIndexUpdated },
-  ...guides.map((guide) => ({ path: `/guides/${guide.slug}/`, updated: guide.updated })),
-];
+// Static pages use source-controlled editorial dates. Guide entries use their
+// authored `updated` frontmatter, never the build date.
+const staticLastmodByContentId = {
+  home: "2026-08-21",
+  download: "2026-08-19",
+  support: "2026-08-05",
+  changelog: "2026-08-20",
+  privacy: "2026-08-21",
+  terms: "2026-08-19",
+  refund: "2026-08-20",
+};
 
 const activeLocales = localeManifest.locales.filter((locale) => locale.state === "active");
+const indexableSurfaces = localeManifest.requiredSurfaces.filter(
+  (surface) => surface.indexability === "index",
+);
 
-for (const entry of fs.readdirSync(publicDir)) {
-  if (/^sitemap-[a-z-]+\.xml$/.test(entry)) fs.unlinkSync(path.join(publicDir, entry));
+function fail(message) {
+  throw new Error(`gen-sitemap: ${message}`);
 }
 
-const sitemapFiles = activeLocales.map((locale) => {
-  if (locale.id !== "en")
-    throw new Error(`Cannot generate ${locale.id} sitemap until its localized packet is implemented`);
-  const fileName = "sitemap-en.xml";
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+function localePath(locale, surfacePath) {
+  return `${locale.urlPrefix}${surfacePath}`.replace(/\/{2,}/g, "/");
+}
+
+function sitemapFileName(locale) {
+  return `sitemap-${locale.urlPrefix ? locale.urlPrefix.slice(1) : "en"}.xml`;
+}
+
+const guideLastmodByLocaleAndContentId = new Map(
+  getGuideManifest().map((guide) => [`${guide.locale}:${guide.contentId}`, guide.updated]),
+);
+const guideIndexLastmodByLocale = new Map();
+for (const guide of getGuideManifest()) {
+  const current = guideIndexLastmodByLocale.get(guide.locale);
+  if (!current || guide.updated > current) guideIndexLastmodByLocale.set(guide.locale, guide.updated);
+}
+
+function lastmodFor(locale, contentId) {
+  if (contentId === "guides") {
+    const updated = guideIndexLastmodByLocale.get(locale.id);
+    if (!updated) fail(`${locale.id}/guides has no authored guide updated date`);
+    return updated;
+  }
+
+  if (contentId.startsWith("guide-")) {
+    const updated = guideLastmodByLocaleAndContentId.get(`${locale.id}:${contentId}`);
+    if (!updated) fail(`${locale.id}/${contentId} has no authored guide updated date`);
+    return updated;
+  }
+
+  const updated = staticLastmodByContentId[contentId];
+  if (!updated) fail(`${contentId} has no source-controlled lastmod`);
+  return updated;
+}
+
+// Locale-owned paths live in the packet registry. Loading that registry through
+// Vite applies the same MDX transforms used by the production renderer.
+const vite = await createServer({
+  logLevel: "error",
+  server: { middlewareMode: true },
+  optimizeDeps: { noDiscovery: true },
+});
+
+try {
+  const packetModule = await vite.ssrLoadModule("/src/i18n/packets.ts");
+  const { packetFor } = packetModule;
+  const sitemapFiles = [];
+
+  for (const locale of activeLocales) {
+    const entries = indexableSurfaces.map((surface) => {
+      const packet = packetFor(locale.id, surface.id);
+      if (!packet) fail(`${locale.id}/${surface.id} is active without a public packet`);
+      return { path: localePath(locale, packet.path), updated: lastmodFor(locale, surface.id) };
+    });
+    const paths = entries.map((entry) => entry.path);
+    if (new Set(paths).size !== paths.length) fail(`${locale.id} has duplicate indexable paths`);
+
+    const fileName = sitemapFileName(locale);
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${entries
   .map(
@@ -52,15 +98,24 @@ ${entries
   .join("\n")}
 </urlset>
 `;
-  fs.writeFileSync(path.join(publicDir, fileName), xml);
-  return fileName;
-});
+    fs.writeFileSync(path.join(publicDir, fileName), xml);
+    sitemapFiles.push(fileName);
+  }
 
-const indexXml = `<?xml version="1.0" encoding="UTF-8"?>
+  for (const entry of fs.readdirSync(publicDir)) {
+    if (/^sitemap-[a-z-]+\.xml$/.test(entry) && !sitemapFiles.includes(entry))
+      fs.unlinkSync(path.join(publicDir, entry));
+  }
+
+  const indexXml = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${sitemapFiles.map((fileName) => `  <sitemap><loc>${siteUrl}/${fileName}</loc></sitemap>`).join("\n")}
 </sitemapindex>
 `;
-
-fs.writeFileSync(path.join(publicDir, "sitemap.xml"), indexXml);
-console.log(`gen-sitemap: wrote ${entries.length} URLs across ${sitemapFiles.length} active locale sitemap(s)`);
+  fs.writeFileSync(path.join(publicDir, "sitemap.xml"), indexXml);
+  console.log(
+    `gen-sitemap: wrote ${indexableSurfaces.length * sitemapFiles.length} URLs across ${sitemapFiles.length} active locale sitemap(s)`,
+  );
+} finally {
+  await vite.close();
+}

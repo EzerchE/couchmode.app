@@ -3,6 +3,7 @@ import { useLocation } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { CouchModeMark, CouchModeWordmark } from "@/components/brand/CouchModeMark";
 import { RedditIcon } from "@/components/RedditIcon";
+import { LanguageSwitcher } from "@/components/i18n/LanguageSwitcher";
 import { REDDIT_URL, trackRedditClick } from "@/lib/community";
 import { useLocaleContent } from "@/i18n/content";
 import { type LocaleLink } from "@/i18n/packets";
@@ -125,7 +126,7 @@ export function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackRedditClick("navbar")}
-              className="hidden lg:inline-flex items-center gap-2 rounded-full border border-white/10 bg-card/70 px-3 py-2 text-sm font-medium text-muted-foreground transition duration-200 hover:-translate-y-0.5 hover:border-[#ff6b35]/45 hover:bg-card hover:text-foreground hover:shadow-[0_10px_28px_-14px_rgba(255,107,53,0.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b35]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background xl:px-3.5"
+              className="hidden xl:inline-flex items-center gap-2 rounded-full border border-white/10 bg-card/70 px-3 py-2 text-sm font-medium text-muted-foreground transition duration-200 hover:-translate-y-0.5 hover:border-[#ff6b35]/45 hover:bg-card hover:text-foreground hover:shadow-[0_10px_28px_-14px_rgba(255,107,53,0.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b35]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background xl:px-3.5"
             >
               <RedditIcon className="h-4 w-4 text-[#ff6b35]" />
               {navigation.redditLabel}
@@ -154,6 +155,7 @@ export function Navbar() {
             >
               {navigation.downloadLabel}
             </a>
+            <LanguageSwitcher />
 
             <button
               ref={menuButtonRef}
@@ -213,6 +215,7 @@ export function Navbar() {
                 >
                   {navigation.downloadLabel}
                 </a>
+                <LanguageSwitcher compact />
               </nav>
             )}
           </div>

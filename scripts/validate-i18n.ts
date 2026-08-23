@@ -71,9 +71,11 @@ const packetModule = await vite.ssrLoadModule("/src/i18n/packets.ts");
 await vite.close();
 const {
   hrefFor,
+  hreflangLinks,
   isCompleteSurfacePacket,
   localePacketFor,
   localizedGuides,
+  metadataFor,
   packetFor,
   resolveLocalizedRoute,
 } = packetModule as typeof import("../src/i18n/packets");
@@ -110,6 +112,19 @@ for (const locale of activeLocales) {
   for (const [contentId, surface] of Object.entries(renderPacket.surfaces)) {
     if (surface && !packetFor(locale.id, contentId as SurfaceId))
       fail(`${locale.id}/${contentId} does not match its packet policy`);
+  }
+  for (const contentId of surfaceIds) {
+    const surface = packetFor(locale.id, contentId);
+    if (!surface) fail(`${locale.id}/${contentId} does not resolve as an active public packet`);
+    const canonical = metadataFor(surface).canonical;
+    const expectedCanonical = hrefFor(locale.id, contentId);
+    if (!canonical || canonical !== expectedCanonical)
+      fail(`${locale.id}/${contentId} does not self-canonicalize`);
+    if (locale.id !== "en") {
+      const resolved = resolveLocalizedRoute(locale.id, surface.path);
+      if (resolved?.contentId !== contentId)
+        fail(`${locale.id}/${contentId} does not resolve through its localized public route`);
+    }
   }
   for (const link of [
     ...renderPacket.shared.navigation.links,
@@ -148,6 +163,20 @@ for (const locale of activeLocales) {
       fail(`${locale.id} release editorial overlay is invalid: ${overlayErrors.join("; ")}`);
     }
   }
+}
+
+for (const contentId of indexableSurfaces.map((surface) => surface.id as SurfaceId)) {
+  const alternates = hreflangLinks(contentId);
+  const expected = [
+    ...activeLocales.map((locale) => ({
+      rel: "alternate",
+      hrefLang: locale.id,
+      href: hrefFor(locale.id, contentId),
+    })),
+    { rel: "alternate", hrefLang: "x-default", href: hrefFor("en", contentId) },
+  ];
+  if (JSON.stringify(alternates) !== JSON.stringify(expected))
+    fail(`${contentId} does not expose a reciprocal active-locale hreflang cluster`);
 }
 
 const englishGuideHub = packetFor("en", "guides");
@@ -215,6 +244,19 @@ for (const file of sitemapFiles) {
   if (xml.includes("/buy/")) fail(`${file} includes the noindex buy surface`);
   if ((xml.match(/<loc>/g) ?? []).length !== indexableSurfaces.length)
     fail(`${file} does not contain every indexable surface`);
+
+  const locale = activeLocales.find(
+    (item) => file === `sitemap-${item.urlPrefix ? item.urlPrefix.slice(1) : "en"}.xml`,
+  );
+  if (!locale) fail(`${file} does not map to an active locale`);
+  const sitemapUrls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]).sort();
+  const expectedUrls = indexableSurfaces
+    .map((surface) => hrefFor(locale.id, surface.id as SurfaceId))
+    .filter((href): href is string => Boolean(href))
+    .sort();
+  if (JSON.stringify(sitemapUrls) !== JSON.stringify(expectedUrls))
+    fail(`${file} does not match its locale canonical inventory`);
+  if (sitemapUrls.some((url) => new URL(url).search)) fail(`${file} contains a query-string URL`);
 }
 
 console.log(

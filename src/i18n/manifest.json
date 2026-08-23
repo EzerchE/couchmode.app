@@ -1,5 +1,5 @@
 {
-  "sourceRevision": "31102df882c0d1f64930cd320ddf277ff421fe406d64aa65da27911fe3ba522e",
+  "sourceRevision": "c3f0be1ddd9464184331b39ab271e7f353cd07a66cee14fa4c45375371c1fe6f",
   "requiredSurfaces": [
     { "id": "home", "path": "/", "kind": "landing", "indexability": "index" },
     { "id": "download", "path": "/download/", "kind": "utility", "indexability": "index" },
@@ -53,11 +53,11 @@
     {
       "id": "de",
       "urlPrefix": "/de",
-      "state": "pending",
+      "state": "active",
       "phase1Target": true,
       "label": "Deutsch"
     },
-    { "id": "tr", "urlPrefix": "/tr", "state": "pending", "phase1Target": true, "label": "Turkce" },
+    { "id": "tr", "urlPrefix": "/tr", "state": "active", "phase1Target": true, "label": "Türkçe" },
     { "id": "fr", "urlPrefix": "/fr", "state": "planned", "label": "Francais" },
     { "id": "es", "urlPrefix": "/es", "state": "planned", "label": "Espanol" },
     { "id": "it", "urlPrefix": "/it", "state": "planned", "label": "Italiano" },
@@ -69,7 +69,47 @@
   "contentPackets": [
     {
       "locale": "en",
-      "sourceRevision": "31102df882c0d1f64930cd320ddf277ff421fe406d64aa65da27911fe3ba522e",
+      "sourceRevision": "c3f0be1ddd9464184331b39ab271e7f353cd07a66cee14fa4c45375371c1fe6f",
+      "surfaces": [
+        "home",
+        "download",
+        "support",
+        "changelog",
+        "privacy",
+        "terms",
+        "refund",
+        "guides",
+        "guide-playnite-launch",
+        "guide-playnite-focus",
+        "guide-steam-big-picture",
+        "guide-windows-console",
+        "guide-windows-handheld",
+        "buy"
+      ]
+    },
+    {
+      "locale": "de",
+      "sourceRevision": "c3f0be1ddd9464184331b39ab271e7f353cd07a66cee14fa4c45375371c1fe6f",
+      "surfaces": [
+        "home",
+        "download",
+        "support",
+        "changelog",
+        "privacy",
+        "terms",
+        "refund",
+        "guides",
+        "guide-playnite-launch",
+        "guide-playnite-focus",
+        "guide-steam-big-picture",
+        "guide-windows-console",
+        "guide-windows-handheld",
+        "buy"
+      ]
+    },
+    {
+      "locale": "tr",
+      "sourceRevision": "c3f0be1ddd9464184331b39ab271e7f353cd07a66cee14fa4c45375371c1fe6f",
       "surfaces": [
         "home",
         "download",

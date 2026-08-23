@@ -307,6 +307,7 @@ export type SharedLocaleContent = {
     mobileMenuLabel: string;
     downloadLabel: string;
     redditLabel: string;
+    languageMenuLabel: string;
     links: LocaleLink[];
   };
   footer: {
@@ -354,6 +355,7 @@ export const englishLocaleContent: SharedLocaleContent = {
     mobileMenuLabel: "Mobile navigation",
     downloadLabel: "Download",
     redditLabel: "Join r/CouchMode",
+    languageMenuLabel: "Language selection",
     links: [
       { contentId: "home", fragment: "#how", label: "How it works" },
       { contentId: "home", fragment: "#pricing", label: "Pricing" },

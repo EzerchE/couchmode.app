@@ -50,6 +50,7 @@ const contentModule = await vite.ssrLoadModule("/src/i18n/content.tsx");
 const rendererModule = await vite.ssrLoadModule(
   "/src/components/i18n/LocalizedSurfaceRenderer.tsx",
 );
+const headModule = await vite.ssrLoadModule("/src/i18n/surface-head.ts");
 
 const {
   localePacketFor,
@@ -62,6 +63,7 @@ const {
 const { LocaleContentProvider } = contentModule as typeof import("../src/i18n/content");
 const { LocalizedSurfaceRenderer } =
   rendererModule as typeof import("../src/components/i18n/LocalizedSurfaceRenderer");
+const { headForSurfacePacket } = headModule as typeof import("../src/i18n/surface-head");
 
 async function renderPacket(
   locale: LocaleId,
@@ -94,13 +96,13 @@ async function renderPacket(
 
 for (const locale of testLocales) {
   const manifestLocale = manifest.locales.find((item) => item.id === locale);
-  if (manifestLocale?.state !== "pending")
-    fail(`${locale} must remain pending during renderer validation`);
+  if (manifestLocale?.state !== "active")
+    fail(`${locale} must be active during renderer validation`);
 
   const localePacket = localePackets[locale];
   if (!localePacket) fail(`${locale} packet is missing`);
-  if (localePacketFor(locale) !== undefined)
-    fail(`${locale} pending packet is publicly resolvable`);
+  if (localePacketFor(locale) !== localePacket)
+    fail(`${locale} active packet is not publicly resolvable`);
 
   for (const surface of manifest.requiredSurfaces) {
     const contentId = surface.id as SurfaceId;
@@ -108,8 +110,8 @@ for (const locale of testLocales) {
     if (!packet) fail(`${locale}/${contentId} packet is missing`);
     if (packet.kind !== surfaceRegistry[contentId].kind)
       fail(`${locale}/${contentId} packet does not match its surface policy`);
-    if (resolveLocalizedRoute(locale, packet.path) !== undefined)
-      fail(`${locale}/${contentId} resolves publicly while pending`);
+    if (resolveLocalizedRoute(locale, packet.path)?.contentId !== contentId)
+      fail(`${locale}/${contentId} does not resolve through its active public route`);
     if (resolvePacketRoute(localePacket, packet.path)?.contentId !== contentId)
       fail(`${locale}/${contentId} cannot resolve through the packet route resolver`);
     if (resolvePacketRoute(localePacket, `${packet.path}does-not-exist/`) !== undefined)
@@ -127,8 +129,17 @@ for (const locale of testLocales) {
     };
     if (resolvePacketRoute(aliasProbe, `${packet.path}legacy/`) !== undefined)
       fail(`${locale}/${contentId} would render a redirect alias without HTTP redirect support`);
-    if (metadataFor(packet).canonical !== undefined)
-      fail(`${locale}/${contentId} received a public canonical while pending`);
+    const metadata = metadataFor(packet);
+    if (
+      !metadata.canonical ||
+      metadata.canonical !== `https://couchmode.app/${locale}${packet.path}`
+    )
+      fail(`${locale}/${contentId} does not have a self-referencing localized canonical`);
+    const head = headForSurfacePacket(packet);
+    if (!head.links?.some((link) => link.rel === "canonical" && link.href === metadata.canonical))
+      fail(`${locale}/${contentId} does not emit its canonical through the shared head helper`);
+    if (!head.meta?.some((entry) => "script:ld+json" in entry))
+      fail(`${locale}/${contentId} does not emit localized structured-data input`);
 
     const markup = await renderPacket(locale, localePacket, packet);
     const renderedText = markup
@@ -167,5 +178,5 @@ for (const locale of testLocales) {
 
 await vite.close();
 console.log(
-  "test-localized-route-renderer: OK (de/tr 14-surface renderer validation passed while pending)",
+  "test-localized-route-renderer: OK (de/tr 14-surface active renderer validation passed)",
 );
