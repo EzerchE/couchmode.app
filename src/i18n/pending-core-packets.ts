@@ -48,16 +48,16 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
   path: "/",
   sourceRevision: localeManifest.sourceRevision,
   seo: {
-    title: "CouchMode: PC-Gaming vom Sofa mit Controller | Windows 11",
+    title: "CouchMode: PC-Gaming am Fernseher mit Controller | Windows 11",
     description:
       "Starte dein gewähltes Spielerlebnis mit einem kompatiblen Controller und kehre danach zu einem nutzbaren Windows-Desktop zurück. Lade die signierte öffentliche CouchMode-Beta herunter.",
-    ogTitle: "CouchMode: PC-Gaming vom Sofa mit Controller | Windows 11",
+    ogTitle: "CouchMode: PC-Gaming am Fernseher mit Controller | Windows 11",
     ogDescription:
       "Starte dein gewähltes Spielerlebnis mit einem kompatiblen Controller und kehre danach zu einem nutzbaren Windows-Desktop zurück.",
   },
   schema: {
     softwareDescription:
-      "CouchMode ist ein Windows-Dienstprogramm für PC-Gaming vom Sofa mit Controller. Es kann dein gewähltes Spielerlebnis öffnen, von dir ausgewählte Desktop-Apps schließen und die unterstützten Windows-Einstellungen wiederherstellen, die es beim Beenden der Session geändert hat.",
+      "CouchMode ist ein Windows-Dienstprogramm für PC-Gaming am Fernseher mit Controller. Es kann dein gewähltes Spielerlebnis öffnen, von dir ausgewählte Desktop-Apps schließen und die unterstützten Windows-Einstellungen wiederherstellen, die es während der Sitzung geändert hat.",
     applicationSubCategory: "Gaming-Dienstprogramm",
   },
   internalLinks: ["download", "buy", "changelog", "guides"],
@@ -66,9 +66,9 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
       eyebrow: "Gaming-Dienstprogramm für Windows mit Controller-Bedienung.",
       badge: "Öffentliche Beta verfügbar",
       headingBefore: "Mach aus deinem Gaming-PC",
-      headingAccent: "einen PC fürs Sofa.",
+      headingAccent: "eine Konsole für den Fernseher.",
       description:
-        "Schalte deinen Controller ein: CouchMode öffnet dein gewähltes Spielerlebnis, bereitet die Session nach deinen Einstellungen vor und bringt dich danach zu einem nutzbaren Desktop zurück.",
+        "Schalte deinen Controller ein: CouchMode öffnet dein gewähltes Spielerlebnis, bereitet deine Gaming-Session nach deinen Einstellungen vor und bringt dich danach zu einem nutzbaren Desktop zurück.",
       downloadLabel: "Für Windows herunterladen",
       proLabel: "Pro-Funktionen ansehen",
       platformNotice: "Windows 11 · 64 Bit · Signierte öffentliche Beta",
@@ -88,13 +88,13 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
     },
     problem: {
       eyebrow: "Die Lücke",
-      headingLines: ["Windows funktioniert.", "Für das Sofa wurde es nur nicht gebaut."],
+      headingLines: ["Windows läuft.", "Für den Fernseher ist es nicht gemacht."],
       description:
-        "Am Schreibtisch funktioniert dein Desktop gut. Vom Sofa aus können kleine Texte, mausorientierte Menüs und Hintergrund-Apps eine Gaming-Session mit Controller ausbremsen. CouchMode schließt diese Lücke, ohne Windows zu ersetzen oder deinen PC zu übernehmen.",
+        "Am Schreibtisch funktioniert dein Desktop gut. Am Fernseher können kleine Texte, mauslastige Menüs und Hintergrund-Apps das Spielen mit Controller ausbremsen. CouchMode erleichtert diesen Wechsel, ohne Windows zu ersetzen oder deinen PC zu übernehmen.",
       points: [
         {
           title: "Für den großen Bildschirm gedacht",
-          body: "Windows-Desktop-Oberflächen sind für kurze Distanzen gebaut. CouchMode führt die Session in ein controllerfreundliches Spielerlebnis.",
+          body: "Windows-Desktop-Oberflächen sind für die Nutzung aus kurzer Distanz gemacht. CouchMode bringt dich schneller in ein Spielerlebnis, das sich mit Controller bedienen lässt.",
         },
         {
           title: "Mit Controller bedienbar",
@@ -102,21 +102,21 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
         },
         {
           title: "Dein Setup bleibt erhalten",
-          body: "CouchMode ändert nur die unterstützten Session-Einstellungen, die du aktivierst, und stellt die geänderten Einstellungen am Ende der Session wieder her.",
+          body: "CouchMode ändert nur die unterstützten Einstellungen, die du aktivierst, und stellt die von ihm geänderten Einstellungen am Ende der Sitzung wieder her.",
         },
       ],
     },
     howItWorks: {
       eyebrow: "So funktioniert es",
-      heading: "Vom Controller aufs Sofa.",
+      heading: "Mit dem Controller direkt ins Spiel.",
       description:
-        "CouchMode kümmert sich um den Ablauf rund um den Launcher und die Windows-Einstellungen, die du auswählst. Free deckt den wesentlichen Ablauf mit Controller ab. Pro ergänzt tiefere Session-Automatisierung.",
+        "CouchMode startet den Launcher deiner Wahl und wendet die Windows-Einstellungen an, die du auswählst. Free deckt den Einstieg mit Controller ab. Pro ergänzt weitere Automatisierung für deine Gaming-Session.",
       stepLabel: "SCHRITT",
       steps: [
         {
           number: "01",
           title: "Schalte deinen Controller ein",
-          body: "Wecke deinen Xbox- oder kompatiblen Controller. CouchMode kann im Hintergrund lauschen und deine Session vom Sofa aus automatisch starten.",
+          body: "Schalte deinen Xbox- oder kompatiblen Controller ein. CouchMode kann im Hintergrund auf die Verbindung warten und deine Gaming-Session automatisch starten.",
           detail: "Automatisch erkannt · Keine App öffnen",
         },
         {
@@ -127,15 +127,15 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
         },
         {
           number: "03",
-          title: "Pro bereitet die Session vor",
-          body: "Pro kann über Resource Control ausgewählte Desktop-Apps schließen und die unterstützten Session-Einstellungen anwenden, die du auswählst: Benachrichtigungen, Game-Bar-Aufzeichnung, visuelle Effekte, Game Mode, Energieplan, HDR, Anzeige und Audio.",
+          title: "Pro bereitet deine Sitzung vor",
+          body: "Pro kann über Resource Control ausgewählte Desktop-Apps schließen und die unterstützten Einstellungen anwenden, die du auswählst: Benachrichtigungen, Game-Bar-Aufzeichnung, visuelle Effekte, Game Mode, Energieplan, HDR, Anzeige und Audio.",
           detail: "Pro · 7-tägige In-App-Testversion",
         },
         {
           number: "04",
           title: "Kehre zu deinem Desktop zurück",
-          body: "Wenn die Session endet, beendet CouchMode das gestartete Spielerlebnis, stellt die geänderten Windows-Einstellungen wieder her und gibt die Kontrolle an den Desktop zurück.",
-          detail: "Free + Pro · Sichere Rückkehr nach der Session",
+          body: "Wenn die Sitzung endet, beendet CouchMode das von ihm gestartete Spielerlebnis und stellt die unterstützten Windows-Einstellungen wieder her, die es geändert hat. Danach bist du wieder auf deinem normalen Desktop.",
+          detail: "Free + Pro · Sicher zurück zum Desktop",
         },
       ],
     },
@@ -157,8 +157,8 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
         },
         {
           label: "Resource Control",
-          caption: "Aktionen nach der Session",
-          alt: "CouchMode-Aktionen nach der Session in Resource Control.",
+          caption: "Aktionen nach dem Spielen",
+          alt: "CouchMode-Aktionen nach dem Spielen in Resource Control.",
         },
         {
           label: "Session Tweaks",
@@ -175,20 +175,20 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
     },
     comparison: {
       eyebrow: "Free und Pro",
-      heading: "Free für deine Launcher. Pro für tiefere Automatisierung.",
+      heading: "Free für deine Launcher. Pro für mehr Automatisierung.",
       description:
-        "Der Ablauf mit Controller ist kostenlos, ebenso der Xbox-Modus, sofern Windows ihn unterstützt, Steam Big Picture und Playnite. Pro ergänzt benutzerdefinierte Launcher, Resource Control, Session Tweaks und eine tiefere Wiederherstellungsautomatisierung.",
+        "Der Start mit Controller ist kostenlos, ebenso der Xbox-Modus, sofern Windows ihn unterstützt, Steam Big Picture und Playnite. Pro ergänzt benutzerdefinierte Launcher, Resource Control, Session Tweaks und weitere Automatisierung beim Wiederherstellen.",
       free: {
         name: "Free",
         priceSuffix: "dauerhaft",
-        description: "Der grundlegende Ablauf für Gaming mit Controller.",
+        description: "Die Grundfunktionen für PC-Gaming mit Controller.",
         features: [
           "Vom Controller aus starten",
           "Xbox-Modus, sofern Windows ihn unterstützt",
           "Steam Big Picture",
           "Playnite Fullscreen",
           "Mit Windows starten",
-          "Sicheres Session-Ende und Rückkehr zum Desktop",
+          "Sicheres Beenden und Rückkehr zum Desktop",
           "Sprache und Design",
         ],
         includedLabel: "In Free enthalten",
@@ -198,7 +198,7 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
         name: "Pro",
         heading: "Alles aus Free, plus tiefere Automatisierung.",
         description:
-          "CouchMode verwaltet die Session, die es gestartet hat, und stellt die von ihm geänderten Desktop-Einstellungen wieder her.",
+          "CouchMode verwaltet die von ihm gestartete Sitzung und stellt die von ihm geänderten Desktop-Einstellungen wieder her.",
         features: [
           "Kompatible benutzerdefinierte Launcher",
           "Resource Control für die Apps, die du auswählst",
@@ -215,9 +215,9 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
     },
     guidesPreview: {
       eyebrow: "Praktische Einrichtungsnotizen",
-      heading: "Anleitungen für Windows-Gaming vom Sofa",
+      heading: "Anleitungen für PC-Gaming am Fernseher",
       description:
-        "Klare Antworten zu Playnite, Steam Big Picture, TV-Setups, Controllern und angedockten Windows-Gaming-Handhelds.",
+        "Klare Antworten zu Playnite, Steam Big Picture, TV-Setups, Controllern und Windows-Gaming-Handhelds am Dock.",
       ctaLabel: "Alle Anleitungen ansehen",
       featuredGuideIds: [
         "guide-playnite-launch",
@@ -227,7 +227,7 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
     },
     finalCta: {
       headingBefore: "Bereit, deinen PC",
-      headingAccent: "sofatauglich zu machen",
+      headingAccent: "fürs Spielen am Fernseher vorzubereiten",
       description:
         "Lade die signierte öffentliche Beta für Windows herunter und starte mit einer 7-tägigen In-App-Pro-Testversion. Für die In-App-Testversion sind weder Konto noch Kreditkarte nötig.",
       downloadLabel: "Für Windows herunterladen",
@@ -238,18 +238,18 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
       liveLabel: "Live",
       platformNotice: "Windows 11 · 64 Bit",
       compatibilityNote:
-        "CouchMode unterstützt Windows-Gaming-Handheld-Setups mit Controller, darunter Geräte wie ROG Ally. Wo Windows den Xbox-Modus bereitstellt, kann CouchMode diese Session starten oder übernehmen und beim Ende der Session die Kontrolle an den Desktop zurückgeben. Verfügbarkeit und Verhalten hängen vom Gerät, der Windows-Version, der Xbox-App-Unterstützung, der Region und dem Microsoft-Rollout ab.",
+        "CouchMode unterstützt Windows-Gaming-Handhelds mit externem Controller, darunter Geräte wie ROG Ally. Wenn Windows den Xbox-Modus bereitstellt, kann CouchMode ihn starten oder eine vorhandene Sitzung übernehmen. Nach dem Ende der Sitzung kehrst du zum Desktop zurück. Verfügbarkeit und Verhalten hängen vom Gerät, der Windows-Version, der Xbox-App-Unterstützung, der Region und dem Microsoft-Rollout ab.",
     },
     faq: {
       eyebrow: "Fragen",
-      heading: "Für die Art gebaut, wie PC-Spieler eine Session vom Sofa tatsächlich starten.",
+      heading: "Antworten für PC-Gaming mit Controller am Fernseher.",
       description:
-        "CouchMode ist für Windows-PCs gedacht, die an einen Fernseher, ein Sofa-Setup oder einen Controller angeschlossen sind. Diese Antworten erklären, was es starten und automatisieren kann und was von Windows-Unterstützung abhängt.",
+        "CouchMode ist für Windows-PCs gedacht, die am Fernseher mit Controller genutzt werden. Diese Antworten erklären, was die App starten und automatisieren kann und welche Funktionen von Windows-Unterstützung abhängen.",
       items: [
         {
           question: "Was ist CouchMode?",
           answer:
-            "CouchMode ist ein Windows-Dienstprogramm für Gaming mit Controller. Es kann eine Session vom Sofa aus starten, wenn ein kompatibler Controller verbunden wird, dein gewähltes Spielerlebnis öffnen und die unterstützten Session-Änderungen wiederherstellen, die es am Ende der Session vorgenommen hat.",
+            "CouchMode ist ein Windows-Dienstprogramm für PC-Gaming mit Controller. Wenn ein kompatibler Controller verbunden wird, kann es eine Gaming-Session starten, dein gewähltes Spielerlebnis öffnen und die unterstützten Änderungen wiederherstellen, die es während der Sitzung vorgenommen hat.",
         },
         {
           question: "Ersetzt CouchMode die Windows-Shell?",
@@ -259,13 +259,13 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "Was ändert CouchMode auf meinem PC?",
           answer:
-            "Nur die unterstützten Session-Aktionen, die du aktivierst. CouchMode kann ein Spielerlebnis öffnen, über Resource Control ausgewählte Apps schließen und unterstützte Benachrichtigungs-, Anzeige-, Audio-, HDR-, Energie- und Gaming-Einstellungen vorübergehend anwenden. Am Ende der Session stellt es die geänderten Einstellungen wieder her.",
+            "Nur die unterstützten Aktionen, die du aktivierst. CouchMode kann ein Spielerlebnis öffnen, über Resource Control ausgewählte Apps schließen und unterstützte Benachrichtigungs-, Anzeige-, Audio-, HDR-, Energie- und Gaming-Einstellungen vorübergehend anwenden. Am Ende der Sitzung stellt es die von ihm geänderten Einstellungen wieder her.",
         },
         {
           question:
             "Kann CouchMode Discord, Chrome oder andere Desktop-Apps vor dem Spielen schließen?",
           answer:
-            "Mit Pro Resource Control wählst du aus, welche unterstützten Apps CouchMode für die Session schließen darf und ob sie danach wieder geöffnet werden sollen. Nicht ausgewählte Apps werden nicht absichtlich geschlossen. Dienste, Apps mit erhöhten Rechten, geschützte Systemkomponenten und Apps, die sich selbst neu starten, können geöffnet bleiben.",
+            "Mit Pro Resource Control wählst du aus, welche unterstützten Apps CouchMode für die Sitzung schließen darf und ob sie danach wieder geöffnet werden sollen. Nicht ausgewählte Apps werden nicht absichtlich geschlossen. Dienste, Apps mit erhöhten Rechten, geschützte Systemkomponenten und Apps, die sich selbst neu starten, können geöffnet bleiben.",
         },
         {
           question: "Kann CouchMode Steam Big Picture oder einen anderen Launcher starten?",
@@ -280,13 +280,13 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "Funktioniert CouchMode mit PS5- oder DualSense-Controllern?",
           answer:
-            "CouchMode startet und beendet Sessions mit Controllern, die Windows als Xbox-Controller (XInput) bereitstellt. Ein PlayStation-Controller im nativen Modus wird nicht zum Starten oder Beenden einer Session verwendet; CouchMode zeigt ihn nicht fälschlich als verbunden an. Wenn ein Setup einen PlayStation-Controller Windows als XInput-Controller präsentiert, behandelt CouchMode ihn wie jeden anderen XInput-Controller.",
+            "CouchMode startet und beendet Sitzungen mit Controllern, die Windows als Xbox-Controller (XInput) bereitstellt. Ein PlayStation-Controller im nativen Modus wird nicht zum Starten oder Beenden einer Sitzung verwendet; CouchMode zeigt ihn nicht fälschlich als verbunden an. Wenn ein Setup einen PlayStation-Controller Windows als XInput-Controller präsentiert, behandelt CouchMode ihn wie jeden anderen XInput-Controller.",
         },
         {
           question:
             "Was passiert, wenn mein Controller während einer Gaming-Session getrennt wird?",
           answer:
-            "Das ist der normale Weg, eine Session zu beenden. Wenn der Controller getrennt wird, schließt CouchMode das von ihm geöffnete Spielerlebnis, stellt die unterstützten Windows-Einstellungen wieder her und bringt dich zum Desktop zurück.",
+            "So endet eine Sitzung normalerweise. Wenn der Controller getrennt wird, schließt CouchMode das von ihm geöffnete Spielerlebnis, stellt die unterstützten Windows-Einstellungen wieder her und bringt dich zum Desktop zurück.",
         },
         {
           question: "Unterstützt CouchMode Playnite?",
@@ -326,7 +326,7 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "Was passiert, wenn meine Mitgliedschaft endet?",
           answer:
-            "Pro-Funktionen wechseln nach der in der App definierten Aktualisierung der Berechtigung und Kulanzzeit zu Free zurück. Deine Einstellungen bleiben gespeichert, und der kostenlose Session-Ablauf bleibt verfügbar.",
+            "Pro-Funktionen wechseln nach der in der App definierten Aktualisierung der Berechtigung und Kulanzzeit zu Free zurück. Deine Einstellungen bleiben gespeichert, und die kostenlosen Grundfunktionen bleiben verfügbar.",
         },
         {
           question: "Wie erfasse ich Diagnosedaten, wenn etwas auf dem Bildschirm nicht stimmt?",
@@ -336,7 +336,7 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "Verbessert CouchMode die Spieleleistung?",
           answer:
-            "CouchMode verspricht keine höheren FPS. Pro kann die Session durch das Schließen ausgewählter Apps aufräumen und unterstützte Windows-Session-Einstellungen wie Game Mode und einen ausgewählten Energieplan anwenden; am Ende der Session werden sie wiederhergestellt.",
+            "CouchMode verspricht keine höheren FPS. Pro kann durch das Schließen ausgewählter Apps aufräumen und unterstützte Windows-Einstellungen wie Game Mode und einen ausgewählten Energieplan anwenden; am Ende der Sitzung werden sie wiederhergestellt.",
         },
         {
           question: "Kann ich CouchMode aus dem Microsoft Store installieren?",
@@ -491,16 +491,16 @@ export const germanGuideHubPacket: SurfacePacketBase<"guide-hub"> = {
   ],
   payload: {
     eyebrow: "Wissensbereich",
-    heading: "Windows-Gaming vom Sofa, ohne Fülltext erklärt.",
+    heading: "Praxisanleitungen für PC-Gaming am Fernseher.",
     description:
-      "Praktische Anleitungen für Sessions mit Controller, TV-Setups, Steam Big Picture, Playnite und angedockte Windows-Gaming-Handhelds.",
+      "Praktische Anleitungen für PC-Gaming mit Controller, TV-Setups, Steam Big Picture, Playnite und Windows-Gaming-Handhelds am Dock.",
     filters: {
       ariaLabel: "Anleitungen nach Kategorie filtern",
       allLabel: "Alle",
       categories: {
         playnite: "Playnite",
         "steam-big-picture": "Steam Big Picture",
-        "windows-couch-gaming": "Windows-Gaming vom Sofa",
+        "windows-couch-gaming": "PC-Gaming am Fernseher",
         "windows-handhelds": "Windows-Handhelds",
       },
     },

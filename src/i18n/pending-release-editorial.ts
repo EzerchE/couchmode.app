@@ -7,24 +7,24 @@ export const germanReleaseEditorialOverlay = {
     {
       version: "0.6.0-rc.8",
       summary:
-        "Steam Big Picture und Playnite Fullscreen sind jetzt zusammen mit der Xbox Full-Screen Experience kostenlos verfügbar. Benutzerdefinierte Launcher, Resource Control und Session Tweaks bleiben Pro-Funktionen.",
+        "Steam Big Picture, Playnite Fullscreen und die Xbox Full-Screen Experience sind jetzt ohne Pro verfügbar. Benutzerdefinierte Launcher, Resource Control und Session Tweaks bleiben Pro-Funktionen.",
       notes: [
-        "Steam Big Picture und Playnite Fullscreen sind jetzt zusammen mit der Xbox Full-Screen Experience ohne Pro verfügbar.",
+        "Steam Big Picture, Playnite Fullscreen und die Xbox Full-Screen Experience sind jetzt ohne Pro verfügbar.",
         "Benutzerdefinierte Launcher, Resource Control und Session Tweaks bleiben Pro-Funktionen.",
-        "Bereits laufende Steam-Big-Picture-Sitzungen bleiben erhalten, wenn die CouchMode-Session endet.",
-        "Ein bereits geöffnetes Playnite, auch in einem minimierten Fenster, wird erkannt und übernommen, statt eine zweite Instanz zu starten. Es bleibt erhalten, wenn die CouchMode-Session endet.",
-        "Benutzerdefinierte Launcher arbeiten zuverlässiger: besserer Fokus, klarere Prozesszuordnung und saubereres Beenden.",
+        "Bereits laufende Steam-Big-Picture-Sitzungen bleiben geöffnet, wenn die CouchMode-Sitzung endet.",
+        "Eine bereits geöffnete Playnite-Instanz wird auch dann erkannt, wenn ihr Fenster minimiert ist. CouchMode verwendet sie statt eine zweite Instanz zu starten; beim Beenden der CouchMode-Sitzung bleibt sie geöffnet.",
+        "Benutzerdefinierte Launcher arbeiten zuverlässiger: mit besserem Fokus, klarerer Prozesszuordnung und saubererem Beenden.",
         "Benutzerdefinierte Launcher starten jetzt in ihrem eigenen Ordner, damit Launcher korrekt funktionieren, die ihr Installationsverzeichnis erwarten.",
         "Ein Launcher gilt erst als bereit, wenn eines seiner echten Fenster im Vordergrund ist, damit der Controller es tatsächlich steuern kann.",
         "Verbesserte Erkennung der Xbox Full-Screen Experience auf Desktop-PCs und Windows-Handhelds.",
-        "Fehler behoben, durch die unterstützte Geräte als nicht unterstützt erscheinen oder wiederholt zur Verifizierung auffordern konnten.",
+        "Fehler behoben, durch die unterstützte Geräte als nicht unterstützt angezeigt wurden oder wiederholt zur Verifizierung aufgefordert wurden.",
         "Genauere Erkennung integrierter und externer Controller, basierend auf der Verbindung eines Controllers statt auf seinem Hersteller.",
         "Klarere Hinweise, wenn Windows einen Controller nicht als Xbox- oder XInput-Controller bereitstellt.",
         "Zuverlässigere Resource Control: bessere Erkennung ausgewählter Apps sowie zuverlässigeres Schließen, Wiederöffnen und genaueres Melden dessen, was tatsächlich geschlossen wurde.",
         "Launch on Enter, Close on Exit, Launch on Exit und Display on Exit arbeiten zuverlässiger.",
-        "Sicherere Rückkehr zum Desktop nach einer Session.",
+        "Sicherere Rückkehr zum Desktop nach einer Sitzung.",
         "Verbesserte Diagnose- und Problemberichte.",
-        "Allgemeine Verbesserungen bei Update- und Sessionzuverlässigkeit.",
+        "Allgemeine Verbesserungen bei der Zuverlässigkeit von Updates und Sitzungen.",
       ],
       knownIssues: [
         "Geräte können nur von dem PC freigegeben werden, auf dem sie aktiviert sind. Es gibt keine In-App-Option, sich auf allen Geräten abzumelden.",
@@ -34,15 +34,15 @@ export const germanReleaseEditorialOverlay = {
     {
       version: "0.4.10-beta.191",
       summary:
-        "Schließe einen Controller an, dann öffnen Steam Big Picture, Playnite oder die von dir gewählte App im Vollbild. Trennst du ihn, schließt CouchMode die Session und bringt den Desktop zurück.",
+        "Schließe einen Controller an: Steam Big Picture, Playnite oder deine ausgewählte App öffnen sich im Vollbild. Trennst du den Controller, beendet CouchMode die Sitzung und du kehrst zum Desktop zurück.",
       notes: [
         "Verbesserte Erkennung der Xbox Full-Screen Experience auf Desktop-PCs und Windows-Handhelds.",
-        "Fehler behoben, durch die unterstützte Geräte als nicht unterstützt erscheinen oder wiederholt zur Verifizierung auffordern konnten.",
-        "Verbesserter Ablauf beim Starten, Verlassen und Zurückkehren aus Xbox-Sitzungen.",
+        "Fehler behoben, durch die unterstützte Geräte als nicht unterstützt angezeigt wurden oder wiederholt zur Verifizierung aufgefordert wurden.",
+        "Zuverlässigeres Starten, Verlassen und Zurückkehren aus Xbox-Sitzungen.",
         "Genauere Erkennung integrierter und externer Controller, einschließlich externer Controller, die auf Handhelds fälschlich als integriert erkannt wurden.",
         "Die Wiederherstellung des Desktops verändert zugängliche Fenster nicht mehr unnötig.",
-        "Bessere Diagnose- und Problemberichte.",
-        "Verbesserter Update-Status und allgemeine Zuverlässigkeit.",
+        "Verbesserte Diagnose- und Problemberichte.",
+        "Verbesserte Update-Statusanzeige und allgemeine Zuverlässigkeit.",
       ],
       knownIssues: [
         "Geräte können nur von dem PC freigegeben werden, auf dem sie aktiviert sind. Es gibt keine In-App-Option, sich auf allen Geräten abzumelden.",
@@ -52,13 +52,13 @@ export const germanReleaseEditorialOverlay = {
     {
       version: "0.4.10-beta.190",
       summary:
-        "Schließe einen Controller an, dann öffnen Steam Big Picture, Playnite oder die von dir gewählte App im Vollbild. Trennst du ihn, schließt CouchMode die Session und bringt den Desktop zurück.",
+        "Schließe einen Controller an: Steam Big Picture, Playnite oder deine ausgewählte App öffnen sich im Vollbild. Trennst du den Controller, beendet CouchMode die Sitzung und du kehrst zum Desktop zurück.",
       notes: [
         "Ein Fehler wurde behoben, durch den Exit im Infobereich nicht reagieren konnte.",
-        "Die Zuverlässigkeit dafür wurde verbessert, dass geöffnete Apps nach dem Verlassen des Xbox-Modus weiter aktiv und zugänglich bleiben.",
-        "Sichere Wiederherstellung für Fenster, die nach einer Session außerhalb des Bildschirms liegen oder nicht nutzbar sind.",
+        "Geöffnete Apps bleiben nach dem Verlassen des Xbox-Modus zuverlässiger aktiv und zugänglich.",
+        "Sicherere Wiederherstellung für Fenster, die nach einer Sitzung außerhalb des Bildschirms liegen oder nicht nutzbar sind.",
         "Genauere Erkennung integrierter und externer Controller auf Handhelds.",
-        "Verbesserte Überprüfung der Desktop-Rückkehr und stabilere Sessions.",
+        "Verbesserte Prüfung der Rückkehr zum Desktop und stabilere Sitzungen.",
         "Allgemeine Verbesserungen bei Zuverlässigkeit und Stabilität.",
       ],
       knownIssues: [
@@ -69,11 +69,11 @@ export const germanReleaseEditorialOverlay = {
     {
       version: "0.4.10-beta.183",
       summary:
-        "Schließe einen Controller an, dann öffnen Steam Big Picture, Playnite oder die von dir gewählte App im Vollbild. Trennst du ihn, schließt CouchMode die Session und bringt den Desktop zurück.",
+        "Schließe einen Controller an: Steam Big Picture, Playnite oder deine ausgewählte App öffnen sich im Vollbild. Trennst du den Controller, beendet CouchMode die Sitzung und du kehrst zum Desktop zurück.",
       notes: [
-        "Steam Big Picture, Playnite Fullscreen und eine benutzerdefinierte App deiner Wahl sind Sitzungen, die CouchMode verwaltet: Beim Trennen des Controllers werden sie zuverlässig geschlossen und der Desktop kehrt zurück.",
+        "Wenn CouchMode Steam Big Picture, Playnite Fullscreen oder eine benutzerdefinierte App gestartet hat, beendet es diese beim Trennen des Controllers und kehrt zum Desktop zurück.",
         "Die Rückkehr zum Desktop wird bei jedem Beenden einer Sitzung überprüft.",
-        "Optionales Resource Control schließt die für die Session ausgewählten Apps und öffnet sie danach wieder. Es arbeitet mit einer Liste, die vor Beginn der Session festgelegt wird, damit später geöffnete Apps nie verändert werden.",
+        "Optionales Resource Control schließt die für die Sitzung ausgewählten Apps und öffnet sie danach wieder. Es arbeitet mit einer Liste, die vor Beginn der Sitzung festgelegt wird, damit später geöffnete Apps nie verändert werden.",
         "Pro-Zugang, Mitgliedschaftsprüfungen und Lizenzierung beim Start wurden verbessert.",
         "Preise, der 7-Tage-Testzeitraum, Offline-Kulanz, Stufen und Gerätelimits bleiben unverändert.",
       ],
@@ -85,11 +85,11 @@ export const germanReleaseEditorialOverlay = {
     {
       version: "0.4.10-beta.45",
       summary:
-        "Verbesserte Problemberichte und Update-Prüfungen, ein ruhigerer Umgang mit nicht verfügbarer Xbox Full-Screen Experience sowie aktualisierte CouchMode-Markenkennzeichnung.",
+        "Verbesserte Problemberichte und Update-Prüfungen, ein weniger aufdringlicher Hinweis auf eine nicht verfügbare Xbox Full-Screen Experience sowie aktualisierte CouchMode-Markenkennzeichnung.",
       notes: [
-        "Problem melden kann Berichte senden, wenn Sie zustimmen.",
+        "Problem melden kann Berichte senden, wenn du zustimmst.",
         "Verbesserte Update-Prüfung.",
-        "Wenn die Xbox Full-Screen Experience nicht verfügbar ist, bleibt der Hinweis ruhiger und dauerhaft sichtbar.",
+        "Wenn die Xbox Full-Screen Experience nicht verfügbar ist, bleibt der Hinweis dauerhaft sichtbar und weniger aufdringlich.",
         "Markenkennzeichnung für Installer und Anwendung aktualisiert.",
       ],
       knownIssues: ["Der öffentliche Download ist für diese Version nicht aktiviert."],

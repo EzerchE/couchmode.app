@@ -36,7 +36,7 @@ export const germanPrivacyPacket: SurfacePacketBase<"legal"> = {
         heading: "Desktop-Dienstprogramm",
         paragraphs: [
           legalText(
-            "CouchMode ist ein Windows-Desktop-Dienstprogramm, das dir dabei helfen soll, Gaming-Sessions vom Sofa aus auf deinem PC vorzubereiten, zu verwalten und wiederherzustellen. Die Free-Nutzung erfordert kein Konto.",
+            "CouchMode ist ein Windows-Desktop-Dienstprogramm, das dir hilft, Gaming-Sessions mit Controller am Fernseher vorzubereiten, zu verwalten und die dabei geänderten unterstützten Einstellungen wiederherzustellen. Die Free-Nutzung erfordert kein Konto.",
           ),
         ],
       },
@@ -137,10 +137,10 @@ export const germanTermsPacket: SurfacePacketBase<"legal"> = {
         heading: "Lizenz",
         paragraphs: [
           legalText(
-            "CouchMode wird lizenziert, nicht verkauft. Es ist ein Windows-Dienstprogramm für die Vorbereitung und Wiederherstellung von Sessions mit Windows und vorhandenen Gaming-Frontends.",
+            "CouchMode wird lizenziert, nicht verkauft. Es ist ein Windows-Dienstprogramm für die Vorbereitung von Gaming-Sessions mit Windows und vorhandenen Gaming-Frontends sowie die Wiederherstellung unterstützter Einstellungen.",
           ),
           legalText(
-            "CouchMode ersetzt weder die Windows-Shell noch deinen Windows-Startablauf. Die Startautomatisierung ist optional und wird vom Benutzer gesteuert.",
+            "CouchMode ersetzt weder die Windows-Shell noch den normalen Windows-Start. Die Startautomatisierung ist optional und wird vom Benutzer gesteuert.",
           ),
           legalText(
             "CouchMode verändert keine Windows-Interna, installiert keine Kernel-Treiber, umgeht keine Sicherheitsfunktionen und patcht weder Spiele noch Windows.",
@@ -154,7 +154,7 @@ export const germanTermsPacket: SurfacePacketBase<"legal"> = {
             "Ein Installer kann Free-Funktionen, den 7-Tage-Pro-Test und die Pro-Aktivierung enthalten. Free-Funktionen sind ohne Kauf verfügbar. Pro-Funktionen erfordern während der öffentlichen Beta einen aktiven Test oder eine aktive Patreon-Mitgliedschaft.",
           ),
           legalText(
-            "Free umfasst den controllerorientierten Sessionablauf, die Windows-Xbox-Vollbildoberfläche, sofern unterstützt, Steam Big Picture, Playnite und die Rückkehr zum Desktop nach dem Ende einer Session. Pro umfasst kompatible benutzerdefinierte Launcher, Resource Control, Session Tweaks und die tiefere Sessionautomatisierung.",
+            "Free umfasst die Grundfunktionen für die Bedienung mit Controller, die Xbox-Vollbildoberfläche von Windows, sofern unterstützt, Steam Big Picture, Playnite sowie die Rückkehr zum Desktop, wenn eine Sitzung endet. Pro umfasst kompatible benutzerdefinierte Launcher, Resource Control, Session Tweaks und weitergehende Automatisierung.",
           ),
         ],
       },
@@ -203,7 +203,7 @@ export const germanTermsPacket: SurfacePacketBase<"legal"> = {
         heading: "Automatisierung und Wiederherstellung",
         paragraphs: [
           legalText(
-            "CouchMode versucht, sichere und rückgängig zu machende Sessionänderungen vorzunehmen. Prüfe deine Einstellungen, bevor du die Automatisierung aktivierst, insbesondere Optionen für Display, Audio, Energie, Start und Resource Control.",
+            "CouchMode versucht, sichere und rückgängig zu machende Änderungen während einer Sitzung vorzunehmen. Prüfe deine Einstellungen, bevor du die Automatisierung aktivierst, insbesondere Optionen für Display, Audio, Energie, Start und Resource Control.",
           ),
           legalText(
             "CouchMode verspricht keine Leistungssteigerungen und kein identisches Verhalten auf jedem Windows-Gerät.",
@@ -222,7 +222,7 @@ export const germanTermsPacket: SurfacePacketBase<"legal"> = {
         heading: "Keine Gewährleistung",
         paragraphs: [
           legalText(
-            "CouchMode wird wie besehen bereitgestellt. Wir arbeiten daran, es zuverlässig zu halten, können jedoch keinen unterbrechungsfreien oder fehlerfreien Betrieb auf jedem PC-Setup versprechen.",
+            "CouchMode wird in der vorliegenden Form bereitgestellt. Wir arbeiten daran, es zuverlässig zu halten, können jedoch keinen unterbrechungsfreien oder fehlerfreien Betrieb auf jedem PC-Setup versprechen.",
           ),
         ],
       },
@@ -306,7 +306,7 @@ export const germanRefundPacket: SurfacePacketBase<"legal"> = {
       {
         paragraphs: [
           legalText(
-            "Wird eine Mitgliedschaft gekündigt, erstattet oder inaktiv, kehrt der Pro-Zugang nach einer Aktualisierung der Berechtigung und einer möglichen Kulanzfrist in Free zurück. Deine CouchMode-Einstellungen bleiben gespeichert und der Free-Sessionablauf bleibt verfügbar.",
+            "Wenn eine Mitgliedschaft gekündigt oder erstattet wird oder inaktiv wird, kehrt der Pro-Zugang nach einer Aktualisierung der Berechtigung und einer möglichen Kulanzfrist zu Free zurück. Deine CouchMode-Einstellungen bleiben gespeichert und die Free-Grundfunktionen bleiben verfügbar.",
           ),
         ],
       },
@@ -339,10 +339,10 @@ export const germanCheckoutPacket: SurfacePacketBase<"checkout"> = {
       lastUpdated: "August 2026",
     },
     description:
-      "CouchMode Free umfasst den grundlegenden controllerorientierten Gaming-Ablauf. Pro ergänzt tiefere Windows- und Sessionautomatisierung.",
+      "CouchMode Free umfasst die Grundfunktionen für PC-Gaming mit Controller. Pro ergänzt weitergehende Windows- und Sitzungsautomatisierung.",
     deviceLimit: { beforeCount: "Bis zu", afterCount: "aktive Windows-Geräte" },
     automationDescription:
-      "Beide Stufen enthalten Resource Control, Session Tweaks, Aktionen nach der Session und weitere Pro-Sessionautomatisierung.",
+      "Beide Pro-Stufen enthalten Resource Control, Session Tweaks, Aktionen nach dem Spielen und weitere Pro-Automatisierung.",
     patreonCtaLabel: "Auf Patreon fortfahren",
     membership: {
       description:
