@@ -1,8 +1,14 @@
 import { useLocation } from "@tanstack/react-router";
-import { Languages } from "lucide-react";
+import { Check, ChevronDown, Languages } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { activeLocales } from "@/i18n/config";
-import { contentIdForPublicPath, relativeHrefFor } from "@/i18n/packets";
 import { useLocaleContent } from "@/i18n/content";
+import { contentIdForPublicPath, relativeHrefFor } from "@/i18n/packets";
 
 type LanguageSwitcherProps = {
   compact?: boolean;
@@ -17,61 +23,60 @@ export function LanguageSwitcher({ compact = false }: LanguageSwitcherProps) {
     const href = relativeHrefFor(candidate.id, contentId);
     return href ? [{ ...candidate, href }] : [];
   });
+  const currentLanguage = languages.find((language) => language.id === locale);
+
+  if (!currentLanguage) return null;
 
   return (
     <nav
       aria-label={shared.navigation.languageMenuLabel}
       className={compact ? "" : "hidden lg:block"}
     >
-      <div
-        className={
-          compact
-            ? "mt-2 border-t border-white/10 px-2 pt-3"
-            : "flex items-center rounded-full border border-white/10 bg-card/70 p-1"
-        }
-      >
-        {compact ? (
-          <p className="flex items-center gap-2 px-2 pb-2 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
-            <Languages className="h-3.5 w-3.5" /> {shared.navigation.languageMenuLabel}
-          </p>
-        ) : null}
-        <div className={compact ? "grid grid-cols-3 gap-1" : "flex items-center"}>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <button
+            type="button"
+            aria-label={`${shared.navigation.languageMenuLabel}: ${currentLanguage.label}`}
+            className={
+              compact
+                ? "flex w-full items-center justify-between gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-medium text-foreground transition hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/80"
+                : "inline-flex shrink-0 items-center gap-1.5 rounded-full border border-white/10 bg-card/70 px-3 py-2 text-sm font-medium text-foreground transition hover:border-primary/45 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            }
+          >
+            <span className="flex min-w-0 items-center gap-1.5 whitespace-nowrap">
+              <Languages className="h-4 w-4 shrink-0 text-aurora" aria-hidden="true" />
+              {currentLanguage.label}
+            </span>
+            <ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />
+          </button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent
+          align={compact ? "center" : "end"}
+          sideOffset={8}
+          className="z-[80] min-w-44 rounded-2xl border-white/12 bg-card/95 p-1.5 text-foreground shadow-[0_22px_60px_-24px_rgba(72,92,255,0.7)] backdrop-blur-xl"
+        >
           {languages.map((language) => (
-            <a
+            <DropdownMenuItem
               key={language.id}
-              href={language.href}
-              hrefLang={language.id}
-              lang={language.id}
-              aria-label={language.label}
-              aria-current={language.id === locale ? "page" : undefined}
-              className={
-                compact
-                  ? `rounded-lg px-2 py-2 text-center text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/80 ${
-                      language.id === locale
-                        ? "bg-primary/15 text-foreground"
-                        : "text-muted-foreground hover:bg-white/5 hover:text-foreground"
-                    }`
-                  : `rounded-full px-2.5 py-1.5 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/80 ${
-                      language.id === locale
-                        ? "bg-primary text-primary-foreground"
-                        : "text-muted-foreground hover:text-foreground"
-                    }`
-              }
+              asChild
+              className="cursor-pointer rounded-xl p-0 focus:bg-primary/15 focus:text-foreground"
             >
-              {compact ? (
-                language.label
-              ) : (
-                <>
-                  <span className="xl:hidden" aria-hidden="true">
-                    {language.id.slice(0, 2).toUpperCase()}
-                  </span>
-                  <span className="hidden xl:inline">{language.label}</span>
-                </>
-              )}
-            </a>
+              <a
+                href={language.href}
+                hrefLang={language.id}
+                lang={language.id}
+                aria-current={language.id === locale ? "page" : undefined}
+                className="flex w-full items-center justify-between gap-6 px-3 py-2.5 text-sm font-medium"
+              >
+                {language.label}
+                {language.id === locale ? (
+                  <Check className="h-4 w-4 shrink-0 text-aurora" aria-hidden="true" />
+                ) : null}
+              </a>
+            </DropdownMenuItem>
           ))}
-        </div>
-      </div>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </nav>
   );
 }

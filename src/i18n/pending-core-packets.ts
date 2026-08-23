@@ -658,8 +658,8 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
     hero: {
       eyebrow: "Windows için kumanda odaklı oyun yardımcı programı.",
       badge: "Herkese açık beta şimdi kullanılabilir",
-      headingBefore: "Oyun bilgisayarınızı",
-      headingAccent: "konsol gibi kullanın.",
+      headingBefore: "Bilgisayarınızı",
+      headingAccent: "oyun konsolu gibi kullanın.",
       description:
         "Oyun kumandanızı açın; CouchMode seçtiğiniz oyun deneyimini başlatır, oturumu tercihlerinize göre hazırlar ve işiniz bittiğinde sizi kullanılabilir bir masaüstüne döndürür.",
       downloadLabel: "Windows için indir",

@@ -126,7 +126,7 @@ export function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackRedditClick("navbar")}
-              className="hidden xl:inline-flex items-center gap-2 rounded-full border border-white/10 bg-card/70 px-3 py-2 text-sm font-medium text-muted-foreground transition duration-200 hover:-translate-y-0.5 hover:border-[#ff6b35]/45 hover:bg-card hover:text-foreground hover:shadow-[0_10px_28px_-14px_rgba(255,107,53,0.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b35]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background xl:px-3.5"
+              className="hidden shrink-0 whitespace-nowrap xl:inline-flex items-center gap-2 rounded-full border border-white/10 bg-card/70 px-3 py-2 text-sm font-medium text-muted-foreground transition duration-200 hover:-translate-y-0.5 hover:border-[#ff6b35]/45 hover:bg-card hover:text-foreground hover:shadow-[0_10px_28px_-14px_rgba(255,107,53,0.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b35]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background xl:px-3.5"
             >
               <RedditIcon className="h-4 w-4 text-[#ff6b35]" />
               {navigation.redditLabel}

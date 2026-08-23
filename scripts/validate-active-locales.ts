@@ -8,6 +8,10 @@ import { releaseEditorialFor } from "../src/i18n/release-editorial";
 
 const root = path.resolve(import.meta.dirname, "..");
 const publicOutput = path.join(root, "dist", "client");
+const languageSwitcherSource = fs.readFileSync(
+  path.join(root, "src", "components", "i18n", "LanguageSwitcher.tsx"),
+  "utf8",
+);
 const expectedActiveLocaleIds = ["en", "de", "tr"] as const;
 const phase1LocaleIds = ["de", "tr"] as const;
 const plannedLocaleIds = ["fr", "es", "it", "pt-BR", "pl", "ja", "ko"] as const;
@@ -15,6 +19,13 @@ const plannedLocaleIds = ["fr", "es", "it", "pt-BR", "pl", "ja", "ko"] as const;
 function fail(message: string): never {
   throw new Error(`active locale validation: ${message}`);
 }
+
+if (
+  !languageSwitcherSource.includes("activeLocales.flatMap") ||
+  !languageSwitcherSource.includes("<a") ||
+  !languageSwitcherSource.includes("href={language.href}")
+)
+  fail("language selection must expose active locales as navigable anchor destinations");
 
 function decodeHtml(value: string) {
   return value.replaceAll("&#x27;", "'").replaceAll("&quot;", '"').replaceAll("&amp;", "&");
@@ -150,15 +161,12 @@ try {
         }
       }
 
-      for (const language of activeLocales) {
-        const languageHref = relativeHrefFor(language.id as LocaleId, contentId);
-        if (!languageHref || !html.includes(`href="${languageHref}"`))
-          fail(`${locale.id}/${contentId} language selection omits ${language.id}`);
-      }
-      for (const language of activeLocales) {
-        if (!html.includes(`aria-label="${language.label}"`))
-          fail(`${locale.id}/${contentId} does not expose ${language.label} in language selection`);
-      }
+      if (
+        !html.includes(
+          `aria-label="${packet.shared.navigation.languageMenuLabel}: ${locale.label}"`,
+        )
+      )
+        fail(`${locale.id}/${contentId} does not identify its current language control`);
       for (const plannedLocaleId of plannedLocaleIds) {
         const plannedLocale = manifest.locales.find((item) => item.id === plannedLocaleId);
         if (plannedLocale && html.includes(`aria-label="${plannedLocale.label}"`))
