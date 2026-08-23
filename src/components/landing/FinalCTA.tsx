@@ -5,7 +5,8 @@ import { MICROSOFT_STORE_LABEL } from "@/lib/channels";
 import { latestRelease } from "@/data/releases";
 import { useMicrosoftStoreUrl } from "@/lib/campaign-attribution";
 import type { LocaleId } from "@/i18n/config";
-import { relativeHrefFor, type HomePayload } from "@/i18n/packets";
+import { useLocaleContent } from "@/i18n/content";
+import { type HomePayload } from "@/i18n/packets";
 
 // Read the direct-download state from the same release data the download page and
 // the update manifests are generated from, so this card can never advertise a
@@ -14,8 +15,9 @@ const downloadOpen = latestRelease.downloadEnabled && !!latestRelease.installerU
 
 export function FinalCTA({ copy, locale }: { copy: HomePayload["finalCta"]; locale: LocaleId }) {
   const storeUrl = useMicrosoftStoreUrl();
-  const downloadHref = relativeHrefFor(locale, "download");
-  const changelogHref = relativeHrefFor(locale, "changelog");
+  const { relativeHref } = useLocaleContent();
+  const downloadHref = relativeHref("download");
+  const changelogHref = relativeHref("changelog");
   if (!downloadHref || !changelogHref) throw new Error(`Missing final CTA hrefs for ${locale}`);
   const channels = [
     {
@@ -52,9 +54,7 @@ export function FinalCTA({ copy, locale }: { copy: HomePayload["finalCta"]; loca
             >
               {copy.headingBefore} <span className="text-aurora">{copy.headingAccent}</span>?
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-              {copy.description}
-            </p>
+            <p className="mx-auto mt-4 max-w-xl text-muted-foreground">{copy.description}</p>
 
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <a

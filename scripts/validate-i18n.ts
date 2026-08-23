@@ -29,6 +29,7 @@ const localizedSourceRoots = [
   "src/routes",
   "src/components/landing",
   "src/components/guides",
+  "src/components/i18n",
   "src/components/utility",
   "src/content/guides",
 ];
@@ -36,6 +37,10 @@ const localizedSourceFiles = [
   ...localizedSourceRoots.flatMap((directory) => collectFiles(path.join(root, directory))),
   path.join(root, "src/content/guides.ts"),
   path.join(root, "src/i18n/packets.ts"),
+  path.join(root, "src/i18n/config.ts"),
+  path.join(root, "src/i18n/content.tsx"),
+  path.join(root, "src/i18n/surface-head.ts"),
+  path.join(root, "src/i18n/surface-registry.ts"),
   path.join(root, "src/i18n/pending-core-packets.ts"),
   path.join(root, "src/i18n/pending-legal-checkout-packets.ts"),
   path.join(root, "src/i18n/pending-release-editorial.ts"),

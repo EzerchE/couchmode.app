@@ -4,9 +4,8 @@ import { Menu, X } from "lucide-react";
 import { CouchModeMark, CouchModeWordmark } from "@/components/brand/CouchModeMark";
 import { RedditIcon } from "@/components/RedditIcon";
 import { REDDIT_URL, trackRedditClick } from "@/lib/community";
-import type { LocaleId } from "@/i18n/config";
 import { useLocaleContent } from "@/i18n/content";
-import { relativeHrefFor, type LocaleLink } from "@/i18n/packets";
+import { type LocaleLink } from "@/i18n/packets";
 
 // A link is "current" only when it points at a real page and that page is open.
 // The in-page anchors (/#how, /#pricing, /#download) are never current: they are
@@ -15,16 +14,30 @@ const normalizePath = (p: string) => (p.length > 1 ? p.replace(/\/+$/, "") : p);
 const isCurrentPage = (href: string, pathname: string) =>
   !href.includes("#") && normalizePath(href) === normalizePath(pathname);
 
-function localizedLinkHref(locale: LocaleId, link: LocaleLink) {
-  const href = relativeHrefFor(locale, link.contentId, link.fragment, link.trailingSlash);
-  if (!href) throw new Error(`Missing public href for ${locale}/${link.contentId}`);
+function localizedLinkHref(
+  relativeHref: (
+    contentId: LocaleLink["contentId"],
+    fragment?: string,
+    trailingSlash?: boolean,
+  ) => string | undefined,
+  link: LocaleLink,
+) {
+  const href = relativeHref(link.contentId, link.fragment, link.trailingSlash);
+  if (!href) throw new Error(`Missing localized href for ${link.contentId}`);
   return href;
 }
 
 export function Navbar() {
-  const { locale, shared } = useLocaleContent();
+  const { shared, relativeHref } = useLocaleContent();
   const { navigation } = shared;
-  const downloadHref = localizedLinkHref(locale, { contentId: "download", label: navigation.downloadLabel });
+  const homeHref = localizedLinkHref(relativeHref, {
+    contentId: "home",
+    label: navigation.homeLabel,
+  });
+  const downloadHref = localizedLinkHref(relativeHref, {
+    contentId: "download",
+    label: navigation.downloadLabel,
+  });
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -67,7 +80,11 @@ export function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-2">
-          <a href="/" className="flex items-center gap-2.5 group" aria-label={navigation.homeLabel}>
+          <a
+            href={homeHref}
+            className="flex items-center gap-2.5 group"
+            aria-label={navigation.homeLabel}
+          >
             <CouchModeMark
               size={48}
               className={`rounded-[12px] shadow-[0_6px_22px_-8px_rgba(155,107,255,0.7)] transition-all duration-300 ${
@@ -85,7 +102,7 @@ export function Navbar() {
               crowding the logo and primary download action. */}
           <nav className="hidden lg:flex items-center gap-4 xl:gap-8">
             {navigation.links.map((l) => {
-              const href = localizedLinkHref(locale, l);
+              const href = localizedLinkHref(relativeHref, l);
               const current = isCurrentPage(href, pathname);
               return (
                 <a
@@ -157,7 +174,7 @@ export function Navbar() {
                 className="absolute right-4 top-full mt-2 w-72 max-w-[calc(100vw-2rem)] rounded-2xl border border-white/12 bg-card/95 p-2 shadow-[0_22px_60px_-24px_rgba(72,92,255,0.7)] backdrop-blur-xl lg:hidden"
               >
                 {navigation.links.map((l) => {
-                  const href = localizedLinkHref(locale, l);
+                  const href = localizedLinkHref(relativeHref, l);
                   const current = isCurrentPage(href, pathname);
                   return (
                     <a

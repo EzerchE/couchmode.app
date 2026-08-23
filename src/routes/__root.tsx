@@ -1,9 +1,9 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
-  Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -13,13 +13,22 @@ import { CloudflareAnalytics } from "@/components/analytics/CloudflareAnalytics"
 import { ConsentBanner } from "@/components/analytics/ConsentBanner";
 import { LocalizedHeadLinks } from "@/components/i18n/LocalizedHeadLinks";
 import { LocaleContentProvider } from "@/i18n/content";
+import { localeForPublicPath, relativeHrefFor } from "@/i18n/packets";
 import { consentBootstrapScript } from "@/lib/consent";
 
 import appCss from "../styles.css?url";
 
 const GTM_CONTAINER_ID = "GTM-T44W76B7";
 
+function useLocalizedHomeHref() {
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const locale = localeForPublicPath(pathname);
+  return relativeHrefFor(locale, "home") ?? "/";
+}
+
 function NotFoundComponent() {
+  const homeHref = useLocalizedHomeHref();
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
@@ -29,12 +38,12 @@ function NotFoundComponent() {
           The page you're looking for doesn't exist or has been moved.
         </p>
         <div className="mt-6">
-          <Link
-            to="/"
+          <a
+            href={homeHref}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
             Go home
-          </Link>
+          </a>
         </div>
       </div>
     </div>
@@ -44,6 +53,7 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
+  const homeHref = useLocalizedHomeHref();
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -65,7 +75,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             Try again
           </button>
           <a
-            href="/"
+            href={homeHref}
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
             Go home
@@ -112,8 +122,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const locale = useRouterState({
+    select: (state) => localeForPublicPath(state.location.pathname),
+  });
+
   return (
-    <html lang="en" className="dark">
+    <html lang={locale} className="dark">
       <head>
         <script dangerouslySetInnerHTML={{ __html: consentBootstrapScript }} />
         <script
@@ -149,9 +163,12 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const locale = useRouterState({
+    select: (state) => localeForPublicPath(state.location.pathname),
+  });
 
   return (
-    <LocaleContentProvider>
+    <LocaleContentProvider locale={locale}>
       <QueryClientProvider client={queryClient}>
         <AnalyticsLifecycle />
         <CloudflareAnalytics />

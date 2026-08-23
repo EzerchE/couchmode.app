@@ -2,13 +2,21 @@ import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import type { LocaleId } from "@/i18n/config";
-import { relativeHrefFor, type HomePayload } from "@/i18n/packets";
+import { useLocaleContent } from "@/i18n/content";
+import { type HomePayload } from "@/i18n/packets";
 
 const FREE_PRICE = "$0";
 const PRO_INFO_EVENT_LABEL = "Unlock Pro with Patreon";
 
-export function Comparison({ copy, locale }: { copy: HomePayload["comparison"]; locale: LocaleId }) {
-  const buyHref = relativeHrefFor(locale, "buy");
+export function Comparison({
+  copy,
+  locale,
+}: {
+  copy: HomePayload["comparison"];
+  locale: LocaleId;
+}) {
+  const { relativeHref } = useLocaleContent();
+  const buyHref = relativeHref("buy");
   if (!buyHref) throw new Error(`Missing checkout href for ${locale}`);
   return (
     <section id="pricing" className="relative py-24 sm:py-32" aria-labelledby="pricing-heading">
@@ -21,9 +29,7 @@ export function Comparison({ copy, locale }: { copy: HomePayload["comparison"]; 
           >
             {copy.heading}
           </h2>
-          <p className="mt-5 text-muted-foreground">
-            {copy.description}
-          </p>
+          <p className="mt-5 text-muted-foreground">{copy.description}</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 items-stretch">
@@ -41,9 +47,7 @@ export function Comparison({ copy, locale }: { copy: HomePayload["comparison"]; 
                 <span className="text-sm text-muted-foreground ml-1">{copy.free.priceSuffix}</span>
               </div>
             </div>
-            <p className="text-sm text-muted-foreground mb-8">
-              {copy.free.description}
-            </p>
+            <p className="text-sm text-muted-foreground mb-8">{copy.free.description}</p>
             <ul className="space-y-4 mb-10 flex-1">
               {copy.free.features.map((f) => (
                 <li key={f} className="flex items-start gap-3 text-sm">
@@ -79,9 +83,7 @@ export function Comparison({ copy, locale }: { copy: HomePayload["comparison"]; 
                   </span>
                 </div>
               </div>
-              <p className="text-sm text-muted-foreground mb-8">
-                {copy.pro.description}
-              </p>
+              <p className="text-sm text-muted-foreground mb-8">{copy.pro.description}</p>
               <ul className="space-y-4 mb-10 flex-1">
                 {copy.pro.features.map((f) => (
                   <li key={f} className="flex items-start gap-3 text-sm">

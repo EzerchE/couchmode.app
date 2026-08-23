@@ -1,24 +1,33 @@
 import { ArrowRight, BookOpen } from "lucide-react";
 import { GuideCard } from "@/components/guides/GuideCard";
 import type { LocaleId } from "@/i18n/config";
-import {
-  localizedGuides,
-  packetForKind,
-  relativeHrefFor,
-  type HomePayload,
-  type LocalizedGuide,
-} from "@/i18n/packets";
+import { useLocaleContent } from "@/i18n/content";
+import { localizedGuidesForPacket, type HomePayload, type LocalizedGuide } from "@/i18n/packets";
 
-function guideForContentId(locale: LocaleId, contentId: HomePayload["guidesPreview"]["featuredGuideIds"][number]) {
-  return localizedGuides(locale).find((guide) => guide.packet.contentId === contentId);
+function guideForContentId(
+  guides: LocalizedGuide[],
+  contentId: HomePayload["guidesPreview"]["featuredGuideIds"][number],
+) {
+  return guides.find((guide) => guide.packet.contentId === contentId);
 }
 
-export function GuidesPreview({ copy, locale }: { copy: HomePayload["guidesPreview"]; locale: LocaleId }) {
-  const guidesHref = relativeHrefFor(locale, "guides", "", true);
-  const guideHubPacket = packetForKind(locale, "guides", "guide-hub");
-  if (!guidesHref || !guideHubPacket) throw new Error(`Missing guides packet or href for ${locale}`);
+export function GuidesPreview({
+  copy,
+  locale,
+}: {
+  copy: HomePayload["guidesPreview"];
+  locale: LocaleId;
+}) {
+  const content = useLocaleContent();
+  const guidesHref = content.relativeHref("guides", "", true);
+  const guideHubPacket = content.surfaces.guides;
+  if (!guidesHref || !guideHubPacket)
+    throw new Error(`Missing guides packet or href for ${locale}`);
+  if (guideHubPacket.kind !== "guide-hub")
+    throw new Error(`Invalid guide hub packet for ${locale}`);
+  const guides = localizedGuidesForPacket(content);
   const featuredGuides = copy.featuredGuideIds
-    .map((contentId) => guideForContentId(locale, contentId))
+    .map((contentId) => guideForContentId(guides, contentId))
     .filter((guide): guide is LocalizedGuide => Boolean(guide));
   return (
     <section
@@ -41,9 +50,7 @@ export function GuidesPreview({ copy, locale }: { copy: HomePayload["guidesPrevi
             >
               {copy.heading}
             </h2>
-            <p className="mt-4 text-muted-foreground">
-              {copy.description}
-            </p>
+            <p className="mt-4 text-muted-foreground">{copy.description}</p>
           </div>
           <a
             href={guidesHref}

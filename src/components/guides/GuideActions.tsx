@@ -1,7 +1,8 @@
 import { Download, MessageCircle } from "lucide-react";
 import { REDDIT_URL, trackRedditClick } from "@/lib/community";
 import type { LocaleId } from "@/i18n/config";
-import { relativeHrefFor, type GuideHubPayload } from "@/i18n/packets";
+import { useLocaleContent } from "@/i18n/content";
+import { type GuideHubPayload } from "@/i18n/packets";
 
 // Deliberately compact and separate from the article body. Guides end on their
 // own topic-specific note instead of inheriting a repeated promotional ending.
@@ -12,7 +13,8 @@ export function GuideActions({
   copy: GuideHubPayload["article"]["actions"];
   locale: LocaleId;
 }) {
-  const downloadHref = relativeHrefFor(locale, "download", "", true);
+  const { relativeHref } = useLocaleContent();
+  const downloadHref = relativeHref("download", "", true);
   if (!downloadHref) throw new Error(`Missing guide download href for ${locale}`);
   return (
     <aside

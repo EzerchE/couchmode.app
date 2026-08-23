@@ -1,5 +1,5 @@
 {
-  "sourceRevision": "48fee9d887186ab19f883ee4652613d99ee7cc766dcc3ab910a634bc5ae81cf1",
+  "sourceRevision": "31102df882c0d1f64930cd320ddf277ff421fe406d64aa65da27911fe3ba522e",
   "requiredSurfaces": [
     { "id": "home", "path": "/", "kind": "landing", "indexability": "index" },
     { "id": "download", "path": "/download/", "kind": "utility", "indexability": "index" },
@@ -9,16 +9,54 @@
     { "id": "terms", "path": "/terms/", "kind": "legal", "indexability": "index" },
     { "id": "refund", "path": "/refund/", "kind": "legal", "indexability": "index" },
     { "id": "guides", "path": "/guides/", "kind": "guide-index", "indexability": "index" },
-    { "id": "guide-playnite-launch", "path": "/guides/launch-playnite-with-controller/", "kind": "guide", "indexability": "index" },
-    { "id": "guide-playnite-focus", "path": "/guides/playnite-controller-focus/", "kind": "guide", "indexability": "index" },
-    { "id": "guide-steam-big-picture", "path": "/guides/start-steam-big-picture-with-controller/", "kind": "guide", "indexability": "index" },
-    { "id": "guide-windows-console", "path": "/guides/windows-11-console-like-pc/", "kind": "guide", "indexability": "index" },
-    { "id": "guide-windows-handheld", "path": "/guides/windows-handheld-couch-gaming/", "kind": "guide", "indexability": "index" },
-    { "id": "buy", "path": "/buy/", "kind": "checkout", "indexability": "noindex", "sitemap": "exclude", "reason": "Purchase entry point is intentionally noindex,follow." }
+    {
+      "id": "guide-playnite-launch",
+      "path": "/guides/launch-playnite-with-controller/",
+      "kind": "guide",
+      "indexability": "index"
+    },
+    {
+      "id": "guide-playnite-focus",
+      "path": "/guides/playnite-controller-focus/",
+      "kind": "guide",
+      "indexability": "index"
+    },
+    {
+      "id": "guide-steam-big-picture",
+      "path": "/guides/start-steam-big-picture-with-controller/",
+      "kind": "guide",
+      "indexability": "index"
+    },
+    {
+      "id": "guide-windows-console",
+      "path": "/guides/windows-11-console-like-pc/",
+      "kind": "guide",
+      "indexability": "index"
+    },
+    {
+      "id": "guide-windows-handheld",
+      "path": "/guides/windows-handheld-couch-gaming/",
+      "kind": "guide",
+      "indexability": "index"
+    },
+    {
+      "id": "buy",
+      "path": "/buy/",
+      "kind": "checkout",
+      "indexability": "noindex",
+      "sitemap": "exclude",
+      "reason": "Purchase entry point is intentionally noindex,follow."
+    }
   ],
   "locales": [
     { "id": "en", "urlPrefix": "", "state": "active", "label": "English" },
-    { "id": "de", "urlPrefix": "/de", "state": "pending", "phase1Target": true, "label": "Deutsch" },
+    {
+      "id": "de",
+      "urlPrefix": "/de",
+      "state": "pending",
+      "phase1Target": true,
+      "label": "Deutsch"
+    },
     { "id": "tr", "urlPrefix": "/tr", "state": "pending", "phase1Target": true, "label": "Turkce" },
     { "id": "fr", "urlPrefix": "/fr", "state": "planned", "label": "Francais" },
     { "id": "es", "urlPrefix": "/es", "state": "planned", "label": "Espanol" },
@@ -31,11 +69,22 @@
   "contentPackets": [
     {
       "locale": "en",
-      "sourceRevision": "48fee9d887186ab19f883ee4652613d99ee7cc766dcc3ab910a634bc5ae81cf1",
+      "sourceRevision": "31102df882c0d1f64930cd320ddf277ff421fe406d64aa65da27911fe3ba522e",
       "surfaces": [
-        "home", "download", "support", "changelog", "privacy", "terms", "refund", "guides",
-        "guide-playnite-launch", "guide-playnite-focus", "guide-steam-big-picture", "guide-windows-console",
-        "guide-windows-handheld", "buy"
+        "home",
+        "download",
+        "support",
+        "changelog",
+        "privacy",
+        "terms",
+        "refund",
+        "guides",
+        "guide-playnite-launch",
+        "guide-playnite-focus",
+        "guide-steam-big-picture",
+        "guide-windows-console",
+        "guide-windows-handheld",
+        "buy"
       ]
     }
   ]

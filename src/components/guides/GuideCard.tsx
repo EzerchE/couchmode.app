@@ -2,7 +2,8 @@ import { ArrowUpRight } from "lucide-react";
 import type { CSSProperties } from "react";
 import { guideCategoryMeta } from "@/content/guides";
 import type { LocaleId } from "@/i18n/config";
-import { relativeHrefFor, type GuideHubPayload, type LocalizedGuide } from "@/i18n/packets";
+import { useLocaleContent } from "@/i18n/content";
+import { type GuideHubPayload, type LocalizedGuide } from "@/i18n/packets";
 
 type GuideCardProps = {
   guide: LocalizedGuide;
@@ -20,8 +21,9 @@ function formatDate(value: string, locale: LocaleId) {
 }
 
 export function GuideCard({ guide, copy, locale, compact = false }: GuideCardProps) {
+  const { relativeHref } = useLocaleContent();
   const { accent } = guideCategoryMeta[guide.source.category];
-  const href = relativeHrefFor(locale, guide.packet.contentId, "", true);
+  const href = relativeHref(guide.packet.contentId, "", true);
   if (!href) throw new Error(`Missing guide href for ${locale}:${guide.packet.contentId}`);
   const categoryLabel = copy.filters.categories[guide.source.category];
 

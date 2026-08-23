@@ -2,18 +2,24 @@ import { Fragment } from "react";
 import { CouchModeMark, CouchModeWordmark } from "@/components/brand/CouchModeMark";
 import { RedditIcon } from "@/components/RedditIcon";
 import { REDDIT_URL, trackRedditClick } from "@/lib/community";
-import type { LocaleId } from "@/i18n/config";
 import { useLocaleContent } from "@/i18n/content";
-import { relativeHrefFor, type LocaleLink } from "@/i18n/packets";
+import { type LocaleLink } from "@/i18n/packets";
 
-function localizedLinkHref(locale: LocaleId, link: LocaleLink) {
-  const href = relativeHrefFor(locale, link.contentId, link.fragment, link.trailingSlash);
-  if (!href) throw new Error(`Missing public href for ${locale}/${link.contentId}`);
+function localizedLinkHref(
+  relativeHref: (
+    contentId: LocaleLink["contentId"],
+    fragment?: string,
+    trailingSlash?: boolean,
+  ) => string | undefined,
+  link: LocaleLink,
+) {
+  const href = relativeHref(link.contentId, link.fragment, link.trailingSlash);
+  if (!href) throw new Error(`Missing localized href for ${link.contentId}`);
   return href;
 }
 
 export function Footer() {
-  const { locale, shared } = useLocaleContent();
+  const { shared, relativeHref } = useLocaleContent();
   const { footer } = shared;
   return (
     <footer className="relative border-t border-border py-12 mt-12">
@@ -28,7 +34,7 @@ export function Footer() {
             {footer.links.map((link) => (
               <a
                 key={`${link.contentId}${link.fragment ?? ""}`}
-                href={localizedLinkHref(locale, link)}
+                href={localizedLinkHref(relativeHref, link)}
                 className="hover:text-foreground transition"
               >
                 {link.label}
@@ -55,7 +61,10 @@ export function Footer() {
           {footer.legalLinks.map((link, index) => (
             <Fragment key={link.contentId}>
               {index > 0 && <span aria-hidden="true">·</span>}
-              <a href={localizedLinkHref(locale, link)} className="transition hover:text-foreground">
+              <a
+                href={localizedLinkHref(relativeHref, link)}
+                className="transition hover:text-foreground"
+              >
                 {link.label}
               </a>
             </Fragment>

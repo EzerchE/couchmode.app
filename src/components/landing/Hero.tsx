@@ -8,12 +8,14 @@ import { MicrosoftStoreIcon } from "@/components/MicrosoftStoreIcon";
 import { HeroShowcase } from "@/components/landing/HeroShowcase";
 import { latestRelease } from "@/data/releases";
 import type { LocaleId } from "@/i18n/config";
-import { relativeHrefFor, type HomePayload } from "@/i18n/packets";
+import { useLocaleContent } from "@/i18n/content";
+import { type HomePayload } from "@/i18n/packets";
 
 export function Hero({ copy, locale }: { copy: HomePayload["hero"]; locale: LocaleId }) {
   const storeUrl = useMicrosoftStoreUrl();
-  const downloadHref = relativeHrefFor(locale, "download");
-  const pricingHref = relativeHrefFor(locale, "home", "#pricing");
+  const { relativeHref } = useLocaleContent();
+  const downloadHref = relativeHref("download");
+  const pricingHref = relativeHref("home", "#pricing");
   if (!downloadHref || !pricingHref) throw new Error(`Missing homepage CTA hrefs for ${locale}`);
 
   return (
@@ -34,9 +36,7 @@ export function Hero({ copy, locale }: { copy: HomePayload["hero"]; locale: Loca
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <p className="hero-text-shadow text-sm font-medium text-aurora">
-            {copy.eyebrow}
-          </p>
+          <p className="hero-text-shadow text-sm font-medium text-aurora">{copy.eyebrow}</p>
 
           <div className="mt-4 inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs text-foreground/85 shadow-xl shadow-background/20">
             <span className="h-1.5 w-1.5 rounded-full bg-aurora" />
@@ -84,9 +84,7 @@ export function Hero({ copy, locale }: { copy: HomePayload["hero"]; locale: Loca
             </a>
           </div>
 
-          <p className="hero-text-shadow mt-4 text-xs text-foreground/60">
-            {copy.platformNotice}
-          </p>
+          <p className="hero-text-shadow mt-4 text-xs text-foreground/60">{copy.platformNotice}</p>
         </motion.div>
       </div>
 
