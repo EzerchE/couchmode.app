@@ -13,6 +13,8 @@ export type GuideContentId =
   | "guide-playnite-launch"
   | "guide-playnite-focus"
   | "guide-steam-big-picture"
+  | "guide-controller-session-settings"
+  | "guide-resource-control-session-restore"
   | "guide-windows-console"
   | "guide-windows-handheld";
 

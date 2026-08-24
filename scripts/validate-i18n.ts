@@ -103,8 +103,8 @@ for (const locale of manifest.locales) {
     fail(`${locale.id} cannot use root URLs`);
 }
 
-if (indexableSurfaces.length !== 13)
-  fail(`expected 13 indexable surfaces, found ${indexableSurfaces.length}`);
+if (indexableSurfaces.length !== 15)
+  fail(`expected 15 indexable surfaces, found ${indexableSurfaces.length}`);
 if (
   JSON.stringify(indexableSurfaces.map((surface) => surface.id)) !==
   JSON.stringify(indexableSurfaceIds)

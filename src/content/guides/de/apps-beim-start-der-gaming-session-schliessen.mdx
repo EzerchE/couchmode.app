@@ -1,0 +1,52 @@
+---
+title: "Ausgewählte Apps beim Start einer Gaming-Session schließen und danach wieder öffnen"
+description: "Mit Resource Control in CouchMode Pro schließt du nur unterstützte Apps, die du auswählst, und kannst sie nach der Session wieder öffnen lassen."
+contentId: guide-resource-control-session-restore
+slug: apps-beim-start-der-gaming-session-schliessen
+published: 2026-08-24
+updated: 2026-08-24
+locale: de
+category: windows-couch-gaming
+featured: false
+related: ["guide-controller-session-settings", "guide-windows-console"]
+heroImage: "/screenshots/app-resource-control.png"
+ogImage: "/social/og-couchmode-v3.png"
+---
+
+Wenn eine Gaming-Session mit dem Controller beginnt, können die sonst geöffneten Desktop-Apps störend sein. Mit Resource Control in CouchMode Pro wählst du unterstützte Anwendungen aus, die für diese Session geschlossen werden sollen. Das ist kein Befehl, beliebige Windows-Prozesse zwangsweise zu beenden.
+
+Nach der Session kannst du ausgewählte Apps wieder öffnen lassen. CouchMode stellt außerdem die unterstützten Windows-Einstellungen wieder her, die es für die Session geändert hat. So bleibt der Desktop nicht in einer Gaming-Konfiguration zurück.
+
+## Die Apps bewusst auswählen
+
+Wähle Anwendungen gezielt aus. Dazu können Browser, Chat-Apps oder andere Desktop-Programme gehören, die beim Spielen Bildschirmfläche oder Aufmerksamkeit beanspruchen. CouchMode verwaltet nur unterstützte Apps, die du ausgewählt hast. Nicht ausgewählte Apps werden nicht absichtlich geschlossen.
+
+Beginne mit einer kurzen Liste. So kannst du prüfen, ob Schließen und Wiederöffnen zu deinem eigenen Ablauf passen, bevor du weitere Anwendungen hinzufügst.
+
+## Welche Prozesse Resource Control nicht schließt
+
+Einige Prozesse müssen außerhalb dieser Automatisierung bleiben. Dienste, geschützte Windows-Komponenten, Anwendungen mit erhöhten Rechten, nicht zugängliche Prozesse und Apps, die sich selbst neu starten, können weiterlaufen. CouchMode behandelt dieses Ergebnis nicht als etwas, das sicher übergangen werden sollte.
+
+Lass Apps mit wichtiger laufender Arbeit zunächst aus der Liste, bis du die Session mit einem unkritischen Beispiel getestet hast. Resource Control reduziert Desktop-Unruhe, die du selbst auswählst; es entscheidet nicht über beliebige Windows-Prozesse.
+
+## Festlegen, was nach der Gaming-Session geschieht
+
+Ausgewählte Apps können nach der Session wieder geöffnet werden, wenn diese Aktion eingerichtet und unterstützt wird. Das ist optional. Davon getrennt stellt CouchMode die unterstützten Windows-Einstellungen wieder her, die es beim Beenden der von ihm gestarteten Session geändert hat.
+
+Die Session endet, wenn die unterstützte Controller-Verbindung endet. CouchMode schließt das Gaming-Erlebnis, das es gestartet hat, stellt unterstützte Änderungen wieder her und führt die eingerichteten Aktionen nach der Session aus. Ein Launcher oder eine App, die schon vorher geöffnet war, wird nicht von CouchMode übernommen.
+
+## Häufige Fragen
+
+### Kann CouchMode Discord oder Chrome beim Spielen schließen?
+
+Es kann einen unterstützten Discord- oder Chrome-Prozess nur schließen, wenn du ihn in Resource Control ausgewählt hast. CouchMode schließt nicht automatisch alle Hintergrund-Apps.
+
+### Warum bleibt eine ausgewählte App geöffnet?
+
+Die App kann erhöhte Rechte haben, geschützt, dienstähnlich oder nicht zugänglich sein oder sich selbst neu starten. Solche Prozesse können offen bleiben, statt zwangsweise beendet zu werden.
+
+### Werden meine Apps nach dem Spielen wieder geöffnet?
+
+Nur wenn du die Wiederöffnungsaktion eingerichtet hast und CouchMode sie unterstützt. Die Desktop-Wiederherstellung für sich betrifft die unterstützten Windows-Einstellungen, die CouchMode während der Session geändert hat.
+
+Für HDR-, Anzeige- und Audiooptionen in derselben Gaming-Session siehe die Anleitung zu Controller-Session-Einstellungen.

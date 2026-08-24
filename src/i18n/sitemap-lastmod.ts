@@ -14,6 +14,8 @@ export const indexableSurfaceIds = [
   "guide-playnite-launch",
   "guide-playnite-focus",
   "guide-steam-big-picture",
+  "guide-controller-session-settings",
+  "guide-resource-control-session-restore",
   "guide-windows-console",
   "guide-windows-handheld",
 ] as const satisfies readonly Exclude<SurfaceId, "buy">[];
@@ -50,6 +52,8 @@ export const sitemapLastmod = {
     "guide-playnite-launch": "2026-08-24",
     "guide-playnite-focus": "2026-08-21",
     "guide-steam-big-picture": "2026-08-24",
+    "guide-controller-session-settings": "2026-08-24",
+    "guide-resource-control-session-restore": "2026-08-24",
     "guide-windows-console": "2026-08-21",
     "guide-windows-handheld": "2026-08-21",
   },
@@ -58,11 +62,15 @@ export const sitemapLastmod = {
     ...everyIndexableSurface(germanTurkishPublicBaseline),
     "guide-playnite-launch": "2026-08-24",
     "guide-steam-big-picture": "2026-08-24",
+    "guide-controller-session-settings": "2026-08-24",
+    "guide-resource-control-session-restore": "2026-08-24",
   },
   tr: {
     ...everyIndexableSurface(germanTurkishPublicBaseline),
     "guide-playnite-launch": "2026-08-24",
     "guide-steam-big-picture": "2026-08-24",
+    "guide-controller-session-settings": "2026-08-24",
+    "guide-resource-control-session-restore": "2026-08-24",
   },
 } as const satisfies Record<ActiveLocaleId, Record<IndexableSurfaceId, SitemapLastmod>>;
 

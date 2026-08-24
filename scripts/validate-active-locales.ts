@@ -259,5 +259,5 @@ try {
 }
 
 console.log(
-  "validate-active-locales: OK (en/de/tr 14-surface public prerender and SEO gate passed)",
+  "validate-active-locales: OK (en/de/tr 16-surface public prerender and SEO gate passed)",
 );

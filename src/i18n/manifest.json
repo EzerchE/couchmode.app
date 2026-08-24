@@ -1,5 +1,5 @@
 {
-  "sourceRevision": "a6a9a619f200734770279454573ba3be16fdba7792de3ddd8696d1785849ff95",
+  "sourceRevision": "1458be2ffa51ef094f27a1b5b4494aa0472795b1fed793a11e770f786eeaab97",
   "requiredSurfaces": [
     { "id": "home", "path": "/", "kind": "landing", "indexability": "index" },
     { "id": "download", "path": "/download/", "kind": "utility", "indexability": "index" },
@@ -24,6 +24,18 @@
     {
       "id": "guide-steam-big-picture",
       "path": "/guides/start-steam-big-picture-with-controller/",
+      "kind": "guide",
+      "indexability": "index"
+    },
+    {
+      "id": "guide-controller-session-settings",
+      "path": "/guides/change-hdr-display-audio-when-controller-connects/",
+      "kind": "guide",
+      "indexability": "index"
+    },
+    {
+      "id": "guide-resource-control-session-restore",
+      "path": "/guides/close-apps-when-gaming-starts-restore-desktop/",
       "kind": "guide",
       "indexability": "index"
     },
@@ -69,7 +81,7 @@
   "contentPackets": [
     {
       "locale": "en",
-      "sourceRevision": "a6a9a619f200734770279454573ba3be16fdba7792de3ddd8696d1785849ff95",
+      "sourceRevision": "1458be2ffa51ef094f27a1b5b4494aa0472795b1fed793a11e770f786eeaab97",
       "surfaces": [
         "home",
         "download",
@@ -82,6 +94,8 @@
         "guide-playnite-launch",
         "guide-playnite-focus",
         "guide-steam-big-picture",
+        "guide-controller-session-settings",
+        "guide-resource-control-session-restore",
         "guide-windows-console",
         "guide-windows-handheld",
         "buy"
@@ -89,7 +103,7 @@
     },
     {
       "locale": "de",
-      "sourceRevision": "a6a9a619f200734770279454573ba3be16fdba7792de3ddd8696d1785849ff95",
+      "sourceRevision": "1458be2ffa51ef094f27a1b5b4494aa0472795b1fed793a11e770f786eeaab97",
       "surfaces": [
         "home",
         "download",
@@ -102,6 +116,8 @@
         "guide-playnite-launch",
         "guide-playnite-focus",
         "guide-steam-big-picture",
+        "guide-controller-session-settings",
+        "guide-resource-control-session-restore",
         "guide-windows-console",
         "guide-windows-handheld",
         "buy"
@@ -109,7 +125,7 @@
     },
     {
       "locale": "tr",
-      "sourceRevision": "a6a9a619f200734770279454573ba3be16fdba7792de3ddd8696d1785849ff95",
+      "sourceRevision": "1458be2ffa51ef094f27a1b5b4494aa0472795b1fed793a11e770f786eeaab97",
       "surfaces": [
         "home",
         "download",
@@ -122,6 +138,8 @@
         "guide-playnite-launch",
         "guide-playnite-focus",
         "guide-steam-big-picture",
+        "guide-controller-session-settings",
+        "guide-resource-control-session-restore",
         "guide-windows-console",
         "guide-windows-handheld",
         "buy"
