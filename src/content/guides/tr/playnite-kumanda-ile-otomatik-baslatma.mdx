@@ -1,10 +1,10 @@
 ---
-title: "Playnite'ı kumandayla otomatik başlatma"
-description: "Uyumlu bir oyun kumandası bağlandığında Playnite Fullscreen'i otomatik başlatın. TV'ye bağlı bilgisayarınızda oyuna fare ve klavyeye geçmeden başlayın."
+title: "Oyun kolu bağlanınca Playnite'ı otomatik başlatma"
+description: "Uyumlu bir XInput oyun kolu bağlandığında Playnite Fullscreen'i otomatik başlatın. Oyun koluyla başlatma CouchMode Free'de yer alır."
 contentId: guide-playnite-launch
 slug: playnite-kumanda-ile-otomatik-baslatma
 published: 2026-08-21
-updated: 2026-08-23
+updated: 2026-08-24
 locale: tr
 category: playnite
 featured: true
@@ -13,9 +13,9 @@ heroImage: /screenshots/app-general.png
 ogImage: /social/og-couchmode-v3.png
 ---
 
-Playnite'i tercih ettiğiniz başlatıcı olarak CouchMode'da seçebilirsiniz. Uyumlu bir oyun kumandası bağlandığında CouchMode Playnite Fullscreen'i başlatabilir. Windows normal masaüstü olarak kalır; CouchMode yalnızca sizin ayarladığınız oyun oturumunu başlatır.
+Playnite'i tercih ettiğiniz başlatıcı olarak CouchMode'da seçebilirsiniz. Windows uyumlu bir oyun kolunu algıladığında CouchMode Playnite Fullscreen'i başlatabilir. Windows normal masaüstü olarak kalır; CouchMode yalnızca sizin ayarladığınız oyun oturumunu başlatır.
 
-Bu yöntem, bilgisayarınız TV'ye bağlıyken Playnite'a ulaşmak için fare ve klavyeye geçmek istemediğiniz durumlarda kullanışlıdır. Sonuç; seçtiğiniz başlatıcıya, kumandanıza ve CouchMode'da açtığınız oturum seçeneklerine bağlıdır.
+Bu yöntem, bilgisayarınız TV'ye bağlıyken Playnite'a ulaşmak için fare ve klavyeye geçmek istemediğiniz durumlarda kullanışlıdır. Sonuç; seçtiğiniz başlatıcıya, oyun kolunuza ve CouchMode'da açtığınız oturum seçeneklerine bağlıdır.
 
 ## Playnite Fullscreen'i başlatma hedefi olarak seçin
 
@@ -31,18 +31,32 @@ Playnite açıksa ancak tam ekranda giriş almaya hazır değilse, bu başlangı
 
 ## Uyumlu bir oyun kumandasıyla başlayın
 
-CouchMode desteklenen kumanda bağlantısına tepki verir. Xbox kumandası veya beklenen XInput yolu üzerinden algılanan başka bir kumanda, otomatik başlatmayı denemek için en güvenilir seçenektir.
+CouchMode desteklenen oyun kolu bağlantısına tepki verir. Xbox kolu veya XInput üzerinden algılanan başka bir gamepad, otomatik başlatmayı denemek için en güvenilir seçenektir.
 
-Yerel PlayStation kumandasıyla Playnite'ı daha sonra kullanabilirsiniz; ancak bu, CouchMode'un desteklediği otomatik başlatma tetikleyicisi değildir. Adaptörler ve özel kumanda araçları bu davranışı değiştirebilir. Bu yapılandırmalar CouchMode'un kapsamı dışındadır ve oturumdan önce ayrı ayrı kontrol edilmelidir.
+Yerel PlayStation bağlantısıyla Playnite'ı daha sonra kullanabilirsiniz; ancak PS4 veya PS5 kolu bu biçimde CouchMode'un desteklediği otomatik başlatma tetikleyicisi değildir. Adaptörler ve özel oyun kolu araçları bu davranışı değiştirebilir. Bu yapılandırmalar CouchMode'un kapsamı dışındadır ve oturumdan önce ayrı ayrı kontrol edilmelidir.
 
 ## İlk oturumu basit tutun
 
-Önce yalnızca Playnite'ın açılışını test edin. Kumandayla başlatma güvenilir şekilde çalışana kadar ses, görüntü ve performans seçeneklerini kapalı bırakın. Böylece sorunun başlatıcıdan, kumandadan ya da ek bir oturum seçeneğinden kaynaklanıp kaynaklanmadığını daha kolay anlayabilirsiniz.
+Önce yalnızca Playnite'ın açılışını test edin. Oyun koluyla başlatma güvenilir şekilde çalışana kadar ses, görüntü ve performans seçeneklerini kapalı bırakın. Böylece sorunun başlatıcıdan, oyun kolundan ya da ek bir oturum seçeneğinden kaynaklanıp kaynaklanmadığını daha kolay anlayabilirsiniz.
 
 Ardından istediğiniz seçenekleri birer birer ekleyin. TV'de birden fazla başlatıcı kullanıyorsanız aşağıdaki Windows 11 oyun bilgisayarını konsol gibi kullanma rehberi de yararlı olabilir.
 
 ## CouchMode'un rolü
 
-CouchMode, kumandayla başlatmayı, seçtiğiniz başlatıcıyı ve desteklenen oturum seçeneklerini bir araya getirir. Windows kabuğunun yerini almaz; Playnite profillerini, kumanda sürücülerini veya cihaz eşlemelerini de düzeltmez.
+CouchMode, oyun koluyla başlatmayı, seçtiğiniz başlatıcıyı ve desteklenen oturum seçeneklerini bir araya getirir. Windows kabuğunun yerini almaz; Playnite profillerini, oyun kolu sürücülerini veya cihaz eşlemelerini de düzeltmez.
+
+## Sık sorulan sorular
+
+### Xbox kolu açılınca Playnite otomatik başlar mı?
+
+Playnite hedef olarak seçildiyse başlayabilir. Xbox kolu, Windows tarafından XInput olarak algılandığı için en net desteklenen örnektir. Kullandığınız TV ve ekran düzeniyle tüm açılış yolunu test edin.
+
+### Playnite açık ama oyun kolu çalışmıyor. Ne yapmalıyım?
+
+Bu durum çoğu zaman tam ekran pencere odağıyla ilgilidir; başlatmanın başarısız olduğu anlamına gelmez. Önce bağlantılı Playnite odak rehberini inceleyin.
+
+### PS5 veya PS4 kolu Playnite'ı otomatik başlatabilir mi?
+
+Yerel bağlantı modunda hayır. CouchMode, yalnızca Windows'un desteklenen XInput yoluyla sunduğu oyun kollarıyla oturum başlatır.
 
 Başlatıcı açılıyor ancak giriş almıyorsa önce pencere odağını kontrol edin. Playnite elle doğru şekilde açılmıyorsa otomatik başlatmayı yeniden denemeden önce sorunu Playnite veya Windows tarafında çözün.

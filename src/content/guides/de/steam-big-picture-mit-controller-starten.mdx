@@ -1,10 +1,10 @@
 ---
-title: "Steam Big Picture mit Controller starten"
-description: "Steam Big Picture mit einem kompatiblen Controller starten, ohne bereits laufende Steam-Sitzungen auf deinem Windows-Gaming-PC zu unterbrechen."
+title: "Steam Big Picture automatisch starten, wenn ein Controller verbunden wird"
+description: "Starte Steam Big Picture mit einem kompatiblen XInput-Controller, ohne eine bereits geöffnete Steam-Sitzung zu übernehmen."
 contentId: guide-steam-big-picture
 slug: steam-big-picture-mit-controller-starten
 published: 2026-08-21
-updated: 2026-08-21
+updated: 2026-08-24
 locale: de
 category: steam-big-picture
 featured: true
@@ -13,7 +13,7 @@ heroImage: /screenshots/app-session-tweaks.png
 ogImage: /social/og-couchmode-v3.png
 ---
 
-Steam Big Picture kann der Einstieg sein, wenn du am Fernseher spielen möchtest, ohne Steam vorher mit Maus und Tastatur auf dem Desktop zu bedienen. CouchMode kann Steam Big Picture als dein gewähltes Gaming-Erlebnis starten, wenn ein kompatibler Controller verbunden wird.
+Steam Big Picture kann der Einstieg sein, wenn du am Fernseher spielen möchtest, ohne Steam vorher mit Maus und Tastatur auf dem Desktop zu bedienen. CouchMode kann Steam Big Picture als dein gewähltes Gaming-Erlebnis starten, wenn Windows einen kompatiblen Controller verbindet.
 
 Wichtig ist die Trennung zwischen Steam als laufendem Prozess und Steam Big Picture als sichtbarer Oberfläche. CouchMode startet die Gaming-Session, die du eingerichtet hast. Steam bleibt für Bibliothek, Downloads, Updates und eigene Profile zuständig.
 
@@ -33,10 +33,26 @@ Wenn Steam Big Picture bereits verwendet wird, behandelt CouchMode diese bestehe
 
 Für den automatischen Start verwendet CouchMode den unterstützten Controllerpfad. Ein Xbox-Controller oder ein anderer Controller, der über XInput erkannt wird, ist der verlässlichste Ausgangspunkt.
 
-PlayStation-Controller im nativen Modus können Steam Big Picture verwenden, sind aber nicht der unterstützte automatische Startauslöser von CouchMode. Einige Adapter und externe Controller-Tools ändern die Erkennung. Prüfe diese Konfigurationen getrennt, bevor du den automatischen Start bewertest.
+PlayStation-Controller im nativen Modus können Steam Big Picture verwenden, sind aber nicht der unterstützte automatische Startauslöser von CouchMode. Das gilt auch für PS4- und PS5-Controller. Einige Adapter und externe Controller-Tools ändern die Erkennung. Prüfe diese Konfigurationen getrennt, bevor du den automatischen Start bewertest.
 
 ## Zu einem nutzbaren Desktop zurückkehren
 
 Eine mit CouchMode gestartete Gaming-Session erleichtert den Wechsel ins Spiel und bringt dich danach zurück zum Desktop. CouchMode ersetzt Windows nicht. Es stellt nur die unterstützten Einstellungen wieder her, die es während der gestarteten Sitzung geändert hat.
 
-Die Free-Version deckt Steam Big Picture ab. Pro kann zusätzlich die von dir ausgewählten Einstellungen wie Audio, Anzeige oder Resource Control anwenden. Diese Optionen sind vom Steam-Start getrennt und sollten einzeln getestet werden. Für ein vollständiges TV-Setup passt die verwandte Anleitung zum Windows-11-Gaming-PC wie eine Konsole.
+Die Free-Version deckt Steam Big Picture ab. Pro kann zusätzlich die von dir ausgewählten Einstellungen wie Audio, Anzeige oder Resource Control anwenden. Diese Optionen sind vom Steam-Start getrennt und sollten einzeln getestet werden.
+
+## Häufige Fragen
+
+### Öffnet ein Xbox-Controller Steam Big Picture beim Einschalten?
+
+Das kann funktionieren, wenn Windows dadurch einen kompatiblen XInput-Controller verbindet und Steam Big Picture als Gaming-Erlebnis ausgewählt ist. Der technische Auslöser ist die unterstützte Windows-Verbindung, nicht die Einschalttaste jedes Controllers.
+
+### Was passiert, wenn Steam bereits läuft?
+
+Steam im Infobereich ist normal. CouchMode startet keinen zweiten Steam-Prozess. War Big Picture schon vor der CouchMode-Session geöffnet, bleibt diese bestehende Sitzung erhalten.
+
+### Kann ein PS5- oder PS4-Controller Steam Big Picture automatisch starten?
+
+Nicht über die native Verbindung. Wenn Windows die konfigurierte Verbindung als XInput bereitstellt, kann CouchMode sie wie einen anderen kompatiblen XInput-Controller behandeln. Teste die Konfiguration vorher vollständig.
+
+Für ein vollständiges TV-Setup passt die verwandte Anleitung zum Windows-11-Gaming-PC wie eine Konsole.

@@ -1,10 +1,10 @@
 ---
-title: "Steam Big Picture'ı kumandayla başlatma"
-description: "Uyumlu bir kumandayla Steam Big Picture'ı başlatın; Windows oyun bilgisayarınızda zaten açık Steam oturumlarını koruyun."
+title: "Oyun kolu bağlanınca Steam Big Picture'ı otomatik başlatma"
+description: "Uyumlu bir XInput oyun kolu bağlandığında Steam Big Picture'ı başlatın; zaten açık Steam oturumları korunur."
 contentId: guide-steam-big-picture
 slug: steam-big-picture-kumanda-ile-baslatma
 published: 2026-08-21
-updated: 2026-08-23
+updated: 2026-08-24
 locale: tr
 category: steam-big-picture
 featured: true
@@ -13,7 +13,7 @@ heroImage: /screenshots/app-session-tweaks.png
 ogImage: /social/og-couchmode-v3.png
 ---
 
-Steam Big Picture, TV karşısında oynarken Steam masaüstüne fare ve klavyeyle uğramadan oyunlarınıza erişmenizi sağlayabilir. Uyumlu bir kumanda bağlandığında CouchMode, seçtiğiniz oyun deneyimi olarak Steam Big Picture'ı başlatabilir.
+Steam Big Picture, TV karşısında oynarken Steam masaüstüne fare ve klavyeyle uğramadan oyunlarınıza erişmenizi sağlayabilir. Windows uyumlu bir oyun kolunu algıladığında CouchMode, seçtiğiniz oyun deneyimi olarak Steam Big Picture'ı başlatabilir.
 
 Steam işleminin çalışıyor olması ile Steam Big Picture arayüzünün görünür olması farklı durumlardır. CouchMode, sizin ayarladığınız oyun oturumunu başlatır. Steam ise kitaplığı, indirmeleri, güncellemeleri ve kendi profilleriyle ilgili işlemleri yönetmeye devam eder.
 
@@ -31,12 +31,28 @@ Steam Big Picture zaten kullanımdaysa CouchMode bu durumu yeni bir oturum olara
 
 ## Tetikleyici için uyumlu bir kumanda kullanın
 
-Otomatik başlatma için CouchMode desteklenen kumanda bağlantısını kullanır. Xbox kumandası veya XInput üzerinden algılanan başka bir kumanda en güvenilir başlangıç noktasıdır.
+Otomatik başlatma için CouchMode desteklenen oyun kolu bağlantısını kullanır. Xbox kolu veya XInput üzerinden algılanan başka bir gamepad en güvenilir başlangıç noktasıdır.
 
-Yerel PlayStation kumandaları Steam Big Picture ile kullanılabilir; ancak CouchMode'un desteklediği otomatik başlatma tetikleyicisi değildir. Bazı adaptörler ve harici kumanda araçları algılamayı değiştirebilir. Başlatma davranışını değerlendirmeden önce bu yapılandırmaları ayrı olarak kontrol edin.
+Yerel PlayStation bağlantısıyla Steam Big Picture kullanılabilir; ancak PS4 veya PS5 kolu bu biçimde CouchMode'un desteklediği otomatik başlatma tetikleyicisi değildir. Bazı adaptörler ve harici oyun kolu araçları algılamayı değiştirebilir. Başlatma davranışını değerlendirmeden önce bu yapılandırmaları ayrı olarak kontrol edin.
 
 ## Normal masaüstünüze geri dönün
 
 CouchMode oturumu, oyuna geçişi kolaylaştırmalı ve sonunda normal masaüstünüze dönmenizi sağlamalıdır. CouchMode Windows'un yerini almaz. Yalnızca kendi başlattığı oturumda değiştirdiği desteklenen ayarları geri yükler.
 
-Steam Big Picture Free sürümünde yer alır. Pro; ses, görüntü veya Resource Control gibi seçtiğiniz ek oturum ayarlarını uygulayabilir. Bu seçenekler Steam'in başlatılmasından ayrıdır ve tek tek test edilmelidir. TV'de tüm oyun kurulumunu planlamak için aşağıdaki Windows 11 oyun bilgisayarını konsol gibi kullanma rehberine bakın.
+Steam Big Picture Free sürümünde yer alır. Pro; ses, görüntü veya Resource Control gibi seçtiğiniz ek oturum ayarlarını uygulayabilir. Bu seçenekler Steam'in başlatılmasından ayrıdır ve tek tek test edilmelidir.
+
+## Sık sorulan sorular
+
+### Xbox kolu açılınca Steam Big Picture açılır mı?
+
+Windows bu sırada uyumlu bir XInput oyun kolu bağlarsa ve Steam Big Picture hedef olarak seçiliyse açılabilir. Teknik tetikleyici, her oyun kolunun fiziksel açma düğmesi değil, desteklenen Windows bağlantısıdır.
+
+### Steam zaten açıksa ne olur?
+
+Steam'in sistem tepsisinde çalışması normaldir. CouchMode ikinci bir Steam işlemi başlatmaz. Big Picture, CouchMode oturumundan önce açıksa mevcut oturum korunur.
+
+### PS5 veya PS4 kolu Steam Big Picture'ı otomatik başlatabilir mi?
+
+Yerel bağlantı üzerinden hayır. Windows yapılandırılmış bağlantıyı XInput olarak sunuyorsa CouchMode bunu başka bir uyumlu XInput oyun kolu gibi değerlendirebilir. Önce bu kurulumu baştan sona test edin.
+
+TV'deki genel oyun düzeni için Windows 11 oyun bilgisayarını konsol gibi kullanma rehberine bakın.

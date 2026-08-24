@@ -1,10 +1,10 @@
 ---
-title: "How to Launch Playnite Automatically When You Turn On Your Controller"
-description: "Use a compatible controller to begin a Playnite Fullscreen session without making Windows feel like the first screen you have to manage."
+title: "Launch Playnite Automatically When a Controller Connects"
+description: "Start Playnite Fullscreen when a compatible controller connects to Windows. CouchMode Free keeps the controller-to-Playnite flow simple."
 contentId: guide-playnite-launch
 slug: launch-playnite-with-controller
 published: 2026-08-21
-updated: 2026-08-21
+updated: 2026-08-24
 locale: en
 category: playnite
 featured: true
@@ -13,9 +13,9 @@ heroImage: "/screenshots/app-general.png"
 ogImage: "/social/og-couchmode-v3.png"
 ---
 
-The practical way to launch Playnite when you turn on a controller is to set Playnite as the CouchMode gaming experience, then use a compatible controller to start the session. CouchMode opens the selected experience and handles the surrounding session steps so you do not need to reach for a mouse before you start playing.
+To launch Playnite automatically when a controller connects, choose Playnite as the CouchMode gaming experience. When Windows detects a compatible controller, CouchMode can start the Playnite Fullscreen session you selected, so you do not have to reach for a mouse before playing.
 
-This workflow is useful when a gaming PC lives beside a TV. The computer can stay a normal Windows PC for work, while a controller connection starts the living-room session. It removes the small desktop tasks that interrupt the first few minutes of play.
+This works well when a gaming PC is connected to a TV. The computer stays a normal Windows PC for everything else, while a controller connection becomes the signal to start the gaming session.
 
 ## Use Playnite Fullscreen as the destination
 
@@ -31,18 +31,32 @@ The distinction matters because a running process is not always a usable window.
 
 ## Start with a compatible controller
 
-CouchMode reacts to compatible controllers that Windows exposes through the supported controller path. An Xbox controller is the straightforward example. A controller that Windows or another tool presents as an Xbox-compatible/XInput device can also be suitable, depending on its configuration.
+CouchMode reacts when Windows exposes a compatible controller through the supported path. An Xbox controller is the straightforward example. A controller that Windows or another tool presents as an Xbox-compatible XInput device can also be suitable, depending on its configuration.
 
-Native PlayStation controller connections have an important limitation here: they are not currently native session triggers for CouchMode. That does not mean a PlayStation controller can never be used in a game; it means you should not expect every controller connection to begin a CouchMode session without a compatible Windows controller path. Check the current app compatibility guidance before building a setup around a particular device.
+Native PlayStation controller connections have an important limitation: they are not native CouchMode session triggers. That does not mean a PS4 or PS5 controller cannot be used in games. It means you should not expect every controller connection to begin a CouchMode session unless Windows presents that setup as XInput. Check the current compatibility guidance before relying on a particular controller.
 
 ## Keep the first session simple
 
-For the first test, turn on the TV, sign in to Windows, and connect one compatible controller. Confirm that Playnite opens in the expected mode and that controller input reaches the focused Playnite window. Once this works, add the optional session choices you actually need, such as display or audio preferences available in your CouchMode plan.
+For the first test, turn on the TV, sign in to Windows, and connect one compatible controller. Confirm that Playnite opens in the expected mode and that controller input reaches the focused Playnite window. Once this works, add optional session choices such as supported display or audio preferences available in your CouchMode plan.
 
 If a manual mouse click makes Playnite start responding, that is a useful clue rather than a reason to keep clicking it. It usually points to window focus, a minimized state, or another application sitting in front of Playnite. Start by closing or minimizing the competing app, then test again with the same controller and TV input.
 
 ## Where CouchMode helps
 
-CouchMode keeps the controller connection as the beginning of the gaming flow and returns the supported settings it changed when the session ends. It does not replace the Windows shell or promise that every desktop window will behave like a console interface. Playnite remains the library and launcher; CouchMode is the session layer around it.
+CouchMode uses the compatible controller connection as the start of the gaming flow and returns the supported settings it changed when the session ends. It does not replace the Windows shell or promise that every desktop window will behave like a console interface. Playnite remains the library and launcher; CouchMode is the session layer around it.
 
-When the setup is ready, download CouchMode from the official download page and test it with the controller and display you actually use. If you find a controller, dock, or Playnite edge case worth documenting, share the details with the CouchMode community so other living-room setups can benefit.
+## Common questions
+
+### Can an Xbox controller start Playnite automatically?
+
+Yes. An Xbox controller is the clearest supported example because Windows exposes it through XInput. Choose Playnite as the launch target first, then test the complete controller-to-Playnite path with the TV and display you actually use.
+
+### Why does Playnite open but not respond to the controller?
+
+That is often a Fullscreen focus problem rather than a failed launch. Check the related Playnite focus guide before changing the automatic-start setup.
+
+### Can a PS5 or PS4 controller trigger Playnite automatically?
+
+Not in its native connection mode. A PlayStation controller can be used in games, but CouchMode starts sessions only when Windows presents the controller through the supported XInput path.
+
+When the setup is ready, download CouchMode from the official download page and test it with the controller and display you actually use. If you find a controller, dock, or Playnite edge case worth documenting, share the details with the CouchMode community.

@@ -47,15 +47,23 @@ export const sitemapLastmod = {
     terms: "2026-08-19",
     refund: "2026-08-20",
     guides: "2026-08-21",
-    "guide-playnite-launch": "2026-08-21",
+    "guide-playnite-launch": "2026-08-24",
     "guide-playnite-focus": "2026-08-21",
-    "guide-steam-big-picture": "2026-08-21",
+    "guide-steam-big-picture": "2026-08-24",
     "guide-windows-console": "2026-08-21",
     "guide-windows-handheld": "2026-08-21",
   },
   // These complete localized page sets first became indexable on this date.
-  de: everyIndexableSurface(germanTurkishPublicBaseline),
-  tr: everyIndexableSurface(germanTurkishPublicBaseline),
+  de: {
+    ...everyIndexableSurface(germanTurkishPublicBaseline),
+    "guide-playnite-launch": "2026-08-24",
+    "guide-steam-big-picture": "2026-08-24",
+  },
+  tr: {
+    ...everyIndexableSurface(germanTurkishPublicBaseline),
+    "guide-playnite-launch": "2026-08-24",
+    "guide-steam-big-picture": "2026-08-24",
+  },
 } as const satisfies Record<ActiveLocaleId, Record<IndexableSurfaceId, SitemapLastmod>>;
 
 /** The first date a locale's prefixed URLs could be indexed in production. */
