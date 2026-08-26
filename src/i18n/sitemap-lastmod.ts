@@ -41,7 +41,7 @@ function everyIndexableSurface(
  */
 export const sitemapLastmod = {
   en: {
-    home: "2026-08-21",
+    home: "2026-08-26",
     download: "2026-08-19",
     support: "2026-08-05",
     changelog: "2026-08-20",
@@ -60,6 +60,7 @@ export const sitemapLastmod = {
   // These complete localized page sets first became indexable on this date.
   de: {
     ...everyIndexableSurface(germanTurkishPublicBaseline),
+    home: "2026-08-26",
     "guide-playnite-launch": "2026-08-24",
     "guide-steam-big-picture": "2026-08-24",
     "guide-controller-session-settings": "2026-08-24",
@@ -67,6 +68,7 @@ export const sitemapLastmod = {
   },
   tr: {
     ...everyIndexableSurface(germanTurkishPublicBaseline),
+    home: "2026-08-26",
     "guide-playnite-launch": "2026-08-24",
     "guide-steam-big-picture": "2026-08-24",
     "guide-controller-session-settings": "2026-08-24",

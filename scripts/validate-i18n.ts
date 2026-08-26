@@ -36,6 +36,7 @@ function collectFiles(directory: string): string[] {
 const localizedSourceRoots = [
   "src/routes",
   "src/components/landing",
+  "src/components/checkout",
   "src/components/guides",
   "src/components/i18n",
   "src/components/utility",

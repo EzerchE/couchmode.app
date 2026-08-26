@@ -9,6 +9,7 @@ import {
   ShieldAlert,
 } from "lucide-react";
 import { MicrosoftStoreIcon } from "@/components/MicrosoftStoreIcon";
+import { PatreonBridge } from "@/components/checkout/PatreonBridge";
 import { GuideActions } from "@/components/guides/GuideActions";
 import { GuideBrowser } from "@/components/guides/GuideBrowser";
 import { GuideCard } from "@/components/guides/GuideCard";
@@ -41,7 +42,6 @@ import { trackDistributionIntent, trackEvent } from "@/lib/analytics";
 import { useMicrosoftStoreUrl } from "@/lib/campaign-attribution";
 import { MICROSOFT_STORE_LABEL } from "@/lib/channels";
 import { SUPPORT_EMAIL } from "@/lib/contact";
-import { PATREON_CTA_LABEL, PATREON_MEMBERSHIP_URL, PATREON_TIERS } from "@/lib/patreon";
 
 const SNAPSHOT_SHORTCUT = "Ctrl+Alt+Shift+F12";
 const SUPPORT_DIRECTORY = "%APPDATA%\\CouchMode";
@@ -640,54 +640,5 @@ function CheckoutSurface({ packet }: { packet: SurfacePacketBase<"checkout"> }) 
   const homeHref = relativeHref("home");
   if (!homeHref) throw new Error(`Missing checkout home href for ${packet.locale}`);
 
-  return (
-    <InfoPage
-      title={copy.title}
-      lastUpdated={copy.chrome.lastUpdated}
-      lastUpdatedLabel={copy.chrome.lastUpdatedLabel}
-      homeHref={homeHref}
-      backToHomepageLabel={copy.chrome.backToHomepageLabel}
-    >
-      <p>{copy.description}</p>
-      <div className="grid gap-4 sm:grid-cols-2">
-        {PATREON_TIERS.map((tier) => (
-          <div key={tier.id} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-            <h2 className="text-base font-medium text-foreground">{tier.name}</h2>
-            <p className="mt-1 text-2xl font-semibold tracking-tight text-foreground">
-              {tier.price}
-            </p>
-            <p className="mt-2 text-sm text-muted-foreground">
-              {copy.deviceLimit.beforeCount} {tier.deviceLimit} {copy.deviceLimit.afterCount}
-            </p>
-          </div>
-        ))}
-      </div>
-      <p>{copy.automationDescription}</p>
-      <div>
-        <a
-          href={PATREON_MEMBERSHIP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full bg-aurora px-6 py-3 text-sm font-medium text-primary-foreground glow-violet transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-          onClick={() =>
-            trackEvent("patreon_click", {
-              placement: "buy_page",
-              label: PATREON_CTA_LABEL,
-              target: PATREON_MEMBERSHIP_URL,
-              version: latestRelease.version,
-            })
-          }
-        >
-          {copy.patreonCtaLabel}
-        </a>
-      </div>
-      <p>{copy.membership.description}</p>
-      <p>{copy.membership.trialDescription}</p>
-      <p>
-        {copy.membership.connectBefore}{" "}
-        <span className="text-foreground">{copy.membership.connectAction}</span>
-        {copy.membership.connectAfter}
-      </p>
-    </InfoPage>
-  );
+  return <PatreonBridge copy={copy} homeHref={homeHref} />;
 }

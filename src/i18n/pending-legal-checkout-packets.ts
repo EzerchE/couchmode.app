@@ -338,21 +338,12 @@ export const germanCheckoutPacket: SurfacePacketBase<"checkout"> = {
       lastUpdatedLabel: "Zuletzt aktualisiert",
       lastUpdated: "August 2026",
     },
-    description:
-      "CouchMode Free umfasst die Grundfunktionen für PC-Gaming mit Controller. Pro ergänzt weitergehende Windows- und Sitzungsautomatisierung.",
-    deviceLimit: { beforeCount: "Bis zu", afterCount: "aktive Windows-Geräte" },
-    automationDescription:
-      "Beide Pro-Stufen enthalten Resource Control, Session Tweaks, Aktionen nach dem Spielen und weitere Pro-Automatisierung.",
-    patreonCtaLabel: "Auf Patreon fortfahren",
-    membership: {
-      description:
-        "Der Pro-Zugang wird während der öffentlichen Beta über eine aktive Patreon-Mitgliedschaft bereitgestellt. Patreon erfordert ein Konto und eine Zahlungsmethode.",
-      trialDescription:
-        "Neue Installationen enthalten einen 7-Tage-In-App-Pro-Test. Für den In-App-Test sind weder ein CouchMode-Konto noch eine Kreditkarte erforderlich.",
-      connectBefore: "Bereits Mitglied? Öffne CouchMode und wähle",
-      connectAction: "Connect Patreon",
-      connectAfter: ".",
+    bridge: {
+      redirectingLabel: "Du wirst zu Patreon weitergeleitet...",
+      fallbackDescription:
+        "Falls Patreon nicht automatisch geöffnet wird, nutze die Schaltfläche unten.",
     },
+    patreonCtaLabel: "Auf Patreon fortfahren",
   },
 };
 
@@ -680,20 +671,10 @@ export const turkishCheckoutPacket: SurfacePacketBase<"checkout"> = {
       lastUpdatedLabel: "Son güncelleme",
       lastUpdated: "Ağustos 2026",
     },
-    description:
-      "CouchMode Free, kumandayla oyun oynamak için temel işlevleri içerir. Pro, Windows ve oyun oturumu için daha kapsamlı otomasyon ekler.",
-    deviceLimit: { beforeCount: "En fazla", afterCount: "etkin Windows cihazı" },
-    automationDescription:
-      "Her iki Pro katmanı da Resource Control, Session Tweaks, oturum sonrası eylemler ve diğer Pro oturum otomasyonunu içerir.",
-    patreonCtaLabel: "Patreon'da devam et",
-    membership: {
-      description:
-        "Pro erişimi herkese açık beta sırasında etkin bir Patreon üyeliği üzerinden sağlanır. Patreon hesap ve ödeme yöntemi gerektirir.",
-      trialDescription:
-        "Yeni kurulumlar uygulama içinde 7 günlük Pro denemesi içerir. Uygulama içi deneme için CouchMode hesabı veya kredi kartı gerekmez.",
-      connectBefore: "Zaten üye misiniz? CouchMode'u açın ve şunu seçin:",
-      connectAction: "Connect Patreon",
-      connectAfter: ".",
+    bridge: {
+      redirectingLabel: "Patreon'a yönlendiriliyorsunuz...",
+      fallbackDescription: "Patreon otomatik açılmazsa aşağıdaki düğmeyi kullanın.",
     },
+    patreonCtaLabel: "Patreon'da devam et",
   },
 };

@@ -251,17 +251,8 @@ export type LegalDocumentPayload = {
 export type CheckoutPayload = {
   title: string;
   chrome: { backToHomepageLabel: string; lastUpdatedLabel: string; lastUpdated: string };
-  description: string;
-  deviceLimit: { beforeCount: string; afterCount: string };
-  automationDescription: string;
+  bridge: { redirectingLabel: string; fallbackDescription: string };
   patreonCtaLabel: string;
-  membership: {
-    description: string;
-    trialDescription: string;
-    connectBefore: string;
-    connectAction: string;
-    connectAfter: string;
-  };
 };
 
 export type PayloadByKind = {
@@ -359,7 +350,7 @@ export const englishLocaleContent: SharedLocaleContent = {
     links: [
       { contentId: "home", fragment: "#how", label: "How it works" },
       { contentId: "home", fragment: "#pricing", label: "Pricing" },
-      { contentId: "home", fragment: "#download", label: "Get CouchMode" },
+      { contentId: "buy", label: "Get Pro" },
       { contentId: "changelog", label: "Changelog" },
     ],
   },
@@ -1238,21 +1229,11 @@ const englishCheckoutPacket: SurfacePacketBase<"checkout"> = {
       lastUpdatedLabel: "Last updated",
       lastUpdated: "August 2026",
     },
-    description:
-      "CouchMode Free includes the core controller-first gaming flow. Pro adds deeper Windows and session automation.",
-    deviceLimit: { beforeCount: "Up to", afterCount: "active Windows devices" },
-    automationDescription:
-      "Both tiers include Resource Control, Session Tweaks, after-session actions, and other Pro session automation.",
-    patreonCtaLabel: "Continue on Patreon",
-    membership: {
-      description:
-        "Pro access is provided through an active Patreon membership during the public beta. Patreon requires an account and payment method.",
-      trialDescription:
-        "New installations include a 7-day in-app Pro trial. No CouchMode account or credit card is required for the in-app trial.",
-      connectBefore: "Already a member? Open CouchMode and choose",
-      connectAction: "Connect Patreon",
-      connectAfter: ".",
+    bridge: {
+      redirectingLabel: "Taking you to Patreon...",
+      fallbackDescription: "If Patreon does not open automatically, continue with the button below.",
     },
+    patreonCtaLabel: "Continue on Patreon",
   },
 };
 

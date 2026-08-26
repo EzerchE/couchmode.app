@@ -54,6 +54,7 @@ export type AnalyticsPlacement =
   | "download_page"
   | "faq"
   | "buy_page"
+  | "buy_bridge"
   | "footer";
 
 declare global {

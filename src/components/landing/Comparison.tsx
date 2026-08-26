@@ -4,6 +4,7 @@ import { trackEvent } from "@/lib/analytics";
 import type { LocaleId } from "@/i18n/config";
 import { useLocaleContent } from "@/i18n/content";
 import { type HomePayload } from "@/i18n/packets";
+import { proUpgradeBridgeHref } from "@/lib/patreon";
 
 const FREE_PRICE = "$0";
 const PRO_INFO_EVENT_LABEL = "Unlock Pro with Patreon";
@@ -16,8 +17,9 @@ export function Comparison({
   locale: LocaleId;
 }) {
   const { relativeHref } = useLocaleContent();
-  const buyHref = relativeHref("buy");
-  if (!buyHref) throw new Error(`Missing checkout href for ${locale}`);
+  const checkoutHref = relativeHref("buy");
+  if (!checkoutHref) throw new Error(`Missing checkout href for ${locale}`);
+  const buyHref = proUpgradeBridgeHref(checkoutHref, "pricing");
   return (
     <section id="pricing" className="relative py-24 sm:py-32" aria-labelledby="pricing-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

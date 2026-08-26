@@ -16,7 +16,7 @@ export const germanLocaleContent: SharedLocaleContent = {
     links: [
       { contentId: "home", fragment: "#how", label: "So funktioniert es" },
       { contentId: "home", fragment: "#pricing", label: "Free und Pro" },
-      { contentId: "home", fragment: "#download", label: "CouchMode holen" },
+      { contentId: "buy", label: "Pro holen" },
       { contentId: "changelog", label: "Versionshinweise" },
     ],
   },
@@ -611,7 +611,7 @@ export const turkishLocaleContent: SharedLocaleContent = {
     links: [
       { contentId: "home", fragment: "#how", label: "Nasıl çalışır" },
       { contentId: "home", fragment: "#pricing", label: "Free ve Pro" },
-      { contentId: "home", fragment: "#download", label: "CouchMode'u indirin" },
+      { contentId: "buy", label: "Pro'ya Geç" },
       { contentId: "changelog", label: "Sürüm notları" },
     ],
   },

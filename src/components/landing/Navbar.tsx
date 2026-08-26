@@ -5,13 +5,17 @@ import { CouchModeMark, CouchModeWordmark } from "@/components/brand/CouchModeMa
 import { RedditIcon } from "@/components/RedditIcon";
 import { LanguageSwitcher } from "@/components/i18n/LanguageSwitcher";
 import { REDDIT_URL, trackRedditClick } from "@/lib/community";
+import { proUpgradeBridgeHref } from "@/lib/patreon";
 import { useLocaleContent } from "@/i18n/content";
 import { type LocaleLink } from "@/i18n/packets";
 
 // A link is "current" only when it points at a real page and that page is open.
 // The in-page anchors (/#how, /#pricing, /#download) are never current: they are
 // positions on the home page, not destinations, so marking them would be wrong.
-const normalizePath = (p: string) => (p.length > 1 ? p.replace(/\/+$/, "") : p);
+const normalizePath = (p: string) => {
+  const pathname = p.split(/[?#]/, 1)[0] || "/";
+  return pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname;
+};
 const isCurrentPage = (href: string, pathname: string) =>
   !href.includes("#") && normalizePath(href) === normalizePath(pathname);
 
@@ -103,7 +107,11 @@ export function Navbar() {
               crowding the logo and primary download action. */}
           <nav className="hidden lg:flex items-center gap-4 xl:gap-8">
             {navigation.links.map((l) => {
-              const href = localizedLinkHref(relativeHref, l);
+              const localizedHref = localizedLinkHref(relativeHref, l);
+              const href =
+                l.contentId === "buy"
+                  ? proUpgradeBridgeHref(localizedHref, "header")
+                  : localizedHref;
               const current = isCurrentPage(href, pathname);
               return (
                 <a
@@ -176,7 +184,11 @@ export function Navbar() {
                 className="absolute right-4 top-full mt-2 w-72 max-w-[calc(100vw-2rem)] rounded-2xl border border-white/12 bg-card/95 p-2 shadow-[0_22px_60px_-24px_rgba(72,92,255,0.7)] backdrop-blur-xl lg:hidden"
               >
                 {navigation.links.map((l) => {
-                  const href = localizedLinkHref(relativeHref, l);
+                  const localizedHref = localizedLinkHref(relativeHref, l);
+                  const href =
+                    l.contentId === "buy"
+                      ? proUpgradeBridgeHref(localizedHref, "header")
+                      : localizedHref;
                   const current = isCurrentPage(href, pathname);
                   return (
                     <a

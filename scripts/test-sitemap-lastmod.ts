@@ -29,8 +29,8 @@ for (const locale of activeLocales) {
   }
 }
 
-// A newly public localized page must not inherit an older English date.
-assert.deepEqual(sitemapLastmodErrors("de", "home", sitemapLastmodFor("en", "home")), [
+// A newly public localized page must not inherit an older source-locale date.
+assert.deepEqual(sitemapLastmodErrors("de", "home", "2026-08-21"), [
   "de/home sitemap lastmod 2026-08-21 predates public availability 2026-08-23",
 ]);
 
