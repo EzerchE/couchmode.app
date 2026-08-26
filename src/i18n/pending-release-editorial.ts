@@ -5,6 +5,24 @@ import type { ReleaseEditorialOverlay } from "./release-editorial";
 export const germanReleaseEditorialOverlay = {
   entries: [
     {
+      version: "0.6.0-rc.9",
+      summary:
+        "Ein klarerer Weg zu Pro, zuverlässigere Kontoverwaltung und bessere Barrierefreiheit.",
+      notes: [
+        "Das Upgrade auf Pro ist klarer: eine eindeutige Aktion, und die angezeigten Optionen passen jetzt zum Status deines Kontos.",
+        "Wenn du bereits eine Mitgliedschaft hast, bietet CouchMode an, sie zu aktualisieren, statt dich erneut zum Verbinden aufzufordern.",
+        "Die Verwaltung der Mitgliedschaft ist vollständiger: Du kannst jederzeit zu einem anderen Konto wechseln oder diesen PC freigeben. Das Freigeben eines PCs erfordert jetzt eine Bestätigung.",
+        "Die Anmeldung wird jetzt zuverlässig abgeschlossen, auch wenn du das CouchMode-Fenster währenddessen schließt.",
+        "CouchMode berücksichtigt jetzt in der gesamten App die Windows-Einstellung für reduzierte Bewegung.",
+        "Das Pro-Abzeichen bei benutzerdefinierten Startprogrammen öffnet jetzt korrekt den Upgrade-Dialog.",
+      ],
+      knownIssues: [
+        "Die Verfügbarkeit des Xbox-Modus hängt von deiner Windows-Version, der Geräteunterstützung, der Xbox-App, der Region und dem Rollout-Status von Microsoft ab.",
+        "PlayStation-Controller können derzeit keine CouchMode-Sitzungen starten oder beenden, da Windows ihren Verbindungsstatus nicht über XInput bereitstellt.",
+        "Auf einigen Handhelds und Notebooks wird ein integrierter Controller bewusst nicht als Auslöser für eine Sitzung verwendet; dafür kann ein externer Controller nötig sein.",
+      ],
+    },
+    {
       version: "0.6.0-rc.8",
       summary:
         "Steam Big Picture, Playnite Fullscreen und die Xbox Full-Screen Experience sind jetzt ohne Pro verfügbar. Benutzerdefinierte Launcher, Resource Control und Session Tweaks bleiben Pro-Funktionen.",
@@ -99,6 +117,24 @@ export const germanReleaseEditorialOverlay = {
 
 export const turkishReleaseEditorialOverlay = {
   entries: [
+    {
+      version: "0.6.0-rc.9",
+      summary:
+        "Pro'ya geçiş için daha net bir yol, daha güvenilir hesap yönetimi ve gelişmiş erişilebilirlik.",
+      notes: [
+        "Pro'ya yükseltme artık daha net: tek bir belirgin eylem var ve gösterilen seçenekler hesabının durumuna göre değişiyor.",
+        "Zaten bir üyeliğin varsa CouchMode seni yeniden bağlanmaya yönlendirmek yerine üyeliğini yenilemeyi öneriyor.",
+        "Üyelik yönetimi artık eksiksiz. İstediğin zaman farklı bir hesaba geçebilir veya bu bilgisayarın yetkisini kaldırabilirsin; yetki kaldırma işlemi önce onay ister.",
+        "Oturum açma işlemi, sırasında CouchMode penceresini kapatsan bile güvenilir şekilde tamamlanıyor.",
+        "CouchMode artık uygulamanın tamamında Windows'un hareketi azaltma ayarına uyuyor.",
+        "Özel başlatıcı seçeneğindeki Pro rozeti artık yükseltme penceresini doğru şekilde açıyor.",
+      ],
+      knownIssues: [
+        "Xbox Modu'nun kullanılabilirliği Windows sürümüne, cihaz desteğine, Xbox uygulamasına, bölgeye ve Microsoft'un dağıtım durumuna bağlıdır.",
+        "PlayStation kumandaları şu anda CouchMode oturumu başlatamaz veya bitiremez; Windows bu kumandaların bağlantı durumunu XInput üzerinden bildirmez.",
+        "Bazı el cihazlarında ve dizüstü bilgisayarlarda dahili kumanda, oturum tetikleyicisi olarak bilinçli şekilde yok sayılır; bu durumda harici bir kumanda gerekebilir.",
+      ],
+    },
     {
       version: "0.6.0-rc.8",
       summary:

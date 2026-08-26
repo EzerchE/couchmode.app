@@ -1,6 +1,35 @@
 [
   {
     "channel": "standalone",
+    "version": "0.6.0-rc.9",
+    "fileVersion": "0.6.0.9",
+    "releasedAt": "2026-08-26T00:00:00Z",
+    "downloadPageUrl": "https://couchmode.app/download",
+    "sha256": "365CF469A4675D308D5DBE119961F0FAC4168C3BB98D3F1EDF87400D26C6C7C6",
+    "sizeBytes": 3120728,
+    "critical": false,
+    "signed": true,
+    "downloadEnabled": true,
+    "installerUrl": "https://github.com/EzerchE/couchmode-releases/releases/download/v0.6.0-rc.9/CouchMode-Setup-0.6.0-rc.9.exe",
+    "minimumSupportedVersion": "0.4.10-beta.30",
+    "minimumSupportedVersionNumeric": "0.4.10.30",
+    "summary": "A smoother path to Pro, more reliable account handling, and better accessibility.",
+    "notes": [
+      "Upgrading to Pro is clearer: one obvious action to get Pro, and the options shown now match your account state.",
+      "If you already have a membership, CouchMode offers to refresh it instead of asking you to connect again.",
+      "Managing your membership is more complete. You can switch to a different account or release this PC at any time, and releasing a PC now asks for confirmation first.",
+      "Signing in now finishes reliably even if you close the CouchMode window while it is still in progress.",
+      "CouchMode now respects the Windows reduced-motion setting across the whole app.",
+      "Fixed the Pro badge on the custom launcher option so it opens the upgrade prompt correctly."
+    ],
+    "knownIssues": [
+      "Xbox Mode availability depends on your Windows version, device support, Xbox app support, region, and Microsoft rollout status.",
+      "PlayStation controllers cannot currently start or end CouchMode sessions, because Windows does not expose their connection state through XInput.",
+      "On some handhelds and laptops a built-in controller is intentionally ignored as a session trigger, so an external controller may be required."
+    ]
+  },
+  {
+    "channel": "standalone",
     "version": "0.6.0-rc.8",
     "fileVersion": "0.6.0.8",
     "releasedAt": "2026-08-18T00:00:00Z",
@@ -9,8 +38,8 @@
     "sizeBytes": 3117040,
     "critical": false,
     "signed": true,
-    "downloadEnabled": true,
-    "installerUrl": "https://github.com/EzerchE/couchmode-releases/releases/download/v0.6.0-rc.8/CouchMode-Setup-0.6.0-rc.8.exe",
+    "downloadEnabled": false,
+    "installerUrl": null,
     "minimumSupportedVersion": "0.4.10-beta.30",
     "minimumSupportedVersionNumeric": "0.4.10.30",
     "summary": "Steam Big Picture and Playnite Fullscreen are now free, alongside the Xbox full-screen experience. Custom launchers, Resource Control and Session Tweaks remain Pro.",
