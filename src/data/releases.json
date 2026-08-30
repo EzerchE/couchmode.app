@@ -1,5 +1,32 @@
 [
   {
+    "version": "0.6.0-rc.10",
+    "versionNumeric": "0.6.0.10",
+    "fileVersion": "0.6.0.10",
+    "channel": "standalone",
+    "releasedAt": "2026-08-30T00:00:00Z",
+    "sha256": "472C739FE93C8AA59650D2863A4457ACEB3454729173AC0E570FD1871329D9F9",
+    "sizeBytes": 3125072,
+    "signed": true,
+    "critical": false,
+    "minimumSupportedVersion": "0.4.10-beta.30",
+    "minimumSupportedVersionNumeric": "0.4.10.30",
+    "downloadPageUrl": "https://couchmode.app/download",
+    "installerUrl": "https://github.com/EzerchE/couchmode-releases/releases/download/v0.6.0-rc.10/CouchMode-Setup-0.6.0-rc.10.exe",
+    "summary": "Improved Xbox full-screen startup, handheld detection, Playnite compatibility, and update reliability.",
+    "notes": [
+      "Improved Xbox full-screen experience startup reliability on handheld PCs.",
+      "Improved controller and handheld detection across different Windows devices.",
+      "Improved Xbox full-screen session entry, focus, and desktop return reliability.",
+      "Playnite now supports custom and portable installation locations more reliably.",
+      "Improved update-check behaviour and clearer update messaging.",
+      "Unified Xbox full-screen support checking in Settings.",
+      "General reliability improvements."
+    ],
+    "knownIssues": [],
+    "downloadEnabled": true
+  },
+  {
     "version": "0.6.0-rc.9",
     "versionNumeric": "0.6.0.9",
     "fileVersion": "0.6.0.9",
@@ -12,7 +39,7 @@
     "minimumSupportedVersion": "0.4.10-beta.30",
     "minimumSupportedVersionNumeric": "0.4.10.30",
     "downloadPageUrl": "https://couchmode.app/download",
-    "installerUrl": "https://github.com/EzerchE/couchmode-releases/releases/download/v0.6.0-rc.9/CouchMode-Setup-0.6.0-rc.9.exe",
+    "installerUrl": null,
     "summary": "A smoother path to Pro, more reliable account handling, and better accessibility.",
     "notes": [
       "Upgrading to Pro is clearer: one obvious action to get Pro, and the options shown now match your account state.",
@@ -27,7 +54,7 @@
       "PlayStation controllers cannot currently start or end CouchMode sessions, because Windows does not expose their connection state through XInput.",
       "On some handhelds and laptops a built-in controller is intentionally ignored as a session trigger, so an external controller may be required."
     ],
-    "downloadEnabled": true
+    "downloadEnabled": false
   },
   {
     "version": "0.6.0-rc.8",

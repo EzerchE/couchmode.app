@@ -5,6 +5,21 @@ import type { ReleaseEditorialOverlay } from "./release-editorial";
 export const germanReleaseEditorialOverlay = {
   entries: [
     {
+      version: "0.6.0-rc.10",
+      summary:
+        "Zuverlässigerer Start der Xbox Full-Screen Experience, bessere Handheld-Erkennung, verbesserte Playnite-Kompatibilität und zuverlässigere Updates.",
+      notes: [
+        "Die Xbox Full-Screen Experience startet auf Handheld-PCs zuverlässiger.",
+        "Controller und Handhelds werden auf unterschiedlichen Windows-Geräten zuverlässiger erkannt.",
+        "Der Start von Xbox-Full-Screen-Sitzungen, der Fokus und die Rückkehr zum Desktop funktionieren zuverlässiger.",
+        "Playnite unterstützt benutzerdefinierte und portable Installationsorte zuverlässiger.",
+        "Die Update-Prüfung arbeitet zuverlässiger und Hinweise zu Updates sind klarer.",
+        "Die Prüfung der Xbox-Full-Screen-Unterstützung wurde in den Einstellungen vereinheitlicht.",
+        "Allgemeine Verbesserungen der Zuverlässigkeit.",
+      ],
+      knownIssues: [],
+    },
+    {
       version: "0.6.0-rc.9",
       summary:
         "Ein klarerer Weg zu Pro, zuverlässigere Kontoverwaltung und bessere Barrierefreiheit.",
@@ -117,6 +132,21 @@ export const germanReleaseEditorialOverlay = {
 
 export const turkishReleaseEditorialOverlay = {
   entries: [
+    {
+      version: "0.6.0-rc.10",
+      summary:
+        "Xbox tam ekran deneyimini başlatma, el konsolu algılama, Playnite uyumluluğu ve güncelleme güvenilirliği iyileştirildi.",
+      notes: [
+        "Xbox tam ekran deneyimi Windows el konsollarında daha güvenilir başlatılıyor.",
+        "Kumandalar ve el konsolları, farklı Windows cihazlarında daha güvenilir algılanıyor.",
+        "Xbox tam ekran oturumuna giriş, odak yönetimi ve masaüstüne dönüş daha güvenilir hale getirildi.",
+        "Playnite, özel ve taşınabilir kurulum konumlarında artık daha güvenilir destekleniyor.",
+        "Güncelleme denetimi iyileştirildi ve güncelleme iletileri daha anlaşılır hale getirildi.",
+        "Xbox tam ekran desteği denetimi Ayarlar'da tek yerde toplandı.",
+        "Genel güvenilirlik iyileştirmeleri.",
+      ],
+      knownIssues: [],
+    },
     {
       version: "0.6.0-rc.9",
       summary:

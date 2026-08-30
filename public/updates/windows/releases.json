@@ -1,6 +1,32 @@
 [
   {
     "channel": "standalone",
+    "version": "0.6.0-rc.10",
+    "fileVersion": "0.6.0.10",
+    "releasedAt": "2026-08-30T00:00:00Z",
+    "downloadPageUrl": "https://couchmode.app/download",
+    "sha256": "472C739FE93C8AA59650D2863A4457ACEB3454729173AC0E570FD1871329D9F9",
+    "sizeBytes": 3125072,
+    "critical": false,
+    "signed": true,
+    "downloadEnabled": true,
+    "installerUrl": "https://github.com/EzerchE/couchmode-releases/releases/download/v0.6.0-rc.10/CouchMode-Setup-0.6.0-rc.10.exe",
+    "minimumSupportedVersion": "0.4.10-beta.30",
+    "minimumSupportedVersionNumeric": "0.4.10.30",
+    "summary": "Improved Xbox full-screen startup, handheld detection, Playnite compatibility, and update reliability.",
+    "notes": [
+      "Improved Xbox full-screen experience startup reliability on handheld PCs.",
+      "Improved controller and handheld detection across different Windows devices.",
+      "Improved Xbox full-screen session entry, focus, and desktop return reliability.",
+      "Playnite now supports custom and portable installation locations more reliably.",
+      "Improved update-check behaviour and clearer update messaging.",
+      "Unified Xbox full-screen support checking in Settings.",
+      "General reliability improvements."
+    ],
+    "knownIssues": []
+  },
+  {
+    "channel": "standalone",
     "version": "0.6.0-rc.9",
     "fileVersion": "0.6.0.9",
     "releasedAt": "2026-08-26T00:00:00Z",
@@ -9,8 +35,8 @@
     "sizeBytes": 3120728,
     "critical": false,
     "signed": true,
-    "downloadEnabled": true,
-    "installerUrl": "https://github.com/EzerchE/couchmode-releases/releases/download/v0.6.0-rc.9/CouchMode-Setup-0.6.0-rc.9.exe",
+    "downloadEnabled": false,
+    "installerUrl": null,
     "minimumSupportedVersion": "0.4.10-beta.30",
     "minimumSupportedVersionNumeric": "0.4.10.30",
     "summary": "A smoother path to Pro, more reliable account handling, and better accessibility.",
