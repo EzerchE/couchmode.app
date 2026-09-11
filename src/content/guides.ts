@@ -16,6 +16,7 @@ export type GuideContentId =
   | "guide-controller-session-settings"
   | "guide-resource-control-session-restore"
   | "guide-windows-console"
+  | "guide-xbox-mode-windows-11"
   | "guide-windows-handheld";
 
 export const guideCategoryMeta: Record<GuideCategoryId, { accent: string; hash: string }> = {
@@ -27,6 +28,7 @@ export const guideCategoryMeta: Record<GuideCategoryId, { accent: string; hash: 
 
 export type GuideFrontmatter = {
   title: string;
+  heading?: string;
   description: string;
   contentId: GuideContentId;
   slug: string;
@@ -96,6 +98,7 @@ function parseFrontmatter(source: string, fileName: string): GuideFrontmatter {
   }
   if (
     typeof fields.title !== "string" ||
+    (fields.heading !== undefined && (typeof fields.heading !== "string" || !fields.heading.trim())) ||
     typeof fields.description !== "string" ||
     typeof fields.contentId !== "string" ||
     typeof fields.slug !== "string" ||

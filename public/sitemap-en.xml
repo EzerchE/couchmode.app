@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://couchmode.app/</loc>
-    <lastmod>2026-08-26</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://couchmode.app/download/</loc>
@@ -30,11 +30,11 @@
   </url>
   <url>
     <loc>https://couchmode.app/guides/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://couchmode.app/guides/launch-playnite-with-controller/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://couchmode.app/guides/playnite-controller-focus/</loc>
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://couchmode.app/guides/start-steam-big-picture-with-controller/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://couchmode.app/guides/change-hdr-display-audio-when-controller-connects/</loc>
@@ -54,10 +54,14 @@
   </url>
   <url>
     <loc>https://couchmode.app/guides/windows-11-console-like-pc/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://couchmode.app/guides/windows-handheld-couch-gaming/</loc>
     <lastmod>2026-08-21</lastmod>
+  </url>
+  <url>
+    <loc>https://couchmode.app/guides/xbox-mode-windows-11-full-screen-experience/</loc>
+    <lastmod>2026-09-11</lastmod>
   </url>
 </urlset>

@@ -178,5 +178,5 @@ for (const locale of testLocales) {
 
 await vite.close();
 console.log(
-  "test-localized-route-renderer: OK (de/tr 16-surface active renderer validation passed)",
+  "test-localized-route-renderer: OK (de/tr 17-surface active renderer validation passed)",
 );

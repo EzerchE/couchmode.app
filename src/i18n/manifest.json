@@ -1,5 +1,5 @@
 {
-  "sourceRevision": "e499dd02a491d0a7eaac156c6a2504f37b81f5c6226fb167a0b831bb7ea48a49",
+  "sourceRevision": "6b60c286707110a6d0373b1450bc8878379d033b3a4fefb64b0202eef99f2c49",
   "requiredSurfaces": [
     { "id": "home", "path": "/", "kind": "landing", "indexability": "index" },
     { "id": "download", "path": "/download/", "kind": "utility", "indexability": "index" },
@@ -52,6 +52,12 @@
       "indexability": "index"
     },
     {
+      "id": "guide-xbox-mode-windows-11",
+      "path": "/guides/xbox-mode-windows-11-full-screen-experience/",
+      "kind": "guide",
+      "indexability": "index"
+    },
+    {
       "id": "buy",
       "path": "/buy/",
       "kind": "checkout",
@@ -81,7 +87,7 @@
   "contentPackets": [
     {
       "locale": "en",
-      "sourceRevision": "e499dd02a491d0a7eaac156c6a2504f37b81f5c6226fb167a0b831bb7ea48a49",
+      "sourceRevision": "6b60c286707110a6d0373b1450bc8878379d033b3a4fefb64b0202eef99f2c49",
       "surfaces": [
         "home",
         "download",
@@ -98,12 +104,13 @@
         "guide-resource-control-session-restore",
         "guide-windows-console",
         "guide-windows-handheld",
+        "guide-xbox-mode-windows-11",
         "buy"
       ]
     },
     {
       "locale": "de",
-      "sourceRevision": "e499dd02a491d0a7eaac156c6a2504f37b81f5c6226fb167a0b831bb7ea48a49",
+      "sourceRevision": "6b60c286707110a6d0373b1450bc8878379d033b3a4fefb64b0202eef99f2c49",
       "surfaces": [
         "home",
         "download",
@@ -120,12 +127,13 @@
         "guide-resource-control-session-restore",
         "guide-windows-console",
         "guide-windows-handheld",
+        "guide-xbox-mode-windows-11",
         "buy"
       ]
     },
     {
       "locale": "tr",
-      "sourceRevision": "e499dd02a491d0a7eaac156c6a2504f37b81f5c6226fb167a0b831bb7ea48a49",
+      "sourceRevision": "6b60c286707110a6d0373b1450bc8878379d033b3a4fefb64b0202eef99f2c49",
       "surfaces": [
         "home",
         "download",
@@ -142,6 +150,7 @@
         "guide-resource-control-session-restore",
         "guide-windows-console",
         "guide-windows-handheld",
+        "guide-xbox-mode-windows-11",
         "buy"
       ]
     }

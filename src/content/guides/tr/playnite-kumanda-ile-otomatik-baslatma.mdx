@@ -1,62 +1,54 @@
 ---
-title: "Oyun kolu bağlanınca Playnite'ı otomatik başlatma"
-description: "Uyumlu bir XInput oyun kolu bağlandığında Playnite Fullscreen'i otomatik başlatın. Oyun koluyla başlatma CouchMode Free'de yer alır."
+title: "Oyun koluyla Playnite Fullscreen nasıl açılır?"
+description: "Playnite'ın tam ekran arayüzünü oyun koluyla kullanın; isterseniz XInput bağlantısıyla başlatın. Xbox tuşu, açık pencereler ve odak kontrollerini öğrenin."
 contentId: guide-playnite-launch
 slug: playnite-kumanda-ile-otomatik-baslatma
 published: 2026-08-21
-updated: 2026-08-24
+updated: 2026-09-11
 locale: tr
 category: playnite
 featured: true
 related: ["guide-playnite-focus", "guide-windows-console"]
-heroImage: /screenshots/app-general.png
-ogImage: /social/og-couchmode-v3.png
+heroImage: "/screenshots/app-general.png"
+ogImage: "/social/og-couchmode-v3.png"
 ---
 
-Playnite'i tercih ettiğiniz başlatıcı olarak CouchMode'da seçebilirsiniz. Windows uyumlu bir oyun kolunu algıladığında CouchMode Playnite Fullscreen'i başlatabilir. Windows normal masaüstü olarak kalır; CouchMode yalnızca sizin ayarladığınız oyun oturumunu başlatır.
+Playnite Fullscreen zaten oyun koluyla kullanılabilir. Playnite'ın Fullscreen kısayolunu açın veya masaüstü modundayken F11'e basın; ardından oyun koluyla kitaplıkta gezinebildiğinizi kontrol edin. Bu destek için CouchMode gerekmez.
 
-Bu yöntem, bilgisayarınız TV'ye bağlıyken Playnite'a ulaşmak için fare ve klavyeye geçmek istemediğiniz durumlarda kullanışlıdır. Sonuç; seçtiğiniz başlatıcıya, oyun kolunuza ve CouchMode'da açtığınız oturum seçeneklerine bağlıdır.
+Gamepad bağlandığında Playnite'ın da açılmasını istiyorsanız CouchMode, Windows uyumlu bir XInput oyun kolunu algıladığında Playnite Fullscreen oturumu başlatabilir. Bu isteğe bağlı otomasyon, açık kitaplıkta gezinmekten veya Xbox tuşuna basmaktan farklıdır.
 
-## Playnite Fullscreen'i başlatma hedefi olarak seçin
+## Önce Playnite'ın kendi tam ekran modunu deneyin
 
-CouchMode'da oyun deneyimi olarak Playnite'ı seçin. Playnite bilgisayarınızda kurulu olmalı ve CouchMode dışında normal şekilde açılabilmelidir. CouchMode, oyun oturumunun parçası olarak Playnite Fullscreen'i başlatır; Playnite'ın yerine geçmez ve kitaplığınızı yönetmez.
+Playnite'ın [Fullscreen belgesi](https://api.playnite.link/docs/manual/gettingStarted/playniteFullscreenMode.html), bu moda nasıl girileceğini ve giriş ayarlarını açıklar. Otomatik başlatmayı ayarlamadan önce kitaplığın oyun koluna tepki verdiğini doğrulayın. Arayüzde gezinme desteğini Playnite sağlar; oyun içindeki tuşlar ise oyuna ve giriş ayarlarına bağlıdır.
 
-Playnite Free sürümünde desteklenir. Ses, görüntü ya da seçtiğiniz arka plan uygulamalarını kapatma gibi ek oturum ayarlarını kullanmak isterseniz bunları ayrı Pro seçenekleri olarak yapılandırabilirsiniz.
+Playnite'ın tanıdığı her oyun kolu CouchMode oturumunu tetikleyemez. Önce Playnite'ı elle açarak kullanın, ardından CouchMode ile bağlantı üzerinden başlatmayı ayrı olarak deneyin.
+
+## Xbox tuşu Playnite'ı başlatır mı?
+
+Xbox veya Guide tuşunun kapalı Playnite'ı doğrudan açtığını varsaymayın. Playnite, zaten çalışan Fullscreen penceresine odağı geri getirmek için Guide tuşunu kullanma seçeneği sunar. Bu, kapalı bir uygulamayı başlatmak değildir. Tuşu başka bir program da alabilir.
+
+CouchMode, desteklenen oyun kolu bağlantısına ve açtığınız oturum seçeneklerine göre çalışır. Xbox tuşuna Playnite komutu atamaz. Oyun kolu zaten bağlıysa Guide tuşuna tekrar basmak yeni bir bağlantı oluşturmaz.
+
+## Oyun kolu bağlanınca Playnite'ı otomatik açma
+
+CouchMode'da oyun deneyimi olarak Playnite'ı seçin ve oyun kolu bağlandığında başlatma seçeneğini açın. Windows oturumunuz açıkken tek bir uyumlu oyun kolu bağlayın. CouchMode seçtiğiniz Playnite Fullscreen oturumunu başlatabilir. Bu özellik Free sürümünde bulunur.
+
+Xbox kolları doğrudan kullanılabilecek XInput örnekleridir. PS4 ve PS5 kollarının yerel bağlantısı, Playnite veya oyun tarafından kabul edilse bile CouchMode oturumunu tetiklemez. Windows'a uyumlu XInput cihazı olarak tanıtılan bir yapılandırmayı ayrıca deneyin.
+
+## Kurulu veya taşınabilir Playnite kullanma
+
+CouchMode, özel klasörlere kurulan ve taşınabilir Playnite sürümlerini destekler. Kullanmak istediğiniz kopyanın normal açıldığını, kitaplığınıza ulaştığını ve başlatma denemesinin o kopyayı açtığını kontrol edin. Taşınabilir klasörü başka yere taşıdıysanız TV karşısında kullanmadan önce tekrar deneyin.
+
+CouchMode, Playnite kitaplığını, eklentilerini veya oyun kolu tuş eşlemelerini yönetmez. Bozuk bir eklenti ya da ilk açılış ekranı varsa bunu Playnite içinde çözmeniz gerekir.
 
 ## Playnite zaten açıksa ne olur?
 
-Çalışmakta olan bir Playnite işlemi ikinci kez başlatılmaz. CouchMode mevcut durumu dikkate alır; kullandığınız Playnite örneğinin üzerine yenisini açmaya çalışmaz.
+CouchMode ikinci bir Playnite örneği başlatmak yerine mevcut durumu kullanır. Çalışan işlemin penceresi yine de küçültülmüş veya arka planda olabilir. Görünür Fullscreen arayüzünün oyun kolu girişini aldığını kontrol edin.
 
-Playnite açıksa ancak tam ekranda giriş almaya hazır değilse, bu başlangıcın başarısız olduğu anlamına gelmeyebilir. Sorun pencere odağıyla ilgili olabilir. Bu durumu incelemek için aşağıdaki Playnite tam ekran odak rehberine bakın.
+Bir fare tıklaması kolu aniden çalıştırıyorsa [Playnite odak kontrollerini](content:guide-playnite-focus) izleyin. Başlatma ayarlarını tekrar tekrar değiştirmek yerine sürücü ve tuş eşleme sorunlarını pencere odağından ayrı değerlendirin.
 
-## Uyumlu bir oyun kumandasıyla başlayın
+## Baştan sona bir oyun oturumu deneyin
 
-CouchMode desteklenen oyun kolu bağlantısına tepki verir. Xbox kolu veya XInput üzerinden algılanan başka bir gamepad, otomatik başlatmayı denemek için en güvenilir seçenektir.
+Tek oyun kolu, kullanacağınız ekran ve normal Windows oturumuyla deneyin. Playnite'ın açılıp komutlara yanıt verdiğini doğrulayın; sonra oturumu bitirip masaüstünü kontrol edin. CouchMode değiştirdiği desteklenen ayarları geri yükler. Windows'un yerine geçmez ve pencerelerin tam olarak eski konumlarına dönmesini garanti etmez.
 
-Yerel PlayStation bağlantısıyla Playnite'ı daha sonra kullanabilirsiniz; ancak PS4 veya PS5 kolu bu biçimde CouchMode'un desteklediği otomatik başlatma tetikleyicisi değildir. Adaptörler ve özel oyun kolu araçları bu davranışı değiştirebilir. Bu yapılandırmalar CouchMode'un kapsamı dışındadır ve oturumdan önce ayrı ayrı kontrol edilmelidir.
-
-## İlk oturumu basit tutun
-
-Önce yalnızca Playnite'ın açılışını test edin. Oyun koluyla başlatma güvenilir şekilde çalışana kadar ses, görüntü ve performans seçeneklerini kapalı bırakın. Böylece sorunun başlatıcıdan, oyun kolundan ya da ek bir oturum seçeneğinden kaynaklanıp kaynaklanmadığını daha kolay anlayabilirsiniz.
-
-Ardından istediğiniz seçenekleri birer birer ekleyin. TV'de birden fazla başlatıcı kullanıyorsanız aşağıdaki Windows 11 oyun bilgisayarını konsol gibi kullanma rehberi de yararlı olabilir.
-
-## CouchMode'un rolü
-
-CouchMode, oyun koluyla başlatmayı, seçtiğiniz başlatıcıyı ve desteklenen oturum seçeneklerini bir araya getirir. Windows kabuğunun yerini almaz; Playnite profillerini, oyun kolu sürücülerini veya cihaz eşlemelerini de düzeltmez.
-
-## Sık sorulan sorular
-
-### Xbox kolu açılınca Playnite otomatik başlar mı?
-
-Playnite hedef olarak seçildiyse başlayabilir. Xbox kolu, Windows tarafından XInput olarak algılandığı için en net desteklenen örnektir. Kullandığınız TV ve ekran düzeniyle tüm açılış yolunu test edin.
-
-### Playnite açık ama oyun kolu çalışmıyor. Ne yapmalıyım?
-
-Bu durum çoğu zaman tam ekran pencere odağıyla ilgilidir; başlatmanın başarısız olduğu anlamına gelmez. Önce bağlantılı Playnite odak rehberini inceleyin.
-
-### PS5 veya PS4 kolu Playnite'ı otomatik başlatabilir mi?
-
-Yerel bağlantı modunda hayır. CouchMode, yalnızca Windows'un desteklenen XInput yoluyla sunduğu oyun kollarıyla oturum başlatır.
-
-Başlatıcı açılıyor ancak giriş almıyorsa önce pencere odağını kontrol edin. Playnite elle doğru şekilde açılmıyorsa otomatik başlatmayı yeniden denemeden önce sorunu Playnite veya Windows tarafında çözün.
+Bu temel kullanım çalıştıktan sonra [bilgisayarı konsol gibi kullanma rehberi](content:guide-windows-console), ek ekran veya ses otomasyonuna ihtiyacınız olup olmadığını değerlendirmenize yardımcı olabilir.

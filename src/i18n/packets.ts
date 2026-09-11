@@ -1267,6 +1267,7 @@ const englishGuideHubPacket: SurfacePacketBase<"guide-hub"> = {
     "guide-resource-control-session-restore",
     "guide-windows-console",
     "guide-windows-handheld",
+    "guide-xbox-mode-windows-11",
   ],
   payload: {
     eyebrow: "Knowledge hub",
@@ -1316,6 +1317,22 @@ function guidePacketFromSource(
   if (source.locale === "en" && surfaceRegistry[source.contentId].defaultPath !== path)
     throw new Error(`English guide path does not match its surface policy: ${source.contentId}`);
 
+  const inlineTargets = [source.introduction, ...source.sections.map((section) => section.paragraphs)]
+    .flat()
+    .flatMap((paragraph) => [...paragraph.matchAll(/\[[^\]\n]+\]\(([^\s)]+)\)/g)])
+    .map((match) => match[1]);
+  const inlineContentIds: SurfaceId[] = [];
+  for (const target of inlineTargets) {
+    if (target.startsWith("content:")) {
+      const contentId = target.slice(8) as SurfaceId;
+      if (!Object.hasOwn(surfaceRegistry, contentId))
+        throw new Error(`Unknown guide link: ${source.contentId} -> ${target}`);
+      inlineContentIds.push(contentId);
+    } else if (!target.startsWith("https://")) {
+      throw new Error(`Guide links must use ContentId or HTTPS: ${target}`);
+    }
+  }
+
   return {
     contentId: source.contentId,
     kind: "guide-article",
@@ -1329,10 +1346,10 @@ function guidePacketFromSource(
       ogDescription: source.description,
       ogImage: new URL(source.ogImage, SITE_ORIGIN).toString(),
     },
-    schema: { headline: source.title, description: source.description },
-    internalLinks: ["guides", "download", "support", ...source.related],
+    schema: { headline: source.heading ?? source.title, description: source.description },
+    internalLinks: [...new Set<SurfaceId>(["guides", "download", "support", ...source.related, ...inlineContentIds])],
     payload: {
-      title: source.title,
+      title: source.heading ?? source.title,
       description: source.description,
       introduction: source.introduction,
       sections: source.sections,

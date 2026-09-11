@@ -1,62 +1,54 @@
 ---
-title: "Playnite automatisch starten, wenn ein Controller verbunden wird"
-description: "Starte Playnite Fullscreen automatisch mit einem kompatiblen XInput-Controller. Der Start über den Controller ist in CouchMode Free enthalten."
+title: "Playnite Fullscreen mit Controller öffnen"
+description: "Nutze Playnites Vollbildmodus mit Controller und starte ihn auf Wunsch bei einer XInput-Verbindung. Mit Hinweisen zu Xbox-Taste, bestehenden Fenstern und Fokus."
 contentId: guide-playnite-launch
 slug: playnite-mit-controller-automatisch-starten
 published: 2026-08-21
-updated: 2026-08-24
+updated: 2026-09-11
 locale: de
 category: playnite
 featured: true
 related: ["guide-playnite-focus", "guide-windows-console"]
-heroImage: /screenshots/app-general.png
-ogImage: /social/og-couchmode-v3.png
+heroImage: "/screenshots/app-general.png"
+ogImage: "/social/og-couchmode-v3.png"
 ---
 
-Wenn Playnite dein bevorzugter Launcher ist, legst du ihn in CouchMode als Ziel fest. Sobald Windows einen kompatiblen Controller erkennt, kann CouchMode Playnite Fullscreen starten. Windows bleibt dabei ein normaler Desktop-PC. CouchMode startet nur die Gaming-Session, die du eingerichtet hast.
+Playnite Fullscreen unterstützt bereits die Bedienung mit Controller. Öffne die Fullscreen-Verknüpfung von Playnite oder wechsle mit F11 aus dem Desktop-Modus und teste die Navigation in der Bibliothek. Dafür ist CouchMode nicht erforderlich.
 
-Das ist besonders nützlich, wenn dein PC am Fernseher hängt und du nicht erst mit Maus und Tastatur zum Launcher wechseln willst. Wie der Start abläuft, hängt von deiner Launcher-Auswahl, dem Controller und den Session-Optionen ab, die du in CouchMode aktivierst.
+Soll Playnite beim Verbinden eines Gamepads aufgehen, kann CouchMode eine Playnite-Fullscreen-Session starten, sobald Windows einen kompatiblen XInput-Controller erkennt. Diese optionale Automatisierung ist etwas anderes als die Bedienung einer geöffneten Bibliothek oder ein Druck auf die Xbox-Taste.
 
-## Playnite Fullscreen als Ziel festlegen
+## Zuerst Playnites eigenen Vollbildmodus testen
 
-Öffne CouchMode und wähle Playnite als dein Gaming-Erlebnis. Playnite muss auf dem PC installiert sein und sich außerhalb von CouchMode normal starten lassen. CouchMode startet Playnite Fullscreen als Teil deiner Gaming-Session. Es ersetzt Playnite nicht und verwaltet keine Playnite-Bibliothek.
+Playnites [Fullscreen-Dokumentation](https://api.playnite.link/docs/manual/gettingStarted/playniteFullscreenMode.html) beschreibt den Einstieg und die Eingabeeinstellungen. Prüfe zunächst, ob die Bibliothek dort auf deinen Controller reagiert. Die Navigation stellt Playnite bereit; die Steuerung innerhalb eines Spiels hängt vom Spiel und dessen Eingabeeinstellungen ab.
 
-Die Free-Version unterstützt Playnite. Wenn du später zusätzliche Einstellungen wie Audio, Anzeige oder das Schließen ausgewählter Hintergrund-Apps verwenden möchtest, richtest du diese als Pro-Optionen ein.
+Ein von Playnite erkannter Controller muss nicht zugleich als CouchMode-Auslöser funktionieren. Teste erst die manuelle Bedienung und danach den Start über eine Controller-Verbindung.
 
-## Wenn Playnite bereits geöffnet ist
+## Startet die Xbox-Taste Playnite?
 
-Ein bereits laufender Playnite-Prozess wird nicht einfach doppelt gestartet. CouchMode erkennt die vorhandene Instanz und vermeidet es, deine aktuelle Nutzung mit einer zweiten Playnite-Instanz zu stören.
+Die Xbox- oder Guide-Taste startet nicht automatisch ein geschlossenes Playnite. Playnite bietet eine Option, mit der Guide-Taste den Fokus auf sein laufendes Fullscreen-Fenster zurückzuholen. Das ist kein Start einer geschlossenen Anwendung. Auch andere Programme können den Tastendruck empfangen.
 
-Ist Playnite geöffnet, nimmt aber im Vollbild keine Eingaben an, ist das ein Fokusproblem und kein Beweis dafür, dass der Start fehlgeschlagen ist. Die passende Anleitung zum Playnite-Fokus im Vollbildmodus findest du unten bei den verwandten Anleitungen.
+CouchMode reagiert auf eine unterstützte Controller-Verbindung und die aktivierten Session-Optionen. Es belegt die Xbox-Taste nicht mit Playnite. Ist der Controller bereits verbunden, erzeugt ein weiterer Druck auf Guide keine neue Verbindung.
 
-## Mit einem kompatiblen Controller starten
+## Playnite beim Verbinden des Controllers automatisch öffnen
 
-CouchMode reagiert auf eine unterstützte Controller-Verbindung. Ein Xbox-Controller oder ein anderer Controller, den Windows über XInput erkennt, ist die verlässlichste Grundlage für den automatischen Start.
+Wähle Playnite als Gaming-Erlebnis in CouchMode und aktiviere den Start bei einer Controller-Verbindung. Verbinde einen kompatiblen Controller, während du bei Windows angemeldet bist. CouchMode kann dann die gewählte Playnite-Fullscreen-Session starten. Dieser Einstieg ist in Free enthalten.
 
-Ein PlayStation-Controller im nativen Modus kann Playnite später bedienen, ist aber nicht der unterstützte Auslöser für den automatischen Start von CouchMode. Das gilt auch für PS4- und PS5-Controller. Adapter und separate Controller-Tools können die Erkennung verändern. Diese Konfigurationen liegen außerhalb von CouchMode und sollten vor dem Einsatz einzeln geprüft werden.
+Xbox-Controller sind ein naheliegendes XInput-Beispiel. Native PS4- und PS5-Verbindungen lösen keine CouchMode-Session aus, auch wenn Playnite oder ein Spiel sie akzeptiert. Ein als kompatibles XInput-Gerät eingerichtetes Setup musst du gesondert testen.
 
-## Die erste Session einfach halten
+## Installiertes oder portables Playnite verwenden
 
-Teste zunächst nur den Start von Playnite. Lass Audio-, Anzeige- und Leistungsoptionen ausgeschaltet, bis der Start mit deinem Controller zuverlässig funktioniert. So erkennst du leichter, ob ein Problem beim Launcher, beim Controller oder bei einer zusätzlichen Option liegt.
+CouchMode unterstützt Playnite auch an benutzerdefinierten und portablen Installationsorten. Prüfe, ob sich die gewünschte Kopie normal öffnen lässt, ihre Bibliothek verfügbar ist und dein Starttest genau diese Kopie erreicht. Teste nach dem Verschieben eines portablen Ordners erneut, bevor du dich am Fernseher darauf verlässt.
 
-Danach kannst du die gewünschten Optionen einzeln ergänzen. Für ein TV-Setup mit mehreren Launchern hilft auch die verwandte Anleitung, wie du einen Windows-11-Gaming-PC wie eine Konsole nutzt.
+CouchMode verwaltet weder Playnites Bibliothek noch Erweiterungen oder Controller-Zuordnungen. Fehlerhafte Erweiterungen und Dialoge beim ersten Start müssen weiterhin in Playnite selbst geklärt werden.
 
-## Wo CouchMode hilft
+## Was passiert, wenn Playnite schon geöffnet ist?
 
-CouchMode verbindet den Start über einen kompatiblen Controller mit dem von dir gewählten Launcher und den unterstützten Optionen. Es ersetzt weder die Windows-Shell noch behebt es Playnite-Profile, Controller-Treiber oder Gerätezuteilungen.
+CouchMode arbeitet mit dem vorhandenen Playnite-Zustand, statt eine weitere Instanz zu starten. Das Fenster eines laufenden Prozesses kann trotzdem minimiert oder im Hintergrund sein. Prüfe, ob die sichtbare Fullscreen-Oberfläche Controller-Eingaben erhält.
 
-## Häufige Fragen
+Reagiert der Controller nach einem Mausklick plötzlich wieder, helfen die [Fokusprüfungen für Playnite](content:guide-playnite-focus). Trenne Treiber- und Tastenbelegungsfragen vom Fensterfokus, statt immer wieder die Startoptionen zu ändern.
 
-### Startet ein Xbox-Controller Playnite automatisch?
+## Eine vollständige Session testen
 
-Ja, sofern Playnite als Ziel ausgewählt ist. Ein Xbox-Controller ist der klarste unterstützte Fall, weil Windows ihn über XInput erkennt. Teste den kompletten Startweg mit dem Fernseher und Display, die du tatsächlich nutzt.
+Teste mit einem Controller, dem gewünschten Bildschirm und einer normalen Windows-Anmeldung. Prüfe den Start und die Bedienung von Playnite, beende dann die Session und kontrolliere den Desktop. CouchMode stellt unterstützte Einstellungen wieder her, die es geändert hat. Es ersetzt Windows nicht und verspricht keine exakten Fensterpositionen.
 
-### Playnite ist offen, reagiert aber nicht auf den Controller. Was jetzt?
-
-Das ist häufig ein Fokusproblem im Vollbildmodus, kein fehlgeschlagener Start. Prüfe zuerst die verlinkte Anleitung zum Playnite-Fokus.
-
-### Kann ein PS5- oder PS4-Controller Playnite automatisch starten?
-
-Nicht im nativen Verbindungsmodus. CouchMode startet Sessions nur, wenn Windows den Controller über den unterstützten XInput-Pfad bereitstellt.
-
-Wenn der Launcher startet, aber die Eingabe nicht ankommt, prüfe zuerst den Fokus. Wenn Playnite manuell nicht korrekt startet, löse dieses Problem in Playnite oder Windows, bevor du den automatischen Start erneut testest.
+Danach hilft die [Anleitung zum PC als Konsole](content:guide-windows-console) bei der Entscheidung, ob zusätzliche Bildschirm- oder Audioautomatisierung in deinem Alltag nützlich ist.

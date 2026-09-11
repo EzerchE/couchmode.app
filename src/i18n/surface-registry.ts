@@ -37,5 +37,6 @@ export const surfaceRegistry: Record<SurfaceId, SurfacePolicy> = {
   "guide-resource-control-session-restore": { contentId: "guide-resource-control-session-restore", kind: "guide-article", defaultPath: "/guides/close-apps-when-gaming-starts-restore-desktop/", indexability: "index,follow", sitemap: "include", defaultOgImage: image },
   "guide-windows-console": { contentId: "guide-windows-console", kind: "guide-article", defaultPath: "/guides/windows-11-console-like-pc/", indexability: "index,follow", sitemap: "include", defaultOgImage: image },
   "guide-windows-handheld": { contentId: "guide-windows-handheld", kind: "guide-article", defaultPath: "/guides/windows-handheld-couch-gaming/", indexability: "index,follow", sitemap: "include", defaultOgImage: image },
+  "guide-xbox-mode-windows-11": { contentId: "guide-xbox-mode-windows-11", kind: "guide-article", defaultPath: "/guides/xbox-mode-windows-11-full-screen-experience/", indexability: "index,follow", sitemap: "include", defaultOgImage: image },
   buy: { contentId: "buy", kind: "checkout", defaultPath: "/buy/", indexability: "noindex,follow", sitemap: "exclude", defaultOgImage: image },
 };

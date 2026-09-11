@@ -490,6 +490,7 @@ export const germanGuideHubPacket: SurfacePacketBase<"guide-hub"> = {
     "guide-resource-control-session-restore",
     "guide-windows-console",
     "guide-windows-handheld",
+    "guide-xbox-mode-windows-11",
   ],
   payload: {
     eyebrow: "Wissensbereich",
@@ -1084,6 +1085,7 @@ export const turkishGuideHubPacket: SurfacePacketBase<"guide-hub"> = {
     "guide-resource-control-session-restore",
     "guide-windows-console",
     "guide-windows-handheld",
+    "guide-xbox-mode-windows-11",
   ],
   payload: {
     eyebrow: "Bilgi merkezi",

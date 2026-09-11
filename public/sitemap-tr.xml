@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://couchmode.app/tr/</loc>
-    <lastmod>2026-08-26</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://couchmode.app/tr/couchmode-indir/</loc>
@@ -30,11 +30,11 @@
   </url>
   <url>
     <loc>https://couchmode.app/tr/tvde-pc-oyun-rehberleri/</loc>
-    <lastmod>2026-08-23</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://couchmode.app/tr/playnite-kumanda-ile-otomatik-baslatma/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://couchmode.app/tr/playnite-kumanda-calismiyor-tam-ekran-odak/</loc>
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://couchmode.app/tr/steam-big-picture-kumanda-ile-baslatma/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://couchmode.app/tr/oyun-kolu-baglaninca-hdr-ekran-ses-ayarlari/</loc>
@@ -54,10 +54,14 @@
   </url>
   <url>
     <loc>https://couchmode.app/tr/windows-11-oyun-bilgisayarini-konsol-gibi-kullanma/</loc>
-    <lastmod>2026-08-23</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://couchmode.app/tr/windows-el-konsolunu-tvye-baglayarak-oynama/</loc>
     <lastmod>2026-08-23</lastmod>
+  </url>
+  <url>
+    <loc>https://couchmode.app/tr/windows-11-xbox-modu-nasil-kullanilir/</loc>
+    <lastmod>2026-09-11</lastmod>
   </url>
 </urlset>

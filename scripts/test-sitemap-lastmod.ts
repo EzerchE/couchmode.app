@@ -18,7 +18,7 @@ assert.deepEqual(
   Object.keys(sitemapLastmod).sort(),
   activeLocales.map((locale) => locale.id).sort(),
 );
-assert.equal(indexableSurfaceIds.length, 15);
+assert.equal(indexableSurfaceIds.length, 16);
 assert.equal(firstPublicIndexableDate.de, "2026-08-23");
 assert.equal(firstPublicIndexableDate.tr, "2026-08-23");
 

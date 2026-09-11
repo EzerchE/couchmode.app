@@ -1,0 +1,73 @@
+---
+title: "How to Use Xbox Mode on Windows 11 (Full Screen Experience)"
+heading: "How to Use Xbox Mode on Windows 11"
+description: "Check Xbox Mode availability on Windows 11, enter it on a PC or handheld, and return to the desktop. Includes optional controller-triggered sessions."
+contentId: guide-xbox-mode-windows-11
+slug: xbox-mode-windows-11-full-screen-experience
+published: 2026-09-11
+updated: 2026-09-11
+locale: en
+category: windows-couch-gaming
+featured: false
+related: ["guide-windows-console", "guide-steam-big-picture", "guide-playnite-launch", "guide-windows-handheld"]
+heroImage: "/screenshots/app-general.png"
+ogImage: "/social/og-couchmode-v3.png"
+---
+
+Xbox Mode gives a supported Windows 11 PC a gaming interface you can navigate with a controller. You may also see it called Full Screen Experience, or FSE. Check whether your PC offers the mode in Windows Settings, then try entering and leaving it manually before adding any automation.
+
+You can use Xbox Mode without CouchMode. This guide covers the Windows setup first, then explains where an optional controller-triggered CouchMode session fits.
+
+## What is Xbox Mode on Windows 11?
+
+Xbox Mode is a Windows gaming environment, with a gaming home app and navigation designed for a controller. It changes how you move between the launcher, games and other apps while in the mode. Windows remains available when you return to the desktop.
+
+It is one option for a [console-style Windows PC](content:guide-windows-console). The right choice depends on the games you use and the interface you want on the screen.
+
+## Is Xbox Mode available on your PC?
+
+Microsoft specifies Windows 11 24H2 or later and availability in supported markets. A compatible version number alone does not prove the option is enabled on your device. Supported handhelds and other PC types can have different settings and entry points.
+
+Check your Windows updates and the options actually present under Settings, Gaming, Xbox mode. If the setting is absent, consult [Microsoft's current availability and setup guidance](https://support.microsoft.com/en-us/servicing/os/windows/docs/2025/10/windows-gaming-full-screen-experience). CouchMode cannot make an unavailable Windows feature appear.
+
+## How to enable and enter Xbox Mode
+
+On a supported desktop or laptop, open Settings, Gaming, Xbox mode and enable it. On a supported gaming handheld, select the installed gaming home app in that settings page. The exact choices depend on the device.
+
+Use an available entry point in the Xbox app, Game Bar or Task View, or try Win+F11 where configured. Check that you have entered Xbox Mode and can navigate it, then practice returning to the desktop. If a setup or sign-in prompt appears, complete it before expecting a controller-only start.
+
+## Xbox Mode on desktops, laptops and handheld PCs
+
+A handheld can offer entry into Xbox Mode after sign-in through its startup option. That is different from connecting an external controller to a desktop. A built-in handheld controller may already be present throughout startup, so do not treat its presence as a fresh external connection.
+
+Test a handheld both on its own screen and at the dock if you use both. A TV, receiver or dock can change the display and audio devices Windows sees. The [handheld TV guide](content:guide-windows-handheld) covers that part of the setup.
+
+## Xbox Mode vs opening or maximizing the Xbox app
+
+A large Xbox app window is not sufficient evidence that Windows has entered Xbox Mode. Start through a supported mode entry point and check the resulting navigation and desktop-return controls.
+
+This distinction matters when testing automation. Seeing the launcher appear proves that the app opened; it does not by itself prove that the intended Windows gaming environment is active.
+
+## Starting a gaming session automatically with a controller
+
+Once manual entry works, you can optionally select the supported Xbox experience in CouchMode and configure a session trigger. Xbox Mode launch is included in CouchMode Free where Windows supports it. The external-controller trigger depends on Windows detecting a compatible XInput connection; it is not a mapping of the controller's power or Guide button. Native PS4 or PS5 connections are not universal CouchMode triggers.
+
+For a handheld with built-in controls, use the startup/session options appropriate to that device and test them separately from an external gamepad. Optional Pro [HDR, display and audio preferences](content:guide-controller-session-settings) apply only to the supported settings you select.
+
+## What happens when the controller disconnects?
+
+A low battery or lost wireless connection is not reliable evidence that you finished playing. With CouchMode, controller disconnect alone must not be treated as permission to tear down an active fullscreen gaming session.
+
+Check your configured exit behavior with a safe test, and reconnect the controller if the interruption was accidental. Do not depend on unplugging the gamepad as the only way to finish a session. Save your game and use an explicit exit when you intend to stop.
+
+## Returning safely to the Windows desktop
+
+Use the available desktop-return control in Game Bar or Task View, or Win+F11 where supported. For a CouchMode session, the aim is to leave Windows usable and restore supported settings CouchMode changed. Pre-existing applications should remain usable without unnecessary closure or repositioning; exact window geometry is not guaranteed.
+
+If you also enable Pro Resource Control, only selected accessible applications are targets. Elevated, service-like or self-restarting processes may remain running. The [selected-app and desktop-restoration guide](content:guide-resource-control-session-restore) explains those separate choices.
+
+## When Steam Big Picture or Playnite may fit better
+
+Choose the launcher that works with your library and controller before optimizing the surrounding session. [Steam Big Picture](content:guide-steam-big-picture) is an alternative for Steam use, while [Playnite Fullscreen](content:guide-playnite-launch) brings libraries together. They are alternatives to evaluate, not prerequisites for Xbox Mode.
+
+Try one manual start and one desktop return with the software already open in your normal setup. That gives you a useful baseline for deciding which repeated steps, if any, you want CouchMode to automate.

@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { GuideCard } from "@/components/guides/GuideCard";
 import { GuideActions } from "@/components/guides/GuideActions";
+import { GuideText } from "@/components/guides/GuideText";
 import { Footer } from "@/components/landing/Footer";
 import { Navbar } from "@/components/landing/Navbar";
 import { SITE_ORIGIN } from "@/i18n/config";
@@ -140,7 +141,7 @@ function GuidePage() {
           <div className="mt-10 space-y-5 text-lg leading-8 text-muted-foreground">
             {guide.packet.payload.introduction.map((paragraph, index) => (
               <p key={paragraph} className={index === 0 ? "text-foreground" : undefined}>
-                {paragraph}
+                <GuideText text={paragraph} />
               </p>
             ))}
           </div>
@@ -152,7 +153,7 @@ function GuidePage() {
                 </h2>
                 <div className="mt-4 space-y-5 leading-7 text-muted-foreground">
                   {section.paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
+                    <p key={paragraph}><GuideText text={paragraph} /></p>
                   ))}
                 </div>
               </section>
