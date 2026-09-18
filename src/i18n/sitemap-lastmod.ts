@@ -26,6 +26,8 @@ export type SitemapLastmod =
   `${number}${number}${number}${number}-${number}${number}-${number}${number}`;
 
 const germanTurkishPublicBaseline: SitemapLastmod = "2026-08-23";
+// Wave 1a publication date, recorded explicitly for the reviewed joint release.
+const frenchSpanishPublicBaseline: SitemapLastmod = "2026-09-18";
 
 function everyIndexableSurface(
   lastModified: SitemapLastmod,
@@ -73,6 +75,8 @@ export const sitemapLastmod: Partial<Record<LocaleId, Record<IndexableSurfaceId,
       "guide-controller-session-settings": "2026-08-24",
       "guide-resource-control-session-restore": "2026-09-18",
     },
+    fr: everyIndexableSurface(frenchSpanishPublicBaseline),
+    es: everyIndexableSurface(frenchSpanishPublicBaseline),
     tr: {
       ...everyIndexableSurface(germanTurkishPublicBaseline),
       guides: "2026-09-11",
@@ -92,6 +96,8 @@ export const sitemapLastmod: Partial<Record<LocaleId, Record<IndexableSurfaceId,
 export const firstPublicIndexableDate: Partial<Record<LocaleId, SitemapLastmod>> = {
   de: germanTurkishPublicBaseline,
   tr: germanTurkishPublicBaseline,
+  fr: frenchSpanishPublicBaseline,
+  es: frenchSpanishPublicBaseline,
 };
 
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;

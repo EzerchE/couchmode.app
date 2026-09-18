@@ -1,7 +1,7 @@
 import type { LocaleId } from "./config";
 
 // Updated only in a reviewed activation commit, separately from the manifest.
-export const approvedActiveLocaleIds: readonly LocaleId[] = ["en", "de", "tr"];
+export const approvedActiveLocaleIds: readonly LocaleId[] = ["en", "de", "tr", "fr", "es"];
 
 export function assertApprovedActiveLocales(locales: readonly { id: string; state: string }[]) {
   const actual = locales

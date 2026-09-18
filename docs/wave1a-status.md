@@ -50,3 +50,31 @@ outside the repository at
 `C:/Users/ezerc/dev/couchmode-validation/2026-09-18-locale-expansion/`.
 Activation, five-locale browser checks, production deployment and live/GSC results
 are separate gates, not claimed by this pending-content commit.
+
+## Joint activation candidate
+
+The complete content slice is committed as `fd1392b`. Independent source-policy
+follow-ups closed all mandatory findings after owner clarification. FR/ES are
+activated together in the manifest and the separate approved-active-set policy.
+The intended public release date is 2026-09-18; this must be rechecked if publication
+is delayed to another date. Their 32 first-public sitemap entries use that date.
+
+Five-locale production build and all repository gates pass: TypeScript 0, i18n,
+80-URL sitemap, deterministic lastmod, renderer (68 non-English surfaces), actual
+route tests, 40 guide prerenders, seven overlays per locale, release safety and Pro
+bridge. IT/PT-BR/PL/JA/KO remain non-public. Buy stays noindex and excluded.
+
+Browser matrix: EN/DE/TR/FR/ES at 375/768/1024/1280/1440, 25/25 PASS. New-locale
+checks cover home, hub, priority articles, download, support, changelog and legal
+pages. No horizontal overflow; header/Reddit pills, selector real links/current
+state/focus/keyboard/Escape/outside-click, consent defaults/persistence/reopening,
+Patreon attribution and localized HTTP 404 pass. Japanese browser language did
+not redirect any explicitly opened locale. No layout-source change was needed.
+
+Activation build: total JS gzip 363853 bytes, largest entry 244581 bytes; compared
+with Slice A, +52310 and +52362 bytes respectively. This is the measured cost of
+eager locale content, not a hidden zero-cost expansion. Prerender was 2.02 seconds
+versus 1.99 seconds for the three-active-locale candidate using the same content;
+this small single-run timing difference is not a meaningful performance claim.
+No bundle redesign is included. The complete title/route inventory is in
+`wave1a-inventory.md`. Production/live validation remains the final release gate.
