@@ -1,4 +1,5 @@
 import type { LocaleId, SurfaceId } from "./config";
+import { englishSharedUi } from "./shared-ui";
 import { activeLocales, localeManifest, localePath, SITE_ORIGIN } from "./config";
 import { surfaceRegistry, type SurfaceKind } from "./surface-registry";
 import {
@@ -290,7 +291,7 @@ export type LocaleLink = {
   label: string;
 };
 
-export type SharedLocaleContent = {
+export type SharedLocaleContent = import("./shared-ui").SharedUiCopy & {
   navigation: {
     homeLabel: string;
     openMenuLabel: string;
@@ -339,6 +340,7 @@ export type LocalePacket = {
 export type LocalePacketRegistry = Partial<Record<LocaleId, LocalePacket>>;
 
 export const englishLocaleContent: SharedLocaleContent = {
+  ...englishSharedUi,
   navigation: {
     homeLabel: "CouchMode home",
     openMenuLabel: "Open navigation menu",
@@ -1231,7 +1233,8 @@ const englishCheckoutPacket: SurfacePacketBase<"checkout"> = {
     },
     bridge: {
       redirectingLabel: "Taking you to Patreon...",
-      fallbackDescription: "If Patreon does not open automatically, continue with the button below.",
+      fallbackDescription:
+        "If Patreon does not open automatically, continue with the button below.",
     },
     patreonCtaLabel: "Continue on Patreon",
   },
@@ -1317,7 +1320,10 @@ function guidePacketFromSource(
   if (source.locale === "en" && surfaceRegistry[source.contentId].defaultPath !== path)
     throw new Error(`English guide path does not match its surface policy: ${source.contentId}`);
 
-  const inlineTargets = [source.introduction, ...source.sections.map((section) => section.paragraphs)]
+  const inlineTargets = [
+    source.introduction,
+    ...source.sections.map((section) => section.paragraphs),
+  ]
     .flat()
     .flatMap((paragraph) => [...paragraph.matchAll(/\[[^\]\n]+\]\(([^\s)]+)\)/g)])
     .map((match) => match[1]);
@@ -1347,7 +1353,15 @@ function guidePacketFromSource(
       ogImage: new URL(source.ogImage, SITE_ORIGIN).toString(),
     },
     schema: { headline: source.heading ?? source.title, description: source.description },
-    internalLinks: [...new Set<SurfaceId>(["guides", "download", "support", ...source.related, ...inlineContentIds])],
+    internalLinks: [
+      ...new Set<SurfaceId>([
+        "guides",
+        "download",
+        "support",
+        ...source.related,
+        ...inlineContentIds,
+      ]),
+    ],
     payload: {
       title: source.heading ?? source.title,
       description: source.description,
@@ -1585,7 +1599,7 @@ export function contentIdForPublicPath(path: string): SurfaceId | undefined {
   const prefix = localeManifest.locales.find((item) => item.id === locale)?.urlPrefix;
   if (!prefix) return undefined;
   const localizedPath = normalizePath(path).slice(prefix.length) || "/";
-  return resolveLocalizedRoute(locale, localizedPath)?.contentId;
+  return resolveLocalizedRoute(prefix.slice(1), localizedPath)?.contentId;
 }
 
 export function hreflangLinks(contentId: SurfaceId) {
@@ -1610,7 +1624,7 @@ export function resolvePacketRoute(packet: LocalePacket, requestedPath: string) 
 }
 
 export function resolveLocalizedRoute(localeId: string, requestedPath: string) {
-  const locale = activeLocales.find((item) => item.id === localeId);
+  const locale = activeLocales.find((item) => item.urlPrefix === `/${localeId}`);
   if (!locale || locale.id === "en") return undefined;
   const packet = localePacketFor(locale.id);
   return packet ? resolvePacketRoute(packet, requestedPath) : undefined;

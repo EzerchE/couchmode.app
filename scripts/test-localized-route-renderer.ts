@@ -15,7 +15,9 @@ import { latestRelease } from "../src/data/releases";
 import { surfaceRegistry } from "../src/i18n/surface-registry";
 import { releaseEditorialFor } from "../src/i18n/release-editorial";
 
-const testLocales = ["de", "tr"] as const;
+const testLocales = manifest.locales
+  .filter((locale) => locale.state === "active" && locale.id !== "en")
+  .map(({ id }) => id);
 const markerFor = (packet: import("../src/i18n/packets").AnySurfacePacket) => {
   switch (packet.kind) {
     case "home":
@@ -110,7 +112,9 @@ for (const locale of testLocales) {
     if (!packet) fail(`${locale}/${contentId} packet is missing`);
     if (packet.kind !== surfaceRegistry[contentId].kind)
       fail(`${locale}/${contentId} packet does not match its surface policy`);
-    if (resolveLocalizedRoute(locale, packet.path)?.contentId !== contentId)
+    if (
+      resolveLocalizedRoute(manifestLocale.urlPrefix.slice(1), packet.path)?.contentId !== contentId
+    )
       fail(`${locale}/${contentId} does not resolve through its active public route`);
     if (resolvePacketRoute(localePacket, packet.path)?.contentId !== contentId)
       fail(`${locale}/${contentId} cannot resolve through the packet route resolver`);
@@ -132,7 +136,7 @@ for (const locale of testLocales) {
     const metadata = metadataFor(packet);
     if (
       !metadata.canonical ||
-      metadata.canonical !== `https://couchmode.app/${locale}${packet.path}`
+      metadata.canonical !== `https://couchmode.app${manifestLocale.urlPrefix}${packet.path}`
     )
       fail(`${locale}/${contentId} does not have a self-referencing localized canonical`);
     const head = headForSurfacePacket(packet);
@@ -178,5 +182,5 @@ for (const locale of testLocales) {
 
 await vite.close();
 console.log(
-  "test-localized-route-renderer: OK (de/tr 17-surface active renderer validation passed)",
+  `test-localized-route-renderer: OK (${testLocales.join("/")} active renderer validation passed)`,
 );

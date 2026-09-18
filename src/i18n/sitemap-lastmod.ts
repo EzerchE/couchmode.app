@@ -22,7 +22,6 @@ export const indexableSurfaceIds = [
 ] as const satisfies readonly Exclude<SurfaceId, "buy">[];
 
 export type IndexableSurfaceId = (typeof indexableSurfaceIds)[number];
-export type ActiveLocaleId = Extract<LocaleId, "en" | "de" | "tr">;
 export type SitemapLastmod =
   `${number}${number}${number}${number}-${number}${number}-${number}${number}`;
 
@@ -40,53 +39,54 @@ function everyIndexableSurface(
  * The only source of sitemap lastmod values. Update a locale/surface entry in
  * the same change that makes a meaningful, indexable change to that page.
  */
-export const sitemapLastmod = {
-  en: {
-    home: "2026-09-11",
-    download: "2026-08-30",
-    support: "2026-08-05",
-    changelog: "2026-08-30",
-    privacy: "2026-08-21",
-    terms: "2026-08-19",
-    refund: "2026-08-20",
-    guides: "2026-09-11",
-    "guide-playnite-launch": "2026-09-11",
-    "guide-playnite-focus": "2026-08-21",
-    "guide-steam-big-picture": "2026-09-11",
-    "guide-controller-session-settings": "2026-08-24",
-    "guide-resource-control-session-restore": "2026-08-24",
-    "guide-windows-console": "2026-09-11",
-    "guide-windows-handheld": "2026-08-21",
-    "guide-xbox-mode-windows-11": "2026-09-11",
-  },
-  // These complete localized page sets first became indexable on this date.
-  de: {
-    ...everyIndexableSurface(germanTurkishPublicBaseline),
-    guides: "2026-09-11",
-    "guide-windows-console": "2026-09-11",
-    "guide-xbox-mode-windows-11": "2026-09-11",
-    home: "2026-09-11",
-    download: "2026-08-30",
-    changelog: "2026-08-30",
-    "guide-playnite-launch": "2026-09-11",
-    "guide-steam-big-picture": "2026-09-11",
-    "guide-controller-session-settings": "2026-08-24",
-    "guide-resource-control-session-restore": "2026-08-24",
-  },
-  tr: {
-    ...everyIndexableSurface(germanTurkishPublicBaseline),
-    guides: "2026-09-11",
-    "guide-windows-console": "2026-09-11",
-    "guide-xbox-mode-windows-11": "2026-09-11",
-    home: "2026-09-11",
-    download: "2026-08-30",
-    changelog: "2026-08-30",
-    "guide-playnite-launch": "2026-09-11",
-    "guide-steam-big-picture": "2026-09-11",
-    "guide-controller-session-settings": "2026-08-24",
-    "guide-resource-control-session-restore": "2026-08-24",
-  },
-} as const satisfies Record<ActiveLocaleId, Record<IndexableSurfaceId, SitemapLastmod>>;
+export const sitemapLastmod: Partial<Record<LocaleId, Record<IndexableSurfaceId, SitemapLastmod>>> =
+  {
+    en: {
+      home: "2026-09-11",
+      download: "2026-08-30",
+      support: "2026-08-05",
+      changelog: "2026-08-30",
+      privacy: "2026-08-21",
+      terms: "2026-08-19",
+      refund: "2026-08-20",
+      guides: "2026-09-11",
+      "guide-playnite-launch": "2026-09-11",
+      "guide-playnite-focus": "2026-08-21",
+      "guide-steam-big-picture": "2026-09-11",
+      "guide-controller-session-settings": "2026-08-24",
+      "guide-resource-control-session-restore": "2026-08-24",
+      "guide-windows-console": "2026-09-11",
+      "guide-windows-handheld": "2026-08-21",
+      "guide-xbox-mode-windows-11": "2026-09-11",
+    },
+    // These complete localized page sets first became indexable on this date.
+    de: {
+      ...everyIndexableSurface(germanTurkishPublicBaseline),
+      guides: "2026-09-11",
+      "guide-windows-console": "2026-09-11",
+      "guide-xbox-mode-windows-11": "2026-09-11",
+      home: "2026-09-11",
+      download: "2026-08-30",
+      changelog: "2026-08-30",
+      "guide-playnite-launch": "2026-09-11",
+      "guide-steam-big-picture": "2026-09-11",
+      "guide-controller-session-settings": "2026-08-24",
+      "guide-resource-control-session-restore": "2026-08-24",
+    },
+    tr: {
+      ...everyIndexableSurface(germanTurkishPublicBaseline),
+      guides: "2026-09-11",
+      "guide-windows-console": "2026-09-11",
+      "guide-xbox-mode-windows-11": "2026-09-11",
+      home: "2026-09-11",
+      download: "2026-08-30",
+      changelog: "2026-08-30",
+      "guide-playnite-launch": "2026-09-11",
+      "guide-steam-big-picture": "2026-09-11",
+      "guide-controller-session-settings": "2026-08-24",
+      "guide-resource-control-session-restore": "2026-08-24",
+    },
+  };
 
 /** The first date a locale's prefixed URLs could be indexed in production. */
 export const firstPublicIndexableDate: Partial<Record<LocaleId, SitemapLastmod>> = {
@@ -109,7 +109,7 @@ export function sitemapLastmodFor(
   localeId: LocaleId,
   contentId: IndexableSurfaceId,
 ): SitemapLastmod {
-  const localeLastmod = sitemapLastmod[localeId as ActiveLocaleId];
+  const localeLastmod = sitemapLastmod[localeId];
   if (!localeLastmod) throw new Error(`${localeId} has no active sitemap lastmod metadata`);
   return localeLastmod[contentId];
 }

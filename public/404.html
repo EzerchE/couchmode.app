@@ -47,19 +47,17 @@
   </head>
   <body>
     <main>
-      <p>404</p>
-      <h1>This CouchMode page does not exist.</h1>
-      <p>Try the Windows couch gaming guides or return to the CouchMode homepage.</p>
-      <a href="/guides/">Browse guides</a>
-      <a
-        href="/"
-        style="
-          margin-left: 0.5rem;
-          background: transparent;
-          border: 1px solid rgba(255, 255, 255, 0.2);
-        "
-        >Go home</a
-      >
-    </main>
+<section lang="en" data-prefix=""><p>404</p><h1>This CouchMode page does not exist.</h1><p>Try the Windows couch gaming guides or return to the CouchMode homepage.</p><a href="/guides/">Browse guides</a><a href="/" style="margin-left:0.5rem;background:transparent;border:1px solid rgba(255,255,255,0.2)">Go home</a></section>
+<section lang="de" data-prefix="/de"><p>404</p><h1>Diese CouchMode-Seite existiert nicht.</h1><p>Schau in die Anleitungen zum Spielen unter Windows oder gehe zurück zur CouchMode-Startseite.</p><a href="/de/pc-gaming-am-fernseher-ratgeber/">Anleitungen ansehen</a><a href="/de" style="margin-left:0.5rem;background:transparent;border:1px solid rgba(255,255,255,0.2)">Zur Startseite</a></section>
+<section lang="tr" data-prefix="/tr"><p>404</p><h1>Bu CouchMode sayfası mevcut değil.</h1><p>Windows oyun rehberlerine göz atabilir veya CouchMode ana sayfasına dönebilirsiniz.</p><a href="/tr/tvde-pc-oyun-rehberleri/">Rehberlere göz at</a><a href="/tr" style="margin-left:0.5rem;background:transparent;border:1px solid rgba(255,255,255,0.2)">Ana sayfaya dön</a></section>
+<script>
+(() => {
+  const sections = [...document.querySelectorAll('main > section')];
+  const active = sections.find(s => s.dataset.prefix && (location.pathname === s.dataset.prefix || location.pathname.startsWith(s.dataset.prefix + '/'))) || sections.find(s => s.lang === 'en');
+  for (const section of sections) section.hidden = section !== active;
+  if (active) { document.documentElement.lang = active.lang; document.title = active.querySelector('h1').textContent + ' | CouchMode'; }
+})();
+</script>
+</main>
   </body>
 </html>

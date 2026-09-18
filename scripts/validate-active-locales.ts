@@ -5,6 +5,10 @@ import manifest from "../src/i18n/manifest.json";
 import { releases } from "../src/data/releases";
 import type { LocaleId, SurfaceId } from "../src/i18n/config";
 import { releaseEditorialFor } from "../src/i18n/release-editorial";
+import {
+  approvedActiveLocaleIds,
+  assertApprovedActiveLocales,
+} from "../src/i18n/activation-policy";
 
 const root = path.resolve(import.meta.dirname, "..");
 const publicOutput = path.join(root, "dist", "client");
@@ -12,9 +16,14 @@ const languageSwitcherSource = fs.readFileSync(
   path.join(root, "src", "components", "i18n", "LanguageSwitcher.tsx"),
   "utf8",
 );
-const expectedActiveLocaleIds = ["en", "de", "tr"] as const;
-const phase1LocaleIds = ["de", "tr"] as const;
-const plannedLocaleIds = ["fr", "es", "it", "pt-BR", "pl", "ja", "ko"] as const;
+const expectedActiveLocaleIds = approvedActiveLocaleIds;
+const nonEnglishLocaleIds = manifest.locales
+  .filter((locale) => locale.state === "active" && locale.id !== "en")
+  .map(({ id }) => id);
+const nonPublicLocaleIds = manifest.locales
+  .filter((locale) => locale.state !== "active")
+  .map(({ id }) => id);
+assertApprovedActiveLocales(manifest.locales);
 
 function fail(message: string): never {
   throw new Error(`active locale validation: ${message}`);
@@ -71,13 +80,9 @@ if (
   JSON.stringify(expectedActiveLocaleIds)
 )
   fail(`expected active locales ${expectedActiveLocaleIds.join(", ")}`);
-for (const localeId of phase1LocaleIds) {
-  if (manifest.locales.find((locale) => locale.id === localeId)?.state !== "active")
-    fail(`${localeId} must activate with the other Phase 1 locale`);
-}
-for (const localeId of plannedLocaleIds) {
+for (const localeId of nonPublicLocaleIds) {
   const locale = manifest.locales.find((item) => item.id === localeId);
-  if (locale?.state !== "planned") fail(`${localeId} must remain planned and non-public`);
+  if (!locale || locale.state === "active") fail(`${localeId} must remain non-public`);
   if (fs.existsSync(path.join(publicOutput, locale.urlPrefix.replace(/^\//, ""))))
     fail(`${localeId} has a public prerendered directory`);
 }
@@ -167,7 +172,7 @@ try {
         )
       )
         fail(`${locale.id}/${contentId} does not identify its current language control`);
-      for (const plannedLocaleId of plannedLocaleIds) {
+      for (const plannedLocaleId of nonPublicLocaleIds) {
         const plannedLocale = manifest.locales.find((item) => item.id === plannedLocaleId);
         if (plannedLocale && html.includes(`aria-label="${plannedLocale.label}"`))
           fail(`${locale.id}/${contentId} exposes planned locale ${plannedLocale.id}`);
@@ -183,14 +188,16 @@ try {
           html.includes(englishMarker)
         )
           fail(`${locale.id}/${contentId} leaks English surface content`);
-        if (resolveLocalizedRoute(locale.id, surface.path)?.contentId !== contentId)
+        if (resolveLocalizedRoute(locale.urlPrefix.slice(1), surface.path)?.contentId !== contentId)
           fail(`${locale.id}/${contentId} does not resolve through the active route table`);
       }
 
-      if (resolveLocalizedRoute(locale.id, `${surface.path}not-found/`) !== undefined)
+      if (
+        resolveLocalizedRoute(locale.urlPrefix.slice(1), `${surface.path}not-found/`) !== undefined
+      )
         fail(`${locale.id}/${contentId} accepts an unknown localized route`);
       for (const alias of surface.redirectAliases ?? []) {
-        if (resolveLocalizedRoute(locale.id, alias) !== undefined)
+        if (resolveLocalizedRoute(locale.urlPrefix.slice(1), alias) !== undefined)
           fail(`${locale.id}/${contentId} renders a redirect alias without HTTP redirects`);
       }
     }
@@ -205,7 +212,7 @@ try {
       fail(`${locale.id} prerendered ${outputFiles.length}/${surfaceIds.length} required surfaces`);
   }
 
-  for (const localeId of phase1LocaleIds) {
+  for (const localeId of nonEnglishLocaleIds) {
     const changelog = packetFor(localeId, "changelog");
     if (!changelog || changelog.kind !== "changelog")
       fail(`${localeId} changelog packet is missing`);
@@ -237,15 +244,16 @@ try {
       fail(`${localeId} privacy page does not render the consent action`);
   }
 
-  for (const localeId of plannedLocaleIds) {
-    if (resolveLocalizedRoute(localeId, "/") !== undefined)
+  for (const localeId of nonPublicLocaleIds) {
+    const prefix = manifest.locales.find((locale) => locale.id === localeId)!.urlPrefix.slice(1);
+    if (resolveLocalizedRoute(prefix, "/") !== undefined)
       fail(`${localeId} is planned but resolves a localized public route`);
   }
 
   for (const contentId of indexableSurfaceIds) {
     const cluster = hreflangLinks(contentId);
     if (
-      cluster.length !== 4 ||
+      cluster.length !== activeLocales.length + 1 ||
       cluster.some(
         (alternate) =>
           !expectedActiveLocaleIds.includes(alternate.hrefLang as LocaleId) &&
@@ -259,5 +267,5 @@ try {
 }
 
 console.log(
-  "validate-active-locales: OK (en/de/tr 17-surface public prerender and SEO gate passed)",
+  `validate-active-locales: OK (${activeLocales.map(({ id }) => id).join("/")} public prerender and SEO gate passed)`,
 );

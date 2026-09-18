@@ -1,10 +1,12 @@
 import { localeManifest } from "./config";
+import { germanSharedUi, turkishSharedUi } from "./shared-ui";
 import type { SharedLocaleContent, SurfacePacketBase } from "./packets";
 import {
   germanReleaseEditorialOverlay,
   turkishReleaseEditorialOverlay,
 } from "./pending-release-editorial";
 export const germanLocaleContent: SharedLocaleContent = {
+  ...germanSharedUi,
   navigation: {
     homeLabel: "CouchMode-Startseite",
     openMenuLabel: "Navigationsmenü öffnen",
@@ -601,6 +603,7 @@ export const germanSupportPacket: SurfacePacketBase<"support"> = {
   },
 };
 export const turkishLocaleContent: SharedLocaleContent = {
+  ...turkishSharedUi,
   navigation: {
     homeLabel: "CouchMode ana sayfası",
     openMenuLabel: "Gezinme menüsünü aç",

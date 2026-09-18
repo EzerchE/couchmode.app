@@ -1,7 +1,11 @@
 import { useEffect, useRef, useState } from "react";
+import { useLocaleContent } from "@/i18n/content";
 import { readConsentChoice, saveConsentChoice, type ConsentChoice } from "@/lib/consent";
 
 export function ConsentBanner() {
+  const {
+    shared: { consent: copy },
+  } = useLocaleContent();
   const [ready, setReady] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [choice, setChoice] = useState<ConsentChoice>({ analytics: false, advertising: false });
@@ -51,35 +55,26 @@ export function ConsentBanner() {
       aria-labelledby="consent-heading"
     >
       <h2 id="consent-heading" className="text-base font-semibold text-foreground">
-        Your privacy choices
+        {copy.heading}
       </h2>
-      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-        Necessary storage keeps this choice. Analytics helps us understand website use. Advertising
-        is reserved for future campaign measurement and is off unless you allow it.
-      </p>
+      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{copy.explanation}</p>
       {saveError ? (
         <p className="mt-3 text-sm text-destructive" role="alert">
-          We could not save your choice. Please check that browser storage is available and try
-          again.
+          {copy.saveError}
         </p>
       ) : null}
       <div className="mt-4 grid gap-3 text-sm">
         <label className="flex items-center justify-between gap-4 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5">
           <span>
-            <span className="font-medium text-foreground">Necessary</span>
-            <span className="block text-xs text-muted-foreground">Always on</span>
+            <span className="font-medium text-foreground">{copy.necessary}</span>
+            <span className="block text-xs text-muted-foreground">{copy.alwaysOn}</span>
           </span>
-          <input
-            type="checkbox"
-            checked
-            disabled
-            aria-label="Necessary storage is always enabled"
-          />
+          <input type="checkbox" checked disabled aria-label={copy.necessaryAriaLabel} />
         </label>
         <label className="flex items-center justify-between gap-4 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5">
           <span>
-            <span className="font-medium text-foreground">Analytics</span>
-            <span className="block text-xs text-muted-foreground">Website usage measurement</span>
+            <span className="font-medium text-foreground">{copy.analytics}</span>
+            <span className="block text-xs text-muted-foreground">{copy.analyticsDescription}</span>
           </span>
           <input
             type="checkbox"
@@ -91,8 +86,10 @@ export function ConsentBanner() {
         </label>
         <label className="flex items-center justify-between gap-4 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5">
           <span>
-            <span className="font-medium text-foreground">Advertising</span>
-            <span className="block text-xs text-muted-foreground">Future ad measurement</span>
+            <span className="font-medium text-foreground">{copy.advertising}</span>
+            <span className="block text-xs text-muted-foreground">
+              {copy.advertisingDescription}
+            </span>
           </span>
           <input
             type="checkbox"
@@ -109,21 +106,21 @@ export function ConsentBanner() {
           onClick={() => save({ analytics: false, advertising: false })}
           className="rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-foreground transition hover:bg-white/[0.06]"
         >
-          Necessary only
+          {copy.necessaryOnly}
         </button>
         <button
           type="button"
           onClick={() => save({ analytics: true, advertising: false })}
           className="rounded-full bg-aurora px-4 py-2 text-sm font-medium text-primary-foreground transition hover:brightness-110"
         >
-          Accept analytics
+          {copy.acceptAnalytics}
         </button>
         <button
           type="button"
           onClick={() => save(choice)}
           className="rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-foreground transition hover:bg-white/[0.06]"
         >
-          Save choices
+          {copy.saveChoices}
         </button>
       </div>
     </section>

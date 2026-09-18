@@ -43,7 +43,7 @@ const vite = await createServer({
 
 try {
   const packetModule = await vite.ssrLoadModule("/src/i18n/packets.ts");
-  const { packetFor } = packetModule;
+  const { packetFor, localePacketFor, relativeHrefFor } = packetModule;
   const sitemapFiles = [];
 
   for (const locale of activeLocales) {
@@ -84,6 +84,36 @@ ${sitemapFiles.map((fileName) => `  <sitemap><loc>${siteUrl}/${fileName}</loc></
 </sitemapindex>
 `;
   fs.writeFileSync(path.join(publicDir, "sitemap.xml"), indexXml);
+  // GitHub Pages uses one static 404 document for all paths. Render all active
+  // translations for no-JS access, then select by prefix without redirecting.
+  const escapeHtml = (value) =>
+    value
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;");
+  const errorSections = activeLocales
+    .map((locale) => {
+      const copy = localePacketFor(locale.id)?.shared.errors;
+      const home = relativeHrefFor(locale.id, "home");
+      const guides = relativeHrefFor(locale.id, "guides", "", true);
+      if (!copy || !home || !guides) fail(`${locale.id} has incomplete static error content`);
+      return `<section lang="${escapeHtml(locale.id)}" data-prefix="${escapeHtml(locale.urlPrefix)}"><p>404</p><h1>${escapeHtml(copy.staticHeading)}</h1><p>${escapeHtml(copy.staticDescription)}</p><a href="${escapeHtml(guides)}">${escapeHtml(copy.guidesLabel)}</a><a href="${escapeHtml(home)}" style="margin-left:0.5rem;background:transparent;border:1px solid rgba(255,255,255,0.2)">${escapeHtml(copy.homeLabel)}</a></section>`;
+    })
+    .join("\n");
+  const errorFile = path.join(publicDir, "404.html");
+  const errorHtml = fs.readFileSync(errorFile, "utf8").replace(/\r\n?/g, "\n").replace(
+    /<main>[\s\S]*?<\/main>/,
+    `<main>\n${errorSections}\n<script>
+(() => {
+  const sections = [...document.querySelectorAll('main > section')];
+  const active = sections.find(s => s.dataset.prefix && (location.pathname === s.dataset.prefix || location.pathname.startsWith(s.dataset.prefix + '/'))) || sections.find(s => s.lang === 'en');
+  for (const section of sections) section.hidden = section !== active;
+  if (active) { document.documentElement.lang = active.lang; document.title = active.querySelector('h1').textContent + ' | CouchMode'; }
+})();
+</script>\n</main>`,
+  );
+  fs.writeFileSync(errorFile, errorHtml);
   console.log(
     `gen-sitemap: wrote ${indexableSurfaces.length * sitemapFiles.length} URLs across ${sitemapFiles.length} active locale sitemap(s)`,
   );

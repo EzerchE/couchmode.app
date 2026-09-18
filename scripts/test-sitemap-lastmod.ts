@@ -13,6 +13,11 @@ import {
 
 const root = path.resolve(import.meta.dirname, "..");
 const activeLocales = manifest.locales.filter((locale) => locale.state === "active");
+const sitemapFiles = [
+  "sitemap.xml",
+  "404.html",
+  ...activeLocales.map((locale) => `sitemap-${locale.urlPrefix.slice(1) || "en"}.xml`),
+];
 
 assert.deepEqual(
   Object.keys(sitemapLastmod).sort(),
@@ -23,6 +28,15 @@ assert.equal(firstPublicIndexableDate.de, "2026-08-23");
 assert.equal(firstPublicIndexableDate.tr, "2026-08-23");
 
 for (const locale of activeLocales) {
+  if (locale.id !== "en") {
+    const baseline = firstPublicIndexableDate[locale.id];
+    assert.ok(baseline, `${locale.id} requires a public baseline`);
+    assert.ok(
+      sitemapLastmodErrors(locale.id, "home", "2000-01-01").some((error) =>
+        error.includes("predates"),
+      ),
+    );
+  }
   for (const contentId of indexableSurfaceIds) {
     const value = sitemapLastmodFor(locale.id, contentId);
     assert.deepEqual(sitemapLastmodErrors(locale.id, contentId, value), []);
@@ -39,13 +53,9 @@ for (const locale of manifest.locales.filter((item) => item.state !== "active"))
 }
 
 await $`bun scripts/gen-sitemap.mjs`.cwd(root).quiet();
-const first = ["sitemap.xml", "sitemap-en.xml", "sitemap-de.xml", "sitemap-tr.xml"].map((file) =>
-  readFileSync(path.join(root, "public", file), "utf8"),
-);
+const first = sitemapFiles.map((file) => readFileSync(path.join(root, "public", file), "utf8"));
 await $`bun scripts/gen-sitemap.mjs`.cwd(root).quiet();
-const second = ["sitemap.xml", "sitemap-en.xml", "sitemap-de.xml", "sitemap-tr.xml"].map((file) =>
-  readFileSync(path.join(root, "public", file), "utf8"),
-);
+const second = sitemapFiles.map((file) => readFileSync(path.join(root, "public", file), "utf8"));
 assert.deepEqual(second, first);
 
 console.log(

@@ -12,8 +12,9 @@ type GuideCardProps = {
   compact?: boolean;
 };
 
-function formatDate(value: string, locale: LocaleId) {
+export function formatGuideDate(value: string, locale: LocaleId) {
   return new Intl.DateTimeFormat(locale, {
+    timeZone: "UTC",
     year: "numeric",
     month: "short",
     day: "numeric",
@@ -55,7 +56,7 @@ export function GuideCard({ guide, copy, locale, compact = false }: GuideCardPro
         {guide.packet.payload.description}
       </p>
       <p className="relative mt-auto pt-5 text-xs text-muted-foreground/75">
-        {copy.card.updatedLabel} {formatDate(guide.source.updated, locale)}
+        {copy.card.updatedLabel} {formatGuideDate(guide.source.updated, locale)}
       </p>
     </a>
   );

@@ -13,36 +13,37 @@ import { CloudflareAnalytics } from "@/components/analytics/CloudflareAnalytics"
 import { ConsentBanner } from "@/components/analytics/ConsentBanner";
 import { LocalizedHeadLinks } from "@/components/i18n/LocalizedHeadLinks";
 import { LocaleContentProvider } from "@/i18n/content";
-import { localeForPublicPath, relativeHrefFor } from "@/i18n/packets";
+import { localeForPublicPath, localePacketFor, relativeHrefFor } from "@/i18n/packets";
 import { consentBootstrapScript } from "@/lib/consent";
 
 import appCss from "../styles.css?url";
 
 const GTM_CONTAINER_ID = "GTM-T44W76B7";
 
-function useLocalizedHomeHref() {
+function useLocalizedErrorContent() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   const locale = localeForPublicPath(pathname);
-  return relativeHrefFor(locale, "home") ?? "/";
+  const packet = localePacketFor(locale);
+  const homeHref = relativeHrefFor(locale, "home");
+  if (!packet || !homeHref) throw new Error(`Missing error content for ${locale}`);
+  return { homeHref, copy: packet.shared.errors };
 }
 
 function NotFoundComponent() {
-  const homeHref = useLocalizedHomeHref();
+  const { homeHref, copy } = useLocalizedErrorContent();
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">{copy.notFoundTitle}</h2>
+        <p className="mt-2 text-sm text-muted-foreground">{copy.notFoundDescription}</p>
         <div className="mt-6">
           <a
             href={homeHref}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Go home
+            {copy.homeLabel}
           </a>
         </div>
       </div>
@@ -53,17 +54,13 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  const homeHref = useLocalizedHomeHref();
+  const { homeHref, copy } = useLocalizedErrorContent();
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
-        </p>
+        <h1 className="text-xl font-semibold tracking-tight text-foreground">{copy.errorTitle}</h1>
+        <p className="mt-2 text-sm text-muted-foreground">{copy.errorDescription}</p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => {
@@ -72,13 +69,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             }}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Try again
+            {copy.retryLabel}
           </button>
           <a
             href={homeHref}
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
-            Go home
+            {copy.homeLabel}
           </a>
         </div>
       </div>

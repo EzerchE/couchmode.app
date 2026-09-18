@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
-import crypto from "node:crypto";
+import { sourceRevisionFor } from "./lib/locale-revision";
+import { assertApprovedActiveLocales } from "../src/i18n/activation-policy";
 import { createServer } from "vite";
 import manifest from "../src/i18n/manifest.json";
 import { releases } from "../src/data/releases";
@@ -26,53 +27,8 @@ const guideSurfaceIds = manifest.requiredSurfaces
   .filter((surface) => surface.kind === "guide-index" || surface.kind === "guide")
   .map((surface) => surface.id as SurfaceId);
 
-function collectFiles(directory: string): string[] {
-  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
-    const filePath = path.join(directory, entry.name);
-    return entry.isDirectory() ? collectFiles(filePath) : [filePath];
-  });
-}
-
-const localizedSourceRoots = [
-  "src/routes",
-  "src/components/landing",
-  "src/components/checkout",
-  "src/components/guides",
-  "src/components/i18n",
-  "src/components/utility",
-  "src/content/guides",
-];
-const localizedSourceFiles = [
-  ...localizedSourceRoots.flatMap((directory) => collectFiles(path.join(root, directory))),
-  path.join(root, "src/content/guides.ts"),
-  path.join(root, "src/i18n/packets.ts"),
-  path.join(root, "src/i18n/config.ts"),
-  path.join(root, "src/i18n/content.tsx"),
-  path.join(root, "src/i18n/surface-head.ts"),
-  path.join(root, "src/i18n/surface-registry.ts"),
-  path.join(root, "src/i18n/pending-core-packets.ts"),
-  path.join(root, "src/i18n/pending-legal-checkout-packets.ts"),
-  path.join(root, "src/i18n/pending-release-editorial.ts"),
-  path.join(root, "src/i18n/release-editorial.ts"),
-  path.join(root, "src/i18n/sitemap-lastmod.ts"),
-  path.join(root, "src/data/releases.json"),
-].sort();
-const actualSourceRevision = crypto
-  .createHash("sha256")
-  .update(
-    localizedSourceFiles
-      // GitHub Actions checks out LF while Windows can retain CRLF. The
-      // revision tracks authored content, so it must not vary by checkout EOL
-      // or the host-specific relative path separator.
-      .map(
-        (file) =>
-          `${path.relative(root, file).replace(/\\/g, "/")}\0${fs
-            .readFileSync(file, "utf8")
-            .replace(/\r\n?/g, "\n")}`,
-      )
-      .join("\0"),
-  )
-  .digest("hex");
+assertApprovedActiveLocales(manifest.locales);
+const actualSourceRevision = sourceRevisionFor(root);
 
 function fail(message: string): never {
   throw new Error(`i18n parity: ${message}`);
@@ -136,6 +92,19 @@ for (const locale of activeLocales) {
   const renderPacket = localePacketFor(locale.id);
   if (!renderPacket || renderPacket.sourceRevision !== manifest.sourceRevision)
     fail(`${locale.id} is active without a current locale packet`);
+  for (const group of ["consent", "errors"] as const) {
+    const source = localePacketFor("en")?.shared[group];
+    const copy = renderPacket.shared[group];
+    if (
+      !source ||
+      !copy ||
+      Object.keys(source).some((key) => {
+        const value = copy[key as keyof typeof copy];
+        return typeof value !== "string" || !value.trim();
+      })
+    )
+      fail(`${locale.id} has incomplete shared ${group} presentation`);
+  }
   for (const [contentId, surface] of Object.entries(renderPacket.surfaces)) {
     if (surface && !packetFor(locale.id, contentId as SurfaceId))
       fail(`${locale.id}/${contentId} does not match its packet policy`);
@@ -148,7 +117,7 @@ for (const locale of activeLocales) {
     if (!canonical || canonical !== expectedCanonical)
       fail(`${locale.id}/${contentId} does not self-canonicalize`);
     if (locale.id !== "en") {
-      const resolved = resolveLocalizedRoute(locale.id, surface.path);
+      const resolved = resolveLocalizedRoute(locale.urlPrefix.slice(1), surface.path);
       if (resolved?.contentId !== contentId)
         fail(`${locale.id}/${contentId} does not resolve through its localized public route`);
     }
@@ -255,7 +224,7 @@ for (const guide of englishGuides) {
 
 for (const locale of manifest.locales.filter((item) => item.state !== "active")) {
   for (const contentId of surfaceIds) {
-    if (resolveLocalizedRoute(locale.id, surfaceRegistry[contentId].defaultPath))
+    if (resolveLocalizedRoute(locale.urlPrefix.slice(1), surfaceRegistry[contentId].defaultPath))
       fail(`${locale.id} is non-public but resolves ${contentId}`);
     if (hrefFor(locale.id, contentId))
       fail(`${locale.id} is non-public but resolves a public ${contentId} href`);
