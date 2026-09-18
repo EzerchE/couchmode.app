@@ -123,6 +123,11 @@
     scroll-behavior: smooth;
   }
 
+  html:lang(ko) {
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
