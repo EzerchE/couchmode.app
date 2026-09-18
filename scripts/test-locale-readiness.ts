@@ -57,6 +57,19 @@ try {
     after,
     "Edited locale content must invalidate revision",
   );
+  for (const locale of ["ja", "ko"]) {
+    for (const relative of [`src/i18n/locales/${locale}/home.ts`, `src/content/guides/${locale}/playnite-controller-launch.mdx`]) {
+      const file = path.join(fixture, relative);
+      fs.mkdirSync(path.dirname(file), { recursive: true });
+      const authored = fs.readFileSync(path.resolve(import.meta.dirname, "..", relative), "utf8");
+      fs.writeFileSync(file, authored);
+      const reviewed = sourceRevisionFor(fixture);
+      fs.writeFileSync(file, authored.replace(locale === "ja" ? "コントローラー" : "컨트롤러", locale === "ja" ? "ゲームパッド" : "게임패드"));
+      assert.notEqual(sourceRevisionFor(fixture), reviewed, `${relative}: editorial mutation must invalidate fingerprint`);
+      fs.writeFileSync(file, authored);
+      assert.equal(sourceRevisionFor(fixture), reviewed, `${relative}: restored authored copy must restore fingerprint`);
+    }
+  }
 } finally {
   const resolved = path.resolve(fixture);
   assert.equal(path.dirname(resolved), path.resolve(os.tmpdir()));
