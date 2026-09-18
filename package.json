@@ -15,6 +15,7 @@
     "test:localized-route-renderer": "bun scripts/test-localized-route-renderer.ts",
     "test:locale-bundles": "bun scripts/test-locale-bundles.ts",
     "test:locale-readiness": "bun scripts/test-locale-readiness.ts",
+    "test:cjk-routes": "bun scripts/test-cjk-routes.ts",
     "test:sitemap-lastmod": "bun scripts/test-sitemap-lastmod.ts",
     "validate:guide-content": "bun scripts/validate-guide-content.ts",
     "test:pro-upgrade-bridge": "bun scripts/test-pro-upgrade-bridge.ts",
