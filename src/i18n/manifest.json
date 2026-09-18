@@ -1,5 +1,5 @@
 {
-  "sourceRevision": "b8c0d0441eba0388cef76657d6463b4434598b917541f0b7b7a4cd00061b3595",
+  "sourceRevision": "d9a1ba2a17e10eea2fbb678cf89ef0916412f96802518a51385e1ee2568c56b1",
   "requiredSurfaces": [
     {
       "id": "home",
@@ -160,20 +160,20 @@
     {
       "id": "ja",
       "urlPrefix": "/ja",
-      "state": "planned",
+      "state": "pending",
       "label": "日本語"
     },
     {
       "id": "ko",
       "urlPrefix": "/ko",
-      "state": "planned",
+      "state": "pending",
       "label": "한국어"
     }
   ],
   "contentPackets": [
     {
       "locale": "en",
-      "sourceRevision": "b8c0d0441eba0388cef76657d6463b4434598b917541f0b7b7a4cd00061b3595",
+      "sourceRevision": "d9a1ba2a17e10eea2fbb678cf89ef0916412f96802518a51385e1ee2568c56b1",
       "surfaces": [
         "home",
         "download",
@@ -196,7 +196,7 @@
     },
     {
       "locale": "de",
-      "sourceRevision": "b8c0d0441eba0388cef76657d6463b4434598b917541f0b7b7a4cd00061b3595",
+      "sourceRevision": "d9a1ba2a17e10eea2fbb678cf89ef0916412f96802518a51385e1ee2568c56b1",
       "surfaces": [
         "home",
         "download",
@@ -219,7 +219,7 @@
     },
     {
       "locale": "tr",
-      "sourceRevision": "b8c0d0441eba0388cef76657d6463b4434598b917541f0b7b7a4cd00061b3595",
+      "sourceRevision": "d9a1ba2a17e10eea2fbb678cf89ef0916412f96802518a51385e1ee2568c56b1",
       "surfaces": [
         "home",
         "download",
@@ -242,7 +242,7 @@
     },
     {
       "locale": "fr",
-      "sourceRevision": "b8c0d0441eba0388cef76657d6463b4434598b917541f0b7b7a4cd00061b3595",
+      "sourceRevision": "d9a1ba2a17e10eea2fbb678cf89ef0916412f96802518a51385e1ee2568c56b1",
       "surfaces": [
         "home",
         "download",
@@ -265,7 +265,7 @@
     },
     {
       "locale": "es",
-      "sourceRevision": "b8c0d0441eba0388cef76657d6463b4434598b917541f0b7b7a4cd00061b3595",
+      "sourceRevision": "d9a1ba2a17e10eea2fbb678cf89ef0916412f96802518a51385e1ee2568c56b1",
       "surfaces": [
         "home",
         "download",
@@ -288,7 +288,7 @@
     },
     {
       "locale": "it",
-      "sourceRevision": "b8c0d0441eba0388cef76657d6463b4434598b917541f0b7b7a4cd00061b3595",
+      "sourceRevision": "d9a1ba2a17e10eea2fbb678cf89ef0916412f96802518a51385e1ee2568c56b1",
       "surfaces": [
         "home",
         "download",
@@ -311,7 +311,7 @@
     },
     {
       "locale": "pt-BR",
-      "sourceRevision": "b8c0d0441eba0388cef76657d6463b4434598b917541f0b7b7a4cd00061b3595",
+      "sourceRevision": "d9a1ba2a17e10eea2fbb678cf89ef0916412f96802518a51385e1ee2568c56b1",
       "surfaces": [
         "home",
         "download",
@@ -334,7 +334,53 @@
     },
     {
       "locale": "pl",
-      "sourceRevision": "b8c0d0441eba0388cef76657d6463b4434598b917541f0b7b7a4cd00061b3595",
+      "sourceRevision": "d9a1ba2a17e10eea2fbb678cf89ef0916412f96802518a51385e1ee2568c56b1",
+      "surfaces": [
+        "home",
+        "download",
+        "support",
+        "changelog",
+        "privacy",
+        "terms",
+        "refund",
+        "guides",
+        "guide-playnite-launch",
+        "guide-playnite-focus",
+        "guide-steam-big-picture",
+        "guide-controller-session-settings",
+        "guide-resource-control-session-restore",
+        "guide-windows-console",
+        "guide-windows-handheld",
+        "guide-xbox-mode-windows-11",
+        "buy"
+      ]
+    },
+    {
+      "locale": "ja",
+      "sourceRevision": "d9a1ba2a17e10eea2fbb678cf89ef0916412f96802518a51385e1ee2568c56b1",
+      "surfaces": [
+        "home",
+        "download",
+        "support",
+        "changelog",
+        "privacy",
+        "terms",
+        "refund",
+        "guides",
+        "guide-playnite-launch",
+        "guide-playnite-focus",
+        "guide-steam-big-picture",
+        "guide-controller-session-settings",
+        "guide-resource-control-session-restore",
+        "guide-windows-console",
+        "guide-windows-handheld",
+        "guide-xbox-mode-windows-11",
+        "buy"
+      ]
+    },
+    {
+      "locale": "ko",
+      "sourceRevision": "d9a1ba2a17e10eea2fbb678cf89ef0916412f96802518a51385e1ee2568c56b1",
       "surfaces": [
         "home",
         "download",

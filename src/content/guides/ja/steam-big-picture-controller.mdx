@@ -1,0 +1,55 @@
+---
+title: "SteamのBig Picture モードをコントローラーで開く方法"
+heading: "コントローラーでSteamのBig Picture モードを開くには"
+description: "Xboxなどの対応コントローラーでSteamのBig Picture モードを開く方法。Steamの標準機能と、既存のSteamセッションを尊重するCouchModeの任意の自動起動を説明します。"
+contentId: guide-steam-big-picture
+slug: steam-big-picture-controller
+published: 2026-08-21
+updated: 2026-09-11
+locale: ja
+category: steam-big-picture
+featured: true
+related: ["guide-windows-console", "guide-windows-handheld"]
+heroImage: "/screenshots/app-session-tweaks.png"
+ogImage: "/social/og-couchmode-v3.png"
+---
+
+Steamがすでに起動していれば、対応するコントローラーと設定の組み合わせでは、Steamクライアントの使用中にHomeボタンやGuideボタンからBig Picture モードを開けます。この基本操作にCouchModeは必要ありません。Steamを起動し、コントローラーが認識されていることを確認してから、ボタンを試してください。
+
+ボタンでBig Picture モードを開くことと、コントローラー接続でゲームセッションを始めることは別です。Steam自身の画面操作はSteamが受け持ちます。CouchModeは任意の補助ツールで、対応コントローラーの接続時に選んだ画面を起動し、セッション用に選択した対応設定を管理できます。
+
+## XboxコントローラーでBig Picture モードを開く
+
+XboxコントローラーをWindowsに接続し、Steamを開きます。Steamクライアントを使っている状態でXboxボタンを押し、Big Picture モードが開くか確認してください。Valveの[Big Picture モードのガイド](https://help.steampowered.com/en/faqs/view/3725-76D3-3F31-FB63)でも、コントローラーのHomeボタンから入る方法を標準機能として案内しています。
+
+代わりにGame Barや別のオーバーレイが開く場合は、Steamの設定にあるコントローラーとGuideボタンの項目を確認し、どのアプリが入力を受け取っているか調べてください。構成を変える前に、SteamのBig Picture モードへ切り替えるボタンで画面自体を試しましょう。Xboxボタンは、終了しているSteamクライアントを起動するためのWindows共通コマンドではありません。
+
+## 対応するPlayStationコントローラーを使う
+
+SteamのBig Picture モードは、純正DualShock 4とDualSenseに対応しています。まず接続して、Steamのコントローラー設定を確認してください。HomeボタンやPSボタンでBig Picture モードに入れるかは、その構成で試します。Steam Input、Windows、ほかのコントローラーツールによって、ボタンの入力先が変わることがあります。
+
+Steamのコントローラー対応と、CouchModeの自動開始条件は別の話です。PS4やPS5のネイティブ接続は、CouchModeセッションの開始条件には対応していません。Windowsに対応するXInput機器として認識される構成なら使える可能性がありますが、Steamのゲームで動いたからといって、自動開始も動くとは限りません。
+
+## コントローラーの接続で自動的に開く
+
+自動起動したい場合は、CouchModeの起動先にSteam Big Pictureを選び、コントローラー接続による開始を有効にします。Windowsが対応するXInputコントローラーを検出すると、そのセッションを始められます。Xboxコントローラーの電源を入れると接続が発生することは多いですが、CouchModeが物理的な電源ボタンやGuideボタンを割り当てているわけではありません。
+
+この起動方法はCouchMode Freeに含まれます。まずはコントローラー1台と普段の画面で確認してください。基本の起動が動いてから、Proの[HDR・画面・音声の設定](content:guide-controller-session-settings)など、必要な任意設定を追加しましょう。
+
+## Steamがまだ起動していない場合
+
+選択したBig Picture モードのセッションに必要なら、CouchModeはSteam自体も起動できます。Steamがインストールされ、通常どおり起動できることが前提です。コントローラーだけで始める前に、サインイン、更新、初回の確認画面を手動で済ませておいてください。
+
+セッションの自動化を使わない場合は、まずSteamを開き、標準の方法でBig Picture モードへ入ります。どちらの方法も、アカウントやセキュリティの確認に安全に代理回答することはできません。
+
+## すでに実行中のSteamはどうなる？
+
+Steamは通知領域で動いていることがよくありますが、それだけではBig Picture モードが開いているとは限りません。CouchModeはSteamのプロセスを重複起動せず、自身のセッション開始前からBig Picture モードが開いていた場合は、その状態を保ちます。
+
+すでにゲーム中、ダウンロード中、Remote Playの接続中なら、現在の状態を維持する理由になります。コントローラーが切断されたからといって、すべてのSteamウィンドウをセッション管理ツールが閉じるべき対象と考えないでください。
+
+## セッションを終えてデスクトップに戻る
+
+SteamではメニューからBig Picture モードを終了できます。CouchModeが開始したセッションを終了した場合は、CouchMode自身が変更した対応範囲内の設定を元に戻します。目的は使えるデスクトップへの復帰であり、すべてのウィンドウの位置を正確に再現するという意味ではありません。
+
+環境全体の準備は、[Windows PCをゲーム機のように使うガイド](content:guide-windows-console)を参照してください。ドックにつないだ携帯型ゲーミングPCなら、接続イベントで開始する設定に頼る前に、[携帯型ゲーミングPCとテレビの接続](content:guide-windows-handheld)も確認しましょう。

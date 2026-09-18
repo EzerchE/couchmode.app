@@ -29,6 +29,34 @@ import {
 import { polishHomePacket } from "./locales/pl/home";
 import { polishLocaleContent } from "./locales/pl/shared";
 import { polishGuideHubPacket } from "./locales/pl/guides";
+import { japaneseHomePacket } from "./locales/ja/home";
+import { japaneseLocaleContent } from "./locales/ja/shared";
+import { japaneseGuideHubPacket } from "./locales/ja/guides";
+import {
+  japaneseDownloadPacket,
+  japaneseSupportPacket,
+  japaneseChangelogPacket,
+} from "./locales/ja/utility";
+import {
+  japanesePrivacyPacket,
+  japaneseTermsPacket,
+  japaneseRefundPacket,
+  japaneseCheckoutPacket,
+} from "./locales/ja/legal";
+import { koreanHomePacket } from "./locales/ko/home";
+import { koreanLocaleContent } from "./locales/ko/shared";
+import { koreanGuideHubPacket } from "./locales/ko/guides";
+import {
+  koreanDownloadPacket,
+  koreanSupportPacket,
+  koreanChangelogPacket,
+} from "./locales/ko/utility";
+import {
+  koreanPrivacyPacket,
+  koreanTermsPacket,
+  koreanRefundPacket,
+  koreanCheckoutPacket,
+} from "./locales/ko/legal";
 import {
   polishDownloadPacket,
   polishSupportPacket,
@@ -1200,6 +1228,20 @@ const polishGuideArticlePackets = Object.fromEntries(
   ]),
 ) as Partial<Record<SurfaceId, SurfacePacketBase>>;
 
+const japaneseGuideArticlePackets = Object.fromEntries(
+  guideSourcesForLocale("ja").map((source) => [
+    source.contentId,
+    guidePacketFromSource(source, japaneseGuideHubPacket),
+  ]),
+) as Partial<Record<SurfaceId, SurfacePacketBase>>;
+
+const koreanGuideArticlePackets = Object.fromEntries(
+  guideSourcesForLocale("ko").map((source) => [
+    source.contentId,
+    guidePacketFromSource(source, koreanGuideHubPacket),
+  ]),
+) as Partial<Record<SurfaceId, SurfacePacketBase>>;
+
 // English is the source locale, never a fallback packet for another locale.
 export const localePackets: LocalePacketRegistry = {
   en: {
@@ -1338,6 +1380,40 @@ export const localePackets: LocalePacketRegistry = {
       buy: polishCheckoutPacket,
       guides: polishGuideHubPacket,
       ...polishGuideArticlePackets,
+    },
+  },
+  ja: {
+    locale: "ja",
+    sourceRevision: localeManifest.sourceRevision,
+    shared: japaneseLocaleContent,
+    surfaces: {
+      home: japaneseHomePacket,
+      download: japaneseDownloadPacket,
+      changelog: japaneseChangelogPacket,
+      support: japaneseSupportPacket,
+      privacy: japanesePrivacyPacket,
+      terms: japaneseTermsPacket,
+      refund: japaneseRefundPacket,
+      buy: japaneseCheckoutPacket,
+      guides: japaneseGuideHubPacket,
+      ...japaneseGuideArticlePackets,
+    },
+  },
+  ko: {
+    locale: "ko",
+    sourceRevision: localeManifest.sourceRevision,
+    shared: koreanLocaleContent,
+    surfaces: {
+      home: koreanHomePacket,
+      download: koreanDownloadPacket,
+      changelog: koreanChangelogPacket,
+      support: koreanSupportPacket,
+      privacy: koreanPrivacyPacket,
+      terms: koreanTermsPacket,
+      refund: koreanRefundPacket,
+      buy: koreanCheckoutPacket,
+      guides: koreanGuideHubPacket,
+      ...koreanGuideArticlePackets,
     },
   },
 };
