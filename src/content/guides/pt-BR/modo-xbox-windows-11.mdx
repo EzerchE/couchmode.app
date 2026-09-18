@@ -1,0 +1,73 @@
+---
+title: "Modo Xbox no Windows 11: requisitos e como usar"
+heading: "Como usar o modo Xbox no Windows 11"
+description: "Confira a disponibilidade do modo Xbox no Windows 11, entre no modo em um PC ou portátil e volte à área de trabalho. Veja a opção de iniciar sessões pelo controle."
+contentId: guide-xbox-mode-windows-11
+slug: modo-xbox-windows-11
+published: 2026-09-11
+updated: 2026-09-18
+locale: pt-BR
+category: windows-couch-gaming
+featured: false
+related: ["guide-windows-console", "guide-steam-big-picture", "guide-playnite-launch", "guide-windows-handheld"]
+heroImage: "/screenshots/app-general.png"
+ogImage: "/social/og-couchmode-v3.png"
+---
+
+O modo Xbox oferece a PCs compatíveis com Windows 11 uma interface de jogos que você pode navegar com o controle. Ele também pode aparecer como Full Screen Experience, ou FSE. Confira se o seu PC oferece esse modo nas configurações do Windows e teste a entrada e a saída manualmente antes de adicionar automações.
+
+Você pode usar o modo Xbox sem o CouchMode. Este guia começa pela configuração do Windows e depois explica onde entra a opção de iniciar uma sessão do CouchMode pelo controle.
+
+## O que é o modo Xbox no Windows 11?
+
+O modo Xbox é um ambiente de jogos do Windows, com um app inicial de jogos e navegação pensada para o controle. Ele muda a forma de alternar entre o iniciador, os jogos e outros apps enquanto você está nesse modo. O Windows continua disponível quando você volta à área de trabalho.
+
+É uma das opções para um [PC com Windows usado como console](content:guide-windows-console). A melhor escolha depende dos jogos que você usa e da interface que quer na tela.
+
+## O modo Xbox está disponível no seu PC?
+
+A Microsoft especifica Windows 11 24H2 ou posterior e disponibilidade em mercados compatíveis. Só ter uma versão compatível não comprova que a opção está ativada no seu dispositivo. PCs portáteis compatíveis e outros tipos de PC podem ter configurações e formas de entrada diferentes.
+
+Confira as atualizações do Windows e as opções realmente presentes em Settings, Gaming, Xbox mode. Se a opção não aparecer, consulte as [orientações atuais da Microsoft sobre disponibilidade e configuração](https://support.microsoft.com/en-us/servicing/os/windows/docs/2025/10/windows-gaming-full-screen-experience). O CouchMode não pode fazer aparecer um recurso indisponível do Windows.
+
+## Como ativar e entrar no modo Xbox
+
+Em um PC de mesa ou notebook compatível, abra Settings, Gaming, Xbox mode e ative o modo. Em um PC portátil de jogos compatível, selecione o app inicial de jogos instalado nessa página de configurações. As opções exatas dependem do dispositivo.
+
+Use uma entrada disponível no app Xbox, na Game Bar ou na Visão de Tarefas, ou teste Win+F11 quando estiver configurado. Confira se entrou no modo Xbox e consegue navegar, depois pratique o retorno à área de trabalho. Se aparecer um aviso de configuração ou entrada na conta, conclua essa etapa antes de esperar uma inicialização apenas com o controle.
+
+## Modo Xbox em PCs de mesa, notebooks e PCs portáteis
+
+Um PC portátil pode oferecer a entrada no modo Xbox após o login por meio de uma opção de inicialização. Isso é diferente de conectar um controle externo a um PC de mesa. Um controle integrado pode estar presente durante toda a inicialização; sua presença não deve ser tratada como uma nova conexão externa.
+
+Teste o PC portátil tanto na própria tela quanto na base se você usa as duas formas. TV, receiver ou base podem mudar as telas e os dispositivos de áudio que o Windows reconhece. O [guia do PC portátil na TV](content:guide-windows-handheld) explica essa parte da configuração.
+
+## Modo Xbox não é apenas abrir ou maximizar o app Xbox
+
+Uma janela grande do app Xbox não comprova que o Windows entrou no modo Xbox. Use uma forma de entrada compatível e confira a navegação e os controles de retorno à área de trabalho que aparecem.
+
+Essa diferença importa ao testar automações. Ver o iniciador aparecer comprova que o app abriu; isso, sozinho, não comprova que o ambiente de jogos desejado do Windows está ativo.
+
+## Inicie uma sessão de jogos automaticamente pelo controle
+
+Depois que a entrada manual funcionar, você pode selecionar a experiência Xbox compatível no CouchMode e configurar um gatilho de sessão. A inicialização do modo Xbox está incluída no CouchMode Free onde o Windows oferecer suporte. O gatilho de controle externo depende da detecção de uma conexão XInput compatível pelo Windows; não é um mapeamento do botão de energia nem do Guide. Conexões nativas de PS4 ou PS5 não são gatilhos universais do CouchMode.
+
+Em um PC portátil com controles integrados, use as opções de inicialização e sessão adequadas ao dispositivo e teste-as separadamente de um controle externo. As [preferências opcionais de HDR, tela e áudio](content:guide-controller-session-settings) do Pro se aplicam apenas às configurações compatíveis que você selecionar.
+
+## O que acontece quando o controle desconecta?
+
+Uma bateria fraca ou a perda da conexão sem fio pode acionar a saída da sessão se "Exit CouchMode when controller disconnects" estiver ativado. O CouchMode aguarda o intervalo de desconexão configurado; reconectar durante esse intervalo pode cancelar a saída pendente. Ele não ignora a desconexão só porque há um app em tela cheia aberto.
+
+Antes de sair, o CouchMode verifica o registro de responsabilidade pela sessão e o estado real da tela cheia. Ele só envia a ação de saída correspondente da FSE quando seu estado de sessão registra que ele é responsável por sair da FSE e ela ainda está ativa. Se a FSE já estiver inativa, ele não a alterna novamente. Ele não força o fechamento de iniciadores e apps abertos pelo usuário ou que já estavam em execução e verifica o retorno seguro à área de trabalho. Teste o comportamento de saída configurado com segurança, reconecte após uma interrupção acidental e salve o jogo antes de encerrar a sessão de propósito.
+
+## Volte com segurança à área de trabalho do Windows
+
+Use o controle de retorno à área de trabalho disponível na Game Bar ou na Visão de Tarefas, ou Win+F11 onde houver suporte. Em uma sessão do CouchMode, o objetivo é deixar o Windows utilizável e restaurar as configurações compatíveis que o app alterou. Aplicativos que já estavam abertos devem continuar utilizáveis, sem fechamentos ou reposicionamentos desnecessários; a posição e o tamanho exatos das janelas não são garantidos.
+
+Se você também ativar o Resource Control do Pro, apenas os aplicativos selecionados e acessíveis serão alvo da automação. Processos executados como administrador, semelhantes a serviços ou que reiniciam sozinhos podem continuar em execução. O [guia de apps selecionados e restauração da área de trabalho](content:guide-resource-control-session-restore) explica essas escolhas separadas.
+
+## Quando Steam Big Picture ou Playnite podem ser melhores opções
+
+Escolha o iniciador que funciona com sua biblioteca e seu controle antes de otimizar o restante da sessão. O [Steam Big Picture](content:guide-steam-big-picture) é uma alternativa para usar o Steam, enquanto o [Playnite Fullscreen](content:guide-playnite-launch) reúne bibliotecas. São alternativas a avaliar, não pré-requisitos para o modo Xbox.
+
+Faça uma inicialização manual e um retorno à área de trabalho com os programas já abertos na sua configuração normal. Isso oferece uma referência útil para decidir quais etapas repetidas, se houver, você quer automatizar com o CouchMode.

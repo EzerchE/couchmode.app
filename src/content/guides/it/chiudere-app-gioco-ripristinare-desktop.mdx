@@ -1,0 +1,52 @@
+---
+title: "Chiudere le app prima di giocare e ripristinare il desktop"
+description: "Usa Resource Control di CouchMode Pro per chiudere solo le app supportate che selezioni per la sessione di gioco e, se vuoi, riaprirle al termine."
+contentId: guide-resource-control-session-restore
+slug: chiudere-app-gioco-ripristinare-desktop
+published: 2026-08-24
+updated: 2026-09-18
+locale: it
+category: windows-couch-gaming
+featured: false
+related: ["guide-controller-session-settings", "guide-windows-console"]
+heroImage: "/screenshots/app-resource-control.png"
+ogImage: "/social/og-couchmode-v3.png"
+---
+
+Se inizi a giocare dal controller, le app desktop che lasci normalmente aperte possono diventare un intralcio. Resource Control di CouchMode Pro permette di scegliere quali applicazioni supportate chiudere per la sessione di gioco. Non è un comando per forzare la chiusura di ogni processo di Windows.
+
+Puoi configurare la riapertura delle app selezionate quando la sessione termina. CouchMode ripristina anche le impostazioni Windows supportate che ha modificato durante la sessione, così il desktop può tornare allo stato che avevi preparato anziché rimanere nella configurazione di gioco.
+
+## Seleziona le app da gestire
+
+Scegli le applicazioni con attenzione. Potresti selezionare un browser, un'app di chat o un'altra app desktop che occupa spazio sullo schermo o distrae mentre giochi. CouchMode interviene solo sulle app supportate che hai selezionato. Le app che non scegli non vengono chiuse intenzionalmente.
+
+Inizia con un elenco breve. Sarà più facile verificare che chiusura e riapertura corrispondano alle tue abitudini prima di aggiungere altre applicazioni.
+
+## Che cosa non chiude Resource Control
+
+Alcuni processi devono restare fuori da questa automazione. Servizi, componenti protetti di Windows, applicazioni con privilegi elevati, processi inaccessibili e app che si riavviano da sole possono rimanere in esecuzione. CouchMode non considera questo risultato un errore da aggirare forzando la chiusura.
+
+Se un'app è importante per un lavoro in corso, lasciala fuori dall'elenco finché non hai provato la sessione con un esempio sicuro. Resource Control serve a ridurre l'ingombro sul desktop secondo le tue scelte, non a decidere autonomamente quali processi Windows chiudere.
+
+## Configura cosa succede dopo la sessione di gioco
+
+Le app selezionate possono riaprirsi dopo la sessione se l'opzione è configurata e supportata. È una scelta facoltativa, distinta dal ripristino delle impostazioni Windows supportate che CouchMode esegue quando termina la sessione che ha avviato.
+
+Se "Exit CouchMode when controller disconnects" è attivo, la perdita della connessione del controller supportato avvia l'uscita dalla sessione dopo il ritardo configurato. Riconnettere il controller durante questo intervallo può annullare l'uscita in attesa. CouchMode usa le informazioni registrate sulla gestione della sessione per chiudere l'interfaccia di gioco di cui è responsabile, ripristinare le impostazioni supportate che ha modificato, eseguire le azioni configurate per il termine della sessione e verificare un ritorno sicuro al desktop. Non forza la chiusura di un launcher o di un'app già aperti prima della sessione.
+
+## Domande frequenti
+
+### CouchMode può chiudere Discord o Chrome quando inizio a giocare?
+
+Può chiudere un processo supportato di Discord o Chrome solo se lo hai selezionato in Resource Control. Non chiude automaticamente tutte le app in background.
+
+### Perché un'app selezionata è rimasta aperta?
+
+L'app potrebbe avere privilegi elevati, essere protetta, funzionare come un servizio, essere inaccessibile o essere configurata per riavviarsi da sola. In questi casi può rimanere in esecuzione anziché essere terminata forzatamente.
+
+### Le app si riapriranno dopo il gioco?
+
+Solo se hai configurato la riapertura e CouchMode la supporta. Separatamente, il ripristino del desktop riguarda le impostazioni Windows supportate che CouchMode ha modificato durante la propria sessione.
+
+Per scegliere schermo, HDR e audio per la stessa sessione di gioco, consulta la guida alle impostazioni di sessione alla connessione del controller.

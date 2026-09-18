@@ -1,14 +1,54 @@
 {
-  "sourceRevision": "1fb1471677e4359aa37513a0a3c6020a3c021191fa359fb9218b5e8ac6603efa",
+  "sourceRevision": "23e612da76822ae948fcd6dadce7fdcc291e0ed2a23d3081c24f9801df5ddd91",
   "requiredSurfaces": [
-    { "id": "home", "path": "/", "kind": "landing", "indexability": "index" },
-    { "id": "download", "path": "/download/", "kind": "utility", "indexability": "index" },
-    { "id": "support", "path": "/support/", "kind": "support", "indexability": "index" },
-    { "id": "changelog", "path": "/changelog/", "kind": "release", "indexability": "index" },
-    { "id": "privacy", "path": "/privacy/", "kind": "legal", "indexability": "index" },
-    { "id": "terms", "path": "/terms/", "kind": "legal", "indexability": "index" },
-    { "id": "refund", "path": "/refund/", "kind": "legal", "indexability": "index" },
-    { "id": "guides", "path": "/guides/", "kind": "guide-index", "indexability": "index" },
+    {
+      "id": "home",
+      "path": "/",
+      "kind": "landing",
+      "indexability": "index"
+    },
+    {
+      "id": "download",
+      "path": "/download/",
+      "kind": "utility",
+      "indexability": "index"
+    },
+    {
+      "id": "support",
+      "path": "/support/",
+      "kind": "support",
+      "indexability": "index"
+    },
+    {
+      "id": "changelog",
+      "path": "/changelog/",
+      "kind": "release",
+      "indexability": "index"
+    },
+    {
+      "id": "privacy",
+      "path": "/privacy/",
+      "kind": "legal",
+      "indexability": "index"
+    },
+    {
+      "id": "terms",
+      "path": "/terms/",
+      "kind": "legal",
+      "indexability": "index"
+    },
+    {
+      "id": "refund",
+      "path": "/refund/",
+      "kind": "legal",
+      "indexability": "index"
+    },
+    {
+      "id": "guides",
+      "path": "/guides/",
+      "kind": "guide-index",
+      "indexability": "index"
+    },
     {
       "id": "guide-playnite-launch",
       "path": "/guides/launch-playnite-with-controller/",
@@ -67,7 +107,12 @@
     }
   ],
   "locales": [
-    { "id": "en", "urlPrefix": "", "state": "active", "label": "English" },
+    {
+      "id": "en",
+      "urlPrefix": "",
+      "state": "active",
+      "label": "English"
+    },
     {
       "id": "de",
       "urlPrefix": "/de",
@@ -75,19 +120,60 @@
       "phase1Target": true,
       "label": "Deutsch"
     },
-    { "id": "tr", "urlPrefix": "/tr", "state": "active", "phase1Target": true, "label": "Türkçe" },
-    { "id": "fr", "urlPrefix": "/fr", "state": "active", "label": "Français" },
-    { "id": "es", "urlPrefix": "/es", "state": "active", "label": "Español" },
-    { "id": "it", "urlPrefix": "/it", "state": "planned", "label": "Italiano" },
-    { "id": "pt-BR", "urlPrefix": "/pt-br", "state": "planned", "label": "Português (Brasil)" },
-    { "id": "pl", "urlPrefix": "/pl", "state": "planned", "label": "Polski" },
-    { "id": "ja", "urlPrefix": "/ja", "state": "planned", "label": "日本語" },
-    { "id": "ko", "urlPrefix": "/ko", "state": "planned", "label": "한국어" }
+    {
+      "id": "tr",
+      "urlPrefix": "/tr",
+      "state": "active",
+      "phase1Target": true,
+      "label": "Türkçe"
+    },
+    {
+      "id": "fr",
+      "urlPrefix": "/fr",
+      "state": "active",
+      "label": "Français"
+    },
+    {
+      "id": "es",
+      "urlPrefix": "/es",
+      "state": "active",
+      "label": "Español"
+    },
+    {
+      "id": "it",
+      "urlPrefix": "/it",
+      "state": "pending",
+      "label": "Italiano"
+    },
+    {
+      "id": "pt-BR",
+      "urlPrefix": "/pt-br",
+      "state": "pending",
+      "label": "Português (Brasil)"
+    },
+    {
+      "id": "pl",
+      "urlPrefix": "/pl",
+      "state": "pending",
+      "label": "Polski"
+    },
+    {
+      "id": "ja",
+      "urlPrefix": "/ja",
+      "state": "planned",
+      "label": "日本語"
+    },
+    {
+      "id": "ko",
+      "urlPrefix": "/ko",
+      "state": "planned",
+      "label": "한국어"
+    }
   ],
   "contentPackets": [
     {
       "locale": "en",
-      "sourceRevision": "1fb1471677e4359aa37513a0a3c6020a3c021191fa359fb9218b5e8ac6603efa",
+      "sourceRevision": "23e612da76822ae948fcd6dadce7fdcc291e0ed2a23d3081c24f9801df5ddd91",
       "surfaces": [
         "home",
         "download",
@@ -110,7 +196,7 @@
     },
     {
       "locale": "de",
-      "sourceRevision": "1fb1471677e4359aa37513a0a3c6020a3c021191fa359fb9218b5e8ac6603efa",
+      "sourceRevision": "23e612da76822ae948fcd6dadce7fdcc291e0ed2a23d3081c24f9801df5ddd91",
       "surfaces": [
         "home",
         "download",
@@ -133,7 +219,7 @@
     },
     {
       "locale": "tr",
-      "sourceRevision": "1fb1471677e4359aa37513a0a3c6020a3c021191fa359fb9218b5e8ac6603efa",
+      "sourceRevision": "23e612da76822ae948fcd6dadce7fdcc291e0ed2a23d3081c24f9801df5ddd91",
       "surfaces": [
         "home",
         "download",
@@ -156,7 +242,7 @@
     },
     {
       "locale": "fr",
-      "sourceRevision": "1fb1471677e4359aa37513a0a3c6020a3c021191fa359fb9218b5e8ac6603efa",
+      "sourceRevision": "23e612da76822ae948fcd6dadce7fdcc291e0ed2a23d3081c24f9801df5ddd91",
       "surfaces": [
         "home",
         "download",
@@ -179,7 +265,76 @@
     },
     {
       "locale": "es",
-      "sourceRevision": "1fb1471677e4359aa37513a0a3c6020a3c021191fa359fb9218b5e8ac6603efa",
+      "sourceRevision": "23e612da76822ae948fcd6dadce7fdcc291e0ed2a23d3081c24f9801df5ddd91",
+      "surfaces": [
+        "home",
+        "download",
+        "support",
+        "changelog",
+        "privacy",
+        "terms",
+        "refund",
+        "guides",
+        "guide-playnite-launch",
+        "guide-playnite-focus",
+        "guide-steam-big-picture",
+        "guide-controller-session-settings",
+        "guide-resource-control-session-restore",
+        "guide-windows-console",
+        "guide-windows-handheld",
+        "guide-xbox-mode-windows-11",
+        "buy"
+      ]
+    },
+    {
+      "locale": "it",
+      "sourceRevision": "23e612da76822ae948fcd6dadce7fdcc291e0ed2a23d3081c24f9801df5ddd91",
+      "surfaces": [
+        "home",
+        "download",
+        "support",
+        "changelog",
+        "privacy",
+        "terms",
+        "refund",
+        "guides",
+        "guide-playnite-launch",
+        "guide-playnite-focus",
+        "guide-steam-big-picture",
+        "guide-controller-session-settings",
+        "guide-resource-control-session-restore",
+        "guide-windows-console",
+        "guide-windows-handheld",
+        "guide-xbox-mode-windows-11",
+        "buy"
+      ]
+    },
+    {
+      "locale": "pt-BR",
+      "sourceRevision": "23e612da76822ae948fcd6dadce7fdcc291e0ed2a23d3081c24f9801df5ddd91",
+      "surfaces": [
+        "home",
+        "download",
+        "support",
+        "changelog",
+        "privacy",
+        "terms",
+        "refund",
+        "guides",
+        "guide-playnite-launch",
+        "guide-playnite-focus",
+        "guide-steam-big-picture",
+        "guide-controller-session-settings",
+        "guide-resource-control-session-restore",
+        "guide-windows-console",
+        "guide-windows-handheld",
+        "guide-xbox-mode-windows-11",
+        "buy"
+      ]
+    },
+    {
+      "locale": "pl",
+      "sourceRevision": "23e612da76822ae948fcd6dadce7fdcc291e0ed2a23d3081c24f9801df5ddd91",
       "surfaces": [
         "home",
         "download",

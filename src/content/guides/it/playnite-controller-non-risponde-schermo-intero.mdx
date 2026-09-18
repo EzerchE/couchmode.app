@@ -1,0 +1,42 @@
+---
+title: "Playnite: il controller non risponde a schermo intero"
+description: "Scopri perché una finestra di Playnite visibile può non ricevere i comandi del controller, soprattutto se era già aperta o ridotta a icona."
+contentId: guide-playnite-focus
+slug: playnite-controller-non-risponde-schermo-intero
+published: 2026-08-21
+updated: 2026-08-21
+locale: it
+category: playnite
+featured: false
+related: ["guide-playnite-launch"]
+heroImage: "/screenshots/app-general.png"
+ogImage: "/social/og-couchmode-v3.png"
+---
+
+Se Playnite è visibile ma il controller non risponde, controlla che la finestra di Playnite sia attiva e riceva i comandi. Un processo può essere in esecuzione anche quando la finestra è ridotta a icona, dietro un'altra app o non riceve l'input del controller. Ecco perché un clic del mouse può sembrare risolvere il problema.
+
+È un inconveniente comune quando si gioca sulla TV: avviare un'applicazione e portarla in primo piano sono due operazioni diverse. La sessione può partire correttamente mentre una notifica, un browser, una sovrapposizione o una finestra precedentemente ridotta a icona continua a ricevere i comandi.
+
+## Playnite è in esecuzione, ma la finestra è attiva?
+
+Windows può indicare che Playnite è in esecuzione anche quando non è in primo piano. Lo stesso vale se Playnite era già aperto prima dell'inizio della sessione. Dal divano, una libreria visibile è utile solo se riceve i comandi del controller, lo schermo giusto è attivo e nessun'altra applicazione la copre.
+
+Parti dagli indizi più semplici. Playnite è ridotto a icona? C'è una richiesta di Windows, un launcher o una sovrapposizione in primo piano? Un solo clic su Playnite fa rispondere il controller? In quel caso il controller non è necessariamente guasto: probabilmente la finestra attiva era un'altra.
+
+## Perché conta lo stato di Playnite già aperto
+
+CouchMode evita di aprire una seconda istanza di Playnite se è già in esecuzione. Usa lo stato esistente dell'applicazione invece di interpretare ogni connessione del controller come un comando per duplicare il launcher. In questo modo preserva la sessione della libreria che potresti già stare usando.
+
+Una finestra di Playnite già aperta, ridotta a icona o in background, può quindi richiedere gli stessi controlli del focus di una appena avviata. Chiudi la finestra che interferisce, ripristina Playnite e prova di nuovo la navigazione con il controller. Evita di modificare ripetutamente le impostazioni di avvio prima di capire se il problema riguarda il focus, la connessione del controller o una sovrapposizione del gioco.
+
+## Un ordine sicuro per le verifiche
+
+Per prima cosa, verifica che sia Windows sia Playnite rilevino il controller. Poi apri Playnite manualmente in modalità a schermo intero e prova i comandi senza altri launcher in primo piano. Infine ripeti lo stesso percorso tramite CouchMode, con un solo controller compatibile e la TV o il monitor che usi abitualmente.
+
+Se il problema ricompare solo in presenza di una determinata sovrapposizione, di una sessione Desktop remoto o di un launcher, elimina quella condizione nella prova successiva. È più sicuro che ricorrere a espedienti non supportati per forzare il focus, che potrebbero interferire con strumenti di accessibilità, sistemi anti-cheat o il normale uso del desktop.
+
+## Dove aiuta CouchMode e quali sono i suoi limiti
+
+CouchMode usa un controller compatibile per avviare la sessione di gioco scelta e, durante questa procedura, può portare in primo piano l'interfaccia selezionata. Non promette di forzare il focus oltre ogni richiesta di sicurezza di Windows, sovrapposizione di terzi o limite di una specifica applicazione. Anche le connessioni native dei controller PlayStation hanno attualmente un limite nell'avvio delle sessioni: quando indaghi un problema di avvio, verifica come Windows riconosce il controller.
+
+Playnite è incluso in CouchMode Free. Quando l'apertura manuale a schermo intero è affidabile, usa la guida all'avvio di Playnite per configurare la sessione dal controller. Se nella tua configurazione il problema di focus si ripete in condizioni precise, condividi su r/CouchMode i dettagli di controller, schermo, launcher e Windows, così da confrontarli con installazioni reali.

@@ -1,0 +1,42 @@
+---
+title: "Controle não responde no Playnite em tela cheia"
+description: "Entenda por que uma janela visível do Playnite pode não responder ao controle, especialmente quando ela já estava aberta ou minimizada."
+contentId: guide-playnite-focus
+slug: controle-nao-responde-playnite-tela-cheia
+published: 2026-08-21
+updated: 2026-08-21
+locale: pt-BR
+category: playnite
+featured: false
+related: ["guide-playnite-launch"]
+heroImage: "/screenshots/app-general.png"
+ogImage: "/social/og-couchmode-v3.png"
+---
+
+Se o Playnite está visível, mas não responde ao controle, verifique se a janela do Playnite está com o foco. Um processo pode estar em execução com a janela minimizada, atrás de outro app ou sem receber os sinais do controle. É por isso que um clique do mouse pode parecer resolver o problema.
+
+Isso é comum ao jogar na sala, porque abrir um aplicativo e colocá-lo em primeiro plano são tarefas diferentes. Uma sessão pode iniciar corretamente enquanto uma notificação, um navegador, uma sobreposição ou uma janela que estava minimizada ainda recebe a interação.
+
+## Um processo em execução não significa que a tela cheia está pronta
+
+O Windows pode informar que o Playnite está em execução mesmo quando ele não está em primeiro plano. O mesmo vale se o Playnite já estava aberto antes do início da sessão. Uma biblioteca na tela só é útil do sofá quando recebe os sinais do controle, a tela desejada está ativa e nenhum outro aplicativo está sobre ela.
+
+Comece pelos sinais mais simples. O Playnite está minimizado? Há um aviso do Windows, um iniciador de jogos ou uma sobreposição na frente? Um único clique no Playnite faz o controle responder? Se sim, o controle não está necessariamente com defeito; provavelmente outra janela estava ativa.
+
+## Por que o estado anterior do Playnite importa
+
+O CouchMode evita abrir uma segunda instância do Playnite quando ele já está aberto. Ele trabalha com o estado existente do aplicativo em vez de tratar cada conexão do controle como uma ordem para duplicar o iniciador. Isso preserva o estado de uma biblioteca que já pode estar em uso.
+
+Por isso, uma janela do Playnite que já estava minimizada ou em segundo plano pode precisar das mesmas verificações de foco que uma janela recém-aberta. Feche a janela que está interferindo, restaure o Playnite e teste a navegação com o controle novamente. Evite alterar repetidamente as configurações de inicialização antes de saber se o problema real é foco, conexão do controle ou uma sobreposição de jogo.
+
+## Uma ordem segura para investigar
+
+Primeiro, confirme que tanto o Windows quanto o Playnite reconhecem o controle. Depois, abra o Playnite manualmente em tela cheia e teste a navegação sem outro iniciador na frente. Por fim, teste o mesmo caminho pelo CouchMode com um controle compatível e a TV ou o monitor que você costuma usar.
+
+Se o problema voltar apenas com uma sobreposição, sessão de área de trabalho remota ou iniciador específico, remova essa condição no próximo teste. Isso é mais seguro do que aplicar soluções de foco sem suporte que podem interferir em ferramentas de acessibilidade, sistemas antitrapaça dos jogos ou no seu uso normal do Windows.
+
+## Onde o CouchMode ajuda e quais são seus limites
+
+O CouchMode usa um controle compatível para iniciar a sessão de jogos selecionada e pode trazer a interface escolhida para primeiro plano como parte desse processo. Ele não promete forçar o foco por cima de qualquer aviso de segurança do Windows, sobreposição de terceiros ou limitação específica de um app. Conexões nativas de controles PlayStation também têm uma limitação atual como gatilhos de sessão; confira como o Windows reconhece o controle ao investigar um problema de inicialização.
+
+O Playnite está incluído no CouchMode Free. Quando a abertura manual em tela cheia estiver confiável, use o guia de inicialização do Playnite para configurar a sessão com controle. Se houver um problema de foco que você consiga reproduzir, compartilhe os detalhes exatos do controle, da tela, do iniciador e do Windows no r/CouchMode para comparar com instalações reais.

@@ -1,0 +1,54 @@
+---
+title: "Abrir o Playnite em tela cheia com o controle"
+description: "Use o modo de tela cheia do Playnite com o controle e, se quiser, abra-o ao conectar um controle XInput compatível. Veja também como verificar janelas existentes e foco."
+contentId: guide-playnite-launch
+slug: abrir-playnite-tela-cheia-controle
+published: 2026-08-21
+updated: 2026-09-11
+locale: pt-BR
+category: playnite
+featured: true
+related: ["guide-playnite-focus", "guide-windows-console"]
+heroImage: "/screenshots/app-general.png"
+ogImage: "/social/og-couchmode-v3.png"
+---
+
+O Playnite já oferece navegação com controle no modo de tela cheia. Abra o atalho Fullscreen do Playnite ou pressione F11 no modo Desktop e confira se consegue navegar pela biblioteca com o controle. Você não precisa do CouchMode para adicionar esse suporte nativo.
+
+Se quiser abrir o Playnite ao conectar um controle, o CouchMode pode iniciar uma sessão do Playnite em tela cheia quando o Windows detectar um controle XInput compatível. Essa automação de inicialização é opcional. Ela é diferente de navegar em uma biblioteca já aberta ou pressionar o botão Xbox.
+
+## Comece pelo próprio modo de tela cheia do Playnite
+
+A [documentação do modo Fullscreen](https://api.playnite.link/docs/manual/gettingStarted/playniteFullscreenMode.html) explica como abri-lo e verificar as configurações de entrada. Confirme que a biblioteca responde ao controle antes de configurar a inicialização automática. A navegação na biblioteca é responsabilidade do Playnite; os controles dentro de cada jogo dependem do próprio jogo e da sua configuração de entrada.
+
+Um controle reconhecido pelo Playnite não é automaticamente um gatilho compatível com o CouchMode. Teste as duas partes separadamente: primeiro navegue no Playnite aberto manualmente e depois teste a conexão do controle com o CouchMode.
+
+## O botão Xbox abre o Playnite?
+
+Não presuma que o botão Xbox ou Guide inicia o Playnite quando ele está fechado. O Playnite tem uma opção para usar o botão Guide para devolver o foco à janela Fullscreen em execução, mas devolver o foco a uma janela não é o mesmo que abrir um aplicativo fechado. Outro software também pode receber esse botão.
+
+O CouchMode reage à conexão de um controle compatível e às opções de sessão que você ativar. Ele não atribui o botão físico Xbox ao Playnite. Se o controle já estava conectado, pressionar Guide novamente não é um novo evento de conexão.
+
+## Abra o Playnite automaticamente ao conectar um controle
+
+Escolha Playnite como interface de jogos no CouchMode e ative o gatilho de conexão do controle. Conecte um controle compatível com sua sessão do Windows já iniciada. O CouchMode pode abrir a sessão selecionada do Playnite em tela cheia; essa forma de inicialização está incluída no Free.
+
+Controles Xbox são o exemplo mais direto de XInput. Conexões nativas de controles de PS4 e PS5 não são gatilhos de sessão compatíveis com o CouchMode, mesmo quando o Playnite ou um jogo aceita esses controles. Uma configuração apresentada ao Windows como XInput compatível precisa ser testada separadamente.
+
+## Use uma instalação comum ou portátil do Playnite
+
+O CouchMode oferece suporte a instalações do Playnite em locais personalizados e a instalações portáteis. Confira se a cópia que você pretende usar abre normalmente, se a biblioteca está disponível e se o teste de inicialização abre essa mesma cópia. Depois de mover uma pasta portátil, faça outro teste antes de depender dela na TV.
+
+O CouchMode não gerencia a biblioteca, as extensões nem o mapeamento de controles do Playnite. Uma extensão com erro ou uma janela de primeira configuração ainda precisa ser resolvida no próprio Playnite.
+
+## E se o Playnite já estiver aberto?
+
+O CouchMode usa o estado existente do Playnite em vez de abrir outra instância. Um processo em execução ainda pode ter a janela minimizada ou em segundo plano. Verifique se a interface visível em tela cheia está recebendo os sinais do controle.
+
+Se um clique do mouse fizer o controle funcionar, siga as [verificações de foco do Playnite](content:guide-playnite-focus). Separe problemas de driver e mapeamento de botões de problemas de foco da janela, em vez de alterar repetidamente as configurações de inicialização.
+
+## Teste a sessão completa uma vez
+
+Use um controle, a tela desejada e uma sessão normal do Windows. Confirme que o Playnite abre e responde, encerre a sessão e confira a área de trabalho. O CouchMode restaura as configurações compatíveis que alterou; ele não substitui o Windows nem promete restaurar a posição e o tamanho exatos das janelas.
+
+Quando isso estiver funcionando, consulte o [guia para usar o Windows como console](content:guide-windows-console) e avalie se a automação opcional de tela ou áudio pode eliminar mais alguma etapa repetitiva.

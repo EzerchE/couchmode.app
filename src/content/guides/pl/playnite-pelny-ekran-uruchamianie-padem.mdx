@@ -1,0 +1,54 @@
+---
+title: "Jak uruchomić Playnite na pełnym ekranie za pomocą pada"
+description: "Sprawdź obsługę pada w Playnite Fullscreen, a potem opcjonalnie uruchamiaj ten tryb po wykryciu zgodnego kontrolera XInput. Wskazówki także dla już otwartych okien."
+contentId: guide-playnite-launch
+slug: playnite-pelny-ekran-uruchamianie-padem
+published: 2026-08-21
+updated: 2026-09-11
+locale: pl
+category: playnite
+featured: true
+related: ["guide-playnite-focus", "guide-windows-console"]
+heroImage: "/screenshots/app-general.png"
+ogImage: "/social/og-couchmode-v3.png"
+---
+
+Playnite Fullscreen ma wbudowaną nawigację padem. Otwórz skrót do tego trybu lub przełącz się z trybu Desktop klawiszem F11 i sprawdź, czy możesz przeglądać bibliotekę padem. CouchMode nie jest potrzebny do tej podstawowej obsługi.
+
+Jeśli chcesz otwierać Playnite po podłączeniu pada, CouchMode może uruchomić sesję Playnite Fullscreen, gdy Windows wykryje zgodny kontroler XInput. To opcjonalna automatyzacja uruchamiania, odrębna od poruszania się po otwartej bibliotece czy naciskania przycisku Xbox.
+
+## Zacznij od trybu pełnoekranowego samego Playnite
+
+[Dokumentacja Playnite Fullscreen](https://api.playnite.link/docs/manual/gettingStarted/playniteFullscreenMode.html) wyjaśnia, jak otworzyć ten tryb i sprawdzić ustawienia sterowania. Zanim skonfigurujesz automatyczne uruchamianie, upewnij się, że biblioteka reaguje na pada. Nawigację w bibliotece obsługuje Playnite, a sterowanie w konkretnej grze zależy od gry i jej konfiguracji.
+
+To, że Playnite rozpoznaje pada, nie oznacza automatycznie, że będzie on zgodnym wyzwalaczem CouchMode. Przetestuj te dwie rzeczy osobno: najpierw otwórz Playnite ręcznie i poruszaj się po bibliotece, a następnie sprawdź podłączenie pada z włączonym CouchMode.
+
+## Czy przycisk Xbox uruchamia Playnite?
+
+Nie zakładaj, że przycisk Xbox lub Guide uruchomi zamknięty Playnite. Playnite ma opcję ponownego aktywowania działającego okna Fullscreen przyciskiem Guide, ale aktywowanie okna to nie uruchomienie zamkniętej aplikacji. Ten przycisk może też przechwycić inne oprogramowanie.
+
+CouchMode reaguje na podłączenie obsługiwanego kontrolera i włączone opcje sesji. Nie przypisuje fizycznego przycisku Xbox do Playnite. Jeśli pad był już podłączony, ponowne naciśnięcie Guide nie jest nowym zdarzeniem połączenia.
+
+## Otwieraj Playnite automatycznie po podłączeniu pada
+
+Wybierz Playnite jako interfejs do gier w CouchMode i włącz rozpoczynanie sesji po podłączeniu kontrolera. Będąc zalogowanym do Windows, podłącz jeden zgodny pad. CouchMode może uruchomić wybraną sesję Playnite Fullscreen. Ten sposób uruchamiania jest dostępny w Free.
+
+Kontrolery Xbox to najprostszy przykład urządzeń XInput. Natywne połączenia padów PS4 i PS5 nie są obsługiwanymi wyzwalaczami sesji CouchMode, nawet gdy działają w Playnite lub grze. Konfigurację widoczną w Windows jako zgodny kontroler XInput trzeba przetestować osobno.
+
+## Korzystaj z zainstalowanej lub przenośnej wersji Playnite
+
+CouchMode obsługuje Playnite zainstalowany w niestandardowej lokalizacji oraz wersje przenośne. Sprawdź, czy wybrana kopia uruchamia się poprawnie, czy jej biblioteka jest dostępna i czy test uruchamia właśnie tę kopię. Po przeniesieniu folderu wersji przenośnej wykonaj kolejny test, zanim zaczniesz polegać na niej przy telewizorze.
+
+CouchMode nie zarządza biblioteką, rozszerzeniami ani przypisaniami przycisków w Playnite. Wadliwe rozszerzenie lub okno pierwszej konfiguracji nadal wymaga rozwiązania problemu w samym Playnite.
+
+## Co jeśli Playnite jest już otwarty?
+
+CouchMode korzysta z bieżącego stanu Playnite zamiast uruchamiać drugą instancję. Działający proces może jednak mieć zminimalizowane okno lub pozostawać w tle. Sprawdź, czy widoczny interfejs pełnoekranowy rzeczywiście odbiera polecenia pada.
+
+Jeśli po kliknięciu myszą pad nagle zaczyna działać, przejdź do [sprawdzania aktywnego okna Playnite](content:guide-playnite-focus). Odróżniaj problemy ze sterownikami i przypisaniami przycisków od problemów z aktywnym oknem, zamiast raz po raz zmieniać ustawienia uruchamiania.
+
+## Przetestuj raz całą sesję
+
+Użyj jednego pada, docelowego ekranu i zwykłego logowania do Windows. Upewnij się, że Playnite otwiera się i reaguje, a następnie zakończ sesję i sprawdź pulpit. CouchMode przywraca obsługiwane ustawienia, które zmieniło. Nie zastępuje Windows i nie obiecuje odtworzenia dokładnego położenia ani rozmiaru okien.
+
+Gdy to działa, zajrzyj do [poradnika o PC z Windows używanym jak konsola](content:guide-windows-console). Pomoże Ci zdecydować, czy opcjonalna automatyzacja ekranu lub dźwięku usunie kolejny powtarzalny krok.

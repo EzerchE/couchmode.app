@@ -1,0 +1,52 @@
+---
+title: "Zamykaj wybrane aplikacje przed graniem i przywracaj pulpit po sesji"
+description: "Użyj CouchMode Pro Resource Control, aby zamykać na czas grania tylko wybrane, obsługiwane aplikacje i opcjonalnie otwierać je ponownie po sesji."
+contentId: guide-resource-control-session-restore
+slug: zamykanie-aplikacji-gra-przywracanie-pulpitu
+published: 2026-08-24
+updated: 2026-09-18
+locale: pl
+category: windows-couch-gaming
+featured: false
+related: ["guide-controller-session-settings", "guide-windows-console"]
+heroImage: "/screenshots/app-resource-control.png"
+ogImage: "/social/og-couchmode-v3.png"
+---
+
+Jeśli zaczynasz grać padem, zwykle otwarte aplikacje na pulpicie mogą Ci przeszkadzać. CouchMode Pro Resource Control pozwala wybrać obsługiwane aplikacje do zamknięcia na czas grania. Nie jest poleceniem wymuszającym zamknięcie wszystkich procesów Windows.
+
+Możesz skonfigurować ponowne otwarcie wybranych aplikacji po zakończeniu sesji. CouchMode przywraca również obsługiwane ustawienia Windows, które zmieniło na czas grania. Dzięki temu pulpit może wrócić do przygotowanego wcześniej stanu zamiast pozostać w konfiguracji do gier.
+
+## Wybierz aplikacje, którymi chcesz zarządzać
+
+Wybieraj aplikacje świadomie. Może to być przeglądarka, komunikator lub inna aplikacja zajmująca ekran albo odciągająca uwagę podczas grania. CouchMode obejmuje działaniem tylko wskazane, obsługiwane aplikacje. Niewybrane aplikacje nie są celowo zamykane.
+
+Zacznij od krótkiej listy. Łatwiej wtedy sprawdzić, czy zamykanie i ponowne otwieranie pasuje do Twojej rutyny, zanim dodasz kolejne aplikacje.
+
+## Czego Resource Control nie zamyka
+
+Niektóre procesy muszą pozostać poza zakresem tej automatyzacji. Usługi, chronione składniki Windows, aplikacje z podwyższonymi uprawnieniami, niedostępne procesy i aplikacje uruchamiające się ponownie mogą nadal działać. CouchMode nie traktuje tego jako błędu, który można bezpiecznie obejść siłą.
+
+Jeśli aplikacja jest ważna dla trwającej pracy, nie dodawaj jej do listy, dopóki nie przetestujesz sesji na bezpiecznym przykładzie. Resource Control służy do ograniczania wybranych przez Ciebie aplikacji na pulpicie, a nie do podejmowania decyzji o dowolnych procesach Windows.
+
+## Ustaw działania po zakończeniu grania
+
+Wybrane aplikacje mogą zostać ponownie otwarte po sesji, jeśli ta opcja jest skonfigurowana i obsługiwana. To działanie opcjonalne, niezależne od przywracania obsługiwanych ustawień Windows po zakończeniu sesji rozpoczętej przez CouchMode.
+
+Jeśli włączona jest opcja "Exit CouchMode when controller disconnects", utrata połączenia z obsługiwanym kontrolerem uruchamia zakończenie sesji po ustawionym opóźnieniu (offDelay). Ponowne połączenie w tym czasie może anulować oczekujące zakończenie. CouchMode korzysta z zapisanego zakresu odpowiedzialności za sesję, aby zamknąć interfejs do gier, za który odpowiada, przywrócić obsługiwane ustawienia, które zmieniło, wykonać skonfigurowane działania po sesji i zweryfikować bezpieczny powrót do pulpitu. Nie wymusza zamknięcia aplikacji do gier ani innych aplikacji, które były otwarte przed sesją.
+
+## Częste pytania
+
+### Czy CouchMode może zamknąć Discord lub Chrome, gdy zaczynam grać?
+
+Może zamknąć obsługiwany proces Discord lub Chrome tylko wtedy, gdy wybierzesz go w Resource Control. Nie zamyka automatycznie wszystkich aplikacji działających w tle.
+
+### Dlaczego wybrana aplikacja pozostała otwarta?
+
+Może działać z podwyższonymi uprawnieniami, być chroniona, działać jak usługa, być niedostępna albo uruchamiać się ponownie. W takich przypadkach może pozostać uruchomiona zamiast zostać zamknięta siłowo.
+
+### Czy moje aplikacje otworzą się ponownie po graniu?
+
+Tylko jeśli skonfigurujesz ponowne otwieranie i CouchMode obsługuje tę czynność. Osobno przywracane są obsługiwane ustawienia Windows, które CouchMode zmieniło w trakcie swojej sesji.
+
+Opcje ekranu, HDR i dźwięku w ramach tej samej sesji grania opisuje poradnik ustawień sesji uruchamianej padem.

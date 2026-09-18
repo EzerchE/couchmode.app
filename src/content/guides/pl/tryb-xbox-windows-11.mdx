@@ -1,0 +1,73 @@
+---
+title: "Tryb Xbox w Windows 11: wymagania i sposób uruchamiania"
+heading: "Jak korzystać z trybu Xbox w Windows 11"
+description: "Sprawdź dostępność trybu Xbox w Windows 11, uruchom go na PC lub przenośnym komputerze i wróć do pulpitu. Także opcjonalne sesje rozpoczynane padem."
+contentId: guide-xbox-mode-windows-11
+slug: tryb-xbox-windows-11
+published: 2026-09-11
+updated: 2026-09-18
+locale: pl
+category: windows-couch-gaming
+featured: false
+related: ["guide-windows-console", "guide-steam-big-picture", "guide-playnite-launch", "guide-windows-handheld"]
+heroImage: "/screenshots/app-general.png"
+ogImage: "/social/og-couchmode-v3.png"
+---
+
+Tryb Xbox udostępnia na obsługiwanym komputerze z Windows 11 interfejs do gier, po którym można poruszać się padem. Możesz też spotkać nazwę Full Screen Experience lub skrót FSE. Sprawdź w ustawieniach Windows, czy komputer oferuje ten tryb, a następnie przećwicz ręczne wejście i wyjście, zanim dodasz automatyzację.
+
+Z trybu Xbox można korzystać bez CouchMode. Ten poradnik zaczyna się od konfiguracji Windows, a następnie wyjaśnia rolę opcjonalnej sesji CouchMode uruchamianej padem.
+
+## Czym jest tryb Xbox w Windows 11?
+
+Tryb Xbox to środowisko do grania w Windows z aplikacją główną do gier i nawigacją zaprojektowaną pod kontroler. Zmienia sposób przechodzenia między aplikacją uruchamiającą gry, grami i innymi aplikacjami w obrębie tego trybu. Po powrocie do pulpitu Windows nadal jest do dyspozycji.
+
+To jedna z opcji dla [komputera z Windows używanego jak konsola](content:guide-windows-console). Wybór zależy od gier, w które grasz, i interfejsu, który chcesz widzieć na ekranie.
+
+## Czy tryb Xbox jest dostępny na Twoim komputerze?
+
+Microsoft wskazuje Windows 11 24H2 lub nowszy oraz dostępność na obsługiwanych rynkach. Sam zgodny numer wersji nie dowodzi, że opcja jest włączona na Twoim urządzeniu. Obsługiwane przenośne komputery i inne typy PC mogą mieć różne ustawienia oraz sposoby wejścia do trybu.
+
+Sprawdź aktualizacje Windows i opcje faktycznie dostępne w Settings, Gaming, Xbox mode. Jeśli tego ustawienia nie ma, zajrzyj do [aktualnych wskazówek Microsoft dotyczących dostępności i konfiguracji](https://support.microsoft.com/en-us/servicing/os/windows/docs/2025/10/windows-gaming-full-screen-experience). CouchMode nie może udostępnić brakującej funkcji Windows.
+
+## Jak włączyć tryb Xbox i do niego wejść
+
+Na obsługiwanym komputerze stacjonarnym lub laptopie otwórz Settings, Gaming, Xbox mode i włącz ten tryb. Na obsługiwanym przenośnym komputerze do gier wybierz na tej stronie ustawień zainstalowaną aplikację główną do gier. Dokładny zestaw opcji zależy od urządzenia.
+
+Skorzystaj z dostępnej opcji wejścia w aplikacji Xbox, Game Bar lub Task View albo wypróbuj Win+F11, jeśli skrót jest skonfigurowany. Upewnij się, że tryb Xbox faktycznie się uruchomił i pozwala poruszać się padem, a następnie przećwicz powrót do pulpitu. Jeśli pojawi się okno konfiguracji lub logowania, obsłuż je, zanim zaczniesz oczekiwać startu wyłącznie padem.
+
+## Tryb Xbox na komputerach stacjonarnych, laptopach i przenośnych PC
+
+Przenośny komputer może oferować wejście do trybu Xbox po zalogowaniu dzięki opcji uruchamiania. To co innego niż podłączenie zewnętrznego pada do komputera stacjonarnego. Wbudowany kontroler może być obecny przez cały czas uruchamiania, więc jego obecność nie oznacza nowego połączenia zewnętrznego urządzenia.
+
+Jeśli korzystasz z obu sposobów, przetestuj przenośny komputer zarówno na własnym ekranie, jak i w stacji dokującej. Telewizor, amplituner lub stacja mogą zmienić urządzenia obrazu i dźwięku widoczne w Windows. Tę część konfiguracji opisuje [poradnik podłączania przenośnego PC do telewizora](content:guide-windows-handheld).
+
+## Tryb Xbox a otwarcie lub zmaksymalizowanie aplikacji Xbox
+
+Duże okno aplikacji Xbox nie wystarcza, by stwierdzić, że Windows wszedł w tryb Xbox. Uruchom tryb przez obsługiwany punkt wejścia i sprawdź nawigację oraz opcje powrotu do pulpitu.
+
+To rozróżnienie jest ważne przy testowaniu automatyzacji. Pojawienie się aplikacji potwierdza jej otwarcie, ale samo w sobie nie dowodzi, że docelowe środowisko do grania w Windows jest aktywne.
+
+## Automatycznie rozpoczynaj sesję grania padem
+
+Gdy ręczne wejście działa, możesz opcjonalnie wybrać obsługiwany interfejs Xbox w CouchMode i skonfigurować wyzwalacz sesji. Uruchamianie trybu Xbox jest dostępne w CouchMode Free tam, gdzie obsługuje go Windows. Wyzwalacz zewnętrznego kontrolera zależy od wykrycia przez Windows zgodnego połączenia XInput. Nie jest przypisaniem funkcji do przycisku zasilania ani Guide. Natywne połączenia padów PS4 lub PS5 nie są uniwersalnymi wyzwalaczami CouchMode.
+
+Na przenośnym komputerze z wbudowanym kontrolerem użyj opcji uruchamiania i sesji odpowiednich dla tego urządzenia. Przetestuj je oddzielnie od zewnętrznego pada. Opcjonalne [ustawienia HDR, ekranu i dźwięku w Pro](content:guide-controller-session-settings) dotyczą wyłącznie wybranych, obsługiwanych ustawień.
+
+## Co się dzieje po rozłączeniu pada?
+
+Rozładowana bateria lub utrata połączenia bezprzewodowego może uruchomić zakończenie sesji, jeśli włączona jest opcja "Exit CouchMode when controller disconnects". CouchMode czeka przez ustawiony czas opóźnienia po rozłączeniu (offDelay). Ponowne połączenie w tym czasie może anulować oczekujące zakończenie. Rozłączenie nie jest ignorowane tylko dlatego, że aplikacja działa na pełnym ekranie.
+
+Przed wyjściem CouchMode sprawdza zapisany zakres odpowiedzialności za sesję oraz rzeczywisty stan trybu pełnoekranowego. Wysyła odpowiednią akcję wyjścia z FSE tylko wtedy, gdy stan sesji wskazuje, że to CouchMode odpowiada za wyjście, a FSE nadal jest aktywny. Jeśli FSE jest już nieaktywny, nie przełącza go ponownie. Nie wymusza zamknięcia aplikacji uruchomionych niezależnie przez użytkownika ani tych, które działały przed sesją, i weryfikuje bezpieczny powrót do pulpitu. Testuj ustawione zachowanie kończenia sesji w bezpiecznych warunkach, po przypadkowym rozłączeniu podłącz pad ponownie, a przed celowym zakończeniem zapisz grę.
+
+## Bezpieczny powrót do pulpitu Windows
+
+Użyj dostępnej opcji powrotu do pulpitu w Game Bar lub Task View albo skrótu Win+F11, jeśli jest obsługiwany. W sesji CouchMode celem jest pozostawienie Windows w stanie pozwalającym na normalne korzystanie i przywrócenie obsługiwanych ustawień, które CouchMode zmieniło. Wcześniej działające aplikacje powinny pozostać dostępne bez niepotrzebnego zamykania czy przesuwania okien. Dokładne położenie i rozmiary okien nie są gwarantowane.
+
+Jeśli włączysz również Pro Resource Control, automatyzacja obejmie tylko wybrane aplikacje, do których ma dostęp. Procesy z podwyższonymi uprawnieniami, działające jak usługi lub uruchamiające się ponownie mogą pozostać aktywne. Te osobne opcje opisuje [poradnik zarządzania wybranymi aplikacjami i przywracania pulpitu](content:guide-resource-control-session-restore).
+
+## Kiedy lepiej sprawdzi się Steam Big Picture lub Playnite
+
+Zanim dopracujesz ustawienia sesji, wybierz aplikację pasującą do Twojej biblioteki i pada. [Steam Big Picture](content:guide-steam-big-picture) jest alternatywą dla osób korzystających ze Steam, a [Playnite Fullscreen](content:guide-playnite-launch) łączy biblioteki. Warto je rozważyć, ale nie są wymagane do korzystania z trybu Xbox.
+
+Wypróbuj jedno ręczne uruchomienie i jeden powrót do pulpitu z aplikacjami, które zwykle masz już otwarte. To dobry punkt odniesienia przy decyzji, które powtarzalne kroki, jeśli w ogóle, ma automatyzować CouchMode.

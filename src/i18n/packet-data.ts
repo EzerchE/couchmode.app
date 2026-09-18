@@ -1,3 +1,45 @@
+import { italianHomePacket } from "./locales/it/home";
+import { italianLocaleContent } from "./locales/it/shared";
+import { italianGuideHubPacket } from "./locales/it/guides";
+import {
+  italianDownloadPacket,
+  italianSupportPacket,
+  italianChangelogPacket,
+} from "./locales/it/utility";
+import {
+  italianPrivacyPacket,
+  italianTermsPacket,
+  italianRefundPacket,
+  italianCheckoutPacket,
+} from "./locales/it/legal";
+import { brazilianPortugueseHomePacket } from "./locales/pt-BR/home";
+import { brazilianPortugueseLocaleContent } from "./locales/pt-BR/shared";
+import { brazilianPortugueseGuideHubPacket } from "./locales/pt-BR/guides";
+import {
+  brazilianPortugueseDownloadPacket,
+  brazilianPortugueseSupportPacket,
+  brazilianPortugueseChangelogPacket,
+} from "./locales/pt-BR/utility";
+import {
+  brazilianPortuguesePrivacyPacket,
+  brazilianPortugueseTermsPacket,
+  brazilianPortugueseRefundPacket,
+  brazilianPortugueseCheckoutPacket,
+} from "./locales/pt-BR/legal";
+import { polishHomePacket } from "./locales/pl/home";
+import { polishLocaleContent } from "./locales/pl/shared";
+import { polishGuideHubPacket } from "./locales/pl/guides";
+import {
+  polishDownloadPacket,
+  polishSupportPacket,
+  polishChangelogPacket,
+} from "./locales/pl/utility";
+import {
+  polishPrivacyPacket,
+  polishTermsPacket,
+  polishRefundPacket,
+  polishCheckoutPacket,
+} from "./locales/pl/legal";
 import type { LocaleId, SurfaceId } from "./config";
 import { englishSharedUi } from "./shared-ui";
 import { activeLocales, localeManifest, localePath, SITE_ORIGIN } from "./config";
@@ -1137,6 +1179,27 @@ const spanishGuideArticlePackets = Object.fromEntries(
   ]),
 ) as Partial<Record<SurfaceId, SurfacePacketBase>>;
 
+const italianGuideArticlePackets = Object.fromEntries(
+  guideSourcesForLocale("it").map((source) => [
+    source.contentId,
+    guidePacketFromSource(source, italianGuideHubPacket),
+  ]),
+) as Partial<Record<SurfaceId, SurfacePacketBase>>;
+
+const brazilianPortugueseGuideArticlePackets = Object.fromEntries(
+  guideSourcesForLocale("pt-BR").map((source) => [
+    source.contentId,
+    guidePacketFromSource(source, brazilianPortugueseGuideHubPacket),
+  ]),
+) as Partial<Record<SurfaceId, SurfacePacketBase>>;
+
+const polishGuideArticlePackets = Object.fromEntries(
+  guideSourcesForLocale("pl").map((source) => [
+    source.contentId,
+    guidePacketFromSource(source, polishGuideHubPacket),
+  ]),
+) as Partial<Record<SurfaceId, SurfacePacketBase>>;
+
 // English is the source locale, never a fallback packet for another locale.
 export const localePackets: LocalePacketRegistry = {
   en: {
@@ -1224,6 +1287,57 @@ export const localePackets: LocalePacketRegistry = {
       buy: spanishCheckoutPacket,
       guides: spanishGuideHubPacket,
       ...spanishGuideArticlePackets,
+    },
+  },
+  it: {
+    locale: "it",
+    sourceRevision: localeManifest.sourceRevision,
+    shared: italianLocaleContent,
+    surfaces: {
+      home: italianHomePacket,
+      download: italianDownloadPacket,
+      changelog: italianChangelogPacket,
+      support: italianSupportPacket,
+      privacy: italianPrivacyPacket,
+      terms: italianTermsPacket,
+      refund: italianRefundPacket,
+      buy: italianCheckoutPacket,
+      guides: italianGuideHubPacket,
+      ...italianGuideArticlePackets,
+    },
+  },
+  "pt-BR": {
+    locale: "pt-BR",
+    sourceRevision: localeManifest.sourceRevision,
+    shared: brazilianPortugueseLocaleContent,
+    surfaces: {
+      home: brazilianPortugueseHomePacket,
+      download: brazilianPortugueseDownloadPacket,
+      changelog: brazilianPortugueseChangelogPacket,
+      support: brazilianPortugueseSupportPacket,
+      privacy: brazilianPortuguesePrivacyPacket,
+      terms: brazilianPortugueseTermsPacket,
+      refund: brazilianPortugueseRefundPacket,
+      buy: brazilianPortugueseCheckoutPacket,
+      guides: brazilianPortugueseGuideHubPacket,
+      ...brazilianPortugueseGuideArticlePackets,
+    },
+  },
+  pl: {
+    locale: "pl",
+    sourceRevision: localeManifest.sourceRevision,
+    shared: polishLocaleContent,
+    surfaces: {
+      home: polishHomePacket,
+      download: polishDownloadPacket,
+      changelog: polishChangelogPacket,
+      support: polishSupportPacket,
+      privacy: polishPrivacyPacket,
+      terms: polishTermsPacket,
+      refund: polishRefundPacket,
+      buy: polishCheckoutPacket,
+      guides: polishGuideHubPacket,
+      ...polishGuideArticlePackets,
     },
   },
 };

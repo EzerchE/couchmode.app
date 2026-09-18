@@ -1,0 +1,52 @@
+---
+title: "Fechar apps ao jogar e restaurar a área de trabalho"
+description: "Use o Resource Control do CouchMode Pro para fechar apenas os apps compatíveis que você selecionar para jogar e, se quiser, reabri-los depois."
+contentId: guide-resource-control-session-restore
+slug: fechar-apps-jogar-restaurar-area-de-trabalho
+published: 2026-08-24
+updated: 2026-09-18
+locale: pt-BR
+category: windows-couch-gaming
+featured: false
+related: ["guide-controller-session-settings", "guide-windows-console"]
+heroImage: "/screenshots/app-resource-control.png"
+ogImage: "/social/og-couchmode-v3.png"
+---
+
+Quando você começa a jogar pelo controle, os apps que normalmente ficam abertos na área de trabalho podem atrapalhar. O Resource Control do CouchMode Pro permite escolher aplicativos compatíveis para fechar durante a sessão. Ele não é uma ordem para encerrar à força todos os processos do Windows.
+
+Ao encerrar a sessão, você pode configurar a reabertura dos apps selecionados. O CouchMode também restaura as configurações compatíveis do Windows que alterou para a sessão, para que a área de trabalho volte ao estado preparado por você em vez de permanecer ajustada para jogar.
+
+## Selecione os apps que deseja gerenciar
+
+Escolha os aplicativos com cuidado. Você pode selecionar um navegador, um app de conversa ou outro aplicativo que dispute espaço na tela ou sua atenção durante o jogo. O CouchMode atua apenas nos apps compatíveis que você selecionar. Apps não selecionados não são fechados intencionalmente.
+
+Comece com uma lista curta. Assim, fica mais fácil verificar se o fechamento e a reabertura combinam com sua rotina antes de adicionar mais aplicativos.
+
+## Entenda o que o Resource Control não fecha
+
+Alguns processos precisam ficar fora dessa automação. Serviços, componentes protegidos do Windows, aplicativos executados como administrador, processos inacessíveis e apps que reiniciam sozinhos podem continuar em execução. O CouchMode não trata isso como uma falha que possa contornar com segurança.
+
+Se um app for importante para um trabalho em andamento, deixe-o fora da lista até testar a sessão com um exemplo seguro. O Resource Control serve para reduzir os apps abertos que você escolheu, não para tomar decisões sobre processos arbitrários do Windows.
+
+## Configure o que acontece depois da sessão de jogo
+
+Os apps selecionados podem ser reabertos depois da sessão quando essa opção estiver configurada e for compatível. Isso é opcional e separado da restauração das configurações compatíveis do Windows que o CouchMode faz ao encerrar a sessão que iniciou.
+
+Se "Exit CouchMode when controller disconnects" estiver ativado, perder a conexão do controle compatível aciona a saída da sessão após o intervalo configurado. Reconectar durante esse intervalo pode cancelar a saída pendente. O CouchMode usa o registro de quais processos estão sob sua responsabilidade na sessão para encerrar a interface de jogos que gerencia, restaurar as configurações compatíveis que alterou, executar as ações pós-sessão configuradas e verificar o retorno seguro à área de trabalho. Ele não força o fechamento de um iniciador ou app que já estava aberto antes da sessão.
+
+## Dúvidas comuns
+
+### O CouchMode pode fechar Discord ou Chrome quando começo a jogar?
+
+Ele pode fechar um processo compatível do Discord ou Chrome apenas se você o selecionar no Resource Control. Ele não fecha automaticamente todos os apps em segundo plano.
+
+### Por que um app selecionado continuou aberto?
+
+O app pode estar sendo executado como administrador, ser protegido, funcionar como serviço, estar inacessível ou estar configurado para reiniciar sozinho. Nesses casos, ele pode continuar em execução em vez de ser encerrado à força.
+
+### Meus apps serão reabertos depois do jogo?
+
+Apenas quando você tiver configurado a ação de reabertura e ela for compatível com o CouchMode. Separadamente, a restauração da área de trabalho cobre as configurações compatíveis do Windows que o CouchMode alterou durante a sessão.
+
+Para escolher tela, HDR e áudio para a mesma sessão, consulte o guia de configurações de sessão ao conectar o controle.
