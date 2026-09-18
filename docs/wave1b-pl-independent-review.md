@@ -2,7 +2,13 @@
 
 Review date: 2026-09-18. Repository: `C:/Users/ezerc/dev/couchmode.app`.
 
-**Verdict: source editorial review PASS, with three optional wording improvements. Required findings: 0.** This is an independent AI second-pass review, not human/native-speaker approval, legal advice, activation approval, or evidence that production routes have passed. Parent owns any corrections and subsequent checks.
+**Verdict: source editorial review PASS. Required findings: 0. Outstanding optional findings: 0.** Parent applied O1-O3; the independent reviewer verified all exact replacements on 2026-09-18 at 14:41 Europe/Istanbul. This is an independent AI second-pass review, not human/native-speaker approval, legal advice, activation approval, or evidence that production routes have passed. Integration and activation checks remain parent-owned.
+
+## Closure Recheck
+
+O1 is closed: both homepage `seo.title` and `seo.ogTitle` now read `CouchMode: zacznij grać na PC z Windows, włączając pada`. O2 is closed: the HDR/audio guide now contains the exact suggested sentence below. O3 is closed: both checkout labels now use `do serwisu Patreon`. Read each affected location and executed read-only exact-string assertions; all passed. No localized content was edited by the reviewer. The findings below retain the original wording and rationale as an audit trail, not as outstanding work. Parent formatting changed line positions; closure links below reflect the current files. This bounded recheck does not claim to rerun build, registry, deployed SEO, or preservation gates.
+
+Closure Polish 14-file SHA-256: `9cf0194c072c5742e3458ab124a77aad95f43b12c34da8338023726a34a8c0e3`, using the same fingerprint method documented below. This supersedes the original Polish snapshot for the three accepted wording changes and parent formatting.
 
 ## Scope and Authority
 
@@ -19,13 +25,13 @@ None outstanding in the final reviewed Polish snapshot. No missing source paragr
 
 An initially observed wording defect, `nie zamyka wymuszenie`, was independently corrected by the author during this review. The final homepage FAQ and Xbox/Resource Control guides now use `Nie wymusza zamknięcia`; the Resource Control FAQ says `zamiast zostać zamknięta siłowo`. Re-read those changes and confirmed that they preserve the original safety limitation. This is resolved, not an outstanding finding, and the reviewer did not edit those files.
 
-## Optional Findings
+## Optional Findings (All Closed)
 
 ### O1. Smooth the homepage search title
 
-Location: [home.ts:11](C:/Users/ezerc/dev/couchmode.app/src/i18n/locales/pl/home.ts:11), also `seo.ogTitle` at line 13.
+Location: [home.ts:11](C:/Users/ezerc/dev/couchmode.app/src/i18n/locales/pl/home.ts:11), also `seo.ogTitle` at line 14. Status: CLOSED, exact replacement verified.
 
-Current wording: `CouchMode: graj na Windows, zaczynając od pada`
+Original wording: `CouchMode: graj na Windows, zaczynając od pada`
 
 Minimal suggested replacement: `CouchMode: zacznij grać na PC z Windows, włączając pada`
 
@@ -33,9 +39,9 @@ Reason: the current sentence is understandable, but `zaczynając od pada` sounds
 
 ### O2. Clarify the audio-test sentence's coordination
 
-Location: [podlaczenie-pada-hdr-ekran-dzwiek.mdx:34](C:/Users/ezerc/dev/couchmode.app/src/content/guides/pl/podlaczenie-pada-hdr-ekran-dzwiek.mdx:34).
+Location: [podlaczenie-pada-hdr-ekran-dzwiek.mdx:34](C:/Users/ezerc/dev/couchmode.app/src/content/guides/pl/podlaczenie-pada-hdr-ekran-dzwiek.mdx:34). Status: CLOSED, exact replacement verified.
 
-Current wording: `Wybierz obsługiwane ustawienie dźwięku na czas grania i sprawdź je przy takim samym połączeniu pada oraz aplikacji do gier, jakich zwykle używasz.`
+Original wording: `Wybierz obsługiwane ustawienie dźwięku na czas grania i sprawdź je przy takim samym połączeniu pada oraz aplikacji do gier, jakich zwykle używasz.`
 
 Minimal suggested replacement: `Wybierz obsługiwane ustawienie dźwięku na czas grania i sprawdź je, korzystając ze zwykłego sposobu podłączenia pada i tej samej aplikacji do gier co zazwyczaj.`
 
@@ -43,9 +49,9 @@ Reason: `połączeniu pada oraz aplikacji` awkwardly groups the launcher with th
 
 ### O3. Use idiomatic Patreon destination labels
 
-Location: [legal.ts:142](C:/Users/ezerc/dev/couchmode.app/src/i18n/locales/pl/legal.ts:142), also line 143.
+Location: [legal.ts:337](C:/Users/ezerc/dev/couchmode.app/src/i18n/locales/pl/legal.ts:337), also line 340. Status: CLOSED, exact replacements verified.
 
-Current wording: `Przekierowanie do Patreon...` / `Przejdź do Patreon`
+Original wording: `Przekierowanie do Patreon...` / `Przejdź do Patreon`
 
 Minimal suggested replacement: `Przekierowanie do serwisu Patreon...` / `Przejdź do serwisu Patreon`
 
@@ -143,4 +149,4 @@ Fingerprint method: sort repository-relative paths lexically; hash each UTF-8 pa
 
 Executed only read-only file inspection, Git status/HEAD queries, source searches, inline AST/paragraph/link/metadata comparisons and in-memory hashing. No build, generator, commit, application execution, deployment, browser rendering, source-copy edit, or shared-file edit was performed by this reviewer. The only written file is this report.
 
-Parent should decide on O1-O3, recheck any changed wording and then perform the full integration/activation gate. Remaining unverified areas include generated source fingerprints/public availability, rendered title/H1/schema/link output, localized 404 and consent behavior, canonical/hreflang/sitemap/lastmod, runtime release selection and checkout behavior, responsive overflow, bundle/performance results and live deployment. Authoring completeness here is **17/17 surfaces, 8/8 full guide bodies, 7/7 release overlays plus shared UI**; it is not a claim that 17 Polish routes are active or approved by a human.
+O1-O3 are now closed; no editorial correction from this review remains outstanding. Parent owns the full integration/activation gate. Areas not executed by this reviewer include generated source fingerprints/public availability, rendered title/H1/schema/link output, localized 404 and consent behavior, canonical/hreflang/sitemap/lastmod, runtime release selection and checkout behavior, responsive overflow, bundle/performance results and live deployment. Authoring completeness here is **17/17 surfaces, 8/8 full guide bodies, 7/7 release overlays plus shared UI**; it is not a claim that 17 Polish routes are active or approved by a human.

@@ -74,3 +74,36 @@ existing 25-case five-locale responsive/consent/selector matrix passed before
 the defensive bootstrap refinement; the full final candidate matrix is still a
 separate activation gate. Evidence/scripts/screenshots remain outside Git in
 `C:/Users/ezerc/dev/couchmode-validation/2026-09-18-wave1b/`.
+
+## Eight-locale activation candidate
+
+Measured 2026-09-18 with the same Bun 1.4.0 build and gzip method:
+
+| Measure | Wave 1a baseline | Wave 1b candidate | Difference |
+| --- | ---: | ---: | ---: |
+| Largest common entry gzip, bytes | 244581 | 128601 | -115980 |
+| Sum of emitted JS gzip, bytes | 363853 | 452186 | +88333 |
+| Prerender seconds, single run | 2.02 | 2.449 | +0.429 |
+
+Compared with the split five-locale candidate, adding IT/PT-BR/PL increases
+the common entry by only 1192 bytes, not another linear body-copy increment.
+The new locale chunks are IT 25635, PT-BR 25439 and PL 27359 gzip bytes.
+Existing route/component chunks remain shared. English remains an eager
+22182-byte base chunk to preserve existing English route initialization.
+
+Observed home JS request-set gzip sums: EN 252396; DE 286924; TR 285265;
+FR 288872; ES 287326; IT 286855; PT-BR 286659; PL 288579. These are gzip
+estimates from the exact requested application files, not measured wire bytes.
+All eight request sets contained only EN and the selected locale's content.
+All seven non-English chunk-failure tests retained localized prerendered copy
+and recovered through user reload after transport recovery.
+
+The 85 existing page bodies/metadata/canonicals/schema remained unchanged;
+only the approved hreflang cluster expanded. Source packet preservation also
+compared all 5266 non-revision scalar values and 2382 containers, with no
+differences. The eight-locale generated inventory has 136 surfaces and 64
+articles, so this one-run prerender increase is acceptable, not a latency SLA.
+
+Recommendation: deploy this bounded split with Wave 1b. The larger total asset
+inventory is expected for three complete new languages; it is not a per-visit
+download increase. No broader routing/framework refactor is needed here.

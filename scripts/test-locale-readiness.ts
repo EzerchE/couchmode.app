@@ -80,6 +80,8 @@ try {
       assert.equal(new Intl.DateTimeFormat().resolvedOptions().timeZone, timezone);
       assert.equal(formatGuideDate("2026-09-11", "en"), "Sep 11, 2026");
       assert.equal(formatGuideDate("2026-01-01", "en"), "Jan 1, 2026");
+      assert.equal(formatGuideDate("2026-09-11", "pt-BR"), "11 de set. de 2026");
+      assert.equal(formatGuideDate("2026-01-01", "pt-BR"), "1 de jan. de 2026");
     }
   } finally {
     if (previousTz === undefined) delete process.env.TZ;

@@ -53,5 +53,38 @@
     "errorTitle": "No se pudo cargar esta página",
     "errorDescription": "Se ha producido un error por nuestra parte. Puedes recargar la página o volver al inicio.",
     "retryLabel": "Reintentar"
+  },
+  "it": {
+    "staticHeading": "Questa pagina di CouchMode non esiste.",
+    "staticDescription": "Consulta le guide per giocare su Windows dal divano o torna alla pagina iniziale di CouchMode.",
+    "guidesLabel": "Sfoglia le guide",
+    "notFoundTitle": "Pagina non trovata",
+    "notFoundDescription": "La pagina che cerchi non esiste o è stata spostata.",
+    "homeLabel": "Torna alla pagina iniziale",
+    "errorTitle": "Impossibile caricare la pagina",
+    "errorDescription": "Si è verificato un errore da parte nostra. Puoi riprovare a caricare la pagina o tornare alla pagina iniziale.",
+    "retryLabel": "Riprova"
+  },
+  "pt-BR": {
+    "staticHeading": "Esta página do CouchMode não existe.",
+    "staticDescription": "Veja os guias para jogar no Windows no sofá ou volte à página inicial do CouchMode.",
+    "guidesLabel": "Ver guias",
+    "notFoundTitle": "Página não encontrada",
+    "notFoundDescription": "A página que você procura não existe ou foi movida.",
+    "homeLabel": "Ir para a página inicial",
+    "errorTitle": "Não foi possível carregar esta página",
+    "errorDescription": "Ocorreu um erro do nosso lado. Tente atualizar a página ou volte ao início.",
+    "retryLabel": "Tentar novamente"
+  },
+  "pl": {
+    "staticHeading": "Ta strona CouchMode nie istnieje.",
+    "staticDescription": "Zajrzyj do poradników o graniu na telewizorze z Windows lub wróć na stronę główną CouchMode.",
+    "guidesLabel": "Przeglądaj poradniki",
+    "notFoundTitle": "Nie znaleziono strony",
+    "notFoundDescription": "Szukana strona nie istnieje lub została przeniesiona.",
+    "homeLabel": "Wróć na stronę główną",
+    "errorTitle": "Nie udało się wczytać strony",
+    "errorDescription": "Coś poszło nie tak po naszej stronie. Spróbuj odświeżyć stronę lub wróć na stronę główną.",
+    "retryLabel": "Spróbuj ponownie"
   }
 }
