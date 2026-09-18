@@ -10,6 +10,8 @@ export const approvedActiveLocaleIds: readonly LocaleId[] = [
   "it",
   "pt-BR",
   "pl",
+  "ja",
+  "ko",
 ];
 
 export function assertApprovedActiveLocales(locales: readonly { id: string; state: string }[]) {

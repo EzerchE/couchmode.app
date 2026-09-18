@@ -150,5 +150,43 @@
     "guide-xbox-mode-windows-11": "/tryb-xbox-windows-11/",
     "guide-resource-control-session-restore": "/zamykanie-aplikacji-gra-przywracanie-pulpitu/",
     "guide-controller-session-settings": "/podlaczenie-pada-hdr-ekran-dzwiek/"
+  },
+  "ja": {
+    "home": "/",
+    "download": "/download/",
+    "changelog": "/changelog/",
+    "support": "/support/",
+    "privacy": "/privacy/",
+    "terms": "/terms/",
+    "refund": "/refund/",
+    "buy": "/pro/",
+    "guides": "/guides/",
+    "guide-playnite-focus": "/playnite-controller-focus/",
+    "guide-steam-big-picture": "/steam-big-picture-controller/",
+    "guide-xbox-mode-windows-11": "/windows-11-xbox-mode/",
+    "guide-windows-console": "/windows-11-pc-tv/",
+    "guide-windows-handheld": "/windows-handheld-tv/",
+    "guide-playnite-launch": "/playnite-controller-launch/",
+    "guide-controller-session-settings": "/controller-hdr-display-audio/",
+    "guide-resource-control-session-restore": "/game-session-apps-restore/"
+  },
+  "ko": {
+    "home": "/",
+    "download": "/download/",
+    "changelog": "/changelog/",
+    "support": "/support/",
+    "privacy": "/privacy/",
+    "terms": "/terms/",
+    "refund": "/refund/",
+    "buy": "/pro/",
+    "guides": "/guides/",
+    "guide-playnite-focus": "/playnite-controller-focus/",
+    "guide-xbox-mode-windows-11": "/windows-11-xbox-mode/",
+    "guide-windows-console": "/windows-11-pc-tv/",
+    "guide-windows-handheld": "/windows-handheld-tv/",
+    "guide-resource-control-session-restore": "/game-session-apps-restore/",
+    "guide-controller-session-settings": "/controller-hdr-display-audio/",
+    "guide-playnite-launch": "/playnite-controller-launch/",
+    "guide-steam-big-picture": "/steam-big-picture-controller/"
   }
 }

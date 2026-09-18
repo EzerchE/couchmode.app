@@ -86,5 +86,27 @@
     "errorTitle": "Nie udało się wczytać strony",
     "errorDescription": "Coś poszło nie tak po naszej stronie. Spróbuj odświeżyć stronę lub wróć na stronę główną.",
     "retryLabel": "Spróbuj ponownie"
+  },
+  "ja": {
+    "staticHeading": "このCouchModeのページは存在しません。",
+    "staticDescription": "Windows PCをテレビで楽しむためのガイドを見るか、CouchModeのホームに戻ってください。",
+    "guidesLabel": "ガイドを見る",
+    "notFoundTitle": "ページが見つかりません",
+    "notFoundDescription": "お探しのページは存在しないか、移動した可能性があります。",
+    "homeLabel": "ホームに戻る",
+    "errorTitle": "ページを読み込めませんでした",
+    "errorDescription": "サイト側で問題が発生しました。もう一度読み込むか、ホームに戻ってください。",
+    "retryLabel": "もう一度試す"
+  },
+  "ko": {
+    "staticHeading": "이 CouchMode 페이지는 존재하지 않습니다.",
+    "staticDescription": "Windows PC TV 게임 가이드를 살펴보거나 CouchMode 홈으로 돌아가세요.",
+    "guidesLabel": "가이드 둘러보기",
+    "notFoundTitle": "페이지를 찾을 수 없습니다",
+    "notFoundDescription": "찾으시는 페이지가 없거나 다른 주소로 이동했습니다.",
+    "homeLabel": "홈으로 이동",
+    "errorTitle": "페이지를 불러오지 못했습니다",
+    "errorDescription": "사이트에 문제가 발생했습니다. 새로고침하거나 홈으로 돌아가세요.",
+    "retryLabel": "다시 시도"
   }
 }
