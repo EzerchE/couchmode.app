@@ -2,6 +2,16 @@ import { Fragment } from "react";
 import type { SurfaceId } from "@/i18n/config";
 import { useLocaleContent } from "@/i18n/content";
 
+export function GuideParagraph({ text }: { text: string }) {
+  return text.startsWith("### ") ? (
+    <h3 className="text-lg font-semibold text-foreground">
+      <GuideText text={text.slice(4)} />
+    </h3>
+  ) : (
+    <p><GuideText text={text} /></p>
+  );
+}
+
 // Only inline links are supported here; guide layout stays in the shared renderer.
 export function GuideText({ text }: { text: string }) {
   const content = useLocaleContent();

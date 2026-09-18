@@ -13,7 +13,7 @@ import { PatreonBridge } from "@/components/checkout/PatreonBridge";
 import { GuideActions } from "@/components/guides/GuideActions";
 import { GuideBrowser } from "@/components/guides/GuideBrowser";
 import { GuideCard } from "@/components/guides/GuideCard";
-import { GuideText } from "@/components/guides/GuideText";
+import { GuideParagraph, GuideText } from "@/components/guides/GuideText";
 import { Comparison } from "@/components/landing/Comparison";
 import { FeatureShots } from "@/components/landing/FeatureShots";
 import { FinalCTA } from "@/components/landing/FinalCTA";
@@ -185,7 +185,7 @@ function GuideArticleSurface({ packet }: { packet: SurfacePacketBase<"guide-arti
                 </h2>
                 <div className="mt-4 space-y-5 leading-7 text-muted-foreground">
                   {section.paragraphs.map((paragraph) => (
-                    <p key={paragraph}><GuideText text={paragraph} /></p>
+                    <GuideParagraph key={paragraph} text={paragraph} />
                   ))}
                 </div>
               </section>

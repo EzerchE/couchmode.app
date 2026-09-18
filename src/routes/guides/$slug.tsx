@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { GuideCard } from "@/components/guides/GuideCard";
 import { GuideActions } from "@/components/guides/GuideActions";
-import { GuideText } from "@/components/guides/GuideText";
+import { GuideParagraph, GuideText } from "@/components/guides/GuideText";
 import { Footer } from "@/components/landing/Footer";
 import { Navbar } from "@/components/landing/Navbar";
 import { SITE_ORIGIN } from "@/i18n/config";
@@ -153,7 +153,7 @@ function GuidePage() {
                 </h2>
                 <div className="mt-4 space-y-5 leading-7 text-muted-foreground">
                   {section.paragraphs.map((paragraph) => (
-                    <p key={paragraph}><GuideText text={paragraph} /></p>
+                    <GuideParagraph key={paragraph} text={paragraph} />
                   ))}
                 </div>
               </section>

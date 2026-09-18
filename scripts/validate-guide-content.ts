@@ -33,6 +33,8 @@ try {
     assert.equal(guides.length, 8, `${id} guide inventory`);
     assert.equal(manifest.requiredSurfaces.length, 17);
     const hub = readPage(packets.hrefFor(id, "guides")!);
+    const hubPacket = packets.packetFor(id, "guides");
+    assert.ok(hubPacket?.kind === "guide-hub");
     for (const guide of guides) {
       const { source, packet } = guide;
       const metadata = packets.metadataFor(packet);
@@ -63,8 +65,15 @@ try {
         ...source.introduction,
         ...source.sections.flatMap((section) => section.paragraphs),
       ];
+      const plainText = (text: string) => text.replace(/\[([^\]]+)\]\([^\s)]+\)/g, "$1");
+      const headingText = (tag: string, markup = article) => [...markup.matchAll(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`, "g"))]
+        .map((match) => match[1].replace(/<[^>]+>/g, ""));
+      assert.deepEqual(headingText("h2"), [...source.sections.map((section) => section.heading), hubPacket.payload.article.relatedHeading], `${id} unchanged H2 hierarchy`);
+      const editorialBody = article.split(/<section\b[^>]*aria-labelledby="related-guides"/)[0];
+      assert.deepEqual(headingText("h3", editorialBody), paragraphs.filter((text) => text.startsWith("### ")).map((text) => plainText(text.slice(4))), `${id} semantic FAQ headings`);
+      assert.ok(!article.replace(/<[^>]+>/g, "").includes("### "), `${id} exposed Markdown heading marker`);
       for (const paragraph of paragraphs) {
-        const plain = paragraph.replace(/\[([^\]]+)\]\([^\s)]+\)/g, "$1");
+        const plain = plainText(paragraph.startsWith("### ") ? paragraph.slice(4) : paragraph);
         const renderedPlain = article.replace(/<[^>]+>/g, "");
         assert.ok(renderedPlain.includes(plain), `${id}/${packet.contentId} missing body text`);
         for (const [, label, target] of paragraph.matchAll(/\[([^\]]+)\]\(([^\s)]+)\)/g)) {
