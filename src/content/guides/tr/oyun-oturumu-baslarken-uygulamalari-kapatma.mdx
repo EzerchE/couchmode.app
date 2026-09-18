@@ -4,7 +4,7 @@ description: "CouchMode Pro Resource Control ile yalnızca seçtiğiniz destekle
 contentId: guide-resource-control-session-restore
 slug: oyun-oturumu-baslarken-uygulamalari-kapatma
 published: 2026-08-24
-updated: 2026-08-24
+updated: 2026-09-18
 locale: tr
 category: windows-couch-gaming
 featured: false
@@ -33,7 +33,7 @@ Devam eden önemli işiniz olan uygulamaları, önce risksiz bir örnekle test e
 
 Seçtiğiniz uygulamalar, bu davranış yapılandırıldıysa ve destekleniyorsa oturum sonrasında yeniden açılabilir. Bu isteğe bağlıdır. Bundan ayrı olarak CouchMode, kendi başlattığı oturumu bitirirken değiştirdiği desteklenen Windows ayarlarını geri yükler.
 
-Desteklenen oyun kolu bağlantısı sona erdiğinde oturum da biter. CouchMode, başlattığı oyun deneyimini kapatır, desteklenen değişiklikleri geri yükler ve yapılandırılmış oturum sonrası eylemleri uygular. Oturumdan önce açık olan başlatıcı veya uygulamaların sahipliğini almaz.
+“Exit CouchMode when controller disconnects” seçeneği açıksa, desteklenen oyun kolunun bağlantısı kesildiğinde ayarlanan bekleme süresinin ardından oturumdan çıkış tetiklenir. Bu süre içinde oyun kolu yeniden bağlanırsa bekleyen çıkış iptal edilebilir. CouchMode hangi oturumdan sorumlu olduğunu kayıtlarından kontrol eder; sorumlu olduğu oyun deneyimini kapatır, değiştirdiği desteklenen ayarları geri yükler, seçilen oturum sonrası işlemleri uygular ve masaüstüne güvenli dönüşü doğrular. Oturumdan önce açık olan başlatıcı veya uygulamaları zorla kapatmaz.
 
 ## Sık sorulan sorular
 

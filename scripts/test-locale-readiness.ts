@@ -128,6 +128,56 @@ try {
     assert.equal(packets.hrefFor(locale.id, "home"), undefined);
   }
 
+  // Complete draft packets can exercise real routes only inside this isolated
+  // process. The manifest, public build and activation allowlist are untouched.
+  for (const definition of manifest.locales.filter((locale) => locale.state === "pending")) {
+    const packet = packets.localePackets[definition.id];
+    if (!packet) continue;
+    assert.equal(Object.keys(packet.surfaces).length, manifest.requiredSurfaces.length);
+    config.activeLocales.push({ ...definition, state: "active" });
+    try {
+      for (const surface of manifest.requiredSurfaces) {
+        const localized = packet.surfaces[surface.id];
+        assert.ok(localized, `${definition.id}/${surface.id} incomplete draft`);
+        const url = `${definition.urlPrefix}${localized.path}`;
+        const router = await route(url);
+        const match = router.state.matches.at(-1);
+        assert.equal(match.status, "success", url);
+        assert.equal(match.context.packet.contentId, surface.id);
+        assert.equal(match.context.packet.locale, definition.id);
+        assert.equal(packets.metadataFor(localized).canonical, `https://couchmode.app${url}`);
+        assert.ok(
+          match.links.some(
+            (link: { rel: string; href: string }) =>
+              link.rel === "canonical" && link.href === `https://couchmode.app${url}`,
+          ),
+        );
+        const alternates = packets.hreflangLinks(surface.id);
+        assert.equal(alternates.length, config.activeLocales.length + 1);
+        assert.ok(
+          alternates.some(
+            (link: { hrefLang: string; href: string }) =>
+              link.hrefLang === definition.id && link.href === `https://couchmode.app${url}`,
+          ),
+        );
+        if (surface.id === "buy")
+          assert.equal(packets.metadataFor(localized).robots, "noindex,follow");
+      }
+    } finally {
+      config.activeLocales.pop();
+    }
+    for (const localized of Object.values(packet.surfaces) as {
+      contentId: string;
+      path: string;
+    }[]) {
+      assert.equal(
+        packets.resolveLocalizedRoute(definition.urlPrefix.slice(1), localized.path),
+        undefined,
+      );
+      assert.equal(packets.hrefFor(definition.id, localized.contentId), undefined);
+    }
+  }
+
   // In-memory route fixture: exercises the actual file routes and their head
   // callbacks before Portuguese editorial content or public activation exists.
   const definition = manifest.locales.find((locale) => locale.id === "pt-BR")!;

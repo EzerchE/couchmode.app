@@ -1,0 +1,52 @@
+---
+title: "Cerrar aplicaciones al jugar y restaurar el escritorio"
+description: "Usa Resource Control de CouchMode Pro para cerrar solo las aplicaciones compatibles que selecciones al jugar y, de forma opcional, volver a abrirlas después."
+contentId: guide-resource-control-session-restore
+slug: cerrar-aplicaciones-jugar-restaurar-escritorio
+published: 2026-08-24
+updated: 2026-09-18
+locale: es
+category: windows-couch-gaming
+featured: false
+related: ["guide-controller-session-settings", "guide-windows-console"]
+heroImage: "/screenshots/app-resource-control.png"
+ogImage: "/social/og-couchmode-v3.png"
+---
+
+Si empiezas a jugar con un mando, las aplicaciones de escritorio que sueles dejar abiertas pueden estorbar. Resource Control de CouchMode Pro te permite elegir aplicaciones compatibles para cerrarlas durante una sesión de juego. No es una orden para forzar el cierre de todos los procesos de Windows.
+
+Puedes configurar que las aplicaciones seleccionadas vuelvan a abrirse cuando termine la sesión. CouchMode también restaura los ajustes compatibles de Windows que haya cambiado durante la sesión, para que el escritorio pueda volver al estado que habías preparado en lugar de quedarse con la configuración de juego.
+
+## Selecciona las aplicaciones que quieres gestionar
+
+Elige las aplicaciones con cuidado. Puedes seleccionar un navegador, una aplicación de chat u otra aplicación de escritorio que ocupe espacio en pantalla o reclame tu atención mientras juegas. CouchMode solo actúa sobre las aplicaciones compatibles que hayas seleccionado. No cierra deliberadamente las que no elijas.
+
+Empieza con una lista corta. Así será más fácil verificar que el comportamiento de cierre y reapertura encaja con tu rutina antes de añadir más aplicaciones.
+
+## Qué no cierra Resource Control
+
+Algunos procesos deben quedar fuera de esta automatización. Los servicios, los componentes protegidos de Windows, las aplicaciones con privilegios elevados, los procesos inaccesibles y las aplicaciones que se vuelven a iniciar solas pueden seguir en ejecución. CouchMode no presenta ese resultado como un fallo que pueda corregir de forma segura forzando el cierre.
+
+Si una aplicación es importante para un trabajo en curso, déjala fuera de la lista hasta que hayas probado la sesión con un ejemplo seguro. Resource Control está pensado para despejar el escritorio según lo que tú elijas, no para tomar decisiones sobre cualquier proceso de Windows.
+
+## Configura qué ocurre después de la sesión de juego
+
+Las aplicaciones seleccionadas pueden volver a abrirse después de la sesión si esa opción está configurada y es compatible. Es opcional e independiente de los ajustes compatibles de Windows que CouchMode restaura al terminar la sesión que inició.
+
+La desconexión del mando inicia la salida de la sesión solo si está activada la opción «Exit CouchMode when controller disconnects». Se aplica la espera configurada (offDelay); si el mando se reconecta durante ese plazo, puede cancelarse la salida pendiente. CouchMode solo termina su propia sesión o completa una salida pendiente de la que es responsable, restaura los ajustes compatibles que haya cambiado y aplica las acciones configuradas para después de la sesión. No fuerza el cierre de un lanzador o una aplicación que ya estuviera abierto antes o que hayas abierto por tu cuenta. La salida incluye verificar que el escritorio vuelva a ser utilizable.
+
+## Preguntas frecuentes
+
+### ¿CouchMode puede cerrar Discord o Chrome al empezar a jugar?
+
+Puede cerrar un proceso compatible de Discord o Chrome solo si lo has seleccionado en Resource Control. No cierra automáticamente todas las aplicaciones en segundo plano.
+
+### ¿Por qué una aplicación seleccionada siguió abierta?
+
+La aplicación puede tener privilegios elevados, estar protegida, funcionar como un servicio, ser inaccesible o estar configurada para reiniciarse sola. En esos casos puede seguir en ejecución en lugar de cerrarse de forma forzada.
+
+### ¿Volverán a abrirse mis aplicaciones después de jugar?
+
+Solo si has configurado la acción de reapertura y CouchMode la admite. Por separado, la garantía de restauración del escritorio cubre los ajustes compatibles de Windows que CouchMode haya cambiado durante su sesión.
+
+Para las opciones de pantalla, HDR y audio de esa misma sesión de juego, consulta la guía de ajustes de sesión al conectar el mando.

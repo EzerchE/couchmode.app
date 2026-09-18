@@ -11,6 +11,34 @@ import {
   type GuideContentId,
 } from "@/content/guides";
 import type { ReleaseEditorialOverlay } from "./release-editorial";
+import { frenchHomePacket } from "./locales/fr/home";
+import { frenchLocaleContent } from "./locales/fr/shared";
+import { frenchGuideHubPacket } from "./locales/fr/guides";
+import {
+  frenchDownloadPacket,
+  frenchSupportPacket,
+  frenchChangelogPacket,
+} from "./locales/fr/utility";
+import {
+  frenchPrivacyPacket,
+  frenchTermsPacket,
+  frenchRefundPacket,
+  frenchCheckoutPacket,
+} from "./locales/fr/legal";
+import { spanishHomePacket } from "./locales/es/home";
+import { spanishLocaleContent } from "./locales/es/shared";
+import { spanishGuideHubPacket } from "./locales/es/guides";
+import {
+  spanishDownloadPacket,
+  spanishSupportPacket,
+  spanishChangelogPacket,
+} from "./locales/es/utility";
+import {
+  spanishPrivacyPacket,
+  spanishTermsPacket,
+  spanishRefundPacket,
+  spanishCheckoutPacket,
+} from "./locales/es/legal";
 import {
   germanCheckoutPacket,
   germanPrivacyPacket,
@@ -631,7 +659,7 @@ const englishHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "What happens if my controller disconnects during a gaming session?",
           answer:
-            "That is the normal way to end a session. When the controller disconnects, CouchMode closes the gaming experience it opened, restores the supported Windows settings it changed, and returns you to your desktop.",
+            "If Exit CouchMode when controller disconnects is enabled, disconnection triggers session exit after the configured delay. Reconnecting during that delay can cancel the pending exit. CouchMode checks its session ownership and the actual state before exiting, restores the supported settings it changed, and verifies a safe desktop return. It does not forcibly close launchers or apps that you opened independently or that were already open before the session.",
         },
         {
           question: "Does CouchMode support Playnite?",
@@ -1392,8 +1420,20 @@ const turkishGuideArticlePackets = Object.fromEntries(
   ]),
 ) as Partial<Record<SurfaceId, SurfacePacketBase>>;
 
-// English is the source locale while its surface payloads migrate incrementally.
-// Its root paths are surface policy, not a fallback packet for other locales.
+const frenchGuideArticlePackets = Object.fromEntries(
+  guideSourcesForLocale("fr").map((source) => [
+    source.contentId,
+    guidePacketFromSource(source, frenchGuideHubPacket),
+  ]),
+) as Partial<Record<SurfaceId, SurfacePacketBase>>;
+const spanishGuideArticlePackets = Object.fromEntries(
+  guideSourcesForLocale("es").map((source) => [
+    source.contentId,
+    guidePacketFromSource(source, spanishGuideHubPacket),
+  ]),
+) as Partial<Record<SurfaceId, SurfacePacketBase>>;
+
+// English is the source locale, never a fallback packet for another locale.
 export const localePackets: LocalePacketRegistry = {
   en: {
     locale: "en",
@@ -1412,8 +1452,6 @@ export const localePackets: LocalePacketRegistry = {
       ...englishGuideArticlePackets,
     },
   },
-  // Pending packets are validated as editorial drafts only. Public route and URL
-  // resolution below remains limited to locales whose manifest state is active.
   de: {
     locale: "de",
     sourceRevision: localeManifest.sourceRevision,
@@ -1446,6 +1484,42 @@ export const localePackets: LocalePacketRegistry = {
       refund: turkishRefundPacket,
       buy: turkishCheckoutPacket,
       ...turkishGuideArticlePackets,
+    },
+  },
+  // Authored packets do not authorize activation. Public resolution below uses
+  // the independently gated manifest state, including for complete drafts.
+  fr: {
+    locale: "fr",
+    sourceRevision: localeManifest.sourceRevision,
+    shared: frenchLocaleContent,
+    surfaces: {
+      home: frenchHomePacket,
+      download: frenchDownloadPacket,
+      changelog: frenchChangelogPacket,
+      support: frenchSupportPacket,
+      privacy: frenchPrivacyPacket,
+      terms: frenchTermsPacket,
+      refund: frenchRefundPacket,
+      buy: frenchCheckoutPacket,
+      guides: frenchGuideHubPacket,
+      ...frenchGuideArticlePackets,
+    },
+  },
+  es: {
+    locale: "es",
+    sourceRevision: localeManifest.sourceRevision,
+    shared: spanishLocaleContent,
+    surfaces: {
+      home: spanishHomePacket,
+      download: spanishDownloadPacket,
+      changelog: spanishChangelogPacket,
+      support: spanishSupportPacket,
+      privacy: spanishPrivacyPacket,
+      terms: spanishTermsPacket,
+      refund: spanishRefundPacket,
+      buy: spanishCheckoutPacket,
+      guides: spanishGuideHubPacket,
+      ...spanishGuideArticlePackets,
     },
   },
 };

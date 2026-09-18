@@ -288,7 +288,7 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
           question:
             "Was passiert, wenn mein Controller während einer Gaming-Session getrennt wird?",
           answer:
-            "So endet eine Sitzung normalerweise. Wenn der Controller getrennt wird, schließt CouchMode das von ihm geöffnete Spielerlebnis, stellt die unterstützten Windows-Einstellungen wieder her und bringt dich zum Desktop zurück.",
+            "Ist Exit CouchMode when controller disconnects aktiviert, löst die Trennung nach der eingestellten Verzögerung das Ende der Session aus. Verbindest du den Controller in dieser Zeit erneut, kann der vorgemerkte Ausstieg abgebrochen werden. CouchMode prüft seine Zuständigkeit für die Session und den tatsächlichen Zustand, stellt die unterstützten Einstellungen wieder her, die es geändert hat, und überprüft die sichere Rückkehr zum Desktop. Bereits zuvor oder unabhängig von CouchMode geöffnete Launcher und Apps werden nicht zwangsweise geschlossen.",
         },
         {
           question: "Unterstützt CouchMode Playnite?",
@@ -884,7 +884,7 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "Oyun oturumu sırasında kumandamın bağlantısı kesilirse ne olur?",
           answer:
-            "Bu, oturumu bitirmenin normal yoludur. Kumandanın bağlantısı kesildiğinde CouchMode açtığı oyun deneyimini kapatır, değiştirdiği desteklenen Windows ayarlarını geri yükler ve sizi masaüstüne döndürür.",
+            "Exit CouchMode when controller disconnects seçeneği açıksa bağlantının kesilmesi, ayarlanan bekleme süresinden sonra oturumdan çıkışı tetikler. Bu süre içinde oyun kolu yeniden bağlanırsa bekleyen çıkış iptal edilebilir. CouchMode kendi oturum sorumluluğunu ve gerçek durumu kontrol eder, değiştirdiği desteklenen ayarları geri yükler ve masaüstüne güvenli dönüşü doğrular. Bağımsız olarak açtığınız veya oturumdan önce açık olan başlatıcı ve uygulamaları zorla kapatmaz.",
         },
         {
           question: "CouchMode Playnite'ı destekliyor mu?",

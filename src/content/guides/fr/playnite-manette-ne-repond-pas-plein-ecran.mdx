@@ -1,0 +1,42 @@
+---
+title: "Playnite : la manette ne répond pas en plein écran"
+description: "Comprenez pourquoi une fenêtre Playnite visible peut ne pas recevoir les commandes de la manette, notamment si elle était déjà ouverte ou réduite."
+contentId: guide-playnite-focus
+slug: playnite-manette-ne-repond-pas-plein-ecran
+published: 2026-08-21
+updated: 2026-08-21
+locale: fr
+category: playnite
+featured: false
+related: ["guide-playnite-launch"]
+heroImage: "/screenshots/app-general.png"
+ogImage: "/social/og-couchmode-v3.png"
+---
+
+Si Playnite est visible mais ne répond pas à la manette, vérifiez que sa fenêtre a le focus, c'est-à-dire qu'elle est bien active. Un processus peut tourner alors que sa fenêtre est réduite, derrière une autre application ou qu'elle ne reçoit pas les commandes de la manette. C'est pourquoi un clic de souris peut sembler résoudre le problème.
+
+Ce problème est fréquent lorsque l'on joue sur la TV, car lancer une application et la placer au premier plan sont deux opérations différentes. Une session peut démarrer correctement alors qu'une notification, un navigateur, une interface superposée ou une fenêtre précédemment réduite conserve la main.
+
+## Un processus lancé n'est pas forcément prêt à être utilisé en plein écran
+
+Windows peut indiquer que Playnite est en cours d'exécution sans que son interface soit au premier plan. Cela vaut aussi si Playnite était déjà ouvert avant le début de la session. Depuis le canapé, une bibliothèque affichée n'est réellement utilisable que si elle reçoit les commandes de la manette, que le bon écran est actif et qu'aucune autre application ne la recouvre.
+
+Commencez par les indices les plus simples. Playnite est-il réduit ? Une demande de Windows, un lanceur de jeu ou une interface superposée est-il devant ? Un seul clic de souris sur Playnite suffit-il à faire répondre la manette ? Si oui, celle-ci n'est pas nécessairement défectueuse ; une autre fenêtre était probablement active.
+
+## Pourquoi l'état initial de Playnite compte
+
+CouchMode évite d'ouvrir une seconde instance de Playnite si l'application est déjà ouverte. Il tient compte de son état actuel au lieu de considérer chaque connexion de manette comme une demande de lancer un exemplaire supplémentaire. Cela préserve l'état d'une bibliothèque qui peut déjà être utilisée.
+
+Une fenêtre Playnite déjà réduite ou en arrière-plan peut donc nécessiter les mêmes vérifications de focus qu'une fenêtre qui vient de s'ouvrir. Fermez la fenêtre qui prend la main, restaurez la fenêtre Playnite et retestez la navigation à la manette. Évitez de modifier plusieurs fois les paramètres de lancement avant de savoir si le problème vient du focus, de la connexion de la manette ou d'une interface superposée propre à un jeu.
+
+## Procédez aux vérifications dans un ordre sûr
+
+Vérifiez d'abord que Windows et Playnite reconnaissent tous deux la manette. Ouvrez ensuite Playnite manuellement en plein écran et testez les commandes sans autre lanceur au premier plan. Testez enfin le même enchaînement avec CouchMode, une seule manette compatible et la TV ou le moniteur que vous utilisez habituellement.
+
+Si le problème ne réapparaît qu'en présence d'une interface superposée, d'une session de bureau à distance ou d'un lanceur particulier, retirez cet élément du test suivant. C'est plus sûr que d'appliquer des contournements non pris en charge pour forcer le focus, qui pourraient perturber les outils d'accessibilité, les systèmes antitriche des jeux ou votre usage habituel du bureau.
+
+## Ce que CouchMode peut faire, et ses limites
+
+CouchMode utilise une manette compatible pour démarrer la session de jeu sélectionnée et peut, dans ce cadre, placer l'interface choisie au premier plan. Il ne promet pas de forcer le focus malgré toutes les demandes de sécurité Windows, les interfaces superposées tierces ou les limites propres à certaines applications. Les connexions natives de manettes PlayStation présentent aussi une limitation actuelle pour le déclenchement des sessions : vérifiez donc comment Windows reconnaît la manette lorsque vous cherchez la cause d'un problème de démarrage.
+
+Playnite est inclus dans CouchMode Free. Une fois le lancement manuel en plein écran fiable, utilisez le guide de lancement de Playnite pour mettre en place une session démarrée à la manette. Si votre configuration présente un problème de focus reproductible, partagez les détails exacts de la manette, de l'écran, du lanceur et de Windows sur r/CouchMode afin de les comparer à des installations réelles.

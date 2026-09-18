@@ -1,0 +1,54 @@
+---
+title: "Abrir Steam Big Picture con un mando"
+description: "Abre Steam Big Picture con un mando Xbox o compatible. Prueba la opción nativa de Steam y una sesión opcional de CouchMode sin alterar una sesión de Steam en uso."
+contentId: guide-steam-big-picture
+slug: abrir-steam-big-picture-mando
+published: 2026-08-21
+updated: 2026-09-11
+locale: es
+category: steam-big-picture
+featured: true
+related: ["guide-windows-console", "guide-windows-handheld"]
+heroImage: "/screenshots/app-session-tweaks.png"
+ogImage: "/social/og-couchmode-v3.png"
+---
+
+Si Steam ya está en ejecución, puedes abrir Big Picture con el botón Home o Guide del mando mientras usas el cliente de Steam, siempre que el mando y la configuración lo permitan. No necesitas CouchMode para esta acción básica. Inicia Steam, comprueba que detecta el mando y después prueba el botón.
+
+Abrir Big Picture con un botón e iniciar una sesión de juego al conectar un mando son acciones distintas. Steam gestiona su propia interfaz. CouchMode es una opción para abrir el entorno seleccionado cuando se conecta un mando compatible y gestionar los ajustes compatibles que elijas para esa sesión.
+
+## Abre Steam Big Picture con un mando Xbox
+
+Conecta el mando Xbox a Windows y abre Steam. Mientras usas el cliente de Steam, pulsa el botón Xbox y comprueba si se abre Big Picture. Valve describe el botón Home del mando como una forma nativa de acceder al modo en su [guía de Big Picture](https://help.steampowered.com/en/faqs/view/3725-76D3-3F31-FB63).
+
+Si el botón abre Game Bar u otra superposición, revisa las opciones del mando y del botón Guide en los ajustes de Steam y comprueba qué aplicación recibe la pulsación. Usa el botón de Steam para entrar en el modo Big Picture (Enter Big Picture Mode) y probar la propia interfaz antes de cambiar tu configuración. Pulsar el botón Xbox no es una orden general de Windows para iniciar un cliente de Steam que está cerrado.
+
+## Usa una configuración compatible con un mando PlayStation
+
+Steam Big Picture admite los mandos oficiales DualShock 4 y DualSense. Conecta el mando y revisa primero los ajustes de mando de Steam. Prueba si el botón Home o PS abre Big Picture en tu configuración; Steam Input, Windows y otras herramientas para mandos pueden afectar a qué programa recibe la pulsación.
+
+La compatibilidad de Steam con mandos es independiente del inicio automático de CouchMode. Una conexión nativa de PS4 o PS5 no sirve para activar una sesión de CouchMode. Una configuración que Windows detecte como un dispositivo XInput compatible puede funcionar, pero que un mando funcione en un juego de Steam no demuestra que también active el inicio automático.
+
+## Inicia Big Picture automáticamente al conectar el mando
+
+Para el inicio automático, elige Steam Big Picture como entorno de juego en CouchMode y activa el inicio automático al conectar el mando. Cuando Windows detecta un mando XInput compatible, CouchMode puede iniciar esa sesión. Encender un mando Xbox suele establecer esa conexión; CouchMode no está asignando una acción al botón físico de encendido ni al botón Guide.
+
+Esta forma de inicio está incluida en CouchMode Free. Prueba primero con un solo mando y la pantalla que usas habitualmente. Puedes añadir las preferencias opcionales de Pro, como los [ajustes compatibles de HDR, pantalla y audio](content:guide-controller-session-settings), cuando el inicio básico funcione.
+
+## ¿Y si Steam no está en ejecución?
+
+CouchMode puede iniciar Steam para la sesión de Big Picture seleccionada cuando sea necesario. Steam debe estar instalado y poder iniciarse con normalidad. Inicia sesión y completa manualmente las actualizaciones o los avisos del primer inicio antes de depender de un inicio solo con mando.
+
+Si no utilizas la automatización de sesiones, abre Steam primero y después usa su acceso nativo a Big Picture. Ninguno de los dos métodos puede resolver de forma segura por ti los avisos de cuenta o de seguridad.
+
+## ¿Qué ocurre con una sesión de Steam que ya está en marcha?
+
+Steam suele ejecutarse en el área de notificación. Eso no significa que Big Picture esté abierto. CouchMode evita iniciar procesos duplicados de Steam y conserva una sesión de Big Picture que ya estuviera abierta antes de que CouchMode iniciara la suya.
+
+Un juego, una descarga o una conexión Remote Play en curso son motivos para conservar el estado actual. No consideres que una herramienta de sesiones deba cerrar cualquier ventana de Steam al desconectar un mando.
+
+## Vuelve al escritorio cuando termine la sesión de juego
+
+Steam permite salir de Big Picture desde su menú. Cuando terminas una sesión iniciada por CouchMode, este restaura los ajustes compatibles que haya cambiado. El objetivo es volver a un escritorio utilizable, no reproducir la posición exacta de cada ventana.
+
+Para preparar el conjunto, consulta la [guía para usar un PC con Windows como una consola](content:guide-windows-console). Si usas una consola portátil conectada a una base, revisa la [configuración de la consola portátil y la TV](content:guide-windows-handheld) antes de depender de una conexión del mando para iniciar la sesión.

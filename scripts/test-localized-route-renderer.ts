@@ -11,13 +11,27 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { createServer } from "vite";
 import manifest from "../src/i18n/manifest.json";
 import type { LocaleId, SurfaceId } from "../src/i18n/config";
-import { latestRelease } from "../src/data/releases";
+import { latestRelease, releases } from "../src/data/releases";
 import { surfaceRegistry } from "../src/i18n/surface-registry";
-import { releaseEditorialFor } from "../src/i18n/release-editorial";
+import {
+  releaseEditorialFor,
+  validateReleaseEditorialOverlay,
+} from "../src/i18n/release-editorial";
 
-const testLocales = manifest.locales
-  .filter((locale) => locale.state === "active" && locale.id !== "en")
-  .map(({ id }) => id);
+const draftIds = process.argv.includes("--draft")
+  ? process.argv.slice(process.argv.indexOf("--draft") + 1)
+  : [];
+if (process.argv.includes("--draft") && !draftIds.length)
+  throw new Error("--draft requires explicit pending locale IDs");
+for (const id of draftIds) {
+  if (!manifest.locales.some((locale) => locale.id === id && locale.state === "pending"))
+    throw new Error(`Draft renderer test requires a pending locale: ${id}`);
+}
+const testLocales = draftIds.length
+  ? (draftIds as LocaleId[])
+  : manifest.locales
+      .filter((locale) => locale.state === "active" && locale.id !== "en")
+      .map(({ id }) => id);
 const markerFor = (packet: import("../src/i18n/packets").AnySurfacePacket) => {
   switch (packet.kind) {
     case "home":
@@ -98,13 +112,27 @@ async function renderPacket(
 
 for (const locale of testLocales) {
   const manifestLocale = manifest.locales.find((item) => item.id === locale);
-  if (manifestLocale?.state !== "active")
-    fail(`${locale} must be active during renderer validation`);
+  const isDraft = draftIds.includes(locale);
+  if (
+    !manifestLocale ||
+    (isDraft ? manifestLocale.state !== "pending" : manifestLocale.state !== "active")
+  )
+    fail(`${locale} has an unexpected lifecycle state during renderer validation`);
 
   const localePacket = localePackets[locale];
   if (!localePacket) fail(`${locale} packet is missing`);
-  if (localePacketFor(locale) !== localePacket)
+  if (isDraft && localePacketFor(locale) !== undefined)
+    fail(`${locale} draft packet is publicly resolvable`);
+  if (!isDraft && localePacketFor(locale) !== localePacket)
     fail(`${locale} active packet is not publicly resolvable`);
+  const changelog = localePacket.surfaces.changelog;
+  if (!changelog || changelog.kind !== "changelog")
+    fail(`${locale} has no release editorial packet`);
+  const overlayErrors = validateReleaseEditorialOverlay(
+    releases,
+    changelog.payload.release.editorial,
+  );
+  if (overlayErrors.length) fail(`${locale}: ${overlayErrors.join("; ")}`);
 
   for (const surface of manifest.requiredSurfaces) {
     const contentId = surface.id as SurfaceId;
@@ -112,9 +140,10 @@ for (const locale of testLocales) {
     if (!packet) fail(`${locale}/${contentId} packet is missing`);
     if (packet.kind !== surfaceRegistry[contentId].kind)
       fail(`${locale}/${contentId} packet does not match its surface policy`);
-    if (
-      resolveLocalizedRoute(manifestLocale.urlPrefix.slice(1), packet.path)?.contentId !== contentId
-    )
+    const publicRoute = resolveLocalizedRoute(manifestLocale.urlPrefix.slice(1), packet.path);
+    if (isDraft && publicRoute !== undefined)
+      fail(`${locale}/${contentId} draft route became public`);
+    if (!isDraft && publicRoute?.contentId !== contentId)
       fail(`${locale}/${contentId} does not resolve through its active public route`);
     if (resolvePacketRoute(localePacket, packet.path)?.contentId !== contentId)
       fail(`${locale}/${contentId} cannot resolve through the packet route resolver`);
@@ -135,15 +164,38 @@ for (const locale of testLocales) {
       fail(`${locale}/${contentId} would render a redirect alias without HTTP redirect support`);
     const metadata = metadataFor(packet);
     if (
-      !metadata.canonical ||
-      metadata.canonical !== `https://couchmode.app${manifestLocale.urlPrefix}${packet.path}`
+      !packet.seo.title.trim() ||
+      !packet.seo.description.trim() ||
+      !packet.seo.ogTitle.trim() ||
+      !packet.seo.ogDescription.trim() ||
+      !Object.keys(packet.schema).length
+    )
+      fail(`${locale}/${contentId} has missing editorial metadata`);
+    for (const target of packet.internalLinks) {
+      if (
+        !relativeHrefForPacket(localePacket, target, "", true)?.startsWith(
+          `${manifestLocale.urlPrefix}/`,
+        )
+      )
+        fail(`${locale}/${contentId} has an unresolved locale-owned link to ${target}`);
+    }
+    if (isDraft && metadata.canonical !== undefined)
+      fail(`${locale}/${contentId} draft exposes a canonical`);
+    if (
+      !isDraft &&
+      (!metadata.canonical ||
+        metadata.canonical !== `https://couchmode.app${manifestLocale.urlPrefix}${packet.path}`)
     )
       fail(`${locale}/${contentId} does not have a self-referencing localized canonical`);
-    const head = headForSurfacePacket(packet);
-    if (!head.links?.some((link) => link.rel === "canonical" && link.href === metadata.canonical))
-      fail(`${locale}/${contentId} does not emit its canonical through the shared head helper`);
-    if (!head.meta?.some((entry) => "script:ld+json" in entry))
-      fail(`${locale}/${contentId} does not emit localized structured-data input`);
+    if (!isDraft) {
+      const head = headForSurfacePacket(packet);
+      if (!head.links?.some((link) => link.rel === "canonical" && link.href === metadata.canonical))
+        fail(`${locale}/${contentId} does not emit its canonical through the shared head helper`);
+      if (!head.meta?.some((entry) => "script:ld+json" in entry))
+        fail(`${locale}/${contentId} does not emit localized structured-data input`);
+    }
+    if (contentId === "buy" && metadata.robots !== "noindex,follow")
+      fail(`${locale} buy lost its noindex policy`);
 
     const markup = await renderPacket(locale, localePacket, packet);
     const renderedText = markup
@@ -182,5 +234,5 @@ for (const locale of testLocales) {
 
 await vite.close();
 console.log(
-  `test-localized-route-renderer: OK (${testLocales.join("/")} active renderer validation passed)`,
+  `test-localized-route-renderer: OK (${testLocales.join("/")} ${draftIds.length ? "pending editorial" : "active"} renderer validation passed)`,
 );

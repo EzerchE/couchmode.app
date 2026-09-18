@@ -1,0 +1,54 @@
+---
+title: "Lancer Playnite en plein écran avec une manette"
+description: "Utilisez Playnite en plein écran à la manette et, si besoin, automatisez son ouverture à la détection d'une manette XInput compatible. Vérifiez aussi la fenêtre active."
+contentId: guide-playnite-launch
+slug: lancer-playnite-plein-ecran-manette
+published: 2026-08-21
+updated: 2026-09-11
+locale: fr
+category: playnite
+featured: true
+related: ["guide-playnite-focus", "guide-windows-console"]
+heroImage: "/screenshots/app-general.png"
+ogImage: "/social/og-couchmode-v3.png"
+---
+
+Le mode plein écran de Playnite permet déjà de naviguer à la manette. Ouvrez le raccourci de ce mode, ou passez du mode bureau au plein écran avec F11, puis vérifiez que vous pouvez parcourir la bibliothèque à la manette. CouchMode n'est pas nécessaire pour ajouter cette prise en charge native.
+
+Si vous souhaitez que Playnite s'ouvre lorsque vous connectez une manette, CouchMode peut lancer une session Playnite en plein écran quand Windows détecte une manette XInput compatible. Cette automatisation du lancement est facultative. Elle est distincte de la navigation dans une bibliothèque déjà ouverte et de l'appui sur le bouton Xbox.
+
+## Commencez par le mode plein écran de Playnite
+
+La [documentation du mode plein écran](https://api.playnite.link/docs/manual/gettingStarted/playniteFullscreenMode.html) de Playnite explique comment l'ouvrir et vérifier les paramètres des commandes. Assurez-vous que la bibliothèque répond à la manette avant de configurer un démarrage automatique. La navigation à la manette relève de Playnite ; les commandes propres à chaque jeu relèvent du jeu et de sa configuration des entrées.
+
+Une manette reconnue par Playnite n'est pas nécessairement compatible avec le déclenchement d'une session CouchMode. Testez les deux séparément : naviguez d'abord dans Playnite ouvert manuellement, puis testez la connexion d'une manette avec CouchMode.
+
+## Le bouton Xbox lance-t-il Playnite ?
+
+Ne partez pas du principe que le bouton Xbox ou Guide lance Playnite lorsque l'application est fermée. Playnite propose une option permettant d'utiliser le bouton Guide pour redonner le focus à sa fenêtre plein écran déjà ouverte, mais activer une fenêtre ne revient pas à lancer une application fermée. Un autre logiciel peut aussi intercepter ce bouton.
+
+CouchMode réagit à la connexion d'une manette prise en charge et aux options de session que vous activez. Il n'associe pas le bouton physique Xbox à Playnite. Si la manette était déjà connectée, appuyer à nouveau sur Guide ne crée pas un nouvel événement de connexion.
+
+## Ouvrez Playnite automatiquement à la connexion d'une manette
+
+Choisissez Playnite comme expérience de jeu dans CouchMode et activez le déclenchement à la connexion d'une manette. Connectez une manette compatible après avoir ouvert votre session Windows. CouchMode peut alors lancer la session Playnite en plein écran sélectionnée ; ce mode de lancement est inclus dans Free.
+
+Les manettes Xbox constituent l'exemple le plus simple de périphérique XInput. Les connexions natives de manettes PS4 et PS5 ne permettent pas de déclencher une session CouchMode, même si Playnite ou un jeu les accepte. Une configuration présentée à Windows comme un périphérique XInput compatible doit être testée séparément.
+
+## Utilisez une installation classique ou portable de Playnite
+
+CouchMode prend en charge les emplacements d'installation personnalisés et les versions portables de Playnite. Vérifiez que la copie que vous souhaitez utiliser s'ouvre normalement, que sa bibliothèque est accessible et que votre test de lancement ouvre bien cette copie. Si vous déplacez un dossier portable, refaites un test avant de compter sur ce lancement depuis la TV.
+
+CouchMode ne gère ni la bibliothèque, ni les extensions, ni l'affectation des commandes de Playnite. Une extension défectueuse ou une boîte de dialogue de premier lancement doit toujours être traitée dans Playnite.
+
+## Et si Playnite est déjà ouvert ?
+
+CouchMode tient compte de l'état actuel de Playnite au lieu de lancer une autre instance. Un processus en cours d'exécution peut néanmoins avoir une fenêtre réduite ou en arrière-plan. Vérifiez que l'interface plein écran visible reçoit bien les commandes de la manette.
+
+Si un clic de souris suffit soudainement à faire fonctionner la manette, suivez les [vérifications du focus dans Playnite](content:guide-playnite-focus). Distinguez les questions de pilote et d'affectation des boutons du problème de fenêtre active, plutôt que de modifier sans cesse les paramètres de lancement.
+
+## Testez une session complète
+
+Utilisez une seule manette, l'écran prévu et une session Windows ouverte normalement. Vérifiez que Playnite s'ouvre et répond, puis terminez la session de jeu et contrôlez le retour au bureau. CouchMode rétablit les paramètres pris en charge qu'il a modifiés ; il ne remplace pas Windows et ne garantit pas de retrouver exactement la taille et la position des fenêtres.
+
+Une fois ce fonctionnement vérifié, consultez le [guide pour utiliser un PC Windows comme une console](content:guide-windows-console) afin de décider si l'automatisation facultative de l'affichage ou du son peut vous épargner une autre manipulation répétitive.

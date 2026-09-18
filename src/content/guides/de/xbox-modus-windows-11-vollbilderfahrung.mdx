@@ -5,7 +5,7 @@ description: "Prüfe die Verfügbarkeit des Xbox-Modus, richte ihn auf PC oder H
 contentId: guide-xbox-mode-windows-11
 slug: xbox-modus-windows-11-vollbilderfahrung
 published: 2026-09-11
-updated: 2026-09-11
+updated: 2026-09-18
 locale: de
 category: windows-couch-gaming
 featured: false
@@ -56,9 +56,9 @@ Verwende bei eingebauten Handheld-Controllern die für das Gerät passenden Star
 
 ## Was passiert, wenn der Controller die Verbindung verliert?
 
-Ein leerer Akku oder eine unterbrochene Funkverbindung bedeutet nicht zuverlässig, dass du mit dem Spielen fertig bist. CouchMode darf eine aktive Vollbild-Gaming-Session nicht allein deshalb beenden.
+Ein leerer Akku oder eine unterbrochene Funkverbindung kann das Ende der Session auslösen, wenn „Exit CouchMode when controller disconnects“ aktiviert ist. CouchMode wartet die eingestellte Verzögerung ab. Verbindest du den Controller in dieser Zeit erneut, kann der vorgemerkte Ausstieg abgebrochen werden. Eine geöffnete Vollbild-App bedeutet nicht, dass CouchMode die Trennung ignoriert.
 
-Prüfe dein eingestelltes Beendigungsverhalten in einem sicheren Test und verbinde den Controller bei einer unbeabsichtigten Unterbrechung erneut. Verlasse dich nicht ausschließlich auf das Abziehen des Gamepads, um eine Session abzuschließen. Speichere das Spiel und beende die Session bewusst, wenn du aufhören möchtest.
+CouchMode prüft vor dem Ausstieg seine gespeicherte Zuständigkeit für die Session und den tatsächlichen Vollbildstatus. Die zugehörige FSE-Ausstiegsaktion wird nur gesendet, wenn CouchMode laut Session-Status für den Ausstieg verantwortlich ist und FSE noch aktiv ist. Ist FSE bereits inaktiv, wird nicht erneut umgeschaltet. Bereits zuvor oder unabhängig von CouchMode geöffnete Launcher und Apps werden nicht zwangsweise geschlossen; die sichere Rückkehr zum Desktop wird überprüft. Teste dein eingestelltes Beendigungsverhalten vorsichtig, verbinde den Controller nach einer unbeabsichtigten Unterbrechung erneut und speichere dein Spiel, bevor du die Session bewusst beendest.
 
 ## Sicher zum Windows-Desktop zurückkehren
 

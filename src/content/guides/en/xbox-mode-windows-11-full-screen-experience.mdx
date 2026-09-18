@@ -5,7 +5,7 @@ description: "Check Xbox Mode availability on Windows 11, enter it on a PC or ha
 contentId: guide-xbox-mode-windows-11
 slug: xbox-mode-windows-11-full-screen-experience
 published: 2026-09-11
-updated: 2026-09-11
+updated: 2026-09-18
 locale: en
 category: windows-couch-gaming
 featured: false
@@ -56,9 +56,9 @@ For a handheld with built-in controls, use the startup/session options appropria
 
 ## What happens when the controller disconnects?
 
-A low battery or lost wireless connection is not reliable evidence that you finished playing. With CouchMode, controller disconnect alone must not be treated as permission to tear down an active fullscreen gaming session.
+A low battery or lost wireless connection can trigger session exit if "Exit CouchMode when controller disconnects" is enabled. CouchMode waits for the configured disconnect delay; reconnecting during that delay can cancel the pending exit. It does not ignore disconnection just because a fullscreen app is open.
 
-Check your configured exit behavior with a safe test, and reconnect the controller if the interruption was accidental. Do not depend on unplugging the gamepad as the only way to finish a session. Save your game and use an explicit exit when you intend to stop.
+CouchMode checks its recorded session ownership and the actual fullscreen state before exiting. It sends the matching FSE exit action only when its session state records that it is responsible for exiting FSE and FSE is still active. If FSE is already inactive, it does not toggle it again. It does not forcibly close user-owned or pre-existing launchers and apps, and it verifies a safe desktop return. Test your configured exit behavior safely, reconnect after an accidental interruption, and save your game before deliberately ending the session.
 
 ## Returning safely to the Windows desktop
 

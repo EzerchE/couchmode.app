@@ -1,0 +1,54 @@
+---
+title: "Abrir Playnite en pantalla completa con un mando"
+description: "Usa el modo de pantalla completa de Playnite con el mando y, si quieres, ábrelo al detectar un mando XInput compatible. Incluye comprobaciones de ventanas abiertas y foco."
+contentId: guide-playnite-launch
+slug: abrir-playnite-pantalla-completa-mando
+published: 2026-08-21
+updated: 2026-09-11
+locale: es
+category: playnite
+featured: true
+related: ["guide-playnite-focus", "guide-windows-console"]
+heroImage: "/screenshots/app-general.png"
+ogImage: "/social/og-couchmode-v3.png"
+---
+
+El modo de pantalla completa de Playnite ya permite navegar con un mando. Abre el acceso directo de Playnite Fullscreen o cambia desde el modo de escritorio con F11 y comprueba que puedes recorrer la biblioteca con el mando. No necesitas CouchMode para añadir esta función nativa.
+
+Si quieres que Playnite se abra al conectar un gamepad, CouchMode puede iniciar una sesión de Playnite en pantalla completa cuando Windows detecta un mando XInput compatible. Es una automatización de inicio opcional. No es lo mismo que navegar por una biblioteca abierta ni que pulsar el botón Xbox.
+
+## Empieza por el modo de pantalla completa de Playnite
+
+La [documentación del modo de pantalla completa](https://api.playnite.link/docs/manual/gettingStarted/playniteFullscreenMode.html) de Playnite explica cómo abrirlo y comprobar los ajustes de entrada. Confirma que la biblioteca responde en ese modo antes de configurar el inicio automático. La navegación con mando es una función de Playnite; los controles de cada juego dependen del propio juego y de su configuración de entrada.
+
+Que Playnite reconozca un mando no significa que ese mando pueda activar una sesión de CouchMode. Prueba las dos cosas por separado: primero navega por Playnite tras abrirlo manualmente y después prueba la conexión del mando con CouchMode.
+
+## ¿El botón Xbox abre Playnite?
+
+No des por hecho que el botón Xbox o Guide inicia Playnite cuando está cerrado. Playnite tiene una opción para usar el botón Guide y devolver el foco a su ventana de pantalla completa si ya está en ejecución, pero devolver el foco a una ventana no es lo mismo que abrir una aplicación cerrada. Además, otro programa podría recibir la pulsación de ese botón.
+
+CouchMode responde a una conexión de mando compatible y a las opciones de sesión que actives. No asigna el botón físico Xbox a Playnite. Si el mando ya estaba conectado, volver a pulsar Guide no genera una nueva conexión.
+
+## Abre Playnite automáticamente al conectar un mando
+
+Elige Playnite como entorno de juego en CouchMode y activa el inicio automático al conectar el mando. Conecta un mando compatible con la sesión de Windows iniciada. CouchMode puede abrir la sesión seleccionada de Playnite en pantalla completa; esta forma de inicio está incluida en Free.
+
+Los mandos Xbox son el ejemplo más sencillo de XInput. Las conexiones nativas de PS4 y PS5 no sirven para activar sesiones de CouchMode, aunque Playnite o un juego las acepten. Si una configuración presenta el mando a Windows como un dispositivo XInput compatible, debes probarla por separado.
+
+## Usa una copia instalada o portátil de Playnite
+
+CouchMode admite ubicaciones de instalación personalizadas y versiones portátiles de Playnite. Comprueba que la copia que quieres usar se abre con normalidad, que su biblioteca está disponible y que la prueba de inicio abre esa misma copia. Si mueves una carpeta portátil, vuelve a probarla antes de depender de ella para jugar en la TV.
+
+CouchMode no gestiona la biblioteca, las extensiones ni la asignación de botones de Playnite. Si una extensión falla o aparece un cuadro de diálogo de primer inicio, tendrás que resolverlo en Playnite.
+
+## ¿Y si Playnite ya está abierto?
+
+CouchMode trabaja con el estado actual de Playnite en lugar de abrir otra instancia. Aunque el proceso esté en ejecución, su ventana puede estar minimizada o en segundo plano. Comprueba que la interfaz de pantalla completa que ves recibe las entradas del mando.
+
+Si el mando empieza a funcionar al hacer clic con el ratón, sigue las [comprobaciones de foco de Playnite](content:guide-playnite-focus). Distingue los problemas de drivers o de asignación de botones de los problemas de foco de la ventana, en lugar de cambiar una y otra vez los ajustes de inicio.
+
+## Prueba una sesión completa
+
+Usa un solo mando, la pantalla prevista y una sesión de Windows iniciada con normalidad. Confirma que Playnite se abre y responde; después termina la sesión y comprueba el escritorio. CouchMode restaura los ajustes compatibles que haya cambiado; no sustituye a Windows ni promete recuperar la posición y el tamaño exactos de las ventanas.
+
+Cuando todo funcione, consulta la [guía para usar Windows como una consola](content:guide-windows-console) y decide si automatizar algún ajuste de pantalla o audio te ahorraría otro paso repetitivo.

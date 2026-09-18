@@ -1,0 +1,52 @@
+---
+title: "Fermer des applis avant de jouer et retrouver son bureau"
+description: "Avec Resource Control dans CouchMode Pro, fermez uniquement les applications prises en charge que vous sélectionnez et rouvrez-les après la session si vous le souhaitez."
+contentId: guide-resource-control-session-restore
+slug: fermer-applis-jeu-retour-bureau
+published: 2026-08-24
+updated: 2026-09-18
+locale: fr
+category: windows-couch-gaming
+featured: false
+related: ["guide-controller-session-settings", "guide-windows-console"]
+heroImage: "/screenshots/app-resource-control.png"
+ogImage: "/social/og-couchmode-v3.png"
+---
+
+Lorsque vous commencez à jouer à la manette, les applications de bureau habituellement ouvertes peuvent vous gêner. Resource Control dans CouchMode Pro permet de choisir les applications prises en charge à fermer pour une session de jeu. Ce n'est pas une commande qui force la fermeture de tous les processus Windows.
+
+Vous pouvez configurer la réouverture des applications sélectionnées à la fin de la session. CouchMode rétablit aussi les paramètres Windows pris en charge qu'il a modifiés pour cette session, afin que le bureau retrouve la configuration que vous aviez préparée au lieu de rester configuré pour le jeu.
+
+## Sélectionnez les applications à gérer
+
+Choisissez vos applications avec soin. Vous pouvez sélectionner un navigateur, une application de discussion ou une autre application de bureau qui occupe de l'espace à l'écran ou détourne votre attention pendant que vous jouez. CouchMode cible uniquement les applications prises en charge que vous avez sélectionnées. Les applications non sélectionnées ne sont pas fermées intentionnellement.
+
+Commencez par une courte liste. Vous pourrez ainsi vérifier plus facilement que leur fermeture et leur réouverture correspondent à vos habitudes avant d'ajouter d'autres applications.
+
+## Comprenez ce que Resource Control ne ferme pas
+
+Certains processus doivent rester en dehors de cette automatisation. Les services, les composants Windows protégés, les applications exécutées avec des droits élevés, les processus inaccessibles et les applications qui se relancent elles-mêmes peuvent rester actifs. CouchMode ne présente pas ce résultat comme un échec qu'il pourrait contourner sans risque.
+
+Si une application est importante pour un travail en cours, ne l'ajoutez pas à la liste tant que vous n'avez pas testé la session avec un exemple sans risque. Resource Control sert à réduire l'encombrement du bureau selon vos choix, pas à décider du sort de n'importe quel processus Windows.
+
+## Configurez ce qui se passe après la session de jeu
+
+Les applications sélectionnées peuvent se rouvrir après la session si cette option est configurée et prise en charge. C'est facultatif. Cette action est distincte du rétablissement des paramètres Windows pris en charge, que CouchMode effectue lorsqu'il termine la session qu'il a démarrée.
+
+La déconnexion de la manette déclenche la fin de session uniquement si l'option « Exit CouchMode when controller disconnects » est activée. CouchMode applique le délai de sortie configuré ; une reconnexion pendant ce délai peut annuler la sortie en attente. Il termine uniquement sa propre session ou effectue une sortie en attente dont il est responsable. Il rétablit les paramètres pris en charge qu'il a modifiés et applique les actions configurées pour l'après-session. Un lanceur ou une application déjà ouvert avant la session, ou géré par l'utilisateur, n'est pas fermé de force. CouchMode vérifie que le retour au bureau s'effectue en toute sécurité.
+
+## Questions fréquentes
+
+### CouchMode peut-il fermer Discord ou Chrome au début d'une session de jeu ?
+
+Il peut fermer un processus Discord ou Chrome pris en charge uniquement si vous l'avez sélectionné dans Resource Control. Il ne ferme pas automatiquement toutes les applications en arrière-plan.
+
+### Pourquoi une application sélectionnée est-elle restée ouverte ?
+
+L'application peut être exécutée avec des droits élevés, protégée, fonctionner comme un service, être inaccessible ou être configurée pour se relancer elle-même. Dans ces cas, elle peut rester active plutôt que d'être arrêtée de force.
+
+### Mes applications se rouvriront-elles après le jeu ?
+
+Uniquement si vous avez configuré leur réouverture et si CouchMode prend cette action en charge. La garantie de restauration du bureau porte, séparément, sur les paramètres Windows pris en charge que CouchMode a modifiés pendant sa session.
+
+Pour les choix d'affichage, de HDR et de son autour de cette même session de jeu, consultez le guide des paramètres de session à la connexion d'une manette.

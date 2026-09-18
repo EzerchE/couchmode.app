@@ -4,7 +4,7 @@ description: "Use CouchMode Pro Resource Control to close only the supported app
 contentId: guide-resource-control-session-restore
 slug: close-apps-when-gaming-starts-restore-desktop
 published: 2026-08-24
-updated: 2026-08-24
+updated: 2026-09-18
 locale: en
 category: windows-couch-gaming
 featured: false
@@ -33,7 +33,7 @@ If an app is important to ongoing work, leave it out of the selected list until 
 
 Selected apps can reopen after the session where that option is configured and supported. This is optional. It is separate from the supported Windows settings that CouchMode restores when it ends the session it started.
 
-The session ends when the supported controller connection ends. CouchMode closes the gaming experience it started, restores the supported settings it changed, and applies the configured after-session actions. It does not take ownership of a launcher or app that was already open before the session.
+If "Exit CouchMode when controller disconnects" is enabled, losing the supported controller connection triggers session exit after the configured delay. Reconnecting during that delay can cancel the pending exit. CouchMode uses its recorded session ownership to close the gaming experience it is responsible for, restore the supported settings it changed, apply the configured after-session actions, and verify a safe desktop return. It does not forcibly close a launcher or app that was already open before the session.
 
 ## Common questions
 

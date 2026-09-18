@@ -1,0 +1,73 @@
+---
+title: "Mode Xbox sur Windows 11 : disponibilité et utilisation"
+heading: "Comment utiliser le mode Xbox sur Windows 11"
+description: "Vérifiez la disponibilité du mode Xbox sur Windows 11, ouvrez-le sur PC ou console portable et revenez au bureau, avec ou sans déclenchement par une manette."
+contentId: guide-xbox-mode-windows-11
+slug: mode-xbox-windows-11
+published: 2026-09-11
+updated: 2026-09-18
+locale: fr
+category: windows-couch-gaming
+featured: false
+related: ["guide-windows-console", "guide-steam-big-picture", "guide-playnite-launch", "guide-windows-handheld"]
+heroImage: "/screenshots/app-general.png"
+ogImage: "/social/og-couchmode-v3.png"
+---
+
+Le mode Xbox offre aux PC Windows 11 pris en charge une interface de jeu utilisable à la manette. Vous pouvez aussi le rencontrer sous le nom Full Screen Experience, ou FSE. Vérifiez si votre PC propose ce mode dans les paramètres Windows, puis essayez d'y entrer et d'en sortir manuellement avant d'ajouter une automatisation.
+
+Vous pouvez utiliser le mode Xbox sans CouchMode. Ce guide commence par la configuration dans Windows, puis explique comment une session CouchMode déclenchée par une manette peut s'y ajouter, de manière facultative.
+
+## Qu'est-ce que le mode Xbox sur Windows 11 ?
+
+Le mode Xbox est un environnement de jeu Windows, avec une application d'accueil dédiée au jeu et une navigation conçue pour la manette. Il change la manière de passer du lanceur aux jeux et aux autres applications tant que vous êtes dans ce mode. Windows reste accessible lorsque vous revenez au bureau.
+
+C'est l'une des possibilités pour utiliser un [PC Windows comme une console](content:guide-windows-console). Le bon choix dépend des jeux auxquels vous jouez et de l'interface que vous souhaitez afficher à l'écran.
+
+## Le mode Xbox est-il disponible sur votre PC ?
+
+Microsoft indique que le mode nécessite Windows 11 24H2 ou une version ultérieure et qu'il est disponible dans les marchés pris en charge. Un numéro de version compatible ne prouve pas à lui seul que l'option est activée sur votre appareil. Les consoles portables prises en charge et les autres types de PC peuvent proposer des paramètres et des moyens d'accès différents.
+
+Vérifiez les mises à jour de Windows et les options réellement présentes dans les paramètres, à la rubrique Jeux, puis mode Xbox, correspondant au chemin Settings, Gaming, Xbox mode en anglais. Si ce réglage est absent, consultez les [indications actuelles de Microsoft sur la disponibilité et la configuration](https://support.microsoft.com/en-us/servicing/os/windows/docs/2025/10/windows-gaming-full-screen-experience). CouchMode ne peut pas faire apparaître une fonction Windows indisponible.
+
+## Activez le mode Xbox et ouvrez-le
+
+Sur un PC fixe ou portable pris en charge, ouvrez les paramètres Windows, puis Jeux et mode Xbox, et activez-le. Sur une console portable de jeu prise en charge, sélectionnez l'application d'accueil de jeu installée depuis cette même page de paramètres. Les choix exacts dépendent de l'appareil.
+
+Utilisez un moyen d'accès disponible dans l'application Xbox, Game Bar ou l'Affichage des tâches, ou essayez Win+F11 si ce raccourci est configuré. Vérifiez que vous êtes bien dans le mode Xbox et que vous pouvez y naviguer, puis entraînez-vous à revenir au bureau. Si une demande de configuration ou de connexion au compte apparaît, terminez cette étape avant de compter sur un démarrage à la manette seule.
+
+## Le mode Xbox sur PC fixe, ordinateur portable et console portable
+
+Une console portable peut proposer de passer en mode Xbox après l'ouverture de session grâce à son option de démarrage. Ce n'est pas la même chose que connecter une manette externe à un PC fixe. Les commandes intégrées d'une console portable peuvent être présentes pendant tout le démarrage : ne les considérez donc pas comme une nouvelle connexion externe.
+
+Si vous utilisez votre console portable aussi bien seule que sur sa station d'accueil, testez les deux situations. Une TV, un amplificateur AV ou une station d'accueil peut modifier les périphériques d'affichage et de son reconnus par Windows. Le [guide de la console portable sur TV](content:guide-windows-handheld) couvre cette partie de la configuration.
+
+## Le mode Xbox ne se limite pas à ouvrir ou agrandir l'application Xbox
+
+Une grande fenêtre de l'application Xbox ne suffit pas à prouver que Windows est passé en mode Xbox. Utilisez un moyen d'accès pris en charge pour ce mode et vérifiez la navigation ainsi que les commandes de retour au bureau proposées.
+
+Cette distinction compte lors des tests d'automatisation. Voir le lanceur apparaître prouve que l'application s'est ouverte ; cela ne prouve pas, à lui seul, que l'environnement de jeu Windows attendu est actif.
+
+## Démarrez automatiquement une session de jeu avec une manette
+
+Une fois l'accès manuel vérifié, vous pouvez, si vous le souhaitez, sélectionner l'expérience Xbox prise en charge dans CouchMode et configurer un déclencheur de session. Le lancement du mode Xbox est inclus dans CouchMode Free là où Windows le prend en charge. Le déclenchement par une manette externe dépend de la détection d'une connexion XInput compatible par Windows ; ce n'est pas une affectation du bouton d'alimentation ou Guide de la manette. Les connexions natives de manettes PS4 ou PS5 ne sont pas des déclencheurs universels pour CouchMode.
+
+Sur une console portable dotée de commandes intégrées, utilisez les options de démarrage et de session adaptées à cet appareil, puis testez-les séparément d'une manette externe. Les [préférences HDR, d'affichage et de son](content:guide-controller-session-settings) facultatives de Pro ne s'appliquent qu'aux paramètres pris en charge que vous sélectionnez.
+
+## Que se passe-t-il si la manette se déconnecte ?
+
+La déconnexion de la manette déclenche la fin de session uniquement si l'option « Exit CouchMode when controller disconnects » est activée. CouchMode applique le délai de sortie configuré ; une reconnexion pendant ce délai peut annuler la sortie en attente.
+
+Si cette option est activée, une batterie vide ou une perte de connexion sans fil peut donc déclencher la sortie. Vérifiez le comportement configuré à l'aide d'un test sans risque, et reconnectez la manette si l'interruption était accidentelle. Ne faites pas du débranchement de la manette votre seul moyen de terminer une session. Sauvegardez votre partie et utilisez une commande de sortie explicite lorsque vous souhaitez arrêter.
+
+## Revenez au bureau Windows en toute sécurité
+
+Utilisez la commande de retour au bureau disponible dans Game Bar ou l'Affichage des tâches, ou Win+F11 là où ce raccourci est pris en charge. CouchMode termine uniquement sa propre session ou effectue une sortie en attente dont il est responsable. Il ne demande la sortie du mode Xbox que pour une entrée dont il a la responsabilité, si cette sortie reste à effectuer et s'il vérifie que le mode est encore actif. Si le mode est déjà inactif, il n'envoie pas de seconde commande de bascule. CouchMode vérifie que le retour au bureau s'effectue en toute sécurité et rétablit les paramètres pris en charge qu'il a modifiés. Les applications déjà ouvertes ou gérées par l'utilisateur ne sont pas fermées de force et doivent rester utilisables, sans déplacement inutile ; la taille et la position exactes des fenêtres ne sont pas garanties.
+
+Si vous activez aussi Resource Control dans Pro, seules les applications sélectionnées et accessibles sont ciblées. Les processus exécutés avec des droits élevés, fonctionnant comme des services ou se relançant eux-mêmes peuvent rester actifs. Le [guide des applications sélectionnées et du retour au bureau](content:guide-resource-control-session-restore) explique ces choix distincts.
+
+## Quand préférer Steam Big Picture ou Playnite ?
+
+Choisissez le lanceur adapté à votre bibliothèque et à votre manette avant d'optimiser le reste de la session. [Steam Big Picture](content:guide-steam-big-picture) est une autre possibilité pour utiliser Steam, tandis que [Playnite en plein écran](content:guide-playnite-launch) rassemble les bibliothèques. Ce sont des alternatives à évaluer, pas des prérequis au mode Xbox.
+
+Essayez un lancement manuel et un retour au bureau avec les logiciels déjà ouverts dans votre configuration habituelle. Vous disposerez ainsi d'un point de comparaison utile pour décider quelles manipulations répétitives vous souhaitez éventuellement confier à CouchMode.

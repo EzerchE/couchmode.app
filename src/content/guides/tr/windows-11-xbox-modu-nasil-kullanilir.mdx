@@ -5,7 +5,7 @@ description: "Xbox modunun Windows 11 bilgisayarınızda bulunup bulunmadığın
 contentId: guide-xbox-mode-windows-11
 slug: windows-11-xbox-modu-nasil-kullanilir
 published: 2026-09-11
-updated: 2026-09-11
+updated: 2026-09-18
 locale: tr
 category: windows-couch-gaming
 featured: false
@@ -56,9 +56,9 @@ Dahili kontrollere sahip el konsolunda cihazınıza uygun başlangıç ve oturum
 
 ## Oyun kolunun bağlantısı koparsa ne olur?
 
-Pilin bitmesi veya kablosuz bağlantının kesilmesi, oyunu bitirdiğiniz anlamına gelmez. CouchMode, yalnızca oyun kolunun bağlantısı koptu diye etkin tam ekran oyun oturumunu sonlandırmamalıdır.
+“Exit CouchMode when controller disconnects” seçeneği açıksa pilin bitmesi veya kablosuz bağlantının kesilmesi oturumdan çıkışı tetikleyebilir. CouchMode ayarlanan bekleme süresini uygular; bu süre içinde oyun kolu yeniden bağlanırsa bekleyen çıkış iptal edilebilir. Tam ekran bir uygulamanın açık olması, bağlantı kopmasının yok sayılacağı anlamına gelmez.
 
-Çıkış için seçtiğiniz davranışı güvenli bir denemeyle kontrol edin. Kopma istemeden olduysa oyun kolunu yeniden bağlayın. Oturumu bitirmek için yalnızca gamepad'i çıkarmaya güvenmeyin; bırakmak istediğinizde oyunu kaydedin ve açıkça çıkış yapın.
+CouchMode çıkıştan önce kendi oturum sorumluluğunu ve gerçek tam ekran durumunu kontrol eder. FSE'den çıkış işlemini yalnızca oturum kayıtlarına göre bu çıkıştan sorumluysa ve FSE hâlâ etkinse gönderir. FSE zaten etkin değilse ikinci kez geçiş komutu göndermez. Kullanıcının bağımsız olarak açtığı veya önceden açık olan başlatıcı ve uygulamaları zorla kapatmaz; masaüstüne güvenli dönüşü doğrular. Seçtiğiniz çıkış davranışını güvenli bir denemeyle kontrol edin, istemeden kopan oyun kolunu yeniden bağlayın ve oturumu bilerek bitirmeden önce oyununuzu kaydedin.
 
 ## Windows masaüstüne güvenle dönme
 
