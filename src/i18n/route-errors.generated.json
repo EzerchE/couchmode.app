@@ -1,0 +1,57 @@
+{
+  "en": {
+    "staticHeading": "This CouchMode page does not exist.",
+    "staticDescription": "Try the Windows couch gaming guides or return to the CouchMode homepage.",
+    "guidesLabel": "Browse guides",
+    "notFoundTitle": "Page not found",
+    "notFoundDescription": "The page you're looking for doesn't exist or has been moved.",
+    "homeLabel": "Go home",
+    "errorTitle": "This page didn't load",
+    "errorDescription": "Something went wrong on our end. You can try refreshing or head back home.",
+    "retryLabel": "Try again"
+  },
+  "de": {
+    "staticHeading": "Diese CouchMode-Seite existiert nicht.",
+    "staticDescription": "Schau in die Anleitungen zum Spielen unter Windows oder gehe zurück zur CouchMode-Startseite.",
+    "guidesLabel": "Anleitungen ansehen",
+    "notFoundTitle": "Seite nicht gefunden",
+    "notFoundDescription": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+    "homeLabel": "Zur Startseite",
+    "errorTitle": "Diese Seite konnte nicht geladen werden",
+    "errorDescription": "Bei uns ist ein Fehler aufgetreten. Lade die Seite erneut oder gehe zurück zur Startseite.",
+    "retryLabel": "Erneut versuchen"
+  },
+  "tr": {
+    "staticHeading": "Bu CouchMode sayfası mevcut değil.",
+    "staticDescription": "Windows oyun rehberlerine göz atabilir veya CouchMode ana sayfasına dönebilirsiniz.",
+    "guidesLabel": "Rehberlere göz at",
+    "notFoundTitle": "Sayfa bulunamadı",
+    "notFoundDescription": "Aradığınız sayfa mevcut değil veya taşınmış.",
+    "homeLabel": "Ana sayfaya dön",
+    "errorTitle": "Bu sayfa yüklenemedi",
+    "errorDescription": "Bizim tarafımızda bir sorun oluştu. Sayfayı yeniden yükleyebilir veya ana sayfaya dönebilirsiniz.",
+    "retryLabel": "Yeniden dene"
+  },
+  "fr": {
+    "staticHeading": "Cette page CouchMode n'existe pas.",
+    "staticDescription": "Consultez les guides pour jouer sous Windows depuis le canapé ou revenez à l'accueil de CouchMode.",
+    "guidesLabel": "Consulter les guides",
+    "notFoundTitle": "Page introuvable",
+    "notFoundDescription": "La page recherchée n'existe pas ou a été déplacée.",
+    "homeLabel": "Revenir à l'accueil",
+    "errorTitle": "Cette page n'a pas pu être chargée",
+    "errorDescription": "Une erreur s'est produite de notre côté. Vous pouvez actualiser la page ou revenir à l'accueil.",
+    "retryLabel": "Réessayer"
+  },
+  "es": {
+    "staticHeading": "Esta página de CouchMode no existe.",
+    "staticDescription": "Consulta las guías para jugar en Windows desde el sofá o vuelve al inicio de CouchMode.",
+    "guidesLabel": "Ver las guías",
+    "notFoundTitle": "Página no encontrada",
+    "notFoundDescription": "La página que buscas no existe o se ha movido.",
+    "homeLabel": "Volver al inicio",
+    "errorTitle": "No se pudo cargar esta página",
+    "errorDescription": "Se ha producido un error por nuestra parte. Puedes recargar la página o volver al inicio.",
+    "retryLabel": "Reintentar"
+  }
+}

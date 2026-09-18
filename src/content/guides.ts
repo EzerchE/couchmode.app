@@ -67,11 +67,15 @@ const requiredFields = [
   "ogImage",
 ] as const;
 
-const guideFiles = import.meta.glob("/src/content/guides/*/*.mdx", {
-  eager: true,
-  query: "?raw",
-  import: "default",
-}) as Record<string, string>;
+const guideFiles = (
+  import.meta.env.SSR || import.meta.env.DEV
+    ? import.meta.glob("/src/content/guides/*/*.mdx", {
+        eager: true,
+        query: "?raw",
+        import: "default",
+      })
+    : {}
+) as Record<string, string>;
 
 function parseValue(value: string): unknown {
   const trimmed = value.trim();
@@ -98,7 +102,8 @@ function parseFrontmatter(source: string, fileName: string): GuideFrontmatter {
   }
   if (
     typeof fields.title !== "string" ||
-    (fields.heading !== undefined && (typeof fields.heading !== "string" || !fields.heading.trim())) ||
+    (fields.heading !== undefined &&
+      (typeof fields.heading !== "string" || !fields.heading.trim())) ||
     typeof fields.description !== "string" ||
     typeof fields.contentId !== "string" ||
     typeof fields.slug !== "string" ||
@@ -119,7 +124,11 @@ function parseFrontmatter(source: string, fileName: string): GuideFrontmatter {
     throw new Error(`Guide contentId does not match a guide surface: ${fileName}`);
   if (!guideCategoryIds.includes(fields.category as GuideCategoryId))
     throw new Error(`Unknown guide category in ${fileName}`);
-  if (!fields.related.every((contentId) => surfaceRegistry[contentId as SurfaceId]?.kind === "guide-article"))
+  if (
+    !fields.related.every(
+      (contentId) => surfaceRegistry[contentId as SurfaceId]?.kind === "guide-article",
+    )
+  )
     throw new Error(`Guide relationship does not match a guide surface: ${fileName}`);
 
   return fields as GuideFrontmatter;
@@ -151,6 +160,17 @@ function parseGuide(source: string, fileName: string): Guide {
 const guideSources = Object.entries(guideFiles)
   .map(([fileName, source]) => parseGuide(source, fileName))
   .sort((a, b) => a.title.localeCompare(b.title));
+
+export function registerBrowserGuides(guides: Guide[]) {
+  for (const guide of guides) {
+    const index = guideSources.findIndex(
+      (item) => item.locale === guide.locale && item.contentId === guide.contentId,
+    );
+    if (index === -1) guideSources.push(guide);
+    else guideSources[index] = guide;
+  }
+  guideSources.sort((a, b) => a.title.localeCompare(b.title));
+}
 
 export function guideSourcesForLocale(locale: LocaleId) {
   return guideSources.filter((guide) => guide.locale === locale);

@@ -13,8 +13,15 @@ import { CloudflareAnalytics } from "@/components/analytics/CloudflareAnalytics"
 import { ConsentBanner } from "@/components/analytics/ConsentBanner";
 import { LocalizedHeadLinks } from "@/components/i18n/LocalizedHeadLinks";
 import { LocaleContentProvider } from "@/i18n/content";
-import { localeForPublicPath, localePacketFor, relativeHrefFor } from "@/i18n/packets";
+import {
+  ensureLocalePacket,
+  localeForPublicPath,
+  localePacketFor,
+  relativeHrefFor,
+} from "@/i18n/packets";
 import { consentBootstrapScript } from "@/lib/consent";
+import routeErrorCopies from "@/i18n/route-errors.generated.json";
+import type { SharedUiCopy } from "@/i18n/shared-ui";
 
 import appCss from "../styles.css?url";
 
@@ -25,8 +32,10 @@ function useLocalizedErrorContent() {
   const locale = localeForPublicPath(pathname);
   const packet = localePacketFor(locale);
   const homeHref = relativeHrefFor(locale, "home");
-  if (!packet || !homeHref) throw new Error(`Missing error content for ${locale}`);
-  return { homeHref, copy: packet.shared.errors };
+  const copy =
+    packet?.shared.errors ?? (routeErrorCopies as Record<string, SharedUiCopy["errors"]>)[locale];
+  if (!copy || !homeHref) throw new Error(`Missing error content for ${locale}`);
+  return { homeHref, copy };
 }
 
 function NotFoundComponent() {
@@ -84,6 +93,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  beforeLoad: async ({ location }) => {
+    await ensureLocalePacket(localeForPublicPath(location.pathname));
+  },
   head: () => ({
     meta: [
       { charSet: "utf-8" },

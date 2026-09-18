@@ -44,6 +44,38 @@ const vite = await createServer({
 try {
   const packetModule = await vite.ssrLoadModule("/src/i18n/packets.ts");
   const { packetFor, localePacketFor, relativeHrefFor } = packetModule;
+  // Derived build inputs, never a second authored content source. Pending locales
+  // have no browser chunk. Guide bodies remain single-copy inside their payload.
+  const cacheDir = path.resolve(scriptDir, "../.cache/locale-client");
+  fs.mkdirSync(cacheDir, { recursive: true });
+  for (const entry of fs.readdirSync(cacheDir)) {
+    if (entry.endsWith(".json")) fs.unlinkSync(path.join(cacheDir, entry));
+  }
+  const routePaths = {};
+  const routeErrors = {};
+  for (const locale of activeLocales) {
+    const packet = localePacketFor(locale.id);
+    if (!packet) fail(`Missing browser source packet: ${locale.id}`);
+    routeErrors[locale.id] = packet.shared.errors;
+    routePaths[locale.id] = Object.fromEntries(
+      Object.entries(packet.surfaces).map(([id, page]) => [id, page.path]),
+    );
+    const guides = packetModule
+      .localizedGuides(locale.id)
+      .map(({ source: { introduction, sections, ...facts } }) => facts);
+    fs.writeFileSync(
+      path.join(cacheDir, `${locale.id}.json`),
+      JSON.stringify({ packet, guides }) + "\n",
+    );
+  }
+  fs.writeFileSync(
+    path.resolve(scriptDir, "../src/i18n/route-paths.generated.json"),
+    JSON.stringify(routePaths, null, 2) + "\n",
+  );
+  fs.writeFileSync(
+    path.resolve(scriptDir, "../src/i18n/route-errors.generated.json"),
+    JSON.stringify(routeErrors, null, 2) + "\n",
+  );
   const sitemapFiles = [];
 
   for (const locale of activeLocales) {
@@ -102,9 +134,12 @@ ${sitemapFiles.map((fileName) => `  <sitemap><loc>${siteUrl}/${fileName}</loc></
     })
     .join("\n");
   const errorFile = path.join(publicDir, "404.html");
-  const errorHtml = fs.readFileSync(errorFile, "utf8").replace(/\r\n?/g, "\n").replace(
-    /<main>[\s\S]*?<\/main>/,
-    `<main>\n${errorSections}\n<script>
+  const errorHtml = fs
+    .readFileSync(errorFile, "utf8")
+    .replace(/\r\n?/g, "\n")
+    .replace(
+      /<main>[\s\S]*?<\/main>/,
+      `<main>\n${errorSections}\n<script>
 (() => {
   const sections = [...document.querySelectorAll('main > section')];
   const active = sections.find(s => s.dataset.prefix && (location.pathname === s.dataset.prefix || location.pathname.startsWith(s.dataset.prefix + '/'))) || sections.find(s => s.lang === 'en');
@@ -112,7 +147,7 @@ ${sitemapFiles.map((fileName) => `  <sitemap><loc>${siteUrl}/${fileName}</loc></
   if (active) { document.documentElement.lang = active.lang; document.title = active.querySelector('h1').textContent + ' | CouchMode'; }
 })();
 </script>\n</main>`,
-  );
+    );
   fs.writeFileSync(errorFile, errorHtml);
   console.log(
     `gen-sitemap: wrote ${indexableSurfaces.length * sitemapFiles.length} URLs across ${sitemapFiles.length} active locale sitemap(s)`,
