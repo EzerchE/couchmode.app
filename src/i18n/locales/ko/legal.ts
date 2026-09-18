@@ -185,7 +185,7 @@ export const koreanTermsPacket: SurfacePacketBase<"legal"> = {
             "멤버십이 종료되거나 결제가 실패하거나 환불 또는 취소되는 경우, 짧은 유예 기간 후 Pro 이용 권한이 Free 모드로 전환될 수 있습니다.",
           ),
           legalText(
-            "Pro Version은 월 3미국 달러이며 활성 Windows 기기 최대 2대에서 개인용 Pro 이용 권한을 제공합니다. Pro Supporter는 월 5미국 달러이며 활성 Windows 기기 최대 5대에서 개인용 Pro 이용 권한을 제공합니다.",
+            "Pro Version은 월 미화 3달러이며 활성 Windows 기기 최대 2대에서 개인용 Pro 이용 권한을 제공합니다. Pro Supporter는 월 미화 5달러이며 활성 Windows 기기 최대 5대에서 개인용 Pro 이용 권한을 제공합니다.",
           ),
         ],
       },

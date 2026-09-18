@@ -168,7 +168,7 @@ export const koreanHomePacket: SurfacePacketBase<"home"> = {
         ctaLabel: "Patreon으로 Pro 이용하기",
       },
       footnote:
-        "체험 종료 후 Pro를 이용하려면 활성 Patreon 멤버십이 필요합니다. Pro는 월 3미국 달러로 활성 Windows 기기 2대를 포함합니다. Pro Supporter는 월 5미국 달러로 활성 Windows 기기 5대를 포함합니다.",
+        "체험 종료 후 Pro를 이용하려면 활성 Patreon 멤버십이 필요합니다. Pro는 월 미화 3달러로 활성 Windows 기기 2대를 포함합니다. Pro Supporter는 월 미화 5달러로 활성 Windows 기기 5대를 포함합니다.",
     },
     guidesPreview: {
       eyebrow: "실용적인 설정 안내",
@@ -276,7 +276,7 @@ export const koreanHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "Patreon 멤버십으로는 어떻게 이용하나요?",
           answer:
-            "앱 내 체험이 끝난 뒤에도 Pro를 유지하려면 CouchMode에서 Patreon을 연결하세요. Pro는 월 3미국 달러로 활성 Windows 기기 최대 2대, Pro Supporter는 월 5미국 달러로 최대 5대에서 사용할 수 있습니다.",
+            "앱 내 체험이 끝난 뒤에도 Pro를 유지하려면 CouchMode에서 Patreon을 연결하세요. Pro는 월 미화 3달러로 활성 Windows 기기 최대 2대, Pro Supporter는 월 미화 5달러로 최대 5대에서 사용할 수 있습니다.",
         },
         {
           question: "멤버십이 끝나면 어떻게 되나요?",

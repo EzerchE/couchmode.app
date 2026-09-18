@@ -1,5 +1,5 @@
 {
-  "sourceRevision": "d9a1ba2a17e10eea2fbb678cf89ef0916412f96802518a51385e1ee2568c56b1",
+  "sourceRevision": "6e84ce7f6b851fb561eb31f3bf6dc2a518597873c9808c3e37c49312817d581c",
   "requiredSurfaces": [
     {
       "id": "home",
@@ -173,7 +173,7 @@
   "contentPackets": [
     {
       "locale": "en",
-      "sourceRevision": "d9a1ba2a17e10eea2fbb678cf89ef0916412f96802518a51385e1ee2568c56b1",
+      "sourceRevision": "6e84ce7f6b851fb561eb31f3bf6dc2a518597873c9808c3e37c49312817d581c",
       "surfaces": [
         "home",
         "download",
@@ -196,7 +196,7 @@
     },
     {
       "locale": "de",
-      "sourceRevision": "d9a1ba2a17e10eea2fbb678cf89ef0916412f96802518a51385e1ee2568c56b1",
+      "sourceRevision": "6e84ce7f6b851fb561eb31f3bf6dc2a518597873c9808c3e37c49312817d581c",
       "surfaces": [
         "home",
         "download",
@@ -219,7 +219,7 @@
     },
     {
       "locale": "tr",
-      "sourceRevision": "d9a1ba2a17e10eea2fbb678cf89ef0916412f96802518a51385e1ee2568c56b1",
+      "sourceRevision": "6e84ce7f6b851fb561eb31f3bf6dc2a518597873c9808c3e37c49312817d581c",
       "surfaces": [
         "home",
         "download",
@@ -242,7 +242,7 @@
     },
     {
       "locale": "fr",
-      "sourceRevision": "d9a1ba2a17e10eea2fbb678cf89ef0916412f96802518a51385e1ee2568c56b1",
+      "sourceRevision": "6e84ce7f6b851fb561eb31f3bf6dc2a518597873c9808c3e37c49312817d581c",
       "surfaces": [
         "home",
         "download",
@@ -265,7 +265,7 @@
     },
     {
       "locale": "es",
-      "sourceRevision": "d9a1ba2a17e10eea2fbb678cf89ef0916412f96802518a51385e1ee2568c56b1",
+      "sourceRevision": "6e84ce7f6b851fb561eb31f3bf6dc2a518597873c9808c3e37c49312817d581c",
       "surfaces": [
         "home",
         "download",
@@ -288,7 +288,7 @@
     },
     {
       "locale": "it",
-      "sourceRevision": "d9a1ba2a17e10eea2fbb678cf89ef0916412f96802518a51385e1ee2568c56b1",
+      "sourceRevision": "6e84ce7f6b851fb561eb31f3bf6dc2a518597873c9808c3e37c49312817d581c",
       "surfaces": [
         "home",
         "download",
@@ -311,7 +311,7 @@
     },
     {
       "locale": "pt-BR",
-      "sourceRevision": "d9a1ba2a17e10eea2fbb678cf89ef0916412f96802518a51385e1ee2568c56b1",
+      "sourceRevision": "6e84ce7f6b851fb561eb31f3bf6dc2a518597873c9808c3e37c49312817d581c",
       "surfaces": [
         "home",
         "download",
@@ -334,7 +334,7 @@
     },
     {
       "locale": "pl",
-      "sourceRevision": "d9a1ba2a17e10eea2fbb678cf89ef0916412f96802518a51385e1ee2568c56b1",
+      "sourceRevision": "6e84ce7f6b851fb561eb31f3bf6dc2a518597873c9808c3e37c49312817d581c",
       "surfaces": [
         "home",
         "download",
@@ -357,7 +357,7 @@
     },
     {
       "locale": "ja",
-      "sourceRevision": "d9a1ba2a17e10eea2fbb678cf89ef0916412f96802518a51385e1ee2568c56b1",
+      "sourceRevision": "6e84ce7f6b851fb561eb31f3bf6dc2a518597873c9808c3e37c49312817d581c",
       "surfaces": [
         "home",
         "download",
@@ -380,7 +380,7 @@
     },
     {
       "locale": "ko",
-      "sourceRevision": "d9a1ba2a17e10eea2fbb678cf89ef0916412f96802518a51385e1ee2568c56b1",
+      "sourceRevision": "6e84ce7f6b851fb561eb31f3bf6dc2a518597873c9808c3e37c49312817d581c",
       "surfaces": [
         "home",
         "download",

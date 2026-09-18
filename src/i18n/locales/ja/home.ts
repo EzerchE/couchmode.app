@@ -28,7 +28,7 @@ export const japaneseHomePacket: SurfacePacketBase<"home"> = {
       headingBefore: "PCゲームを、",
       headingAccent: "テレビとコントローラーで。",
       description:
-        "コントローラーの電源を入れると、CouchModeが選んだゲーム用画面を開き、好みに合わせてセッションを準備。遊び終わったら、いつもの作業に戻れるデスクトップへ案内します。",
+        "コントローラーの電源を入れると、CouchModeが、あらかじめ選んでおいたゲーム用画面を開き、好みに合わせてセッションを準備します。遊び終わったら、いつもの作業に戻れるデスクトップへ戻します。",
       downloadLabel: "Windows版をダウンロード",
       proLabel: "Proの機能を見る",
       platformNotice: "Windows 11 · 64ビット · 署名済み公開ベータ版",
