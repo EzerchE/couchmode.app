@@ -8,10 +8,10 @@ export const polishGuideHubPacket: SurfacePacketBase<"guide-hub"> = {
   path: "/poradniki/",
   sourceRevision: localeManifest.sourceRevision,
   seo: {
-    title: "Granie na telewizorze z Windows: poradniki | CouchMode",
+    title: "Poradniki: granie na PC z Windows podłączonym do TV | CouchMode",
     description:
       "Praktyczne poradniki o graniu z kanapy na PC: Playnite, Steam Big Picture, pady, telewizory i przenośne komputery z Windows w stacji dokującej.",
-    ogTitle: "Granie na telewizorze z Windows: poradniki | CouchMode",
+    ogTitle: "Poradniki: granie na PC z Windows podłączonym do TV | CouchMode",
     ogDescription:
       "Praktyczne poradniki o graniu z kanapy na PC: Playnite, Steam Big Picture, pady, telewizory i przenośne komputery z Windows w stacji dokującej.",
   },

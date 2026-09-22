@@ -347,7 +347,7 @@ const englishHomePacket: SurfacePacketBase<"home"> = {
         name: "Pro",
         heading: "Everything in Free, plus deeper automation.",
         description:
-          "CouchMode manages the session it starts, then restores the desktop changes it made.",
+          "CouchMode manages the session it starts, then restores the desktop settings it changed.",
         features: [
           "Compatible custom launchers",
           "Resource Control for the apps you select",
@@ -393,12 +393,12 @@ const englishHomePacket: SurfacePacketBase<"home"> = {
       eyebrow: "Questions",
       heading: "Built for the way PC players actually start a couch session.",
       description:
-        "CouchMode is designed for Windows PCs connected to a TV, couch, or controller-first setup. These answers explain what it can start, what it can automate, and what depends on Windows support.",
+        "CouchMode is designed for Windows PCs used with a TV or in a controller-first setup. These answers explain what it can start, what it can automate, and what depends on Windows support.",
       items: [
         {
           question: "What is CouchMode?",
           answer:
-            "CouchMode is a controller-first gaming utility for Windows. It can start a couch gaming session when a compatible controller connects, open your chosen gaming experience and restore the supported session changes it made when the session ends.",
+            "CouchMode is a controller-first gaming utility for Windows. It can start a couch gaming session when a compatible controller connects, open your chosen gaming experience and restore the supported settings it changed when the session ends.",
         },
         {
           question: "Does CouchMode replace the Windows shell?",

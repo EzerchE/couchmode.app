@@ -76,7 +76,7 @@ export const polishHomePacket: SurfacePacketBase<"home"> = {
       eyebrow: "Jak to działa",
       heading: "Pad w dłoń, usiądź wygodnie.",
       description:
-        "CouchMode obsługuje przebieg sesji wokół wybranej aplikacji do gier i ustawień Windows. Free zapewnia podstawową obsługę sesji uruchamianych padem. Pro rozszerza automatyzację.",
+        "CouchMode uruchamia wybraną aplikację do gier i stosuje wskazane ustawienia Windows. Free zapewnia podstawową obsługę sesji uruchamianych padem. Pro rozszerza automatyzację.",
       stepLabel: "KROK",
       steps: [
         {
@@ -191,7 +191,7 @@ export const polishHomePacket: SurfacePacketBase<"home"> = {
       ],
     },
     finalCta: {
-      headingBefore: "Przygotuj swój komputer do",
+      headingBefore: "Chcesz przygotować swój komputer do",
       headingAccent: "grania z kanapy",
       description:
         "Pobierz podpisaną publiczną wersję beta dla Windows i zacznij od 7-dniowego okresu próbnego Pro w aplikacji. Nie potrzebujesz konta ani karty płatniczej.",

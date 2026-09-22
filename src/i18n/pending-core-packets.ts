@@ -79,7 +79,7 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
           { label: "Allgemein", alt: "CouchMode-Einstellungen für Controller und Launcher." },
           {
             label: "Resource Control",
-            alt: "CouchMode-Einstellungen zum Bereinigen ausgewählter Apps.",
+            alt: "CouchMode-Einstellungen zum Schließen ausgewählter Apps.",
           },
           { label: "Session Tweaks", alt: "CouchMode-Einstellungen für Leistung und Windows." },
         ],
@@ -150,7 +150,7 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
         {
           label: "Allgemein",
           caption: "Start- und erweiterte Einstellungen",
-          alt: "CouchMode-Einstellungen für Start und Erweiterungen.",
+          alt: "CouchMode-Einstellungen für den Start und erweiterte Optionen.",
         },
         {
           label: "Resource Control",
@@ -213,7 +213,7 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
         ctaLabel: "Pro mit Patreon holen",
       },
       footnote:
-        "Nach der Testversion setzt Pro einen aktiven Patreon-Support voraus. Pro kostet 3 $ pro Monat und umfasst 2 aktive Windows-Geräte. Pro Supporter kostet 5 $ pro Monat und umfasst 5 aktive Windows-Geräte.",
+        "Nach der Testversion setzt Pro eine aktive Patreon-Mitgliedschaft voraus. Pro kostet 3 $ pro Monat und umfasst 2 aktive Windows-Geräte. Pro Supporter kostet 5 $ pro Monat und umfasst 5 aktive Windows-Geräte.",
     },
     guidesPreview: {
       eyebrow: "Praktische Einrichtungsnotizen",
@@ -649,7 +649,7 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
   seo: {
     title: "CouchMode: Oyun bilgisayarını konsol gibi kullanın | Windows 11",
     description:
-      "Uyumlu oyun kumandanızı açın, seçtiğiniz oyun deneyimini başlatın ve oturum bittiğinde kullanılabilir Windows masaüstünüze dönün. İmzalı CouchMode herkese açık betayı indirin.",
+      "Uyumlu oyun kumandanızı açın, seçtiğiniz oyun deneyimini başlatın ve oturum bittiğinde kullanılabilir Windows masaüstünüze dönün. CouchMode'un imzalı herkese açık beta sürümünü indirin.",
     ogTitle: "CouchMode: Oyun bilgisayarını konsol gibi kullanın | Windows 11",
     ogDescription:
       "Oyun kumandanızı açın, seçtiğiniz oyun deneyimini başlatın ve oturum bittiğinde kullanılabilir Windows masaüstünüze dönün.",
@@ -676,7 +676,7 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
           { label: "Genel", alt: "Kumanda ve başlatıcı ayarlarını gösteren CouchMode ekranı." },
           {
             label: "Resource Control",
-            alt: "Seçili uygulamaları temizlemeye yönelik CouchMode ayarları.",
+            alt: "Seçili uygulamaları kapatmaya yönelik CouchMode ayarları.",
           },
           { label: "Session Tweaks", alt: "Performans ve Windows ayarları için CouchMode ekranı." },
         ],
@@ -686,7 +686,7 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
       },
     },
     problem: {
-      eyebrow: "Boşluk",
+      eyebrow: "Farkı nedir",
       headingLines: ["Windows masa başında iş görür.", "TV karşısında değil."],
       description:
         "Windows masa başında rahat kullanılır. TV karşısında ise küçük yazılar, fare odaklı menüler ve arka planda çalışan uygulamalar kumandayla oyun oynamayı zorlaştırabilir. CouchMode Windows'un yerini almaz ya da bilgisayarınızın kontrolünü devralmaz; bu geçişi daha pratik hale getirir.",
@@ -825,16 +825,16 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
       ],
     },
     finalCta: {
-      headingBefore: "Bilgisayarınızı",
-      headingAccent: "TV karşısında oynamaya hazır mısınız",
+      headingBefore: "TV karşısında",
+      headingAccent: "bilgisayarınızda oyun oynamaya hazır mısınız",
       description:
         "Windows için imzalı herkese açık betayı indirin ve uygulama içi 7 günlük Pro denemesiyle başlayın. Deneme için hesap veya kredi kartı gerekmez.",
       downloadLabel: "Windows için indir",
       releaseNotesLabel: "Sürüm notlarını görün",
       directDownloadLabel: "Doğrudan indirme",
       preparingLabel: "Hazırlanıyor",
-      openLabel: "Açık",
-      liveLabel: "Canlı",
+      openLabel: "İndirilebilir",
+      liveLabel: "Yayında",
       platformNotice: "Windows 11 · 64 bit",
       compatibilityNote:
         "CouchMode, ROG Ally gibi Windows el konsollarını TV'ye bağladığınız kurulumlarda harici kumandayla oyun oturumu başlatmayı destekler. Windows Xbox modunu sunduğunda CouchMode bu oturumu başlatabilir veya mevcut oturumu devralabilir; oturum bitince normal masaüstünüze dönersiniz. Kullanılabilirlik ve davranış cihazınıza, Windows sürümüne, Xbox uygulaması desteğine, bölgeye ve Microsoft dağıtımına bağlıdır.",
@@ -864,7 +864,7 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
           question:
             "CouchMode oyun öncesinde Discord, Chrome veya başka masaüstü uygulamalarını kapatabilir mi?",
           answer:
-            "Pro Resource Control ile CouchMode'un oturum için kapatmasına izin verdiğiniz desteklenen uygulamaları ve sonra yeniden açılıp açılmayacaklarını seçersiniz. Seçmediğiniz uygulamalar kasıtlı olarak kapatılmaz. Hizmetler, yükseltilmiş uygulamalar, korumalı sistem bileşenleri ve kendini yeniden başlatan uygulamalar açık kalabilir.",
+            "Pro Resource Control ile CouchMode'un oturum için kapatmasına izin verdiğiniz desteklenen uygulamaları ve sonra yeniden açılıp açılmayacaklarını seçersiniz. Seçmediğiniz uygulamalar kasıtlı olarak kapatılmaz. Hizmetler, yönetici yetkisiyle çalışan uygulamalar, korumalı sistem bileşenleri ve kendini yeniden başlatan uygulamalar açık kalabilir.",
         },
         {
           question: "CouchMode Steam Big Picture veya başka bir başlatıcıyı açabilir mi?",
@@ -986,10 +986,10 @@ export const turkishDownloadPacket: SurfacePacketBase<"download"> = {
   seo: {
     title: "CouchMode'u Windows için indirin",
     description:
-      "Windows 11 için imzalı CouchMode herkese açık betayı indirin. Yayımlanan SHA-256 sağlama toplamını ve sürüm notlarını kontrol edin.",
+      "Windows 11 için CouchMode'un imzalı herkese açık beta sürümünü indirin. Yayımlanan SHA-256 sağlama toplamını ve sürüm notlarını kontrol edin.",
     ogTitle: "CouchMode'u Windows için indirin",
     ogDescription:
-      "Windows 11 için imzalı CouchMode herkese açık betayı indirin. SHA-256 sağlama toplamını ve sürüm notlarını kontrol edin.",
+      "Windows 11 için CouchMode'un imzalı herkese açık beta sürümünü indirin. SHA-256 sağlama toplamını ve sürüm notlarını kontrol edin.",
   },
   schema: { homeBreadcrumbLabel: "Ana sayfa", currentBreadcrumbLabel: "İndirme durumu" },
   internalLinks: ["home", "changelog", "support"],
@@ -1009,7 +1009,7 @@ export const turkishDownloadPacket: SurfacePacketBase<"download"> = {
     },
     facts: {
       directDownload: "Doğrudan indirme",
-      directDownloadOpen: "Açık",
+      directDownloadOpen: "İndirilebilir",
       directDownloadClosed: "Henüz açık değil",
       platform: "İşletim platformu",
       platformValue: "Windows 11 · 64 bit",
@@ -1102,7 +1102,7 @@ export const turkishGuideHubPacket: SurfacePacketBase<"guide-hub"> = {
         playnite: "Playnite",
         "steam-big-picture": "Steam Big Picture",
         "windows-couch-gaming": "TV karşısında Windows oyunu",
-        "windows-handhelds": "Windows oyun el cihazları",
+        "windows-handhelds": "Windows el konsolları",
       },
     },
     card: { updatedLabel: "Güncellendi" },
@@ -1202,10 +1202,10 @@ export const germanChangelogPacket: SurfacePacketBase<"changelog"> = {
   path: "/versionshinweise/",
   sourceRevision: localeManifest.sourceRevision,
   seo: {
-    title: "CouchMode Versionshinweise - Windows-Beta-Release-Notes",
+    title: "CouchMode: Versionshinweise zur Windows-Beta",
     description:
       "Versionshinweise und bekannte Probleme für CouchMode-Beta-Builds für Windows, neueste zuerst.",
-    ogTitle: "CouchMode Versionshinweise - Windows-Beta-Release-Notes",
+    ogTitle: "CouchMode: Versionshinweise zur Windows-Beta",
     ogDescription:
       "Versionshinweise und bekannte Probleme für CouchMode-Beta-Builds für Windows, neueste zuerst.",
   },

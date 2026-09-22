@@ -11,10 +11,10 @@ export const koreanDownloadPacket: SurfacePacketBase<"download"> = {
   seo: {
     title: "Windows용 CouchMode 다운로드",
     description:
-      "Windows 11용 CouchMode 서명된 공개 베타를 다운로드하세요. 실행 전 공개된 SHA-256 체크섬을 확인하고 최신 릴리스 노트를 살펴보세요.",
+      "Windows 11용 CouchMode의 서명된 공개 베타를 다운로드하세요. 실행 전 공개된 SHA-256 체크섬을 확인하고 최신 릴리스 노트를 살펴보세요.",
     ogTitle: "Windows용 CouchMode 다운로드",
     ogDescription:
-      "Windows 11용 CouchMode 서명된 공개 베타를 다운로드하세요. 실행 전 공개된 SHA-256 체크섬을 확인하고 최신 릴리스 노트를 살펴보세요.",
+      "Windows 11용 CouchMode의 서명된 공개 베타를 다운로드하세요. 실행 전 공개된 SHA-256 체크섬을 확인하고 최신 릴리스 노트를 살펴보세요.",
   },
   schema: { homeBreadcrumbLabel: "홈", currentBreadcrumbLabel: "배포 현황" },
   internalLinks: ["home", "changelog", "support"],
@@ -143,7 +143,7 @@ export const koreanSupportPacket: SurfacePacketBase<"support"> = {
       lastUpdated: "2026년 8월",
     },
     introduction: [
-      "CouchMode에 도움이 필요하신가요? 가장 빠른 방법은 앱 안에서 문의하는 것입니다. 버그, 호환성 문제 또는 기능 요청을 보낼 수 있습니다. 전송 여부는 언제나 사용자가 결정하며, 전송 전에 포함되는 내용을 정확히 확인할 수 있습니다. 어떤 내용도 자동으로 전송되지 않습니다.",
+      "CouchMode 사용 중 도움이 필요하신가요? 가장 빠른 방법은 앱 안에서 문의하는 것입니다. 버그, 호환성 문제 또는 기능 요청을 보낼 수 있습니다. 전송 여부는 언제나 사용자가 결정하며, 전송 전에 포함되는 내용을 정확히 확인할 수 있습니다. 어떤 내용도 자동으로 전송되지 않습니다.",
       "CouchMode는 Windows 11 · 64비트용 서명된 공개 베타입니다. 진단 자료는 PC에서 로컬로 생성되며, 보고서는 사용자가 제출한 경우에만 저희에게 전달됩니다.",
     ],
     contact: {

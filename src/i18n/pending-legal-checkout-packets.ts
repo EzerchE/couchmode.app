@@ -89,7 +89,7 @@ export const germanPrivacyPacket: SurfacePacketBase<"legal"> = {
         heading: "Website-Analysen",
         paragraphs: [
           legalText(
-            "Grundlegende Website-Funktionen werden standardmäßig verwendet. Cloudflare Web Analytics und das über Google Tag Manager ausgelieferte Google-Tag laufen nur, nachdem du im Consent-Dialog Analytics erlaubt hast. Diese Werkzeuge helfen uns, aggregierten Website-Traffic wie Seitenaufrufe und Referrer zu verstehen, und sind von der CouchMode-Desktop-App getrennt, die keine Spielaktivitäten verfolgt.",
+            "Grundlegende Website-Funktionen werden standardmäßig verwendet. Cloudflare Web Analytics und das über Google Tag Manager ausgelieferte Google-Tag laufen nur, nachdem du im Einwilligungsdialog Nutzungsstatistiken erlaubt hast. Diese Werkzeuge helfen uns, aggregierten Website-Traffic wie Seitenaufrufe und Referrer zu verstehen, und sind von der CouchMode-Desktop-App getrennt, die keine Spielaktivitäten verfolgt.",
           ),
         ],
         action: { kind: "open-consent", label: "Datenschutzeinstellungen verwalten" },
@@ -184,7 +184,7 @@ export const germanTermsPacket: SurfacePacketBase<"legal"> = {
             "Während der öffentlichen Beta wird CouchMode-Pro-Zugang über eine Patreon-Mitgliedschaft bereitgestellt. Die Pro-Lizenz bleibt aktiv, solange die Mitgliedschaft aktiv ist.",
           ),
           legalText(
-            "Endet, scheitert, wird erstattet oder gekündigt eine Mitgliedschaft, kann der Pro-Zugang nach einer kurzen Kulanzfrist in den Free-Modus zurückkehren.",
+            "Wenn eine Mitgliedschaft endet, fehlschlägt, erstattet oder gekündigt wird, kann der Pro-Zugang nach einer kurzen Kulanzfrist in den Free-Modus zurückkehren.",
           ),
           legalText(
             "Pro Version kostet 3 US-Dollar pro Monat und umfasst persönlichen Pro-Zugang auf bis zu 2 aktiven Windows-Geräten. Pro Supporter kostet 5 US-Dollar pro Monat und umfasst persönlichen Pro-Zugang auf bis zu 5 aktiven Windows-Geräten.",
@@ -426,7 +426,7 @@ export const turkishPrivacyPacket: SurfacePacketBase<"legal"> = {
         heading: "Site analitiği",
         paragraphs: [
           legalText(
-            "Temel site işlevleri varsayılan olarak kullanılır. Cloudflare Web Analytics ve Google Tag Manager üzerinden sunulan Google etiketi, yalnızca izin isteminde Analytics'e izin verdikten sonra çalışır. Bu araçlar sayfa görüntülemeleri ve yönlendirenler gibi toplu site trafiğini anlamamıza yardımcı olur; oyun takibi yapmayan CouchMode masaüstü uygulamasından ayrıdır.",
+            "Temel site işlevleri varsayılan olarak kullanılır. Cloudflare Web Analytics ve Google Tag Manager üzerinden sunulan Google etiketi, yalnızca izin penceresinde Kullanım ölçümüne izin verdikten sonra çalışır. Bu araçlar sayfa görüntülemeleri ve yönlendirenler gibi toplu site trafiğini anlamamıza yardımcı olur; oyun takibi yapmayan CouchMode masaüstü uygulamasından ayrıdır.",
           ),
         ],
         action: { kind: "open-consent", label: "Gizlilik tercihlerini yönet" },
@@ -438,7 +438,7 @@ export const turkishPrivacyPacket: SurfacePacketBase<"legal"> = {
             "CouchMode ödeme kartı bilgilerini depolamaz. Patreon faturalandırması Patreon tarafından yürütülür.",
           ),
           legalText(
-            "CouchMode, Pro erişimini doğrulamak, yetkilendirme durumunu yenilemek veya cihazları devre dışı bırakmak gerektiğinde yalnızca license.couchmode.app ile iletişime geçebilir.",
+            "CouchMode, license.couchmode.app ile yalnızca Pro erişimini doğrulamak, yetkilendirme durumunu yenilemek veya cihazları devre dışı bırakmak gerektiğinde iletişime geçebilir.",
           ),
         ],
       },
@@ -502,7 +502,7 @@ export const turkishTermsPacket: SurfacePacketBase<"legal"> = {
             "Uygulama içindeki 7 günlük Pro denemesi CouchMode'da başlar ve hesap veya kredi kartı gerektirmez.",
           ),
           legalText(
-            "Uygun olan ilk kez üyeler, mevcut ücretli katmanlarda ayrı bir 7 günlük Patreon denemesi başlatabilir. Patreon ödeme yöntemi gerektirir ancak bu deneme bitene kadar üyelik ücretini almaz. Patreon denemesi, CouchMode'un uygulama içindeki 7 günlük Pro denemesinden ayrıdır ve buna kimin uygun olduğuna Patreon karar verir.",
+            "Uygunluk koşullarını karşılayan ve ilk kez üye olan kişiler, mevcut ücretli katmanlarda ayrı bir 7 günlük Patreon denemesi başlatabilir. Patreon ödeme yöntemi gerektirir ancak bu deneme bitene kadar üyelik ücretini almaz. Patreon denemesi, CouchMode'un uygulama içindeki 7 günlük Pro denemesinden ayrıdır ve buna kimin uygun olduğuna Patreon karar verir.",
           ),
         ],
         list: [

@@ -74,7 +74,7 @@ export const brazilianPortugueseHomePacket: SurfacePacketBase<"home"> = {
     },
     howItWorks: {
       eyebrow: "Como funciona",
-      heading: "Do controle para o sofá.",
+      heading: "Ligue o controle e comece a jogar.",
       description:
         "O CouchMode organiza a sessão em torno do iniciador e das configurações do Windows que você escolher. O plano Free cobre o essencial para jogar com o controle. O Pro acrescenta mais automações à sessão.",
       stepLabel: "ETAPA",
@@ -164,7 +164,7 @@ export const brazilianPortugueseHomePacket: SurfacePacketBase<"home"> = {
         name: "Pro",
         heading: "Tudo do Free, com mais automação.",
         description:
-          "O CouchMode gerencia a sessão que inicia e depois restaura as alterações que fez na área de trabalho.",
+          "O CouchMode gerencia a sessão que inicia e depois restaura as configurações da área de trabalho que alterou.",
         features: [
           "Iniciadores personalizados compatíveis",
           "Resource Control para os apps que você selecionar",
@@ -215,7 +215,7 @@ export const brazilianPortugueseHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "O que é o CouchMode?",
           answer:
-            "CouchMode é um utilitário para jogar no Windows usando o controle. Ele pode iniciar uma sessão ao detectar a conexão de um controle compatível, abrir a interface de jogos escolhida e restaurar as alterações de sessão compatíveis que fez ao encerrar a sessão.",
+            "CouchMode é um utilitário para jogar no Windows usando o controle. Ele pode iniciar uma sessão ao detectar a conexão de um controle compatível, abrir a interface de jogos escolhida e restaurar as configurações compatíveis que alterou ao encerrar a sessão.",
         },
         {
           question: "O CouchMode substitui o shell do Windows?",

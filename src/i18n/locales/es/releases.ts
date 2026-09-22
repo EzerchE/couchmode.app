@@ -10,7 +10,7 @@ export const spanishReleaseEditorialOverlay: ReleaseEditorialOverlay = {
         "Mayor fiabilidad al iniciar la experiencia Xbox a pantalla completa en consolas portátiles con Windows.",
         "Mejoras en la detección de mandos y consolas portátiles en distintos dispositivos Windows.",
         "Mayor fiabilidad al entrar en una sesión de Xbox a pantalla completa, darle el foco y volver al escritorio.",
-        "Playnite ahora admite con mayor fiabilidad las ubicaciones de instalación personalizadas y las instalaciones portátiles.",
+        "CouchMode ahora admite con mayor fiabilidad las instalaciones de Playnite en ubicaciones personalizadas y las instalaciones portátiles.",
         "Mejoras en la comprobación de actualizaciones y mensajes de actualización más claros.",
         "Se ha unificado la comprobación de compatibilidad con Xbox a pantalla completa en Settings.",
         "Mejoras generales de fiabilidad.",

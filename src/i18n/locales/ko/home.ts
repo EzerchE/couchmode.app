@@ -47,7 +47,7 @@ export const koreanHomePacket: SurfacePacketBase<"home"> = {
       eyebrow: "소파에서는 다른 준비가 필요하니까",
       headingLines: ["Windows는 잘 작동합니다.", "다만 소파를 위해 만들어지지는 않았죠."],
       description:
-        "책상에서는 편한 바탕 화면도 소파에서는 다릅니다. 작은 글씨, 마우스 중심의 메뉴, 백그라운드 앱이 컨트롤러로 게임을 시작하는 데 걸림돌이 될 수 있습니다. CouchMode는 Windows를 대체하거나 PC를 장악하지 않고 이 간격을 줄여 줍니다.",
+        "책상에서는 편한 바탕 화면도 소파에서는 다릅니다. 작은 글씨, 마우스 중심의 메뉴, 백그라운드 앱이 컨트롤러로 게임을 시작하는 데 걸림돌이 될 수 있습니다. CouchMode는 Windows를 대체하거나 PC를 장악하지 않고 이런 불편을 줄여 줍니다.",
       points: [
         {
           title: "큰 화면에 어울리는 게임 환경",
@@ -59,7 +59,7 @@ export const koreanHomePacket: SurfacePacketBase<"home"> = {
         },
         {
           title: "기존 환경을 소중하게",
-          body: "CouchMode는 사용자가 활성화한 지원 세션 설정만 변경하며, 세션이 끝나면 직접 변경한 설정을 복원합니다.",
+          body: "CouchMode는 지원되는 세션 설정 중 사용자가 활성화한 항목만 변경하며, 세션이 끝나면 직접 변경한 설정을 복원합니다.",
         },
       ],
     },
@@ -91,7 +91,7 @@ export const koreanHomePacket: SurfacePacketBase<"home"> = {
         {
           number: "04",
           title: "바탕 화면으로 돌아가기",
-          body: "세션이 끝나면 CouchMode가 직접 시작한 게임 환경을 종료하고, 직접 변경한 지원되는 Windows 설정을 복원한 뒤 바탕 화면으로 제어를 돌려줍니다.",
+          body: "세션이 끝나면 CouchMode가 직접 시작한 게임 환경을 종료하고, 직접 변경한 지원되는 Windows 설정을 복원해 바탕 화면을 다시 사용할 수 있게 합니다.",
           detail: "Free와 Pro · 안전하게 세션 마치기",
         },
       ],

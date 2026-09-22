@@ -21,7 +21,7 @@ export const polishLocaleContent: SharedLocaleContent = {
   errors: {
     staticHeading: "Ta strona CouchMode nie istnieje.",
     staticDescription:
-      "Zajrzyj do poradników o graniu na telewizorze z Windows lub wróć na stronę główną CouchMode.",
+      "Zajrzyj do poradników o graniu na komputerze z Windows podłączonym do telewizora lub wróć na stronę główną CouchMode.",
     guidesLabel: "Przeglądaj poradniki",
     notFoundTitle: "Nie znaleziono strony",
     notFoundDescription: "Szukana strona nie istnieje lub została przeniesiona.",

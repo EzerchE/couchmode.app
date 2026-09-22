@@ -10,7 +10,7 @@ export const italianReleaseEditorialOverlay: ReleaseEditorialOverlay = {
         "Avvio dell'esperienza Xbox a schermo intero più affidabile sulle console portatili Windows.",
         "Migliorato il rilevamento di controller e console portatili su diversi dispositivi Windows.",
         "Più affidabili l'accesso alla sessione Xbox a schermo intero, l'attivazione della finestra e il ritorno al desktop.",
-        "Playnite ora supporta in modo più affidabile i percorsi di installazione personalizzati e le installazioni portabili.",
+        "CouchMode ora gestisce in modo più affidabile le installazioni di Playnite in percorsi personalizzati e le installazioni portabili.",
         "Migliorato il controllo degli aggiornamenti, con messaggi più chiari.",
         "Unificata la verifica del supporto Xbox a schermo intero in Settings.",
         "Miglioramenti generali dell'affidabilità.",

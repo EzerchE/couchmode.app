@@ -18,7 +18,7 @@
       "Improved Xbox full-screen experience startup reliability on handheld PCs.",
       "Improved controller and handheld detection across different Windows devices.",
       "Improved Xbox full-screen session entry, focus, and desktop return reliability.",
-      "Playnite now supports custom and portable installation locations more reliably.",
+      "CouchMode now handles custom and portable Playnite installation locations more reliably.",
       "Improved update-check behaviour and clearer update messaging.",
       "Unified Xbox full-screen support checking in Settings.",
       "General reliability improvements."

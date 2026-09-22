@@ -11,7 +11,7 @@ export const polishReleaseEditorialOverlay = {
         "Poprawiono niezawodność uruchamiania pełnoekranowego trybu Xbox na przenośnych komputerach.",
         "Usprawniono wykrywanie kontrolerów i przenośnych komputerów na różnych urządzeniach z Windows.",
         "Poprawiono niezawodność rozpoczynania sesji w pełnoekranowym trybie Xbox, aktywowania właściwego okna i powrotu do pulpitu.",
-        "Playnite działa teraz niezawodniej również przy instalacjach w niestandardowych lokalizacjach i w wersji przenośnej.",
+        "CouchMode obsługuje teraz niezawodniej Playnite zainstalowany w niestandardowych lokalizacjach oraz wersje przenośne.",
         "Usprawniono sprawdzanie aktualizacji i doprecyzowano komunikaty o aktualizacjach.",
         "Ujednolicono sprawdzanie obsługi pełnoekranowego trybu Xbox w Settings.",
         "Ogólne poprawki niezawodności.",
