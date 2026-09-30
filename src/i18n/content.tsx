@@ -35,9 +35,9 @@ export function LocaleContentProvider({
     throw new Error(`Validation packet locale does not match provider locale: ${locale}`);
 
   const relativeHref = validationPacket
-    ? (contentId: SurfaceId, fragment = "", trailingSlash = false) =>
+    ? (contentId: SurfaceId, fragment = "", trailingSlash = true) =>
         relativeHrefForPacket(validationPacket, contentId, fragment, trailingSlash)
-    : (contentId: SurfaceId, fragment = "", trailingSlash = false) =>
+    : (contentId: SurfaceId, fragment = "", trailingSlash = true) =>
         relativeHrefFor(packet.locale, contentId, fragment, trailingSlash);
 
   return (

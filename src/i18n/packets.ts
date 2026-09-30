@@ -425,7 +425,7 @@ export function relativeHrefFor(
   locale: LocaleId,
   contentId: SurfaceId,
   fragment = "",
-  trailingSlash = false,
+  trailingSlash = true,
 ) {
   const href = hrefFor(locale, contentId);
   if (!href) return undefined;
@@ -438,7 +438,7 @@ export function relativeHrefForPacket(
   packet: LocalePacket,
   contentId: SurfaceId,
   fragment = "",
-  trailingSlash = false,
+  trailingSlash = true,
 ) {
   const target = packet.surfaces[contentId];
   if (!target || target.kind !== surfaceRegistry[contentId].kind) return undefined;
