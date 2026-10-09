@@ -6,8 +6,8 @@
     "channel": "standalone",
     "releaseChannel": "beta",
     "updateChannel": "stable",
-    "publicationState": "blocked",
-    "releasedAt": "2026-10-07T00:00:00Z",
+    "publicationState": "ready",
+    "releasedAt": "2026-10-09T16:02:48Z",
     "sha256": "E2A72322800688D92CE491FC99B3A7DAEBD68A1A423C659BC215A72252365FF3",
     "sizeBytes": 3131679,
     "signed": false,
@@ -16,8 +16,8 @@
     "minimumSupportedVersion": "0.4.10.30",
     "minimumSupportedVersionNumeric": "0.4.10.30",
     "downloadPageUrl": "https://couchmode.app/download",
-    "installerUrl": null,
-    "downloadEnabled": false,
+    "installerUrl": "https://github.com/EzerchE/couchmode-releases/releases/download/v0.6.0-rc.15/CouchMode-Setup-0.6.0-rc.15.exe",
+    "downloadEnabled": true,
     "summary": "CouchMode 0.6.0-rc.15",
     "notes": [
       "Every CouchMode feature is now free during the public beta, including custom launchers and the deeper automation options that used to need Pro.",
@@ -46,7 +46,7 @@
     "minimumSupportedVersion": "0.4.10-beta.30",
     "minimumSupportedVersionNumeric": "0.4.10.30",
     "downloadPageUrl": "https://couchmode.app/download",
-    "installerUrl": "https://github.com/EzerchE/couchmode-releases/releases/download/v0.6.0-rc.10/CouchMode-Setup-0.6.0-rc.10.exe",
+    "installerUrl": null,
     "summary": "Improved Xbox full-screen startup, handheld detection, Playnite compatibility, and update reliability.",
     "notes": [
       "Improved Xbox full-screen experience startup reliability on handheld PCs.",
@@ -58,7 +58,7 @@
       "General reliability improvements."
     ],
     "knownIssues": [],
-    "downloadEnabled": true
+    "downloadEnabled": false
   },
   {
     "version": "0.6.0-rc.9",

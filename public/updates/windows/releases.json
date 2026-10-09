@@ -1,6 +1,36 @@
 [
   {
     "channel": "standalone",
+    "version": "0.6.0-rc.15",
+    "fileVersion": "0.6.0.15",
+    "releasedAt": "2026-10-09T16:02:48Z",
+    "downloadPageUrl": "https://couchmode.app/download",
+    "sha256": "E2A72322800688D92CE491FC99B3A7DAEBD68A1A423C659BC215A72252365FF3",
+    "sizeBytes": 3131679,
+    "critical": false,
+    "mandatory": false,
+    "signed": false,
+    "downloadEnabled": true,
+    "installerUrl": "https://github.com/EzerchE/couchmode-releases/releases/download/v0.6.0-rc.15/CouchMode-Setup-0.6.0-rc.15.exe",
+    "minimumSupportedVersion": "0.4.10.30",
+    "minimumSupportedVersionNumeric": "0.4.10.30",
+    "summary": "CouchMode 0.6.0-rc.15",
+    "notes": [
+      "Every CouchMode feature is now free during the public beta, including custom launchers and the deeper automation options that used to need Pro.",
+      "Trial countdowns and trial-ended notices are gone. The sidebar and About now show Public beta, or your supporter status if you support CouchMode on Patreon.",
+      "New Support CouchMode option: join on Patreon, connect an existing Patreon membership, or support once with Buy Me a Coffee. A one-time coffee is a thank-you and does not unlock anything.",
+      "Patreon supporters can turn on Enable beta updates to get preview builds in the app before the standard release. If a membership lapses, preview updates pause and standard releases continue, and nothing is downgraded.",
+      "Connecting Patreon is more reliable when the CouchMode service is slow to respond, and a second attempt can no longer start a duplicate sign-in.",
+      "Check Xbox full-screen support now stays available after Xbox full-screen mode was marked unavailable, so you can re-check it at any time outside a session.",
+      "CouchMode now ships the third-party license notices for the components it includes."
+    ],
+    "knownIssues": [
+      "Xbox Mode availability depends on your Windows version, device support, Xbox app support, region, and Microsoft's rollout status.",
+      "Native PlayStation controllers are not currently supported as direct CouchMode session triggers. Controllers exposed to Windows as XInput through a compatibility layer may work."
+    ]
+  },
+  {
+    "channel": "standalone",
     "version": "0.6.0-rc.10",
     "fileVersion": "0.6.0.10",
     "releasedAt": "2026-08-30T00:00:00Z",
@@ -9,8 +39,8 @@
     "sizeBytes": 3125072,
     "critical": false,
     "signed": true,
-    "downloadEnabled": true,
-    "installerUrl": "https://github.com/EzerchE/couchmode-releases/releases/download/v0.6.0-rc.10/CouchMode-Setup-0.6.0-rc.10.exe",
+    "downloadEnabled": false,
+    "installerUrl": null,
     "minimumSupportedVersion": "0.4.10-beta.30",
     "minimumSupportedVersionNumeric": "0.4.10.30",
     "summary": "Improved Xbox full-screen startup, handheld detection, Playnite compatibility, and update reliability.",
