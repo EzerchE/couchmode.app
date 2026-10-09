@@ -286,7 +286,7 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "Was bietet eine Patreon-Mitgliedschaft?",
           answer:
-            "Pro und Pro Supporter kennzeichnen Unterstützer und schalten keine Funktionen frei. Pro: Unterstützerstatus auf bis zu 2 aktiven Windows-Geräten. Pro Supporter: Unterstützerstatus auf bis zu 5 aktiven Windows-Geräten und ein höherer Beitrag zum Projekt. Patreon-Unterstützer können Vorschau-Updates auf Wunsch direkt in CouchMode erhalten. Die Vorschauversionen sind öffentlich, nicht exklusiv für Unterstützer.",
+            "Pro und Pro Supporter kennzeichnen Unterstützer und schalten keine Funktionen frei. Pro: Unterstützerstatus auf bis zu 2 aktiven Windows-Geräten. Pro Supporter: Unterstützerstatus auf bis zu 5 aktiven Windows-Geräten und ein höherer Beitrag zum Projekt. Patreon-Unterstützer können Vorschau-Updates auf Wunsch direkt über CouchMode erhalten, wenn Vorschauversionen verfügbar sind.",
         },
         {
           question: "Was passiert, wenn meine Mitgliedschaft endet?",
@@ -807,7 +807,7 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "Patreon üyeliği ne sağlar?",
           answer:
-            "Pro ve Pro Supporter, destekçi statüleridir; özelliklerin kilidini açmak için gerekli değildir. Pro: en fazla 2 etkin Windows cihazında destekçi statüsü. Pro Supporter: en fazla 5 etkin Windows cihazında destekçi statüsü ve projeye daha yüksek düzeyde destek. Patreon destekçileri isterlerse önizleme güncellemelerini doğrudan CouchMode içinden alabilir. Önizleme sürümleri herkese açıktır, destekçilere özel değildir.",
+            "Pro ve Pro Supporter, destekçi statüleridir; özelliklerin kilidini açmak için gerekli değildir. Pro: en fazla 2 etkin Windows cihazında destekçi statüsü. Pro Supporter: en fazla 5 etkin Windows cihazında destekçi statüsü ve projeye daha yüksek düzeyde destek. Patreon destekçileri, önizleme sürümleri mevcut olduğunda önizleme güncellemelerini isterlerse doğrudan CouchMode üzerinden alabilir.",
         },
         {
           question: "Üyeliğim sona ererse ne olur?",

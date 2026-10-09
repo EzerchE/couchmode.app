@@ -239,7 +239,7 @@ export const koreanHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "Patreon 멤버십은 무엇을 제공하나요?",
           answer:
-            "Pro와 Pro Supporter는 후원자 상태를 나타내며, 기능을 잠금 해제하기 위한 등급이 아닙니다. Pro: 최대 2대의 활성 Windows 기기에서 후원자 상태를 사용할 수 있습니다. Pro Supporter: 최대 5대의 활성 Windows 기기에서 후원자 상태를 사용할 수 있으며, 프로젝트에 더 큰 금액을 후원합니다. Patreon 후원자는 CouchMode 안에서 미리 보기 업데이트를 받도록 선택할 수 있습니다. 미리 보기 빌드는 공개되며 후원자 전용이 아닙니다.",
+            "Pro와 Pro Supporter는 후원자 상태를 나타내며, 기능을 잠금 해제하기 위한 등급이 아닙니다. Pro: 최대 2대의 활성 Windows 기기에서 후원자 상태를 사용할 수 있습니다. Pro Supporter: 최대 5대의 활성 Windows 기기에서 후원자 상태를 사용할 수 있으며, 프로젝트에 더 큰 금액을 후원합니다. Patreon 후원자는 미리 보기 버전이 제공될 때 CouchMode에서 직접 미리 보기 업데이트를 받도록 선택할 수 있습니다.",
         },
         {
           question: "멤버십이 끝나면 어떻게 되나요?",

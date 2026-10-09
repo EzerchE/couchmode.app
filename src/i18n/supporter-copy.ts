@@ -34,7 +34,7 @@ export const supporterCopy: Record<LocaleId, SupporterCopy> = {
     proSupporter:
       "Pro Supporter: supporter identity on up to 5 active Windows devices and a higher level of project support.",
     previews:
-      "Patreon supporters can opt in to receive preview updates directly in CouchMode. Preview builds are public, not exclusive to supporters.",
+      "Patreon supporters can opt in to receive preview updates directly through CouchMode when previews are available.",
     lapse:
       "If your membership lapses, preview delivery pauses. Standard updates continue and your installed version is not downgraded. Public-beta features remain free.",
     featuresHeading: "One public beta. All features included.",
@@ -62,7 +62,7 @@ export const supporterCopy: Record<LocaleId, SupporterCopy> = {
     proSupporter:
       "Pro Supporter: Unterstützerstatus auf bis zu 5 aktiven Windows-Geräten und ein höherer Beitrag zum Projekt.",
     previews:
-      "Patreon-Unterstützer können Vorschau-Updates auf Wunsch direkt in CouchMode erhalten. Die Vorschauversionen sind öffentlich, nicht exklusiv für Unterstützer.",
+      "Patreon-Unterstützer können Vorschau-Updates auf Wunsch direkt über CouchMode erhalten, wenn Vorschauversionen verfügbar sind.",
     lapse:
       "Endet deine Mitgliedschaft, pausiert die Zustellung von Vorschau-Updates. Reguläre Updates laufen weiter, ohne die installierte Version zurückzustufen. Die Funktionen der öffentlichen Beta bleiben kostenlos.",
     featuresHeading: "Eine öffentliche Beta. Alle Funktionen dabei.",
@@ -91,7 +91,7 @@ export const supporterCopy: Record<LocaleId, SupporterCopy> = {
     proSupporter:
       "Pro Supporter: en fazla 5 etkin Windows cihazında destekçi statüsü ve projeye daha yüksek düzeyde destek.",
     previews:
-      "Patreon destekçileri isterlerse önizleme güncellemelerini doğrudan CouchMode içinden alabilir. Önizleme sürümleri herkese açıktır, destekçilere özel değildir.",
+      "Patreon destekçileri, önizleme sürümleri mevcut olduğunda önizleme güncellemelerini isterlerse doğrudan CouchMode üzerinden alabilir.",
     lapse:
       "Üyeliğiniz sona ererse uygulama içinden önizleme güncellemeleri duraklatılır. Standart güncellemeler devam eder ve kurulu sürüm eski bir sürüme düşürülmez. Açık beta özellikleri ücretsiz kalır.",
     featuresHeading: "Tek bir açık beta. Tüm özellikler dahil.",
@@ -120,7 +120,7 @@ export const supporterCopy: Record<LocaleId, SupporterCopy> = {
     proSupporter:
       "Pro Supporter : statut de soutien sur un maximum de 5 appareils Windows actifs et contribution plus importante au projet.",
     previews:
-      "Les membres Patreon peuvent choisir de recevoir les mises à jour en avant-première directement dans CouchMode. Ces versions sont publiques, pas réservées aux membres.",
+      "Les membres Patreon peuvent choisir de recevoir les mises à jour en avant-première directement via CouchMode lorsque des avant-premières sont disponibles.",
     lapse:
       "Si votre abonnement prend fin, la réception des versions en avant-première est suspendue. Les mises à jour standard continuent, sans revenir à une version antérieure. Les fonctionnalités de la bêta publique restent gratuites.",
     featuresHeading: "Une bêta publique, toutes les fonctionnalités.",
@@ -149,7 +149,7 @@ export const supporterCopy: Record<LocaleId, SupporterCopy> = {
     proSupporter:
       "Pro Supporter: identificación como miembro de apoyo en hasta 5 dispositivos Windows activos y una mayor aportación al proyecto.",
     previews:
-      "Los miembros de Patreon pueden optar por recibir versiones preliminares directamente en CouchMode. Estas versiones son públicas, no exclusivas para los miembros.",
+      "Los miembros de Patreon pueden optar por recibir versiones preliminares directamente a través de CouchMode cuando haya versiones preliminares disponibles.",
     lapse:
       "Si termina tu suscripción, se pausa la recepción de versiones preliminares. Las actualizaciones estándar continúan y no se instala una versión anterior. Las funciones de la beta pública siguen siendo gratuitas.",
     featuresHeading: "Una beta pública con todas las funciones.",
@@ -177,7 +177,7 @@ export const supporterCopy: Record<LocaleId, SupporterCopy> = {
     proSupporter:
       "Pro Supporter: stato di sostenitore su un massimo di 5 dispositivi Windows attivi e un contributo maggiore al progetto.",
     previews:
-      "I sostenitori su Patreon possono scegliere di ricevere gli aggiornamenti in anteprima direttamente in CouchMode. Le versioni in anteprima sono pubbliche, non esclusive per i sostenitori.",
+      "I sostenitori su Patreon possono scegliere di ricevere gli aggiornamenti in anteprima direttamente tramite CouchMode quando sono disponibili versioni in anteprima.",
     lapse:
       "Se l'abbonamento termina, la ricezione degli aggiornamenti in anteprima viene sospesa. Gli aggiornamenti standard continuano e la versione installata non viene riportata a una precedente. Le funzioni della beta pubblica restano gratuite.",
     featuresHeading: "Una beta pubblica. Tutte le funzioni incluse.",
@@ -205,7 +205,7 @@ export const supporterCopy: Record<LocaleId, SupporterCopy> = {
     proSupporter:
       "Pro Supporter: status de apoiador em até 5 dispositivos Windows ativos e uma contribuição maior para o projeto.",
     previews:
-      "Apoiadores no Patreon podem optar por receber atualizações de prévia diretamente no CouchMode. Essas versões são públicas, não exclusivas para apoiadores.",
+      "Apoiadores no Patreon podem optar por receber atualizações de prévia diretamente pelo CouchMode quando houver prévias disponíveis.",
     lapse:
       "Se a assinatura terminar, o recebimento de prévias será pausado. As atualizações padrão continuam e a versão instalada não é substituída por uma anterior. Os recursos do beta público continuam gratuitos.",
     featuresHeading: "Um beta público com todos os recursos.",
@@ -233,7 +233,7 @@ export const supporterCopy: Record<LocaleId, SupporterCopy> = {
     proSupporter:
       "Pro Supporter: status wspierającego na maksymalnie 5 aktywnych urządzeniach z Windows i większe wsparcie projektu.",
     previews:
-      "Wspierający na Patreon mogą włączyć odbieranie aktualizacji testowych bezpośrednio w CouchMode. Wersje testowe są publiczne, nie są zarezerwowane dla wspierających.",
+      "Wspierający na Patreon mogą włączyć odbieranie aktualizacji testowych bezpośrednio przez CouchMode, gdy wersje testowe będą dostępne.",
     lapse:
       "Po wygaśnięciu subskrypcji odbieranie wersji testowych zostaje wstrzymane. Standardowe aktualizacje działają dalej, bez cofania zainstalowanej wersji. Funkcje publicznej bety pozostają bezpłatne.",
     featuresHeading: "Jedna publiczna beta. Wszystkie funkcje.",
@@ -262,7 +262,7 @@ export const supporterCopy: Record<LocaleId, SupporterCopy> = {
     proSupporter:
       "Pro Supporter：最大5台の有効なWindowsデバイスで支援者ステータスを利用でき、より大きな金額でプロジェクトを支援できます。",
     previews:
-      "Patreonの支援者は、CouchMode内でプレビュー版の更新を受け取るかどうかを選べます。プレビュー版は一般公開されるもので、支援者限定ではありません。",
+      "Patreonの支援者は、プレビュー版が提供されている場合に、CouchModeから直接プレビュー版の更新を受け取るかどうかを選べます。",
     lapse:
       "メンバーシップが終了すると、アプリ内でのプレビュー更新の受信は一時停止します。通常の更新は継続し、インストール済みのバージョンが古いものに戻ることはありません。公開ベータの機能は引き続き無料です。",
     featuresHeading: "公開ベータで、すべての機能を。",
@@ -291,7 +291,7 @@ export const supporterCopy: Record<LocaleId, SupporterCopy> = {
     proSupporter:
       "Pro Supporter: 최대 5대의 활성 Windows 기기에서 후원자 상태를 사용할 수 있으며, 프로젝트에 더 큰 금액을 후원합니다.",
     previews:
-      "Patreon 후원자는 CouchMode 안에서 미리 보기 업데이트를 받도록 선택할 수 있습니다. 미리 보기 빌드는 공개되며 후원자 전용이 아닙니다.",
+      "Patreon 후원자는 미리 보기 버전이 제공될 때 CouchMode에서 직접 미리 보기 업데이트를 받도록 선택할 수 있습니다.",
     lapse:
       "멤버십이 끝나면 앱 내 미리 보기 업데이트 수신이 일시 중지됩니다. 일반 업데이트는 계속되며 설치된 버전이 이전 버전으로 내려가지 않습니다. 공개 베타 기능은 계속 무료로 사용할 수 있습니다.",
     featuresHeading: "하나의 공개 베타, 모든 기능 제공.",

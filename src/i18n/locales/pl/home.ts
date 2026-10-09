@@ -246,7 +246,7 @@ export const polishHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "Co daje subskrypcja na Patreon?",
           answer:
-            "Pro i Pro Supporter oznaczają status wspierającego, a nie odblokowanie funkcji. Pro: status wspierającego na maksymalnie 2 aktywnych urządzeniach z Windows. Pro Supporter: status wspierającego na maksymalnie 5 aktywnych urządzeniach z Windows i większe wsparcie projektu. Wspierający na Patreon mogą włączyć odbieranie aktualizacji testowych bezpośrednio w CouchMode. Wersje testowe są publiczne, nie są zarezerwowane dla wspierających.",
+            "Pro i Pro Supporter oznaczają status wspierającego, a nie odblokowanie funkcji. Pro: status wspierającego na maksymalnie 2 aktywnych urządzeniach z Windows. Pro Supporter: status wspierającego na maksymalnie 5 aktywnych urządzeniach z Windows i większe wsparcie projektu. Wspierający na Patreon mogą włączyć odbieranie aktualizacji testowych bezpośrednio przez CouchMode, gdy wersje testowe będą dostępne.",
         },
         {
           question: "Co się stanie po wygaśnięciu subskrypcji?",

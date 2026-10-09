@@ -248,7 +248,7 @@ export const brazilianPortugueseHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "O que a assinatura no Patreon oferece?",
           answer:
-            "Pro e Pro Supporter identificam quem apoia o projeto; não desbloqueiam recursos. Pro: status de apoiador em até 2 dispositivos Windows ativos. Pro Supporter: status de apoiador em até 5 dispositivos Windows ativos e uma contribuição maior para o projeto. Apoiadores no Patreon podem optar por receber atualizações de prévia diretamente no CouchMode. Essas versões são públicas, não exclusivas para apoiadores.",
+            "Pro e Pro Supporter identificam quem apoia o projeto; não desbloqueiam recursos. Pro: status de apoiador em até 2 dispositivos Windows ativos. Pro Supporter: status de apoiador em até 5 dispositivos Windows ativos e uma contribuição maior para o projeto. Apoiadores no Patreon podem optar por receber atualizações de prévia diretamente pelo CouchMode quando houver prévias disponíveis.",
         },
         {
           question: "O que acontece se minha assinatura terminar?",

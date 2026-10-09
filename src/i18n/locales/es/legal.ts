@@ -191,7 +191,7 @@ export const spanishTermsPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "Los miembros de Patreon pueden optar por recibir versiones preliminares directamente en CouchMode. Estas versiones son públicas, no exclusivas para los miembros.",
+              text: "Los miembros de Patreon pueden optar por recibir versiones preliminares directamente a través de CouchMode cuando haya versiones preliminares disponibles.",
             },
           ],
           [

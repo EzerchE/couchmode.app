@@ -248,7 +248,7 @@ export const spanishHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "¿Qué ofrece una suscripción en Patreon?",
           answer:
-            "Pro y Pro Supporter identifican a quienes apoyan el proyecto; no desbloquean funciones. Pro: identificación como miembro de apoyo en hasta 2 dispositivos Windows activos. Pro Supporter: identificación como miembro de apoyo en hasta 5 dispositivos Windows activos y una mayor aportación al proyecto. Los miembros de Patreon pueden optar por recibir versiones preliminares directamente en CouchMode. Estas versiones son públicas, no exclusivas para los miembros.",
+            "Pro y Pro Supporter identifican a quienes apoyan el proyecto; no desbloquean funciones. Pro: identificación como miembro de apoyo en hasta 2 dispositivos Windows activos. Pro Supporter: identificación como miembro de apoyo en hasta 5 dispositivos Windows activos y una mayor aportación al proyecto. Los miembros de Patreon pueden optar por recibir versiones preliminares directamente a través de CouchMode cuando haya versiones preliminares disponibles.",
         },
         {
           question: "¿Qué pasa si termina mi suscripción?",

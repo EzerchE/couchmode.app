@@ -186,7 +186,7 @@ export const brazilianPortugueseTermsPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "Apoiadores no Patreon podem optar por receber atualizações de prévia diretamente no CouchMode. Essas versões são públicas, não exclusivas para apoiadores.",
+              text: "Apoiadores no Patreon podem optar por receber atualizações de prévia diretamente pelo CouchMode quando houver prévias disponíveis.",
             },
           ],
           [

@@ -191,7 +191,7 @@ export const italianTermsPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "I sostenitori su Patreon possono scegliere di ricevere gli aggiornamenti in anteprima direttamente in CouchMode. Le versioni in anteprima sono pubbliche, non esclusive per i sostenitori.",
+              text: "I sostenitori su Patreon possono scegliere di ricevere gli aggiornamenti in anteprima direttamente tramite CouchMode quando sono disponibili versioni in anteprima.",
             },
           ],
           [

@@ -191,7 +191,7 @@ export const japaneseTermsPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "Patreonの支援者は、CouchMode内でプレビュー版の更新を受け取るかどうかを選べます。プレビュー版は一般公開されるもので、支援者限定ではありません。",
+              text: "Patreonの支援者は、プレビュー版が提供されている場合に、CouchModeから直接プレビュー版の更新を受け取るかどうかを選べます。",
             },
           ],
           [

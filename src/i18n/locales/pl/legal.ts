@@ -189,7 +189,7 @@ export const polishTermsPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "Wspierający na Patreon mogą włączyć odbieranie aktualizacji testowych bezpośrednio w CouchMode. Wersje testowe są publiczne, nie są zarezerwowane dla wspierających.",
+              text: "Wspierający na Patreon mogą włączyć odbieranie aktualizacji testowych bezpośrednio przez CouchMode, gdy wersje testowe będą dostępne.",
             },
           ],
           [

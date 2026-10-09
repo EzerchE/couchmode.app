@@ -430,7 +430,7 @@ const englishHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "What does a Patreon membership provide?",
           answer:
-            "Pro and Pro Supporter are supporter identities, not feature unlocks. Pro: supporter identity on up to 2 active Windows devices. Pro Supporter: supporter identity on up to 5 active Windows devices and a higher level of project support. Patreon supporters can opt in to receive preview updates directly in CouchMode. Preview builds are public, not exclusive to supporters.",
+            "Pro and Pro Supporter are supporter identities, not feature unlocks. Pro: supporter identity on up to 2 active Windows devices. Pro Supporter: supporter identity on up to 5 active Windows devices and a higher level of project support. Patreon supporters can opt in to receive preview updates directly through CouchMode when previews are available.",
         },
         {
           question: "What happens if my membership ends?",
@@ -806,7 +806,7 @@ const englishTermsPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "Patreon supporters can opt in to receive preview updates directly in CouchMode. Preview builds are public, not exclusive to supporters.",
+              text: "Patreon supporters can opt in to receive preview updates directly through CouchMode when previews are available.",
             },
           ],
           [

@@ -248,7 +248,7 @@ export const italianHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "Cosa offre un abbonamento Patreon?",
           answer:
-            "Pro e Pro Supporter identificano i sostenitori e non sbloccano funzioni. Pro: stato di sostenitore su un massimo di 2 dispositivi Windows attivi. Pro Supporter: stato di sostenitore su un massimo di 5 dispositivi Windows attivi e un contributo maggiore al progetto. I sostenitori su Patreon possono scegliere di ricevere gli aggiornamenti in anteprima direttamente in CouchMode. Le versioni in anteprima sono pubbliche, non esclusive per i sostenitori.",
+            "Pro e Pro Supporter identificano i sostenitori e non sbloccano funzioni. Pro: stato di sostenitore su un massimo di 2 dispositivi Windows attivi. Pro Supporter: stato di sostenitore su un massimo di 5 dispositivi Windows attivi e un contributo maggiore al progetto. I sostenitori su Patreon possono scegliere di ricevere gli aggiornamenti in anteprima direttamente tramite CouchMode quando sono disponibili versioni in anteprima.",
         },
         {
           question: "Cosa succede se l'abbonamento termina?",

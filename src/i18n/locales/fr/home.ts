@@ -249,7 +249,7 @@ export const frenchHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "Que comprend une adhésion Patreon ?",
           answer:
-            "Pro et Pro Supporter désignent les soutiens du projet, sans débloquer de fonctionnalités. Pro : statut de soutien sur un maximum de 2 appareils Windows actifs. Pro Supporter : statut de soutien sur un maximum de 5 appareils Windows actifs et contribution plus importante au projet. Les membres Patreon peuvent choisir de recevoir les mises à jour en avant-première directement dans CouchMode. Ces versions sont publiques, pas réservées aux membres.",
+            "Pro et Pro Supporter désignent les soutiens du projet, sans débloquer de fonctionnalités. Pro : statut de soutien sur un maximum de 2 appareils Windows actifs. Pro Supporter : statut de soutien sur un maximum de 5 appareils Windows actifs et contribution plus importante au projet. Les membres Patreon peuvent choisir de recevoir les mises à jour en avant-première directement via CouchMode lorsque des avant-premières sont disponibles.",
         },
         {
           question: "Que se passe-t-il si mon abonnement prend fin ?",

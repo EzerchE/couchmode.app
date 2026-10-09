@@ -191,7 +191,7 @@ export const koreanTermsPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "Patreon 후원자는 CouchMode 안에서 미리 보기 업데이트를 받도록 선택할 수 있습니다. 미리 보기 빌드는 공개되며 후원자 전용이 아닙니다.",
+              text: "Patreon 후원자는 미리 보기 버전이 제공될 때 CouchMode에서 직접 미리 보기 업데이트를 받도록 선택할 수 있습니다.",
             },
           ],
           [

@@ -186,7 +186,7 @@ export const germanTermsPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "Patreon-Unterstützer können Vorschau-Updates auf Wunsch direkt in CouchMode erhalten. Die Vorschauversionen sind öffentlich, nicht exklusiv für Unterstützer.",
+              text: "Patreon-Unterstützer können Vorschau-Updates auf Wunsch direkt über CouchMode erhalten, wenn Vorschauversionen verfügbar sind.",
             },
           ],
           [
@@ -536,7 +536,7 @@ export const turkishTermsPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "Patreon destekçileri isterlerse önizleme güncellemelerini doğrudan CouchMode içinden alabilir. Önizleme sürümleri herkese açıktır, destekçilere özel değildir.",
+              text: "Patreon destekçileri, önizleme sürümleri mevcut olduğunda önizleme güncellemelerini isterlerse doğrudan CouchMode üzerinden alabilir.",
             },
           ],
           [

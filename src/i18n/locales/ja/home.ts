@@ -243,7 +243,7 @@ export const japaneseHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "Patreonのメンバーシップでは何ができますか？",
           answer:
-            "ProとPro Supporterは支援者のステータスです。機能のロック解除に必要なものではありません。 Pro：最大2台の有効なWindowsデバイスで支援者ステータスを利用できます。 Pro Supporter：最大5台の有効なWindowsデバイスで支援者ステータスを利用でき、より大きな金額でプロジェクトを支援できます。 Patreonの支援者は、CouchMode内でプレビュー版の更新を受け取るかどうかを選べます。プレビュー版は一般公開されるもので、支援者限定ではありません。",
+            "ProとPro Supporterは支援者のステータスです。機能のロック解除に必要なものではありません。 Pro：最大2台の有効なWindowsデバイスで支援者ステータスを利用できます。 Pro Supporter：最大5台の有効なWindowsデバイスで支援者ステータスを利用でき、より大きな金額でプロジェクトを支援できます。 Patreonの支援者は、プレビュー版が提供されている場合に、CouchModeから直接プレビュー版の更新を受け取るかどうかを選べます。",
         },
         {
           question: "メンバーシップが終了するとどうなりますか？",
