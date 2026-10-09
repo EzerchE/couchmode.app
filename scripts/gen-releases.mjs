@@ -5,9 +5,11 @@
 // Outputs:
 //   public/updates/windows/latest.json    - the newest release (update check)
 //   public/updates/windows/releases.json  - full public release history
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, rmSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { releaseSlots } from "./lib/release-slots.mjs";
+import { wasPublished } from "./lib/release-handoff.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const outDir = resolve(root, "public/updates/windows");
@@ -15,14 +17,12 @@ const outDir = resolve(root, "public/updates/windows");
 // Message the app shows when a newer build than the user's is available.
 const UPDATE_MESSAGE = "A newer CouchMode beta is available.";
 
-const releases = JSON.parse(
-  readFileSync(resolve(root, "src/data/releases.json"), "utf8"),
-);
+const allReleases = JSON.parse(readFileSync(resolve(root, "src/data/releases.json"), "utf8"));
 
-const latest = releases[0];
+const releases = allReleases.filter(wasPublished);
+const { stable: latest, preview } = releaseSlots(allReleases);
 if (!latest) {
-  console.error("gen-releases: no releases found in src/data/releases.json");
-  process.exit(1);
+  rmSync(resolve(outDir, "latest.json"), { force: true });
 }
 
 function writeJson(name, data) {
@@ -43,6 +43,7 @@ function toPublicRelease(r) {
     sha256: r.sha256,
     sizeBytes: r.sizeBytes,
     critical: r.critical,
+    ...(typeof r.mandatory === "boolean" ? { mandatory: r.mandatory } : {}),
     signed: r.signed,
     downloadEnabled: r.downloadEnabled === true,
     installerUrl: r.downloadEnabled === true ? r.installerUrl : null,
@@ -57,32 +58,56 @@ function toPublicRelease(r) {
 mkdirSync(outDir, { recursive: true });
 
 // latest.json - unchanged shape consumed by the app's update check.
-const latestManifest = {
-  channel: latest.channel,
-  latestVersion: latest.version,
-  latestVersionNumeric: latest.versionNumeric,
-  fileVersion: latest.fileVersion,
-  minimumSupportedVersion: latest.minimumSupportedVersion,
-  // The app compares THIS field (UpdateCheck.cs reads minimumSupportedVersionNumeric).
-  // Without it the below-minimum gate silently never fires: the client deliberately
-  // refuses to infer a minimum from the display string, so `below` stays false.
-  // Both are emitted so any older reader keeps working.
-  minimumSupportedVersionNumeric: latest.minimumSupportedVersionNumeric,
-  signed: latest.signed,
-  publishedUtc: latest.releasedAt,
-  downloadPageUrl: latest.downloadPageUrl,
-  sha256: latest.sha256,
-  critical: latest.critical,
-  message: UPDATE_MESSAGE,
-};
-writeJson("latest.json", latestManifest);
+function manifestFor(latest) {
+  return {
+    channel: latest.channel,
+    latestVersion: latest.version,
+    latestVersionNumeric: latest.versionNumeric,
+    fileVersion: latest.fileVersion,
+    minimumSupportedVersion: latest.minimumSupportedVersion,
+    // The app compares THIS field (UpdateCheck.cs reads minimumSupportedVersionNumeric).
+    // Without it the below-minimum gate silently never fires: the client deliberately
+    // refuses to infer a minimum from the display string, so `below` stays false.
+    // Both are emitted so any older reader keeps working.
+    minimumSupportedVersionNumeric: latest.minimumSupportedVersionNumeric,
+    signed: latest.signed,
+    publishedUtc: latest.releasedAt,
+    downloadPageUrl: latest.downloadPageUrl,
+    sha256: latest.sha256,
+    critical: latest.critical,
+    message: UPDATE_MESSAGE,
+  };
+}
+if (latest) writeJson("latest.json", manifestFor(latest));
+if (preview) writeJson("beta.json", manifestFor(preview));
+else rmSync(resolve(outDir, "beta.json"), { force: true });
+
+// Review files are deliberately outside public/. A blocked candidate is never a feed.
+const candidate = allReleases.find((r) => r.publicationState === "blocked" && !wasPublished(r));
+if (candidate) {
+  const reviewDir = resolve(root, ".cache/release-window");
+  mkdirSync(reviewDir, { recursive: true });
+  const { publishedUtc, ...reviewManifest } = manifestFor(candidate);
+  writeFileSync(
+    resolve(reviewDir, "latest.candidate.json"),
+    JSON.stringify(reviewManifest, null, 2) + "\n",
+  );
+  writeFileSync(
+    resolve(reviewDir, "releases.candidate.json"),
+    JSON.stringify(allReleases.map(toPublicRelease), null, 2) + "\n",
+  );
+}
 
 // releases.json - full public release history, newest first.
 const releasesManifest = releases.map(toPublicRelease);
 writeJson("releases.json", releasesManifest);
 
 console.log(
-  "gen-releases: wrote latest.json (" + latest.version + ") and releases.json (" +
+  "gen-releases: stable=" +
+    (latest?.version ?? "absent") +
+    ", preview=" +
+    (preview?.version ?? "absent") +
+    "; releases.json (" +
     releasesManifest.length +
     " releases)",
 );

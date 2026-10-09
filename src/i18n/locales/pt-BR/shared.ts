@@ -40,15 +40,15 @@ export const brazilianPortugueseLocaleContent: SharedLocaleContent = {
     languageMenuLabel: "Selecionar idioma",
     links: [
       { contentId: "home", fragment: "#how", label: "Como funciona" },
-      { contentId: "home", fragment: "#pricing", label: "Preços" },
-      { contentId: "buy", label: "Obter Pro" },
+      { contentId: "home", fragment: "#pricing", label: "Recursos" },
+      { contentId: "buy", label: "Apoiar" },
       { contentId: "changelog", label: "Novidades" },
     ],
   },
   footer: {
     links: [
       { contentId: "home", fragment: "#how", label: "Como funciona" },
-      { contentId: "home", fragment: "#pricing", label: "Preços" },
+      { contentId: "home", fragment: "#pricing", label: "Apoie o CouchMode" },
       { contentId: "home", fragment: "#download", label: "Baixar CouchMode" },
       { contentId: "guides", trailingSlash: true, label: "Guias" },
       { contentId: "changelog", label: "Novidades" },

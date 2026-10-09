@@ -11,15 +11,15 @@ export const italianLocaleContent: SharedLocaleContent = {
     languageMenuLabel: "Selezione della lingua",
     links: [
       { contentId: "home", fragment: "#how", label: "Come funziona" },
-      { contentId: "home", fragment: "#pricing", label: "Prezzi" },
-      { contentId: "buy", label: "Passa a Pro" },
+      { contentId: "home", fragment: "#pricing", label: "Funzioni" },
+      { contentId: "buy", label: "Sostieni" },
       { contentId: "changelog", label: "Novità" },
     ],
   },
   footer: {
     links: [
       { contentId: "home", fragment: "#how", label: "Come funziona" },
-      { contentId: "home", fragment: "#pricing", label: "Prezzi" },
+      { contentId: "home", fragment: "#pricing", label: "Sostieni CouchMode" },
       { contentId: "home", fragment: "#download", label: "Scarica CouchMode" },
       { contentId: "guides", trailingSlash: true, label: "Guide" },
       { contentId: "changelog", label: "Note di rilascio" },

@@ -28,13 +28,28 @@ assert.equal(
 );
 assert.equal(proUpgradeSource("unknown"), "website");
 assert.equal(proUpgradeBridgeHref("/buy", "app"), "/buy?source=app");
-assert.equal(proUpgradeBridgeHref("/de/couchmode-pro", "header"), "/de/couchmode-pro?source=header");
-assert.equal(proUpgradeBridgeHref("/tr/couchmode-pro", "pricing"), "/tr/couchmode-pro?source=pricing");
+assert.equal(
+  proUpgradeBridgeHref("/de/couchmode-pro", "header"),
+  "/de/couchmode-pro?source=header",
+);
+assert.equal(
+  proUpgradeBridgeHref("/tr/couchmode-pro", "pricing"),
+  "/tr/couchmode-pro?source=pricing",
+);
 
 const root = path.resolve(import.meta.dirname, "..");
-const bridge = fs.readFileSync(path.join(root, "src/components/checkout/PatreonBridge.tsx"), "utf8");
-assert.match(bridge, /window\.location\.replace\(nextDestination\)/);
-assert.match(bridge, /href=\{destination\}/);
+const bridge = fs.readFileSync(
+  path.join(root, "src/components/checkout/PatreonBridge.tsx"),
+  "utf8",
+);
+assert.doesNotMatch(bridge, /window\.location\.(replace|assign)/);
+assert.match(bridge, /SupportActions/);
+const actions = fs.readFileSync(
+  path.join(root, "src/components/checkout/SupportActions.tsx"),
+  "utf8",
+);
+assert.match(actions, /patreonMembershipUrlFor\(source\)/);
+assert.match(actions, /https:\/\/buymeacoffee.com\/ezerche/);
 
 for (const file of [
   "src/routes/buy.tsx",

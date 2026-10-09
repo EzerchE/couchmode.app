@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
 import { Download, Sparkles } from "lucide-react";
-import { trackDistributionIntent, trackEvent } from "@/lib/analytics";
-import { MICROSOFT_STORE_LABEL } from "@/lib/channels";
+import { trackEvent } from "@/lib/analytics";
 import { latestRelease } from "@/data/releases";
-import { useMicrosoftStoreUrl } from "@/lib/campaign-attribution";
 import type { LocaleId } from "@/i18n/config";
 import { useLocaleContent } from "@/i18n/content";
 import { type HomePayload } from "@/i18n/packets";
@@ -14,17 +12,15 @@ import { type HomePayload } from "@/i18n/packets";
 const downloadOpen = latestRelease.downloadEnabled && !!latestRelease.installerUrl;
 
 export function FinalCTA({ copy, locale }: { copy: HomePayload["finalCta"]; locale: LocaleId }) {
-  const storeUrl = useMicrosoftStoreUrl();
   const { relativeHref } = useLocaleContent();
   const downloadHref = relativeHref("download");
   const changelogHref = relativeHref("changelog");
   if (!downloadHref || !changelogHref) throw new Error(`Missing final CTA hrefs for ${locale}`);
-  const channels = [
+  const channels: { label: string; status: string; href?: string }[] = [
     {
       label: copy.directDownloadLabel,
       status: downloadOpen ? `${copy.openLabel} · ${latestRelease.version}` : copy.preparingLabel,
     },
-    { label: MICROSOFT_STORE_LABEL, status: copy.liveLabel, href: storeUrl },
   ];
 
   return (
@@ -91,25 +87,7 @@ export function FinalCTA({ copy, locale }: { copy: HomePayload["finalCta"]; loca
                     </span>
                   </>
                 );
-                return c.href ? (
-                  <a
-                    key={c.label}
-                    href={c.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded-full transition hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                    onClick={() => {
-                      trackDistributionIntent(
-                        "microsoft_store",
-                        "final_cta",
-                        latestRelease.version,
-                        c.href,
-                      );
-                    }}
-                  >
-                    {body}
-                  </a>
-                ) : (
+                return (
                   <span key={c.label} className="inline-flex items-center gap-1.5">
                     {body}
                   </span>

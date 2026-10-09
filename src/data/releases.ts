@@ -8,6 +8,11 @@ import releasesData from "./releases.json";
 export type ReleaseChannel = "standalone";
 
 export interface Release {
+  /** Retain history and version ordering when a previously published slot is withdrawn. */
+  wasPublished?: boolean;
+  updateChannel?: "stable" | "preview";
+  releaseChannel?: string;
+  publicationState?: "ready" | "blocked" | "superseded" | "revoked";
   /** Display version, e.g. "0.4.10-beta.45". */
   version: string;
   /** Numeric/dotted version for comparison, e.g. "0.4.10.45". */
@@ -22,6 +27,7 @@ export interface Release {
   /** Installer size in bytes, or null until the installer is built. */
   sizeBytes: number | null;
   critical: boolean;
+  mandatory?: boolean;
   /** True once the installer for this release is Authenticode-signed. */
   signed: boolean;
   minimumSupportedVersion: string;
@@ -49,4 +55,15 @@ export interface Release {
 
 export const releases: Release[] = releasesData as Release[];
 
-export const latestRelease: Release = releases[0];
+export const stableRelease = releases.find(
+  (r) => r.downloadEnabled && (r.updateChannel ?? "stable") === "stable",
+);
+export const previewRelease = releases.find(
+  (r) => r.downloadEnabled && r.updateChannel === "preview" && r.publicationState === "ready",
+);
+// A blocked local release-window candidate has no installer URL. The build guard
+// refuses production publication until the authoritative ready handoff replaces it.
+export const releaseCandidate = releases.find(
+  (r) => r.publicationState === "blocked" && !r.wasPublished && r.updateChannel === "stable",
+);
+export const latestRelease: Release = releaseCandidate ?? stableRelease ?? releases[0];

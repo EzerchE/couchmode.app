@@ -2,9 +2,6 @@ import { motion } from "framer-motion";
 import { Download, Sparkles } from "lucide-react";
 
 import { trackDistributionIntent } from "@/lib/analytics";
-import { MICROSOFT_STORE_LABEL } from "@/lib/channels";
-import { useMicrosoftStoreUrl } from "@/lib/campaign-attribution";
-import { MicrosoftStoreIcon } from "@/components/MicrosoftStoreIcon";
 import { HeroShowcase } from "@/components/landing/HeroShowcase";
 import { latestRelease } from "@/data/releases";
 import type { LocaleId } from "@/i18n/config";
@@ -12,7 +9,6 @@ import { useLocaleContent } from "@/i18n/content";
 import { type HomePayload } from "@/i18n/packets";
 
 export function Hero({ copy, locale }: { copy: HomePayload["hero"]; locale: LocaleId }) {
-  const storeUrl = useMicrosoftStoreUrl();
   const { relativeHref } = useLocaleContent();
   const downloadHref = relativeHref("download");
   const pricingHref = relativeHref("home", "#pricing");
@@ -62,18 +58,6 @@ export function Hero({ copy, locale }: { copy: HomePayload["hero"]; locale: Loca
             >
               <Download className="h-4 w-4" />
               {copy.downloadLabel}
-            </a>
-            <a
-              href={storeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-sm font-medium text-foreground transition hover:bg-white/[0.08]"
-              onClick={() =>
-                trackDistributionIntent("microsoft_store", "hero", latestRelease.version, storeUrl)
-              }
-            >
-              <MicrosoftStoreIcon className="h-4 w-4" />
-              {MICROSOFT_STORE_LABEL}
             </a>
             <a
               href={pricingHref}

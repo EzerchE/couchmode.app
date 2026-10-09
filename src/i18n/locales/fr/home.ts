@@ -1,3 +1,5 @@
+import { supporterCopy } from "../../supporter-copy";
+import { installationCopy } from "../../installation-copy";
 import { localeManifest } from "../../config";
 import type { SurfacePacketBase } from "../../packets";
 
@@ -10,10 +12,10 @@ export const frenchHomePacket: SurfacePacketBase<"home"> = {
   seo: {
     title: "CouchMode : un utilitaire Windows pour jouer à la manette",
     description:
-      "Allumez votre manette, ouvrez votre interface de jeu et retrouvez un bureau Windows utilisable après la session. Téléchargez la bêta publique signée de CouchMode.",
+      "Allumez votre manette : CouchMode ouvre l'interface de jeu choisie, prépare la session selon vos préférences et vous ramène à un bureau utilisable quand vous avez terminé. Toutes les fonctionnalités sont gratuites pendant la bêta publique.",
     ogTitle: "CouchMode : un utilitaire Windows pour jouer à la manette",
     ogDescription:
-      "Allumez votre manette, ouvrez votre interface de jeu et retrouvez un bureau Windows utilisable après la session. Téléchargez la bêta publique signée de CouchMode.",
+      "Allumez votre manette : CouchMode ouvre l'interface de jeu choisie, prépare la session selon vos préférences et vous ramène à un bureau utilisable quand vous avez terminé. Toutes les fonctionnalités sont gratuites pendant la bêta publique.",
   },
   schema: {
     softwareDescription:
@@ -30,8 +32,9 @@ export const frenchHomePacket: SurfacePacketBase<"home"> = {
       description:
         "Allumez votre manette : CouchMode ouvre l'interface de jeu choisie, prépare la session selon vos préférences et vous ramène à un bureau utilisable quand vous avez terminé.",
       downloadLabel: "Télécharger pour Windows",
-      proLabel: "Découvrir les fonctions Pro",
-      platformNotice: "Windows 11 · 64 bits · Bêta publique signée",
+      proLabel: "Soutenir CouchMode",
+      platformNotice:
+        "Windows 11 · 64-bit · Toutes les fonctionnalités sont gratuites pendant la bêta publique.",
       carousel: {
         slides: [
           {
@@ -75,8 +78,7 @@ export const frenchHomePacket: SurfacePacketBase<"home"> = {
     howItWorks: {
       eyebrow: "Fonctionnement",
       heading: "Allumez la manette. Passez au jeu.",
-      description:
-        "CouchMode lance l'interface de votre choix et applique les réglages Windows sélectionnés. Free couvre le démarrage à la manette et le retour au bureau. Pro ajoute davantage d'automatisation pendant la session.",
+      description: "Toutes les fonctionnalités sont gratuites pendant la bêta publique.",
       stepLabel: "ÉTAPE",
       steps: [
         {
@@ -88,26 +90,26 @@ export const frenchHomePacket: SurfacePacketBase<"home"> = {
         {
           number: "02",
           title: "CouchMode ouvre l'interface de jeu choisie",
-          body: "Utilisez l'expérience plein écran Xbox de Windows lorsqu'elle est prise en charge, ou choisissez Steam Big Picture ou Playnite. Ces trois options sont gratuites. Les autres lanceurs personnalisés compatibles sont disponibles avec Pro.",
-          detail: "Xbox, Steam et Playnite avec Free · Lanceurs personnalisés avec Pro",
+          body: "Mode Xbox si disponible, Steam Big Picture et Playnite. Démarrage par manette compatible et lanceurs personnalisés.",
+          detail: "Toutes les fonctionnalités sont gratuites pendant la bêta publique.",
         },
         {
           number: "03",
-          title: "Pro prépare votre session",
-          body: "Pro peut fermer les applications de bureau sélectionnées via Resource Control et appliquer les réglages pris en charge que vous choisissez : notifications, enregistrement Game Bar, effets visuels, mode Jeu, mode de gestion de l'alimentation, HDR, affichage et audio.",
-          detail: "Pro · Essai de 7 jours dans l'application",
+          title: "Une bêta publique, toutes les fonctionnalités.",
+          body: "Resource Control pour les applications sélectionnées et accessibles. Réglages d'écran, HDR, audio et de session pris en charge. Restauration des réglages modifiés par CouchMode.",
+          detail: "Toutes les fonctionnalités sont gratuites pendant la bêta publique.",
         },
         {
           number: "04",
           title: "Retrouvez votre bureau",
           body: "À la fin de la session, CouchMode quitte l'interface de jeu qu'il a lancée, rétablit les paramètres Windows qu'il a modifiés et vous rend la main sur le bureau.",
-          detail: "Free et Pro · Retour au bureau en toute sécurité",
+          detail: "Restauration des réglages modifiés par CouchMode",
         },
       ],
     },
     featureShots: {
       eyebrow: "Dans l'application",
-      heading: "Les réglages Pro, tels qu'ils sont dans CouchMode.",
+      heading: "Une bêta publique, toutes les fonctionnalités.",
       description:
         "Ce sont de vraies captures de CouchMode, pas des maquettes. Sélectionnez-en une pour l'agrandir.",
       shots: [
@@ -139,46 +141,7 @@ export const frenchHomePacket: SurfacePacketBase<"home"> = {
         nextLabel: "Capture suivante",
       },
     },
-    comparison: {
-      eyebrow: "Free et Pro",
-      heading: "Vos lanceurs avec Free. Plus d'automatisation avec Pro.",
-      description:
-        "Le démarrage à la manette et le retour au bureau sont gratuits, tout comme l'intégration de Xbox, Steam Big Picture et Playnite. Pro ajoute les lanceurs personnalisés, Resource Control, Session Tweaks et des options de restauration supplémentaires.",
-      free: {
-        name: "Free",
-        priceSuffix: "sans limite de durée",
-        description: "L'essentiel pour démarrer une session à la manette.",
-        features: [
-          "Démarrage depuis votre manette",
-          "Expérience plein écran Xbox si Windows la prend en charge",
-          "Steam Big Picture",
-          "Playnite Fullscreen",
-          "Démarrage avec Windows",
-          "Fin de session et retour au bureau en toute sécurité",
-          "Langue et thème",
-        ],
-        includedLabel: "Inclus dans Free",
-      },
-      pro: {
-        trialLabel: "Essai de 7 jours dans l'application",
-        name: "Pro",
-        heading: "Tout Free, avec davantage d'automatisation.",
-        description:
-          "CouchMode gère la session qu'il lance, puis annule les modifications qu'il a apportées au bureau.",
-        features: [
-          "Lanceurs personnalisés compatibles",
-          "Resource Control pour les applications sélectionnées",
-          "Session Tweaks : notifications, enregistrement Game Bar, effets visuels, mode Jeu, mode de gestion de l'alimentation, HDR, affichage et audio",
-          "Rétablissement des paramètres Windows pris en charge que CouchMode a modifiés",
-          "Réouverture des applications Resource Control sélectionnées, si cette option est configurée",
-          "Jusqu'à 2 appareils Windows actifs avec Pro",
-          "Jusqu'à 5 appareils Windows actifs avec Pro Supporter",
-        ],
-        ctaLabel: "Passer à Pro avec Patreon",
-      },
-      footnote:
-        "Après l'essai, l'accès Pro nécessite un abonnement Patreon actif. Pro coûte 3 $US par mois et comprend 2 appareils Windows actifs. Pro Supporter coûte 5 $US par mois et comprend 5 appareils Windows actifs.",
-    },
+    comparison: supporterCopy["fr"],
     guidesPreview: {
       eyebrow: "Conseils de configuration",
       heading: "Guides pour jouer sous Windows depuis le canapé",
@@ -193,9 +156,9 @@ export const frenchHomePacket: SurfacePacketBase<"home"> = {
     },
     finalCta: {
       headingBefore: "Prêt à jouer sur votre PC",
-      headingAccent: "depuis le canapé\u00a0",
+      headingAccent: "depuis le canapé ",
       description:
-        "Téléchargez la bêta publique signée pour Windows et essayez Pro pendant 7 jours dans l'application. Cet essai ne demande ni compte ni carte bancaire.",
+        "Toutes les fonctionnalités sont gratuites pendant la bêta publique. Aucun compte ni carte bancaire n'est nécessaire pour utiliser la bêta publique.",
       downloadLabel: "Télécharger pour Windows",
       releaseNotesLabel: "Voir les notes de version",
       directDownloadLabel: "Téléchargement direct",
@@ -236,7 +199,7 @@ export const frenchHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "CouchMode peut-il lancer Steam Big Picture ou un autre lanceur ?",
           answer:
-            "Oui, et Steam Big Picture est gratuit. L'expérience plein écran Xbox lorsqu'elle est prise en charge par Windows, Steam Big Picture et Playnite Fullscreen sont disponibles sans Pro. Les autres lanceurs se configurent via l'option de lanceur personnalisé compatible, qui nécessite Pro.",
+            "Mode Xbox si disponible, Steam Big Picture et Playnite. Démarrage par manette compatible et lanceurs personnalisés. Toutes les fonctionnalités sont gratuites pendant la bêta publique.",
         },
         {
           question: "CouchMode peut-il lancer Playnite quand j'allume ma manette ?",
@@ -256,7 +219,7 @@ export const frenchHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "CouchMode prend-il en charge Playnite ?",
           answer:
-            "Oui, gratuitement. Playnite Fullscreen peut être choisi comme cible de lancement sans Pro. CouchMode est conçu pour fonctionner avec les lanceurs existants, pas pour les remplacer.",
+            "Oui, gratuitement. Playnite Fullscreen peut être choisi comme cible de lancement. CouchMode est conçu pour fonctionner avec les lanceurs existants, pas pour les remplacer.",
         },
         {
           question: "CouchMode prend-il en charge le mode Xbox de Windows ?",
@@ -279,19 +242,19 @@ export const frenchHomePacket: SurfacePacketBase<"home"> = {
             "Sur les consoles portables compatibles, CouchMode peut utiliser une tâche planifiée approuvée par un administrateur pour démarrer avec l'expérience plein écran Xbox de Windows. Le démarrage habituel sur le bureau reste distinct.",
         },
         {
-          question: "Faut-il une carte bancaire pour l'essai ?",
+          question: "La bêta publique est-elle gratuite ?",
           answer:
-            "Non. L'essai Pro de 7 jours dans l'application ne demande ni compte ni carte bancaire. Ensuite, l'accès Pro passe par Patreon et nécessite un abonnement Patreon actif.",
+            "Toutes les fonctionnalités sont gratuites pendant la bêta publique. Aucun compte ni carte bancaire n'est nécessaire pour utiliser la bêta publique.",
         },
         {
-          question: "Comment fonctionne l'accès Pro via Patreon ?",
+          question: "Que comprend une adhésion Patreon ?",
           answer:
-            "Après l'essai dans l'application, connectez Patreon dans CouchMode pour garder Pro actif. Pro coûte 3 $US par mois pour un maximum de 2 appareils Windows actifs. Pro Supporter coûte 5 $US par mois pour un maximum de 5 appareils Windows actifs.",
+            "Pro et Pro Supporter désignent les soutiens du projet, sans débloquer de fonctionnalités. Pro : statut de soutien sur un maximum de 2 appareils Windows actifs. Pro Supporter : statut de soutien sur un maximum de 5 appareils Windows actifs et contribution plus importante au projet. Les membres Patreon peuvent choisir de recevoir les mises à jour en avant-première directement dans CouchMode. Ces versions sont publiques, pas réservées aux membres.",
         },
         {
-          question: "Que se passe-t-il à la fin de mon abonnement ?",
+          question: "Que se passe-t-il si mon abonnement prend fin ?",
           answer:
-            "Les fonctions Pro reviennent à Free après l'actualisation des droits d'accès et selon les modalités du délai de grâce définies par l'application. Vos paramètres restent enregistrés et les fonctions de session Free restent disponibles.",
+            "Si votre abonnement prend fin, la réception des versions en avant-première est suspendue. Les mises à jour standard continuent, sans revenir à une version antérieure. Les fonctionnalités de la bêta publique restent gratuites.",
         },
         {
           question: "Comment enregistrer un diagnostic si l'affichage pose problème ?",
@@ -301,40 +264,12 @@ export const frenchHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "CouchMode améliore-t-il les performances des jeux ?",
           answer:
-            "CouchMode ne promet pas de gain de FPS. Pro peut alléger la session en fermant les applications sélectionnées et appliquer des réglages Windows pris en charge, comme le mode Jeu et le mode de gestion de l'alimentation choisi, puis rétablir les paramètres modifiés à la fin.",
+            "CouchMode ne promet pas de gain de FPS. CouchMode peut alléger la session en fermant les applications sélectionnées et appliquer des réglages Windows pris en charge, comme le mode Jeu et le mode de gestion de l'alimentation choisi, puis rétablir les paramètres modifiés à la fin.",
         },
         {
-          question: "Puis-je installer CouchMode depuis Microsoft Store ?",
+          question: "J'ai installé CouchMode depuis le Microsoft Store. Que faire ?",
           answer:
-            "Oui. CouchMode est disponible sur Microsoft Store, en plus du programme d'installation signé proposé sur couchmode.app/download.",
-          linkLabel: "Voir CouchMode sur Microsoft Store",
-        },
-        {
-          question:
-            "Quelle différence entre le téléchargement direct et la version Microsoft Store ?",
-          answer:
-            "Ce sont deux moyens officiels d'installer CouchMode, avec la même expérience d'utilisation. Le téléchargement direct permet de l'installer depuis couchmode.app, avec une empreinte SHA256 publiée que vous pouvez vérifier. Microsoft Store est une autre source de confiance pour trouver et installer l'application. Dans les deux cas, les mises à jour sont gérées par le système intégré de CouchMode.",
-        },
-        {
-          question: "La version Microsoft Store se met-elle à jour automatiquement via le Store ?",
-          answer:
-            "CouchMode utilise son propre système de mise à jour intégré. Microsoft Store est un canal d'installation officiel supplémentaire ; les mises à jour de l'application sont gérées par CouchMode.",
-        },
-        {
-          question: "La version Microsoft Store comprend-elle aussi l'essai Pro de 7 jours ?",
-          answer:
-            "Oui. L'essai Pro de 7 jours dans l'application fonctionne de la même façon dans les deux versions, sans compte ni carte bancaire.",
-        },
-        {
-          question:
-            "Patreon et les fonctions Pro fonctionnent-ils avec la version Microsoft Store ?",
-          answer:
-            "Oui. L'accès Pro est lié à votre licence CouchMode, pas à la source d'installation. La connexion à Patreon fonctionne donc de la même manière dans les deux versions.",
-        },
-        {
-          question: "CouchMode est-il disponible sur Steam ?",
-          answer:
-            "Non. CouchMode est disponible en téléchargement direct et sur Microsoft Store. Il peut ouvrir Steam Big Picture pour vous, mais cela ne signifie pas que CouchMode lui-même est distribué sur Steam.",
+            "Cette version n'y est plus mise à jour. CouchMode vous proposera la nouvelle version dès qu'elle sera disponible. Vous pouvez aussi la télécharger ici et l'installer par-dessus votre version actuelle ; vos réglages sont conservés.",
         },
       ],
       community: {

@@ -40,15 +40,15 @@ export const japaneseLocaleContent: SharedLocaleContent = {
     languageMenuLabel: "言語を選択",
     links: [
       { contentId: "home", fragment: "#how", label: "使い方" },
-      { contentId: "home", fragment: "#pricing", label: "料金" },
-      { contentId: "buy", label: "Proを利用する" },
+      { contentId: "home", fragment: "#pricing", label: "機能" },
+      { contentId: "buy", label: "支援する" },
       { contentId: "changelog", label: "更新履歴" },
     ],
   },
   footer: {
     links: [
       { contentId: "home", fragment: "#how", label: "使い方" },
-      { contentId: "home", fragment: "#pricing", label: "料金" },
+      { contentId: "home", fragment: "#pricing", label: "CouchModeを支援する" },
       { contentId: "home", fragment: "#download", label: "CouchModeを入手" },
       { contentId: "guides", trailingSlash: true, label: "ガイド" },
       { contentId: "changelog", label: "更新履歴" },

@@ -1,3 +1,5 @@
+import { supporterCopy } from "../../supporter-copy";
+import { installationCopy } from "../../installation-copy";
 import { localeManifest } from "../../config";
 import type { SurfacePacketBase } from "../../packets";
 import { koreanReleaseEditorial } from "./releases";
@@ -11,26 +13,23 @@ export const koreanDownloadPacket: SurfacePacketBase<"download"> = {
   seo: {
     title: "Windows용 CouchMode 다운로드",
     description:
-      "Windows 11용 CouchMode의 서명된 공개 베타를 다운로드하세요. 실행 전 공개된 SHA-256 체크섬을 확인하고 최신 릴리스 노트를 살펴보세요.",
+      "공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다. CouchMode는 couchmode.app 또는 공식 CouchMode GitHub Releases에서만 다운로드하세요. 설치 파일을 실행하기 전에 SHA-256 전체 값과 파일 크기를 비교하세요.",
     ogTitle: "Windows용 CouchMode 다운로드",
     ogDescription:
-      "Windows 11용 CouchMode의 서명된 공개 베타를 다운로드하세요. 실행 전 공개된 SHA-256 체크섬을 확인하고 최신 릴리스 노트를 살펴보세요.",
+      "공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다. CouchMode는 couchmode.app 또는 공식 CouchMode GitHub Releases에서만 다운로드하세요. 설치 파일을 실행하기 전에 SHA-256 전체 값과 파일 크기를 비교하세요.",
   },
   schema: { homeBreadcrumbLabel: "홈", currentBreadcrumbLabel: "배포 현황" },
   internalLinks: ["home", "changelog", "support"],
   payload: {
     badge: { open: "공개 베타", closed: "공개 전 제한 베타" },
-    heading: { before: "CouchMode", accent: "배포 현황" },
+    heading: { before: "CouchMode", accent: "다운로드" },
     statusDescription: {
-      open: "Windows용 CouchMode는 공개 베타로 제공됩니다. 아래 설치 파일은 서명과 타임스탬프가 적용되어 있으며, 실행 전에 파일을 검증할 수 있도록 SHA256 체크섬과 릴리스 노트를 공개합니다.",
-      closed:
-        "Windows용 CouchMode는 비공개 테스트 중입니다. 서명된 빌드, SHA256 체크섬, 릴리스 노트가 승인된 후에만 이곳에서 공개 다운로드가 시작됩니다.",
+      open: "공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다.",
+      closed: "다운로드가 아직 공개되지 않았습니다",
     },
-    directDownload: { label: "Windows용 다운로드", unavailableLabel: "다운로드 준비 중" },
-    microsoftStore: {
-      label: "Microsoft Store에서 CouchMode 다운로드",
-      supportingText:
-        "CouchMode의 공식 설치 경로는 위의 서명된 설치 파일과 Microsoft Store, 두 가지입니다.",
+    directDownload: {
+      label: "Windows용 다운로드",
+      unavailableLabel: "다운로드가 아직 공개되지 않았습니다",
     },
     facts: {
       directDownload: "직접 다운로드",
@@ -39,24 +38,23 @@ export const koreanDownloadPacket: SurfacePacketBase<"download"> = {
       platform: "플랫폼",
       platformValue: "Windows 11 · 64비트",
       installChannels: "설치 경로",
-      installChannelsValue: "직접 다운로드 또는 Microsoft Store",
+      installChannelsValue: "couchmode.app · GitHub Releases",
       install: "설치",
       installValue: "사용자별 설치, 관리자 권한 불필요, 업데이트 확인 기능 내장",
       codeSigning: "코드 서명",
       signedValue: "Authenticode 서명 및 타임스탬프 적용",
-      unsignedValue: "설정 중이며, 활성화 전까지 빌드는 서명되지 않습니다",
+      unsignedValue: "서명 없음: SHA-256을 확인하세요",
       pricing: "요금 안내",
-      pricingValue:
-        "Free에는 지원되는 환경의 Xbox 전체 화면 환경, Steam Big Picture 모드와 Playnite가 포함됩니다. 계정이나 카드 없이 이용하는 7일 앱 내 Pro 체험에서는 더 다양한 자동화 기능을 제공합니다",
+      pricingValue: "공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다.",
     },
     cards: {
       included: {
         heading: "제공 내용",
-        body: "하나의 Windows용 CouchMode 설치 파일에 7일 앱 내 Pro 체험이 포함됩니다. Pro를 체험하는 데 계정이나 신용카드는 필요하지 않습니다.",
+        body: "공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다. 공개 베타를 사용하는 데 계정이나 신용카드가 필요하지 않습니다.",
       },
       officialSources: {
-        heading: "두 가지 공식 배포처",
-        body: "CouchMode는 couchmode.app 또는 Microsoft Store에서 다운로드하세요. 다른 곳에서 설치 파일을 받았다면 아래 SHA256과 실행 시 Windows에 표시되는 게시자를 확인하세요.",
+        heading: "설치 경로",
+        body: "CouchMode는 couchmode.app 또는 공식 CouchMode GitHub Releases에서만 다운로드하세요. 설치 파일을 실행하기 전에 SHA-256 전체 값과 파일 크기를 비교하세요.",
       },
       noPublicInstaller: {
         heading: "아직 공개 설치 파일이 없습니다",
@@ -67,18 +65,19 @@ export const koreanDownloadPacket: SurfacePacketBase<"download"> = {
       openHeading: "빌드 정보",
       closedHeading: "최신 내부 빌드 / 공개 전 메타데이터",
       openDescription:
-        "실행 전에 다운로드한 파일의 체크섬을 아래 값과 비교하세요. 설치 파일을 실행하면 Windows에서도 게시자를 표시합니다.",
-      closedDescription:
-        "이 정보는 내부 비공개 빌드의 메타데이터이며 공개 다운로드 후보 빌드가 아닙니다. 비공개 테스트 중 이미 받은 빌드를 검증할 수 있도록 제공합니다.",
+        "CouchMode는 couchmode.app 또는 공식 CouchMode GitHub Releases에서만 다운로드하세요. 설치 파일을 실행하기 전에 SHA-256 전체 값과 파일 크기를 비교하세요.",
+      closedDescription: "다운로드가 아직 공개되지 않았습니다",
       openChecksumLabel: "SHA256 (실행 전 확인)",
       closedChecksumLabel: "SHA256 (이미 받은 빌드 검증용)",
       notesLabel: "새로운 기능과 변경 사항",
       knownIssuesLabel: "알려진 문제",
     },
     support: {
-      beforeEmail: "비공개 테스트 중 도움이 필요하신가요?",
+      beforeEmail: "CouchMode 사용 중 도움이 필요하신가요? ",
       afterEmail: "으로 이메일을 보내 주세요.",
     },
+    installation: installationCopy["ko"],
+    supportCouchMode: supporterCopy["ko"],
   },
 };
 
@@ -104,9 +103,8 @@ export const koreanChangelogPacket: SurfacePacketBase<"changelog"> = {
     description:
       "Windows용 CouchMode 베타 빌드의 릴리스 노트와 알려진 문제를 최신 버전부터 정리했습니다.",
     downloadStatus: {
-      open: "최신 서명된 공개 베타는 다운로드 페이지에서 받을 수 있습니다. 이전 버전의 항목은 릴리스 이력으로 보관합니다.",
-      closed:
-        "공개 다운로드는 아직 활성화되지 않았습니다. 이 페이지는 현재 공개된 릴리스 메타데이터를 보여 주며, 서명된 공개 베타를 위해 준비 중인 내부 빌드와 다를 수 있습니다.",
+      open: "공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다.",
+      closed: "다운로드가 아직 공개되지 않았습니다",
     },
     release: {
       latestLabel: "최신",
@@ -144,7 +142,7 @@ export const koreanSupportPacket: SurfacePacketBase<"support"> = {
     },
     introduction: [
       "CouchMode 사용 중 도움이 필요하신가요? 가장 빠른 방법은 앱 안에서 문의하는 것입니다. 버그, 호환성 문제 또는 기능 요청을 보낼 수 있습니다. 전송 여부는 언제나 사용자가 결정하며, 전송 전에 포함되는 내용을 정확히 확인할 수 있습니다. 어떤 내용도 자동으로 전송되지 않습니다.",
-      "CouchMode는 Windows 11 · 64비트용 서명된 공개 베타입니다. 진단 자료는 PC에서 로컬로 생성되며, 보고서는 사용자가 제출한 경우에만 저희에게 전달됩니다.",
+      "CouchMode는 Windows 11 · 64비트용 공개 베타입니다. 진단 자료는 PC에서 로컬로 생성되며, 보고서는 사용자가 제출한 경우에만 저희에게 전달됩니다.",
     ],
     contact: {
       beforeEmail: "이메일 문의도 가능합니다.",
@@ -162,10 +160,9 @@ export const koreanSupportPacket: SurfacePacketBase<"support"> = {
         "Windows Xbox 전체 화면 환경을 사용할 수 있는지, 아니면 대체 런처를 사용하는지",
         "버그 신고, 기능 요청, 호환성 문제 중 해당 항목",
         "발생한 현상",
-        "Free, 체험판, Pro 중 문제가 발생한 상태",
-        "Pro 이용 문제라면 멤버십 등급: Pro Version 또는 Pro Supporter",
-        "이미 활성화한 기기 수",
-        "활성화 오류의 화면 캡처 또는 메시지",
+        "Patreon 후원자 상태 문제인 경우 멤버십 등급: Pro 또는 Pro Supporter",
+        "후원자 상태에 연결된 기기 수",
+        "계정 또는 기기 연결 오류의 화면 캡처나 메시지",
         "가능하면 CouchMode의 About > Export support bundle(정보 > 지원 번들 내보내기)을 열어 생성된 파일을 첨부해 주세요.",
       ],
       diagnostics: {

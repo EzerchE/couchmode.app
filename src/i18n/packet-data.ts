@@ -1,3 +1,5 @@
+import { supporterCopy } from "./supporter-copy";
+import { installationCopy } from "./installation-copy";
 import { italianHomePacket } from "./locales/it/home";
 import { italianLocaleContent } from "./locales/it/shared";
 import { italianGuideHubPacket } from "./locales/it/guides";
@@ -153,15 +155,15 @@ export const englishLocaleContent: SharedLocaleContent = {
     languageMenuLabel: "Language selection",
     links: [
       { contentId: "home", fragment: "#how", label: "How it works" },
-      { contentId: "home", fragment: "#pricing", label: "Pricing" },
-      { contentId: "buy", label: "Get Pro" },
+      { contentId: "home", fragment: "#pricing", label: "Features" },
+      { contentId: "buy", label: "Support" },
       { contentId: "changelog", label: "Changelog" },
     ],
   },
   footer: {
     links: [
       { contentId: "home", fragment: "#how", label: "How it works" },
-      { contentId: "home", fragment: "#pricing", label: "Pricing" },
+      { contentId: "home", fragment: "#pricing", label: "Support CouchMode" },
       { contentId: "home", fragment: "#download", label: "Get CouchMode" },
       { contentId: "guides", trailingSlash: true, label: "Guides" },
       { contentId: "changelog", label: "Changelog" },
@@ -196,10 +198,10 @@ const englishHomePacket: SurfacePacketBase<"home"> = {
   seo: {
     title: "CouchMode - Controller-first gaming utility for Windows",
     description:
-      "Turn on your controller, start your preferred gaming experience and return to a usable Windows desktop when the session ends. Download the signed CouchMode public beta.",
+      "Turn on your controller and CouchMode opens your chosen gaming experience, prepares the session around your preferences, and brings you back to a usable desktop when you’re done. Every feature is free during the public beta.",
     ogTitle: "CouchMode - Controller-first gaming utility for Windows",
     ogDescription:
-      "Turn on your controller, start your preferred gaming experience and return to a usable Windows desktop when the session ends. Download the signed CouchMode public beta.",
+      "Turn on your controller and CouchMode opens your chosen gaming experience, prepares the session around your preferences, and brings you back to a usable desktop when you’re done. Every feature is free during the public beta.",
   },
   schema: {
     softwareDescription:
@@ -216,8 +218,8 @@ const englishHomePacket: SurfacePacketBase<"home"> = {
       description:
         "Turn on your controller and CouchMode opens your chosen gaming experience, prepares the session around your preferences, and brings you back to a usable desktop when you’re done.",
       downloadLabel: "Download for Windows",
-      proLabel: "Explore Pro features",
-      platformNotice: "Windows 11 · 64-bit · Signed public beta",
+      proLabel: "Support CouchMode",
+      platformNotice: "Windows 11 · 64-bit · Every feature is free during the public beta.",
       carousel: {
         slides: [
           { label: "General", alt: "CouchMode General controller and launcher settings." },
@@ -258,8 +260,7 @@ const englishHomePacket: SurfacePacketBase<"home"> = {
     howItWorks: {
       eyebrow: "How it works",
       heading: "From controller to couch.",
-      description:
-        "CouchMode handles the session flow around the launcher and Windows settings you choose. Free covers the essential controller-first flow. Pro adds deeper session automation.",
+      description: "Every feature is free during the public beta.",
       stepLabel: "STEP",
       steps: [
         {
@@ -271,26 +272,26 @@ const englishHomePacket: SurfacePacketBase<"home"> = {
         {
           number: "02",
           title: "CouchMode opens your chosen gaming experience",
-          body: "Use the Windows Xbox full-screen experience where supported, or choose Steam Big Picture or Playnite. All three are free. Other compatible custom launchers are available with Pro.",
-          detail: "Xbox, Steam and Playnite are Free · Custom launchers with Pro",
+          body: "Xbox Mode where supported, Steam Big Picture and Playnite. Compatible controller triggers and custom launchers.",
+          detail: "Every feature is free during the public beta.",
         },
         {
           number: "03",
-          title: "Pro prepares the session",
-          body: "Pro can close the desktop apps you select through Resource Control and apply the supported session settings you choose, including notifications, Game Bar recording, visual effects, Game Mode, power plan, HDR, display and audio.",
-          detail: "Pro · 7-day in-app trial",
+          title: "One public beta. All features included.",
+          body: "Resource Control for selected accessible apps. Supported display, HDR, audio and session settings. Restoration of settings CouchMode changed.",
+          detail: "Every feature is free during the public beta.",
         },
         {
           number: "04",
           title: "Return to your desktop",
           body: "When the session ends, CouchMode exits the gaming experience it started, restores the Windows settings it changed and returns control to the desktop.",
-          detail: "Free + Pro · Safe session return",
+          detail: "Restoration of settings CouchMode changed",
         },
       ],
     },
     featureShots: {
       eyebrow: "A closer look",
-      heading: "More of the Pro settings, straight from the app.",
+      heading: "One public beta. All features included.",
       description:
         "These are real CouchMode screens, not mockups. Select any screen to view it larger.",
       shots: [
@@ -322,46 +323,7 @@ const englishHomePacket: SurfacePacketBase<"home"> = {
         nextLabel: "Next screenshot",
       },
     },
-    comparison: {
-      eyebrow: "Free vs Pro",
-      heading: "Free for the launchers you use. Pro for deeper automation.",
-      description:
-        "The controller-first session flow is free, and so are Xbox, Steam Big Picture and Playnite. Pro adds custom launchers, Resource Control, Session Tweaks, and deeper restore automation.",
-      free: {
-        name: "Free",
-        priceSuffix: "forever",
-        description: "Core controller-first session flow.",
-        features: [
-          "Start from your controller",
-          "Xbox full-screen experience where Windows supports it",
-          "Steam Big Picture",
-          "Playnite Fullscreen",
-          "Start with Windows",
-          "Safe session exit and desktop return",
-          "Language and theme",
-        ],
-        includedLabel: "Included in Free",
-      },
-      pro: {
-        trialLabel: "7-day in-app trial",
-        name: "Pro",
-        heading: "Everything in Free, plus deeper automation.",
-        description:
-          "CouchMode manages the session it starts, then restores the desktop settings it changed.",
-        features: [
-          "Compatible custom launchers",
-          "Resource Control for the apps you select",
-          "Session Tweaks: notifications, Game Bar recording, visual effects, Game Mode, power plan, HDR, display, and audio",
-          "Restores the supported Windows settings CouchMode changed",
-          "Reopens selected Resource Control apps when configured",
-          "Up to 2 active Windows devices with Pro",
-          "Up to 5 active Windows devices with Pro Supporter",
-        ],
-        ctaLabel: "Get Pro with Patreon",
-      },
-      footnote:
-        "Pro access requires an active Patreon membership after the trial. Pro is $3/month and includes 2 active Windows devices. Pro Supporter is $5/month and includes 5 active Windows devices.",
-    },
+    comparison: supporterCopy["en"],
     guidesPreview: {
       eyebrow: "Practical setup notes",
       heading: "Windows Couch Gaming Guides",
@@ -378,7 +340,7 @@ const englishHomePacket: SurfacePacketBase<"home"> = {
       headingBefore: "Ready to make your PC",
       headingAccent: "couch-native",
       description:
-        "Download the signed Windows public beta and start with a 7-day in-app Pro trial. No account or credit card is required for the in-app trial.",
+        "Every feature is free during the public beta. No account or credit card is needed to use the public beta.",
       downloadLabel: "Download for Windows",
       releaseNotesLabel: "View release notes",
       directDownloadLabel: "Direct download",
@@ -413,12 +375,12 @@ const englishHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "Can CouchMode close Discord, Chrome, or other desktop apps before gaming?",
           answer:
-            "With Pro Resource Control, you choose which supported apps CouchMode may close for the session and whether they should reopen afterward. Apps you do not select are not intentionally closed. Services, elevated apps, protected system components and apps that relaunch themselves may remain.",
+            "With Resource Control, you choose which supported apps CouchMode may close for the session and whether they should reopen afterward. Apps you do not select are not intentionally closed. Services, elevated apps, protected system components and apps that relaunch themselves may remain.",
         },
         {
           question: "Can CouchMode start Steam Big Picture or another launcher?",
           answer:
-            "Yes, and Steam Big Picture is free. Xbox full-screen where Windows supports it, Steam Big Picture and Playnite Fullscreen are all available without Pro. Other launchers are set up through the compatible custom launcher option, which needs Pro.",
+            "Xbox Mode where supported, Steam Big Picture and Playnite. Compatible controller triggers and custom launchers. Every feature is free during the public beta.",
         },
         {
           question: "Can CouchMode launch Playnite when I turn on my controller?",
@@ -438,7 +400,7 @@ const englishHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "Does CouchMode support Playnite?",
           answer:
-            "Yes, and it is free. Playnite Fullscreen can be used as a launch target without Pro. CouchMode is designed to work around existing launchers rather than replace them.",
+            "Yes, and it is free. Playnite Fullscreen can be used as a launch target. CouchMode is designed to work around existing launchers rather than replace them.",
         },
         {
           question: "Does CouchMode support Windows Xbox Mode?",
@@ -461,19 +423,19 @@ const englishHomePacket: SurfacePacketBase<"home"> = {
             "On supported handhelds, CouchMode can use an admin-approved scheduled task to start alongside the Windows Xbox full-screen experience. Normal desktop startup remains separate.",
         },
         {
-          question: "Do I need a credit card for the trial?",
+          question: "Is the public beta free?",
           answer:
-            "No. The 7-day in-app Pro trial requires no account and no credit card. Ongoing Pro access is handled through Patreon and requires an active Patreon membership.",
+            "Every feature is free during the public beta. No account or credit card is needed to use the public beta.",
         },
         {
-          question: "How does supporter access work?",
+          question: "What does a Patreon membership provide?",
           answer:
-            "After the in-app trial, connect Patreon in CouchMode to keep Pro active. Pro is $3/month for up to 2 active Windows devices. Pro Supporter is $5/month for up to 5 active Windows devices.",
+            "Pro and Pro Supporter are supporter identities, not feature unlocks. Pro: supporter identity on up to 2 active Windows devices. Pro Supporter: supporter identity on up to 5 active Windows devices and a higher level of project support. Patreon supporters can opt in to receive preview updates directly in CouchMode. Preview builds are public, not exclusive to supporters.",
         },
         {
           question: "What happens if my membership ends?",
           answer:
-            "Pro features return to Free after the entitlement refresh and grace behavior defined by the app. Your settings remain stored, and the Free session flow remains available.",
+            "If your membership lapses, preview delivery pauses. Standard updates continue and your installed version is not downgraded. Public-beta features remain free.",
         },
         {
           question: "How do I capture diagnostics if something looks wrong on screen?",
@@ -483,39 +445,12 @@ const englishHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "Does CouchMode improve game performance?",
           answer:
-            "CouchMode does not promise FPS gains. Pro can reduce session clutter by closing selected apps and can apply supported Windows session settings such as Game Mode and a selected power plan, then restore them when the session ends.",
+            "CouchMode does not promise FPS gains. CouchMode can reduce session clutter by closing selected apps and can apply supported Windows session settings such as Game Mode and a selected power plan, then restore them when the session ends.",
         },
         {
-          question: "Can I install CouchMode from Microsoft Store?",
+          question: "I installed CouchMode from Microsoft Store. What now?",
           answer:
-            "Yes. CouchMode is on Microsoft Store, alongside the signed installer on couchmode.app/download.",
-          linkLabel: "View CouchMode on Microsoft Store",
-        },
-        {
-          question:
-            "What is the difference between the direct download and the Microsoft Store version?",
-          answer:
-            "Both are official ways to install CouchMode and provide the same CouchMode experience. Direct download installs it from couchmode.app, with a published SHA256 you can verify yourself; Microsoft Store is an additional trusted place to find and install it. CouchMode's built-in updater handles application updates either way.",
-        },
-        {
-          question: "Will the Microsoft Store version update automatically through the Store?",
-          answer:
-            "CouchMode uses its own built-in update system. Microsoft Store is an additional official installation channel; application updates are handled by CouchMode itself.",
-        },
-        {
-          question: "Do I still get the 7-day Pro trial from the Microsoft Store version?",
-          answer:
-            "Yes. The 7-day in-app Pro trial works the same way in both, with no account and no card.",
-        },
-        {
-          question: "Do Patreon and Pro features work with the Microsoft Store version?",
-          answer:
-            "Yes. Pro access is tied to your CouchMode licence, not to where you installed it from, so connecting Patreon works identically in both.",
-        },
-        {
-          question: "Is CouchMode on Steam?",
-          answer:
-            "No. CouchMode is available as a direct download and on Microsoft Store. Note that CouchMode can open Steam Big Picture for you; that is separate from CouchMode itself being distributed on Steam.",
+            "That version is no longer updated there. CouchMode will offer the new version when it is available. You can also download it here and install it over your current version; your settings are kept.",
         },
       ],
       community: {
@@ -537,26 +472,23 @@ const englishDownloadPacket: SurfacePacketBase<"download"> = {
   seo: {
     title: "Download CouchMode for Windows",
     description:
-      "Download the signed CouchMode public beta for Windows 11. Verify the published SHA-256 checksum and view the latest release notes.",
+      "Every feature is free during the public beta. Only download CouchMode from couchmode.app or the official CouchMode GitHub Releases. Compare the full SHA-256 and file size before running the installer.",
     ogTitle: "Download CouchMode for Windows",
     ogDescription:
-      "Download the signed CouchMode public beta for Windows 11. Verify the published SHA-256 checksum and view the latest release notes.",
+      "Every feature is free during the public beta. Only download CouchMode from couchmode.app or the official CouchMode GitHub Releases. Compare the full SHA-256 and file size before running the installer.",
   },
   schema: { homeBreadcrumbLabel: "Home", currentBreadcrumbLabel: "Download status" },
   internalLinks: ["home", "changelog", "support"],
   payload: {
     badge: { open: "Public beta", closed: "Controlled pre-public beta" },
-    heading: { before: "Release", accent: "status" },
+    heading: { before: "Download", accent: "CouchMode" },
     statusDescription: {
-      open: "CouchMode for Windows is in public beta. The installer below is signed and timestamped; its SHA256 checksum and release notes are published so you can verify the file before you run it.",
-      closed:
-        "CouchMode for Windows is in private testing. The public download opens here only once a signed build, its SHA256 checksum, and release notes are approved.",
+      open: "Every feature is free during the public beta.",
+      closed: "Download not published yet",
     },
-    directDownload: { label: "Download for Windows", unavailableLabel: "Download opening soon" },
-    microsoftStore: {
-      label: "Get CouchMode from Microsoft Store",
-      supportingText:
-        "Two official ways to install CouchMode: the signed installer above, or Microsoft Store.",
+    directDownload: {
+      label: "Download for Windows",
+      unavailableLabel: "Download not published yet",
     },
     facts: {
       directDownload: "Direct download",
@@ -565,24 +497,23 @@ const englishDownloadPacket: SurfacePacketBase<"download"> = {
       platform: "Platform",
       platformValue: "Windows 11 · 64-bit",
       installChannels: "Install channels",
-      installChannelsValue: "Direct download or Microsoft Store",
+      installChannelsValue: "couchmode.app · GitHub Releases",
       install: "Install",
       installValue: "Per-user installer, no admin rights, built-in update check",
       codeSigning: "Code signing",
       signedValue: "Authenticode signed and timestamped",
-      unsignedValue: "Being set up; builds are unsigned until it is enabled",
+      unsignedValue: "Not signed: verify the SHA-256",
       pricing: "Pricing",
-      pricingValue:
-        "Free includes Xbox full-screen, Steam Big Picture and Playnite. A 7-day in-app Pro trial adds deeper automation, with no account or card",
+      pricingValue: "Every feature is free during the public beta.",
     },
     cards: {
       included: {
         heading: "What you'll get",
-        body: "A single Windows installer for CouchMode, with a 7-day in-app Pro trial. No account or credit card is needed to try Pro.",
+        body: "Every feature is free during the public beta. No account or credit card is needed to use the public beta.",
       },
       officialSources: {
-        heading: "Two official sources",
-        body: "Download CouchMode from couchmode.app or Microsoft Store. If you got an installer somewhere else, check the SHA256 below and the publisher Windows shows when you run it.",
+        heading: "Install channels",
+        body: "Only download CouchMode from couchmode.app or the official CouchMode GitHub Releases. Compare the full SHA-256 and file size before running the installer.",
       },
       noPublicInstaller: {
         heading: "No public installer yet",
@@ -593,15 +524,16 @@ const englishDownloadPacket: SurfacePacketBase<"download"> = {
       openHeading: "Build details",
       closedHeading: "Latest internal / pre-public metadata",
       openDescription:
-        "Compare this checksum with the file you downloaded before running it. Windows will also show the publisher when you launch the installer.",
-      closedDescription:
-        "This is internal pre-public build metadata, not the public download candidate. It is published so you can verify a build you already have during private testing.",
+        "Only download CouchMode from couchmode.app or the official CouchMode GitHub Releases. Compare the full SHA-256 and file size before running the installer.",
+      closedDescription: "Download not published yet",
       openChecksumLabel: "SHA256 (verify before running)",
       closedChecksumLabel: "SHA256 (for verifying a build you already have)",
       notesLabel: "What's new",
       knownIssuesLabel: "Known issues",
     },
-    support: { beforeEmail: "Testing CouchMode privately and need help? Email", afterEmail: "." },
+    support: { beforeEmail: "Need help with CouchMode? Email ", afterEmail: "." },
+    installation: installationCopy["en"],
+    supportCouchMode: supporterCopy["en"],
   },
 };
 
@@ -625,9 +557,8 @@ const englishChangelogPacket: SurfacePacketBase<"changelog"> = {
     heading: "What's new in CouchMode",
     description: "Release notes and known issues for CouchMode Windows beta builds, newest first.",
     downloadStatus: {
-      open: "The latest signed public beta is available on the download page. Earlier entries are kept here as release history.",
-      closed:
-        "Public download is not enabled yet. This page reflects the currently published release metadata, which may differ from the internal build in preparation for the signed public beta.",
+      open: "Every feature is free during the public beta.",
+      closed: "Download not published yet",
     },
     release: {
       latestLabel: "Latest",
@@ -664,7 +595,7 @@ const englishSupportPacket: SurfacePacketBase<"support"> = {
     },
     introduction: [
       "Need help with CouchMode? The quickest way is from the app itself: CouchMode can submit a bug report, compatibility issue, or feature request. Submitting is always your choice, you can review exactly what is included before it is sent, and nothing is sent automatically.",
-      "CouchMode is a signed public beta for Windows 11 · 64-bit. Diagnostics are generated locally on your PC, and a report reaches us only when you submit it.",
+      "CouchMode is a public beta for Windows 11 · 64-bit. Diagnostics are generated locally on your PC, and a report reaches us only when you submit it.",
     ],
     contact: {
       beforeEmail: "You can also email us at",
@@ -682,10 +613,9 @@ const englishSupportPacket: SurfacePacketBase<"support"> = {
         "Whether Windows Xbox full-screen is available, or a fallback launcher is used",
         "Whether this is a bug report, feature request, or compatibility issue",
         "What happened",
-        "Whether it happened in Free, Trial, or Pro",
-        "For Pro access issues, your tier: Pro Version or Pro Supporter",
-        "Number of devices already activated",
-        "Activation error screenshot or message",
+        "For Patreon supporter-status issues, your membership tier: Pro or Pro Supporter",
+        "Number of devices connected for supporter status",
+        "Screenshot or message for the account/device connection error",
         "In CouchMode, open About > Export support bundle and attach the generated file if you can.",
       ],
       diagnostics: {
@@ -716,10 +646,10 @@ const englishPrivacyPacket: SurfacePacketBase<"legal"> = {
   seo: {
     title: "CouchMode Privacy Policy",
     description:
-      "How CouchMode handles privacy: local app data, no gameplay tracking, diagnostics and support bundles, Patreon entitlement validation, website analytics, and payments.",
+      "How CouchMode handles privacy: local app data, no gameplay tracking, diagnostics and support bundles, Patreon supporter-status verification, website analytics, and payments.",
     ogTitle: "CouchMode Privacy Policy",
     ogDescription:
-      "How CouchMode handles privacy: local app data, no gameplay tracking, diagnostics and support bundles, Patreon entitlement validation, website analytics, and payments.",
+      "How CouchMode handles privacy: local app data, no gameplay tracking, diagnostics and support bundles, Patreon supporter-status verification, website analytics, and payments.",
   },
   schema: { homeBreadcrumbLabel: "Home", currentBreadcrumbLabel: "Privacy" },
   internalLinks: ["home"],
@@ -728,14 +658,14 @@ const englishPrivacyPacket: SurfacePacketBase<"legal"> = {
     chrome: {
       backToHomepageLabel: "Back to homepage",
       lastUpdatedLabel: "Last updated",
-      lastUpdated: "August 2026",
+      lastUpdated: "October 2026",
     },
     sections: [
       {
         heading: "Desktop utility",
         paragraphs: [
           legalText(
-            "CouchMode is a Windows desktop utility designed to help you prepare, manage, and restore couch gaming sessions from your PC. Free use does not require an account.",
+            "CouchMode is a Windows desktop utility designed to help you prepare, manage, and restore couch gaming sessions from your PC. Public-beta use does not require an account.",
           ),
         ],
       },
@@ -752,7 +682,7 @@ const englishPrivacyPacket: SurfacePacketBase<"legal"> = {
         paragraphs: [
           legalText("CouchMode does not collect gameplay data or track what games you play."),
           legalText(
-            "No gameplay tracking. No settings cloud sync. Pro license validation is performed only when needed.",
+            "No gameplay tracking. No settings cloud sync. Patreon supporter status is checked only when needed.",
           ),
         ],
       },
@@ -775,10 +705,10 @@ const englishPrivacyPacket: SurfacePacketBase<"legal"> = {
         heading: "Patreon membership validation",
         paragraphs: [
           legalText(
-            "If you connect a Patreon membership to CouchMode, license validation may process your Patreon account identifier, Patreon email address if provided by Patreon, membership tier, membership status, activation token, installation or device identifier, app version, activation timestamp, and entitlement status.",
+            "If you connect a Patreon membership to CouchMode, supporter-membership verification may process your Patreon account identifier, Patreon email address if provided by Patreon, membership tier, membership status, activation token, installation or device identifier, app version, activation timestamp, and supporter status.",
           ),
           legalText(
-            "CouchMode uses this information only to verify Pro access, enforce device limits, troubleshoot activation issues, and maintain account and security records.",
+            "CouchMode uses this information only to verify supporter status, apply the supporter device limit, troubleshoot account/device issues, and maintain account and security records.",
           ),
         ],
       },
@@ -792,13 +722,13 @@ const englishPrivacyPacket: SurfacePacketBase<"legal"> = {
         action: { kind: "open-consent", label: "Manage privacy choices" },
       },
       {
-        heading: "Payments and licenses",
+        heading: "Payments and supporter memberships",
         paragraphs: [
           legalText(
             "CouchMode does not store payment card details. Patreon billing is handled by Patreon.",
           ),
           legalText(
-            "CouchMode may contact license.couchmode.app only when needed to validate Pro access, refresh entitlement status, or deactivate devices.",
+            "CouchMode may contact license.couchmode.app only when needed to verify Patreon supporter status, refresh membership status, or manage connected devices.",
           ),
         ],
       },
@@ -815,10 +745,10 @@ const englishTermsPacket: SurfacePacketBase<"legal"> = {
   seo: {
     title: "CouchMode Terms of Use",
     description:
-      "The CouchMode terms covering Free use, the 7-day Pro trial, Patreon supporter access, Xbox Mode availability, warranty, liability, and third-party services.",
+      "Every feature is free during the public beta. Pro and Pro Supporter are supporter identities, not feature unlocks.",
     ogTitle: "CouchMode Terms of Use",
     ogDescription:
-      "The CouchMode terms covering Free use, the 7-day Pro trial, Patreon supporter access, Xbox Mode availability, warranty, liability, and third-party services.",
+      "Every feature is free during the public beta. Pro and Pro Supporter are supporter identities, not feature unlocks.",
   },
   schema: { homeBreadcrumbLabel: "Home", currentBreadcrumbLabel: "Terms" },
   internalLinks: ["home"],
@@ -827,7 +757,7 @@ const englishTermsPacket: SurfacePacketBase<"legal"> = {
     chrome: {
       backToHomepageLabel: "Back to homepage",
       lastUpdatedLabel: "Last updated",
-      lastUpdated: "August 2026",
+      lastUpdated: "October 2026",
     },
     sections: [
       {
@@ -845,45 +775,57 @@ const englishTermsPacket: SurfacePacketBase<"legal"> = {
         ],
       },
       {
-        heading: "Free and Pro",
+        heading: "One public beta. All features included.",
         paragraphs: [
-          legalText(
-            "One installer may include Free features, the 7-day Pro trial, and Pro activation. Free features are available without purchase. Pro features require an active trial or active Patreon membership during public beta.",
-          ),
-          legalText(
-            "Free includes the controller-first session flow, the Windows Xbox full-screen experience where supported, Steam Big Picture, Playnite, and the return to your desktop when a session ends. Pro covers compatible custom launchers, Resource Control, Session Tweaks, and the deeper session automation.",
-          ),
+          [{ kind: "text", text: "Every feature is free during the public beta." }],
+          [{ kind: "text", text: "No account or credit card is needed to use the public beta." }],
+          [
+            {
+              kind: "text",
+              text: "Compatible controller triggers and custom launchers. Xbox Mode where supported, Steam Big Picture and Playnite. Resource Control for selected accessible apps. Supported display, HDR, audio and session settings. Restoration of settings CouchMode changed.",
+            },
+          ],
         ],
       },
       {
-        heading: "7-day Pro trial",
+        heading: "What does a Patreon membership provide?",
         paragraphs: [
-          legalText(
-            "The 7-day in-app Pro trial starts in CouchMode and does not require an account or credit card.",
-          ),
-          legalText(
-            "Eligible first-time members can start a separate 7-day Patreon trial on the available paid tiers. Patreon requires a payment method but does not charge the membership fee until that trial ends. The Patreon trial is separate from CouchMode's 7-day in-app Pro trial, and Patreon decides who is eligible for it.",
-          ),
-        ],
-        list: [
-          legalText("In-app trial: 7 days, no CouchMode account and no credit card required."),
-          legalText(
-            "Patreon trial: a separate 7 days, administered by Patreon, payment method required, billing begins after the trial if the membership continues.",
-          ),
+          [
+            {
+              kind: "text",
+              text: "Pro and Pro Supporter are supporter identities, not feature unlocks.",
+            },
+          ],
+          [{ kind: "text", text: "Pro: supporter identity on up to 2 active Windows devices." }],
+          [
+            {
+              kind: "text",
+              text: "Pro Supporter: supporter identity on up to 5 active Windows devices and a higher level of project support.",
+            },
+          ],
+          [
+            {
+              kind: "text",
+              text: "Patreon supporters can opt in to receive preview updates directly in CouchMode. Preview builds are public, not exclusive to supporters.",
+            },
+          ],
+          [
+            {
+              kind: "text",
+              text: "If your membership lapses, preview delivery pauses. Standard updates continue and your installed version is not downgraded. Public-beta features remain free.",
+            },
+          ],
         ],
       },
       {
-        heading: "Patreon supporter access",
+        heading: "Buy Me a Coffee",
         paragraphs: [
-          legalText(
-            "During public beta, CouchMode Pro access is provided through Patreon membership. The Pro license remains active while membership is active.",
-          ),
-          legalText(
-            "If membership ends, fails, is refunded, or is canceled, Pro access may return to Free mode after a short grace period.",
-          ),
-          legalText(
-            "Pro Version is $3/month and includes personal Pro access on up to 2 active Windows devices. Pro Supporter is $5/month and includes personal Pro access on up to 5 active Windows devices.",
-          ),
+          [
+            {
+              kind: "text",
+              text: "Prefer a one-time contribution? Buy Me a Coffee is a thank-you, not a membership. It does not grant Pro status, entitlement or device activation.",
+            },
+          ],
         ],
       },
       {
@@ -906,10 +848,10 @@ const englishTermsPacket: SurfacePacketBase<"legal"> = {
         ],
       },
       {
-        heading: "Activation limit",
+        heading: "Supporter device limit",
         paragraphs: [
           legalText(
-            "Pro access may have activation limits to prevent abuse. Contact support if you need help with a legitimate device change.",
+            "Supporter status and preview delivery are available on a limited number of active Windows devices. This limit does not restrict normal public-beta features. Contact support if you need help after a legitimate device change.",
           ),
         ],
       },
@@ -933,7 +875,7 @@ const englishTermsPacket: SurfacePacketBase<"legal"> = {
         heading: "Third-party services",
         paragraphs: [
           legalText(
-            "Patreon may handle billing, membership, cancellation, and refund details for Patreon-based Pro access. CouchMode does not store payment card details.",
+            "Patreon may handle billing, membership, cancellation, and refund details for Patreon supporter memberships. CouchMode does not store payment card details.",
           ),
         ],
       },
@@ -954,10 +896,10 @@ const englishRefundPacket: SurfacePacketBase<"legal"> = {
   seo: {
     title: "CouchMode Patreon billing and refunds",
     description:
-      "The CouchMode refund policy for public beta Pro access: Patreon handles billing, cancellation, and refunds, and Pro may return to Free after an entitlement refresh and any applicable grace period.",
+      "Patreon manages CouchMode supporter billing, cancellation and refunds. Public-beta features remain free when membership ends.",
     ogTitle: "CouchMode Patreon billing and refunds",
     ogDescription:
-      "The CouchMode refund policy for public beta Pro access: Patreon handles billing, cancellation, and refunds, and Pro may return to Free after an entitlement refresh and any applicable grace period.",
+      "Patreon manages CouchMode supporter billing, cancellation and refunds. Public-beta features remain free when membership ends.",
   },
   schema: { homeBreadcrumbLabel: "Home", currentBreadcrumbLabel: "Refund Policy" },
   internalLinks: ["home"],
@@ -966,10 +908,13 @@ const englishRefundPacket: SurfacePacketBase<"legal"> = {
     chrome: {
       backToHomepageLabel: "Back to homepage",
       lastUpdatedLabel: "Last updated",
-      lastUpdated: "August 2026",
+      lastUpdated: "October 2026",
     },
     sections: [
-      { paragraphs: [legalText("CouchMode Free does not require a purchase.")] },
+      {
+        heading: "Every feature is free during the public beta.",
+        paragraphs: [[{ kind: "text", text: "Every feature is free during the public beta." }]],
+      },
       {
         paragraphs: [
           legalText(
@@ -1000,9 +945,12 @@ const englishRefundPacket: SurfacePacketBase<"legal"> = {
       },
       {
         paragraphs: [
-          legalText(
-            "If membership is cancelled, refunded, or becomes inactive, Pro access returns to Free after an entitlement refresh and any applicable grace period. Your CouchMode settings remain stored and the Free session flow remains available.",
-          ),
+          [
+            {
+              kind: "text",
+              text: "If your membership lapses, preview delivery pauses. Standard updates continue and your installed version is not downgraded. Public-beta features remain free.",
+            },
+          ],
         ],
       },
       { paragraphs: [legalSupportEmail("For CouchMode product support, contact ", ".")] },
@@ -1017,28 +965,23 @@ const englishCheckoutPacket: SurfacePacketBase<"checkout"> = {
   path: "/buy/",
   sourceRevision: localeManifest.sourceRevision,
   seo: {
-    title: "CouchMode Pro - Patreon supporter access",
+    title: "Support CouchMode",
     description:
-      "CouchMode Pro access uses active Patreon membership during public beta. Start with a 7-day in-app Pro trial, then connect Patreon to continue.",
-    ogTitle: "CouchMode Pro - Patreon supporter access",
+      "CouchMode is free during the public beta. If it helps you, support continued development, compatibility testing and future improvements.",
+    ogTitle: "Support CouchMode",
     ogDescription:
-      "CouchMode Pro access uses active Patreon membership during public beta. Start with a 7-day in-app Pro trial, then connect Patreon to continue.",
+      "CouchMode is free during the public beta. If it helps you, support continued development, compatibility testing and future improvements.",
   },
-  schema: { homeBreadcrumbLabel: "Home", currentBreadcrumbLabel: "Pro" },
+  schema: { homeBreadcrumbLabel: "Home", currentBreadcrumbLabel: "Support CouchMode" },
   internalLinks: ["home"],
   payload: {
-    title: "Get CouchMode Pro",
+    title: "Support CouchMode",
     chrome: {
       backToHomepageLabel: "Back to homepage",
       lastUpdatedLabel: "Last updated",
       lastUpdated: "August 2026",
     },
-    bridge: {
-      redirectingLabel: "Taking you to Patreon...",
-      fallbackDescription:
-        "If Patreon does not open automatically, continue with the button below.",
-    },
-    patreonCtaLabel: "Continue on Patreon",
+    support: supporterCopy["en"],
   },
 };
 

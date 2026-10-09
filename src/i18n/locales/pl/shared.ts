@@ -41,15 +41,15 @@ export const polishLocaleContent: SharedLocaleContent = {
     languageMenuLabel: "Wybór języka",
     links: [
       { contentId: "home", fragment: "#how", label: "Jak to działa" },
-      { contentId: "home", fragment: "#pricing", label: "Cennik" },
-      { contentId: "buy", label: "Wybierz Pro" },
+      { contentId: "home", fragment: "#pricing", label: "Funkcje" },
+      { contentId: "buy", label: "Wesprzyj" },
       { contentId: "changelog", label: "Historia zmian" },
     ],
   },
   footer: {
     links: [
       { contentId: "home", fragment: "#how", label: "Jak to działa" },
-      { contentId: "home", fragment: "#pricing", label: "Cennik" },
+      { contentId: "home", fragment: "#pricing", label: "Wesprzyj CouchMode" },
       { contentId: "home", fragment: "#download", label: "Pobierz CouchMode" },
       { contentId: "guides", trailingSlash: true, label: "Poradniki" },
       { contentId: "changelog", label: "Historia zmian" },

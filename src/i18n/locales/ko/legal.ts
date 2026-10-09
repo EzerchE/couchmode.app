@@ -1,3 +1,5 @@
+import { supporterCopy } from "../../supporter-copy";
+import { installationCopy } from "../../installation-copy";
 import { localeManifest } from "../../config";
 import type { LegalInline, SurfacePacketBase } from "../../packets";
 
@@ -17,10 +19,10 @@ export const koreanPrivacyPacket: SurfacePacketBase<"legal"> = {
   seo: {
     title: "CouchMode 개인정보처리방침",
     description:
-      "CouchMode의 로컬 앱 데이터, 게임 플레이 정보 보호, 진단 및 지원 번들, Patreon 이용 권한 확인, 웹사이트 분석과 결제 정보 처리 방식을 안내합니다.",
+      "CouchMode의 로컬 앱 데이터, 게임 플레이 정보 보호, 진단 및 지원 번들, Patreon 후원자 상태 확인, 웹사이트 분석과 결제 정보 처리 방식을 안내합니다.",
     ogTitle: "CouchMode 개인정보처리방침",
     ogDescription:
-      "CouchMode의 로컬 앱 데이터, 게임 플레이 정보 보호, 진단 및 지원 번들, Patreon 이용 권한 확인, 웹사이트 분석과 결제 정보 처리 방식을 안내합니다.",
+      "CouchMode의 로컬 앱 데이터, 게임 플레이 정보 보호, 진단 및 지원 번들, Patreon 후원자 상태 확인, 웹사이트 분석과 결제 정보 처리 방식을 안내합니다.",
   },
   schema: { homeBreadcrumbLabel: "홈", currentBreadcrumbLabel: "개인정보처리방침" },
   internalLinks: ["home"],
@@ -29,14 +31,14 @@ export const koreanPrivacyPacket: SurfacePacketBase<"legal"> = {
     chrome: {
       backToHomepageLabel: "홈으로 돌아가기",
       lastUpdatedLabel: "최종 수정",
-      lastUpdated: "2026년 8월",
+      lastUpdated: "2026년 10월",
     },
     sections: [
       {
         heading: "데스크톱 유틸리티",
         paragraphs: [
           legalText(
-            "CouchMode는 PC로 소파에서 게임을 즐길 때 세션을 준비하고 관리하며 종료 후 복원하는 과정을 돕는 Windows 데스크톱 유틸리티입니다. Free 이용에는 계정이 필요하지 않습니다.",
+            "CouchMode는 PC로 소파에서 게임을 즐길 때 세션을 준비하고 관리하며 종료 후 복원하는 과정을 돕는 Windows 데스크톱 유틸리티입니다. 공개 베타 이용에는 계정이 필요하지 않습니다.",
           ),
         ],
       },
@@ -55,7 +57,7 @@ export const koreanPrivacyPacket: SurfacePacketBase<"legal"> = {
             "CouchMode는 게임 플레이 데이터를 수집하거나 어떤 게임을 플레이하는지 추적하지 않습니다.",
           ),
           legalText(
-            "게임 플레이 추적이나 설정의 클라우드 동기화는 하지 않습니다. Pro 라이선스 검증은 필요할 때만 수행합니다.",
+            "게임 플레이 추적이나 설정의 클라우드 동기화는 하지 않습니다. Patreon 후원자 상태는 필요할 때만 확인합니다.",
           ),
         ],
       },
@@ -78,10 +80,10 @@ export const koreanPrivacyPacket: SurfacePacketBase<"legal"> = {
         heading: "Patreon 멤버십 확인",
         paragraphs: [
           legalText(
-            "CouchMode에 Patreon 멤버십을 연결하면 라이선스 검증 과정에서 Patreon 계정 식별자, Patreon이 제공하는 경우의 Patreon 이메일 주소, 멤버십 등급과 상태, 활성화 토큰, 설치 또는 기기 식별자, 앱 버전, 활성화 시각, 이용 권한 상태가 처리될 수 있습니다.",
+            "CouchMode에 Patreon 멤버십을 연결하면 후원 멤버십 확인 과정에서 Patreon 계정 식별자, Patreon이 제공하는 경우의 Patreon 이메일 주소, 멤버십 등급과 상태, 활성화 토큰, 설치 또는 기기 식별자, 앱 버전, 활성화 시각, 후원자 상태가 처리될 수 있습니다.",
           ),
           legalText(
-            "CouchMode는 이 정보를 Pro 이용 권한 확인, 기기 수 제한 적용, 활성화 문제 해결, 계정 및 보안 기록 유지 목적으로만 사용합니다.",
+            "CouchMode는 이 정보를 후원자 상태 확인, 후원자 기기 수 제한 적용, 계정 또는 기기 문제 해결, 계정 및 보안 기록 유지 목적으로만 사용합니다.",
           ),
         ],
       },
@@ -95,13 +97,13 @@ export const koreanPrivacyPacket: SurfacePacketBase<"legal"> = {
         action: { kind: "open-consent", label: "개인정보 보호 설정 관리" },
       },
       {
-        heading: "결제 및 라이선스",
+        heading: "결제 및 후원 멤버십",
         paragraphs: [
           legalText(
             "CouchMode는 결제 카드 정보를 저장하지 않습니다. Patreon 결제는 Patreon이 처리합니다.",
           ),
           legalText(
-            "CouchMode는 Pro 이용 권한 검증, 이용 권한 상태 갱신 또는 기기 비활성화가 필요한 경우에만 license.couchmode.app에 접속할 수 있습니다.",
+            "CouchMode는 Patreon 후원자 상태 확인, 멤버십 상태 갱신 또는 연결된 기기 관리가 필요한 경우에만 license.couchmode.app에 접속할 수 있습니다.",
           ),
         ],
       },
@@ -118,10 +120,10 @@ export const koreanTermsPacket: SurfacePacketBase<"legal"> = {
   seo: {
     title: "CouchMode 이용약관",
     description:
-      "Free 이용, 7일 Pro 체험, Patreon 멤버십 이용 권한, Xbox 모드 제공 조건, 보증, 책임 및 타사 서비스에 관한 CouchMode 이용약관입니다.",
+      "공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다. Pro와 Pro Supporter는 후원자 상태를 나타내며, 기능을 잠금 해제하기 위한 등급이 아닙니다.",
     ogTitle: "CouchMode 이용약관",
     ogDescription:
-      "Free 이용, 7일 Pro 체험, Patreon 멤버십 이용 권한, Xbox 모드 제공 조건, 보증, 책임 및 타사 서비스에 관한 CouchMode 이용약관입니다.",
+      "공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다. Pro와 Pro Supporter는 후원자 상태를 나타내며, 기능을 잠금 해제하기 위한 등급이 아닙니다.",
   },
   schema: { homeBreadcrumbLabel: "홈", currentBreadcrumbLabel: "이용약관" },
   internalLinks: ["home"],
@@ -130,7 +132,7 @@ export const koreanTermsPacket: SurfacePacketBase<"legal"> = {
     chrome: {
       backToHomepageLabel: "홈으로 돌아가기",
       lastUpdatedLabel: "최종 수정",
-      lastUpdated: "2026년 8월",
+      lastUpdated: "2026년 10월",
     },
     sections: [
       {
@@ -148,45 +150,67 @@ export const koreanTermsPacket: SurfacePacketBase<"legal"> = {
         ],
       },
       {
-        heading: "Free와 Pro",
+        heading: "하나의 공개 베타, 모든 기능 제공.",
         paragraphs: [
-          legalText(
-            "하나의 설치 파일에 Free 기능, 7일 Pro 체험, Pro 활성화가 포함될 수 있습니다. Free 기능은 구매 없이 사용할 수 있습니다. 공개 베타 기간에 Pro 기능을 이용하려면 유효한 체험 기간 또는 활성 Patreon 멤버십이 필요합니다.",
-          ),
-          legalText(
-            "Free에는 컨트롤러 중심의 세션 흐름, 지원되는 환경의 Windows Xbox 전체 화면 환경, Steam Big Picture 모드, Playnite, 세션 종료 후 바탕 화면으로 돌아가기 기능이 포함됩니다. Pro에는 호환되는 사용자 지정 런처, Resource Control, Session Tweaks 및 더 다양한 세션 자동화가 포함됩니다.",
-          ),
+          [{ kind: "text", text: "공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다." }],
+          [
+            {
+              kind: "text",
+              text: "공개 베타를 사용하는 데 계정이나 신용카드가 필요하지 않습니다.",
+            },
+          ],
+          [
+            {
+              kind: "text",
+              text: "호환 컨트롤러로 시작하기와 사용자 지정 런처. 지원 환경의 Xbox 모드, Steam Big Picture, Playnite. 선택한 접근 가능한 앱을 위한 Resource Control. 지원되는 디스플레이, HDR, 오디오 및 세션 설정. CouchMode가 변경한 설정 복원.",
+            },
+          ],
         ],
       },
       {
-        heading: "7일 Pro 체험",
+        heading: "Patreon 멤버십은 무엇을 제공하나요?",
         paragraphs: [
-          legalText(
-            "7일 앱 내 Pro 체험은 CouchMode에서 시작하며 계정이나 신용카드가 필요하지 않습니다.",
-          ),
-          legalText(
-            "자격 요건을 충족하는 신규 회원은 제공되는 유료 등급에서 별도의 7일 Patreon 체험을 시작할 수 있습니다. Patreon은 결제 수단을 요구하지만 해당 체험이 끝날 때까지 멤버십 요금을 청구하지 않습니다. Patreon 체험은 CouchMode의 7일 앱 내 Pro 체험과 별개이며, 체험 자격은 Patreon이 결정합니다.",
-          ),
-        ],
-        list: [
-          legalText("앱 내 체험: 7일 동안 제공되며 CouchMode 계정과 신용카드가 필요하지 않습니다."),
-          legalText(
-            "Patreon 체험: Patreon이 관리하는 별도의 7일 체험입니다. 결제 수단이 필요하며 멤버십을 계속 유지하면 체험 종료 후 과금이 시작됩니다.",
-          ),
+          [
+            {
+              kind: "text",
+              text: "Pro와 Pro Supporter는 후원자 상태를 나타내며, 기능을 잠금 해제하기 위한 등급이 아닙니다.",
+            },
+          ],
+          [
+            {
+              kind: "text",
+              text: "Pro: 최대 2대의 활성 Windows 기기에서 후원자 상태를 사용할 수 있습니다.",
+            },
+          ],
+          [
+            {
+              kind: "text",
+              text: "Pro Supporter: 최대 5대의 활성 Windows 기기에서 후원자 상태를 사용할 수 있으며, 프로젝트에 더 큰 금액을 후원합니다.",
+            },
+          ],
+          [
+            {
+              kind: "text",
+              text: "Patreon 후원자는 CouchMode 안에서 미리 보기 업데이트를 받도록 선택할 수 있습니다. 미리 보기 빌드는 공개되며 후원자 전용이 아닙니다.",
+            },
+          ],
+          [
+            {
+              kind: "text",
+              text: "멤버십이 끝나면 앱 내 미리 보기 업데이트 수신이 일시 중지됩니다. 일반 업데이트는 계속되며 설치된 버전이 이전 버전으로 내려가지 않습니다. 공개 베타 기능은 계속 무료로 사용할 수 있습니다.",
+            },
+          ],
         ],
       },
       {
-        heading: "Patreon 멤버십을 통한 이용",
+        heading: "Buy Me a Coffee",
         paragraphs: [
-          legalText(
-            "공개 베타 기간에는 Patreon 멤버십을 통해 CouchMode Pro 이용 권한이 제공됩니다. 멤버십이 활성 상태인 동안 Pro 라이선스가 유지됩니다.",
-          ),
-          legalText(
-            "멤버십이 종료되거나 결제가 실패하거나 환불 또는 취소되는 경우, 짧은 유예 기간 후 Pro 이용 권한이 Free 모드로 전환될 수 있습니다.",
-          ),
-          legalText(
-            "Pro Version은 월 미화 3달러이며 활성 Windows 기기 최대 2대에서 개인용 Pro 이용 권한을 제공합니다. Pro Supporter는 월 미화 5달러이며 활성 Windows 기기 최대 5대에서 개인용 Pro 이용 권한을 제공합니다.",
-          ),
+          [
+            {
+              kind: "text",
+              text: "한 번만 후원하고 싶으신가요? Buy Me a Coffee는 감사의 마음을 전하는 일회성 후원이며 멤버십이 아닙니다. Pro 상태, 이용 권한, 기기 활성화는 제공하지 않습니다.",
+            },
+          ],
         ],
       },
       {
@@ -209,10 +233,10 @@ export const koreanTermsPacket: SurfacePacketBase<"legal"> = {
         ],
       },
       {
-        heading: "활성화 제한",
+        heading: "후원자 기기 수 제한",
         paragraphs: [
           legalText(
-            "오용을 방지하기 위해 Pro 이용 권한에 활성화 수 제한이 적용될 수 있습니다. 정상적인 기기 변경에 도움이 필요하면 지원팀에 문의하세요.",
+            "후원자 상태 이용과 미리 보기 업데이트 수신은 제한된 수의 활성 Windows 기기에서 가능합니다. 이 제한은 공개 베타의 일반 기능에는 적용되지 않습니다. 정상적인 기기 변경 후 도움이 필요하면 지원팀에 문의하세요.",
           ),
         ],
       },
@@ -236,7 +260,7 @@ export const koreanTermsPacket: SurfacePacketBase<"legal"> = {
         heading: "타사 서비스",
         paragraphs: [
           legalText(
-            "Patreon을 통한 Pro 이용 권한의 결제, 멤버십, 취소 및 환불에 관한 사항은 Patreon이 처리할 수 있습니다. CouchMode는 결제 카드 정보를 저장하지 않습니다.",
+            "Patreon 후원 멤버십의 결제, 멤버십, 취소 및 환불에 관한 사항은 Patreon이 처리할 수 있습니다. CouchMode는 결제 카드 정보를 저장하지 않습니다.",
           ),
         ],
       },
@@ -254,10 +278,10 @@ export const koreanRefundPacket: SurfacePacketBase<"legal"> = {
   seo: {
     title: "CouchMode Patreon 결제 및 환불 안내",
     description:
-      "공개 베타 Pro 이용에 관한 환불 안내입니다. 결제·취소·환불은 Patreon이 처리하며, 이용 권한 갱신과 해당 유예 기간 후 Pro가 Free로 전환될 수 있습니다.",
+      "CouchMode 후원 멤버십의 결제, 해지 및 환불은 Patreon에서 관리합니다. 멤버십이 끝나도 공개 베타 기능은 무료로 사용할 수 있습니다.",
     ogTitle: "CouchMode Patreon 결제 및 환불 안내",
     ogDescription:
-      "공개 베타 Pro 이용에 관한 환불 안내입니다. 결제·취소·환불은 Patreon이 처리하며, 이용 권한 갱신과 해당 유예 기간 후 Pro가 Free로 전환될 수 있습니다.",
+      "CouchMode 후원 멤버십의 결제, 해지 및 환불은 Patreon에서 관리합니다. 멤버십이 끝나도 공개 베타 기능은 무료로 사용할 수 있습니다.",
   },
   schema: { homeBreadcrumbLabel: "홈", currentBreadcrumbLabel: "환불 안내" },
   internalLinks: ["home"],
@@ -266,10 +290,15 @@ export const koreanRefundPacket: SurfacePacketBase<"legal"> = {
     chrome: {
       backToHomepageLabel: "홈으로 돌아가기",
       lastUpdatedLabel: "최종 수정",
-      lastUpdated: "2026년 8월",
+      lastUpdated: "2026년 10월",
     },
     sections: [
-      { paragraphs: [legalText("CouchMode Free는 구매 없이 사용할 수 있습니다.")] },
+      {
+        heading: "공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다.",
+        paragraphs: [
+          [{ kind: "text", text: "공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다." }],
+        ],
+      },
       {
         paragraphs: [
           legalText(
@@ -294,9 +323,12 @@ export const koreanRefundPacket: SurfacePacketBase<"legal"> = {
       },
       {
         paragraphs: [
-          legalText(
-            "멤버십이 취소되거나 환불되거나 비활성 상태가 되면 이용 권한 갱신과 해당되는 유예 기간이 지난 후 Pro 이용 권한이 Free로 전환됩니다. CouchMode 설정은 저장된 상태로 유지되며 Free 세션 기능도 계속 사용할 수 있습니다.",
-          ),
+          [
+            {
+              kind: "text",
+              text: "멤버십이 끝나면 앱 내 미리 보기 업데이트 수신이 일시 중지됩니다. 일반 업데이트는 계속되며 설치된 버전이 이전 버전으로 내려가지 않습니다. 공개 베타 기능은 계속 무료로 사용할 수 있습니다.",
+            },
+          ],
         ],
       },
       { paragraphs: [legalSupportEmail("CouchMode 제품 지원은 ", "으로 문의해 주세요.")] },
@@ -311,26 +343,22 @@ export const koreanCheckoutPacket: SurfacePacketBase<"checkout"> = {
   path: "/pro/",
   sourceRevision: localeManifest.sourceRevision,
   seo: {
-    title: "CouchMode Pro - Patreon 멤버십 이용 안내",
+    title: "CouchMode 후원하기",
     description:
-      "공개 베타의 CouchMode Pro는 활성 Patreon 멤버십으로 이용합니다. 먼저 7일 앱 내 Pro 체험을 시작하고, 계속 이용하려면 Patreon을 연결하세요.",
-    ogTitle: "CouchMode Pro - Patreon 멤버십 이용 안내",
+      "CouchMode는 공개 베타 기간 동안 무료입니다. 유용하게 쓰고 계신다면 지속적인 개발과 호환성 테스트, 앞으로의 개선을 후원해 주세요.",
+    ogTitle: "CouchMode 후원하기",
     ogDescription:
-      "공개 베타의 CouchMode Pro는 활성 Patreon 멤버십으로 이용합니다. 먼저 7일 앱 내 Pro 체험을 시작하고, 계속 이용하려면 Patreon을 연결하세요.",
+      "CouchMode는 공개 베타 기간 동안 무료입니다. 유용하게 쓰고 계신다면 지속적인 개발과 호환성 테스트, 앞으로의 개선을 후원해 주세요.",
   },
-  schema: { homeBreadcrumbLabel: "홈", currentBreadcrumbLabel: "Pro" },
+  schema: { homeBreadcrumbLabel: "홈", currentBreadcrumbLabel: "CouchMode 후원하기" },
   internalLinks: ["home"],
   payload: {
-    title: "CouchMode Pro 이용하기",
+    title: "CouchMode 후원하기",
     chrome: {
       backToHomepageLabel: "홈으로 돌아가기",
       lastUpdatedLabel: "최종 수정",
       lastUpdated: "2026년 8월",
     },
-    bridge: {
-      redirectingLabel: "Patreon으로 이동 중...",
-      fallbackDescription: "Patreon이 자동으로 열리지 않으면 아래 버튼을 눌러 계속하세요.",
-    },
-    patreonCtaLabel: "Patreon에서 계속하기",
+    support: supporterCopy["ko"],
   },
 };

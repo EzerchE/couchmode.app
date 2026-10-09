@@ -1,3 +1,5 @@
+import { supporterCopy } from "../../supporter-copy";
+import { installationCopy } from "../../installation-copy";
 import { localeManifest } from "../../config";
 import type { SurfacePacketBase } from "../../packets";
 import { spanishReleaseEditorialOverlay } from "./releases";
@@ -11,10 +13,10 @@ export const spanishDownloadPacket: SurfacePacketBase<"download"> = {
   seo: {
     title: "Descargar CouchMode para Windows",
     description:
-      "Descarga la beta pública firmada de CouchMode para Windows 11. Verifica la suma de comprobación SHA-256 publicada y consulta las últimas notas de versión.",
+      "Todas las funciones son gratuitas durante la beta pública. Descarga CouchMode solo desde couchmode.app o desde las versiones oficiales de CouchMode en GitHub. Compara el SHA-256 completo y el tamaño del archivo antes de ejecutar el instalador.",
     ogTitle: "Descargar CouchMode para Windows",
     ogDescription:
-      "Descarga la beta pública firmada de CouchMode para Windows 11. Verifica la suma de comprobación SHA-256 publicada y consulta las últimas notas de versión.",
+      "Todas las funciones son gratuitas durante la beta pública. Descarga CouchMode solo desde couchmode.app o desde las versiones oficiales de CouchMode en GitHub. Compara el SHA-256 completo y el tamaño del archivo antes de ejecutar el instalador.",
   },
   schema: { homeBreadcrumbLabel: "Inicio", currentBreadcrumbLabel: "Estado de la descarga" },
   internalLinks: ["home", "changelog", "support"],
@@ -23,20 +25,14 @@ export const spanishDownloadPacket: SurfacePacketBase<"download"> = {
       open: "Beta pública",
       closed: "Beta previa al lanzamiento público con acceso controlado",
     },
-    heading: { before: "Estado de la", accent: "versión" },
+    heading: { before: "Descargar", accent: "CouchMode" },
     statusDescription: {
-      open: "CouchMode para Windows está en beta pública. El instalador que aparece a continuación está firmado y tiene un sello de tiempo; publicamos su suma de comprobación SHA256 y las notas de versión para que puedas verificar el archivo antes de ejecutarlo.",
-      closed:
-        "CouchMode para Windows está en pruebas privadas. La descarga pública solo se habilitará aquí cuando se aprueben una compilación firmada, su suma de comprobación SHA256 y las notas de versión.",
+      open: "Todas las funciones son gratuitas durante la beta pública.",
+      closed: "Descarga aún no publicada",
     },
     directDownload: {
       label: "Descargar para Windows",
-      unavailableLabel: "Descarga disponible próximamente",
-    },
-    microsoftStore: {
-      label: "Obtener CouchMode en Microsoft Store",
-      supportingText:
-        "Hay dos formas oficiales de instalar CouchMode: el instalador firmado de arriba o Microsoft Store.",
+      unavailableLabel: "Descarga aún no publicada",
     },
     facts: {
       directDownload: "Descarga directa",
@@ -45,25 +41,24 @@ export const spanishDownloadPacket: SurfacePacketBase<"download"> = {
       platform: "Plataforma",
       platformValue: "Windows 11 · 64 bits",
       installChannels: "Canales de instalación",
-      installChannelsValue: "Descarga directa o Microsoft Store",
+      installChannelsValue: "couchmode.app · GitHub Releases",
       install: "Instalación",
       installValue:
         "Instalador por usuario, sin permisos de administrador y con comprobación de actualizaciones integrada",
       codeSigning: "Firma de código",
       signedValue: "Firmado con Authenticode y con sello de tiempo",
-      unsignedValue: "En preparación; las compilaciones no estarán firmadas hasta que se habilite",
+      unsignedValue: "Sin firma: verifica el SHA-256",
       pricing: "Precio",
-      pricingValue:
-        "Free incluye Xbox a pantalla completa, Steam Big Picture y Playnite. La prueba de Pro de 7 días dentro de la aplicación añade más opciones de automatización, sin cuenta ni tarjeta",
+      pricingValue: "Todas las funciones son gratuitas durante la beta pública.",
     },
     cards: {
       included: {
         heading: "Qué incluye",
-        body: "Un único instalador de CouchMode para Windows, con una prueba de Pro de 7 días dentro de la aplicación. No necesitas cuenta ni tarjeta de crédito para probar Pro.",
+        body: "Todas las funciones son gratuitas durante la beta pública. No necesitas una cuenta ni una tarjeta para usar la beta pública.",
       },
       officialSources: {
-        heading: "Dos fuentes oficiales",
-        body: "Descarga CouchMode desde couchmode.app o Microsoft Store. Si obtuviste un instalador en otro sitio, comprueba el SHA256 que aparece a continuación y el editor que muestra Windows al ejecutarlo.",
+        heading: "Canales de instalación",
+        body: "Descarga CouchMode solo desde couchmode.app o desde las versiones oficiales de CouchMode en GitHub. Compara el SHA-256 completo y el tamaño del archivo antes de ejecutar el instalador.",
       },
       noPublicInstaller: {
         heading: "Todavía no hay un instalador público",
@@ -75,18 +70,16 @@ export const spanishDownloadPacket: SurfacePacketBase<"download"> = {
       closedHeading:
         "Metadatos más recientes de la compilación interna previa al lanzamiento público",
       openDescription:
-        "Compara esta suma de comprobación con la del archivo descargado antes de ejecutarlo. Windows también mostrará el editor cuando abras el instalador.",
-      closedDescription:
-        "Estos son los metadatos de una compilación interna previa al lanzamiento público, no de la candidata a descarga pública. Se publican para que puedas verificar una compilación que ya tengas durante las pruebas privadas.",
+        "Descarga CouchMode solo desde couchmode.app o desde las versiones oficiales de CouchMode en GitHub. Compara el SHA-256 completo y el tamaño del archivo antes de ejecutar el instalador.",
+      closedDescription: "Descarga aún no publicada",
       openChecksumLabel: "SHA256 (verifica antes de ejecutar)",
       closedChecksumLabel: "SHA256 (para verificar una compilación que ya tengas)",
       notesLabel: "Novedades",
       knownIssuesLabel: "Problemas conocidos",
     },
-    support: {
-      beforeEmail: "¿Estás probando CouchMode de forma privada y necesitas ayuda? Escribe a",
-      afterEmail: ".",
-    },
+    support: { beforeEmail: "¿Necesitas ayuda con CouchMode? Escribe a ", afterEmail: "." },
+    installation: installationCopy["es"],
+    supportCouchMode: supporterCopy["es"],
   },
 };
 
@@ -115,7 +108,7 @@ export const spanishSupportPacket: SurfacePacketBase<"support"> = {
     },
     introduction: [
       "¿Necesitas ayuda con CouchMode? La forma más rápida es desde la propia aplicación: CouchMode permite enviar informes de errores, problemas de compatibilidad o solicitudes de funciones. Tú decides si los envías, puedes revisar exactamente qué incluyen antes de enviarlos y no se envía nada automáticamente.",
-      "CouchMode es una beta pública firmada para Windows 11 · 64 bits. Los datos de diagnóstico se generan de forma local en tu PC y solo recibimos un informe cuando tú lo envías.",
+      "CouchMode es una beta pública para Windows 11 · 64 bits. Los datos de diagnóstico se generan de forma local en tu PC y solo recibimos un informe cuando tú lo envías.",
     ],
     contact: {
       beforeEmail: "También puedes escribirnos a",
@@ -133,10 +126,9 @@ export const spanishSupportPacket: SurfacePacketBase<"support"> = {
         "Si está disponible la experiencia Xbox a pantalla completa de Windows o si usas un lanzador alternativo",
         "Si se trata de un informe de error, una solicitud de función o un problema de compatibilidad",
         "Qué ocurrió",
-        "Si ocurrió con Free, durante la prueba o con Pro",
-        "Para problemas de acceso a Pro, tu nivel: Pro Version o Pro Supporter",
-        "Número de dispositivos ya activados",
-        "Captura de pantalla o mensaje del error de activación",
+        "Para problemas con el estado de colaborador en Patreon, tu nivel de membresía: Pro o Pro Supporter",
+        "Número de dispositivos vinculados al estado de colaborador",
+        "Captura de pantalla o mensaje del error de vinculación de la cuenta o del dispositivo",
         "En CouchMode, abre About > Export support bundle y adjunta el archivo generado si puedes.",
       ],
       diagnostics: {
@@ -180,9 +172,8 @@ export const spanishChangelogPacket: SurfacePacketBase<"changelog"> = {
     description:
       "Notas de versión y problemas conocidos de las compilaciones beta de CouchMode para Windows, de la más reciente a la más antigua.",
     downloadStatus: {
-      open: "La última beta pública firmada está disponible en la página de descarga. Las entradas anteriores se conservan aquí como historial de versiones.",
-      closed:
-        "La descarga pública aún no está habilitada. Esta página muestra los metadatos de versión publicados actualmente, que pueden diferir de los de la compilación interna que se está preparando para la beta pública firmada.",
+      open: "Todas las funciones son gratuitas durante la beta pública.",
+      closed: "Descarga aún no publicada",
     },
     release: {
       latestLabel: "Más reciente",

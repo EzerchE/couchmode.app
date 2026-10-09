@@ -1,8 +1,10 @@
+import { rc15Editorial } from "../../rc15-editorial";
 import type { ReleaseEditorialOverlay } from "../../release-editorial";
 
 // Release facts remain in src/data/releases.json; version is only the join key.
 export const frenchReleaseEditorialOverlay = {
   entries: [
+    { version: "0.6.0-rc.15", ...rc15Editorial["fr"] },
     {
       version: "0.6.0-rc.10",
       summary:

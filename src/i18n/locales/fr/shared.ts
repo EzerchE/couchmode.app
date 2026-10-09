@@ -11,15 +11,15 @@ export const frenchLocaleContent: SharedLocaleContent = {
     languageMenuLabel: "Choix de la langue",
     links: [
       { contentId: "home", fragment: "#how", label: "Fonctionnement" },
-      { contentId: "home", fragment: "#pricing", label: "Tarifs" },
-      { contentId: "buy", label: "Passer à Pro" },
+      { contentId: "home", fragment: "#pricing", label: "Fonctions" },
+      { contentId: "buy", label: "Soutenir" },
       { contentId: "changelog", label: "Nouveautés" },
     ],
   },
   footer: {
     links: [
       { contentId: "home", fragment: "#how", label: "Fonctionnement" },
-      { contentId: "home", fragment: "#pricing", label: "Tarifs" },
+      { contentId: "home", fragment: "#pricing", label: "Soutenir CouchMode" },
       { contentId: "home", fragment: "#download", label: "Obtenir CouchMode" },
       { contentId: "guides", trailingSlash: true, label: "Guides" },
       { contentId: "changelog", label: "Notes de version" },

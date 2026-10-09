@@ -11,15 +11,15 @@ export const koreanLocaleContent: SharedLocaleContent = {
     languageMenuLabel: "언어 선택",
     links: [
       { contentId: "home", fragment: "#how", label: "작동 방식" },
-      { contentId: "home", fragment: "#pricing", label: "요금 안내" },
-      { contentId: "buy", label: "Pro 이용하기" },
+      { contentId: "home", fragment: "#pricing", label: "기능" },
+      { contentId: "buy", label: "후원하기" },
       { contentId: "changelog", label: "변경 기록" },
     ],
   },
   footer: {
     links: [
       { contentId: "home", fragment: "#how", label: "작동 방식" },
-      { contentId: "home", fragment: "#pricing", label: "요금 안내" },
+      { contentId: "home", fragment: "#pricing", label: "CouchMode 후원하기" },
       { contentId: "home", fragment: "#download", label: "CouchMode 다운로드" },
       { contentId: "guides", trailingSlash: true, label: "가이드" },
       { contentId: "changelog", label: "변경 기록" },

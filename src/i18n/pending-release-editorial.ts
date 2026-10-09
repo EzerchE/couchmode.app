@@ -1,9 +1,11 @@
+import { rc15Editorial } from "./rc15-editorial";
 import type { ReleaseEditorialOverlay } from "./release-editorial";
 
 // These entries localize editorial release text only. Release facts stay in
 // src/data/releases.json and are joined by version when a locale is activated.
 export const germanReleaseEditorialOverlay = {
   entries: [
+    { version: "0.6.0-rc.15", ...rc15Editorial["de"] },
     {
       version: "0.6.0-rc.10",
       summary:
@@ -132,6 +134,7 @@ export const germanReleaseEditorialOverlay = {
 
 export const turkishReleaseEditorialOverlay = {
   entries: [
+    { version: "0.6.0-rc.15", ...rc15Editorial["tr"] },
     {
       version: "0.6.0-rc.10",
       summary:

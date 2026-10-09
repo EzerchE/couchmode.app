@@ -10,6 +10,7 @@ export const analyticsEvents = [
   "pro_info_click",
   "release_notes_click",
   "patreon_click",
+  "support_coffee_click",
   "reddit_click",
   "faq_open",
   "scroll_75",

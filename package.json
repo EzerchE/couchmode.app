@@ -5,6 +5,12 @@
   "type": "module",
   "packageManager": "bun@1.4.0",
   "scripts": {
+    "prebuild": "node scripts/release-window-guard.mjs",
+    "prebuild:dev": "node scripts/release-window-guard.mjs",
+    "build:candidate": "bun scripts/build-release-candidate.mjs",
+    "prepare:handoff": "node scripts/prepare-release-handoff.mjs",
+    "test:release-handoff": "node scripts/test-release-handoff.mjs",
+    "test:public-beta-copy": "bun scripts/test-public-beta-copy.ts",
     "dev": "bun scripts/gen-sitemap.mjs && vite dev",
     "gen:releases": "node scripts/gen-releases.mjs",
     "typecheck": "tsc --noEmit",

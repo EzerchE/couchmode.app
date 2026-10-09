@@ -10,6 +10,8 @@ import {
   type GuideContentId,
 } from "@/content/guides";
 import type { ReleaseEditorialOverlay } from "./release-editorial";
+import type { SupporterCopy } from "./supporter-copy";
+import type { InstallationCopy } from "./installation-copy";
 import { localePackets } from "./packet-store";
 import browserRoutePaths from "./route-paths.generated.json";
 export { localePackets, ensureLocalePacket } from "./packet-store";
@@ -70,27 +72,7 @@ export type HomePayload = {
     openShotLabel: string;
     lightbox: { closeLabel: string; previousLabel: string; nextLabel: string };
   };
-  comparison: {
-    eyebrow: string;
-    heading: string;
-    description: string;
-    free: {
-      name: string;
-      priceSuffix: string;
-      description: string;
-      features: string[];
-      includedLabel: string;
-    };
-    pro: {
-      trialLabel: string;
-      name: string;
-      heading: string;
-      description: string;
-      features: string[];
-      ctaLabel: string;
-    };
-    footnote: string;
-  };
+  comparison: SupporterCopy;
   guidesPreview: {
     eyebrow: string;
     heading: string;
@@ -156,7 +138,8 @@ export type DownloadPayload = {
   heading: { before: string; accent: string };
   statusDescription: { open: string; closed: string };
   directDownload: { label: string; unavailableLabel: string };
-  microsoftStore: { label: string; supportingText: string };
+  installation: InstallationCopy;
+  supportCouchMode: SupporterCopy;
   facts: {
     directDownload: string;
     directDownloadOpen: string;
@@ -230,8 +213,7 @@ export type LegalDocumentPayload = {
 export type CheckoutPayload = {
   title: string;
   chrome: { backToHomepageLabel: string; lastUpdatedLabel: string; lastUpdated: string };
-  bridge: { redirectingLabel: string; fallbackDescription: string };
-  patreonCtaLabel: string;
+  support: SupporterCopy;
 };
 
 export type PayloadByKind = {

@@ -1,3 +1,5 @@
+import { supporterCopy } from "./supporter-copy";
+import { installationCopy } from "./installation-copy";
 import { localeManifest } from "./config";
 import type { LegalInline, SurfacePacketBase } from "./packets";
 
@@ -17,10 +19,10 @@ export const germanPrivacyPacket: SurfacePacketBase<"legal"> = {
   seo: {
     title: "CouchMode Datenschutzerklärung",
     description:
-      "So geht CouchMode mit Datenschutz um: lokale App-Daten, keine Erfassung von Spielaktivitäten, Diagnose- und Supportpakete, Patreon-Berechtigungsprüfung, Website-Analysen und Zahlungen.",
+      "So geht CouchMode mit Datenschutz um: lokale App-Daten, keine Erfassung von Spielaktivitäten, Diagnose- und Supportpakete, Prüfung des Patreon-Unterstützerstatus, Website-Analysen und Zahlungen.",
     ogTitle: "CouchMode Datenschutzerklärung",
     ogDescription:
-      "So geht CouchMode mit Datenschutz um: lokale App-Daten, keine Erfassung von Spielaktivitäten, Diagnose- und Supportpakete, Patreon-Berechtigungsprüfung, Website-Analysen und Zahlungen.",
+      "So geht CouchMode mit Datenschutz um: lokale App-Daten, keine Erfassung von Spielaktivitäten, Diagnose- und Supportpakete, Prüfung des Patreon-Unterstützerstatus, Website-Analysen und Zahlungen.",
   },
   schema: { homeBreadcrumbLabel: "Startseite", currentBreadcrumbLabel: "Datenschutz" },
   internalLinks: ["home"],
@@ -29,14 +31,14 @@ export const germanPrivacyPacket: SurfacePacketBase<"legal"> = {
     chrome: {
       backToHomepageLabel: "Zurück zur Startseite",
       lastUpdatedLabel: "Zuletzt aktualisiert",
-      lastUpdated: "August 2026",
+      lastUpdated: "Oktober 2026",
     },
     sections: [
       {
         heading: "Desktop-Dienstprogramm",
         paragraphs: [
           legalText(
-            "CouchMode ist ein Windows-Desktop-Dienstprogramm, das dir hilft, Gaming-Sessions mit Controller am Fernseher vorzubereiten, zu verwalten und die dabei geänderten unterstützten Einstellungen wiederherzustellen. Die Free-Nutzung erfordert kein Konto.",
+            "CouchMode ist ein Windows-Desktop-Dienstprogramm, das dir hilft, Gaming-Sessions mit Controller am Fernseher vorzubereiten, zu verwalten und die dabei geänderten unterstützten Einstellungen wiederherzustellen. Die Nutzung der öffentlichen Beta erfordert kein Konto.",
           ),
         ],
       },
@@ -55,7 +57,7 @@ export const germanPrivacyPacket: SurfacePacketBase<"legal"> = {
             "CouchMode sammelt keine Spieldaten und verfolgt nicht, welche Spiele du spielst.",
           ),
           legalText(
-            "Keine Erfassung von Spielaktivitäten. Keine Cloud-Synchronisierung von Einstellungen. Die Pro-Lizenzvalidierung erfolgt nur bei Bedarf.",
+            "Keine Erfassung von Spielaktivitäten. Keine Cloud-Synchronisierung von Einstellungen. Der Patreon-Unterstützerstatus wird nur bei Bedarf geprüft.",
           ),
         ],
       },
@@ -78,10 +80,10 @@ export const germanPrivacyPacket: SurfacePacketBase<"legal"> = {
         heading: "Validierung der Patreon-Mitgliedschaft",
         paragraphs: [
           legalText(
-            "Wenn du eine Patreon-Mitgliedschaft mit CouchMode verbindest, kann die Lizenzvalidierung deine Patreon-Konto-ID, deine Patreon-E-Mail-Adresse, sofern Patreon sie bereitstellt, Mitgliedschaftsstufe, Mitgliedschaftsstatus, Aktivierungstoken, Installations- oder Gerätekennung, App-Version, Aktivierungszeitstempel und Berechtigungsstatus verarbeiten.",
+            "Wenn du eine Patreon-Mitgliedschaft mit CouchMode verbindest, kann die Prüfung der Unterstützermitgliedschaft deine Patreon-Konto-ID, deine Patreon-E-Mail-Adresse, sofern Patreon sie bereitstellt, Mitgliedschaftsstufe, Mitgliedschaftsstatus, Aktivierungstoken, Installations- oder Gerätekennung, App-Version, Aktivierungszeitstempel und Unterstützerstatus verarbeiten.",
           ),
           legalText(
-            "CouchMode verwendet diese Informationen nur, um Pro-Zugang zu prüfen, Gerätelimits durchzusetzen, Aktivierungsprobleme zu beheben und Konto- sowie Sicherheitsaufzeichnungen zu führen.",
+            "CouchMode verwendet diese Informationen nur, um den Unterstützerstatus zu prüfen, das Gerätelimit für Unterstützer anzuwenden, Konto- oder Geräteprobleme zu beheben und Konto- sowie Sicherheitsaufzeichnungen zu führen.",
           ),
         ],
       },
@@ -95,13 +97,13 @@ export const germanPrivacyPacket: SurfacePacketBase<"legal"> = {
         action: { kind: "open-consent", label: "Datenschutzeinstellungen verwalten" },
       },
       {
-        heading: "Zahlungen und Lizenzen",
+        heading: "Zahlungen und Unterstützermitgliedschaften",
         paragraphs: [
           legalText(
             "CouchMode speichert keine Zahlungskartendaten. Die Patreon-Abrechnung wird von Patreon abgewickelt.",
           ),
           legalText(
-            "CouchMode kann license.couchmode.app nur kontaktieren, wenn dies zur Validierung des Pro-Zugangs, zur Aktualisierung des Berechtigungsstatus oder zur Deaktivierung von Geräten erforderlich ist.",
+            "CouchMode kann license.couchmode.app nur kontaktieren, wenn dies zur Prüfung des Patreon-Unterstützerstatus, zur Aktualisierung des Mitgliedschaftsstatus oder zur Verwaltung verbundener Geräte erforderlich ist.",
           ),
         ],
       },
@@ -118,10 +120,10 @@ export const germanTermsPacket: SurfacePacketBase<"legal"> = {
   seo: {
     title: "CouchMode Nutzungsbedingungen",
     description:
-      "Die CouchMode-Nutzungsbedingungen zu Free-Nutzung, dem 7-Tage-Pro-Test, Patreon-Supporter-Zugang, Xbox-Modus-Verfügbarkeit, Gewährleistung, Haftung und Drittanbieterdiensten.",
+      "Während der öffentlichen Beta sind alle Funktionen kostenlos. Pro und Pro Supporter kennzeichnen Unterstützer und schalten keine Funktionen frei.",
     ogTitle: "CouchMode Nutzungsbedingungen",
     ogDescription:
-      "Die CouchMode-Nutzungsbedingungen zu Free-Nutzung, dem 7-Tage-Pro-Test, Patreon-Supporter-Zugang, Xbox-Modus-Verfügbarkeit, Gewährleistung, Haftung und Drittanbieterdiensten.",
+      "Während der öffentlichen Beta sind alle Funktionen kostenlos. Pro und Pro Supporter kennzeichnen Unterstützer und schalten keine Funktionen frei.",
   },
   schema: { homeBreadcrumbLabel: "Startseite", currentBreadcrumbLabel: "Nutzungsbedingungen" },
   internalLinks: ["home"],
@@ -130,7 +132,7 @@ export const germanTermsPacket: SurfacePacketBase<"legal"> = {
     chrome: {
       backToHomepageLabel: "Zurück zur Startseite",
       lastUpdatedLabel: "Zuletzt aktualisiert",
-      lastUpdated: "August 2026",
+      lastUpdated: "Oktober 2026",
     },
     sections: [
       {
@@ -148,47 +150,62 @@ export const germanTermsPacket: SurfacePacketBase<"legal"> = {
         ],
       },
       {
-        heading: "Free und Pro",
+        heading: "Eine öffentliche Beta. Alle Funktionen dabei.",
         paragraphs: [
-          legalText(
-            "Ein Installer kann Free-Funktionen, den 7-Tage-Pro-Test und die Pro-Aktivierung enthalten. Free-Funktionen sind ohne Kauf verfügbar. Pro-Funktionen erfordern während der öffentlichen Beta einen aktiven Test oder eine aktive Patreon-Mitgliedschaft.",
-          ),
-          legalText(
-            "Free umfasst die Grundfunktionen für die Bedienung mit Controller, die Xbox-Vollbildoberfläche von Windows, sofern unterstützt, Steam Big Picture, Playnite sowie die Rückkehr zum Desktop, wenn eine Sitzung endet. Pro umfasst kompatible benutzerdefinierte Launcher, Resource Control, Session Tweaks und weitergehende Automatisierung.",
-          ),
+          [{ kind: "text", text: "Während der öffentlichen Beta sind alle Funktionen kostenlos." }],
+          [
+            {
+              kind: "text",
+              text: "Für die öffentliche Beta brauchst du weder ein Konto noch eine Kreditkarte.",
+            },
+          ],
+          [
+            {
+              kind: "text",
+              text: "Start per kompatiblem Controller und eigene Launcher. Xbox-Modus, soweit unterstützt, Steam Big Picture und Playnite. Resource Control für ausgewählte zugängliche Apps. Unterstützte Bildschirm-, HDR-, Audio- und Sitzungseinstellungen. Wiederherstellung der von CouchMode geänderten Einstellungen.",
+            },
+          ],
         ],
       },
       {
-        heading: "7-Tage-Pro-Test",
+        heading: "Was bietet eine Patreon-Mitgliedschaft?",
         paragraphs: [
-          legalText(
-            "Der 7-Tage-In-App-Pro-Test beginnt in CouchMode und erfordert weder ein Konto noch eine Kreditkarte.",
-          ),
-          legalText(
-            "Teilnahmeberechtigte Personen, die erstmals Mitglied werden, können auf den verfügbaren kostenpflichtigen Stufen einen separaten 7-Tage-Patreon-Test starten. Patreon erfordert eine Zahlungsmethode, berechnet die Mitgliedsgebühr jedoch erst nach Ende dieses Tests. Der Patreon-Test ist vom 7-Tage-In-App-Pro-Test von CouchMode getrennt; Patreon entscheidet, wer dafür berechtigt ist.",
-          ),
-        ],
-        list: [
-          legalText(
-            "In-App-Test: 7 Tage, kein CouchMode-Konto und keine Kreditkarte erforderlich.",
-          ),
-          legalText(
-            "Patreon-Test: separate 7 Tage, von Patreon verwaltet, Zahlungsmethode erforderlich; bei Fortsetzung der Mitgliedschaft beginnt die Abrechnung nach dem Test.",
-          ),
+          [
+            {
+              kind: "text",
+              text: "Pro und Pro Supporter kennzeichnen Unterstützer und schalten keine Funktionen frei.",
+            },
+          ],
+          [{ kind: "text", text: "Pro: Unterstützerstatus auf bis zu 2 aktiven Windows-Geräten." }],
+          [
+            {
+              kind: "text",
+              text: "Pro Supporter: Unterstützerstatus auf bis zu 5 aktiven Windows-Geräten und ein höherer Beitrag zum Projekt.",
+            },
+          ],
+          [
+            {
+              kind: "text",
+              text: "Patreon-Unterstützer können Vorschau-Updates auf Wunsch direkt in CouchMode erhalten. Die Vorschauversionen sind öffentlich, nicht exklusiv für Unterstützer.",
+            },
+          ],
+          [
+            {
+              kind: "text",
+              text: "Endet deine Mitgliedschaft, pausiert die Zustellung von Vorschau-Updates. Reguläre Updates laufen weiter, ohne die installierte Version zurückzustufen. Die Funktionen der öffentlichen Beta bleiben kostenlos.",
+            },
+          ],
         ],
       },
       {
-        heading: "Patreon-Supporter-Zugang",
+        heading: "Buy Me a Coffee",
         paragraphs: [
-          legalText(
-            "Während der öffentlichen Beta wird CouchMode-Pro-Zugang über eine Patreon-Mitgliedschaft bereitgestellt. Die Pro-Lizenz bleibt aktiv, solange die Mitgliedschaft aktiv ist.",
-          ),
-          legalText(
-            "Wenn eine Mitgliedschaft endet, fehlschlägt, erstattet oder gekündigt wird, kann der Pro-Zugang nach einer kurzen Kulanzfrist in den Free-Modus zurückkehren.",
-          ),
-          legalText(
-            "Pro Version kostet 3 US-Dollar pro Monat und umfasst persönlichen Pro-Zugang auf bis zu 2 aktiven Windows-Geräten. Pro Supporter kostet 5 US-Dollar pro Monat und umfasst persönlichen Pro-Zugang auf bis zu 5 aktiven Windows-Geräten.",
-          ),
+          [
+            {
+              kind: "text",
+              text: "Lieber einmalig etwas beitragen? Über Buy Me a Coffee kannst du dich bedanken, ohne eine Mitgliedschaft abzuschließen. Du erhältst dadurch keinen Pro-Status, keine Berechtigung und keine Geräteaktivierung.",
+            },
+          ],
         ],
       },
       {
@@ -211,10 +228,10 @@ export const germanTermsPacket: SurfacePacketBase<"legal"> = {
         ],
       },
       {
-        heading: "Aktivierungslimit",
+        heading: "Gerätelimit für Unterstützer",
         paragraphs: [
           legalText(
-            "Der Pro-Zugang kann Aktivierungslimits haben, um Missbrauch zu verhindern. Wende dich an den Support, wenn du Hilfe bei einem berechtigten Gerätewechsel benötigst.",
+            "Der Unterstützerstatus und die Zustellung von Vorschau-Updates sind auf eine begrenzte Anzahl aktiver Windows-Geräte beschränkt. Dieses Limit schränkt die normalen Funktionen der öffentlichen Beta nicht ein. Wende dich an den Support, wenn du nach einem berechtigten Gerätewechsel Hilfe benötigst.",
           ),
         ],
       },
@@ -238,7 +255,7 @@ export const germanTermsPacket: SurfacePacketBase<"legal"> = {
         heading: "Drittanbieterdienste",
         paragraphs: [
           legalText(
-            "Patreon kann Abrechnung, Mitgliedschaft, Kündigung und Erstattungsdetails für Patreon-basierten Pro-Zugang verwalten. CouchMode speichert keine Zahlungskartendaten.",
+            "Patreon kann Abrechnung, Mitgliedschaft, Kündigung und Erstattungsdetails für Unterstützermitgliedschaften bei Patreon verwalten. CouchMode speichert keine Zahlungskartendaten.",
           ),
         ],
       },
@@ -259,10 +276,10 @@ export const germanRefundPacket: SurfacePacketBase<"legal"> = {
   seo: {
     title: "CouchMode Patreon-Abrechnung und Erstattungen",
     description:
-      "Die CouchMode-Erstattungsrichtlinie für Pro-Zugang während der öffentlichen Beta: Patreon verwaltet Abrechnung, Kündigung und Erstattungen. Nach Aktualisierung der Berechtigung und einer möglichen Kulanzfrist kann Pro in Free zurückkehren.",
+      "Patreon verwaltet Zahlungen, Kündigungen und Erstattungen für CouchMode-Mitgliedschaften. Die Funktionen der öffentlichen Beta bleiben auch danach kostenlos.",
     ogTitle: "CouchMode Patreon-Abrechnung und Erstattungen",
     ogDescription:
-      "Die CouchMode-Erstattungsrichtlinie für Pro-Zugang während der öffentlichen Beta: Patreon verwaltet Abrechnung, Kündigung und Erstattungen. Nach Aktualisierung der Berechtigung und einer möglichen Kulanzfrist kann Pro in Free zurückkehren.",
+      "Patreon verwaltet Zahlungen, Kündigungen und Erstattungen für CouchMode-Mitgliedschaften. Die Funktionen der öffentlichen Beta bleiben auch danach kostenlos.",
   },
   schema: { homeBreadcrumbLabel: "Startseite", currentBreadcrumbLabel: "Erstattungsrichtlinie" },
   internalLinks: ["home"],
@@ -271,10 +288,15 @@ export const germanRefundPacket: SurfacePacketBase<"legal"> = {
     chrome: {
       backToHomepageLabel: "Zurück zur Startseite",
       lastUpdatedLabel: "Zuletzt aktualisiert",
-      lastUpdated: "August 2026",
+      lastUpdated: "Oktober 2026",
     },
     sections: [
-      { paragraphs: [legalText("CouchMode Free erfordert keinen Kauf.")] },
+      {
+        heading: "Während der öffentlichen Beta sind alle Funktionen kostenlos.",
+        paragraphs: [
+          [{ kind: "text", text: "Während der öffentlichen Beta sind alle Funktionen kostenlos." }],
+        ],
+      },
       {
         paragraphs: [
           legalText(
@@ -305,9 +327,12 @@ export const germanRefundPacket: SurfacePacketBase<"legal"> = {
       },
       {
         paragraphs: [
-          legalText(
-            "Wenn eine Mitgliedschaft gekündigt oder erstattet wird oder inaktiv wird, kehrt der Pro-Zugang nach einer Aktualisierung der Berechtigung und einer möglichen Kulanzfrist zu Free zurück. Deine CouchMode-Einstellungen bleiben gespeichert und die Free-Grundfunktionen bleiben verfügbar.",
-          ),
+          [
+            {
+              kind: "text",
+              text: "Endet deine Mitgliedschaft, pausiert die Zustellung von Vorschau-Updates. Reguläre Updates laufen weiter, ohne die installierte Version zurückzustufen. Die Funktionen der öffentlichen Beta bleiben kostenlos.",
+            },
+          ],
         ],
       },
       { paragraphs: [legalSupportEmail("Für Produktsupport zu CouchMode kontaktiere ", ".")] },
@@ -322,28 +347,23 @@ export const germanCheckoutPacket: SurfacePacketBase<"checkout"> = {
   path: "/couchmode-pro/",
   sourceRevision: localeManifest.sourceRevision,
   seo: {
-    title: "CouchMode Pro - Patreon-Supporter-Zugang",
+    title: "CouchMode unterstützen",
     description:
-      "CouchMode-Pro-Zugang nutzt während der öffentlichen Beta eine aktive Patreon-Mitgliedschaft. Starte mit dem 7-Tage-In-App-Pro-Test und verbinde danach Patreon, um fortzufahren.",
-    ogTitle: "CouchMode Pro - Patreon-Supporter-Zugang",
+      "CouchMode ist während der öffentlichen Beta kostenlos. Wenn es dir hilft, unterstütze die Weiterentwicklung, Kompatibilitätstests und künftige Verbesserungen.",
+    ogTitle: "CouchMode unterstützen",
     ogDescription:
-      "CouchMode-Pro-Zugang nutzt während der öffentlichen Beta eine aktive Patreon-Mitgliedschaft. Starte mit dem 7-Tage-In-App-Pro-Test und verbinde danach Patreon, um fortzufahren.",
+      "CouchMode ist während der öffentlichen Beta kostenlos. Wenn es dir hilft, unterstütze die Weiterentwicklung, Kompatibilitätstests und künftige Verbesserungen.",
   },
-  schema: { homeBreadcrumbLabel: "Startseite", currentBreadcrumbLabel: "Pro" },
+  schema: { homeBreadcrumbLabel: "Startseite", currentBreadcrumbLabel: "CouchMode unterstützen" },
   internalLinks: ["home"],
   payload: {
-    title: "CouchMode Pro erhalten",
+    title: "CouchMode unterstützen",
     chrome: {
       backToHomepageLabel: "Zurück zur Startseite",
       lastUpdatedLabel: "Zuletzt aktualisiert",
       lastUpdated: "August 2026",
     },
-    bridge: {
-      redirectingLabel: "Du wirst zu Patreon weitergeleitet...",
-      fallbackDescription:
-        "Falls Patreon nicht automatisch geöffnet wird, nutze die Schaltfläche unten.",
-    },
-    patreonCtaLabel: "Auf Patreon fortfahren",
+    support: supporterCopy["de"],
   },
 };
 
@@ -356,10 +376,10 @@ export const turkishPrivacyPacket: SurfacePacketBase<"legal"> = {
   seo: {
     title: "CouchMode Gizlilik Politikası",
     description:
-      "CouchMode'un gizliliği nasıl ele aldığı: yerel uygulama verileri, oyun takibi yok, tanılama ve destek paketleri, Patreon yetkilendirme doğrulaması, site analitiği ve ödemeler.",
+      "CouchMode'un gizliliği nasıl ele aldığı: yerel uygulama verileri, oyun takibi yok, tanılama ve destek paketleri, Patreon destekçi statüsü doğrulaması, site analitiği ve ödemeler.",
     ogTitle: "CouchMode Gizlilik Politikası",
     ogDescription:
-      "CouchMode'un gizliliği nasıl ele aldığı: yerel uygulama verileri, oyun takibi yok, tanılama ve destek paketleri, Patreon yetkilendirme doğrulaması, site analitiği ve ödemeler.",
+      "CouchMode'un gizliliği nasıl ele aldığı: yerel uygulama verileri, oyun takibi yok, tanılama ve destek paketleri, Patreon destekçi statüsü doğrulaması, site analitiği ve ödemeler.",
   },
   schema: { homeBreadcrumbLabel: "Ana sayfa", currentBreadcrumbLabel: "Gizlilik" },
   internalLinks: ["home"],
@@ -368,14 +388,14 @@ export const turkishPrivacyPacket: SurfacePacketBase<"legal"> = {
     chrome: {
       backToHomepageLabel: "Ana sayfaya dön",
       lastUpdatedLabel: "Son güncelleme",
-      lastUpdated: "Ağustos 2026",
+      lastUpdated: "Ekim 2026",
     },
     sections: [
       {
         heading: "Masaüstü yardımcı programı",
         paragraphs: [
           legalText(
-            "CouchMode, TV karşısında kumandayla oyun oynamak için oturum hazırlamanıza, yönetmenize ve sonrasında ayarları geri yüklemenize yardımcı olan bir Windows masaüstü yardımcı programıdır. Free kullanımı hesap gerektirmez.",
+            "CouchMode, TV karşısında kumandayla oyun oynamak için oturum hazırlamanıza, yönetmenize ve sonrasında ayarları geri yüklemenize yardımcı olan bir Windows masaüstü yardımcı programıdır. Herkese açık betayı kullanmak için hesap gerekmez.",
           ),
         ],
       },
@@ -392,7 +412,7 @@ export const turkishPrivacyPacket: SurfacePacketBase<"legal"> = {
         paragraphs: [
           legalText("CouchMode oyun verisi toplamaz; hangi oyunları oynadığınızı izlemez."),
           legalText(
-            "Oyun takibi yok. Ayarların bulut eşitlemesi yok. Pro lisans doğrulaması yalnızca gerektiğinde yapılır.",
+            "Oyun takibi yok. Ayarların bulut eşitlemesi yok. Patreon destekçi statüsü yalnızca gerektiğinde kontrol edilir.",
           ),
         ],
       },
@@ -415,10 +435,10 @@ export const turkishPrivacyPacket: SurfacePacketBase<"legal"> = {
         heading: "Patreon üyeliği doğrulaması",
         paragraphs: [
           legalText(
-            "Bir Patreon üyeliğini CouchMode'a bağlarsanız lisans doğrulaması Patreon hesap tanımlayıcınızı, Patreon tarafından sağlanırsa Patreon e-posta adresinizi, üyelik katmanını, üyelik durumunu, etkinleştirme belirtecini, kurulum veya cihaz tanımlayıcısını, uygulama sürümünü, etkinleştirme zaman damgasını ve yetkilendirme durumunu işleyebilir.",
+            "Bir Patreon üyeliğini CouchMode'a bağlarsanız destekçi üyeliği doğrulaması Patreon hesap tanımlayıcınızı, Patreon tarafından sağlanırsa Patreon e-posta adresinizi, üyelik katmanını, üyelik durumunu, etkinleştirme belirtecini, kurulum veya cihaz tanımlayıcısını, uygulama sürümünü, etkinleştirme zaman damgasını ve destekçi statüsünü işleyebilir.",
           ),
           legalText(
-            "CouchMode bu bilgileri yalnızca Pro erişimini doğrulamak, cihaz sınırlarını uygulamak, etkinleştirme sorunlarını gidermek ve hesap ile güvenlik kayıtlarını tutmak için kullanır.",
+            "CouchMode bu bilgileri yalnızca destekçi statüsünü doğrulamak, destekçilere yönelik cihaz sınırını uygulamak, hesap veya cihaz sorunlarını gidermek ve hesap ile güvenlik kayıtlarını tutmak için kullanır.",
           ),
         ],
       },
@@ -432,13 +452,13 @@ export const turkishPrivacyPacket: SurfacePacketBase<"legal"> = {
         action: { kind: "open-consent", label: "Gizlilik tercihlerini yönet" },
       },
       {
-        heading: "Ödemeler ve lisanslar",
+        heading: "Ödemeler ve destekçi üyelikleri",
         paragraphs: [
           legalText(
             "CouchMode ödeme kartı bilgilerini depolamaz. Patreon faturalandırması Patreon tarafından yürütülür.",
           ),
           legalText(
-            "CouchMode, license.couchmode.app ile yalnızca Pro erişimini doğrulamak, yetkilendirme durumunu yenilemek veya cihazları devre dışı bırakmak gerektiğinde iletişime geçebilir.",
+            "CouchMode, license.couchmode.app ile yalnızca Patreon destekçi statüsünü doğrulamak, üyelik durumunu yenilemek veya bağlı cihazları yönetmek gerektiğinde iletişime geçebilir.",
           ),
         ],
       },
@@ -455,10 +475,10 @@ export const turkishTermsPacket: SurfacePacketBase<"legal"> = {
   seo: {
     title: "CouchMode Kullanım Koşulları",
     description:
-      "CouchMode koşulları; Free kullanımı, 7 günlük Pro denemesi, Patreon destekçi erişimi, Xbox Modu kullanılabilirliği, garanti, sorumluluk ve üçüncü taraf hizmetlerini kapsar.",
+      "Açık beta boyunca tüm özellikler ücretsiz. Pro ve Pro Supporter, destekçi statüleridir; özelliklerin kilidini açmak için gerekli değildir.",
     ogTitle: "CouchMode Kullanım Koşulları",
     ogDescription:
-      "CouchMode koşulları; Free kullanımı, 7 günlük Pro denemesi, Patreon destekçi erişimi, Xbox Modu kullanılabilirliği, garanti, sorumluluk ve üçüncü taraf hizmetlerini kapsar.",
+      "Açık beta boyunca tüm özellikler ücretsiz. Pro ve Pro Supporter, destekçi statüleridir; özelliklerin kilidini açmak için gerekli değildir.",
   },
   schema: { homeBreadcrumbLabel: "Ana sayfa", currentBreadcrumbLabel: "Kullanım koşulları" },
   internalLinks: ["home"],
@@ -467,7 +487,7 @@ export const turkishTermsPacket: SurfacePacketBase<"legal"> = {
     chrome: {
       backToHomepageLabel: "Ana sayfaya dön",
       lastUpdatedLabel: "Son güncelleme",
-      lastUpdated: "Ağustos 2026",
+      lastUpdated: "Ekim 2026",
     },
     sections: [
       {
@@ -485,45 +505,57 @@ export const turkishTermsPacket: SurfacePacketBase<"legal"> = {
         ],
       },
       {
-        heading: "Free ve Pro",
+        heading: "Tek bir açık beta. Tüm özellikler dahil.",
         paragraphs: [
-          legalText(
-            "Tek bir yükleyici Free özelliklerini, 7 günlük Pro denemesini ve Pro etkinleştirmesini içerebilir. Free özellikleri satın alma olmadan kullanılabilir. Pro özellikleri herkese açık beta sırasında etkin bir deneme veya etkin bir Patreon üyeliği gerektirir.",
-          ),
-          legalText(
-            "Free; kumandayla oyun oturumu başlatmayı, Windows desteklediğinde Xbox tam ekran deneyimini, Steam Big Picture'ı, Playnite'ı ve oturum bittiğinde masaüstüne dönüşü içerir. Pro; uyumlu özel başlatıcıları, Resource Control'ü, Session Tweaks'i ve daha kapsamlı oturum otomasyonunu kapsar.",
-          ),
+          [{ kind: "text", text: "Açık beta boyunca tüm özellikler ücretsiz." }],
+          [{ kind: "text", text: "Açık betayı kullanmak için hesap veya kredi kartı gerekmez." }],
+          [
+            {
+              kind: "text",
+              text: "Uyumlu oyun koluyla başlatma ve özel başlatıcılar. Desteklenen sistemlerde Xbox modu, Steam Big Picture ve Playnite. Seçilen erişilebilir uygulamalar için Resource Control. Desteklenen ekran, HDR, ses ve oturum ayarları. CouchMode'un değiştirdiği ayarları geri yükleme.",
+            },
+          ],
         ],
       },
       {
-        heading: "7 günlük Pro denemesi",
+        heading: "Patreon üyeliği ne sağlar?",
         paragraphs: [
-          legalText(
-            "Uygulama içindeki 7 günlük Pro denemesi CouchMode'da başlar ve hesap veya kredi kartı gerektirmez.",
-          ),
-          legalText(
-            "Uygunluk koşullarını karşılayan ve ilk kez üye olan kişiler, mevcut ücretli katmanlarda ayrı bir 7 günlük Patreon denemesi başlatabilir. Patreon ödeme yöntemi gerektirir ancak bu deneme bitene kadar üyelik ücretini almaz. Patreon denemesi, CouchMode'un uygulama içindeki 7 günlük Pro denemesinden ayrıdır ve buna kimin uygun olduğuna Patreon karar verir.",
-          ),
-        ],
-        list: [
-          legalText("Uygulama içi deneme: 7 gün, CouchMode hesabı ve kredi kartı gerekmez."),
-          legalText(
-            "Patreon denemesi: ayrı 7 gün, Patreon tarafından yönetilir, ödeme yöntemi gerekir; üyelik sürerse denemeden sonra faturalandırma başlar.",
-          ),
+          [
+            {
+              kind: "text",
+              text: "Pro ve Pro Supporter, destekçi statüleridir; özelliklerin kilidini açmak için gerekli değildir.",
+            },
+          ],
+          [{ kind: "text", text: "Pro: en fazla 2 etkin Windows cihazında destekçi statüsü." }],
+          [
+            {
+              kind: "text",
+              text: "Pro Supporter: en fazla 5 etkin Windows cihazında destekçi statüsü ve projeye daha yüksek düzeyde destek.",
+            },
+          ],
+          [
+            {
+              kind: "text",
+              text: "Patreon destekçileri isterlerse önizleme güncellemelerini doğrudan CouchMode içinden alabilir. Önizleme sürümleri herkese açıktır, destekçilere özel değildir.",
+            },
+          ],
+          [
+            {
+              kind: "text",
+              text: "Üyeliğiniz sona ererse uygulama içinden önizleme güncellemeleri duraklatılır. Standart güncellemeler devam eder ve kurulu sürüm eski bir sürüme düşürülmez. Açık beta özellikleri ücretsiz kalır.",
+            },
+          ],
         ],
       },
       {
-        heading: "Patreon destekçi erişimi",
+        heading: "Buy Me a Coffee",
         paragraphs: [
-          legalText(
-            "Herkese açık beta sırasında CouchMode Pro erişimi Patreon üyeliği üzerinden sağlanır. Pro lisansı, üyelik etkin olduğu sürece etkin kalır.",
-          ),
-          legalText(
-            "Üyelik biter, başarısız olur, iade edilir veya iptal edilirse Pro erişimi kısa bir tolerans süresinden sonra Free moduna dönebilir.",
-          ),
-          legalText(
-            "Pro Version aylık 3 ABD dolarıdır ve en fazla 2 etkin Windows cihazında kişisel Pro erişimi sağlar. Pro Supporter aylık 5 ABD dolarıdır ve en fazla 5 etkin Windows cihazında kişisel Pro erişimi sağlar.",
-          ),
+          [
+            {
+              kind: "text",
+              text: "Tek seferlik destek mi vermek istersiniz? Buy Me a Coffee üzerinden katkınız bir teşekkür niteliğindedir, üyelik değildir. Pro statüsü, kullanım hakkı veya cihaz etkinleştirmesi sağlamaz.",
+            },
+          ],
         ],
       },
       {
@@ -546,10 +578,10 @@ export const turkishTermsPacket: SurfacePacketBase<"legal"> = {
         ],
       },
       {
-        heading: "Etkinleştirme sınırı",
+        heading: "Destekçiler için cihaz sınırı",
         paragraphs: [
           legalText(
-            "Kötüye kullanımı önlemek için Pro erişiminde etkinleştirme sınırları olabilir. Meşru bir cihaz değişikliği için yardıma ihtiyacınız varsa destekle iletişime geçin.",
+            "Destekçi statüsü ve önizleme güncellemeleri sınırlı sayıda etkin Windows cihazında kullanılabilir. Bu sınır, herkese açık betanın normal özelliklerini kısıtlamaz. Meşru bir cihaz değişikliğinden sonra yardıma ihtiyacınız varsa destekle iletişime geçin.",
           ),
         ],
       },
@@ -573,7 +605,7 @@ export const turkishTermsPacket: SurfacePacketBase<"legal"> = {
         heading: "Üçüncü taraf hizmetleri",
         paragraphs: [
           legalText(
-            "Patreon, Patreon tabanlı Pro erişimi için faturalandırmayı, üyeliği, iptali ve iade ayrıntılarını yönetebilir. CouchMode ödeme kartı bilgilerini depolamaz.",
+            "Patreon, Patreon destekçi üyelikleri için faturalandırmayı, üyeliği, iptali ve iade ayrıntılarını yönetebilir. CouchMode ödeme kartı bilgilerini depolamaz.",
           ),
         ],
       },
@@ -594,10 +626,10 @@ export const turkishRefundPacket: SurfacePacketBase<"legal"> = {
   seo: {
     title: "CouchMode Patreon faturalandırma ve iadeler",
     description:
-      "Herkese açık beta Pro erişimi için CouchMode iade politikası: Patreon faturalandırma, iptal ve iadeleri yönetir; yetkilendirme yenilendikten ve geçerli tolerans süresi uygulandıktan sonra Pro Free moduna dönebilir.",
+      "CouchMode destekçi üyeliklerinin ödemeleri, iptalleri ve iadeleri Patreon üzerinden yönetilir. Üyelik sona erse de açık beta özellikleri ücretsiz kalır.",
     ogTitle: "CouchMode Patreon faturalandırma ve iadeler",
     ogDescription:
-      "Herkese açık beta Pro erişimi için CouchMode iade politikası: Patreon faturalandırma, iptal ve iadeleri yönetir; yetkilendirme yenilendikten ve geçerli tolerans süresi uygulandıktan sonra Pro Free moduna dönebilir.",
+      "CouchMode destekçi üyeliklerinin ödemeleri, iptalleri ve iadeleri Patreon üzerinden yönetilir. Üyelik sona erse de açık beta özellikleri ücretsiz kalır.",
   },
   schema: { homeBreadcrumbLabel: "Ana sayfa", currentBreadcrumbLabel: "İade politikası" },
   internalLinks: ["home"],
@@ -606,10 +638,13 @@ export const turkishRefundPacket: SurfacePacketBase<"legal"> = {
     chrome: {
       backToHomepageLabel: "Ana sayfaya dön",
       lastUpdatedLabel: "Son güncelleme",
-      lastUpdated: "Ağustos 2026",
+      lastUpdated: "Ekim 2026",
     },
     sections: [
-      { paragraphs: [legalText("CouchMode Free için satın alma gerekmez.")] },
+      {
+        heading: "Açık beta boyunca tüm özellikler ücretsiz.",
+        paragraphs: [[{ kind: "text", text: "Açık beta boyunca tüm özellikler ücretsiz." }]],
+      },
       {
         paragraphs: [
           legalText(
@@ -638,9 +673,12 @@ export const turkishRefundPacket: SurfacePacketBase<"legal"> = {
       },
       {
         paragraphs: [
-          legalText(
-            "Üyelik iptal edilir, iade edilir veya etkinliğini kaybederse Pro erişimi; yetkilendirme yenilendikten ve geçerli tolerans süresi uygulandıktan sonra Free moduna döner. CouchMode ayarlarınız saklanır ve Free'de temel oyun oturumu kullanılabilir kalır.",
-          ),
+          [
+            {
+              kind: "text",
+              text: "Üyeliğiniz sona ererse uygulama içinden önizleme güncellemeleri duraklatılır. Standart güncellemeler devam eder ve kurulu sürüm eski bir sürüme düşürülmez. Açık beta özellikleri ücretsiz kalır.",
+            },
+          ],
         ],
       },
       { paragraphs: [legalSupportEmail("CouchMode ürün desteği için ", " ile iletişime geçin.")] },
@@ -655,26 +693,22 @@ export const turkishCheckoutPacket: SurfacePacketBase<"checkout"> = {
   path: "/couchmode-pro/",
   sourceRevision: localeManifest.sourceRevision,
   seo: {
-    title: "CouchMode Pro - Patreon destekçi erişimi",
+    title: "CouchMode'u destekleyin",
     description:
-      "CouchMode Pro erişimi herkese açık beta sırasında etkin Patreon üyeliği kullanır. Uygulama içindeki 7 günlük Pro denemesiyle başlayın, ardından devam etmek için Patreon'u bağlayın.",
-    ogTitle: "CouchMode Pro - Patreon destekçi erişimi",
+      "CouchMode açık beta boyunca ücretsiz. İşinize yarıyorsa geliştirme çalışmalarına, uyumluluk testlerine ve gelecek iyileştirmelere destek olabilirsiniz.",
+    ogTitle: "CouchMode'u destekleyin",
     ogDescription:
-      "CouchMode Pro erişimi herkese açık beta sırasında etkin Patreon üyeliği kullanır. Uygulama içindeki 7 günlük Pro denemesiyle başlayın, ardından devam etmek için Patreon'u bağlayın.",
+      "CouchMode açık beta boyunca ücretsiz. İşinize yarıyorsa geliştirme çalışmalarına, uyumluluk testlerine ve gelecek iyileştirmelere destek olabilirsiniz.",
   },
-  schema: { homeBreadcrumbLabel: "Ana sayfa", currentBreadcrumbLabel: "Pro" },
+  schema: { homeBreadcrumbLabel: "Ana sayfa", currentBreadcrumbLabel: "CouchMode'u destekleyin" },
   internalLinks: ["home"],
   payload: {
-    title: "CouchMode Pro alın",
+    title: "CouchMode'u destekleyin",
     chrome: {
       backToHomepageLabel: "Ana sayfaya dön",
       lastUpdatedLabel: "Son güncelleme",
       lastUpdated: "Ağustos 2026",
     },
-    bridge: {
-      redirectingLabel: "Patreon'a yönlendiriliyorsunuz...",
-      fallbackDescription: "Patreon otomatik açılmazsa aşağıdaki düğmeyi kullanın.",
-    },
-    patreonCtaLabel: "Patreon'da devam et",
+    support: supporterCopy["tr"],
   },
 };
