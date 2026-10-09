@@ -84,11 +84,13 @@ for (const file of files) {
     if (text.toLowerCase().includes(token.toLowerCase()))
       violations.push(`${file}: forbidden ${token}`);
 }
-// Each independent slot either has its own exact manifest or no file at all.
-for (const [slot, name] of [
-  ["stable", "latest.json"],
-  ["preview", "beta.json"],
-]) {
+// beta.json is retired (2026-10-10, supporter-only previews): it must never be published, whatever
+// the release data says. Its presence anywhere in the public build is a violation.
+for (const f of walk(distDir))
+  if (f.replace(/\\/g, "/").toLowerCase().endsWith("/beta.json"))
+    violations.push(`Retired preview feed must never be published: ${f}`);
+// The stable slot either has its own exact manifest or no file at all.
+for (const [slot, name] of [["stable", "latest.json"]]) {
   const row = slots[slot],
     file = "updates/windows/" + name;
   if (!row) {

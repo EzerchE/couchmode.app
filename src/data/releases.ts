@@ -58,9 +58,10 @@ export const releases: Release[] = releasesData as Release[];
 export const stableRelease = releases.find(
   (r) => r.downloadEnabled && (r.updateChannel ?? "stable") === "stable",
 );
-export const previewRelease = releases.find(
-  (r) => r.downloadEnabled && r.updateChannel === "preview" && r.publicationState === "ready",
-);
+// Supporter-only previews (2026-10-10): a preview is never public, so the website never has a
+// preview download. /download?channel=preview is informational only. The build already refuses
+// preview rows (scripts/lib/release-slots.mjs); this keeps the page incapable of rendering one.
+export const previewRelease: Release | undefined = undefined;
 // A blocked local release-window candidate has no installer URL. The build guard
 // refuses production publication until the authoritative ready handoff replaces it.
 export const releaseCandidate = releases.find(

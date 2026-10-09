@@ -10,6 +10,13 @@ export function artifactUrlIsCanonical(url, version) {
 }
 
 export function validateWebsiteHandoff(h) {
+  // Supporter-only previews (owner decision 2026-10-10): a preview is NEVER public. The public
+  // website consumes no preview handoff at all - not beta.json, not a download, not history.
+  // Preview publication targets backend/admin tooling. Fail closed before anything else.
+  if (h?.release?.updateChannel === "preview")
+    return [
+      "Preview releases are never published on the public website (supporter-only, never-public): refusing the handoff",
+    ];
   const errors = validateHandoff(h);
   if (errors.length) return errors;
   const { release: r, artifact: a = {}, github: g = {}, updaterExpectations: ux } = h;

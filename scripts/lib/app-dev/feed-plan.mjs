@@ -19,6 +19,13 @@
 //   No current preview -> beta.json MUST NOT EXIST (HTTP 404). Never {}, null, 0.0.0.0, a copy of
 //   the stable manifest, or an old superseded preview. writeFeeds deletes a stale one.
 //
+// SUPERSEDED for the preview slot (owner decision 2026-10-10, supporter-only previews, Phase 1):
+//   A preview is NEVER public. There is no public preview feed: beta.json is RETIRED and must never
+//   exist, whatever the handoff says. A preview handoff carries the "never-public" intent only
+//   (no download to enable, no feed to publish, no prior downloads, artifact provider "private-r2"
+//   with a null url, and no private file key). Its real publication targets backend/admin
+//   tooling, not the website. G1/G2/G3 stay in force for the STABLE slot exactly as before.
+//
 // App Dev does not write the public website files; Web Dev does. This module is the tested
 // reference those generators follow, and the gate (check-release-consistency.mjs) imports its
 // destination rules. Pure except writeFeeds / verifyFeeds, which take an explicit directory.
@@ -31,7 +38,16 @@ import { resolveVersion, isReleaseNumeric, compareNumeric } from "./version-sche
 export const HANDOFF_SCHEMA = "couchmode-release-handoff";
 export const HANDOFF_SCHEMA_VERSION = 3;
 export const SLOTS = ["stable", "preview"];
-export const FEED_FOR_SLOT = Object.freeze({ stable: "latest.json", preview: "beta.json" });
+// The preview slot has NO public feed (2026-10-10). latest.json is the only public feed; beta.json
+// is retired and must never exist on the public website.
+export const FEED_FOR_SLOT = Object.freeze({ stable: "latest.json", preview: null });
+export const PUBLIC_FEEDS = Object.freeze(["latest.json"]);
+export const RETIRED_FEEDS = Object.freeze(["beta.json"]);
+export const PREVIEW_VISIBILITY = "never-public";
+// The future private artifact provider for previews. Its file key is internal and is never part
+// of a handoff; only a stable may use the public "github-release" provider.
+export const PRIVATE_PREVIEW_PROVIDER = "private-r2";
+export const PUBLIC_STABLE_PROVIDER = "github-release";
 export const PUBLICATION_STATES = ["ready", "blocked", "superseded", "revoked"];
 // Exactly the fields src/UpdateCheck.cs reads (New-CmLatestJson's set, minus generatedUtc).
 export const MANIFEST_FIELDS = ["latestVersion", "latestVersionNumeric", "minimumSupportedVersionNumeric",
@@ -100,6 +116,16 @@ export function validateHandoff(h) {
   const wi = h.websiteIntent || {};
   const ready = r.websitePublicationState === "ready";
   if (wi.slot !== slot) e.push(`websiteIntent.slot ${JSON.stringify(wi.slot)} != release.updateChannel "${slot}"`);
+  const art = h.artifact;
+  if (slot === "preview") {
+    for (const x of previewNeverPublicErrors(h)) e.push(x);
+    return e;
+  }
+  // STABLE: never carries a preview marker.
+  if (wi.visibility !== undefined)
+    e.push(`a stable handoff must not carry websiteIntent.visibility (${JSON.stringify(wi.visibility)}): that marks a preview occupying the stable slot`);
+  if (art && art.provider === PRIVATE_PREVIEW_PROVIDER)
+    e.push(`a stable release must use the public "${PUBLIC_STABLE_PROVIDER}" provider, not "${PRIVATE_PREVIEW_PROVIDER}": that marks a preview occupying the stable slot`);
   const cd = wi.currentDownload || {};
   if (cd.slot !== slot || cd.version !== r.version || cd.action !== (ready ? "enable" : "disable"))
     e.push(`websiteIntent.currentDownload must be { slot: "${slot}", version: "${r.version}", action: "${ready ? "enable" : "disable"}" }, got ${JSON.stringify(cd)}`);
@@ -122,10 +148,61 @@ export function validateHandoff(h) {
   return e;
 }
 
+/** The exact never-public preview intent (schema v3 extension, 2026-10-10). */
+export function previewNeverPublicIntent(version) {
+  return {
+    slot: "preview",
+    visibility: PREVIEW_VISIBILITY,
+    currentDownload: { slot: "preview", version, action: "none" },
+    currentFeed: { slot: "preview", file: null, action: "none" },
+    priorDownloads: [],
+    releaseHistory: "preserve",
+  };
+}
+
+/** Every way a preview handoff would expose something publicly. Empty = it is never-public. */
+export function previewNeverPublicErrors(h) {
+  const e = [];
+  const r = (h && h.release) || {};
+  const wi = (h && h.websiteIntent) || {};
+  const want = previewNeverPublicIntent(r.version);
+  if (r.updateFeed !== null)
+    e.push(`a preview has no public feed: release.updateFeed must be null, got ${JSON.stringify(r.updateFeed)} (beta.json is retired)`);
+  if (wi.visibility !== PREVIEW_VISIBILITY)
+    e.push(`a preview's websiteIntent.visibility must be "${PREVIEW_VISIBILITY}", got ${JSON.stringify(wi.visibility)}`);
+  const cd = wi.currentDownload || {};
+  if (JSON.stringify(cd) !== JSON.stringify(want.currentDownload))
+    e.push(`a preview must never enable a public download: websiteIntent.currentDownload must be ${JSON.stringify(want.currentDownload)}, got ${JSON.stringify(cd)}`);
+  const cf = wi.currentFeed || {};
+  if (JSON.stringify(cf) !== JSON.stringify(want.currentFeed))
+    e.push(`a preview must never publish a feed (beta.json): websiteIntent.currentFeed must be ${JSON.stringify(want.currentFeed)}, got ${JSON.stringify(cf)}`);
+  if (!Array.isArray(wi.priorDownloads) || wi.priorDownloads.length)
+    e.push("a preview handoff must not instruct any website download transition: websiteIntent.priorDownloads must be []");
+  if (wi.releaseHistory !== "preserve") e.push(`websiteIntent.releaseHistory must be "preserve"`);
+  const art = h && h.artifact;
+  if (art !== undefined) {
+    if (!art || art.provider !== PRIVATE_PREVIEW_PROVIDER)
+      e.push(`a preview artifact must use the private "${PRIVATE_PREVIEW_PROVIDER}" provider, got ${JSON.stringify(art && art.provider)} (a public GitHub asset is never allowed for a preview)`);
+    if (!art || art.url !== null)
+      e.push(`a preview must never expose artifact.url (got ${JSON.stringify(art && art.url)})`);
+  }
+  const g = h && h.github;
+  if (g && (g.published || g.tag || g.releaseId))
+    e.push("a preview must never have a GitHub release identity: previews are not published on GitHub");
+  const blob = JSON.stringify(h);
+  if (/"installerUrl"\s*:\s*"/.test(blob)) e.push("a preview handoff must never carry an installerUrl");
+  if (/"(privateObjectKey|objectKey|privateKey|r2Key)"\s*:/.test(blob))
+    e.push("a preview handoff must never carry the private artifact key: it stays in internal release metadata");
+  if (/releases\/download\//.test(blob)) e.push("a preview handoff must never carry a public release-asset URL");
+  return e;
+}
+
 /** G3: may this handoff populate its feed? Only a valid AND ready one. */
 export function feedEligibility(h) {
   const errors = validateHandoff(h);
   if (errors.length) return { eligible: false, reason: `invalid handoff: ${errors[0]}` };
+  if (h.release.updateChannel === "preview")
+    return { eligible: false, reason: `${h.release.version} is a preview: previews are never public and populate no public feed` };
   if (h.release.websitePublicationState !== "ready")
     return { eligible: false, reason: `${h.release.version} is ${h.release.websitePublicationState}; only a ready release populates ${h.release.updateFeed}` };
   return { eligible: true, reason: "ready" };
@@ -145,6 +222,11 @@ export function applyHandoff(state, h) {
   const r = h.release;
   const slot = r.updateChannel;
   const other = slot === "stable" ? "preview" : "stable";
+
+  // A (valid, therefore never-public) preview changes nothing on the public website.
+  if (slot === "preview")
+    return { state, accepted: true, errors: [],
+      change: `ignored: ${r.version} is a preview; previews are never public and change no website state` };
 
   if (r.websitePublicationState !== "ready") {
     // G3: never populates a feed. It can only WITHDRAW its own slot's current release.
@@ -203,11 +285,10 @@ export function manifestOf(h) {
  */
 export function planFeeds(state) {
   const s = state && state.stable && feedEligibility(state.stable).eligible ? state.stable : null;
-  const p = state && state.preview && feedEligibility(state.preview).eligible ? state.preview : null;
-  const previewIsAhead = p && (!s || compareNumeric(p.release.versionNumeric, s.release.versionNumeric) === 1);
+  // beta.json is retired: it is planned absent unconditionally, whatever the preview slot holds.
   return {
     "latest.json": s ? manifestOf(s) : null,
-    "beta.json": previewIsAhead ? manifestOf(p) : null,
+    "beta.json": null,
   };
 }
 
@@ -216,7 +297,8 @@ export function planFeeds(state) {
 /** Write the planned feeds into dir; DELETE any planned-absent file (a stale beta.json). */
 export function writeFeeds(dir, plan, extra = {}) {
   const written = [], removed = [];
-  for (const name of Object.values(FEED_FOR_SLOT)) {
+  for (const name of [...PUBLIC_FEEDS, ...RETIRED_FEEDS]) {
+    if (RETIRED_FEEDS.includes(name) && plan[name]) throw new Error(`${name} is retired and can never be written (previews are never public)`);
     const path = join(dir, name);
     const manifest = plan[name];
     if (manifest) {
@@ -233,14 +315,16 @@ export function writeFeeds(dir, plan, extra = {}) {
 /** Every way the feed files in dir disagree with the plan. Empty = they match. */
 export function verifyFeeds(dir, plan) {
   const e = [];
-  for (const name of Object.values(FEED_FOR_SLOT)) {
+  for (const name of [...PUBLIC_FEEDS, ...RETIRED_FEEDS]) {
     const path = join(dir, name);
-    const want = plan[name];
+    const want = RETIRED_FEEDS.includes(name) ? null : plan[name];
     if (!want) {
       if (existsSync(path)) {
         let shown = "";
         try { shown = readFileSync(path, "utf8").replace(/\s+/g, " ").slice(0, 80); } catch { /* unreadable */ }
-        e.push(`${name} must not exist (no current ${name === "beta.json" ? "preview" : "stable"}), but it does: ${shown}`);
+        e.push(RETIRED_FEEDS.includes(name)
+          ? `${name} must never exist (retired: previews are never public), but it does: ${shown}`
+          : `${name} must not exist (no current stable), but it does: ${shown}`);
       }
       continue;
     }

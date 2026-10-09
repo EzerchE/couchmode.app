@@ -79,8 +79,10 @@ function manifestFor(latest) {
   };
 }
 if (latest) writeJson("latest.json", manifestFor(latest));
-if (preview) writeJson("beta.json", manifestFor(preview));
-else rmSync(resolve(outDir, "beta.json"), { force: true });
+// beta.json is retired (2026-10-10): previews are supporter-only and never public. It is never
+// written, and any stale copy is removed. releaseSlots already refuses preview rows outright.
+if (preview) throw new Error("A preview can never produce a public feed (beta.json is retired)");
+rmSync(resolve(outDir, "beta.json"), { force: true });
 
 // Review files are deliberately outside public/. A blocked candidate is never a feed.
 const candidate = allReleases.find((r) => r.publicationState === "blocked" && !wasPublished(r));

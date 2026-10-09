@@ -9,6 +9,12 @@ export function releaseSlots(rows) {
     versions.add(row.version);
     const slot = row.updateChannel ?? "stable";
     if (!(slot in slots)) throw new Error(`Invalid update channel: ${slot}`);
+    // Supporter-only previews (2026-10-10): a preview never appears in public release data, so it
+    // can never enable a download, expose an installer URL or produce beta.json. Fail closed.
+    if (slot === "preview")
+      throw new Error(
+        `Preview release in public release data: ${row.version} (previews are never public)`,
+      );
     if (!row.downloadEnabled) {
       if (row.installerUrl)
         throw new Error(`Retired/blocked installer must be null: ${row.version}`);
