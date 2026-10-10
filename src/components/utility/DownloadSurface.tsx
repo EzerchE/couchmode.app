@@ -147,7 +147,7 @@ export function DownloadSurface({ packet }: { packet: SurfacePacketBase<"downloa
                     copy.facts.codeSigning,
                     release.signed ? copy.facts.signedValue : notice.unsignedLabel,
                   ],
-                  [copy.facts.pricing, copy.supportCouchMode.free],
+                  [copy.facts.pricing, copy.facts.pricingValue],
                 ].map(([k, v]) => (
                   <div key={k} className="rounded-2xl border border-white/10 p-4">
                     <dt className="text-xs uppercase tracking-wide text-muted-foreground">{k}</dt>
