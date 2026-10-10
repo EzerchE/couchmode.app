@@ -191,13 +191,13 @@ export const italianTermsPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "I sostenitori su Patreon possono scegliere di ricevere gli aggiornamenti in anteprima direttamente tramite CouchMode quando sono disponibili versioni in anteprima.",
+              text: "La ricezione degli aggiornamenti in anteprima direttamente tramite CouchMode è in fase di sviluppo per i sostenitori su Patreon e non è ancora disponibile.",
             },
           ],
           [
             {
               kind: "text",
-              text: "Se l'abbonamento termina, la ricezione degli aggiornamenti in anteprima viene sospesa. Gli aggiornamenti standard continuano e la versione installata non viene riportata a una precedente. Le funzioni della beta pubblica restano gratuite.",
+              text: "Se l'abbonamento termina, termina anche lo stato di sostenitore e la ricezione degli aggiornamenti in anteprima, una volta disponibile, viene sospesa. Gli aggiornamenti standard continuano e la versione installata non viene riportata a una precedente. Le funzioni della beta pubblica restano gratuite.",
             },
           ],
         ],
@@ -236,7 +236,7 @@ export const italianTermsPacket: SurfacePacketBase<"legal"> = {
         heading: "Limite di dispositivi per i sostenitori",
         paragraphs: [
           legalText(
-            "Lo stato di sostenitore e la ricezione degli aggiornamenti in anteprima sono disponibili su un numero limitato di dispositivi Windows attivi. Questo limite non riguarda le normali funzionalità della beta pubblica. Contatta l'assistenza se hai bisogno di aiuto dopo un cambio legittimo di dispositivo.",
+            "Lo stato di sostenitore e, una volta disponibile, la ricezione degli aggiornamenti in anteprima sono limitati a un numero ristretto di dispositivi Windows attivi. Questo limite non riguarda le normali funzionalità della beta pubblica. Contatta l'assistenza se hai bisogno di aiuto dopo un cambio legittimo di dispositivo.",
           ),
         ],
       },
@@ -297,7 +297,6 @@ export const italianRefundPacket: SurfacePacketBase<"legal"> = {
     },
     sections: [
       {
-        heading: "Tutte le funzioni sono gratuite durante la beta pubblica.",
         paragraphs: [
           [{ kind: "text", text: "Tutte le funzioni sono gratuite durante la beta pubblica." }],
         ],
@@ -335,7 +334,7 @@ export const italianRefundPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "Se l'abbonamento termina, la ricezione degli aggiornamenti in anteprima viene sospesa. Gli aggiornamenti standard continuano e la versione installata non viene riportata a una precedente. Le funzioni della beta pubblica restano gratuite.",
+              text: "Se l'abbonamento termina, termina anche lo stato di sostenitore e la ricezione degli aggiornamenti in anteprima, una volta disponibile, viene sospesa. Gli aggiornamenti standard continuano e la versione installata non viene riportata a una precedente. Le funzioni della beta pubblica restano gratuite.",
             },
           ],
         ],

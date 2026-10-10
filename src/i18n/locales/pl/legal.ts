@@ -189,13 +189,13 @@ export const polishTermsPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "Wspierający na Patreon mogą włączyć odbieranie aktualizacji testowych bezpośrednio przez CouchMode, gdy wersje testowe będą dostępne.",
+              text: "Odbieranie aktualizacji testowych bezpośrednio przez CouchMode jest w przygotowaniu dla wspierających na Patreon i nie jest jeszcze dostępne.",
             },
           ],
           [
             {
               kind: "text",
-              text: "Po wygaśnięciu subskrypcji odbieranie wersji testowych zostaje wstrzymane. Standardowe aktualizacje działają dalej, bez cofania zainstalowanej wersji. Funkcje publicznej bety pozostają bezpłatne.",
+              text: "Po wygaśnięciu subskrypcji kończy się status wspierającego, a odbieranie wersji testowych, gdy będzie dostępne, zostaje wstrzymane. Standardowe aktualizacje działają dalej, bez cofania zainstalowanej wersji. Funkcje publicznej bety pozostają bezpłatne.",
             },
           ],
         ],
@@ -234,7 +234,7 @@ export const polishTermsPacket: SurfacePacketBase<"legal"> = {
         heading: "Limit urządzeń dla wspierających",
         paragraphs: [
           legalText(
-            "Status wspierającego i odbieranie aktualizacji testowych są dostępne na ograniczonej liczbie aktywnych urządzeń z Windows. Limit ten nie ogranicza zwykłych funkcji publicznej bety. Skontaktuj się z pomocą techniczną, jeśli potrzebujesz pomocy po uzasadnionej zmianie urządzenia.",
+            "Status wspierającego oraz, gdy będzie dostępne, odbieranie aktualizacji testowych są ograniczone do określonej liczby aktywnych urządzeń z Windows. Limit ten nie ogranicza zwykłych funkcji publicznej bety. Skontaktuj się z pomocą techniczną, jeśli potrzebujesz pomocy po uzasadnionej zmianie urządzenia.",
           ),
         ],
       },
@@ -292,7 +292,6 @@ export const polishRefundPacket: SurfacePacketBase<"legal"> = {
     },
     sections: [
       {
-        heading: "W publicznej becie wszystkie funkcje są bezpłatne.",
         paragraphs: [
           [{ kind: "text", text: "W publicznej becie wszystkie funkcje są bezpłatne." }],
         ],
@@ -328,7 +327,7 @@ export const polishRefundPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "Po wygaśnięciu subskrypcji odbieranie wersji testowych zostaje wstrzymane. Standardowe aktualizacje działają dalej, bez cofania zainstalowanej wersji. Funkcje publicznej bety pozostają bezpłatne.",
+              text: "Po wygaśnięciu subskrypcji kończy się status wspierającego, a odbieranie wersji testowych, gdy będzie dostępne, zostaje wstrzymane. Standardowe aktualizacje działają dalej, bez cofania zainstalowanej wersji. Funkcje publicznej bety pozostają bezpłatne.",
             },
           ],
         ],

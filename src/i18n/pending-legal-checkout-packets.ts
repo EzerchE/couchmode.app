@@ -186,13 +186,13 @@ export const germanTermsPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "Patreon-Unterstützer können Vorschau-Updates auf Wunsch direkt über CouchMode erhalten, wenn Vorschauversionen verfügbar sind.",
+              text: "Vorschau-Updates direkt über CouchMode sind für Patreon-Unterstützer in Entwicklung und noch nicht verfügbar.",
             },
           ],
           [
             {
               kind: "text",
-              text: "Endet deine Mitgliedschaft, pausiert die Zustellung von Vorschau-Updates. Reguläre Updates laufen weiter, ohne die installierte Version zurückzustufen. Die Funktionen der öffentlichen Beta bleiben kostenlos.",
+              text: "Endet deine Mitgliedschaft, endet auch dein Unterstützerstatus; die Zustellung von Vorschau-Updates pausiert, sobald sie verfügbar ist. Reguläre Updates laufen weiter, ohne die installierte Version zurückzustufen. Die Funktionen der öffentlichen Beta bleiben kostenlos.",
             },
           ],
         ],
@@ -231,7 +231,7 @@ export const germanTermsPacket: SurfacePacketBase<"legal"> = {
         heading: "Gerätelimit für Unterstützer",
         paragraphs: [
           legalText(
-            "Der Unterstützerstatus und die Zustellung von Vorschau-Updates sind auf eine begrenzte Anzahl aktiver Windows-Geräte beschränkt. Dieses Limit schränkt die normalen Funktionen der öffentlichen Beta nicht ein. Wende dich an den Support, wenn du nach einem berechtigten Gerätewechsel Hilfe benötigst.",
+            "Der Unterstützerstatus und, sobald verfügbar, die Zustellung von Vorschau-Updates sind auf eine begrenzte Anzahl aktiver Windows-Geräte beschränkt. Dieses Limit schränkt die normalen Funktionen der öffentlichen Beta nicht ein. Wende dich an den Support, wenn du nach einem berechtigten Gerätewechsel Hilfe benötigst.",
           ),
         ],
       },
@@ -292,7 +292,6 @@ export const germanRefundPacket: SurfacePacketBase<"legal"> = {
     },
     sections: [
       {
-        heading: "Während der öffentlichen Beta sind alle Funktionen kostenlos.",
         paragraphs: [
           [{ kind: "text", text: "Während der öffentlichen Beta sind alle Funktionen kostenlos." }],
         ],
@@ -330,7 +329,7 @@ export const germanRefundPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "Endet deine Mitgliedschaft, pausiert die Zustellung von Vorschau-Updates. Reguläre Updates laufen weiter, ohne die installierte Version zurückzustufen. Die Funktionen der öffentlichen Beta bleiben kostenlos.",
+              text: "Endet deine Mitgliedschaft, endet auch dein Unterstützerstatus; die Zustellung von Vorschau-Updates pausiert, sobald sie verfügbar ist. Reguläre Updates laufen weiter, ohne die installierte Version zurückzustufen. Die Funktionen der öffentlichen Beta bleiben kostenlos.",
             },
           ],
         ],
@@ -536,13 +535,13 @@ export const turkishTermsPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "Patreon destekçileri, önizleme sürümleri mevcut olduğunda önizleme güncellemelerini isterlerse doğrudan CouchMode üzerinden alabilir.",
+              text: "Patreon destekçileri için doğrudan CouchMode üzerinden önizleme güncellemeleri geliştirme aşamasındadır ve henüz kullanılamaz.",
             },
           ],
           [
             {
               kind: "text",
-              text: "Üyeliğiniz sona ererse uygulama içinden önizleme güncellemeleri duraklatılır. Standart güncellemeler devam eder ve kurulu sürüm eski bir sürüme düşürülmez. Açık beta özellikleri ücretsiz kalır.",
+              text: "Üyeliğiniz sona ererse destekçi statünüz de sona erer; uygulama içinden önizleme güncellemeleri, kullanıma sunulduğunda, duraklatılır. Standart güncellemeler devam eder ve kurulu sürüm eski bir sürüme düşürülmez. Açık beta özellikleri ücretsiz kalır.",
             },
           ],
         ],
@@ -581,7 +580,7 @@ export const turkishTermsPacket: SurfacePacketBase<"legal"> = {
         heading: "Destekçiler için cihaz sınırı",
         paragraphs: [
           legalText(
-            "Destekçi statüsü ve önizleme güncellemeleri sınırlı sayıda etkin Windows cihazında kullanılabilir. Bu sınır, herkese açık betanın normal özelliklerini kısıtlamaz. Meşru bir cihaz değişikliğinden sonra yardıma ihtiyacınız varsa destekle iletişime geçin.",
+            "Destekçi statüsü ve kullanıma sunulduğunda önizleme güncellemeleri, sınırlı sayıda etkin Windows cihazında kullanılabilir. Bu sınır, herkese açık betanın normal özelliklerini kısıtlamaz. Meşru bir cihaz değişikliğinden sonra yardıma ihtiyacınız varsa destekle iletişime geçin.",
           ),
         ],
       },
@@ -642,7 +641,6 @@ export const turkishRefundPacket: SurfacePacketBase<"legal"> = {
     },
     sections: [
       {
-        heading: "Açık beta boyunca tüm özellikler ücretsiz.",
         paragraphs: [[{ kind: "text", text: "Açık beta boyunca tüm özellikler ücretsiz." }]],
       },
       {
@@ -676,7 +674,7 @@ export const turkishRefundPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "Üyeliğiniz sona ererse uygulama içinden önizleme güncellemeleri duraklatılır. Standart güncellemeler devam eder ve kurulu sürüm eski bir sürüme düşürülmez. Açık beta özellikleri ücretsiz kalır.",
+              text: "Üyeliğiniz sona ererse destekçi statünüz de sona erer; uygulama içinden önizleme güncellemeleri, kullanıma sunulduğunda, duraklatılır. Standart güncellemeler devam eder ve kurulu sürüm eski bir sürüme düşürülmez. Açık beta özellikleri ücretsiz kalır.",
             },
           ],
         ],

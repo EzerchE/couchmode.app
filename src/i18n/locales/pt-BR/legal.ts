@@ -186,13 +186,13 @@ export const brazilianPortugueseTermsPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "Apoiadores no Patreon podem optar por receber atualizações de prévia diretamente pelo CouchMode quando houver prévias disponíveis.",
+              text: "O recebimento de atualizações de prévia diretamente pelo CouchMode está em desenvolvimento para apoiadores no Patreon e ainda não está disponível.",
             },
           ],
           [
             {
               kind: "text",
-              text: "Se a assinatura terminar, o recebimento de prévias será pausado. As atualizações padrão continuam e a versão instalada não é substituída por uma anterior. Os recursos do beta público continuam gratuitos.",
+              text: "Se a assinatura terminar, seu status de apoiador também termina, e o recebimento de prévias, quando estiver disponível, será pausado. As atualizações padrão continuam e a versão instalada não é substituída por uma anterior. Os recursos do beta público continuam gratuitos.",
             },
           ],
         ],
@@ -231,7 +231,7 @@ export const brazilianPortugueseTermsPacket: SurfacePacketBase<"legal"> = {
         heading: "Limite de dispositivos para apoiadores",
         paragraphs: [
           legalText(
-            "O status de apoiador e o recebimento de atualizações de prévia estão disponíveis em um número limitado de dispositivos Windows ativos. Esse limite não restringe os recursos normais da beta pública. Entre em contato com o suporte se precisar de ajuda após uma troca legítima de dispositivo.",
+            "O status de apoiador e, quando estiver disponível, o recebimento de atualizações de prévia são limitados a um número restrito de dispositivos Windows ativos. Esse limite não restringe os recursos normais da beta pública. Entre em contato com o suporte se precisar de ajuda após uma troca legítima de dispositivo.",
           ),
         ],
       },
@@ -289,7 +289,6 @@ export const brazilianPortugueseRefundPacket: SurfacePacketBase<"legal"> = {
     },
     sections: [
       {
-        heading: "Todos os recursos são gratuitos durante o beta público.",
         paragraphs: [
           [{ kind: "text", text: "Todos os recursos são gratuitos durante o beta público." }],
         ],
@@ -327,7 +326,7 @@ export const brazilianPortugueseRefundPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "Se a assinatura terminar, o recebimento de prévias será pausado. As atualizações padrão continuam e a versão instalada não é substituída por uma anterior. Os recursos do beta público continuam gratuitos.",
+              text: "Se a assinatura terminar, seu status de apoiador também termina, e o recebimento de prévias, quando estiver disponível, será pausado. As atualizações padrão continuam e a versão instalada não é substituída por uma anterior. Os recursos do beta público continuam gratuitos.",
             },
           ],
         ],

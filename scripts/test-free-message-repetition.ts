@@ -4,7 +4,9 @@
 //
 //   1. every home page shows it (it is the product promise, so it must be visible);
 //   2. no page shows it more than twice;
-//   3. it never appears in two consecutive text blocks (a heading restated by the line under it).
+//   3. it never appears in two consecutive text blocks (a heading restated by the line under it);
+//   4. on any page, in any wording, no sentence is immediately repeated by the next text block (the
+//      refund-page bug: a section heading and its only paragraph were the same source string).
 //
 // Deliberately NOT checked: other words or phrasings. Natural localized copy may say "free" or
 // "kostenlos" wherever it reads well; only the one fixed promise sentence is counted.
@@ -37,7 +39,9 @@ const ENTITIES: Record<string, string> = {
 /** Visible text blocks of one built page, in document order. */
 export function visibleBlocks(html: string): string[] {
   const body = html
-    .replace(/<(script|style|noscript|template)\b[\s\S]*?<\/\1>/gi, " ")
+    // Navigation (header menu, breadcrumbs, footer links) repeats labels by design; it never
+    // carries the promise sentence, so every rule ignores it.
+    .replace(/<(script|style|noscript|template|nav)\b[\s\S]*?<\/\1>/gi, " ")
     .replace(/<head\b[\s\S]*?<\/head>/i, " ");
   return body
     .replace(BLOCK, "\n")
@@ -82,10 +86,46 @@ export function repetitionProblems(blocks: string[], sentence: string): string[]
   return problems;
 }
 
+// A SENTENCE: ends with sentence punctuation in any of the site's scripts. Labels and category names
+// (a heading next to a card badge with the same name) are not sentences and are not counted.
+const SENTENCE = /[.!?。！？]$/u;
+
+/** Rule 4: a sentence immediately followed by the identical sentence. */
+export function restatedBlocks(blocks: string[], minLength = 20): string[] {
+  const problems: string[] = [];
+  for (let i = 1; i < blocks.length; i++) {
+    if (blocks[i] === blocks[i - 1] && blocks[i].length >= minLength && SENTENCE.test(blocks[i]))
+      problems.push(`block ${i} repeats the block before it: "${blocks[i].slice(0, 60)}"`);
+  }
+  return problems;
+}
+
 // Self-test: the rules catch what they are for and accept what they allow.
 assert.deepEqual(repetitionProblems(["Intro", "X free.", "Body", "Faq: X free."], "X free."), []);
 assert.equal(repetitionProblems(["X free.", "X free. If it helps"], "X free.").length, 1);
 assert.equal(repetitionProblems(["X free.", "a", "X free.", "b", "X free."], "X free.").length, 1);
+assert.equal(
+  restatedBlocks([
+    "Every feature is free during the beta.",
+    "Every feature is free during the beta.",
+  ]).length,
+  1,
+);
+assert.deepEqual(
+  restatedBlocks([
+    "Download",
+    "Download",
+    "Playing on Windows from the couch",
+    "Playing on Windows from the couch",
+    "Every feature is free.",
+  ]),
+  [],
+);
+assert.equal(
+  restatedBlocks(["公開ベータ期間中は無料で使えます。", "公開ベータ期間中は無料で使えます。"], 10)
+    .length,
+  1,
+);
 
 const locales = manifest.locales.filter((l) => l.state === "active");
 const failures: string[] = [];
@@ -104,10 +144,10 @@ for (const locale of locales) {
   for (const page of pages) {
     const blocks = visibleBlocks(readFileSync(page, "utf8"));
     pagesChecked++;
-    for (const p of repetitionProblems(blocks, sentence))
+    for (const p of [...repetitionProblems(blocks, sentence), ...restatedBlocks(blocks)])
       failures.push(`${path.relative(dist, page)}: ${p}`);
   }
-  // Prominence: the promise is visible on the home and download pages of every locale.
+  // Prominence: the promise is visible on the home page of every locale.
   const home = visibleBlocks(readFileSync(path.join(base, "index.html"), "utf8"));
   if (!home.some((b) => b.includes(sentence)))
     failures.push(`${locale.id} home: free-access message not shown`);
@@ -115,5 +155,5 @@ for (const locale of locales) {
 
 assert.deepEqual(failures, [], `free-access message repetition:\n  ${failures.join("\n  ")}`);
 console.log(
-  `test-free-message-repetition: PASS (${locales.length} locales, ${pagesChecked} built pages, max ${MAX_PER_PAGE} per page, no consecutive repeats, shown on every home page)`,
+  `test-free-message-repetition: PASS (${locales.length} locales, ${pagesChecked} built pages, max ${MAX_PER_PAGE} per page, no consecutive repeats, no restated blocks, shown on every home page)`,
 );

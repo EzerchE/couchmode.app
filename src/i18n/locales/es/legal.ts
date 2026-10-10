@@ -191,13 +191,13 @@ export const spanishTermsPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "Los miembros de Patreon pueden optar por recibir versiones preliminares directamente a través de CouchMode cuando haya versiones preliminares disponibles.",
+              text: "La recepción de versiones preliminares directamente a través de CouchMode está en desarrollo para los miembros de Patreon y aún no está disponible.",
             },
           ],
           [
             {
               kind: "text",
-              text: "Si termina tu suscripción, se pausa la recepción de versiones preliminares. Las actualizaciones estándar continúan y no se instala una versión anterior. Las funciones de la beta pública siguen siendo gratuitas.",
+              text: "Si termina tu suscripción, termina tu estado de colaborador y se pausa la recepción de versiones preliminares, cuando esté disponible. Las actualizaciones estándar continúan y no se instala una versión anterior. Las funciones de la beta pública siguen siendo gratuitas.",
             },
           ],
         ],
@@ -236,7 +236,7 @@ export const spanishTermsPacket: SurfacePacketBase<"legal"> = {
         heading: "Límite de dispositivos para colaboradores",
         paragraphs: [
           legalText(
-            "El estado de colaborador y la recepción de actualizaciones preliminares están disponibles en un número limitado de dispositivos Windows activos. Este límite no restringe las funciones normales de la beta pública. Contacta con soporte si necesitas ayuda después de un cambio legítimo de dispositivo.",
+            "El estado de colaborador y, cuando esté disponible, la recepción de actualizaciones preliminares se limitan a un número reducido de dispositivos Windows activos. Este límite no restringe las funciones normales de la beta pública. Contacta con soporte si necesitas ayuda después de un cambio legítimo de dispositivo.",
           ),
         ],
       },
@@ -297,7 +297,6 @@ export const spanishRefundPacket: SurfacePacketBase<"legal"> = {
     },
     sections: [
       {
-        heading: "Todas las funciones son gratuitas durante la beta pública.",
         paragraphs: [
           [{ kind: "text", text: "Todas las funciones son gratuitas durante la beta pública." }],
         ],
@@ -335,7 +334,7 @@ export const spanishRefundPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "Si termina tu suscripción, se pausa la recepción de versiones preliminares. Las actualizaciones estándar continúan y no se instala una versión anterior. Las funciones de la beta pública siguen siendo gratuitas.",
+              text: "Si termina tu suscripción, termina tu estado de colaborador y se pausa la recepción de versiones preliminares, cuando esté disponible. Las actualizaciones estándar continúan y no se instala una versión anterior. Las funciones de la beta pública siguen siendo gratuitas.",
             },
           ],
         ],

@@ -196,13 +196,13 @@ export const frenchTermsPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "Les membres Patreon peuvent choisir de recevoir les mises à jour en avant-première directement via CouchMode lorsque des avant-premières sont disponibles.",
+              text: "La réception des mises à jour en avant-première directement via CouchMode est en cours de développement pour les membres Patreon et n'est pas encore disponible.",
             },
           ],
           [
             {
               kind: "text",
-              text: "Si votre abonnement prend fin, la réception des versions en avant-première est suspendue. Les mises à jour standard continuent, sans revenir à une version antérieure. Les fonctionnalités de la bêta publique restent gratuites.",
+              text: "Si votre abonnement prend fin, votre statut de soutien prend fin et la réception des versions en avant-première, une fois disponible, est suspendue. Les mises à jour standard continuent, sans revenir à une version antérieure. Les fonctionnalités de la bêta publique restent gratuites.",
             },
           ],
         ],
@@ -241,7 +241,7 @@ export const frenchTermsPacket: SurfacePacketBase<"legal"> = {
         heading: "Limite d'appareils pour les soutiens",
         paragraphs: [
           legalText(
-            "Le statut de soutien et la réception des mises à jour en avant-première sont disponibles sur un nombre limité d'appareils Windows actifs. Cette limite ne restreint pas les fonctionnalités normales de la bêta publique. Contactez l'assistance si vous avez besoin d'aide après un changement légitime d'appareil.",
+            "Le statut de soutien et, une fois disponible, la réception des mises à jour en avant-première sont limités à un nombre restreint d'appareils Windows actifs. Cette limite ne restreint pas les fonctionnalités normales de la bêta publique. Contactez l'assistance si vous avez besoin d'aide après un changement légitime d'appareil.",
           ),
         ],
       },
@@ -302,7 +302,6 @@ export const frenchRefundPacket: SurfacePacketBase<"legal"> = {
     },
     sections: [
       {
-        heading: "Toutes les fonctionnalités sont gratuites pendant la bêta publique.",
         paragraphs: [
           [
             {
@@ -345,7 +344,7 @@ export const frenchRefundPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "Si votre abonnement prend fin, la réception des versions en avant-première est suspendue. Les mises à jour standard continuent, sans revenir à une version antérieure. Les fonctionnalités de la bêta publique restent gratuites.",
+              text: "Si votre abonnement prend fin, votre statut de soutien prend fin et la réception des versions en avant-première, une fois disponible, est suspendue. Les mises à jour standard continuent, sans revenir à une version antérieure. Les fonctionnalités de la bêta publique restent gratuites.",
             },
           ],
         ],

@@ -816,13 +816,13 @@ const englishTermsPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "Patreon supporters can opt in to receive preview updates directly through CouchMode when previews are available.",
+              text: "Preview updates delivered directly through CouchMode are in development for Patreon supporters and are not available yet.",
             },
           ],
           [
             {
               kind: "text",
-              text: "If your membership lapses, preview delivery pauses. Standard updates continue and your installed version is not downgraded. Public-beta features remain free.",
+              text: "If your membership lapses, your supporter status ends and preview delivery, once available, pauses. Standard updates continue and your installed version is not downgraded. Public-beta features remain free.",
             },
           ],
         ],
@@ -861,7 +861,7 @@ const englishTermsPacket: SurfacePacketBase<"legal"> = {
         heading: "Supporter device limit",
         paragraphs: [
           legalText(
-            "Supporter status and preview delivery are available on a limited number of active Windows devices. This limit does not restrict normal public-beta features. Contact support if you need help after a legitimate device change.",
+            "Supporter status, and preview delivery once it is available, apply to a limited number of active Windows devices. This limit does not restrict normal public-beta features. Contact support if you need help after a legitimate device change.",
           ),
         ],
       },
@@ -922,7 +922,6 @@ const englishRefundPacket: SurfacePacketBase<"legal"> = {
     },
     sections: [
       {
-        heading: "Every feature is free during the public beta.",
         paragraphs: [[{ kind: "text", text: "Every feature is free during the public beta." }]],
       },
       {
@@ -958,7 +957,7 @@ const englishRefundPacket: SurfacePacketBase<"legal"> = {
           [
             {
               kind: "text",
-              text: "If your membership lapses, preview delivery pauses. Standard updates continue and your installed version is not downgraded. Public-beta features remain free.",
+              text: "If your membership lapses, your supporter status ends and preview delivery, once available, pauses. Standard updates continue and your installed version is not downgraded. Public-beta features remain free.",
             },
           ],
         ],
