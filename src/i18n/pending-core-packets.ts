@@ -1094,6 +1094,8 @@ export const germanChangelogPacket: SurfacePacketBase<"changelog"> = {
       open: "Während der öffentlichen Beta sind alle Funktionen kostenlos.",
       closed: "Download noch nicht veröffentlicht",
     },
+    // Current status, NOT release history: shown with the release notes until previews ship.
+    previewStatus: "Die Zustellung von Vorschauversionen nur für Unterstützer ist derzeit in Entwicklung. Zurzeit ist keine Vorschauversion verfügbar.",
     release: {
       latestLabel: "Aktuell",
       previousLabel: "Früher",
@@ -1130,6 +1132,8 @@ export const turkishChangelogPacket: SurfacePacketBase<"changelog"> = {
       open: "Açık beta boyunca tüm özellikler ücretsiz.",
       closed: "İndirme henüz yayımlanmadı",
     },
+    // Current status, NOT release history: shown with the release notes until previews ship.
+    previewStatus: "Yalnızca destekçilere yönelik önizleme dağıtımı şu anda geliştirme aşamasındadır. Şu anda kullanılabilir bir önizleme sürümü yoktur.",
     release: {
       latestLabel: "En yeni",
       previousLabel: "Önceki",

@@ -104,6 +104,8 @@ export const polishChangelogPacket: SurfacePacketBase<"changelog"> = {
       open: "W publicznej becie wszystkie funkcje są bezpłatne.",
       closed: "Plik nie został jeszcze opublikowany",
     },
+    // Current status, NOT release history: shown with the release notes until previews ship.
+    previewStatus: "Dostarczanie wersji testowych tylko dla wspierających jest obecnie w przygotowaniu. Obecnie żadna wersja testowa nie jest dostępna.",
     release: {
       latestLabel: "Najnowsze",
       previousLabel: "Poprzednie",

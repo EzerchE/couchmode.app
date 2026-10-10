@@ -570,6 +570,8 @@ const englishChangelogPacket: SurfacePacketBase<"changelog"> = {
       open: "Every feature is free during the public beta.",
       closed: "Download not published yet",
     },
+    // Current status, NOT release history: shown with the release notes until previews ship.
+    previewStatus: "Supporter-only preview delivery is currently in development. No preview build is available at this time.",
     release: {
       latestLabel: "Latest",
       previousLabel: "Previous",

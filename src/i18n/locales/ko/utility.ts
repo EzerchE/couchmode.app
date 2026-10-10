@@ -106,6 +106,8 @@ export const koreanChangelogPacket: SurfacePacketBase<"changelog"> = {
       open: "공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다.",
       closed: "다운로드가 아직 공개되지 않았습니다",
     },
+    // Current status, NOT release history: shown with the release notes until previews ship.
+    previewStatus: "후원자 전용 미리 보기 배포는 현재 개발 중입니다. 지금은 제공되는 미리 보기 빌드가 없습니다.",
     release: {
       latestLabel: "최신",
       previousLabel: "이전",

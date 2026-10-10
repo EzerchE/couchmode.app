@@ -245,6 +245,9 @@ function ChangelogSurface({ packet }: { packet: SurfacePacketBase<"changelog"> }
           <p className="mt-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-xs leading-relaxed text-muted-foreground">
             {downloadOpen ? copy.downloadStatus.open : copy.downloadStatus.closed}
           </p>
+          <p className="mt-2 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-xs leading-relaxed text-muted-foreground">
+            {copy.previewStatus}
+          </p>
         </header>
         <ol className="space-y-2.5">
           {releases.map((release, index) => {

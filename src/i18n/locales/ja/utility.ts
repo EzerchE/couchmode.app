@@ -105,6 +105,8 @@ export const japaneseChangelogPacket: SurfacePacketBase<"changelog"> = {
       open: "公開ベータ期間中は、すべての機能を無料で使えます。",
       closed: "ダウンロードはまだ公開されていません",
     },
+    // Current status, NOT release history: shown with the release notes until previews ship.
+    previewStatus: "支援者限定のプレビュー版配信は現在開発中です。現時点で利用できるプレビュー版はありません。",
     release: {
       latestLabel: "最新",
       previousLabel: "過去のリリース",

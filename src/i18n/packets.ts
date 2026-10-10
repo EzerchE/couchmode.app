@@ -178,6 +178,9 @@ export type ChangelogPayload = {
   heading: string;
   description: string;
   downloadStatus: { open: string; closed: string };
+  // Current-status clarification shown next to release notes (changelog header, download page).
+  // Separate from the immutable release facts in src/data/releases.json and their editorial overlays.
+  previewStatus: string;
   release: {
     latestLabel: string;
     previousLabel: string;

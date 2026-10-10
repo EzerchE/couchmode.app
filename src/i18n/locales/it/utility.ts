@@ -174,6 +174,8 @@ export const italianChangelogPacket: SurfacePacketBase<"changelog"> = {
       open: "Tutte le funzioni sono gratuite durante la beta pubblica.",
       closed: "Download non ancora pubblicato",
     },
+    // Current status, NOT release history: shown with the release notes until previews ship.
+    previewStatus: "La distribuzione delle versioni in anteprima riservata ai sostenitori è in fase di sviluppo. Al momento non è disponibile alcuna versione in anteprima.",
     release: {
       latestLabel: "Ultima versione",
       previousLabel: "Versione precedente",

@@ -107,6 +107,8 @@ export const brazilianPortugueseChangelogPacket: SurfacePacketBase<"changelog"> 
       open: "Todos os recursos são gratuitos durante o beta público.",
       closed: "Download ainda não publicado",
     },
+    // Current status, NOT release history: shown with the release notes until previews ship.
+    previewStatus: "A entrega de prévias exclusiva para apoiadores está em desenvolvimento. No momento, nenhuma prévia está disponível.",
     release: {
       latestLabel: "Mais recente",
       previousLabel: "Anterior",

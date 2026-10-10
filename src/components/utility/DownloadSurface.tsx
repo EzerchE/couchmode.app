@@ -164,6 +164,9 @@ export function DownloadSurface({ packet }: { packet: SurfacePacketBase<"downloa
                     <li key={n}>{n}</li>
                   ))}
                 </ul>
+                <p className="mt-4 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-xs leading-relaxed text-muted-foreground">
+                  {changelog.payload.previewStatus}
+                </p>
               </section>
               {editorial!.knownIssues.length > 0 && (
                 <section className="mt-7">
