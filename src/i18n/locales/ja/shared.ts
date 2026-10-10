@@ -54,7 +54,7 @@ export const japaneseLocaleContent: SharedLocaleContent = {
       { contentId: "changelog", label: "更新履歴" },
     ],
     legalLinks: [
-      { contentId: "support", label: "サポート" },
+      { contentId: "support", label: "ヘルプ" },
       { contentId: "privacy", label: "プライバシー" },
       { contentId: "terms", label: "利用規約" },
       { contentId: "refund", label: "返金について" },

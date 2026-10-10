@@ -356,10 +356,10 @@ export const spanishCheckoutPacket: SurfacePacketBase<"checkout"> = {
   seo: {
     title: "Apoya CouchMode",
     description:
-      "CouchMode es gratuito durante la beta pública. Si te resulta útil, puedes apoyar su desarrollo, las pruebas de compatibilidad y las futuras mejoras.",
+      "CouchMode es gratuito. Si te resulta útil, puedes apoyar su desarrollo, las pruebas de compatibilidad y las futuras mejoras.",
     ogTitle: "Apoya CouchMode",
     ogDescription:
-      "CouchMode es gratuito durante la beta pública. Si te resulta útil, puedes apoyar su desarrollo, las pruebas de compatibilidad y las futuras mejoras.",
+      "CouchMode es gratuito. Si te resulta útil, puedes apoyar su desarrollo, las pruebas de compatibilidad y las futuras mejoras.",
   },
   schema: { homeBreadcrumbLabel: "Inicio", currentBreadcrumbLabel: "Apoya CouchMode" },
   internalLinks: ["home"],

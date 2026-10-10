@@ -13,10 +13,10 @@ export const koreanDownloadPacket: SurfacePacketBase<"download"> = {
   seo: {
     title: "Windows용 CouchMode 다운로드",
     description:
-      "공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다. CouchMode는 couchmode.app 또는 공식 CouchMode GitHub Releases에서만 다운로드하세요. 설치 파일을 실행하기 전에 SHA-256 전체 값과 파일 크기를 비교하세요.",
+      "CouchMode는 couchmode.app 또는 공식 CouchMode GitHub Releases에서만 다운로드하세요. 설치 파일을 실행하기 전에 SHA-256 전체 값과 파일 크기를 비교하세요.",
     ogTitle: "Windows용 CouchMode 다운로드",
     ogDescription:
-      "공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다. CouchMode는 couchmode.app 또는 공식 CouchMode GitHub Releases에서만 다운로드하세요. 설치 파일을 실행하기 전에 SHA-256 전체 값과 파일 크기를 비교하세요.",
+      "CouchMode는 couchmode.app 또는 공식 CouchMode GitHub Releases에서만 다운로드하세요. 설치 파일을 실행하기 전에 SHA-256 전체 값과 파일 크기를 비교하세요.",
   },
   schema: { homeBreadcrumbLabel: "홈", currentBreadcrumbLabel: "배포 현황" },
   internalLinks: ["home", "changelog", "support"],
@@ -24,7 +24,7 @@ export const koreanDownloadPacket: SurfacePacketBase<"download"> = {
     badge: { open: "공개 베타", closed: "공개 전 제한 베타" },
     heading: { before: "CouchMode", accent: "다운로드" },
     statusDescription: {
-      open: "공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다.",
+      open: "Windows 11용 일반 버전입니다.",
       closed: "다운로드가 아직 공개되지 않았습니다",
     },
     directDownload: {
@@ -45,12 +45,12 @@ export const koreanDownloadPacket: SurfacePacketBase<"download"> = {
       signedValue: "Authenticode 서명 및 타임스탬프 적용",
       unsignedValue: "서명 없음: SHA-256을 확인하세요",
       pricing: "요금 안내",
-      pricingValue: "공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다.",
+      pricingValue: "결제가 필요 없습니다",
     },
     cards: {
       included: {
         heading: "제공 내용",
-        body: "공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다. 공개 베타를 사용하는 데 계정이나 신용카드가 필요하지 않습니다.",
+        body: "CouchMode의 모든 기능. 계정, 결제 카드, Patreon 멤버십이 필요하지 않습니다.",
       },
       officialSources: {
         heading: "설치 경로",

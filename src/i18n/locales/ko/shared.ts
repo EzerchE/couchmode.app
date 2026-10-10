@@ -25,7 +25,7 @@ export const koreanLocaleContent: SharedLocaleContent = {
       { contentId: "changelog", label: "변경 기록" },
     ],
     legalLinks: [
-      { contentId: "support", label: "지원" },
+      { contentId: "support", label: "도움말" },
       { contentId: "privacy", label: "개인정보처리방침" },
       { contentId: "terms", label: "이용약관" },
       { contentId: "refund", label: "환불 안내" },

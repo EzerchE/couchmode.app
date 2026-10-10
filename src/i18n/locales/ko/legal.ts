@@ -345,10 +345,10 @@ export const koreanCheckoutPacket: SurfacePacketBase<"checkout"> = {
   seo: {
     title: "CouchMode 후원하기",
     description:
-      "CouchMode는 공개 베타 기간 동안 무료입니다. 유용하게 쓰고 계신다면 지속적인 개발과 호환성 테스트, 앞으로의 개선을 후원해 주세요.",
+      "CouchMode는 무료입니다. 유용하게 쓰고 계신다면 지속적인 개발과 호환성 테스트, 앞으로의 개선을 후원해 주세요.",
     ogTitle: "CouchMode 후원하기",
     ogDescription:
-      "CouchMode는 공개 베타 기간 동안 무료입니다. 유용하게 쓰고 계신다면 지속적인 개발과 호환성 테스트, 앞으로의 개선을 후원해 주세요.",
+      "CouchMode는 무료입니다. 유용하게 쓰고 계신다면 지속적인 개발과 호환성 테스트, 앞으로의 개선을 후원해 주세요.",
   },
   schema: { homeBreadcrumbLabel: "홈", currentBreadcrumbLabel: "CouchMode 후원하기" },
   internalLinks: ["home"],

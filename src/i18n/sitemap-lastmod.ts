@@ -48,8 +48,8 @@ function everyIndexableSurface(
 export const sitemapLastmod: Partial<Record<LocaleId, Record<IndexableSurfaceId, SitemapLastmod>>> =
   {
   "en": {
-    "home": "2026-10-09",
-    "download": "2026-10-09",
+    "home": "2026-10-10",
+    "download": "2026-10-10",
     "support": "2026-10-09",
     "changelog": "2026-10-09",
     "privacy": "2026-10-09",
@@ -66,8 +66,8 @@ export const sitemapLastmod: Partial<Record<LocaleId, Record<IndexableSurfaceId,
     "guide-xbox-mode-windows-11": "2026-10-09"
   },
   "de": {
-    "home": "2026-10-09",
-    "download": "2026-10-09",
+    "home": "2026-10-10",
+    "download": "2026-10-10",
     "support": "2026-10-09",
     "changelog": "2026-10-09",
     "privacy": "2026-10-09",
@@ -84,8 +84,8 @@ export const sitemapLastmod: Partial<Record<LocaleId, Record<IndexableSurfaceId,
     "guide-xbox-mode-windows-11": "2026-10-09"
   },
   "fr": {
-    "home": "2026-10-09",
-    "download": "2026-10-09",
+    "home": "2026-10-10",
+    "download": "2026-10-10",
     "support": "2026-10-09",
     "changelog": "2026-10-09",
     "privacy": "2026-10-09",
@@ -102,8 +102,8 @@ export const sitemapLastmod: Partial<Record<LocaleId, Record<IndexableSurfaceId,
     "guide-xbox-mode-windows-11": "2026-10-09"
   },
   "es": {
-    "home": "2026-10-09",
-    "download": "2026-10-09",
+    "home": "2026-10-10",
+    "download": "2026-10-10",
     "support": "2026-10-09",
     "changelog": "2026-10-09",
     "privacy": "2026-10-09",
@@ -120,8 +120,8 @@ export const sitemapLastmod: Partial<Record<LocaleId, Record<IndexableSurfaceId,
     "guide-xbox-mode-windows-11": "2026-10-09"
   },
   "it": {
-    "home": "2026-10-09",
-    "download": "2026-10-09",
+    "home": "2026-10-10",
+    "download": "2026-10-10",
     "support": "2026-10-09",
     "changelog": "2026-10-09",
     "privacy": "2026-10-09",
@@ -138,8 +138,8 @@ export const sitemapLastmod: Partial<Record<LocaleId, Record<IndexableSurfaceId,
     "guide-xbox-mode-windows-11": "2026-10-09"
   },
   "pt-BR": {
-    "home": "2026-10-09",
-    "download": "2026-10-09",
+    "home": "2026-10-10",
+    "download": "2026-10-10",
     "support": "2026-10-09",
     "changelog": "2026-10-09",
     "privacy": "2026-10-09",
@@ -156,8 +156,8 @@ export const sitemapLastmod: Partial<Record<LocaleId, Record<IndexableSurfaceId,
     "guide-xbox-mode-windows-11": "2026-10-09"
   },
   "pl": {
-    "home": "2026-10-09",
-    "download": "2026-10-09",
+    "home": "2026-10-10",
+    "download": "2026-10-10",
     "support": "2026-10-09",
     "changelog": "2026-10-09",
     "privacy": "2026-10-09",
@@ -174,8 +174,8 @@ export const sitemapLastmod: Partial<Record<LocaleId, Record<IndexableSurfaceId,
     "guide-xbox-mode-windows-11": "2026-10-09"
   },
   "ja": {
-    "home": "2026-10-09",
-    "download": "2026-10-09",
+    "home": "2026-10-10",
+    "download": "2026-10-10",
     "support": "2026-10-09",
     "changelog": "2026-10-09",
     "privacy": "2026-10-09",
@@ -192,8 +192,8 @@ export const sitemapLastmod: Partial<Record<LocaleId, Record<IndexableSurfaceId,
     "guide-xbox-mode-windows-11": "2026-10-09"
   },
   "ko": {
-    "home": "2026-10-09",
-    "download": "2026-10-09",
+    "home": "2026-10-10",
+    "download": "2026-10-10",
     "support": "2026-10-09",
     "changelog": "2026-10-09",
     "privacy": "2026-10-09",
@@ -210,8 +210,8 @@ export const sitemapLastmod: Partial<Record<LocaleId, Record<IndexableSurfaceId,
     "guide-xbox-mode-windows-11": "2026-10-09"
   },
   "tr": {
-    "home": "2026-10-09",
-    "download": "2026-10-09",
+    "home": "2026-10-10",
+    "download": "2026-10-10",
     "support": "2026-10-09",
     "changelog": "2026-10-09",
     "privacy": "2026-10-09",

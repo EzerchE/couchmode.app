@@ -33,7 +33,7 @@ export const germanLocaleContent: SharedLocaleContent = {
       { contentId: "changelog", label: "Versionshinweise" },
     ],
     legalLinks: [
-      { contentId: "support", label: "Support" },
+      { contentId: "support", label: "Hilfe" },
       { contentId: "privacy", label: "Datenschutz" },
       { contentId: "terms", label: "Nutzungsbedingungen" },
       { contentId: "refund", label: "Erstattungen" },
@@ -54,10 +54,10 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
   seo: {
     title: "CouchMode: PC-Gaming am Fernseher mit Controller | Windows 11",
     description:
-      "Schalte deinen Controller ein: CouchMode öffnet dein gewähltes Spielerlebnis, bereitet deine Gaming-Session nach deinen Einstellungen vor und bringt dich danach zu einem nutzbaren Desktop zurück. Während der öffentlichen Beta sind alle Funktionen kostenlos.",
+      "Schalte deinen Controller ein: CouchMode öffnet dein gewähltes Spielerlebnis, bereitet deine Gaming-Session nach deinen Einstellungen vor und bringt dich danach zu einem nutzbaren Desktop zurück. CouchMode ist kostenlos nutzbar, mit allen Funktionen.",
     ogTitle: "CouchMode: PC-Gaming am Fernseher mit Controller | Windows 11",
     ogDescription:
-      "Schalte deinen Controller ein: CouchMode öffnet dein gewähltes Spielerlebnis, bereitet deine Gaming-Session nach deinen Einstellungen vor und bringt dich danach zu einem nutzbaren Desktop zurück. Während der öffentlichen Beta sind alle Funktionen kostenlos.",
+      "Schalte deinen Controller ein: CouchMode öffnet dein gewähltes Spielerlebnis, bereitet deine Gaming-Session nach deinen Einstellungen vor und bringt dich danach zu einem nutzbaren Desktop zurück. CouchMode ist kostenlos nutzbar, mit allen Funktionen.",
   },
   schema: {
     softwareDescription:
@@ -72,11 +72,11 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
       headingBefore: "Mach aus deinem Gaming-PC",
       headingAccent: "eine Konsole für den Fernseher.",
       description:
-        "Schalte deinen Controller ein: CouchMode öffnet dein gewähltes Spielerlebnis, bereitet deine Gaming-Session nach deinen Einstellungen vor und bringt dich danach zu einem nutzbaren Desktop zurück.",
+        "Schalte deinen Controller ein: CouchMode öffnet dein gewähltes Spielerlebnis, bereitet deine Gaming-Session nach deinen Einstellungen vor und bringt dich danach zu einem nutzbaren Desktop zurück. CouchMode ist kostenlos nutzbar. Alle Funktionen inklusive.",
       downloadLabel: "Für Windows herunterladen",
       proLabel: "CouchMode unterstützen",
       platformNotice:
-        "Windows 11 · 64-bit · Während der öffentlichen Beta sind alle Funktionen kostenlos.",
+        "Windows 11 · 64-bit",
       carousel: {
         slides: [
           { label: "Allgemein", alt: "CouchMode-Einstellungen für Controller und Launcher." },
@@ -114,7 +114,7 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
     howItWorks: {
       eyebrow: "So funktioniert es",
       heading: "Mit dem Controller direkt ins Spiel.",
-      description: "Während der öffentlichen Beta sind alle Funktionen kostenlos.",
+      description: "Verbinde einen Controller. CouchMode startet, bereitet vor und beendet die Session für dich.",
       stepLabel: "SCHRITT",
       steps: [
         {
@@ -126,14 +126,14 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
         {
           number: "02",
           title: "CouchMode öffnet dein gewähltes Spielerlebnis",
-          body: "Xbox-Modus, soweit unterstützt, Steam Big Picture und Playnite. Start per kompatiblem Controller und eigene Launcher.",
-          detail: "Während der öffentlichen Beta sind alle Funktionen kostenlos.",
+          body: "Wähle Steam Big Picture, Playnite, den Xbox-Modus, sofern Windows ihn unterstützt, oder deinen eigenen Launcher.",
+          detail: "Funktioniert mit dem Launcher, den du schon nutzt",
         },
         {
           number: "03",
-          title: "Eine öffentliche Beta. Alle Funktionen dabei.",
-          body: "Resource Control für ausgewählte zugängliche Apps. Unterstützte Bildschirm-, HDR-, Audio- und Sitzungseinstellungen. Wiederherstellung der von CouchMode geänderten Einstellungen.",
-          detail: "Während der öffentlichen Beta sind alle Funktionen kostenlos.",
+          title: "CouchMode bereitet deine Session vor",
+          body: "Resource Control schließt die Apps, die du ausgewählt hast. Session Tweaks wenden die Bildschirm-, HDR-, Audio- und Energieeinstellungen an, die du gewählt hast.",
+          detail: "Nur die Einstellungen, die du aktivierst",
         },
         {
           number: "04",
@@ -145,7 +145,7 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
     },
     featureShots: {
       eyebrow: "Genauer betrachtet",
-      heading: "Eine öffentliche Beta. Alle Funktionen dabei.",
+      heading: "CouchMode in Aktion",
       description:
         "Das sind echte CouchMode-Bildschirme, keine Mockups. Wähle einen Bildschirm aus, um ihn größer zu sehen.",
       shots: [
@@ -194,7 +194,7 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
       headingBefore: "Bereit, deinen PC",
       headingAccent: "fürs Spielen am Fernseher vorzubereiten",
       description:
-        "Während der öffentlichen Beta sind alle Funktionen kostenlos. Für die öffentliche Beta brauchst du weder ein Konto noch eine Kreditkarte.",
+        "Lade CouchMode für Windows 11 herunter und starte deine erste Session am Fernseher.",
       downloadLabel: "Für Windows herunterladen",
       releaseNotesLabel: "Versionshinweise ansehen",
       directDownloadLabel: "Direkter Download",
@@ -235,12 +235,12 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "Kann CouchMode Steam Big Picture oder einen anderen Launcher starten?",
           answer:
-            "Xbox-Modus, soweit unterstützt, Steam Big Picture und Playnite. Start per kompatiblem Controller und eigene Launcher. Während der öffentlichen Beta sind alle Funktionen kostenlos.",
+            "Ja. Wähle Steam Big Picture, Playnite, den Xbox-Modus, sofern Windows ihn unterstützt, oder deinen eigenen Launcher. CouchMode kann ihn starten, wenn ein kompatibler Controller verbunden wird.",
         },
         {
           question: "Kann CouchMode Playnite starten, wenn ich meinen Controller einschalte?",
           answer:
-            "Ja, und das ist kostenlos. Wähle Playnite als Startziel, dann öffnet CouchMode Playnite Fullscreen, wenn ein kompatibler Controller verbunden wird. Ist Playnite bereits geöffnet, verwendet CouchMode die vorhandene Instanz statt eine zweite zu starten.",
+            "Ja. Wähle Playnite als Startziel, dann öffnet CouchMode Playnite Fullscreen, wenn ein kompatibler Controller verbunden wird. Ist Playnite bereits geöffnet, verwendet CouchMode die vorhandene Instanz statt eine zweite zu starten.",
         },
         {
           question: "Funktioniert CouchMode mit PS5- oder DualSense-Controllern?",
@@ -256,7 +256,7 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "Unterstützt CouchMode Playnite?",
           answer:
-            "Ja, und das ist kostenlos. Playnite Fullscreen kann  als Startziel verwendet werden. CouchMode ist dafür gedacht, mit vorhandenen Launchern zu arbeiten, nicht sie zu ersetzen.",
+            "Ja. CouchMode findet eine installierte Playnite-Version automatisch. Nutzt du eine portable Version, gib ihren Speicherort in den CouchMode-Einstellungen an. Danach kannst du Playnite Fullscreen als Startziel wählen.",
         },
         {
           question: "Unterstützt CouchMode den Xbox-Modus von Windows?",
@@ -279,19 +279,24 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
             "Auf unterstützten Handhelds kann CouchMode eine von Administratoren genehmigte geplante Aufgabe verwenden, um zusammen mit dem Xbox-Modus von Windows zu starten. Der normale Desktop-Start bleibt davon getrennt.",
         },
         {
-          question: "Ist die öffentliche Beta kostenlos?",
+          question: "Ist CouchMode kostenlos?",
           answer:
-            "Während der öffentlichen Beta sind alle Funktionen kostenlos. Für die öffentliche Beta brauchst du weder ein Konto noch eine Kreditkarte.",
+            "Ja. Alle aktuellen Funktionen von CouchMode sind kostenlos nutzbar. Du brauchst kein Konto, keine Testphase und keine kostenpflichtige Mitgliedschaft. CouchMode befindet sich derzeit in der öffentlichen Beta.",
         },
         {
           question: "Was bietet eine Patreon-Mitgliedschaft?",
           answer:
-            "Pro und Pro Supporter kennzeichnen Unterstützer und schalten keine Funktionen frei. Pro: Unterstützerstatus auf bis zu 2 aktiven Windows-Geräten. Pro Supporter: Unterstützerstatus auf bis zu 5 aktiven Windows-Geräten und ein höherer Beitrag zum Projekt. Patreon-Unterstützer können Vorschau-Updates auf Wunsch direkt über CouchMode erhalten, wenn Vorschauversionen verfügbar sind.",
+            "Pro und Pro Supporter kennzeichnen Unterstützer und schalten keine Funktionen frei. Pro: Unterstützerstatus auf bis zu 2 aktiven Windows-Geräten. Pro Supporter: Unterstützerstatus auf bis zu 5 aktiven Windows-Geräten und ein höherer Beitrag zum Projekt. Vorschau-Updates direkt über CouchMode sind für Patreon-Unterstützer in Entwicklung. Sie sind noch nicht verfügbar.",
         },
         {
           question: "Was passiert, wenn meine Mitgliedschaft endet?",
           answer:
-            "Endet deine Mitgliedschaft, pausiert die Zustellung von Vorschau-Updates. Reguläre Updates laufen weiter, ohne die installierte Version zurückzustufen. Die Funktionen der öffentlichen Beta bleiben kostenlos.",
+            "Endet deine Mitgliedschaft, endet auch dein Unterstützerstatus. CouchMode behält alle Funktionen, und reguläre Updates laufen weiter.",
+        },
+        {
+          question: "Wie erhalte ich Vorschau-Updates?",
+          answer:
+            "Vorschau-Updates für Patreon-Unterstützer, direkt über CouchMode, sind noch in Entwicklung und derzeit nicht verfügbar. Reguläre Versionen erscheinen hier für alle.",
         },
         {
           question: "Wie erfasse ich Diagnosedaten, wenn etwas auf dem Bildschirm nicht stimmt?",
@@ -304,9 +309,14 @@ export const germanHomePacket: SurfacePacketBase<"home"> = {
             "CouchMode verspricht keine höheren FPS. CouchMode kann durch das Schließen ausgewählter Apps aufräumen und unterstützte Windows-Einstellungen wie Game Mode und einen ausgewählten Energieplan anwenden; am Ende der Sitzung werden sie wiederhergestellt.",
         },
         {
+          question: "Wie wird CouchMode aktualisiert?",
+          answer:
+            "CouchMode sucht nach neuen Versionen. Ist eine verfügbar, informiert es dich und verlinkt die offizielle Downloadseite auf couchmode.app. Updates werden nicht automatisch installiert: Du startest das Installationsprogramm selbst, und deine Einstellungen bleiben erhalten.",
+        },
+        {
           question: "Ich habe CouchMode aus dem Microsoft Store installiert. Was nun?",
           answer:
-            "Diese Version wird dort nicht mehr aktualisiert. CouchMode bietet dir die neue Version an, sobald sie verfügbar ist. Du kannst sie auch hier herunterladen und über die bisherige Version installieren. Deine Einstellungen bleiben erhalten.",
+            "Im Microsoft Store wird derzeit eine ältere Version von CouchMode angeboten. Sobald eine neuere Version verfügbar ist, informiert dich CouchMode und verlinkt die offizielle Downloadseite. Installiere sie über deine bisherige Version. Deine Einstellungen bleiben erhalten.",
         },
       ],
       community: {
@@ -327,10 +337,10 @@ export const germanDownloadPacket: SurfacePacketBase<"download"> = {
   seo: {
     title: "CouchMode für Windows herunterladen",
     description:
-      "Während der öffentlichen Beta sind alle Funktionen kostenlos. Lade CouchMode nur von couchmode.app oder den offiziellen CouchMode-Releases auf GitHub herunter. Vergleiche vor dem Ausführen die vollständige SHA-256-Prüfsumme und die Dateigröße.",
+      "Lade CouchMode nur von couchmode.app oder den offiziellen CouchMode-Releases auf GitHub herunter. Vergleiche vor dem Ausführen die vollständige SHA-256-Prüfsumme und die Dateigröße.",
     ogTitle: "CouchMode für Windows herunterladen",
     ogDescription:
-      "Während der öffentlichen Beta sind alle Funktionen kostenlos. Lade CouchMode nur von couchmode.app oder den offiziellen CouchMode-Releases auf GitHub herunter. Vergleiche vor dem Ausführen die vollständige SHA-256-Prüfsumme und die Dateigröße.",
+      "Lade CouchMode nur von couchmode.app oder den offiziellen CouchMode-Releases auf GitHub herunter. Vergleiche vor dem Ausführen die vollständige SHA-256-Prüfsumme und die Dateigröße.",
   },
   schema: { homeBreadcrumbLabel: "Startseite", currentBreadcrumbLabel: "Download-Status" },
   internalLinks: ["home", "changelog", "support"],
@@ -338,7 +348,7 @@ export const germanDownloadPacket: SurfacePacketBase<"download"> = {
     badge: { open: "Öffentliche Beta", closed: "Kontrollierte Beta vor der Veröffentlichung" },
     heading: { before: "CouchMode", accent: "herunterladen" },
     statusDescription: {
-      open: "Während der öffentlichen Beta sind alle Funktionen kostenlos.",
+      open: "Die reguläre Version für Windows 11.",
       closed: "Download noch nicht veröffentlicht",
     },
     directDownload: {
@@ -359,12 +369,12 @@ export const germanDownloadPacket: SurfacePacketBase<"download"> = {
       signedValue: "Authenticode-signiert und mit Zeitstempel",
       unsignedValue: "Nicht signiert: SHA-256 prüfen",
       pricing: "Preis",
-      pricingValue: "Während der öffentlichen Beta sind alle Funktionen kostenlos.",
+      pricingValue: "Keine Zahlung nötig",
     },
     cards: {
       included: {
         heading: "Was du bekommst",
-        body: "Während der öffentlichen Beta sind alle Funktionen kostenlos. Für die öffentliche Beta brauchst du weder ein Konto noch eine Kreditkarte.",
+        body: "Alle Funktionen von CouchMode. Kein Konto, keine Zahlungskarte und keine Patreon-Mitgliedschaft nötig.",
       },
       officialSources: {
         heading: "Installationskanäle",
@@ -556,7 +566,7 @@ export const turkishLocaleContent: SharedLocaleContent = {
       { contentId: "changelog", label: "Sürüm notları" },
     ],
     legalLinks: [
-      { contentId: "support", label: "Destek" },
+      { contentId: "support", label: "Yardım" },
       { contentId: "privacy", label: "Gizlilik" },
       { contentId: "terms", label: "Kullanım Koşulları" },
       { contentId: "refund", label: "İadeler" },
@@ -577,10 +587,10 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
   seo: {
     title: "CouchMode: Oyun bilgisayarını konsol gibi kullanın | Windows 11",
     description:
-      "Oyun kumandanızı açın. CouchMode seçtiğiniz oyun deneyimini başlatır, oturumu tercihlerinize göre hazırlar ve işiniz bittiğinde masaüstünüze geri dönmenizi sağlar. Açık beta boyunca tüm özellikler ücretsiz.",
+      "Oyun kumandanızı açın. CouchMode seçtiğiniz oyun deneyimini başlatır, oturumu tercihlerinize göre hazırlar ve işiniz bittiğinde masaüstünüze geri dönmenizi sağlar. CouchMode ücretsiz kullanılır ve tüm özellikler dahildir.",
     ogTitle: "CouchMode: Oyun bilgisayarını konsol gibi kullanın | Windows 11",
     ogDescription:
-      "Oyun kumandanızı açın. CouchMode seçtiğiniz oyun deneyimini başlatır, oturumu tercihlerinize göre hazırlar ve işiniz bittiğinde masaüstünüze geri dönmenizi sağlar. Açık beta boyunca tüm özellikler ücretsiz.",
+      "Oyun kumandanızı açın. CouchMode seçtiğiniz oyun deneyimini başlatır, oturumu tercihlerinize göre hazırlar ve işiniz bittiğinde masaüstünüze geri dönmenizi sağlar. CouchMode ücretsiz kullanılır ve tüm özellikler dahildir.",
   },
   schema: {
     softwareDescription:
@@ -595,10 +605,10 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
       headingBefore: "Bilgisayarınızı",
       headingAccent: "oyun konsolu gibi kullanın.",
       description:
-        "Oyun kumandanızı açın. CouchMode seçtiğiniz oyun deneyimini başlatır, oturumu tercihlerinize göre hazırlar ve işiniz bittiğinde masaüstünüze geri dönmenizi sağlar.",
+        "Oyun kumandanızı açın. CouchMode seçtiğiniz oyun deneyimini başlatır, oturumu tercihlerinize göre hazırlar ve işiniz bittiğinde masaüstünüze geri dönmenizi sağlar. CouchMode ücretsiz kullanılır. Tüm özellikler dahil.",
       downloadLabel: "Windows için indir",
       proLabel: "CouchMode'u destekleyin",
-      platformNotice: "Windows 11 · 64-bit · Açık beta boyunca tüm özellikler ücretsiz.",
+      platformNotice: "Windows 11 · 64-bit",
       carousel: {
         slides: [
           { label: "Genel", alt: "Kumanda ve başlatıcı ayarlarını gösteren CouchMode ekranı." },
@@ -636,7 +646,7 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
     howItWorks: {
       eyebrow: "Nasıl çalışır",
       heading: "Kumandayla başlayın, TV karşısında oynayın.",
-      description: "Açık beta boyunca tüm özellikler ücretsiz.",
+      description: "Bir kumanda bağlayın. CouchMode oturumu sizin için başlatır, hazırlar ve sonlandırır.",
       stepLabel: "ADIM",
       steps: [
         {
@@ -648,14 +658,14 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
         {
           number: "02",
           title: "CouchMode seçtiğiniz oyun deneyimini açar",
-          body: "Desteklenen sistemlerde Xbox modu, Steam Big Picture ve Playnite. Uyumlu oyun koluyla başlatma ve özel başlatıcılar.",
-          detail: "Açık beta boyunca tüm özellikler ücretsiz.",
+          body: "Steam Big Picture, Playnite, Windows'un desteklediği sistemlerde Xbox modu veya kendi başlatıcınızı seçin.",
+          detail: "Zaten kullandığınız başlatıcıyla çalışır",
         },
         {
           number: "03",
-          title: "Tek bir açık beta. Tüm özellikler dahil.",
-          body: "Seçilen erişilebilir uygulamalar için Resource Control. Desteklenen ekran, HDR, ses ve oturum ayarları. CouchMode'un değiştirdiği ayarları geri yükleme.",
-          detail: "Açık beta boyunca tüm özellikler ücretsiz.",
+          title: "CouchMode oturumunuzu hazırlar",
+          body: "Resource Control seçtiğiniz uygulamaları kapatır. Session Tweaks seçtiğiniz ekran, HDR, ses ve güç ayarlarını uygular.",
+          detail: "Yalnızca etkinleştirdiğiniz ayarlar",
         },
         {
           number: "04",
@@ -667,7 +677,7 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
     },
     featureShots: {
       eyebrow: "Yakından bakın",
-      heading: "Tek bir açık beta. Tüm özellikler dahil.",
+      heading: "CouchMode'u iş başında görün",
       description:
         "Bunlar maket değil, gerçek CouchMode ekranlarıdır. Büyütmek için bir ekran seçin.",
       shots: [
@@ -716,7 +726,7 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
       headingBefore: "TV karşısında",
       headingAccent: "bilgisayarınızda oyun oynamaya hazır mısınız",
       description:
-        "Açık beta boyunca tüm özellikler ücretsiz. Açık betayı kullanmak için hesap veya kredi kartı gerekmez.",
+        "CouchMode'u Windows 11 için indirin ve TV karşısındaki ilk oturumunuzu başlatın.",
       downloadLabel: "Windows için indir",
       releaseNotesLabel: "Sürüm notlarını görün",
       directDownloadLabel: "Doğrudan indirme",
@@ -757,12 +767,12 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "CouchMode Steam Big Picture veya başka bir başlatıcıyı açabilir mi?",
           answer:
-            "Desteklenen sistemlerde Xbox modu, Steam Big Picture ve Playnite. Uyumlu oyun koluyla başlatma ve özel başlatıcılar. Açık beta boyunca tüm özellikler ücretsiz.",
+            "Evet. Steam Big Picture, Playnite, Windows'un desteklediği sistemlerde Xbox modu veya kendi başlatıcınızı seçin; uyumlu bir kumanda bağlandığında CouchMode bunu başlatabilir.",
         },
         {
           question: "Kumandamı açtığımda CouchMode Playnite'ı başlatabilir mi?",
           answer:
-            "Evet, bu ücretsizdir. Playnite'ı başlatma hedefi olarak seçin; uyumlu bir kumanda bağlandığında CouchMode Playnite Fullscreen'i açar. Playnite zaten açıksa ikinci bir kopya başlatmak yerine var olan örneği kullanır.",
+            "Evet. Playnite'ı başlatma hedefi olarak seçin; uyumlu bir kumanda bağlandığında CouchMode Playnite Fullscreen'i açar. Playnite zaten açıksa ikinci bir kopya başlatmak yerine var olan örneği kullanır.",
         },
         {
           question: "CouchMode PS5 veya DualSense kumandalarıyla çalışır mı?",
@@ -777,7 +787,7 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "CouchMode Playnite'ı destekliyor mu?",
           answer:
-            "Evet, bu ücretsizdir. Playnite Fullscreen, başlatma hedefi olarak kullanılabilir. CouchMode mevcut başlatıcılarla birlikte çalışır; onların yerine geçmez.",
+            "Evet. CouchMode kurulu Playnite'ı otomatik olarak bulur. Taşınabilir (portable) bir kopya kullanıyorsanız konumunu CouchMode ayarlarından belirtin. Ardından Playnite Fullscreen'i başlatma hedefi olarak seçebilirsiniz.",
         },
         {
           question: "CouchMode Windows'un Xbox modunu destekliyor mu?",
@@ -800,19 +810,24 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
             "Desteklenen el cihazlarında CouchMode, Windows'un Xbox moduyla birlikte başlatmak için yönetici tarafından onaylanmış bir zamanlanmış görev kullanabilir. Normal masaüstü başlangıcı bundan ayrı kalır.",
         },
         {
-          question: "Açık beta ücretsiz mi?",
+          question: "CouchMode ücretsiz mi?",
           answer:
-            "Açık beta boyunca tüm özellikler ücretsiz. Açık betayı kullanmak için hesap veya kredi kartı gerekmez.",
+            "Evet. CouchMode'un mevcut tüm özellikleri ücretsiz kullanılır. Hesap, deneme süresi veya ücretli üyelik gerekmez. CouchMode şu anda açık beta aşamasındadır.",
         },
         {
           question: "Patreon üyeliği ne sağlar?",
           answer:
-            "Pro ve Pro Supporter, destekçi statüleridir; özelliklerin kilidini açmak için gerekli değildir. Pro: en fazla 2 etkin Windows cihazında destekçi statüsü. Pro Supporter: en fazla 5 etkin Windows cihazında destekçi statüsü ve projeye daha yüksek düzeyde destek. Patreon destekçileri, önizleme sürümleri mevcut olduğunda önizleme güncellemelerini isterlerse doğrudan CouchMode üzerinden alabilir.",
+            "Pro ve Pro Supporter, destekçi statüleridir; özelliklerin kilidini açmak için gerekli değildir. Pro: en fazla 2 etkin Windows cihazında destekçi statüsü. Pro Supporter: en fazla 5 etkin Windows cihazında destekçi statüsü ve projeye daha yüksek düzeyde destek. Patreon destekçileri için CouchMode üzerinden önizleme güncellemeleri geliştirme aşamasındadır. Henüz kullanılamaz.",
         },
         {
           question: "Üyeliğim sona ererse ne olur?",
           answer:
-            "Üyeliğiniz sona ererse uygulama içinden önizleme güncellemeleri duraklatılır. Standart güncellemeler devam eder ve kurulu sürüm eski bir sürüme düşürülmez. Açık beta özellikleri ücretsiz kalır.",
+            "Üyeliğiniz sona ererse destekçi statünüz de sona erer. CouchMode tüm özellikleriyle çalışmaya devam eder ve standart güncellemeler sürer.",
+        },
+        {
+          question: "Önizleme güncellemelerini nasıl alabilirim?",
+          answer:
+            "Patreon destekçileri için CouchMode üzerinden önizleme güncellemeleri hâlâ geliştirme aşamasındadır ve şu anda kullanılamaz. Standart sürümler herkes için burada yayımlanır.",
         },
         {
           question: "Ekranda bir sorun olduğunda tanı verilerini nasıl yakalarım?",
@@ -825,9 +840,14 @@ export const turkishHomePacket: SurfacePacketBase<"home"> = {
             "CouchMode daha yüksek FPS vaat etmez. CouchMode, seçtiğiniz uygulamaları kapatarak oturumu düzenleyebilir ve Game Mode ile seçili güç planı gibi desteklenen Windows oturum ayarlarını uygulayabilir; oturum sonunda bunlar geri yüklenir.",
         },
         {
+          question: "CouchMode nasıl güncellenir?",
+          answer:
+            "CouchMode yeni sürümleri kontrol eder. Yeni bir sürüm olduğunda sizi bilgilendirir ve couchmode.app üzerindeki resmi indirme sayfasının bağlantısını verir. Güncellemeler otomatik olarak yüklenmez: Kurulum dosyasını kendiniz çalıştırırsınız ve ayarlarınız korunur.",
+        },
+        {
           question: "CouchMode'u Microsoft Store'dan yükledim. Ne yapmalıyım?",
           answer:
-            "Bu sürüm artık Store üzerinden güncellenmiyor. Yeni sürüm kullanıma sunulduğunda CouchMode size bildirecek. Buradan indirip mevcut sürümün üzerine de kurabilirsiniz; ayarlarınız korunur.",
+            "Microsoft Store şu anda CouchMode'un daha eski bir sürümünü sunuyor. Daha yeni bir sürüm olduğunda CouchMode sizi bilgilendirir ve resmi indirme sayfasının bağlantısını verir. Yeni sürümü mevcut sürümün üzerine kurun; ayarlarınız korunur.",
         },
       ],
       community: {
@@ -848,10 +868,10 @@ export const turkishDownloadPacket: SurfacePacketBase<"download"> = {
   seo: {
     title: "CouchMode'u Windows için indirin",
     description:
-      "Açık beta boyunca tüm özellikler ücretsiz. CouchMode'u yalnızca couchmode.app veya resmi CouchMode GitHub Releases sayfasından indirin. Kurulum dosyasını çalıştırmadan önce SHA-256 değerinin tamamını ve dosya boyutunu karşılaştırın.",
+      "CouchMode'u yalnızca couchmode.app veya resmi CouchMode GitHub Releases sayfasından indirin. Kurulum dosyasını çalıştırmadan önce SHA-256 değerinin tamamını ve dosya boyutunu karşılaştırın.",
     ogTitle: "CouchMode'u Windows için indirin",
     ogDescription:
-      "Açık beta boyunca tüm özellikler ücretsiz. CouchMode'u yalnızca couchmode.app veya resmi CouchMode GitHub Releases sayfasından indirin. Kurulum dosyasını çalıştırmadan önce SHA-256 değerinin tamamını ve dosya boyutunu karşılaştırın.",
+      "CouchMode'u yalnızca couchmode.app veya resmi CouchMode GitHub Releases sayfasından indirin. Kurulum dosyasını çalıştırmadan önce SHA-256 değerinin tamamını ve dosya boyutunu karşılaştırın.",
   },
   schema: { homeBreadcrumbLabel: "Ana sayfa", currentBreadcrumbLabel: "İndirme durumu" },
   internalLinks: ["home", "changelog", "support"],
@@ -859,7 +879,7 @@ export const turkishDownloadPacket: SurfacePacketBase<"download"> = {
     badge: { open: "Herkese açık beta", closed: "Yayımlama öncesi kontrollü beta" },
     heading: { before: "CouchMode'u", accent: "indirin" },
     statusDescription: {
-      open: "Açık beta boyunca tüm özellikler ücretsiz.",
+      open: "Windows 11 için standart sürüm.",
       closed: "İndirme henüz yayımlanmadı",
     },
     directDownload: { label: "Windows için indir", unavailableLabel: "İndirme henüz yayımlanmadı" },
@@ -878,12 +898,12 @@ export const turkishDownloadPacket: SurfacePacketBase<"download"> = {
       signedValue: "Authenticode ile imzalı ve zaman damgalı",
       unsignedValue: "İmzasız: SHA-256 değerini doğrulayın",
       pricing: "Fiyat",
-      pricingValue: "Açık beta boyunca tüm özellikler ücretsiz.",
+      pricingValue: "Ödeme gerekmez",
     },
     cards: {
       included: {
         heading: "Ne elde edersiniz",
-        body: "Açık beta boyunca tüm özellikler ücretsiz. Açık betayı kullanmak için hesap veya kredi kartı gerekmez.",
+        body: "CouchMode'un tüm özellikleri. Hesap, ödeme kartı veya Patreon üyeliği gerekmez.",
       },
       officialSources: {
         heading: "Yükleme kanalları",

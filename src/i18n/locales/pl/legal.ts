@@ -351,10 +351,10 @@ export const polishCheckoutPacket: SurfacePacketBase<"checkout"> = {
   seo: {
     title: "Wesprzyj CouchMode",
     description:
-      "CouchMode jest bezpłatny w okresie publicznej bety. Jeśli Ci się przydaje, możesz wesprzeć rozwój, testy zgodności i kolejne ulepszenia.",
+      "CouchMode jest bezpłatny. Jeśli Ci się przydaje, możesz wesprzeć rozwój, testy zgodności i kolejne ulepszenia.",
     ogTitle: "Wesprzyj CouchMode",
     ogDescription:
-      "CouchMode jest bezpłatny w okresie publicznej bety. Jeśli Ci się przydaje, możesz wesprzeć rozwój, testy zgodności i kolejne ulepszenia.",
+      "CouchMode jest bezpłatny. Jeśli Ci się przydaje, możesz wesprzeć rozwój, testy zgodności i kolejne ulepszenia.",
   },
   schema: { homeBreadcrumbLabel: "Strona główna", currentBreadcrumbLabel: "Wesprzyj CouchMode" },
   internalLinks: ["home"],

@@ -12,10 +12,10 @@ export const koreanHomePacket: SurfacePacketBase<"home"> = {
   seo: {
     title: "CouchMode - 컨트롤러 중심의 Windows 게임 유틸리티",
     description:
-      "컨트롤러를 켜면 CouchMode가 선택한 게임 환경을 열고 설정에 맞게 세션을 준비합니다. 게임을 마치면 다시 사용할 수 있는 바탕 화면으로 돌아갑니다. 공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다.",
+      "컨트롤러를 켜면 CouchMode가 선택한 게임 환경을 열고 설정에 맞게 세션을 준비합니다. 게임을 마치면 다시 사용할 수 있는 바탕 화면으로 돌아갑니다. CouchMode는 무료이며 모든 기능을 사용할 수 있습니다.",
     ogTitle: "CouchMode - 컨트롤러 중심의 Windows 게임 유틸리티",
     ogDescription:
-      "컨트롤러를 켜면 CouchMode가 선택한 게임 환경을 열고 설정에 맞게 세션을 준비합니다. 게임을 마치면 다시 사용할 수 있는 바탕 화면으로 돌아갑니다. 공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다.",
+      "컨트롤러를 켜면 CouchMode가 선택한 게임 환경을 열고 설정에 맞게 세션을 준비합니다. 게임을 마치면 다시 사용할 수 있는 바탕 화면으로 돌아갑니다. CouchMode는 무료이며 모든 기능을 사용할 수 있습니다.",
   },
   schema: {
     softwareDescription:
@@ -30,11 +30,11 @@ export const koreanHomePacket: SurfacePacketBase<"home"> = {
       headingBefore: "게이밍 PC로",
       headingAccent: "소파에서 편하게 게임하세요",
       description:
-        "컨트롤러를 켜면 CouchMode가 선택한 게임 환경을 열고 설정에 맞게 세션을 준비합니다. 게임을 마치면 다시 사용할 수 있는 바탕 화면으로 돌아갑니다.",
+        "컨트롤러를 켜면 CouchMode가 선택한 게임 환경을 열고 설정에 맞게 세션을 준비합니다. 게임을 마치면 다시 사용할 수 있는 바탕 화면으로 돌아갑니다. CouchMode는 무료입니다. 모든 기능이 포함되어 있습니다.",
       downloadLabel: "Windows용 다운로드",
       proLabel: "CouchMode 후원하기",
       platformNotice:
-        "Windows 11 · 64-bit · 공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다.",
+        "Windows 11 · 64-bit",
       carousel: {
         slides: [
           { label: "일반 설정", alt: "CouchMode General 탭의 컨트롤러 및 런처 설정." },
@@ -69,7 +69,7 @@ export const koreanHomePacket: SurfacePacketBase<"home"> = {
     howItWorks: {
       eyebrow: "작동 방식",
       heading: "컨트롤러를 켜고, 소파에 앉으세요.",
-      description: "공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다.",
+      description: "컨트롤러를 연결하면 CouchMode가 세션을 시작하고, 준비하고, 종료합니다.",
       stepLabel: "단계",
       steps: [
         {
@@ -81,14 +81,14 @@ export const koreanHomePacket: SurfacePacketBase<"home"> = {
         {
           number: "02",
           title: "선택한 게임 환경 열기",
-          body: "지원 환경의 Xbox 모드, Steam Big Picture, Playnite. 호환 컨트롤러로 시작하기와 사용자 지정 런처.",
-          detail: "공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다.",
+          body: "Steam Big Picture, Playnite, Windows가 지원하는 경우 Xbox 모드 또는 사용자 지정 런처를 선택하세요.",
+          detail: "이미 사용 중인 런처와 함께 작동",
         },
         {
           number: "03",
-          title: "하나의 공개 베타, 모든 기능 제공.",
-          body: "선택한 접근 가능한 앱을 위한 Resource Control. 지원되는 디스플레이, HDR, 오디오 및 세션 설정. CouchMode가 변경한 설정 복원.",
-          detail: "공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다.",
+          title: "CouchMode가 세션을 준비합니다",
+          body: "Resource Control이 선택한 앱을 닫고, Session Tweaks가 선택한 디스플레이, HDR, 오디오 및 전원 설정을 적용합니다.",
+          detail: "사용하도록 설정한 항목만 변경",
         },
         {
           number: "04",
@@ -100,7 +100,7 @@ export const koreanHomePacket: SurfacePacketBase<"home"> = {
     },
     featureShots: {
       eyebrow: "앱 자세히 보기",
-      heading: "하나의 공개 베타, 모든 기능 제공.",
+      heading: "실제 CouchMode 화면",
       description:
         "예시로 만든 이미지가 아니라 실제 CouchMode 화면입니다. 화면을 선택하면 크게 볼 수 있습니다.",
       shots: [
@@ -149,7 +149,7 @@ export const koreanHomePacket: SurfacePacketBase<"home"> = {
       headingBefore: "이제 PC 게임도",
       headingAccent: "소파에서 편하게",
       description:
-        "공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다. 공개 베타를 사용하는 데 계정이나 신용카드가 필요하지 않습니다.",
+        "Windows 11용 CouchMode를 다운로드하고 소파에서 첫 세션을 시작하세요.",
       downloadLabel: "Windows용 다운로드",
       releaseNotesLabel: "릴리스 노트 보기",
       directDownloadLabel: "직접 다운로드",
@@ -189,12 +189,12 @@ export const koreanHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "Steam Big Picture 모드나 다른 런처도 시작할 수 있나요?",
           answer:
-            "지원 환경의 Xbox 모드, Steam Big Picture, Playnite. 호환 컨트롤러로 시작하기와 사용자 지정 런처. 공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다.",
+            "네. Steam Big Picture, Playnite, Windows가 지원하는 경우 Xbox 모드 또는 사용자 지정 런처를 선택하면 호환 컨트롤러가 연결될 때 CouchMode가 시작할 수 있습니다.",
         },
         {
           question: "컨트롤러를 켜면 Playnite를 실행할 수 있나요?",
           answer:
-            "네. 무료로 가능합니다. 실행 대상으로 Playnite를 선택하면 호환 컨트롤러 연결 시 Playnite 전체 화면 모드가 열립니다. 이미 실행 중이면 새 인스턴스를 추가로 시작하지 않고 기존 Playnite를 사용합니다.",
+            "네. 실행 대상으로 Playnite를 선택하면 호환 컨트롤러 연결 시 Playnite 전체 화면 모드가 열립니다. 이미 실행 중이면 새 인스턴스를 추가로 시작하지 않고 기존 Playnite를 사용합니다.",
         },
         {
           question: "PS5 / DualSense 컨트롤러도 사용할 수 있나요?",
@@ -209,7 +209,7 @@ export const koreanHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "Playnite를 지원하나요?",
           answer:
-            "네. 무료로 지원합니다.  Playnite 전체 화면 모드를 실행 대상으로 선택할 수 있습니다. CouchMode는 기존 런처를 대체하는 것이 아니라 함께 작동하도록 설계되었습니다.",
+            "네. 설치된 Playnite는 CouchMode가 자동으로 찾습니다. 포터블 버전을 사용한다면 CouchMode 설정에서 위치를 지정하세요. 그런 다음 Playnite 전체 화면 모드를 실행 대상으로 선택할 수 있습니다.",
         },
         {
           question: "Windows Xbox 모드를 지원하나요?",
@@ -232,19 +232,24 @@ export const koreanHomePacket: SurfacePacketBase<"home"> = {
             "지원되는 휴대용 게이밍 PC에서 관리자가 승인한 예약 작업을 사용해 Windows Xbox 전체 화면 환경과 함께 CouchMode를 시작하는 기능입니다. 일반 바탕 화면에서의 시작은 별도로 유지됩니다.",
         },
         {
-          question: "공개 베타는 무료인가요?",
+          question: "CouchMode는 무료인가요?",
           answer:
-            "공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다. 공개 베타를 사용하는 데 계정이나 신용카드가 필요하지 않습니다.",
+            "네. 현재 CouchMode의 모든 기능을 무료로 사용할 수 있습니다. 계정, 체험판, 유료 멤버십이 필요하지 않습니다. CouchMode는 현재 공개 베타 단계입니다.",
         },
         {
           question: "Patreon 멤버십은 무엇을 제공하나요?",
           answer:
-            "Pro와 Pro Supporter는 후원자 상태를 나타내며, 기능을 잠금 해제하기 위한 등급이 아닙니다. Pro: 최대 2대의 활성 Windows 기기에서 후원자 상태를 사용할 수 있습니다. Pro Supporter: 최대 5대의 활성 Windows 기기에서 후원자 상태를 사용할 수 있으며, 프로젝트에 더 큰 금액을 후원합니다. Patreon 후원자는 미리 보기 버전이 제공될 때 CouchMode에서 직접 미리 보기 업데이트를 받도록 선택할 수 있습니다.",
+            "Pro와 Pro Supporter는 후원자 상태를 나타내며, 기능을 잠금 해제하기 위한 등급이 아닙니다. Pro: 최대 2대의 활성 Windows 기기에서 후원자 상태를 사용할 수 있습니다. Pro Supporter: 최대 5대의 활성 Windows 기기에서 후원자 상태를 사용할 수 있으며, 프로젝트에 더 큰 금액을 후원합니다. Patreon 후원자를 위해 CouchMode에서 직접 미리 보기 업데이트를 받는 기능을 개발 중입니다. 아직 이용할 수 없습니다.",
         },
         {
           question: "멤버십이 끝나면 어떻게 되나요?",
           answer:
-            "멤버십이 끝나면 앱 내 미리 보기 업데이트 수신이 일시 중지됩니다. 일반 업데이트는 계속되며 설치된 버전이 이전 버전으로 내려가지 않습니다. 공개 베타 기능은 계속 무료로 사용할 수 있습니다.",
+            "멤버십이 끝나면 후원자 상태도 종료됩니다. CouchMode의 모든 기능은 그대로 사용할 수 있으며 일반 업데이트도 계속됩니다.",
+        },
+        {
+          question: "미리 보기 업데이트는 어떻게 받을 수 있나요?",
+          answer:
+            "Patreon 후원자를 위해 CouchMode에서 직접 미리 보기 업데이트를 받는 기능은 아직 개발 중이며 현재는 이용할 수 없습니다. 일반 버전은 이곳에서 누구나 받을 수 있습니다.",
         },
         {
           question: "화면에 이상이 있을 때 진단 자료는 어떻게 만드나요?",
@@ -257,9 +262,14 @@ export const koreanHomePacket: SurfacePacketBase<"home"> = {
             "CouchMode는 FPS 향상을 보장하지 않습니다. Pro는 선택한 앱을 닫아 세션 중 방해 요소를 줄이고 게임 모드나 선택한 전원 관리 옵션 같은 지원되는 Windows 설정을 적용한 뒤 세션 종료 시 복원할 수 있습니다.",
         },
         {
+          question: "CouchMode는 어떻게 업데이트되나요?",
+          answer:
+            "CouchMode는 새 버전이 있는지 확인합니다. 새 버전이 있으면 알려 주고 couchmode.app의 공식 다운로드 페이지 링크를 제공합니다. 업데이트는 자동으로 설치되지 않습니다. 설치 파일은 직접 실행하며, 설정은 유지됩니다.",
+        },
+        {
           question: "Microsoft Store에서 설치했다면 어떻게 하나요?",
           answer:
-            "해당 버전은 더 이상 Store에서 업데이트되지 않습니다. 새 버전이 출시되면 CouchMode에서 알려 줍니다. 여기에서 다운로드해 현재 버전 위에 설치할 수도 있으며, 설정은 유지됩니다.",
+            "Microsoft Store에서는 현재 이전 버전의 CouchMode를 제공하고 있습니다. 새 버전이 있으면 CouchMode가 알려 주고 공식 다운로드 페이지 링크를 제공합니다. 현재 버전 위에 설치하면 설정은 유지됩니다.",
         },
       ],
       community: {

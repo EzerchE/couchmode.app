@@ -13,10 +13,10 @@ export const japaneseDownloadPacket: SurfacePacketBase<"download"> = {
   seo: {
     title: "CouchModeをダウンロード | Windows 11",
     description:
-      "公開ベータ期間中は、すべての機能を無料で使えます。 CouchModeはcouchmode.appまたはCouchMode公式のGitHub Releasesからのみダウンロードしてください。インストーラーを実行する前に、SHA-256の全桁とファイルサイズを照合してください。",
+      "CouchModeはcouchmode.appまたはCouchMode公式のGitHub Releasesからのみダウンロードしてください。インストーラーを実行する前に、SHA-256の全桁とファイルサイズを照合してください。",
     ogTitle: "CouchModeをダウンロード | Windows 11",
     ogDescription:
-      "公開ベータ期間中は、すべての機能を無料で使えます。 CouchModeはcouchmode.appまたはCouchMode公式のGitHub Releasesからのみダウンロードしてください。インストーラーを実行する前に、SHA-256の全桁とファイルサイズを照合してください。",
+      "CouchModeはcouchmode.appまたはCouchMode公式のGitHub Releasesからのみダウンロードしてください。インストーラーを実行する前に、SHA-256の全桁とファイルサイズを照合してください。",
   },
   schema: { homeBreadcrumbLabel: "ホーム", currentBreadcrumbLabel: "ダウンロード" },
   internalLinks: ["home", "changelog", "support"],
@@ -24,7 +24,7 @@ export const japaneseDownloadPacket: SurfacePacketBase<"download"> = {
     badge: { open: "公開ベータ版", closed: "公開前の限定ベータテスト" },
     heading: { before: "Windows版CouchModeを", accent: "ダウンロード" },
     statusDescription: {
-      open: "公開ベータ期間中は、すべての機能を無料で使えます。",
+      open: "Windows 11向けの通常版です。",
       closed: "ダウンロードはまだ公開されていません",
     },
     directDownload: {
@@ -45,12 +45,12 @@ export const japaneseDownloadPacket: SurfacePacketBase<"download"> = {
       signedValue: "Authenticode署名・タイムスタンプ付き",
       unsignedValue: "署名なし：SHA-256を確認してください",
       pricing: "料金",
-      pricingValue: "公開ベータ期間中は、すべての機能を無料で使えます。",
+      pricingValue: "支払いは不要です",
     },
     cards: {
       included: {
         heading: "含まれるもの",
-        body: "公開ベータ期間中は、すべての機能を無料で使えます。 公開ベータの利用にアカウントやクレジットカードは必要ありません。",
+        body: "CouchModeのすべての機能。アカウント、支払いカード、Patreonのメンバーシップは必要ありません。",
       },
       officialSources: {
         heading: "インストール方法",

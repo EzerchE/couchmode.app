@@ -349,10 +349,10 @@ export const germanCheckoutPacket: SurfacePacketBase<"checkout"> = {
   seo: {
     title: "CouchMode unterstützen",
     description:
-      "CouchMode ist während der öffentlichen Beta kostenlos. Wenn es dir hilft, unterstütze die Weiterentwicklung, Kompatibilitätstests und künftige Verbesserungen.",
+      "CouchMode ist kostenlos nutzbar. Wenn es dir hilft, kannst du die Weiterentwicklung, Kompatibilitätstests und künftige Verbesserungen unterstützen.",
     ogTitle: "CouchMode unterstützen",
     ogDescription:
-      "CouchMode ist während der öffentlichen Beta kostenlos. Wenn es dir hilft, unterstütze die Weiterentwicklung, Kompatibilitätstests und künftige Verbesserungen.",
+      "CouchMode ist kostenlos nutzbar. Wenn es dir hilft, kannst du die Weiterentwicklung, Kompatibilitätstests und künftige Verbesserungen unterstützen.",
   },
   schema: { homeBreadcrumbLabel: "Startseite", currentBreadcrumbLabel: "CouchMode unterstützen" },
   internalLinks: ["home"],
@@ -695,10 +695,10 @@ export const turkishCheckoutPacket: SurfacePacketBase<"checkout"> = {
   seo: {
     title: "CouchMode'u destekleyin",
     description:
-      "CouchMode açık beta boyunca ücretsiz. İşinize yarıyorsa geliştirme çalışmalarına, uyumluluk testlerine ve gelecek iyileştirmelere destek olabilirsiniz.",
+      "CouchMode ücretsiz kullanılır. İşinize yarıyorsa geliştirme çalışmalarına, uyumluluk testlerine ve gelecek iyileştirmelere destek olabilirsiniz.",
     ogTitle: "CouchMode'u destekleyin",
     ogDescription:
-      "CouchMode açık beta boyunca ücretsiz. İşinize yarıyorsa geliştirme çalışmalarına, uyumluluk testlerine ve gelecek iyileştirmelere destek olabilirsiniz.",
+      "CouchMode ücretsiz kullanılır. İşinize yarıyorsa geliştirme çalışmalarına, uyumluluk testlerine ve gelecek iyileştirmelere destek olabilirsiniz.",
   },
   schema: { homeBreadcrumbLabel: "Ana sayfa", currentBreadcrumbLabel: "CouchMode'u destekleyin" },
   internalLinks: ["home"],

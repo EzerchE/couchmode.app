@@ -13,10 +13,10 @@ export const italianDownloadPacket: SurfacePacketBase<"download"> = {
   seo: {
     title: "Scarica CouchMode per Windows",
     description:
-      "Tutte le funzioni sono gratuite durante la beta pubblica. Scarica CouchMode solo da couchmode.app o dalle release ufficiali di CouchMode su GitHub. Confronta l'intero SHA-256 e la dimensione del file prima di eseguire il programma di installazione.",
+      "Scarica CouchMode solo da couchmode.app o dalle release ufficiali di CouchMode su GitHub. Confronta l'intero SHA-256 e la dimensione del file prima di eseguire il programma di installazione.",
     ogTitle: "Scarica CouchMode per Windows",
     ogDescription:
-      "Tutte le funzioni sono gratuite durante la beta pubblica. Scarica CouchMode solo da couchmode.app o dalle release ufficiali di CouchMode su GitHub. Confronta l'intero SHA-256 e la dimensione del file prima di eseguire il programma di installazione.",
+      "Scarica CouchMode solo da couchmode.app o dalle release ufficiali di CouchMode su GitHub. Confronta l'intero SHA-256 e la dimensione del file prima di eseguire il programma di installazione.",
   },
   schema: {
     homeBreadcrumbLabel: "Pagina iniziale",
@@ -27,7 +27,7 @@ export const italianDownloadPacket: SurfacePacketBase<"download"> = {
     badge: { open: "Beta pubblica", closed: "Beta ad accesso limitato prima della pubblicazione" },
     heading: { before: "Scarica", accent: "CouchMode" },
     statusDescription: {
-      open: "Tutte le funzioni sono gratuite durante la beta pubblica.",
+      open: "La versione standard per Windows 11.",
       closed: "Download non ancora pubblicato",
     },
     directDownload: {
@@ -49,12 +49,12 @@ export const italianDownloadPacket: SurfacePacketBase<"download"> = {
       signedValue: "Firma Authenticode e marca temporale",
       unsignedValue: "Non firmato: verifica lo SHA-256",
       pricing: "Prezzi",
-      pricingValue: "Tutte le funzioni sono gratuite durante la beta pubblica.",
+      pricingValue: "Nessun pagamento richiesto",
     },
     cards: {
       included: {
         heading: "Che cosa include",
-        body: "Tutte le funzioni sono gratuite durante la beta pubblica. Per usare la beta pubblica non servono un account o una carta di credito.",
+        body: "Tutte le funzioni di CouchMode. Non servono un account, una carta di pagamento o un abbonamento Patreon.",
       },
       officialSources: {
         heading: "Canali di installazione",

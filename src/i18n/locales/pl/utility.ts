@@ -13,10 +13,10 @@ export const polishDownloadPacket: SurfacePacketBase<"download"> = {
   seo: {
     title: "Pobierz CouchMode dla Windows",
     description:
-      "W publicznej becie wszystkie funkcje są bezpłatne. Pobieraj CouchMode wyłącznie z couchmode.app lub z oficjalnych wydań CouchMode na GitHub. Przed uruchomieniem instalatora porównaj pełną sumę SHA-256 i rozmiar pliku.",
+      "Pobieraj CouchMode wyłącznie z couchmode.app lub z oficjalnych wydań CouchMode na GitHub. Przed uruchomieniem instalatora porównaj pełną sumę SHA-256 i rozmiar pliku.",
     ogTitle: "Pobierz CouchMode dla Windows",
     ogDescription:
-      "W publicznej becie wszystkie funkcje są bezpłatne. Pobieraj CouchMode wyłącznie z couchmode.app lub z oficjalnych wydań CouchMode na GitHub. Przed uruchomieniem instalatora porównaj pełną sumę SHA-256 i rozmiar pliku.",
+      "Pobieraj CouchMode wyłącznie z couchmode.app lub z oficjalnych wydań CouchMode na GitHub. Przed uruchomieniem instalatora porównaj pełną sumę SHA-256 i rozmiar pliku.",
   },
   schema: { homeBreadcrumbLabel: "Strona główna", currentBreadcrumbLabel: "Dostępność pobierania" },
   internalLinks: ["home", "changelog", "support"],
@@ -24,7 +24,7 @@ export const polishDownloadPacket: SurfacePacketBase<"download"> = {
     badge: { open: "Publiczna wersja beta", closed: "Zamknięte testy przed publiczną wersją beta" },
     heading: { before: "Pobierz", accent: "CouchMode" },
     statusDescription: {
-      open: "W publicznej becie wszystkie funkcje są bezpłatne.",
+      open: "Standardowa wersja dla Windows 11.",
       closed: "Plik nie został jeszcze opublikowany",
     },
     directDownload: {
@@ -46,12 +46,12 @@ export const polishDownloadPacket: SurfacePacketBase<"download"> = {
       signedValue: "Podpis Authenticode ze znacznikiem czasu",
       unsignedValue: "Bez podpisu: sprawdź SHA-256",
       pricing: "Cennik",
-      pricingValue: "W publicznej becie wszystkie funkcje są bezpłatne.",
+      pricingValue: "Bez opłat",
     },
     cards: {
       included: {
         heading: "Co otrzymasz",
-        body: "W publicznej becie wszystkie funkcje są bezpłatne. Do korzystania z publicznej bety nie potrzebujesz konta ani karty płatniczej.",
+        body: "Wszystkie funkcje CouchMode. Nie potrzebujesz konta, karty płatniczej ani subskrypcji na Patreon.",
       },
       officialSources: {
         heading: "Kanały instalacji",

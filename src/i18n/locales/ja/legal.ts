@@ -358,10 +358,10 @@ export const japaneseCheckoutPacket: SurfacePacketBase<"checkout"> = {
   seo: {
     title: "CouchModeを支援する",
     description:
-      "CouchModeは公開ベータ期間中、無料で使えます。役に立ったと感じたら、開発の継続や互換性テスト、今後の改善を支援していただけるとうれしいです。",
+      "CouchModeは無料で使えます。役に立ったと感じたら、開発の継続や互換性テスト、今後の改善を支援していただけるとうれしいです。",
     ogTitle: "CouchModeを支援する",
     ogDescription:
-      "CouchModeは公開ベータ期間中、無料で使えます。役に立ったと感じたら、開発の継続や互換性テスト、今後の改善を支援していただけるとうれしいです。",
+      "CouchModeは無料で使えます。役に立ったと感じたら、開発の継続や互換性テスト、今後の改善を支援していただけるとうれしいです。",
   },
   schema: { homeBreadcrumbLabel: "ホーム", currentBreadcrumbLabel: "CouchModeを支援する" },
   internalLinks: ["home"],

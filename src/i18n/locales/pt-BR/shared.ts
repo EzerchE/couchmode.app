@@ -54,7 +54,7 @@ export const brazilianPortugueseLocaleContent: SharedLocaleContent = {
       { contentId: "changelog", label: "Novidades" },
     ],
     legalLinks: [
-      { contentId: "support", label: "Suporte" },
+      { contentId: "support", label: "Ajuda" },
       { contentId: "privacy", label: "Privacidade" },
       { contentId: "terms", label: "Termos" },
       { contentId: "refund", label: "Reembolsos" },

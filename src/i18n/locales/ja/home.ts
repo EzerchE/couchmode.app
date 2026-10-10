@@ -12,10 +12,10 @@ export const japaneseHomePacket: SurfacePacketBase<"home"> = {
   seo: {
     title: "CouchMode | Windows PCをテレビとコントローラーで楽しむ",
     description:
-      "コントローラーの電源を入れると、CouchModeが、あらかじめ選んでおいたゲーム用画面を開き、好みに合わせてセッションを準備します。遊び終わったら、いつもの作業に戻れるデスクトップへ戻します。 公開ベータ期間中は、すべての機能を無料で使えます。",
+      "コントローラーの電源を入れると、CouchModeが、あらかじめ選んでおいたゲーム用画面を開き、好みに合わせてセッションを準備します。遊び終わったら、いつもの作業に戻れるデスクトップへ戻します。CouchModeは無料で、すべての機能を使えます。",
     ogTitle: "CouchMode | Windows PCをテレビとコントローラーで楽しむ",
     ogDescription:
-      "コントローラーの電源を入れると、CouchModeが、あらかじめ選んでおいたゲーム用画面を開き、好みに合わせてセッションを準備します。遊び終わったら、いつもの作業に戻れるデスクトップへ戻します。 公開ベータ期間中は、すべての機能を無料で使えます。",
+      "コントローラーの電源を入れると、CouchModeが、あらかじめ選んでおいたゲーム用画面を開き、好みに合わせてセッションを準備します。遊び終わったら、いつもの作業に戻れるデスクトップへ戻します。CouchModeは無料で、すべての機能を使えます。",
   },
   schema: {
     softwareDescription:
@@ -30,10 +30,10 @@ export const japaneseHomePacket: SurfacePacketBase<"home"> = {
       headingBefore: "PCゲームを、",
       headingAccent: "テレビとコントローラーで。",
       description:
-        "コントローラーの電源を入れると、CouchModeが、あらかじめ選んでおいたゲーム用画面を開き、好みに合わせてセッションを準備します。遊び終わったら、いつもの作業に戻れるデスクトップへ戻します。",
+        "コントローラーの電源を入れると、CouchModeが、あらかじめ選んでおいたゲーム用画面を開き、好みに合わせてセッションを準備します。遊び終わったら、いつもの作業に戻れるデスクトップへ戻します。CouchModeは無料で使えます。すべての機能を利用できます。",
       downloadLabel: "Windows版をダウンロード",
       proLabel: "CouchModeを支援する",
-      platformNotice: "Windows 11 · 64-bit · 公開ベータ期間中は、すべての機能を無料で使えます。",
+      platformNotice: "Windows 11 · 64-bit",
       carousel: {
         slides: [
           { label: "General", alt: "CouchModeのGeneral画面。コントローラーとランチャーの設定。" },
@@ -74,7 +74,7 @@ export const japaneseHomePacket: SurfacePacketBase<"home"> = {
     howItWorks: {
       eyebrow: "使い方",
       heading: "コントローラーを手に取ったら、ソファでゲーム。",
-      description: "公開ベータ期間中は、すべての機能を無料で使えます。",
+      description: "コントローラーをつなぐだけで、CouchModeがセッションの開始、準備、終了を行います。",
       stepLabel: "手順",
       steps: [
         {
@@ -86,14 +86,14 @@ export const japaneseHomePacket: SurfacePacketBase<"home"> = {
         {
           number: "02",
           title: "選んだゲーム用画面が開く",
-          body: "対応環境でのXbox モード、Steam Big Picture、Playnite. 対応コントローラーによる起動とカスタムランチャー.",
-          detail: "公開ベータ期間中は、すべての機能を無料で使えます。",
+          body: "SteamのBig Picture モード、Playnite、Windowsが対応している場合のXbox モード、または任意のランチャーを選べます。",
+          detail: "いつものランチャーをそのまま使えます",
         },
         {
           number: "03",
-          title: "公開ベータで、すべての機能を。",
-          body: "選択したアクセス可能なアプリを対象とするResource Control. 対応する画面、HDR、音声、セッション設定. CouchModeが変更した設定の復元.",
-          detail: "公開ベータ期間中は、すべての機能を無料で使えます。",
+          title: "CouchModeがセッションを準備",
+          body: "Resource Controlが選んだアプリを閉じ、Session Tweaksが選んだ画面、HDR、音声、電源の設定を適用します。",
+          detail: "有効にした設定だけを変更",
         },
         {
           number: "04",
@@ -105,7 +105,7 @@ export const japaneseHomePacket: SurfacePacketBase<"home"> = {
     },
     featureShots: {
       eyebrow: "実際の画面で確認",
-      heading: "公開ベータで、すべての機能を。",
+      heading: "実際のCouchMode",
       description: "イメージ図ではなく、実際のCouchModeの画面です。選ぶと拡大表示できます。",
       shots: [
         {
@@ -153,7 +153,7 @@ export const japaneseHomePacket: SurfacePacketBase<"home"> = {
       headingBefore: "いつものPCで、",
       headingAccent: "ソファから遊びませんか",
       description:
-        "公開ベータ期間中は、すべての機能を無料で使えます。 公開ベータの利用にアカウントやクレジットカードは必要ありません。",
+        "Windows 11版のCouchModeをダウンロードして、ソファからのゲームを始めましょう。",
       downloadLabel: "Windows版をダウンロード",
       releaseNotesLabel: "リリースノートを見る",
       directDownloadLabel: "直接ダウンロード",
@@ -193,12 +193,12 @@ export const japaneseHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "SteamのBig Picture モードや、ほかのランチャーを起動できますか？",
           answer:
-            "対応環境でのXbox モード、Steam Big Picture、Playnite. 対応コントローラーによる起動とカスタムランチャー. 公開ベータ期間中は、すべての機能を無料で使えます。",
+            "はい。SteamのBig Picture モード、Playnite、Windowsが対応している場合のXbox モード、または任意のランチャーを選ぶと、対応コントローラーの接続時にCouchModeが起動できます。",
         },
         {
           question: "コントローラーの電源を入れるとPlayniteを起動できますか？",
           answer:
-            "はい。無料で利用できます。起動先にPlayniteを選ぶと、対応コントローラーの接続時にPlayniteをフルスクリーンで開きます。すでにPlayniteが開いていれば、二重に起動せず、そのインスタンスを利用します。",
+            "はい。起動先にPlayniteを選ぶと、対応コントローラーの接続時にPlayniteをフルスクリーンで開きます。すでにPlayniteが開いていれば、二重に起動せず、そのインスタンスを利用します。",
         },
         {
           question: "PS5やDualSenseのコントローラーは使えますか？",
@@ -213,7 +213,7 @@ export const japaneseHomePacket: SurfacePacketBase<"home"> = {
         {
           question: "Playniteに対応していますか？",
           answer:
-            "はい。無料で対応しています。でPlayniteのフルスクリーンを起動先に選べます。CouchModeは既存のランチャーを置き換えるのではなく、その前後の操作を補助します。",
+            "はい。インストール済みのPlayniteはCouchModeが自動で見つけます。ポータブル版を使っている場合は、CouchModeの設定でその場所を指定してください。そのうえでPlayniteのフルスクリーンを起動先に選べます。",
         },
         {
           question: "WindowsのXbox モードに対応していますか？",
@@ -236,19 +236,24 @@ export const japaneseHomePacket: SurfacePacketBase<"home"> = {
             "対応する携帯型ゲーミングPCでは、管理者が承認したスケジュールタスクを使い、WindowsのXboxフルスクリーン環境と一緒にCouchModeを起動できます。通常のデスクトップ起動とは別の設定です。",
         },
         {
-          question: "公開ベータは無料ですか？",
+          question: "CouchModeは無料ですか？",
           answer:
-            "公開ベータ期間中は、すべての機能を無料で使えます。 公開ベータの利用にアカウントやクレジットカードは必要ありません。",
+            "はい。現在のCouchModeのすべての機能を無料で使えます。アカウント、試用期間、有料メンバーシップは必要ありません。CouchModeは現在、公開ベータ版です。",
         },
         {
           question: "Patreonのメンバーシップでは何ができますか？",
           answer:
-            "ProとPro Supporterは支援者のステータスです。機能のロック解除に必要なものではありません。 Pro：最大2台の有効なWindowsデバイスで支援者ステータスを利用できます。 Pro Supporter：最大5台の有効なWindowsデバイスで支援者ステータスを利用でき、より大きな金額でプロジェクトを支援できます。 Patreonの支援者は、プレビュー版が提供されている場合に、CouchModeから直接プレビュー版の更新を受け取るかどうかを選べます。",
+            "ProとPro Supporterは支援者のステータスです。機能のロック解除に必要なものではありません。 Pro：最大2台の有効なWindowsデバイスで支援者ステータスを利用できます。 Pro Supporter：最大5台の有効なWindowsデバイスで支援者ステータスを利用でき、より大きな金額でプロジェクトを支援できます。 Patreonの支援者向けに、CouchModeから直接プレビュー版を受け取る仕組みを開発中です。まだ利用できません。",
         },
         {
           question: "メンバーシップが終了するとどうなりますか？",
           answer:
-            "メンバーシップが終了すると、アプリ内でのプレビュー更新の受信は一時停止します。通常の更新は継続し、インストール済みのバージョンが古いものに戻ることはありません。公開ベータの機能は引き続き無料です。",
+            "メンバーシップが終了すると、支援者ステータスも終了します。CouchModeのすべての機能はそのまま使え、通常の更新も続きます。",
+        },
+        {
+          question: "プレビュー版の更新を受け取るには？",
+          answer:
+            "Patreonの支援者向けに、CouchModeから直接プレビュー版を受け取る仕組みはまだ開発中で、現在は利用できません。通常版はこのサイトで誰でも入手できます。",
         },
         {
           question: "画面に問題があるとき、診断情報を残すには？",
@@ -261,9 +266,14 @@ export const japaneseHomePacket: SurfacePacketBase<"home"> = {
             "FPSの向上は約束していません。Proでは選んだアプリを終了してセッション中の余計な動作を減らし、ゲームモードや指定した電源プランなど、対応するWindows設定を適用できます。終了後には変更した設定を戻します。",
         },
         {
+          question: "CouchModeはどのように更新されますか？",
+          answer:
+            "CouchModeは新しいバージョンを確認し、公開されていればお知らせして、couchmode.appの公式ダウンロードページへのリンクを表示します。更新は自動ではインストールされません。インストーラーはご自身で実行し、設定はそのまま引き継がれます。",
+        },
+        {
           question: "Microsoft Storeからインストールした場合はどうすればよいですか？",
           answer:
-            "そのバージョンはStoreでは更新されなくなります。新しいバージョンが利用可能になると、CouchModeがお知らせします。このページからダウンロードして現在のバージョンに上書きインストールすることもできます。設定は引き継がれます。",
+            "Microsoft Storeでは現在、以前のバージョンのCouchModeを提供しています。新しいバージョンが公開されると、CouchModeがお知らせし、公式ダウンロードページへのリンクを表示します。現在のバージョンに上書きインストールしてください。設定は引き継がれます。",
         },
       ],
       community: {

@@ -25,7 +25,7 @@ export const spanishLocaleContent: SharedLocaleContent = {
       { contentId: "changelog", label: "Notas de versión" },
     ],
     legalLinks: [
-      { contentId: "support", label: "Soporte" },
+      { contentId: "support", label: "Ayuda" },
       { contentId: "privacy", label: "Privacidad" },
       { contentId: "terms", label: "Condiciones" },
       { contentId: "refund", label: "Reembolsos" },
