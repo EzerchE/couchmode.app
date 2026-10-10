@@ -103,7 +103,7 @@ export const koreanChangelogPacket: SurfacePacketBase<"changelog"> = {
     description:
       "Windows용 CouchMode 베타 빌드의 릴리스 노트와 알려진 문제를 최신 버전부터 정리했습니다.",
     downloadStatus: {
-      open: "공개 베타 기간에는 모든 기능을 무료로 사용할 수 있습니다.",
+      open: "현재 모든 기능을 무료로 사용할 수 있습니다.",
       closed: "다운로드가 아직 공개되지 않았습니다",
     },
     // Current status, NOT release history: shown with the release notes until previews ship.

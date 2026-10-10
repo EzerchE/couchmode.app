@@ -567,7 +567,7 @@ const englishChangelogPacket: SurfacePacketBase<"changelog"> = {
     heading: "What's new in CouchMode",
     description: "Release notes and known issues for CouchMode Windows beta builds, newest first.",
     downloadStatus: {
-      open: "Every feature is free during the public beta.",
+      open: "All current features are free to use.",
       closed: "Download not published yet",
     },
     // Current status, NOT release history: shown with the release notes until previews ship.

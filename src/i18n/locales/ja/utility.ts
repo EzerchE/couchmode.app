@@ -102,7 +102,7 @@ export const japaneseChangelogPacket: SurfacePacketBase<"changelog"> = {
     heading: "更新履歴",
     description: "Windows向けCouchModeベータ版の変更内容と既知の問題を、新しい順に掲載しています。",
     downloadStatus: {
-      open: "公開ベータ期間中は、すべての機能を無料で使えます。",
+      open: "現在のすべての機能を無料で使えます。",
       closed: "ダウンロードはまだ公開されていません",
     },
     // Current status, NOT release history: shown with the release notes until previews ship.

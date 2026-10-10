@@ -104,7 +104,7 @@ export const brazilianPortugueseChangelogPacket: SurfacePacketBase<"changelog"> 
     description:
       "Notas das versões beta do CouchMode para Windows e problemas conhecidos, das mais recentes às mais antigas.",
     downloadStatus: {
-      open: "Todos os recursos são gratuitos durante o beta público.",
+      open: "Todos os recursos atuais são gratuitos.",
       closed: "Download ainda não publicado",
     },
     // Current status, NOT release history: shown with the release notes until previews ship.

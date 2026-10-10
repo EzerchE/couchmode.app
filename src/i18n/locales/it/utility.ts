@@ -171,7 +171,7 @@ export const italianChangelogPacket: SurfacePacketBase<"changelog"> = {
     description:
       "Note di rilascio e problemi noti delle versioni beta di CouchMode per Windows, dalla più recente alla meno recente.",
     downloadStatus: {
-      open: "Tutte le funzioni sono gratuite durante la beta pubblica.",
+      open: "Tutte le funzioni attuali sono gratuite.",
       closed: "Download non ancora pubblicato",
     },
     // Current status, NOT release history: shown with the release notes until previews ship.

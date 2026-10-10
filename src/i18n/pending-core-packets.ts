@@ -1091,7 +1091,7 @@ export const germanChangelogPacket: SurfacePacketBase<"changelog"> = {
     description:
       "Versionshinweise und bekannte Probleme für CouchMode-Beta-Builds für Windows, neueste zuerst.",
     downloadStatus: {
-      open: "Während der öffentlichen Beta sind alle Funktionen kostenlos.",
+      open: "Alle aktuellen Funktionen sind kostenlos nutzbar.",
       closed: "Download noch nicht veröffentlicht",
     },
     // Current status, NOT release history: shown with the release notes until previews ship.
@@ -1129,7 +1129,7 @@ export const turkishChangelogPacket: SurfacePacketBase<"changelog"> = {
     description:
       "CouchMode Windows beta derlemeleri için sürüm notları ve bilinen sorunlar, en yeni sürümden en eskiye.",
     downloadStatus: {
-      open: "Açık beta boyunca tüm özellikler ücretsiz.",
+      open: "Mevcut tüm özellikler ücretsiz kullanılabilir.",
       closed: "İndirme henüz yayımlanmadı",
     },
     // Current status, NOT release history: shown with the release notes until previews ship.
