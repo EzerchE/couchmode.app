@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Download, Copy, ShieldAlert } from "lucide-react";
+import { Download, Copy, ShieldAlert, FlaskConical } from "lucide-react";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { SupportPanel } from "@/components/checkout/SupportActions";
@@ -18,6 +18,18 @@ export function DownloadSurface({ packet }: { packet: SurfacePacketBase<"downloa
     const params = new URLSearchParams(window.location.search);
     setPreview(params.get("channel") === "preview");
   }, []);
+  // The preview view is a shareable link, not a page to index: the canonical stays /download and the
+  // preview variant asks crawlers not to index it (restored when the view changes).
+  useEffect(() => {
+    if (!preview) return;
+    const meta = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
+    if (!meta) return;
+    const previous = meta.content;
+    meta.content = "noindex,follow";
+    return () => {
+      meta.content = previous;
+    };
+  }, [preview]);
   const release = preview ? previewRelease : (releaseCandidate ?? stableRelease);
   const copy = packet.payload,
     notice = copy.installation;
@@ -63,6 +75,23 @@ export function DownloadSurface({ packet }: { packet: SurfacePacketBase<"downloa
             </div>
           ) : (
             <>
+              {preview && (
+                <aside
+                  className="mt-8 rounded-2xl border border-primary/30 bg-primary/5 p-5"
+                  data-testid="preview-early-build"
+                >
+                  <p className="flex items-start gap-2 text-sm leading-relaxed">
+                    <FlaskConical className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                    <span>{notice.earlyBuild}</span>
+                  </p>
+                  <a
+                    className="mt-3 inline-block text-sm text-primary underline underline-offset-4"
+                    href={downloadHref}
+                  >
+                    {notice.stable}
+                  </a>
+                </aside>
+              )}
               <div className="mt-8">
                 {!preview && <p className="mb-3 text-sm text-muted-foreground">{notice.stable}</p>}
                 {!previewRelease && (
@@ -164,9 +193,11 @@ export function DownloadSurface({ packet }: { packet: SurfacePacketBase<"downloa
                     <li key={n}>{n}</li>
                   ))}
                 </ul>
-                <p className="mt-4 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-xs leading-relaxed text-muted-foreground">
-                  {changelog.payload.previewStatus}
-                </p>
+                {!preview && (
+                  <p className="mt-4 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-xs leading-relaxed text-muted-foreground">
+                    {changelog.payload.previewStatus}
+                  </p>
+                )}
               </section>
               {editorial!.knownIssues.length > 0 && (
                 <section className="mt-7">

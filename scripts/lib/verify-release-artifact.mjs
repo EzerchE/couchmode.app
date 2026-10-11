@@ -1,5 +1,33 @@
 import { createHash } from "node:crypto";
 import { validateWebsiteHandoff } from "./release-handoff.mjs";
+import { previewArtifactUrl } from "./preview-policy.mjs";
+
+/**
+ * The approved preview's R2 object, byte for byte, BEFORE anything points at it: the exact approved
+ * URL, status 200 with NO redirect, the exact size and SHA-256. Throws on any difference.
+ */
+export async function verifyPreviewArtifact(approval, fetcher = fetch) {
+  if (!approval || approval.installerUrl !== previewArtifactUrl(approval.version))
+    throw new Error("Preview artifact verification requires an approval with the exact R2 URL");
+  const response = await fetcher(approval.installerUrl, {
+    signal: AbortSignal.timeout(120000),
+    redirect: "manual",
+  });
+  if (response.status !== 200 || !response.body)
+    throw new Error(`Preview artifact must answer 200 without a redirect, got ${response.status}`);
+  const declared = Number(response.headers?.get?.("content-length"));
+  if (Number.isFinite(declared) && declared > 0 && declared !== approval.sizeBytes)
+    throw new Error("Preview artifact Content-Length differs from the approved size");
+  const hash = createHash("sha256");
+  let size = 0;
+  for await (const chunk of response.body) {
+    size += chunk.length;
+    if (size > approval.sizeBytes) throw new Error("Preview artifact exceeds the approved size");
+    hash.update(chunk);
+  }
+  if (size !== approval.sizeBytes || hash.digest("hex") !== approval.sha256.toLowerCase())
+    throw new Error("Preview artifact hash/size mismatch");
+}
 
 export async function verifyPublishedArtifact(h, fetcher = fetch) {
   const errors = validateWebsiteHandoff(h);

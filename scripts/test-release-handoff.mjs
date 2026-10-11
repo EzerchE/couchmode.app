@@ -163,10 +163,12 @@ function neverPublicPreview(n) {
   };
   return h;
 }
+// Supporter-first previews (2026-10-11) never enter through a handoff: only prepare-preview.mjs plus an
+// owner approval. Every preview handoff shape is still refused.
 const refusesPreview = (h) => {
-  assert.match(validateWebsiteHandoff(h).join("\n"), /never published on the public website/);
-  assert.throws(() => releaseFromHandoff(h), /never published on the public website/);
-  assert.throws(() => proposeReleaseHistory([stable], h), /never published on the public website/);
+  assert.match(validateWebsiteHandoff(h).join("\n"), /Preview handoffs are not consumed by the website/);
+  assert.throws(() => releaseFromHandoff(h), /Preview handoffs are not consumed by the website/);
+  assert.throws(() => proposeReleaseHistory([stable], h), /Preview handoffs are not consumed by the website/);
 };
 check("PREVIEW: even a valid never-public preview handoff is refused by the website", () =>
   refusesPreview(neverPublicPreview(16)),
@@ -187,14 +189,14 @@ check("PREVIEW NEGATIVE: preview + beta.json publish intent is refused", () => {
 });
 const previewRow = (extra) => ({ ...stable, version: "0.6.0-rc.16", versionNumeric: "0.6.0.16", updateChannel: "preview",
   downloadEnabled: false, installerUrl: null, downloadPageUrl: "https://couchmode.app/download?channel=preview", ...extra });
-check("PREVIEW NEGATIVE: preview + installerUrl in public data is refused", () =>
-  assert.throws(() => releaseSlots([stable, previewRow({ installerUrl: "https://github.com/EzerchE/couchmode-releases/releases/download/v0.6.0-rc.16/CouchMode-Setup-0.6.0-rc.16.exe" })]), /previews are never public/),
+check("PREVIEW NEGATIVE: a disabled preview row carrying an installer URL is refused", () =>
+  assert.throws(() => releaseSlots([stable, previewRow({ installerUrl: "https://github.com/EzerchE/couchmode-releases/releases/download/v0.6.0-rc.16/CouchMode-Setup-0.6.0-rc.16.exe" })]), /Retired\/blocked installer must be null/),
 );
-check("PREVIEW NEGATIVE: preview + public downloadEnabled is refused", () =>
-  assert.throws(() => releaseSlots([stable, previewRow({ downloadEnabled: true, publicationState: "ready" })]), /previews are never public/),
+check("PREVIEW NEGATIVE: an enabled preview without an owner approval is refused", () =>
+  assert.throws(() => releaseSlots([stable, previewRow({ downloadEnabled: true, publicationState: "ready" })]), /Unapproved preview publication/),
 );
-check("PREVIEW NEGATIVE: any preview row at all is refused (no public preview metadata)", () =>
-  assert.throws(() => releaseSlots([stable, previewRow({})]), /previews are never public/),
+check("PREVIEW: a retired preview row is preserved history and enables nothing", () =>
+  assert.equal(releaseSlots([stable, previewRow({ wasPublished: true, publicationState: "superseded" })]).preview, null),
 );
 check("PREVIEW NEGATIVE: a preview occupying the STABLE slot is refused", () => {
   const a = fixture(16); a.artifact.provider = "private-r2";
@@ -203,7 +205,9 @@ check("PREVIEW NEGATIVE: a preview occupying the STABLE slot is refused", () => 
   assert.match(validateWebsiteHandoff(b).join("\n"), /preview occupying the stable slot/);
   assert.throws(() => releaseSlots([{ ...stable, downloadPageUrl: "https://couchmode.app/download?channel=preview" }]), /Wrong channel download destination/);
 });
-check("beta.json is never written and a stale copy is removed, whatever is applied", () => {
+// App Dev's shared schema v3 module itself still plans no beta.json (synced byte for byte, unchanged);
+// the website's beta.json comes ONLY from gen-releases with an owner-approved preview.
+check("App Dev feed-plan (schema v3): no beta.json from any handoff, a stale copy is removed", () => {
   const dir = mkdtempSync(join(tmpdir(), "couchmode-feed-test-"));
   try {
     let state = applyHandoff(emptyState(), fixture(10)).state;

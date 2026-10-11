@@ -1,4 +1,5 @@
 import releasesData from "./releases.json";
+import previewApprovalData from "./preview-approval.json";
 
 // Single source of truth for Windows releases. Edit `releases.json` to add a
 // release (newest first). The static update manifest under
@@ -58,10 +59,24 @@ export const releases: Release[] = releasesData as Release[];
 export const stableRelease = releases.find(
   (r) => r.downloadEnabled && (r.updateChannel ?? "stable") === "stable",
 );
-// Supporter-only previews (2026-10-10): a preview is never public, so the website never has a
-// preview download. /download?channel=preview is informational only. The build already refuses
-// preview rows (scripts/lib/release-slots.mjs); this keeps the page incapable of rendering one.
-export const previewRelease: Release | undefined = undefined;
+// Supporter-first previews (2026-10-11): at most ONE preview, and only when the owner approval in
+// preview-approval.json names exactly this row. The build (scripts/lib/release-slots.mjs) already
+// refuses anything else; this second check keeps the page incapable of rendering an unapproved one.
+// Without an approval, /download?channel=preview stays the informational no-preview state.
+type PreviewApproval = { version: string; sha256: string; sizeBytes: number; installerUrl: string };
+const previewApproval = (previewApprovalData as { preview: PreviewApproval | null }).preview;
+export const previewRelease: Release | undefined = previewApproval
+  ? releases.find(
+      (r) =>
+        r.downloadEnabled &&
+        r.updateChannel === "preview" &&
+        r.publicationState === "ready" &&
+        r.version === previewApproval.version &&
+        r.sha256.toUpperCase() === previewApproval.sha256.toUpperCase() &&
+        r.sizeBytes === previewApproval.sizeBytes &&
+        r.installerUrl === previewApproval.installerUrl,
+    )
+  : undefined;
 // A blocked local release-window candidate has no installer URL. The build guard
 // refuses production publication until the authoritative ready handoff replaces it.
 export const releaseCandidate = releases.find(

@@ -12,6 +12,8 @@
 import "./release-window-guard.mjs";
 import { releaseSlots } from "./lib/release-slots.mjs";
 import { wasPublished } from "./lib/release-handoff.mjs";
+import { loadPreviewApproval } from "./lib/preview-policy.mjs";
+import { SIGNED_FEEDS, signedFeedErrors } from "./lib/signed-feeds.mjs";
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, resolve, extname, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -29,9 +31,12 @@ const EXE_REF = /\.exe(?![a-z])/i;
 // disabled.
 const FORBIDDEN_SUBSTRINGS = ["download.couchmode.app/windows/", "/dl/windows/latest"];
 
-// releaseSlots also enforces the independent, exact GitHub artifact allowlist.
+// releaseSlots also enforces the independent, exact artifact allowlists: the GitHub asset for the
+// stable slot, and for the preview slot the one R2 URL of an OWNER-APPROVED preview only.
 const releaseSource = JSON.parse(readFileSync(resolve(root, "src/data/releases.json"), "utf8"));
-const slots = releaseSlots(releaseSource);
+const previewApproval = loadPreviewApproval(resolve(root, "src/data/preview-approval.json"));
+const signedFeedApprovals = JSON.parse(readFileSync(resolve(root, "src/data/signed-feeds.json"), "utf8"));
+const slots = releaseSlots(releaseSource, previewApproval);
 const approved = Object.values(slots)
   .filter(Boolean)
   .map((r) => r.installerUrl);
@@ -84,13 +89,23 @@ for (const file of files) {
     if (text.toLowerCase().includes(token.toLowerCase()))
       violations.push(`${file}: forbidden ${token}`);
 }
-// beta.json is retired (2026-10-10, supporter-only previews): it must never be published, whatever
-// the release data says. Its presence anywhere in the public build is a violation.
-for (const f of walk(distDir))
-  if (f.replace(/\\/g, "/").toLowerCase().endsWith("/beta.json"))
-    violations.push(`Retired preview feed must never be published: ${f}`);
-// The stable slot either has its own exact manifest or no file at all.
-for (const [slot, name] of [["stable", "latest.json"]]) {
+// Update feeds live in exactly one place. A beta.json or a signed feed anywhere else is a violation.
+const FEED_NAMES = new Set(["latest.json", "beta.json", ...Object.keys(SIGNED_FEEDS)]);
+for (const f of walk(distDir)) {
+  const rel = f.slice(distDir.length + 1).replace(/\\/g, "/");
+  const base = rel.split("/").pop().toLowerCase();
+  if ((FEED_NAMES.has(base) || /^(standard|preview)\.v\d+\.json$/.test(base)) && base !== "releases.json"
+      && rel !== "updates/windows/" + base)
+    violations.push("Update feed outside updates/windows/: " + rel);
+  if (/^(standard|preview)\.v\d+\.json$/.test(base) && !(base in SIGNED_FEEDS))
+    violations.push("Unknown signed feed version: " + rel);
+}
+// Each independent slot either has its own exact manifest or no file at all. beta.json exists ONLY
+// for the owner-approved current preview (supporter-first previews, 2026-10-11); otherwise 404.
+for (const [slot, name] of [
+  ["stable", "latest.json"],
+  ["preview", "beta.json"],
+]) {
   const row = slots[slot],
     file = "updates/windows/" + name;
   if (!row) {
@@ -144,6 +159,18 @@ checkManifest("updates/windows/releases.json", (history) => {
       if (!fields.has(key)) violations.push("Unexpected public field: " + key);
   }
 });
+// Signed feeds (App Dev's offline-signed statements): only the exact owner-approved bytes, verified
+// with the approved PUBLIC release keys, naming exactly what the discovery feed offers.
+for (const name of Object.keys(SIGNED_FEEDS)) {
+  const path = resolve(distDir, "updates/windows/" + name);
+  const bytes = statSafe(path) ? readFileSync(path) : null;
+  const discoveryPath = resolve(distDir, "updates/windows/" + SIGNED_FEEDS[name].discovery);
+  let discovery = null;
+  try { discovery = statSafe(discoveryPath) ? JSON.parse(readFileSync(discoveryPath, "utf8")) : null; } catch { discovery = null; }
+  violations.push(...signedFeedErrors(name, bytes, signedFeedApprovals[name] ?? null, discovery));
+}
+for (const k of Object.keys(signedFeedApprovals))
+  if (!(k in SIGNED_FEEDS)) violations.push("Unknown signed feed approval: " + k);
 if (violations.length) throw new Error(violations.join("\n"));
 console.log(
   `validate-release-safety: OK (${files.length} text files; ${approved.length} approved installer URLs; independent slots; no blocked feed/history)`,

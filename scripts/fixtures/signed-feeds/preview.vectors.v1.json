@@ -1,0 +1,158 @@
+{
+  "note": "Verification vectors for https://couchmode.app/updates/windows/preview.v1.json. THROWAWAY keys (private halves never written to disk); NOT release keys. pins: current-only = [current], next-only = [next].",
+  "feedUrl": "https://couchmode.app/updates/windows/preview.v1.json",
+  "current": {
+    "keyid": "vector-preview-2026a",
+    "kty": "EC",
+    "crv": "P-256",
+    "x": "ow0iswz1_isFy3RvxYRjJeGTbLWFwBFGYOsuddouGoc",
+    "y": "jBpgDeCg_3-a6Vz3ZkokCPUunE7cwOw9Lf8f9lqL1YU",
+    "fingerprint": "CJT7BsEskSEi0wg-se5F88W6Oac8MCX7XWsHdd7hqOI"
+  },
+  "next": {
+    "keyid": "vector-preview-2026b",
+    "kty": "EC",
+    "crv": "P-256",
+    "x": "SoNSQOmbr6qdbRssNj_25b1MWE3ydwEy-DMZidgaoDs",
+    "y": "y0UtR3tDzGYMFrVA24IkokvpF5TlzsYOxLwLH_uXFyE",
+    "fingerprint": "WO1MUHRugUEfuTJPxkL6ol78k9U3NgKyUaepP98QZsA"
+  },
+  "cases": [
+    {
+      "name": "valid_current_key",
+      "expectedChannel": "preview",
+      "runningNumeric": "0.6.0.16",
+      "pins": "current-only",
+      "expect": "ok",
+      "envelopeText": "{\"payloadType\":\"application/vnd.couchmode.release-statement.v1+json\",\"payload\":\"eyJzY2hlbWEiOjEsInByb2R1Y3QiOiJDb3VjaE1vZGUiLCJwbGF0Zm9ybSI6IndpbmRvd3MteDY0IiwiY2hhbm5lbCI6InByZXZpZXciLCJ2ZXJzaW9uIjoiMC42LjAtcmMuMTciLCJ2ZXJzaW9uTnVtZXJpYyI6IjAuNi4wLjE3Iiwic2VxdWVuY2UiOjcsImFydGlmYWN0Ijp7ImZpbGVOYW1lIjoiQ291Y2hNb2RlLVNldHVwLTAuNi4wLXJjLjE3LmV4ZSIsInNpemVCeXRlcyI6MzAsInNoYTI1NiI6IjYwRDYxRUFBMDk1NERFNTlENjBGODJGODhFNTAzNzYxNTdGNTE4NkQ5N0YyOTBCQkVFRkY4QjJFOEVFRDA3NTkifSwic291cmNlQ29tbWl0IjoiMDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWYwMTIzNDU2NyIsImlzc3VlZFV0YyI6IjIwMjYtMTAtMTFUMDA6MDA6MDBaIn0=\",\"signatures\":[{\"keyid\":\"vector-preview-2026a\",\"sig\":\"wT0IhPbp0xQLO9unImi8+Ak3Ir+OkAWJq7WJHLDfxdJdHGFem3jT6frKudtOIZwUJfYcywm17De7+8sfsalWiw==\"}]}"
+    },
+    {
+      "name": "valid_dual_signed_rotation",
+      "expectedChannel": "preview",
+      "runningNumeric": "0.6.0.16",
+      "pins": "next-only",
+      "expect": "ok",
+      "envelopeText": "{\"payloadType\":\"application/vnd.couchmode.release-statement.v1+json\",\"payload\":\"eyJzY2hlbWEiOjEsInByb2R1Y3QiOiJDb3VjaE1vZGUiLCJwbGF0Zm9ybSI6IndpbmRvd3MteDY0IiwiY2hhbm5lbCI6InByZXZpZXciLCJ2ZXJzaW9uIjoiMC42LjAtcmMuMTciLCJ2ZXJzaW9uTnVtZXJpYyI6IjAuNi4wLjE3Iiwic2VxdWVuY2UiOjcsImFydGlmYWN0Ijp7ImZpbGVOYW1lIjoiQ291Y2hNb2RlLVNldHVwLTAuNi4wLXJjLjE3LmV4ZSIsInNpemVCeXRlcyI6MzAsInNoYTI1NiI6IjYwRDYxRUFBMDk1NERFNTlENjBGODJGODhFNTAzNzYxNTdGNTE4NkQ5N0YyOTBCQkVFRkY4QjJFOEVFRDA3NTkifSwic291cmNlQ29tbWl0IjoiMDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWYwMTIzNDU2NyIsImlzc3VlZFV0YyI6IjIwMjYtMTAtMTFUMDA6MDA6MDBaIn0=\",\"signatures\":[{\"keyid\":\"vector-preview-2026a\",\"sig\":\"wT0IhPbp0xQLO9unImi8+Ak3Ir+OkAWJq7WJHLDfxdJdHGFem3jT6frKudtOIZwUJfYcywm17De7+8sfsalWiw==\"},{\"keyid\":\"vector-preview-2026b\",\"sig\":\"/zQj5is4wmwkZ/hSbkah+ikxkVqqiAANnCm3wYy7H+jMmcaj9AQwnnatcs2HvhG8EB+Xhf/Xr40Fqq1pT4xvDg==\"}]}"
+    },
+    {
+      "name": "envelope_whitespace_only_is_fine",
+      "expectedChannel": "preview",
+      "runningNumeric": "0.6.0.16",
+      "pins": "current-only",
+      "expect": "ok",
+      "envelopeText": "{\n  \"payloadType\": \"application/vnd.couchmode.release-statement.v1+json\",\n  \"payload\": \"eyJzY2hlbWEiOjEsInByb2R1Y3QiOiJDb3VjaE1vZGUiLCJwbGF0Zm9ybSI6IndpbmRvd3MteDY0IiwiY2hhbm5lbCI6InByZXZpZXciLCJ2ZXJzaW9uIjoiMC42LjAtcmMuMTciLCJ2ZXJzaW9uTnVtZXJpYyI6IjAuNi4wLjE3Iiwic2VxdWVuY2UiOjcsImFydGlmYWN0Ijp7ImZpbGVOYW1lIjoiQ291Y2hNb2RlLVNldHVwLTAuNi4wLXJjLjE3LmV4ZSIsInNpemVCeXRlcyI6MzAsInNoYTI1NiI6IjYwRDYxRUFBMDk1NERFNTlENjBGODJGODhFNTAzNzYxNTdGNTE4NkQ5N0YyOTBCQkVFRkY4QjJFOEVFRDA3NTkifSwic291cmNlQ29tbWl0IjoiMDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWYwMTIzNDU2NyIsImlzc3VlZFV0YyI6IjIwMjYtMTAtMTFUMDA6MDA6MDBaIn0=\",\n  \"signatures\": [\n    {\n      \"keyid\": \"vector-preview-2026a\",\n      \"sig\": \"wT0IhPbp0xQLO9unImi8+Ak3Ir+OkAWJq7WJHLDfxdJdHGFem3jT6frKudtOIZwUJfYcywm17De7+8sfsalWiw==\"\n    }\n  ]\n}"
+    },
+    {
+      "name": "payload_tampered",
+      "expectedChannel": "preview",
+      "runningNumeric": "0.6.0.16",
+      "pins": "current-only",
+      "expect": "no_trusted_signature",
+      "envelopeText": "{\"payloadType\":\"application/vnd.couchmode.release-statement.v1+json\",\"payload\":\"eyJzY2hlbWEiOjEsInByb2R1Y3QiOiJDb3VjaE1vZGUiLCJwbGF0Zm9ybSI6IndpbmRvd3MteDY0IiwiY2hhbm5lbCI6InByZXZpZXciLCJ2ZXJzaW9uIjoiMC42LjAtcmMuMTciLCJ2ZXJzaW9uTnVtZXJpYyI6IjAuNi4wLjE3Iiwic2VxdWVuY2UiOjgsImFydGlmYWN0Ijp7ImZpbGVOYW1lIjoiQ291Y2hNb2RlLVNldHVwLTAuNi4wLXJjLjE3LmV4ZSIsInNpemVCeXRlcyI6MzAsInNoYTI1NiI6IjYwRDYxRUFBMDk1NERFNTlENjBGODJGODhFNTAzNzYxNTdGNTE4NkQ5N0YyOTBCQkVFRkY4QjJFOEVFRDA3NTkifSwic291cmNlQ29tbWl0IjoiMDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWYwMTIzNDU2NyIsImlzc3VlZFV0YyI6IjIwMjYtMTAtMTFUMDA6MDA6MDBaIn0=\",\"signatures\":[{\"keyid\":\"vector-preview-2026a\",\"sig\":\"wT0IhPbp0xQLO9unImi8+Ak3Ir+OkAWJq7WJHLDfxdJdHGFem3jT6frKudtOIZwUJfYcywm17De7+8sfsalWiw==\"}]}"
+    },
+    {
+      "name": "payload_reencoded_by_publisher",
+      "expectedChannel": "preview",
+      "runningNumeric": "0.6.0.16",
+      "pins": "current-only",
+      "expect": "no_trusted_signature",
+      "envelopeText": "{\"payloadType\":\"application/vnd.couchmode.release-statement.v1+json\",\"payload\":\"ewogInNjaGVtYSI6IDEsCiAicHJvZHVjdCI6ICJDb3VjaE1vZGUiLAogInBsYXRmb3JtIjogIndpbmRvd3MteDY0IiwKICJjaGFubmVsIjogInByZXZpZXciLAogInZlcnNpb24iOiAiMC42LjAtcmMuMTciLAogInZlcnNpb25OdW1lcmljIjogIjAuNi4wLjE3IiwKICJzZXF1ZW5jZSI6IDcsCiAiYXJ0aWZhY3QiOiB7CiAgImZpbGVOYW1lIjogIkNvdWNoTW9kZS1TZXR1cC0wLjYuMC1yYy4xNy5leGUiLAogICJzaXplQnl0ZXMiOiAzMCwKICAic2hhMjU2IjogIjYwRDYxRUFBMDk1NERFNTlENjBGODJGODhFNTAzNzYxNTdGNTE4NkQ5N0YyOTBCQkVFRkY4QjJFOEVFRDA3NTkiCiB9LAogInNvdXJjZUNvbW1pdCI6ICIwMTIzNDU2Nzg5YWJjZGVmMDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3IiwKICJpc3N1ZWRVdGMiOiAiMjAyNi0xMC0xMVQwMDowMDowMFoiCn0=\",\"signatures\":[{\"keyid\":\"vector-preview-2026a\",\"sig\":\"wT0IhPbp0xQLO9unImi8+Ak3Ir+OkAWJq7WJHLDfxdJdHGFem3jT6frKudtOIZwUJfYcywm17De7+8sfsalWiw==\"}]}"
+    },
+    {
+      "name": "signed_by_unpinned_key",
+      "expectedChannel": "preview",
+      "runningNumeric": "0.6.0.16",
+      "pins": "current-only",
+      "expect": "no_trusted_signature",
+      "envelopeText": "{\"payloadType\":\"application/vnd.couchmode.release-statement.v1+json\",\"payload\":\"eyJzY2hlbWEiOjEsInByb2R1Y3QiOiJDb3VjaE1vZGUiLCJwbGF0Zm9ybSI6IndpbmRvd3MteDY0IiwiY2hhbm5lbCI6InByZXZpZXciLCJ2ZXJzaW9uIjoiMC42LjAtcmMuMTciLCJ2ZXJzaW9uTnVtZXJpYyI6IjAuNi4wLjE3Iiwic2VxdWVuY2UiOjcsImFydGlmYWN0Ijp7ImZpbGVOYW1lIjoiQ291Y2hNb2RlLVNldHVwLTAuNi4wLXJjLjE3LmV4ZSIsInNpemVCeXRlcyI6MzAsInNoYTI1NiI6IjYwRDYxRUFBMDk1NERFNTlENjBGODJGODhFNTAzNzYxNTdGNTE4NkQ5N0YyOTBCQkVFRkY4QjJFOEVFRDA3NTkifSwic291cmNlQ29tbWl0IjoiMDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWYwMTIzNDU2NyIsImlzc3VlZFV0YyI6IjIwMjYtMTAtMTFUMDA6MDA6MDBaIn0=\",\"signatures\":[{\"keyid\":\"vector-preview-2026x\",\"sig\":\"u3bXX7c6HmA05uAmJDsY2TK0PJD3EaH4j6Mzk4ydB5MOv1dch8a3+P97wBc9+4kBQfIRPqe2gfRdFlE8tRDypQ==\"}]}"
+    },
+    {
+      "name": "pinned_key_id_wrong_key",
+      "expectedChannel": "preview",
+      "runningNumeric": "0.6.0.16",
+      "pins": "current-only",
+      "expect": "no_trusted_signature",
+      "envelopeText": "{\"payloadType\":\"application/vnd.couchmode.release-statement.v1+json\",\"payload\":\"eyJzY2hlbWEiOjEsInByb2R1Y3QiOiJDb3VjaE1vZGUiLCJwbGF0Zm9ybSI6IndpbmRvd3MteDY0IiwiY2hhbm5lbCI6InByZXZpZXciLCJ2ZXJzaW9uIjoiMC42LjAtcmMuMTciLCJ2ZXJzaW9uTnVtZXJpYyI6IjAuNi4wLjE3Iiwic2VxdWVuY2UiOjcsImFydGlmYWN0Ijp7ImZpbGVOYW1lIjoiQ291Y2hNb2RlLVNldHVwLTAuNi4wLXJjLjE3LmV4ZSIsInNpemVCeXRlcyI6MzAsInNoYTI1NiI6IjYwRDYxRUFBMDk1NERFNTlENjBGODJGODhFNTAzNzYxNTdGNTE4NkQ5N0YyOTBCQkVFRkY4QjJFOEVFRDA3NTkifSwic291cmNlQ29tbWl0IjoiMDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWYwMTIzNDU2NyIsImlzc3VlZFV0YyI6IjIwMjYtMTAtMTFUMDA6MDA6MDBaIn0=\",\"signatures\":[{\"keyid\":\"vector-preview-2026a\",\"sig\":\"4Ut2k/SvChE68lPcEwnikyEqj9plf4q1C4pFJrU+QF1b2MPsJ9dTeZfcB7DyExmM63GByTPz6rGmVk7tzw99Uw==\"}]}"
+    },
+    {
+      "name": "der_signature",
+      "expectedChannel": "preview",
+      "runningNumeric": "0.6.0.16",
+      "pins": "current-only",
+      "expect": "no_trusted_signature",
+      "envelopeText": "{\"payloadType\":\"application/vnd.couchmode.release-statement.v1+json\",\"payload\":\"eyJzY2hlbWEiOjEsInByb2R1Y3QiOiJDb3VjaE1vZGUiLCJwbGF0Zm9ybSI6IndpbmRvd3MteDY0IiwiY2hhbm5lbCI6InByZXZpZXciLCJ2ZXJzaW9uIjoiMC42LjAtcmMuMTciLCJ2ZXJzaW9uTnVtZXJpYyI6IjAuNi4wLjE3Iiwic2VxdWVuY2UiOjcsImFydGlmYWN0Ijp7ImZpbGVOYW1lIjoiQ291Y2hNb2RlLVNldHVwLTAuNi4wLXJjLjE3LmV4ZSIsInNpemVCeXRlcyI6MzAsInNoYTI1NiI6IjYwRDYxRUFBMDk1NERFNTlENjBGODJGODhFNTAzNzYxNTdGNTE4NkQ5N0YyOTBCQkVFRkY4QjJFOEVFRDA3NTkifSwic291cmNlQ29tbWl0IjoiMDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWYwMTIzNDU2NyIsImlzc3VlZFV0YyI6IjIwMjYtMTAtMTFUMDA6MDA6MDBaIn0=\",\"signatures\":[{\"keyid\":\"vector-preview-2026a\",\"sig\":\"MEYCIQCcI4vegQ44L2jW9UrHIs/9bKmBVzV2VZbhudyRvO41egIhAOV3lLioTctSOHrS37zdYVL6A/+YsfuFf3AsD3iFChKK\"}]}"
+    },
+    {
+      "name": "standard_statement_on_preview_feed",
+      "expectedChannel": "preview",
+      "runningNumeric": "0.6.0.16",
+      "pins": "current-only",
+      "expect": "wrong_channel",
+      "envelopeText": "{\"payloadType\":\"application/vnd.couchmode.release-statement.v1+json\",\"payload\":\"eyJzY2hlbWEiOjEsInByb2R1Y3QiOiJDb3VjaE1vZGUiLCJwbGF0Zm9ybSI6IndpbmRvd3MteDY0IiwiY2hhbm5lbCI6InN0YW5kYXJkIiwidmVyc2lvbiI6IjAuNi4wLXJjLjE3IiwidmVyc2lvbk51bWVyaWMiOiIwLjYuMC4xNyIsInNlcXVlbmNlIjo3LCJhcnRpZmFjdCI6eyJmaWxlTmFtZSI6IkNvdWNoTW9kZS1TZXR1cC0wLjYuMC1yYy4xNy5leGUiLCJzaXplQnl0ZXMiOjMwLCJzaGEyNTYiOiI2MEQ2MUVBQTA5NTRERTU5RDYwRjgyRjg4RTUwMzc2MTU3RjUxODZEOTdGMjkwQkJFRUZGOEIyRThFRUQwNzU5In0sInNvdXJjZUNvbW1pdCI6IjAxMjM0NTY3ODlhYmNkZWYwMTIzNDU2Nzg5YWJjZGVmMDEyMzQ1NjciLCJpc3N1ZWRVdGMiOiIyMDI2LTEwLTExVDAwOjAwOjAwWiJ9\",\"signatures\":[{\"keyid\":\"vector-preview-2026a\",\"sig\":\"tFdSR1Y02HOWubrHv8Tfzift3bKYbNagb1blkdhUl9l35o9G6dtZDqb3UJ9RSFSQS9zYyR717CGpwv1IdYKeIQ==\"}]}"
+    },
+    {
+      "name": "same_version_as_running",
+      "expectedChannel": "preview",
+      "runningNumeric": "0.6.0.17",
+      "pins": "current-only",
+      "expect": "not_newer",
+      "envelopeText": "{\"payloadType\":\"application/vnd.couchmode.release-statement.v1+json\",\"payload\":\"eyJzY2hlbWEiOjEsInByb2R1Y3QiOiJDb3VjaE1vZGUiLCJwbGF0Zm9ybSI6IndpbmRvd3MteDY0IiwiY2hhbm5lbCI6InByZXZpZXciLCJ2ZXJzaW9uIjoiMC42LjAtcmMuMTciLCJ2ZXJzaW9uTnVtZXJpYyI6IjAuNi4wLjE3Iiwic2VxdWVuY2UiOjcsImFydGlmYWN0Ijp7ImZpbGVOYW1lIjoiQ291Y2hNb2RlLVNldHVwLTAuNi4wLXJjLjE3LmV4ZSIsInNpemVCeXRlcyI6MzAsInNoYTI1NiI6IjYwRDYxRUFBMDk1NERFNTlENjBGODJGODhFNTAzNzYxNTdGNTE4NkQ5N0YyOTBCQkVFRkY4QjJFOEVFRDA3NTkifSwic291cmNlQ29tbWl0IjoiMDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWYwMTIzNDU2NyIsImlzc3VlZFV0YyI6IjIwMjYtMTAtMTFUMDA6MDA6MDBaIn0=\",\"signatures\":[{\"keyid\":\"vector-preview-2026a\",\"sig\":\"wT0IhPbp0xQLO9unImi8+Ak3Ir+OkAWJq7WJHLDfxdJdHGFem3jT6frKudtOIZwUJfYcywm17De7+8sfsalWiw==\"}]}"
+    },
+    {
+      "name": "older_than_running",
+      "expectedChannel": "preview",
+      "runningNumeric": "0.6.0.18",
+      "pins": "current-only",
+      "expect": "not_newer",
+      "envelopeText": "{\"payloadType\":\"application/vnd.couchmode.release-statement.v1+json\",\"payload\":\"eyJzY2hlbWEiOjEsInByb2R1Y3QiOiJDb3VjaE1vZGUiLCJwbGF0Zm9ybSI6IndpbmRvd3MteDY0IiwiY2hhbm5lbCI6InByZXZpZXciLCJ2ZXJzaW9uIjoiMC42LjAtcmMuMTciLCJ2ZXJzaW9uTnVtZXJpYyI6IjAuNi4wLjE3Iiwic2VxdWVuY2UiOjcsImFydGlmYWN0Ijp7ImZpbGVOYW1lIjoiQ291Y2hNb2RlLVNldHVwLTAuNi4wLXJjLjE3LmV4ZSIsInNpemVCeXRlcyI6MzAsInNoYTI1NiI6IjYwRDYxRUFBMDk1NERFNTlENjBGODJGODhFNTAzNzYxNTdGNTE4NkQ5N0YyOTBCQkVFRkY4QjJFOEVFRDA3NTkifSwic291cmNlQ29tbWl0IjoiMDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWYwMTIzNDU2NyIsImlzc3VlZFV0YyI6IjIwMjYtMTAtMTFUMDA6MDA6MDBaIn0=\",\"signatures\":[{\"keyid\":\"vector-preview-2026a\",\"sig\":\"wT0IhPbp0xQLO9unImi8+Ak3Ir+OkAWJq7WJHLDfxdJdHGFem3jT6frKudtOIZwUJfYcywm17De7+8sfsalWiw==\"}]}"
+    },
+    {
+      "name": "stable_release_running",
+      "expectedChannel": "preview",
+      "runningNumeric": "0.6.0.1000",
+      "pins": "current-only",
+      "expect": "not_newer",
+      "envelopeText": "{\"payloadType\":\"application/vnd.couchmode.release-statement.v1+json\",\"payload\":\"eyJzY2hlbWEiOjEsInByb2R1Y3QiOiJDb3VjaE1vZGUiLCJwbGF0Zm9ybSI6IndpbmRvd3MteDY0IiwiY2hhbm5lbCI6InByZXZpZXciLCJ2ZXJzaW9uIjoiMC42LjAtcmMuMTciLCJ2ZXJzaW9uTnVtZXJpYyI6IjAuNi4wLjE3Iiwic2VxdWVuY2UiOjcsImFydGlmYWN0Ijp7ImZpbGVOYW1lIjoiQ291Y2hNb2RlLVNldHVwLTAuNi4wLXJjLjE3LmV4ZSIsInNpemVCeXRlcyI6MzAsInNoYTI1NiI6IjYwRDYxRUFBMDk1NERFNTlENjBGODJGODhFNTAzNzYxNTdGNTE4NkQ5N0YyOTBCQkVFRkY4QjJFOEVFRDA3NTkifSwic291cmNlQ29tbWl0IjoiMDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWYwMTIzNDU2NyIsImlzc3VlZFV0YyI6IjIwMjYtMTAtMTFUMDA6MDA6MDBaIn0=\",\"signatures\":[{\"keyid\":\"vector-preview-2026a\",\"sig\":\"wT0IhPbp0xQLO9unImi8+Ak3Ir+OkAWJq7WJHLDfxdJdHGFem3jT6frKudtOIZwUJfYcywm17De7+8sfsalWiw==\"}]}"
+    },
+    {
+      "name": "wrong_product",
+      "expectedChannel": "preview",
+      "runningNumeric": "0.6.0.16",
+      "pins": "current-only",
+      "expect": "wrong_product",
+      "envelopeText": "{\"payloadType\":\"application/vnd.couchmode.release-statement.v1+json\",\"payload\":\"eyJzY2hlbWEiOjEsInByb2R1Y3QiOiJOb3RDb3VjaE1vZGUiLCJwbGF0Zm9ybSI6IndpbmRvd3MteDY0IiwiY2hhbm5lbCI6InByZXZpZXciLCJ2ZXJzaW9uIjoiMC42LjAtcmMuMTciLCJ2ZXJzaW9uTnVtZXJpYyI6IjAuNi4wLjE3Iiwic2VxdWVuY2UiOjcsImFydGlmYWN0Ijp7ImZpbGVOYW1lIjoiQ291Y2hNb2RlLVNldHVwLTAuNi4wLXJjLjE3LmV4ZSIsInNpemVCeXRlcyI6MzAsInNoYTI1NiI6IjYwRDYxRUFBMDk1NERFNTlENjBGODJGODhFNTAzNzYxNTdGNTE4NkQ5N0YyOTBCQkVFRkY4QjJFOEVFRDA3NTkifSwic291cmNlQ29tbWl0IjoiMDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWYwMTIzNDU2NyIsImlzc3VlZFV0YyI6IjIwMjYtMTAtMTFUMDA6MDA6MDBaIn0=\",\"signatures\":[{\"keyid\":\"vector-preview-2026a\",\"sig\":\"wlSJICP8t+TPFTk6h9ep9g1THgLJT+uRQ0xBmLysQiCD4KlT3jXkQAvSGGfyl1SNrGSWkFZt57Fsv50SR949Sg==\"}]}"
+    },
+    {
+      "name": "no_signatures",
+      "expectedChannel": "preview",
+      "runningNumeric": "0.6.0.16",
+      "pins": "current-only",
+      "expect": "malformed",
+      "envelopeText": "{\"payloadType\":\"application/vnd.couchmode.release-statement.v1+json\",\"payload\":\"eyJzY2hlbWEiOjEsInByb2R1Y3QiOiJDb3VjaE1vZGUiLCJwbGF0Zm9ybSI6IndpbmRvd3MteDY0IiwiY2hhbm5lbCI6InByZXZpZXciLCJ2ZXJzaW9uIjoiMC42LjAtcmMuMTciLCJ2ZXJzaW9uTnVtZXJpYyI6IjAuNi4wLjE3Iiwic2VxdWVuY2UiOjcsImFydGlmYWN0Ijp7ImZpbGVOYW1lIjoiQ291Y2hNb2RlLVNldHVwLTAuNi4wLXJjLjE3LmV4ZSIsInNpemVCeXRlcyI6MzAsInNoYTI1NiI6IjYwRDYxRUFBMDk1NERFNTlENjBGODJGODhFNTAzNzYxNTdGNTE4NkQ5N0YyOTBCQkVFRkY4QjJFOEVFRDA3NTkifSwic291cmNlQ29tbWl0IjoiMDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWYwMTIzNDU2NyIsImlzc3VlZFV0YyI6IjIwMjYtMTAtMTFUMDA6MDA6MDBaIn0=\",\"signatures\":[]}"
+    },
+    {
+      "name": "wrong_payload_type",
+      "expectedChannel": "preview",
+      "runningNumeric": "0.6.0.16",
+      "pins": "current-only",
+      "expect": "unsupported_type",
+      "envelopeText": "{\"payloadType\":\"application/json\",\"payload\":\"eyJzY2hlbWEiOjEsInByb2R1Y3QiOiJDb3VjaE1vZGUiLCJwbGF0Zm9ybSI6IndpbmRvd3MteDY0IiwiY2hhbm5lbCI6InByZXZpZXciLCJ2ZXJzaW9uIjoiMC42LjAtcmMuMTciLCJ2ZXJzaW9uTnVtZXJpYyI6IjAuNi4wLjE3Iiwic2VxdWVuY2UiOjcsImFydGlmYWN0Ijp7ImZpbGVOYW1lIjoiQ291Y2hNb2RlLVNldHVwLTAuNi4wLXJjLjE3LmV4ZSIsInNpemVCeXRlcyI6MzAsInNoYTI1NiI6IjYwRDYxRUFBMDk1NERFNTlENjBGODJGODhFNTAzNzYxNTdGNTE4NkQ5N0YyOTBCQkVFRkY4QjJFOEVFRDA3NTkifSwic291cmNlQ29tbWl0IjoiMDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWYwMTIzNDU2NyIsImlzc3VlZFV0YyI6IjIwMjYtMTAtMTFUMDA6MDA6MDBaIn0=\",\"signatures\":[{\"keyid\":\"vector-preview-2026a\",\"sig\":\"wT0IhPbp0xQLO9unImi8+Ak3Ir+OkAWJq7WJHLDfxdJdHGFem3jT6frKudtOIZwUJfYcywm17De7+8sfsalWiw==\"}]}"
+    }
+  ],
+  "promotion": {
+    "note": "The SAME installer bytes (one R2 object) offered first on the preview feed, then promoted to the standard feed by a NEW statement with the standard channel. Same fileName, sizeBytes and sha256; the sequence of each feed is independent.",
+    "artifactUrl": "https://download.couchmode.app/releases/0.6.0-rc.17/CouchMode-Setup-0.6.0-rc.17.exe",
+    "preview": {
+      "expectedChannel": "preview",
+      "runningNumeric": "0.6.0.16",
+      "expect": "ok",
+      "envelopeText": "{\"payloadType\":\"application/vnd.couchmode.release-statement.v1+json\",\"payload\":\"eyJzY2hlbWEiOjEsInByb2R1Y3QiOiJDb3VjaE1vZGUiLCJwbGF0Zm9ybSI6IndpbmRvd3MteDY0IiwiY2hhbm5lbCI6InByZXZpZXciLCJ2ZXJzaW9uIjoiMC42LjAtcmMuMTciLCJ2ZXJzaW9uTnVtZXJpYyI6IjAuNi4wLjE3Iiwic2VxdWVuY2UiOjcsImFydGlmYWN0Ijp7ImZpbGVOYW1lIjoiQ291Y2hNb2RlLVNldHVwLTAuNi4wLXJjLjE3LmV4ZSIsInNpemVCeXRlcyI6MzAsInNoYTI1NiI6IjYwRDYxRUFBMDk1NERFNTlENjBGODJGODhFNTAzNzYxNTdGNTE4NkQ5N0YyOTBCQkVFRkY4QjJFOEVFRDA3NTkifSwic291cmNlQ29tbWl0IjoiMDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWYwMTIzNDU2NyIsImlzc3VlZFV0YyI6IjIwMjYtMTAtMTFUMDA6MDA6MDBaIn0=\",\"signatures\":[{\"keyid\":\"vector-preview-2026a\",\"sig\":\"wT0IhPbp0xQLO9unImi8+Ak3Ir+OkAWJq7WJHLDfxdJdHGFem3jT6frKudtOIZwUJfYcywm17De7+8sfsalWiw==\"}]}"
+    },
+    "standard": {
+      "expectedChannel": "standard",
+      "runningNumeric": "0.6.0.16",
+      "expect": "ok",
+      "envelopeText": "{\"payloadType\":\"application/vnd.couchmode.release-statement.v1+json\",\"payload\":\"eyJzY2hlbWEiOjEsInByb2R1Y3QiOiJDb3VjaE1vZGUiLCJwbGF0Zm9ybSI6IndpbmRvd3MteDY0IiwiY2hhbm5lbCI6InN0YW5kYXJkIiwidmVyc2lvbiI6IjAuNi4wLXJjLjE3IiwidmVyc2lvbk51bWVyaWMiOiIwLjYuMC4xNyIsInNlcXVlbmNlIjo0MywiYXJ0aWZhY3QiOnsiZmlsZU5hbWUiOiJDb3VjaE1vZGUtU2V0dXAtMC42LjAtcmMuMTcuZXhlIiwic2l6ZUJ5dGVzIjozMCwic2hhMjU2IjoiNjBENjFFQUEwOTU0REU1OUQ2MEY4MkY4OEU1MDM3NjE1N0Y1MTg2RDk3RjI5MEJCRUVGRjhCMkU4RUVEMDc1OSJ9LCJzb3VyY2VDb21taXQiOiIwMTIzNDU2Nzg5YWJjZGVmMDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3IiwiaXNzdWVkVXRjIjoiMjAyNi0xMC0xMVQwMDowMDowMFoifQ==\",\"signatures\":[{\"keyid\":\"vector-preview-2026a\",\"sig\":\"8TbSWm3jJNIU7dpjj4b3poNQHYlpkrO0rAIKVhd1P63JNs4CHC5w82ULVZLfy7wxDcxF+3Lq/S8QmE8eksuqWQ==\"}]}"
+    }
+  }
+}

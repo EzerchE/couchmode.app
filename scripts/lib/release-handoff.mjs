@@ -10,12 +10,13 @@ export function artifactUrlIsCanonical(url, version) {
 }
 
 export function validateWebsiteHandoff(h) {
-  // Supporter-only previews (owner decision 2026-10-10): a preview is NEVER public. The public
-  // website consumes no preview handoff at all - not beta.json, not a download, not history.
-  // Preview publication targets backend/admin tooling. Fail closed before anything else.
+  // Supporter-first previews (owner decision 2026-10-11) do NOT enter through a release handoff: App
+  // Dev's schema v3 (scripts/lib/app-dev/feed-plan.mjs, synced byte for byte) still marks previews
+  // "never-public". A preview enters only through scripts/prepare-preview.mjs (proposal) plus an
+  // explicit owner approval (src/data/preview-approval.json). Fail closed before anything else.
   if (h?.release?.updateChannel === "preview")
     return [
-      "Preview releases are never published on the public website (supporter-only, never-public): refusing the handoff",
+      "Preview handoffs are not consumed by the website: a supporter-first preview is proposed with scripts/prepare-preview.mjs and published only with an owner approval (src/data/preview-approval.json)",
     ];
   const errors = validateHandoff(h);
   if (errors.length) return errors;
@@ -127,7 +128,13 @@ export function proposeReleaseHistory(history, h) {
     history.find((r) => r.downloadEnabled && (r.updateChannel ?? "stable") === s);
   const stable = current("stable"),
     preview = current("preview");
-  const published = history.filter(wasPublished);
+  // PROMOTION (supporter-first previews): a stable handoff for the CURRENT preview's own version moves
+  // that same build to the standard channel. The identity check above already proved the bytes are
+  // identical (versionNumeric, sha256, sizeBytes, signed), so the preview's own numeric is not a
+  // regression: it is excluded from the G2 high-water mark, and the preview slot is handed over.
+  const promoting = slot === "stable" && !!preview && preview.version === candidate.version;
+  if (promoting && !existing) throw new Error("Promotion requires the current preview row");
+  const published = history.filter((r) => wasPublished(r) && !(promoting && r.version === candidate.version));
   const highestNumeric = published.reduce(
     (n, r) => (!n || compareNumeric(r.versionNumeric, n) > 0 ? r.versionNumeric : n),
     null,
@@ -135,7 +142,7 @@ export function proposeReleaseHistory(history, h) {
   const result = applyHandoff(
     {
       stable: stable && handoffForExisting(stable),
-      preview: preview && handoffForExisting(preview),
+      preview: promoting ? null : preview && handoffForExisting(preview),
       highestNumeric,
     },
     h,

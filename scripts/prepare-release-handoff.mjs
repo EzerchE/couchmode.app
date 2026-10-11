@@ -3,6 +3,7 @@ import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { verifyPublishedArtifact } from "./lib/verify-release-artifact.mjs";
 import { releaseSlots } from "./lib/release-slots.mjs";
+import { loadPreviewApproval } from "./lib/preview-policy.mjs";
 import {
   validateWebsiteHandoff,
   releaseFromHandoff,
@@ -23,7 +24,15 @@ const dir = resolve(".cache/release-window");
 mkdirSync(dir, { recursive: true });
 writeFileSync(resolve(dir, "release.candidate.json"), JSON.stringify(candidate, null, 2) + "\n");
 const proposal = proposeReleaseHistory(history, h);
-releaseSlots(proposal);
+// A current preview keeps needing its owner approval. A promotion (or a newer stable that retires the
+// preview) leaves no preview, and the approval must then be cleared in the same change.
+const approval = loadPreviewApproval(new URL("../src/data/preview-approval.json", import.meta.url));
+const stillPreview = proposal.some((r) => r.downloadEnabled && r.updateChannel === "preview");
+releaseSlots(proposal, stillPreview ? approval : null);
+if (!stillPreview && approval)
+  console.log(
+    `NOTE: no preview remains after this change: clear src/data/preview-approval.json (approval for ${approval.version}) in the same commit.`,
+  );
 writeFileSync(
   resolve(dir, "release-history.proposal.json"),
   JSON.stringify(proposal, null, 2) + "\n",

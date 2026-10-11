@@ -4,12 +4,15 @@
 //
 // Outputs:
 //   public/updates/windows/latest.json    - the newest release (update check)
+//   public/updates/windows/beta.json      - the owner-approved preview, if any (supporter-first;
+//                                           rc.15+ reads it only for verified supporters)
 //   public/updates/windows/releases.json  - full public release history
 import { readFileSync, writeFileSync, mkdirSync, rmSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { releaseSlots } from "./lib/release-slots.mjs";
 import { wasPublished } from "./lib/release-handoff.mjs";
+import { loadPreviewApproval } from "./lib/preview-policy.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const outDir = resolve(root, "public/updates/windows");
@@ -20,7 +23,8 @@ const UPDATE_MESSAGE = "A newer CouchMode beta is available.";
 const allReleases = JSON.parse(readFileSync(resolve(root, "src/data/releases.json"), "utf8"));
 
 const releases = allReleases.filter(wasPublished);
-const { stable: latest, preview } = releaseSlots(allReleases);
+const previewApproval = loadPreviewApproval(resolve(root, "src/data/preview-approval.json"));
+const { stable: latest, preview } = releaseSlots(allReleases, previewApproval);
 if (!latest) {
   rmSync(resolve(outDir, "latest.json"), { force: true });
 }
@@ -79,10 +83,12 @@ function manifestFor(latest) {
   };
 }
 if (latest) writeJson("latest.json", manifestFor(latest));
-// beta.json is retired (2026-10-10): previews are supporter-only and never public. It is never
-// written, and any stale copy is removed. releaseSlots already refuses preview rows outright.
-if (preview) throw new Error("A preview can never produce a public feed (beta.json is retired)");
-rmSync(resolve(outDir, "beta.json"), { force: true });
+// beta.json (supporter-first previews, 2026-10-11): written ONLY for the one owner-approved current
+// preview (releaseSlots verified the approval, the exact R2 URL and the ordering), with exactly the
+// latest.json shape rc.15 reads. No approved preview -> the file must not exist (HTTP 404), so any
+// stale copy is removed. Never {}, null or a copy of latest.json.
+if (preview) writeJson("beta.json", manifestFor(preview));
+else rmSync(resolve(outDir, "beta.json"), { force: true });
 
 // Review files are deliberately outside public/. A blocked candidate is never a feed.
 const candidate = allReleases.find((r) => r.publicationState === "blocked" && !wasPublished(r));

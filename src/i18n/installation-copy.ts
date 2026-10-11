@@ -12,6 +12,8 @@ export type InstallationCopy = {
   unavailable: string;
   noPreview: string;
   stable: string;
+  /** Shown above a supporter-first preview build (never claims exclusivity). */
+  earlyBuild: string;
   storeQuestion: string;
   storeAnswer: string;
   freeQuestion: string;
@@ -36,6 +38,8 @@ export const installationCopy: Record<LocaleId, InstallationCopy> = {
     noPreview:
       "No preview release is currently available. The standard release is available on the main download page.",
     stable: "Standard download",
+    earlyBuild:
+      "Early build. Patreon supporters get previews first through in-app updates. It may contain unfinished changes or regressions. The standard release remains the recommended download.",
     storeQuestion: "I installed CouchMode from Microsoft Store. What now?",
     storeAnswer:
       "That version is no longer updated there. CouchMode will offer the new version when it is available. You can also download it here and install it over your current version; your settings are kept.",
@@ -60,6 +64,8 @@ export const installationCopy: Record<LocaleId, InstallationCopy> = {
     noPreview:
       "Derzeit ist keine Vorschauversion verfügbar. Die reguläre Version findest du auf der Hauptdownloadseite.",
     stable: "Regulärer Download",
+    earlyBuild:
+      "Frühe Version. Patreon-Unterstützer erhalten Vorschauversionen zuerst über In-App-Updates. Sie kann unfertige Änderungen oder Fehler enthalten. Die reguläre Version bleibt der empfohlene Download.",
     storeQuestion: "Ich habe CouchMode aus dem Microsoft Store installiert. Was nun?",
     storeAnswer:
       "Diese Version wird dort nicht mehr aktualisiert. CouchMode bietet dir die neue Version an, sobald sie verfügbar ist. Du kannst sie auch hier herunterladen und über die bisherige Version installieren. Deine Einstellungen bleiben erhalten.",
@@ -84,6 +90,8 @@ export const installationCopy: Record<LocaleId, InstallationCopy> = {
     noPreview:
       "Şu anda yayımlanmış bir önizleme sürümü yok. Standart sürüme ana indirme sayfasından ulaşabilirsiniz.",
     stable: "Standart sürümü indir",
+    earlyBuild:
+      "Erken sürüm. Patreon destekçileri önizleme sürümlerini uygulama içi güncellemelerle ilk olarak alır. Tamamlanmamış değişiklikler veya hatalar içerebilir. Önerilen indirme standart sürüm olmaya devam eder.",
     storeQuestion: "CouchMode'u Microsoft Store'dan yükledim. Ne yapmalıyım?",
     storeAnswer:
       "Bu sürüm artık Store üzerinden güncellenmiyor. Yeni sürüm kullanıma sunulduğunda CouchMode size bildirecek. Buradan indirip mevcut sürümün üzerine de kurabilirsiniz; ayarlarınız korunur.",
@@ -108,6 +116,8 @@ export const installationCopy: Record<LocaleId, InstallationCopy> = {
     noPreview:
       "Aucune version en avant-première n'est actuellement disponible. La version standard se trouve sur la page de téléchargement principale.",
     stable: "Téléchargement standard",
+    earlyBuild:
+      "Version anticipée. Les soutiens Patreon reçoivent les versions en avant-première en premier via les mises à jour dans l'application. Elle peut contenir des changements inachevés ou des régressions. La version standard reste le téléchargement recommandé.",
     storeQuestion: "J'ai installé CouchMode depuis le Microsoft Store. Que faire ?",
     storeAnswer:
       "Cette version n'y est plus mise à jour. CouchMode vous proposera la nouvelle version dès qu'elle sera disponible. Vous pouvez aussi la télécharger ici et l'installer par-dessus votre version actuelle ; vos réglages sont conservés.",
@@ -132,6 +142,8 @@ export const installationCopy: Record<LocaleId, InstallationCopy> = {
     noPreview:
       "No hay ninguna versión preliminar disponible por ahora. La versión estándar está en la página principal de descargas.",
     stable: "Descarga estándar",
+    earlyBuild:
+      "Versión anticipada. Los colaboradores de Patreon reciben primero las versiones preliminares mediante las actualizaciones de la aplicación. Puede contener cambios sin terminar o regresiones. La versión estándar sigue siendo la descarga recomendada.",
     storeQuestion: "Instalé CouchMode desde Microsoft Store. ¿Qué hago ahora?",
     storeAnswer:
       "Esa versión ya no se actualiza allí. CouchMode te ofrecerá la nueva versión cuando esté disponible. También puedes descargarla aquí e instalarla sobre la versión actual; se conservarán tus ajustes.",
@@ -156,6 +168,8 @@ export const installationCopy: Record<LocaleId, InstallationCopy> = {
     noPreview:
       "Al momento non è disponibile una versione in anteprima. La versione standard si trova nella pagina principale dei download.",
     stable: "Download standard",
+    earlyBuild:
+      "Versione anticipata. I sostenitori su Patreon ricevono per primi le versioni in anteprima tramite gli aggiornamenti nell'app. Potrebbe contenere modifiche incomplete o regressioni. La versione standard resta il download consigliato.",
     storeQuestion: "Ho installato CouchMode dal Microsoft Store. Cosa devo fare?",
     storeAnswer:
       "Quella versione non viene più aggiornata nello Store. CouchMode ti proporrà la nuova versione quando sarà disponibile. Puoi anche scaricarla qui e installarla sopra quella attuale: le impostazioni verranno conservate.",
@@ -180,6 +194,8 @@ export const installationCopy: Record<LocaleId, InstallationCopy> = {
     noPreview:
       "Não há uma versão de prévia disponível no momento. A versão padrão está na página principal de downloads.",
     stable: "Download padrão",
+    earlyBuild:
+      "Versão antecipada. Apoiadores do Patreon recebem primeiro as versões de prévia pelas atualizações no aplicativo. Ela pode conter mudanças inacabadas ou regressões. A versão padrão continua sendo o download recomendado.",
     storeQuestion: "Instalei o CouchMode pela Microsoft Store. E agora?",
     storeAnswer:
       "Essa versão não é mais atualizada por lá. O CouchMode oferecerá a nova versão quando ela estiver disponível. Você também pode baixá-la aqui e instalar por cima da versão atual; suas configurações serão mantidas.",
@@ -204,6 +220,8 @@ export const installationCopy: Record<LocaleId, InstallationCopy> = {
     noPreview:
       "Obecnie nie ma dostępnej wersji testowej. Standardową wersję znajdziesz na głównej stronie pobierania.",
     stable: "Standardowe pobieranie",
+    earlyBuild:
+      "Wczesna wersja. Wspierający na Patreonie otrzymują wersje testowe jako pierwsi przez aktualizacje w aplikacji. Może zawierać niedokończone zmiany lub błędy. Zalecanym pobraniem pozostaje wersja standardowa.",
     storeQuestion: "Mam CouchMode z Microsoft Store. Co dalej?",
     storeAnswer:
       "Ta wersja nie jest już tam aktualizowana. CouchMode zaproponuje nową wersję, gdy będzie dostępna. Możesz też pobrać ją tutaj i zainstalować na obecnej wersji. Ustawienia zostaną zachowane.",
@@ -228,6 +246,8 @@ export const installationCopy: Record<LocaleId, InstallationCopy> = {
     noPreview:
       "現在、公開されているプレビュー版はありません。通常版はメインのダウンロードページで確認できます。",
     stable: "通常版のダウンロード",
+    earlyBuild:
+      "早期ビルドです。Patreon の支援者には、アプリ内アップデートでプレビュー版が先に届きます。未完成の変更や不具合が含まれる場合があります。おすすめのダウンロードは引き続き通常版です。",
     storeQuestion: "Microsoft Storeからインストールした場合はどうすればよいですか？",
     storeAnswer:
       "そのバージョンはStoreでは更新されなくなります。新しいバージョンが利用可能になると、CouchModeがお知らせします。このページからダウンロードして現在のバージョンに上書きインストールすることもできます。設定は引き継がれます。",
@@ -252,6 +272,8 @@ export const installationCopy: Record<LocaleId, InstallationCopy> = {
     noPreview:
       "현재 공개된 미리 보기 버전이 없습니다. 일반 버전은 기본 다운로드 페이지에서 확인할 수 있습니다.",
     stable: "일반 버전 다운로드",
+    earlyBuild:
+      "초기 빌드입니다. Patreon 후원자는 앱 내 업데이트로 미리 보기 버전을 먼저 받습니다. 완성되지 않은 변경 사항이나 문제가 있을 수 있습니다. 권장 다운로드는 계속 일반 버전입니다.",
     storeQuestion: "Microsoft Store에서 설치했다면 어떻게 하나요?",
     storeAnswer:
       "해당 버전은 더 이상 Store에서 업데이트되지 않습니다. 새 버전이 출시되면 CouchMode에서 알려 줍니다. 여기에서 다운로드해 현재 버전 위에 설치할 수도 있으며, 설정은 유지됩니다.",
