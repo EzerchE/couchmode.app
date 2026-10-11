@@ -1,6 +1,7 @@
-import { validateHandoff, applyHandoff } from "./app-dev/feed-plan.mjs";
+import { validateHandoff, applyHandoff, artifactUrlFor } from "./app-dev/feed-plan.mjs";
 import { compareNumeric } from "./app-dev/version-scheme.mjs";
 
+/** The approved GitHub release asset of a STABLE release. */
 export function artifactUrlIsCanonical(url, version) {
   return (
     typeof url === "string" &&
@@ -9,22 +10,22 @@ export function artifactUrlIsCanonical(url, version) {
   );
 }
 
+/**
+ * Every reason the website may not consume this App Dev handoff. The schema and the slot rules are
+ * App Dev's (scripts/lib/app-dev/feed-plan.mjs, synced byte for byte); the website adds only its own
+ * publication facts. Supporter-first previews (owner decision 2026-10-11) are App Dev schema-v3
+ * handoffs with visibility "supporter-first" and the R2 artifact; the website still publishes a
+ * preview only with a separate owner approval (src/data/preview-approval.json).
+ */
 export function validateWebsiteHandoff(h) {
-  // Supporter-first previews (owner decision 2026-10-11) do NOT enter through a release handoff: App
-  // Dev's schema v3 (scripts/lib/app-dev/feed-plan.mjs, synced byte for byte) still marks previews
-  // "never-public". A preview enters only through scripts/prepare-preview.mjs (proposal) plus an
-  // explicit owner approval (src/data/preview-approval.json). Fail closed before anything else.
-  if (h?.release?.updateChannel === "preview")
-    return [
-      "Preview handoffs are not consumed by the website: a supporter-first preview is proposed with scripts/prepare-preview.mjs and published only with an owner approval (src/data/preview-approval.json)",
-    ];
   const errors = validateHandoff(h);
   if (errors.length) return errors;
   const { release: r, artifact: a = {}, github: g = {}, updaterExpectations: ux } = h;
+  const preview = r.updateChannel === "preview";
   if (typeof r.mandatory !== "boolean") errors.push("Missing mandatory release fact");
-  if (g.owner !== "EzerchE" || g.repository !== "couchmode-releases" || g.tag !== `v${r.version}`)
+  if (!preview && (g.owner !== "EzerchE" || g.repository !== "couchmode-releases" || g.tag !== `v${r.version}`))
     errors.push("GitHub identity does not match the approved repository/tag");
-  if (a.provider !== "github-release" || a.filename !== `CouchMode-Setup-${r.version}.exe`)
+  if (a.provider !== (preview ? "r2-release" : "github-release") || a.filename !== `CouchMode-Setup-${r.version}.exe`)
     errors.push("Artifact provider/filename mismatch");
   if (
     !/^[a-f\d]{64}$/i.test(a.sha256 ?? "") ||
@@ -64,10 +65,14 @@ export function validateWebsiteHandoff(h) {
     [...r.notes, ...r.knownIssues].some((x) => typeof x !== "string" || !x.trim())
   )
     errors.push("Incomplete release editorial content");
-  const expectedPage = `https://couchmode.app/download${r.updateChannel === "preview" ? "?channel=preview" : ""}`;
+  const expectedPage = `https://couchmode.app/download${preview ? "?channel=preview" : ""}`;
   if (ux.downloadPageUrl !== expectedPage) errors.push("Non-canonical download destination");
   if (r.websitePublicationState === "ready") {
-    if (
+    if (preview) {
+      // The R2 object, exactly; a preview never has a GitHub identity (also enforced by the schema).
+      if (a.url !== artifactUrlFor(r.version) || g.published || g.tag || g.releaseId)
+        errors.push("Ready preview lacks the exact R2 artifact (or carries a GitHub identity)");
+    } else if (
       !artifactUrlIsCanonical(a.url, r.version) ||
       !g.published ||
       !Number.isSafeInteger(g.releaseId) ||
@@ -83,6 +88,7 @@ export function releaseFromHandoff(h) {
   const errors = validateWebsiteHandoff(h);
   if (errors.length) throw new Error(errors.join("; "));
   const { release: r, artifact: a, updaterExpectations: ux } = h;
+  const preview = r.updateChannel === "preview";
   return {
     version: r.version,
     versionNumeric: r.versionNumeric,
@@ -91,9 +97,10 @@ export function releaseFromHandoff(h) {
     releaseChannel: r.channel,
     updateChannel: r.updateChannel,
     publicationState: r.websitePublicationState,
-    // Local blocked candidates have only an authored calendar date. A ready
-    // release uses the independently verified GitHub publication timestamp.
-    releasedAt: r.websitePublicationState === "ready" ? h.github.publishedAt : `${r.releaseDate}T00:00:00Z`,
+    // Local blocked candidates and previews (no GitHub release) have only an authored calendar date.
+    // A ready stable release uses the independently verified GitHub publication timestamp.
+    releasedAt:
+      r.websitePublicationState === "ready" && !preview ? h.github.publishedAt : `${r.releaseDate}T00:00:00Z`,
     sha256: a.sha256.toUpperCase(),
     sizeBytes: a.sizeBytes,
     signed: a.signed,
@@ -110,14 +117,20 @@ export function releaseFromHandoff(h) {
   };
 }
 
+// The state applyHandoff needs about an existing row: its version, and for PROMOTION its artifact.
 function handoffForExisting(r) {
-  return { release: { version: r.version, versionNumeric: r.versionNumeric } };
+  return {
+    release: { version: r.version, versionNumeric: r.versionNumeric },
+    updaterExpectations: { sha256: r.sha256 },
+    artifact: { sizeBytes: r.sizeBytes },
+  };
 }
 
 /** Pure patch proposal only. The caller reviews/writes it separately, never publishes. */
 export function proposeReleaseHistory(history, h) {
   const candidate = releaseFromHandoff(h);
   const existing = history.find((r) => r.version === candidate.version);
+  // Same version = same bytes, always: a reissue or a preview -> standard PROMOTION keeps the identity.
   if (
     existing &&
     ["versionNumeric", "sha256", "sizeBytes", "signed"].some((k) => existing[k] !== candidate[k])
@@ -128,21 +141,16 @@ export function proposeReleaseHistory(history, h) {
     history.find((r) => r.downloadEnabled && (r.updateChannel ?? "stable") === s);
   const stable = current("stable"),
     preview = current("preview");
-  // PROMOTION (supporter-first previews): a stable handoff for the CURRENT preview's own version moves
-  // that same build to the standard channel. The identity check above already proved the bytes are
-  // identical (versionNumeric, sha256, sizeBytes, signed), so the preview's own numeric is not a
-  // regression: it is excluded from the G2 high-water mark, and the preview slot is handed over.
-  const promoting = slot === "stable" && !!preview && preview.version === candidate.version;
-  if (promoting && !existing) throw new Error("Promotion requires the current preview row");
-  const published = history.filter((r) => wasPublished(r) && !(promoting && r.version === candidate.version));
+  const published = history.filter(wasPublished);
   const highestNumeric = published.reduce(
     (n, r) => (!n || compareNumeric(r.versionNumeric, n) > 0 ? r.versionNumeric : n),
     null,
   );
+  // App Dev's rules decide: G1/G2/G3 and the promotion of the current preview's own version.
   const result = applyHandoff(
     {
       stable: stable && handoffForExisting(stable),
-      preview: promoting ? null : preview && handoffForExisting(preview),
+      preview: preview && handoffForExisting(preview),
       highestNumeric,
     },
     h,

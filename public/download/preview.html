@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CouchMode preview download</title>
+<!-- Compatibility route (supporter-first previews, 2026-10-11): /download/preview (with or without ?v=)
+     always lands on the ONE canonical preview page, which shows the current approved preview. Not a page
+     of its own: never indexed, canonical is the download page. -->
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://couchmode.app/download">
+<meta http-equiv="refresh" content="0; url=/download?channel=preview">
+<script>location.replace("/download?channel=preview");</script>
+<style>
+  :root { color-scheme: light dark; }
+  body { margin: 0; padding: 32px 16px; font-family: system-ui, sans-serif; background: Canvas; color: CanvasText; }
+</style>
+</head>
+<body>
+<p><a href="/download?channel=preview">Continue to the CouchMode preview download</a></p>
+</body>
+</html>

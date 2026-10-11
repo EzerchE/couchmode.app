@@ -62,36 +62,35 @@ The client page checks the same match again before it renders a preview.
 - History is preserved: retired previews stay in `releases.json`, with the download disabled and
   the installer URL null.
 
-**Preview handoffs:** a preview never enters through an App Dev release handoff. App Dev's schema v3
-(`scripts/lib/app-dev/feed-plan.mjs`, synced byte for byte) still marks previews never-public, and
-the website keeps refusing every preview handoff. Previews use the two-step procedure below.
+**Preview handoffs (one schema, App Dev's):** a preview arrives as an App Dev
+`couchmode-release-handoff` v3 handoff, produced by the App's `prepare-release.ps1` and validated by
+the synced `scripts/lib/app-dev/feed-plan.mjs` (byte-identical to the App copy). The website never
+uses a schema of its own. A preview handoff carries:
+- `updateChannel "preview"`, `updateFeed "beta.json"` and `websiteIntent.visibility "supporter-first"`;
+- `artifact.provider "r2-release"`, with `artifact.url` the exact R2 object when ready;
+- no GitHub identity;
+- destination exactly `https://couchmode.app/download?channel=preview`.
 
 ## 2. Publishing a preview
 
-1. **App Dev hands over the facts of ONE frozen RC installer** (no rebuild later):
-   - `version`, `versionNumeric` and `sha256`;
-   - `sizeBytes`, `releaseDate` and `minimumSupportedVersionNumeric`;
-   - `critical` and `mandatory`;
-   - `summary`, `notes` and `knownIssues`.
-
-   Localized notes go into the release editorial overlay for all 10 locales.
-2. **The owner uploads the installer to R2.**
-   - Bucket `couchmode-downloads`, served at `https://download.couchmode.app` (SINGULAR "download").
-   - Key `releases/<version>/CouchMode-Setup-<version>.exe`.
-   - Upload once; never overwrite, rename or delete it while any feed or installed client may
-     reference it.
-   - Do not touch `store/`. No new bucket, no Worker.
-3. **`npm run prepare:preview <facts.json>`** writes proposals only, to `.cache/release-window/`:
-   - `preview.history.proposal.json`;
+1. **App Dev freezes ONE RC installer** (no rebuild later), and the owner uploads it to R2:
+   - bucket `couchmode-downloads`, served at `https://download.couchmode.app` (SINGULAR "download");
+   - key `releases/<version>/CouchMode-Setup-<version>.exe`;
+   - upload once; never overwrite, rename or delete it while any feed or installed client may
+     reference it;
+   - do not touch `store/`. No new bucket, no Worker.
+2. **App Dev runs `prepare-release.ps1`** on the preview descriptor and hands over `handoff.json`.
+   When ready, the producer has already fetched the R2 object (no redirect) and compared it byte for
+   byte.
+3. **`npm run prepare:handoff <handoff.json>`** validates it, verifies the R2 object again and writes
+   proposals only to `.cache/release-window/`:
+   - `release-history.proposal.json`;
    - `preview.approval.template.json` (with `approvedUtc: null`).
-4. **`npm run verify:preview-artifact .cache/release-window/preview.approval.template.json`**
-   downloads the R2 object and requires:
-   - status 200 with NO redirect;
-   - the exact `Content-Length`;
-   - the exact size and SHA-256.
-5. **Owner approval:**
+
+   `npm run verify:preview-artifact <approval.json>` repeats the R2 check at any time.
+4. **Owner approval:**
    - Review the proposal and copy the rows into `src/data/releases.json`.
-   - The OWNER fills in `approvedUtc` and commits `src/data/preview-approval.json`.
+   - The OWNER fills in `approvedUtc` and commits it as `src/data/preview-approval.json`.
    - Update the current-status copy (`previewStatus` and related lines) in all 10 locales in the
      same change; never before the preview is real.
      - Today's line says preview delivery is "in development" with no preview available, and some
@@ -102,24 +101,23 @@ the website keeps refusing every preview handoff. Previews use the two-step proc
      render without it.
    - Re-stamp `sourceRevision` in `src/i18n/manifest.json`: `src/data/releases.json` and the copy are
      part of the locale source revision.
-6. **Check:** `npm run test:preview-publication`, `npm run test:release-handoff`, `bun run build`.
+5. **Check:** `npm run test:preview-publication`, `npm run test:release-handoff`, `bun run build`.
    Then push and deploy (owner).
-7. **After deploy:**
+6. **After deploy:**
    - `https://couchmode.app/updates/windows/beta.json` serves exactly the approved fields.
    - `/download?channel=preview` shows the build.
+   - `/preview` and `/download/preview` redirect there.
    - `latest.json` is unchanged.
 
 ## 3. Promotion to standard (the SAME installer)
 
 1. Supporters ran the preview, and the owner approves promotion.
 2. **App Dev publishes the same bytes** as the standard release (GitHub release asset, no rebuild,
-   no re-sign) and hands over a normal STABLE schema-v3 handoff:
-   - the same `version` and `sha256`;
+   no re-sign) and hands over a STABLE handoff:
+   - the same `version`, `sha256` and `sizeBytes`;
    - `priorDownloads` naming the current stable.
-3. **`npm run prepare:handoff <handoff.json>` recognizes the promotion.**
-   - The identity check refuses any different `sha256`, `sizeBytes`, `versionNumeric` or `signed`
-     value for that version.
-   - The preview's own numeric does not count as a regression.
+3. **`npm run prepare:handoff <handoff.json>`** applies App Dev's promotion rule.
+   - The identical artifact is required; different bytes are refused.
    - The preview row becomes the stable row, and the old stable is retired with its history kept.
 4. **Clear `src/data/preview-approval.json` (`"preview": null`) in the same commit.** The tool
    prints a reminder, and a stale approval fails the build.
@@ -129,15 +127,17 @@ the website keeps refusing every preview handoff. Previews use the two-step proc
    - keeps the history.
 
    Clients already on that version are not re-offered it.
-6. **rc.16+ only:** App Dev hands over a NEW `standard.v1.json` statement for the same artifact
-   (§5).
+6. **rc.16+ only:**
+   - App Dev hands over a NEW `standard.v1.json` statement for the same artifact (§5);
+   - `preview.v1.json` is removed with `beta.json`.
 
 **Withdrawing a preview without promotion:**
-- set its row to `downloadEnabled: false`, `installerUrl: null`, `wasPublished: true` and a non-ready
-  `publicationState`;
-- clear the approval.
+1. App Dev hands over a non-ready preview handoff (`revoked` / `superseded`) for that version.
+2. `prepare:handoff` disables the row with its history kept.
+3. Clear the approval, and remove `preview.v1.json` if it exists.
 
-`beta.json` then disappears (404) and every app falls back to `latest.json`.
+`beta.json` then disappears (404). rc.15 falls back to `latest.json`; rc.16 withdraws its in-app
+offer at the next check.
 
 ## 4. rc.15 compatibility
 
@@ -155,8 +155,16 @@ Verified against rc.15's own `UpdateCore.cs` and `UpdateDownloadUrl.cs` by App D
   and a missing or broken `beta.json` falls back to standard.
 
 **`downloadPageUrl`:**
+- rc.15 hardcodes no preview page: it opens exactly the `beta.json` value.
 - `https://couchmode.app/download?channel=preview` passes rc.15's validator (https, exact host
   `couchmode.app`, no userinfo) and is opened as-is.
+- `/preview` and `/download/preview?v=...` are compatibility routes only:
+  - static redirect pages `public/preview.html` and `public/download/preview.html`;
+  - they redirect to `/download?channel=preview`;
+  - they carry `noindex`, with canonical `/download`;
+  - they are never written into a feed.
+
+  GitHub Pages serves the extensionless paths from those files; confirm both once deployed.
 - The R2 file URL itself would be replaced by `https://couchmode.app/download`, so it never goes in
   a feed.
 
@@ -221,8 +229,11 @@ All 10 active locales carry the new `earlyBuild` string. It never claims exclusi
 
 ## 7. Tests
 
-**`npm run test:preview-publication`** runs 61 tests on dummy metadata with scratch copies, no
+**`npm run test:preview-publication`** runs 66 tests on dummy metadata with scratch copies, no
 network and no real files:
+- App Dev's REAL preview handoff (producer fixture) consumed as-is; retargeted handoffs for
+  proposal, supersession, withdrawal, collision and GitHub / `previews/` / destination negatives;
+- the `/preview` and `/download/preview` compatibility redirects;
 - no preview / approved preview;
 - invalid checksum and size;
 - wrong installer URLs (GitHub, `previews/`, `store/`, http, plural host, query, other file);

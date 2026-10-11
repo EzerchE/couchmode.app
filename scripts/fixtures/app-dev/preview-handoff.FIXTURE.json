@@ -1,0 +1,94 @@
+{
+    "schema":  "couchmode-release-handoff",
+    "schemaVersion":  3,
+    "handoffId":  "6d985d37-beda-4c62-a644-ba94152b7abe",
+    "generatedAt":  "2026-10-11T11:49:03Z",
+    "producerVersion":  "prepare-release/3.0.0",
+    "release":  {
+                    "version":  "0.6.0-rc.15",
+                    "versionNumeric":  "0.6.0.15",
+                    "fileVersion":  "0.6.0.15",
+                    "channel":  "beta",
+                    "updateChannel":  "preview",
+                    "updateFeed":  "beta.json",
+                    "releaseDate":  "2026-10-12",
+                    "summary":  "FIXTURE",
+                    "notes":  [
+                                  "Fixture note"
+                              ],
+                    "knownIssues":  [
+
+                                    ],
+                    "mandatory":  false,
+                    "critical":  false,
+                    "minimumSupportedVersionNumeric":  "0.4.10.30",
+                    "websitePublicationState":  "ready"
+                },
+    "github":  {
+                   "owner":  null,
+                   "repository":  null,
+                   "tag":  null,
+                   "releaseId":  null,
+                   "published":  false,
+                   "publishedAt":  null
+               },
+    "artifact":  {
+                     "provider":  "r2-release",
+                     "url":  "https://download.couchmode.app/releases/0.6.0-rc.15/CouchMode-Setup-0.6.0-rc.15.exe",
+                     "filename":  "CouchMode-Setup-0.6.0-rc.15.exe",
+                     "sizeBytes":  3131679,
+                     "sha256":  "e2a72322800688d92ce491fc99b3a7daebd68a1a423c659bc215a72252365ff3",
+                     "contentType":  "application/octet-stream",
+                     "signed":  false,
+                     "signing":  "none",
+                     "verifiedAt":  "2026-10-11T11:49:04Z"
+                 },
+    "websiteIntent":  {
+                          "slot":  "preview",
+                          "visibility":  "supporter-first",
+                          "currentDownload":  {
+                                                  "slot":  "preview",
+                                                  "version":  "0.6.0-rc.15",
+                                                  "action":  "enable"
+                                              },
+                          "currentFeed":  {
+                                              "slot":  "preview",
+                                              "file":  "beta.json",
+                                              "action":  "publish"
+                                          },
+                          "priorDownloads":  [
+
+                                             ],
+                          "releaseHistory":  "preserve"
+                      },
+    "updaterExpectations":  {
+                                "latestVersion":  "0.6.0-rc.15",
+                                "latestVersionNumeric":  "0.6.0.15",
+                                "minimumSupportedVersionNumeric":  "0.4.10.30",
+                                "downloadPageUrl":  "https://couchmode.app/download?channel=preview",
+                                "sha256":  "e2a72322800688d92ce491fc99b3a7daebd68a1a423c659bc215a72252365ff3",
+                                "critical":  false
+                            },
+    "internal":  {
+                     "_comment":  "App Dev provenance. NOT publishable - none of this may enter public website data.",
+                     "sourceCommit":  "7061b2d",
+                     "signing":  "none",
+                     "signerThumbprint":  null,
+                     "authenticode":  {
+                                          "status":  "NotSigned",
+                                          "timestamped":  false,
+                                          "approvedThumbprintMatch":  null,
+                                          "verifiedAt":  "2026-10-11T11:49:04Z"
+                                      },
+                     "verification":  {
+                                          "buildInfoMatchesDescriptor":  true,
+                                          "installerFilenameMatchesVersion":  true,
+                                          "consistencyGate":  "CONSISTENT",
+                                          "updaterCompatTests":  "passed",
+                                          "deterministic":  true,
+                                          "updaterFeedCarriesSignerIdentity":  false,
+                                          "provenanceVerified":  true,
+                                          "secretScan":  "clean"
+                                      }
+                 }
+}

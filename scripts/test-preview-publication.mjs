@@ -12,12 +12,8 @@ import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { releaseSlots } from "./lib/release-slots.mjs";
-import { proposeReleaseHistory } from "./lib/release-handoff.mjs";
-import {
-  PREVIEW_DESTINATION,
-  previewArtifactUrl,
-  proposePreviewRelease,
-} from "./lib/preview-policy.mjs";
+import { proposeReleaseHistory, validateWebsiteHandoff, releaseFromHandoff } from "./lib/release-handoff.mjs";
+import { PREVIEW_DESTINATION, previewArtifactUrl } from "./lib/preview-policy.mjs";
 import { verifyPreviewArtifact } from "./lib/verify-release-artifact.mjs";
 import { verifyEnvelope, signedFeedErrors, thumbprint, PAYLOAD_TYPE } from "./lib/signed-feeds.mjs";
 import { isOfficialDestination, isPreviewDestination, MANIFEST_FIELDS } from "./lib/app-dev/feed-plan.mjs";
@@ -138,33 +134,77 @@ check("standard releases stay protected: a stable row can never use the R2 previ
 check("standard releases stay protected: a stable row can never use the preview destination", () =>
   throwsSlots([{ ...STABLE, downloadPageUrl: PREVIEW_DESTINATION }, ...REAL.slice(1)], null, /Wrong channel download destination/));
 
-// ---- 3. proposal (prepare-preview) --------------------------------------------------------------
-const FACTS = {
-  version: "0.6.0-rc.16", versionNumeric: "0.6.0.16", sha256: SHA16.toLowerCase(), sizeBytes: 3200000,
-  releaseDate: "2026-10-12", minimumSupportedVersionNumeric: "0.4.10.30", critical: false, mandatory: false,
-  summary: "CouchMode 0.6.0-rc.16", notes: ["Dummy preview note"], knownIssues: [],
-};
-check("proposal: rows + an approval TEMPLATE the build refuses until the owner completes it", () => {
-  const { rows, approval } = proposePreviewRelease(REAL, FACTS);
+// ---- 3. App Dev's preview handoff (schema v3, supporter-first) -> proposal -------------------------
+// The REAL output of the App's prepare-release.ps1 for a supporter-first preview (fixture mode, the
+// rc.15 installer bytes standing in for a preview build): the website consumes App Dev's schema, never
+// its own. Retargeted copies of it drive the proposal tests.
+const PRODUCED = JSON.parse(readFileSync(join(ROOT, "scripts/fixtures/app-dev/preview-handoff.FIXTURE.json"), "utf8").replace(/^\uFEFF/, ""));
+function previewHandoff(n, { state = "ready", priors = [], sha = SHA16.toLowerCase(), size = 3200000, label = "rc" } = {}) {
+  const h = JSON.parse(JSON.stringify(PRODUCED));
+  const version = `0.6.0-${label}.${n}`, numeric = `0.6.0.${n}`;
+  Object.assign(h.release, { version, versionNumeric: numeric, fileVersion: numeric, websitePublicationState: state,
+    releaseDate: "2026-10-12", summary: `CouchMode ${version}`, notes: ["Dummy preview note"], knownIssues: [] });
+  Object.assign(h.artifact, { filename: `CouchMode-Setup-${version}.exe`, url: state === "ready" ? previewArtifactUrl(version) : null,
+    sha256: sha, sizeBytes: size });
+  h.websiteIntent.currentDownload = { slot: "preview", version, action: state === "ready" ? "enable" : "disable" };
+  h.websiteIntent.currentFeed = { slot: "preview", file: "beta.json", action: state === "ready" ? "publish" : "withhold" };
+  h.websiteIntent.priorDownloads = priors.map((v) => ({ version: v, slot: "preview", action: "disable", preserveHistory: true }));
+  Object.assign(h.updaterExpectations, { latestVersion: version, latestVersionNumeric: numeric, sha256: sha });
+  return h;
+}
+check("cross-repo: the App producer's real preview handoff is valid for the website as-is", () => {
+  assert.deepEqual(validateWebsiteHandoff(PRODUCED), []);
+  const row = releaseFromHandoff(PRODUCED);
+  assert.equal(row.updateChannel, "preview");
+  assert.equal(row.installerUrl, "https://download.couchmode.app/releases/0.6.0-rc.15/CouchMode-Setup-0.6.0-rc.15.exe");
+  assert.equal(row.downloadPageUrl, PREVIEW_DESTINATION);
+  assert.equal(row.sha256, "E2A72322800688D92CE491FC99B3A7DAEBD68A1A423C659BC215A72252365FF3");
+  assert.ok(!JSON.stringify(row).includes("7061b2d"), "no App Dev provenance crosses into public data");
+});
+check("handoff proposal: a ready preview is added, every existing row preserved; build needs the owner approval", () => {
+  const rows = proposeReleaseHistory(REAL, previewHandoff(16));
   assert.equal(rows[0].version, "0.6.0-rc.16");
   assert.equal(rows[0].installerUrl, previewArtifactUrl("0.6.0-rc.16"));
-  assert.equal(approval.approvedUtc, null);
-  throwsSlots(rows, approval, /approvedUtc/);
-  assert.equal(releaseSlots(rows, { ...approval, approvedUtc: "2026-10-12T09:00:00Z" }).preview.version, "0.6.0-rc.16");
   assert.deepEqual(rows.slice(1), REAL, "every existing row is preserved unchanged");
+  throwsSlots(rows, null, /Unapproved preview publication/);
+  assert.equal(releaseSlots(rows, approvalFor(rows[0])).preview.version, "0.6.0-rc.16");
 });
-check("proposal: a newer preview retires the previous one and preserves its history", () => {
-  const first = proposePreviewRelease(REAL, FACTS).rows;
-  const { rows } = proposePreviewRelease(first, { ...FACTS, version: "0.6.0-rc.17", versionNumeric: "0.6.0.17", sha256: "E".repeat(64) });
+check("handoff proposal: a newer preview must retire the previous one explicitly; history preserved", () => {
+  const first = proposeReleaseHistory(REAL, previewHandoff(16));
+  assert.throws(() => proposeReleaseHistory(first, previewHandoff(17, { sha: "e".repeat(64) })), /Missing explicit prior-download transition/);
+  const rows = proposeReleaseHistory(first, previewHandoff(17, { sha: "e".repeat(64), priors: ["0.6.0-rc.16"] }));
   const old = rows.find((r) => r.version === "0.6.0-rc.16");
   assert.equal(old.downloadEnabled, false);
   assert.equal(old.installerUrl, null);
-  assert.equal(old.wasPublished, true);
   assert.equal(rows.filter((r) => r.downloadEnabled && r.updateChannel === "preview").length, 1);
+  assert.deepEqual(JSON.parse(JSON.stringify(rows.map((r) => r.version))), ["0.6.0-rc.17", "0.6.0-rc.16", ...REAL.map((r) => r.version)]);
 });
-check("proposal: an existing version or a collision is refused", () => {
-  assert.throws(() => proposePreviewRelease(REAL, { ...FACTS, version: "0.6.0-rc.15", versionNumeric: "0.6.0.15" }), /already exists/);
-  assert.throws(() => proposePreviewRelease(REAL, { ...FACTS, version: "0.6.0-preview.15", versionNumeric: "0.6.0.15" }), /Numeric collision/);
+check("handoff proposal: withdrawal (a non-ready re-issue of the current preview) empties the slot", () => {
+  const first = proposeReleaseHistory(REAL, previewHandoff(16));
+  const rows = proposeReleaseHistory(first, previewHandoff(16, { state: "revoked" }));
+  const row = rows.find((r) => r.version === "0.6.0-rc.16");
+  assert.equal(row.downloadEnabled, false);
+  assert.equal(row.installerUrl, null);
+  assert.equal(row.wasPublished, true, "history kept");
+  assert.equal(releaseSlots(rows, null).preview, null, "no preview -> no beta.json; the approval must be cleared");
+  throwsSlots(rows, approvalFor(previewRow(16)), /Stale preview approval/);
+});
+check("handoff proposal: an existing version, a numeric collision or a downgrade is refused", () => {
+  assert.throws(() => proposeReleaseHistory(REAL, previewHandoff(15)), /identity cannot be changed|G2|not newer/);
+  assert.throws(() => proposeReleaseHistory(REAL, previewHandoff(14)), /G2|not newer/);
+  const collide = previewHandoff(15, { label: "preview" });
+  assert.deepEqual(validateWebsiteHandoff(collide), [], "a well-formed handoff: only the collision is wrong");
+  assert.throws(() => proposeReleaseHistory(REAL, collide), /G2: 0\.6\.0-preview\.15 \(0\.6\.0\.15\) is not newer than 0\.6\.0\.15/);
+});
+check("handoff NEGATIVE: a preview handoff with a GitHub asset, a previews/ path or another destination is refused", () => {
+  const a = previewHandoff(16); a.artifact.url = "https://github.com/EzerchE/couchmode-releases/releases/download/v0.6.0-rc.16/CouchMode-Setup-0.6.0-rc.16.exe";
+  assert.ok(validateWebsiteHandoff(a).length > 0);
+  const b = previewHandoff(16); b.artifact.url = "https://download.couchmode.app/previews/0.6.0-rc.16/CouchMode-Setup-0.6.0-rc.16.exe";
+  assert.ok(validateWebsiteHandoff(b).length > 0);
+  const c = previewHandoff(16); c.updaterExpectations.downloadPageUrl = "https://couchmode.app/preview";
+  assert.ok(validateWebsiteHandoff(c).length > 0);
+  const d = previewHandoff(16); d.github = { owner: "EzerchE", repository: "couchmode-releases", tag: "v0.6.0-rc.16", releaseId: 1, published: true, publishedAt: "2026-10-12T00:00:00Z" };
+  assert.ok(validateWebsiteHandoff(d).length > 0);
 });
 
 // ---- 4. promotion: the SAME installer moves from preview to standard ----------------------------
@@ -450,6 +490,20 @@ await checkAsync("R2 verifier: a declared size mismatch is refused", () =>
   assert.rejects(verifyPreviewArtifact(R2A, respond(200, BYTES, { "content-length": "5" })), /Content-Length/));
 await checkAsync("R2 verifier: an approval with a non-canonical URL is refused", () =>
   assert.rejects(verifyPreviewArtifact({ ...R2A, installerUrl: "https://example.com/x.exe" }, respond(200, BYTES)), /exact R2 URL/));
+
+// ---- 8b. compatibility routes: /preview and /download/preview reach the ONE preview page -----------
+for (const rel of ["public/preview.html", "public/download/preview.html"]) {
+  check(`compatibility route ${rel} redirects to exactly /download?channel=preview, noindex, no installer`, () => {
+    const html = readFileSync(join(ROOT, rel), "utf8");
+    assert.match(html, /<meta http-equiv="refresh" content="0; url=\/download\?channel=preview">/);
+    assert.match(html, /location\.replace\("\/download\?channel=preview"\)/);
+    assert.match(html, /<meta name="robots" content="noindex,follow">/);
+    assert.match(html, /<link rel="canonical" href="https:\/\/couchmode\.app\/download">/);
+    assert.doesNotMatch(html, /\.exe\b|download\.couchmode\.app/);
+    const targets = [...html.matchAll(/(?:url=|replace\("|href=")([^"\s>]+)/g)].map((m) => m[1]).filter((u) => !u.startsWith("https://couchmode.app/download"));
+    assert.ok(targets.every((u) => u === "/download?channel=preview"), targets.join(", "));
+  });
+}
 
 // ---- 9. the repository default --------------------------------------------------------------------
 check("repository default: no preview approved, no signed feed approved, no beta.json in public/", () => {

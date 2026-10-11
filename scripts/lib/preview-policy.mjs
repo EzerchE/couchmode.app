@@ -4,30 +4,32 @@
 // verified supporter with "Enable beta updates" on (rc.15+ reads beta.json), and the download page
 // shows it at /download?channel=preview. The installer URL may be shared; nothing is exclusive.
 //
+// The preview itself arrives as an App Dev schema-v3 handoff (scripts/lib/app-dev/feed-plan.mjs,
+// synced byte for byte: visibility "supporter-first", artifact provider "r2-release") through
+// `npm run prepare:handoff`. This module is the WEBSITE's publication policy on top of it.
 // A preview reaches the public build ONLY when ALL of these hold:
 //   - an explicit owner approval exists (src/data/preview-approval.json) and names EXACTLY the
 //     current preview row: version, versionNumeric, sha256, sizeBytes and installer URL;
-//   - the installer URL is the one exact R2 URL for that version (one immutable object per version,
-//     the same object the rc.16 app derives from a signed statement and that a later standard
-//     release keeps using): https://download.couchmode.app/releases/<v>/CouchMode-Setup-<v>.exe
+//   - the installer URL is the one exact R2 URL for that version (feed-plan artifactUrlFor, the same
+//     rule as UpdateCore.ArtifactUrlFor in the app; one immutable object per version that a later
+//     standard release keeps using): https://download.couchmode.app/releases/<v>/CouchMode-Setup-<v>.exe
 //   - the version is a prerelease X.Y.Z-label.N whose numeric is the version-scheme numeric, and it is
-//     strictly newer than the standard release and than every release ever published;
+//     strictly newer than the standard release and than every release ever listed;
 //   - there is at most one current preview, and no other release shares its numeric.
 // No approval means no preview: no beta.json, no preview installer, the informational page only.
 // A stale approval (no matching preview row) fails the build, so promoting or withdrawing a preview
 // always clears the approval in the same change.
 import { readFileSync } from "node:fs";
 import { resolveVersion, compareNumeric } from "./app-dev/version-scheme.mjs";
+import { artifactUrlFor, PREVIEW_DESTINATION, STABLE_DESTINATION } from "./app-dev/feed-plan.mjs";
 
-export const PREVIEW_DESTINATION = "https://couchmode.app/download?channel=preview";
-export const STABLE_DESTINATION = "https://couchmode.app/download";
-export const ARTIFACT_ORIGIN = "https://download.couchmode.app";
+export { PREVIEW_DESTINATION, STABLE_DESTINATION };
 const SHA256 = /^[0-9A-Fa-f]{64}$/;
 const APPROVAL_FIELDS = ["version", "versionNumeric", "sha256", "sizeBytes", "installerUrl", "approvedBy", "approvedUtc"];
 
-/** The ONLY accepted preview installer URL for a version (mirrors UpdateCore.ArtifactUrlFor in the app). */
+/** The ONLY accepted preview installer URL (App Dev's shared rule), or null for a version outside it. */
 export function previewArtifactUrl(version) {
-  return `${ARTIFACT_ORIGIN}/releases/${version}/CouchMode-Setup-${version}.exe`;
+  return artifactUrlFor(version);
 }
 
 export function loadPreviewApproval(path) {
@@ -54,59 +56,6 @@ export function approvalErrors(a) {
 }
 
 /**
- * PROPOSAL ONLY (never writes): the release history with `facts` as the new current preview, plus
- * the approval record the OWNER must review and complete (approvedUtc stays null until then, so the
- * build refuses it). A previous current preview is retired with its history preserved.
- * facts = { version, versionNumeric, sha256, sizeBytes, releaseDate, minimumSupportedVersionNumeric,
- *           critical, mandatory, summary, notes, knownIssues } as handed over by App Dev.
- */
-export function proposePreviewRelease(history, facts) {
-  if (history.some((r) => r.version === facts.version))
-    throw new Error(`${facts.version} already exists in the release history`);
-  const row = {
-    version: facts.version,
-    versionNumeric: facts.versionNumeric,
-    fileVersion: facts.versionNumeric,
-    channel: "standalone",
-    releaseChannel: "beta",
-    updateChannel: "preview",
-    publicationState: "ready",
-    releasedAt: `${facts.releaseDate}T00:00:00Z`,
-    sha256: String(facts.sha256).toUpperCase(),
-    sizeBytes: facts.sizeBytes,
-    signed: false,
-    critical: facts.critical === true,
-    mandatory: facts.mandatory === true,
-    minimumSupportedVersion: facts.minimumSupportedVersionNumeric,
-    minimumSupportedVersionNumeric: facts.minimumSupportedVersionNumeric,
-    downloadPageUrl: PREVIEW_DESTINATION,
-    installerUrl: previewArtifactUrl(facts.version),
-    downloadEnabled: true,
-    summary: facts.summary,
-    notes: [...facts.notes],
-    knownIssues: [...facts.knownIssues],
-  };
-  const rest = history.map((r) =>
-    r.downloadEnabled && r.updateChannel === "preview"
-      ? { ...r, downloadEnabled: false, installerUrl: null, publicationState: "superseded", wasPublished: true }
-      : r,
-  );
-  const rows = [row, ...rest].sort((a, b) => compareNumeric(b.versionNumeric, a.versionNumeric));
-  const approval = {
-    version: row.version,
-    versionNumeric: row.versionNumeric,
-    sha256: row.sha256,
-    sizeBytes: row.sizeBytes,
-    installerUrl: row.installerUrl,
-    approvedBy: "owner",
-    approvedUtc: null,
-  };
-  const errors = previewRowErrors(row, rows, { ...approval, approvedUtc: "1970-01-01T00:00:00Z" });
-  if (errors.length) throw new Error(errors.join("; "));
-  return { rows, approval };
-}
-
-/**
  * Every reason `row` may not be THE current preview. `rows` is the full release data (for ordering and
  * collisions), `approval` the owner record. Empty = publishable.
  */
@@ -120,8 +69,9 @@ export function previewRowErrors(row, rows, approval) {
   }
   if (row.fileVersion !== row.versionNumeric) e.push("Preview fileVersion must equal versionNumeric");
   if (row.publicationState !== "ready") e.push("An enabled preview must be ready");
-  if (row.installerUrl !== previewArtifactUrl(row.version))
-    e.push(`Preview installer URL must be exactly ${previewArtifactUrl(row.version)}`);
+  const wantUrl = previewArtifactUrl(row.version);
+  if (!wantUrl) e.push(`Preview version must fit the artifact rule (lowercase label, X.Y.Z-label.N): ${row.version}`);
+  else if (row.installerUrl !== wantUrl) e.push(`Preview installer URL must be exactly ${wantUrl}`);
   if (row.downloadPageUrl !== PREVIEW_DESTINATION) e.push(`Preview destination must be exactly ${PREVIEW_DESTINATION}`);
   if (!SHA256.test(row.sha256 ?? "")) e.push("Preview sha256 must be 64 hex characters");
   if (!Number.isSafeInteger(row.sizeBytes) || row.sizeBytes <= 0) e.push("Preview sizeBytes must be a positive integer");

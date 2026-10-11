@@ -147,45 +147,42 @@ check("revoked current removes slot without fallback", () => {
   assert.throws(() => proposeReleaseHistory(rows, fixture(9)), /G2/);
 });
 // ===== Supporter-only previews (owner decision 2026-10-10): a preview is NEVER public =====
-// The never-public preview handoff App Dev's schema v3 extension produces (feed-plan.mjs).
-function neverPublicPreview(n) {
-  const h = fixture(n, "preview", "ready");
-  h.release.updateFeed = null;
-  h.artifact = { ...h.artifact, provider: "private-r2", url: null };
+// App Dev's supporter-first preview handoff (schema v3, 2026-10-11): visibility "supporter-first",
+// the R2 artifact provider, no GitHub identity, the exact preview destination.
+function supporterFirstPreview(n, state = "ready") {
+  const h = fixture(n, "preview", state);
+  const version = h.release.version;
+  h.artifact = { ...h.artifact, provider: "r2-release",
+    url: state === "ready" ? `https://download.couchmode.app/releases/${version}/CouchMode-Setup-${version}.exe` : null };
   h.github = { owner: null, repository: null, tag: null, published: false, releaseId: null, publishedAt: null };
-  h.websiteIntent = {
-    slot: "preview",
-    visibility: "never-public",
-    currentDownload: { slot: "preview", version: h.release.version, action: "none" },
-    currentFeed: { slot: "preview", file: null, action: "none" },
-    priorDownloads: [],
-    releaseHistory: "preserve",
-  };
+  h.websiteIntent = { ...h.websiteIntent, visibility: "supporter-first" };
   return h;
 }
-// Supporter-first previews (2026-10-11) never enter through a handoff: only prepare-preview.mjs plus an
-// owner approval. Every preview handoff shape is still refused.
-const refusesPreview = (h) => {
-  assert.match(validateWebsiteHandoff(h).join("\n"), /Preview handoffs are not consumed by the website/);
-  assert.throws(() => releaseFromHandoff(h), /Preview handoffs are not consumed by the website/);
-  assert.throws(() => proposeReleaseHistory([stable], h), /Preview handoffs are not consumed by the website/);
-};
-check("PREVIEW: even a valid never-public preview handoff is refused by the website", () =>
-  refusesPreview(neverPublicPreview(16)),
-);
-check("PREVIEW NEGATIVE: preview + public GitHub artifact (the retired public shape) is refused", () =>
-  refusesPreview(fixture(16, "preview")),
-);
-check("PREVIEW NEGATIVE: preview + artifactUrl is refused", () => {
-  const h = neverPublicPreview(16);
-  h.artifact.url = "https://github.com/EzerchE/couchmode-releases/releases/download/v0.6.0-rc.16/CouchMode-Setup-0.6.0-rc.16.exe";
-  refusesPreview(h);
+check("PREVIEW: a supporter-first preview handoff is consumed (R2 installer, preview destination, no GitHub)", () => {
+  const h = supporterFirstPreview(16);
+  assert.deepEqual(validateWebsiteHandoff(h), []);
+  const row = releaseFromHandoff(h);
+  assert.equal(row.installerUrl, "https://download.couchmode.app/releases/0.6.0-rc.16/CouchMode-Setup-0.6.0-rc.16.exe");
+  assert.equal(row.downloadPageUrl, "https://couchmode.app/download?channel=preview");
+  assert.equal(row.releasedAt, "2026-10-07T00:00:00Z", "no GitHub timestamp for a preview");
+  assert.ok(!("internal" in row) && !JSON.stringify(row).includes("PRIVATE"));
 });
-check("PREVIEW NEGATIVE: preview + beta.json publish intent is refused", () => {
-  const h = neverPublicPreview(16);
-  h.release.updateFeed = "beta.json";
-  h.websiteIntent.currentFeed = { slot: "preview", file: "beta.json", action: "publish" };
-  refusesPreview(h);
+check("PREVIEW NEGATIVE: the retired never-public shape is refused", () => {
+  const h = supporterFirstPreview(16);
+  h.release.updateFeed = null;
+  h.websiteIntent.visibility = "never-public";
+  assert.match(validateWebsiteHandoff(h).join("\n"), /updateFeed null does not match|visibility must be "supporter-first"/);
+});
+check("PREVIEW NEGATIVE: a preview with a GitHub asset or identity is refused", () => {
+  assert.match(validateWebsiteHandoff(fixture(16, "preview")).join("\n"), /r2-release|GitHub/);
+  const h = supporterFirstPreview(16);
+  h.github = { owner: "EzerchE", repository: "couchmode-releases", tag: "v0.6.0-rc.16", published: true, releaseId: 1, publishedAt: "2026-10-07T12:00:00Z" };
+  assert.match(validateWebsiteHandoff(h).join("\n"), /GitHub release identity/);
+});
+check("PREVIEW NEGATIVE: a preview artifact URL other than the exact R2 object is refused", () => {
+  const h = supporterFirstPreview(16);
+  h.artifact.url = "https://download.couchmode.app/previews/0.6.0-rc.16/CouchMode-Setup-0.6.0-rc.16.exe";
+  assert.match(validateWebsiteHandoff(h).join("\n"), /artifact\.url must be exactly/);
 });
 const previewRow = (extra) => ({ ...stable, version: "0.6.0-rc.16", versionNumeric: "0.6.0.16", updateChannel: "preview",
   downloadEnabled: false, installerUrl: null, downloadPageUrl: "https://couchmode.app/download?channel=preview", ...extra });
@@ -199,27 +196,26 @@ check("PREVIEW: a retired preview row is preserved history and enables nothing",
   assert.equal(releaseSlots([stable, previewRow({ wasPublished: true, publicationState: "superseded" })]).preview, null),
 );
 check("PREVIEW NEGATIVE: a preview occupying the STABLE slot is refused", () => {
-  const a = fixture(16); a.artifact.provider = "private-r2";
+  const a = fixture(16); a.artifact.provider = "r2-release";
   assert.match(validateWebsiteHandoff(a).join("\n"), /preview occupying the stable slot/);
-  const b = fixture(16); b.websiteIntent.visibility = "never-public";
+  const b = fixture(16); b.websiteIntent.visibility = "supporter-first";
   assert.match(validateWebsiteHandoff(b).join("\n"), /preview occupying the stable slot/);
   assert.throws(() => releaseSlots([{ ...stable, downloadPageUrl: "https://couchmode.app/download?channel=preview" }]), /Wrong channel download destination/);
 });
-// App Dev's shared schema v3 module itself still plans no beta.json (synced byte for byte, unchanged);
-// the website's beta.json comes ONLY from gen-releases with an owner-approved preview.
-check("App Dev feed-plan (schema v3): no beta.json from any handoff, a stale copy is removed", () => {
+// App Dev's shared schema plans beta.json ONLY for a current, ready preview ahead of the stable, and
+// removes a stale copy otherwise (the website's own gen-releases additionally requires the approval).
+check("App Dev feed-plan (schema v3): beta.json only for a current preview; a stale copy is removed", () => {
   const dir = mkdtempSync(join(tmpdir(), "couchmode-feed-test-"));
   try {
-    let state = applyHandoff(emptyState(), fixture(10)).state;
-    const r = applyHandoff(state, neverPublicPreview(16));
-    assert.equal(r.accepted, true);
-    assert.equal(r.state, state, "a never-public preview changes no website state");
-    writeFileSync(join(dir, "beta.json"), "{}");
+    const state = applyHandoff(emptyState(), fixture(10)).state;
+    const r = applyHandoff(state, supporterFirstPreview(16));
+    assert.equal(r.accepted, true, r.errors.join("; "));
     writeFeeds(dir, planFeeds(r.state));
-    assert.ok(!existsSync(join(dir, "beta.json")));
-    assert.ok(existsSync(join(dir, "latest.json")));
-    assert.equal(applyHandoff(state, fixture(16, "preview")).accepted, false, "the retired public preview shape is rejected");
-    assert.throws(() => writeFeeds(dir, { "latest.json": null, "beta.json": { latestVersion: "x" } }), /retired/);
+    assert.ok(existsSync(join(dir, "beta.json")) && existsSync(join(dir, "latest.json")));
+    const withdrawn = applyHandoff(r.state, supporterFirstPreview(16, "revoked"));
+    writeFeeds(dir, planFeeds(withdrawn.state));
+    assert.ok(!existsSync(join(dir, "beta.json")), "withdrawn preview -> beta.json removed");
+    assert.equal(applyHandoff(state, fixture(16, "preview")).accepted, false, "a GitHub-asset preview is rejected");
   } finally {
     rmSync(dir, { recursive: true });
   }

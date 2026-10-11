@@ -4,14 +4,16 @@
 //
 //   G1  Stable and preview are two INDEPENDENT current-release slots.
 //         stable  -> latest.json (+ the default /download)
-//         preview -> beta.json   (+ a preview-aware destination, ...?channel=preview)
+//         preview -> beta.json   (+ the preview page, exactly https://couchmode.app/download?channel=preview)
 //       A preview never replaces latest.json or the stable download, never disables the current
 //       stable, and never needs to say anything about it. Supersession by DECLARATION
 //       (priorDownloads) stays inside one slot. A newer STABLE retires the current preview by
 //       ORDERING: once a stable is at or above the preview, the preview slot is empty.
 //
 //   G2  Authoritative versionNumeric order never regresses, across BOTH slots. A ready release
-//       must be strictly newer than every release already published in either slot.
+//       must be strictly newer than every release already published in either slot. The ONE
+//       exception is PROMOTION: a stable handoff for the CURRENT preview's own version with the
+//       identical artifact (sha256 and size) moves that same build to the standard channel.
 //
 //   G3  Only a READY handoff populates a feed. blocked / superseded / revoked never do; a
 //       non-ready re-issue of a slot's CURRENT release withdraws it (the slot becomes empty).
@@ -19,17 +21,20 @@
 //   No current preview -> beta.json MUST NOT EXIST (HTTP 404). Never {}, null, 0.0.0.0, a copy of
 //   the stable manifest, or an old superseded preview. writeFeeds deletes a stale one.
 //
-// SUPERSEDED for the preview slot (owner decision 2026-10-10, supporter-only previews, Phase 1):
-//   A preview is NEVER public. There is no public preview feed: beta.json is RETIRED and must never
-//   exist, whatever the handoff says. A preview handoff carries the "never-public" intent only
-//   (no download to enable, no feed to publish, no prior downloads, artifact provider "private-r2"
-//   with a null url, and no private file key). Its real publication targets backend/admin
-//   tooling, not the website. G1/G2/G3 stay in force for the STABLE slot exactly as before.
+// Supporter-first previews (owner decision 2026-10-11, Option C; replaces the 2026-10-10 Phase 1
+// "never-public" preview slot): a preview is the NEXT release candidate, offered to Patreon supporters
+// first (the app reads beta.json only for a verified supporter with "Enable beta updates" on). Its
+// installer is PUBLIC and may be shared. A preview handoff carries visibility "supporter-first" and
+// the artifact provider "r2-release": the ONE immutable object
+//     https://download.couchmode.app/releases/<version>/CouchMode-Setup-<version>.exe
+// that the rc.16 app derives from a signed statement and that the same build keeps after promotion
+// to standard. A preview never has a GitHub release identity. The website additionally requires an
+// explicit owner approval record before it publishes any preview (website policy, not schema).
 //
 // App Dev does not write the public website files; Web Dev does. This module is the tested
-// reference those generators follow, and the gate (check-release-consistency.mjs) imports its
-// destination rules. Pure except writeFeeds / verifyFeeds, which take an explicit directory.
-// No dependencies, no network.
+// reference those generators follow (the website keeps a byte-identical copy), and the gate
+// (check-release-consistency.mjs) imports its destination rules. Pure except writeFeeds /
+// verifyFeeds, which take an explicit directory. No dependencies, no network.
 
 import { readFileSync, writeFileSync, existsSync, rmSync } from "node:fs";
 import { join } from "node:path";
@@ -38,21 +43,29 @@ import { resolveVersion, isReleaseNumeric, compareNumeric } from "./version-sche
 export const HANDOFF_SCHEMA = "couchmode-release-handoff";
 export const HANDOFF_SCHEMA_VERSION = 3;
 export const SLOTS = ["stable", "preview"];
-// The preview slot has NO public feed (2026-10-10). latest.json is the only public feed; beta.json
-// is retired and must never exist on the public website.
-export const FEED_FOR_SLOT = Object.freeze({ stable: "latest.json", preview: null });
-export const PUBLIC_FEEDS = Object.freeze(["latest.json"]);
-export const RETIRED_FEEDS = Object.freeze(["beta.json"]);
-export const PREVIEW_VISIBILITY = "never-public";
-// The future private artifact provider for previews. Its file key is internal and is never part
-// of a handoff; only a stable may use the public "github-release" provider.
-export const PRIVATE_PREVIEW_PROVIDER = "private-r2";
+export const FEED_FOR_SLOT = Object.freeze({ stable: "latest.json", preview: "beta.json" });
+export const PUBLIC_FEEDS = Object.freeze(["latest.json", "beta.json"]);
+export const PREVIEW_VISIBILITY = "supporter-first";
+export const PREVIEW_ARTIFACT_PROVIDER = "r2-release";
 export const PUBLIC_STABLE_PROVIDER = "github-release";
+export const ARTIFACT_ORIGIN = "https://download.couchmode.app";
+export const STABLE_DESTINATION = "https://couchmode.app/download";
+export const PREVIEW_DESTINATION = "https://couchmode.app/download?channel=preview";
 export const PUBLICATION_STATES = ["ready", "blocked", "superseded", "revoked"];
 // Exactly the fields src/UpdateCheck.cs reads (New-CmLatestJson's set, minus generatedUtc).
 export const MANIFEST_FIELDS = ["latestVersion", "latestVersionNumeric", "minimumSupportedVersionNumeric",
   "downloadPageUrl", "sha256", "critical"];
 const PREVIEW_PAIR = "channel=preview";
+const SHA256 = /^[0-9A-Fa-f]{64}$/;
+// The version shape the app's artifact rule accepts (UpdateCore.ReleaseVersionRe): lowercase label,
+// no leading zeros, prerelease number 1..999 (the version scheme), components up to 5 digits.
+const ARTIFACT_VERSION = /^(0|[1-9]\d{0,4})\.(0|[1-9]\d{0,4})\.(0|[1-9]\d{0,4})(-[a-z]{1,16}\.(0|[1-9]\d{0,2}))?$/;
+
+/** The ONLY artifact URL for a version (mirrors UpdateCore.ArtifactUrlFor in the app). null = not a valid shape. */
+export function artifactUrlFor(version) {
+  if (typeof version !== "string" || !ARTIFACT_VERSION.test(version)) return null;
+  return `${ARTIFACT_ORIGIN}/releases/${version}/CouchMode-Setup-${version}.exe`;
+}
 
 // ---- destinations (mirror src/UpdateDownloadUrl.cs: https, exact host, no userinfo) ----
 
@@ -108,8 +121,8 @@ export function validateHandoff(h) {
     e.push(`updaterExpectations.latestVersionNumeric ${ux.latestVersionNumeric} != release.versionNumeric ${r.versionNumeric}`);
   if (!ux.sha256) e.push("updaterExpectations.sha256 is empty");
   if (!isOfficialDestination(ux.downloadPageUrl)) e.push(`downloadPageUrl is not https://couchmode.app: ${ux.downloadPageUrl}`);
-  else if (slot === "preview" && !isPreviewDestination(ux.downloadPageUrl))
-    e.push(`a preview's downloadPageUrl must be preview-aware (...?${PREVIEW_PAIR}), got ${ux.downloadPageUrl}: it would send preview users to the stable download`);
+  else if (slot === "preview" && ux.downloadPageUrl !== PREVIEW_DESTINATION)
+    e.push(`a preview's downloadPageUrl must be exactly ${PREVIEW_DESTINATION}, got ${ux.downloadPageUrl}`);
   else if (slot === "stable" && isPreviewDestination(ux.downloadPageUrl))
     e.push(`a stable's downloadPageUrl must not be the preview destination: ${ux.downloadPageUrl}`);
 
@@ -117,21 +130,23 @@ export function validateHandoff(h) {
   const ready = r.websitePublicationState === "ready";
   if (wi.slot !== slot) e.push(`websiteIntent.slot ${JSON.stringify(wi.slot)} != release.updateChannel "${slot}"`);
   const art = h.artifact;
-  if (slot === "preview") {
-    for (const x of previewNeverPublicErrors(h)) e.push(x);
-    return e;
+  if (slot === "preview") for (const x of previewArtifactErrors(h)) e.push(x);
+  else {
+    // STABLE: never carries a preview marker.
+    if (wi.visibility !== undefined)
+      e.push(`a stable handoff must not carry websiteIntent.visibility (${JSON.stringify(wi.visibility)}): that marks a preview occupying the stable slot`);
+    if (art && art.provider === PREVIEW_ARTIFACT_PROVIDER)
+      e.push(`a stable release must use the public "${PUBLIC_STABLE_PROVIDER}" provider, not "${PREVIEW_ARTIFACT_PROVIDER}": that marks a preview occupying the stable slot`);
   }
-  // STABLE: never carries a preview marker.
-  if (wi.visibility !== undefined)
-    e.push(`a stable handoff must not carry websiteIntent.visibility (${JSON.stringify(wi.visibility)}): that marks a preview occupying the stable slot`);
-  if (art && art.provider === PRIVATE_PREVIEW_PROVIDER)
-    e.push(`a stable release must use the public "${PUBLIC_STABLE_PROVIDER}" provider, not "${PRIVATE_PREVIEW_PROVIDER}": that marks a preview occupying the stable slot`);
+  const want = intentFor(r.version, ready, slot, []);
+  if (slot === "preview" && wi.visibility !== PREVIEW_VISIBILITY)
+    e.push(`a preview's websiteIntent.visibility must be "${PREVIEW_VISIBILITY}", got ${JSON.stringify(wi.visibility)}`);
   const cd = wi.currentDownload || {};
-  if (cd.slot !== slot || cd.version !== r.version || cd.action !== (ready ? "enable" : "disable"))
-    e.push(`websiteIntent.currentDownload must be { slot: "${slot}", version: "${r.version}", action: "${ready ? "enable" : "disable"}" }, got ${JSON.stringify(cd)}`);
+  if (JSON.stringify(cd) !== JSON.stringify(want.currentDownload))
+    e.push(`websiteIntent.currentDownload must be ${JSON.stringify(want.currentDownload)}, got ${JSON.stringify(cd)}`);
   const cf = wi.currentFeed || {};
-  if (cf.slot !== slot || cf.file !== FEED_FOR_SLOT[slot] || cf.action !== (ready ? "publish" : "withhold"))
-    e.push(`websiteIntent.currentFeed must be { slot: "${slot}", file: "${FEED_FOR_SLOT[slot]}", action: "${ready ? "publish" : "withhold"}" }, got ${JSON.stringify(cf)}`);
+  if (JSON.stringify(cf) !== JSON.stringify(want.currentFeed))
+    e.push(`websiteIntent.currentFeed must be ${JSON.stringify(want.currentFeed)}, got ${JSON.stringify(cf)}`);
   if (!Array.isArray(wi.priorDownloads)) e.push("websiteIntent.priorDownloads must be an array");
   else for (const p of wi.priorDownloads) {
     const pv = p && p.version;
@@ -148,52 +163,43 @@ export function validateHandoff(h) {
   return e;
 }
 
-/** The exact never-public preview intent (schema v3 extension, 2026-10-10). */
-export function previewNeverPublicIntent(version) {
+/** The slot-scoped intent exactly as New-CmWebsiteIntent (publish-release.lib.ps1) builds it. */
+export function intentFor(version, ready, slot, priors = []) {
   return {
-    slot: "preview",
-    visibility: PREVIEW_VISIBILITY,
-    currentDownload: { slot: "preview", version, action: "none" },
-    currentFeed: { slot: "preview", file: null, action: "none" },
-    priorDownloads: [],
+    slot,
+    ...(slot === "preview" ? { visibility: PREVIEW_VISIBILITY } : {}),
+    currentDownload: { slot, version, action: ready ? "enable" : "disable" },
+    currentFeed: { slot, file: FEED_FOR_SLOT[slot], action: ready ? "publish" : "withhold" },
+    priorDownloads: priors.map((v) => ({ version: v, slot, action: "disable", preserveHistory: true })),
     releaseHistory: "preserve",
   };
 }
 
-/** Every way a preview handoff would expose something publicly. Empty = it is never-public. */
-export function previewNeverPublicErrors(h) {
+/** The preview artifact: the one public R2 object for this version, no GitHub identity. */
+export function previewArtifactErrors(h) {
   const e = [];
   const r = (h && h.release) || {};
-  const wi = (h && h.websiteIntent) || {};
-  const want = previewNeverPublicIntent(r.version);
-  if (r.updateFeed !== null)
-    e.push(`a preview has no public feed: release.updateFeed must be null, got ${JSON.stringify(r.updateFeed)} (beta.json is retired)`);
-  if (wi.visibility !== PREVIEW_VISIBILITY)
-    e.push(`a preview's websiteIntent.visibility must be "${PREVIEW_VISIBILITY}", got ${JSON.stringify(wi.visibility)}`);
-  const cd = wi.currentDownload || {};
-  if (JSON.stringify(cd) !== JSON.stringify(want.currentDownload))
-    e.push(`a preview must never enable a public download: websiteIntent.currentDownload must be ${JSON.stringify(want.currentDownload)}, got ${JSON.stringify(cd)}`);
-  const cf = wi.currentFeed || {};
-  if (JSON.stringify(cf) !== JSON.stringify(want.currentFeed))
-    e.push(`a preview must never publish a feed (beta.json): websiteIntent.currentFeed must be ${JSON.stringify(want.currentFeed)}, got ${JSON.stringify(cf)}`);
-  if (!Array.isArray(wi.priorDownloads) || wi.priorDownloads.length)
-    e.push("a preview handoff must not instruct any website download transition: websiteIntent.priorDownloads must be []");
-  if (wi.releaseHistory !== "preserve") e.push(`websiteIntent.releaseHistory must be "preserve"`);
+  const ux = (h && h.updaterExpectations) || {};
+  const ready = r.websitePublicationState === "ready";
+  const expected = artifactUrlFor(r.version);
+  if (!expected) e.push(`a preview version must fit the artifact rule (lowercase label, X.Y.Z-label.N): ${r.version}`);
   const art = h && h.artifact;
-  if (art !== undefined) {
-    if (!art || art.provider !== PRIVATE_PREVIEW_PROVIDER)
-      e.push(`a preview artifact must use the private "${PRIVATE_PREVIEW_PROVIDER}" provider, got ${JSON.stringify(art && art.provider)} (a public GitHub asset is never allowed for a preview)`);
-    if (!art || art.url !== null)
-      e.push(`a preview must never expose artifact.url (got ${JSON.stringify(art && art.url)})`);
+  if (!art || typeof art !== "object") e.push("a preview handoff must carry its artifact");
+  else {
+    if (art.provider !== PREVIEW_ARTIFACT_PROVIDER)
+      e.push(`a preview artifact must use the "${PREVIEW_ARTIFACT_PROVIDER}" provider, got ${JSON.stringify(art.provider)} (a GitHub release asset is never used for a preview)`);
+    if (art.filename !== `CouchMode-Setup-${r.version}.exe`) e.push(`a preview artifact filename must be CouchMode-Setup-${r.version}.exe`);
+    if (ready && art.url !== expected) e.push(`a ready preview's artifact.url must be exactly ${expected}, got ${JSON.stringify(art.url)}`);
+    if (!ready && art.url !== null) e.push(`a non-ready preview's artifact.url must be null, got ${JSON.stringify(art.url)}`);
+    if (!SHA256.test(art.sha256 ?? "")) e.push("a preview artifact needs a 64-hex sha256");
+    else if (String(art.sha256).toLowerCase() !== String(ux.sha256 ?? "").toLowerCase())
+      e.push("a preview artifact sha256 must equal updaterExpectations.sha256");
+    if (!Number.isSafeInteger(art.sizeBytes) || art.sizeBytes <= 0) e.push("a preview artifact needs a positive sizeBytes");
   }
   const g = h && h.github;
   if (g && (g.published || g.tag || g.releaseId))
-    e.push("a preview must never have a GitHub release identity: previews are not published on GitHub");
-  const blob = JSON.stringify(h);
-  if (/"installerUrl"\s*:\s*"/.test(blob)) e.push("a preview handoff must never carry an installerUrl");
-  if (/"(privateObjectKey|objectKey|privateKey|r2Key)"\s*:/.test(blob))
-    e.push("a preview handoff must never carry the private artifact key: it stays in internal release metadata");
-  if (/releases\/download\//.test(blob)) e.push("a preview handoff must never carry a public release-asset URL");
+    e.push("a preview must never have a GitHub release identity: previews are served from R2, not GitHub Releases");
+  if (/releases\/download\//.test(JSON.stringify(h))) e.push("a preview handoff must never carry a GitHub release-asset URL");
   return e;
 }
 
@@ -201,8 +207,6 @@ export function previewNeverPublicErrors(h) {
 export function feedEligibility(h) {
   const errors = validateHandoff(h);
   if (errors.length) return { eligible: false, reason: `invalid handoff: ${errors[0]}` };
-  if (h.release.updateChannel === "preview")
-    return { eligible: false, reason: `${h.release.version} is a preview: previews are never public and populate no public feed` };
   if (h.release.websitePublicationState !== "ready")
     return { eligible: false, reason: `${h.release.version} is ${h.release.websitePublicationState}; only a ready release populates ${h.release.updateFeed}` };
   return { eligible: true, reason: "ready" };
@@ -211,6 +215,10 @@ export function feedEligibility(h) {
 // ---- the two slots, applied in publication order ----
 
 export function emptyState() { return { stable: null, preview: null, highestNumeric: null }; }
+
+const sameArtifact = (a, b) => !!a && !!b
+  && String(a.updaterExpectations.sha256).toLowerCase() === String(b.updaterExpectations.sha256).toLowerCase()
+  && (a.artifact?.sizeBytes ?? null) === (b.artifact?.sizeBytes ?? null);
 
 /**
  * Apply one handoff to the current state, the way Web Dev applies them: in order, one at a time.
@@ -223,11 +231,6 @@ export function applyHandoff(state, h) {
   const slot = r.updateChannel;
   const other = slot === "stable" ? "preview" : "stable";
 
-  // A (valid, therefore never-public) preview changes nothing on the public website.
-  if (slot === "preview")
-    return { state, accepted: true, errors: [],
-      change: `ignored: ${r.version} is a preview; previews are never public and change no website state` };
-
   if (r.websitePublicationState !== "ready") {
     // G3: never populates a feed. It can only WITHDRAW its own slot's current release.
     if (state[slot] && state[slot].release.version === r.version)
@@ -236,9 +239,16 @@ export function applyHandoff(state, h) {
     return { state, accepted: true, errors: [], change: `withheld: ${r.version} is ${r.websitePublicationState} and populates no feed` };
   }
 
+  // PROMOTION: a stable handoff for the current preview's own version and IDENTICAL artifact moves the
+  // same build to the standard channel. Different bytes for that version are a rejection.
+  const promoting = slot === "stable" && !!state.preview && state.preview.release.version === r.version;
+  if (promoting && !sameArtifact(state.preview, h))
+    return { state, accepted: false, change: "rejected", errors: [
+      `promotion of ${r.version} must use the identical artifact (sha256 and size) that was offered as the preview`] };
+
   // Re-issuing the slot's CURRENT release (same version) is idempotent; anything else must move forward.
   const reissue = !!(state[slot] && state[slot].release.version === r.version);
-  if (!reissue && state.highestNumeric && compareNumeric(r.versionNumeric, state.highestNumeric) !== 1)
+  if (!reissue && !promoting && state.highestNumeric && compareNumeric(r.versionNumeric, state.highestNumeric) !== 1)
     return { state, accepted: false, change: "rejected", errors: [
       `G2: ${r.version} (${r.versionNumeric}) is not newer than ${state.highestNumeric}, the highest release already published; release order must never regress across channels`] };
 
@@ -252,10 +262,10 @@ export function applyHandoff(state, h) {
 
   const next = { ...state, [slot]: h };
   if (!state.highestNumeric || compareNumeric(r.versionNumeric, state.highestNumeric) === 1) next.highestNumeric = r.versionNumeric;
-  let change = `${slot} slot -> ${r.version}`;
+  let change = promoting ? `promoted: ${r.version} (same artifact) moves from the preview to the stable slot` : `${slot} slot -> ${r.version}`;
   if (slot === "stable" && next.preview
       && compareNumeric(next.preview.release.versionNumeric, r.versionNumeric) !== 1) {
-    change += `; preview ${next.preview.release.version} retired (a newer stable supersedes it)`;
+    if (!promoting) change += `; preview ${next.preview.release.version} retired (a newer stable supersedes it)`;
     next.preview = null;
   }
   return { state: next, accepted: true, errors: [], change };
@@ -285,10 +295,11 @@ export function manifestOf(h) {
  */
 export function planFeeds(state) {
   const s = state && state.stable && feedEligibility(state.stable).eligible ? state.stable : null;
-  // beta.json is retired: it is planned absent unconditionally, whatever the preview slot holds.
+  const p = state && state.preview && feedEligibility(state.preview).eligible ? state.preview : null;
+  const previewIsAhead = p && (!s || compareNumeric(p.release.versionNumeric, s.release.versionNumeric) === 1);
   return {
     "latest.json": s ? manifestOf(s) : null,
-    "beta.json": null,
+    "beta.json": previewIsAhead ? manifestOf(p) : null,
   };
 }
 
@@ -297,8 +308,7 @@ export function planFeeds(state) {
 /** Write the planned feeds into dir; DELETE any planned-absent file (a stale beta.json). */
 export function writeFeeds(dir, plan, extra = {}) {
   const written = [], removed = [];
-  for (const name of [...PUBLIC_FEEDS, ...RETIRED_FEEDS]) {
-    if (RETIRED_FEEDS.includes(name) && plan[name]) throw new Error(`${name} is retired and can never be written (previews are never public)`);
+  for (const name of PUBLIC_FEEDS) {
     const path = join(dir, name);
     const manifest = plan[name];
     if (manifest) {
@@ -315,16 +325,14 @@ export function writeFeeds(dir, plan, extra = {}) {
 /** Every way the feed files in dir disagree with the plan. Empty = they match. */
 export function verifyFeeds(dir, plan) {
   const e = [];
-  for (const name of [...PUBLIC_FEEDS, ...RETIRED_FEEDS]) {
+  for (const name of PUBLIC_FEEDS) {
     const path = join(dir, name);
-    const want = RETIRED_FEEDS.includes(name) ? null : plan[name];
+    const want = plan[name];
     if (!want) {
       if (existsSync(path)) {
         let shown = "";
         try { shown = readFileSync(path, "utf8").replace(/\s+/g, " ").slice(0, 80); } catch { /* unreadable */ }
-        e.push(RETIRED_FEEDS.includes(name)
-          ? `${name} must never exist (retired: previews are never public), but it does: ${shown}`
-          : `${name} must not exist (no current stable), but it does: ${shown}`);
+        e.push(`${name} must not exist (no current ${name === "beta.json" ? "preview" : "stable"}), but it does: ${shown}`);
       }
       continue;
     }

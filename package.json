@@ -11,7 +11,6 @@
     "prepare:handoff": "node scripts/prepare-release-handoff.mjs",
     "test:release-handoff": "node scripts/test-release-handoff.mjs",
     "test:preview-publication": "node scripts/test-preview-publication.mjs",
-    "prepare:preview": "node scripts/prepare-preview.mjs",
     "verify:preview-artifact": "node scripts/verify-preview-artifact.mjs",
     "test:public-beta-copy": "bun scripts/test-public-beta-copy.ts",
     "dev": "bun scripts/gen-sitemap.mjs && vite dev",
