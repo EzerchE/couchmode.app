@@ -1,8 +1,10 @@
 import { rc15Editorial } from "../../rc15-editorial";
+import { rc16Editorial } from "../../rc16-editorial";
 import type { ReleaseEditorialOverlay } from "../../release-editorial";
 
 export const spanishReleaseEditorialOverlay: ReleaseEditorialOverlay = {
   entries: [
+    { version: "0.6.0-rc.16", ...rc16Editorial["es"] },
     { version: "0.6.0-rc.15", ...rc15Editorial["es"] },
     {
       version: "0.6.0-rc.10",

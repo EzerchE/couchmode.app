@@ -1,9 +1,11 @@
 import { rc15Editorial } from "../../rc15-editorial";
+import { rc16Editorial } from "../../rc16-editorial";
 import type { ReleaseEditorialOverlay } from "../../release-editorial";
 
 // Versions join editorial copy to releases.json; binary facts stay in that source.
 export const koreanReleaseEditorial = {
   entries: [
+    { version: "0.6.0-rc.16", ...rc16Editorial["ko"] },
     { version: "0.6.0-rc.15", ...rc15Editorial["ko"] },
     {
       version: "0.6.0-rc.10",

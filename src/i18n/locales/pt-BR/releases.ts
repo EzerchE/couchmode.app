@@ -1,9 +1,11 @@
 import { rc15Editorial } from "../../rc15-editorial";
+import { rc16Editorial } from "../../rc16-editorial";
 import type { ReleaseEditorialOverlay } from "../../release-editorial";
 
 // Factual release fields stay in releases.json; version is only the join key.
 export const brazilianPortugueseReleaseEditorialOverlay = {
   entries: [
+    { version: "0.6.0-rc.16", ...rc16Editorial["pt-BR"] },
     { version: "0.6.0-rc.15", ...rc15Editorial["pt-BR"] },
     {
       version: "0.6.0-rc.10",

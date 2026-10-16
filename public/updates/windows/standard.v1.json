@@ -1,0 +1,10 @@
+{
+  "payloadType": "application/vnd.couchmode.release-statement.v1+json",
+  "payload": "eyJzY2hlbWEiOjEsInByb2R1Y3QiOiJDb3VjaE1vZGUiLCJwbGF0Zm9ybSI6IndpbmRvd3MteDY0IiwiY2hhbm5lbCI6InN0YW5kYXJkIiwidmVyc2lvbiI6IjAuNi4wLXJjLjE2IiwidmVyc2lvbk51bWVyaWMiOiIwLjYuMC4xNiIsInNlcXVlbmNlIjoxLCJhcnRpZmFjdCI6eyJmaWxlTmFtZSI6IkNvdWNoTW9kZS1TZXR1cC0wLjYuMC1yYy4xNi5leGUiLCJzaXplQnl0ZXMiOjMxNDE4MTUsInNoYTI1NiI6IjQwMDlFNjQ5NzE2QzAwNUZDQkZBMjZFQjJCNDBGODlERUIxM0JEQzIzODkzMEU3RUUyMjlFQTVGOUYxODg4NkQifSwic291cmNlQ29tbWl0IjoiMjYzM2E4MDRjZGZjZDE3Mzk4OGM3MzNhZGEyMWYzMDZiZDk5ZmIzNiIsImlzc3VlZFV0YyI6IjIwMjYtMTAtMTVUMTA6MDI6NTFaIn0=",
+  "signatures": [
+    {
+      "keyid": "cm-release-2026a",
+      "sig": "nAV+twK2JnKYAkEzFFB6Vq+67k4BNoSorJjXp+VC2d66WKriY6VIZG6JlvSbmDQ5vUpHWEA+7Cs13uDm5+Zk5Q=="
+    }
+  ]
+}

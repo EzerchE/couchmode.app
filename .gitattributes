@@ -1,0 +1,2 @@
+# Signed update feeds are published byte for byte (App Dev offline-signed statements): never convert line endings.
+public/updates/windows/*.v1.json -text binary

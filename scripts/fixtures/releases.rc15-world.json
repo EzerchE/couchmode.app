@@ -1,0 +1,243 @@
+[
+  {
+    "version": "0.6.0-rc.15",
+    "versionNumeric": "0.6.0.15",
+    "fileVersion": "0.6.0.15",
+    "channel": "standalone",
+    "releaseChannel": "beta",
+    "updateChannel": "stable",
+    "publicationState": "ready",
+    "releasedAt": "2026-10-09T16:02:48Z",
+    "sha256": "E2A72322800688D92CE491FC99B3A7DAEBD68A1A423C659BC215A72252365FF3",
+    "sizeBytes": 3131679,
+    "signed": false,
+    "critical": false,
+    "mandatory": false,
+    "minimumSupportedVersion": "0.4.10.30",
+    "minimumSupportedVersionNumeric": "0.4.10.30",
+    "downloadPageUrl": "https://couchmode.app/download",
+    "installerUrl": "https://github.com/EzerchE/couchmode-releases/releases/download/v0.6.0-rc.15/CouchMode-Setup-0.6.0-rc.15.exe",
+    "downloadEnabled": true,
+    "summary": "CouchMode 0.6.0-rc.15",
+    "notes": [
+      "Every CouchMode feature is now free during the public beta, including custom launchers and the deeper automation options that used to need Pro.",
+      "Trial countdowns and trial-ended notices are gone. The sidebar and About now show Public beta, or your supporter status if you support CouchMode on Patreon.",
+      "New Support CouchMode option: join on Patreon, connect an existing Patreon membership, or support once with Buy Me a Coffee. A one-time coffee is a thank-you and does not unlock anything.",
+      "Patreon supporters can turn on Enable beta updates to get preview builds in the app before the standard release. If a membership lapses, preview updates pause and standard releases continue, and nothing is downgraded.",
+      "Connecting Patreon is more reliable when the CouchMode service is slow to respond, and a second attempt can no longer start a duplicate sign-in.",
+      "Check Xbox full-screen support now stays available after Xbox full-screen mode was marked unavailable, so you can re-check it at any time outside a session.",
+      "CouchMode now ships the third-party license notices for the components it includes."
+    ],
+    "knownIssues": [
+      "Xbox Mode availability depends on your Windows version, device support, Xbox app support, region, and Microsoft's rollout status.",
+      "Native PlayStation controllers are not currently supported as direct CouchMode session triggers. Controllers exposed to Windows as XInput through a compatibility layer may work."
+    ]
+  },
+  {
+    "version": "0.6.0-rc.10",
+    "versionNumeric": "0.6.0.10",
+    "fileVersion": "0.6.0.10",
+    "channel": "standalone",
+    "releasedAt": "2026-08-30T00:00:00Z",
+    "sha256": "472C739FE93C8AA59650D2863A4457ACEB3454729173AC0E570FD1871329D9F9",
+    "sizeBytes": 3125072,
+    "signed": true,
+    "critical": false,
+    "minimumSupportedVersion": "0.4.10-beta.30",
+    "minimumSupportedVersionNumeric": "0.4.10.30",
+    "downloadPageUrl": "https://couchmode.app/download",
+    "installerUrl": null,
+    "summary": "Improved Xbox full-screen startup, handheld detection, Playnite compatibility, and update reliability.",
+    "notes": [
+      "Improved Xbox full-screen experience startup reliability on handheld PCs.",
+      "Improved controller and handheld detection across different Windows devices.",
+      "Improved Xbox full-screen session entry, focus, and desktop return reliability.",
+      "CouchMode now handles custom and portable Playnite installation locations more reliably.",
+      "Improved update-check behaviour and clearer update messaging.",
+      "Unified Xbox full-screen support checking in Settings.",
+      "General reliability improvements."
+    ],
+    "knownIssues": [],
+    "downloadEnabled": false
+  },
+  {
+    "version": "0.6.0-rc.9",
+    "versionNumeric": "0.6.0.9",
+    "fileVersion": "0.6.0.9",
+    "channel": "standalone",
+    "releasedAt": "2026-08-26T00:00:00Z",
+    "sha256": "365CF469A4675D308D5DBE119961F0FAC4168C3BB98D3F1EDF87400D26C6C7C6",
+    "sizeBytes": 3120728,
+    "signed": true,
+    "critical": false,
+    "minimumSupportedVersion": "0.4.10-beta.30",
+    "minimumSupportedVersionNumeric": "0.4.10.30",
+    "downloadPageUrl": "https://couchmode.app/download",
+    "installerUrl": null,
+    "summary": "A smoother path to Pro, more reliable account handling, and better accessibility.",
+    "notes": [
+      "Upgrading to Pro is clearer: one obvious action to get Pro, and the options shown now match your account state.",
+      "If you already have a membership, CouchMode offers to refresh it instead of asking you to connect again.",
+      "Managing your membership is more complete. You can switch to a different account or release this PC at any time, and releasing a PC now asks for confirmation first.",
+      "Signing in now finishes reliably even if you close the CouchMode window while it is still in progress.",
+      "CouchMode now respects the Windows reduced-motion setting across the whole app.",
+      "Fixed the Pro badge on the custom launcher option so it opens the upgrade prompt correctly."
+    ],
+    "knownIssues": [
+      "Xbox Mode availability depends on your Windows version, device support, Xbox app support, region, and Microsoft rollout status.",
+      "PlayStation controllers cannot currently start or end CouchMode sessions, because Windows does not expose their connection state through XInput.",
+      "On some handhelds and laptops a built-in controller is intentionally ignored as a session trigger, so an external controller may be required."
+    ],
+    "downloadEnabled": false
+  },
+  {
+    "version": "0.6.0-rc.8",
+    "versionNumeric": "0.6.0.8",
+    "fileVersion": "0.6.0.8",
+    "channel": "standalone",
+    "releasedAt": "2026-08-18T00:00:00Z",
+    "sha256": "A7F33F1295C2BB370ED8F0E2590D2D5CCB138343F9FC02CA43CB536F42464765",
+    "sizeBytes": 3117040,
+    "signed": true,
+    "critical": false,
+    "minimumSupportedVersion": "0.4.10-beta.30",
+    "minimumSupportedVersionNumeric": "0.4.10.30",
+    "downloadPageUrl": "https://couchmode.app/download",
+    "installerUrl": null,
+    "summary": "Steam Big Picture and Playnite Fullscreen are now free, alongside the Xbox full-screen experience. Custom launchers, Resource Control and Session Tweaks remain Pro.",
+    "notes": [
+      "Steam Big Picture and Playnite Fullscreen are now available without Pro, alongside the Xbox full-screen experience.",
+      "Custom launchers, Resource Control and Session Tweaks remain Pro features.",
+      "Pre-existing Steam Big Picture sessions are preserved when the CouchMode session ends.",
+      "More reliable Playnite handling: an already-open Playnite is recognised, including a minimized window, adopted instead of starting a second copy, and preserved when the CouchMode session ends.",
+      "More reliable custom launchers: better focus handling, clearer process ownership and cleaner shutdown.",
+      "Custom launchers now start in their own folder, so launchers that expect to run from their install directory work correctly.",
+      "A launcher counts as ready only when one of its real windows is in front, so the controller can actually drive it.",
+      "Improved Xbox full-screen detection across desktop PCs and Windows handhelds.",
+      "Fixed cases where supported devices could appear unsupported or ask to be verified repeatedly.",
+      "More accurate built-in and external controller detection, based on how a controller is connected rather than who made it.",
+      "Clearer messaging when Windows does not present a controller as an Xbox (XInput) controller.",
+      "More reliable Resource Control: better detection of the apps you selected, more dependable closing and reopening, and more accurate reporting of what was actually closed.",
+      "More reliable Launch on Enter, Close on Exit, Launch on Exit and Display on Exit.",
+      "Safer return to your desktop when a session ends.",
+      "Improved diagnostics and problem reporting.",
+      "General update and session reliability improvements."
+    ],
+    "knownIssues": [
+      "Devices can only be released from the PC they are on; there is no in-app option to sign out of all devices.",
+      "Experimental: Xbox Full-Screen Experience depends on Windows system behavior. On some devices, controller navigation may not receive focus automatically and may require pressing the Xbox button once."
+    ],
+    "downloadEnabled": false
+  },
+  {
+    "version": "0.4.10-beta.191",
+    "versionNumeric": "0.4.10.191",
+    "fileVersion": "0.4.10.191",
+    "channel": "standalone",
+    "releasedAt": "2026-08-08T00:00:00Z",
+    "sha256": "C6B1B4CE9AB8512DD8E4DB8F77404862D863662BDFC7D3C5E9EB33143EF572D0",
+    "sizeBytes": 3102232,
+    "signed": true,
+    "critical": false,
+    "minimumSupportedVersion": "0.4.10-beta.30",
+    "minimumSupportedVersionNumeric": "0.4.10.30",
+    "downloadPageUrl": "https://couchmode.app/download",
+    "installerUrl": null,
+    "summary": "Plug in a controller and Steam Big Picture, Playnite or the app you chose opens full screen; unplug it and CouchMode closes the session and brings the desktop back.",
+    "notes": [
+      "Improved Xbox full-screen detection across desktop PCs and Windows handhelds.",
+      "Fixed cases where supported devices could incorrectly appear as unsupported or require repeated verification.",
+      "Improved reliability when entering, leaving, and returning from Xbox full-screen sessions.",
+      "Improved detection of built-in and external controllers, including external controllers that could be treated as integrated handheld controllers.",
+      "Improved desktop restoration after a gaming session; CouchMode now avoids unnecessarily changing windows that are already accessible.",
+      "Improved diagnostic information available with bug reports.",
+      "Improved update-state handling and general reliability."
+    ],
+    "knownIssues": [
+      "Devices can only be released from the PC they are on; there is no in-app option to sign out of all devices.",
+      "Experimental: Xbox Full-Screen Experience depends on Windows system behavior. On some devices, controller navigation may not receive focus automatically and may require pressing the Xbox button once."
+    ],
+    "downloadEnabled": false
+  },
+  {
+    "version": "0.4.10-beta.190",
+    "versionNumeric": "0.4.10.190",
+    "fileVersion": "0.4.10.190",
+    "channel": "standalone",
+    "releasedAt": "2026-08-05T00:00:00Z",
+    "sha256": "347FE4D4FF4DE135C5C16FA129B98B11880D77CA70962630298CB6DC473CEBCB",
+    "sizeBytes": 3094832,
+    "signed": true,
+    "critical": false,
+    "minimumSupportedVersion": "0.4.10-beta.30",
+    "minimumSupportedVersionNumeric": "0.4.10.30",
+    "downloadPageUrl": "https://couchmode.app/download",
+    "installerUrl": null,
+    "summary": "Plug in a controller and Steam Big Picture, Playnite or the app you chose opens full screen; unplug it and CouchMode closes the session and brings the desktop back.",
+    "notes": [
+      "Fixed an issue that could prevent Exit from responding from the tray menu.",
+      "Improved the reliability of keeping open applications running and accessible after leaving Xbox mode.",
+      "Improved safe recovery for windows that could otherwise remain off-screen or unusable.",
+      "Improved built-in and external controller detection on handheld devices.",
+      "Improved desktop-return verification and overall session stability.",
+      "General reliability improvements."
+    ],
+    "knownIssues": [
+      "Devices can only be released from the PC they are on; there is no in-app option to sign out of all devices.",
+      "Experimental: Xbox Full-Screen Experience depends on Windows system behavior. On some devices, controller navigation may not receive focus automatically and may require pressing the Xbox button once."
+    ],
+    "downloadEnabled": false
+  },
+  {
+    "version": "0.4.10-beta.183",
+    "versionNumeric": "0.4.10.183",
+    "fileVersion": "0.4.10.183",
+    "channel": "standalone",
+    "releasedAt": "2026-07-31T00:00:00Z",
+    "sha256": "96DA0200919D927B2325FE4F90F65A1F142AA33D1FC21F4361DF707E4E5C67E5",
+    "sizeBytes": 3079696,
+    "signed": true,
+    "critical": false,
+    "minimumSupportedVersion": "0.4.10-beta.30",
+    "minimumSupportedVersionNumeric": "0.4.10.30",
+    "downloadPageUrl": "https://couchmode.app/download",
+    "installerUrl": null,
+    "summary": "Plug in a controller and Steam Big Picture, Playnite or the app you chose opens full screen; unplug it and CouchMode closes the session and brings the desktop back.",
+    "notes": [
+      "Steam Big Picture, Playnite fullscreen and a custom app of your choice are sessions CouchMode owns: they close reliably when the controller disconnects, and the desktop comes back.",
+      "The return to the desktop is verified on every exit, not assumed.",
+      "Optional Resource Control closes the apps you selected for the session and reopens them afterwards. It works from a list frozen before the session starts, so nothing you open later is ever touched.",
+      "General reliability improvements for Pro access, membership checks, and startup licensing.",
+      "Pricing, the 7-day trial, offline grace, tiers and device limits are unchanged."
+    ],
+    "knownIssues": [
+      "Devices can only be released from the PC they are on; there is no in-app option to sign out of all devices.",
+      "Experimental: Xbox Full-Screen Experience depends on Windows system behavior. On some devices, controller navigation may not receive focus automatically and may require pressing the Xbox button once."
+    ],
+    "downloadEnabled": false
+  },
+  {
+    "version": "0.4.10-beta.45",
+    "versionNumeric": "0.4.10.45",
+    "fileVersion": "0.4.10.45",
+    "channel": "standalone",
+    "releasedAt": "2026-06-25T00:00:00Z",
+    "sha256": "3FA4E82C3CBAA9CBBE3F81130432FA3326FF37DE2EE8952C01983A7FB40D1CA2",
+    "sizeBytes": null,
+    "critical": false,
+    "minimumSupportedVersion": "0.4.10-beta.30",
+    "downloadPageUrl": "https://couchmode.app/download",
+    "installerUrl": null,
+    "summary": "Report sending, update checks, calmer Xbox full-screen unavailable state, and CouchMode branding updates.",
+    "notes": [
+      "Report a problem can send user-approved reports.",
+      "Update check added.",
+      "Xbox full-screen unavailable state is calmer and persistent.",
+      "Installer and app identity use CouchMode branding."
+    ],
+    "knownIssues": ["Public download was not enabled for this build."],
+    "signed": false,
+    "minimumSupportedVersionNumeric": "0.4.10.30",
+    "downloadEnabled": false
+  }
+]

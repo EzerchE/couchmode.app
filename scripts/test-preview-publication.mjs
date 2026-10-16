@@ -19,7 +19,11 @@ import { verifyEnvelope, signedFeedErrors, thumbprint, PAYLOAD_TYPE } from "./li
 import { isOfficialDestination, isPreviewDestination, MANIFEST_FIELDS } from "./lib/app-dev/feed-plan.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const REAL = JSON.parse(readFileSync(join(ROOT, "src/data/releases.json"), "utf8"));
+// The scenarios below (rc.16 as the next preview, its promotion, rc.17...) were written against the
+// release history of 2026-10-11, when 0.6.0-rc.15 was the standard release. That history is frozen in
+// a fixture so the scenarios keep their meaning after later real releases (rc.16 shipped as a standard
+// release on 2026-10-15). Checks of the LIVE repository read src/data and public/ directly.
+const REAL = JSON.parse(readFileSync(join(ROOT, "scripts/fixtures/releases.rc15-world.json"), "utf8"));
 let passed = 0;
 const check = (name, fn) => {
   fn();
@@ -263,9 +267,20 @@ function scratch() {
   const dir = mkdtempSync(join(tmpdir(), "cm-preview-pub-"));
   cpSync(join(ROOT, "scripts"), join(dir, "scripts"), { recursive: true });
   mkdirSync(join(dir, "src/data"), { recursive: true });
+  // Scenario world: the frozen release history, no preview approval and no signed feed approved.
+  writeFileSync(join(dir, "src/data/releases.json"), JSON.stringify(REAL, null, 2) + "\n");
+  writeFileSync(join(dir, "src/data/preview-approval.json"), JSON.stringify({ preview: null }, null, 2) + "\n");
+  writeFileSync(join(dir, "src/data/signed-feeds.json"), JSON.stringify({ "standard.v1.json": null, "preview.v1.json": null }, null, 2) + "\n");
+  mkdirSync(join(dir, "public/updates/windows"), { recursive: true });
+  return dir;
+}
+// The LIVE repository's release data, approvals and approved signed feeds, for the live checks.
+function liveScratch() {
+  const dir = scratch();
   for (const f of ["releases.json", "preview-approval.json", "signed-feeds.json"])
     cpSync(join(ROOT, "src/data", f), join(dir, "src/data", f));
-  mkdirSync(join(dir, "public/updates/windows"), { recursive: true });
+  for (const f of ["standard.v1.json", "preview.v1.json"])
+    if (existsSync(join(ROOT, "public/updates/windows", f))) cpSync(join(ROOT, "public/updates/windows", f), join(dir, "public/updates/windows", f));
   return dir;
 }
 // The committed bytes (the working copy may carry CRLF from core.autocrlf; the generator writes LF).
@@ -289,7 +304,7 @@ function fakeDist(dir, extraHtml = "") {
 const safety = (dir) => node(dir, "validate-release-safety.mjs");
 
 check("standard feed compatibility: with no preview the generated latest.json/releases.json are byte-identical to the repo's", () => {
-  const dir = scratch();
+  const dir = liveScratch();
   try {
     const r = node(dir, "gen-releases.mjs");
     assert.equal(r.status, 0, r.stderr);
@@ -506,12 +521,18 @@ for (const rel of ["public/preview.html", "public/download/preview.html"]) {
 }
 
 // ---- 9. the repository default --------------------------------------------------------------------
-check("repository default: no preview approved, no signed feed approved, no beta.json in public/", () => {
+// Since rc.16 (2026-10-15) the standard signed feed is published: it must be exactly the owner-approved
+// file and name what latest.json offers. The preview stays unpublished.
+check("repository state: no preview published; standard.v1.json is exactly the owner-approved file for latest.json", () => {
   assert.equal(JSON.parse(readFileSync(join(ROOT, "src/data/preview-approval.json"), "utf8")).preview, null);
   const sf = JSON.parse(readFileSync(join(ROOT, "src/data/signed-feeds.json"), "utf8"));
-  assert.deepEqual(Object.values(sf), [null, null]);
-  for (const f of ["beta.json", "standard.v1.json", "preview.v1.json"])
+  assert.equal(sf["preview.v1.json"], null, "no preview signed feed approved");
+  for (const f of ["beta.json", "preview.v1.json"])
     assert.ok(!existsSync(join(ROOT, "public/updates/windows", f)), f + " absent");
+  const std = join(ROOT, "public/updates/windows/standard.v1.json");
+  const latest = JSON.parse(readFileSync(join(ROOT, "public/updates/windows/latest.json"), "utf8"));
+  if (sf["standard.v1.json"] === null) assert.ok(!existsSync(std), "no approval -> no standard.v1.json");
+  else assert.deepEqual(signedFeedErrors("standard.v1.json", readFileSync(std), sf["standard.v1.json"], latest), []);
 });
 
 console.log(`${passed} supporter-first preview publication tests passed (dummy metadata only)`);

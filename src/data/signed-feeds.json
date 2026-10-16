@@ -1,4 +1,22 @@
 {
-  "standard.v1.json": null,
+  "standard.v1.json": {
+    "fileSha256": "69c78e5d8707bb24ff8ca87c35ec8557ee41f52d098cfd2a1da99936dd3797f2",
+    "releaseKeys": [
+      {
+        "keyid": "cm-release-2026a",
+        "x": "7vwDHjUiUYwIMRcZd_gD06n-oy1KFrKx_A95KS79POU",
+        "y": "fKbx4_HGiGSZwzyAtHEISGTX98o-ksBN_yp-NAArc9k",
+        "fingerprint": "Nl0_z8q1uNyf7X-gCJ2vDs0qHEIO7__xtFME5J694yI"
+      },
+      {
+        "keyid": "cm-release-2026b",
+        "x": "Um5OCnhU9-BWB-BpyVPE5eJB4veRPyo8rBWSu7_VKto",
+        "y": "_XOT4Jwm2m7wLJj3q0Wn80WIN8lv5ojUuaiS7YNHjrg",
+        "fingerprint": "9cS779GXjfLg6jxARZGl4lZ49jcDr9pRmHhTzlpdAiI"
+      }
+    ],
+    "approvedBy": "owner",
+    "approvedUtc": "2026-10-16T18:37:01Z"
+  },
   "preview.v1.json": null
 }

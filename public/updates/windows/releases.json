@@ -1,6 +1,37 @@
 [
   {
     "channel": "standalone",
+    "version": "0.6.0-rc.16",
+    "fileVersion": "0.6.0.16",
+    "releasedAt": "2026-10-15T10:32:39Z",
+    "downloadPageUrl": "https://couchmode.app/download",
+    "sha256": "4009E649716C005FCBFA26EB2B40F89DEB13BDC238930E7EE229EA5F9F18886D",
+    "sizeBytes": 3141815,
+    "critical": false,
+    "mandatory": false,
+    "signed": false,
+    "downloadEnabled": true,
+    "installerUrl": "https://github.com/EzerchE/couchmode-releases/releases/download/v0.6.0-rc.16/CouchMode-Setup-0.6.0-rc.16.exe",
+    "minimumSupportedVersion": "0.4.10.30",
+    "minimumSupportedVersionNumeric": "0.4.10.30",
+    "summary": "CouchMode 0.6.0-rc.16",
+    "notes": [
+      "Update now: when a new version is available, CouchMode can download, verify and install it for you, then restart by itself. Nothing is downloaded or installed until you press Update now, and never during a game session.",
+      "Every in-app update is checked before it runs: CouchMode only runs an installer that exactly matches the update published by the CouchMode developer. Anything else is refused before it can run.",
+      "If the download or that check fails, nothing is installed and you keep your current version. You can try again or download the update from the website.",
+      "If the installer itself fails, or you decline a Windows prompt, CouchMode tries to start again by itself and tells you that the update did not install. If an installation is interrupted (for example by a power cut) and CouchMode does not start, download and run the latest installer from couchmode.app to repair it; your settings are kept.",
+      "Start with Windows now works separately for each Windows account: turning it on or off in one account no longer changes another account on the same PC.",
+      "General security and stability improvements."
+    ],
+    "knownIssues": [
+      "The installer is not code-signed. Windows may ask you to confirm before it runs (for example SmartScreen's \"Windows protected your PC\" or a file security warning), both for the website download and for Update now. If you decline, nothing is installed. On PCs where Smart App Control blocks unsigned apps, the update cannot be installed and CouchMode keeps your current version.",
+      "In-app updates start with the version after this one. To get 0.6.0-rc.16 itself, download it from the website.",
+      "Xbox Mode availability depends on your Windows version, device support, Xbox app support, region, and Microsoft's rollout status.",
+      "Native PlayStation controllers are not currently supported as direct CouchMode session triggers. Controllers exposed to Windows as XInput through a compatibility layer may work."
+    ]
+  },
+  {
+    "channel": "standalone",
     "version": "0.6.0-rc.15",
     "fileVersion": "0.6.0.15",
     "releasedAt": "2026-10-09T16:02:48Z",
@@ -10,8 +41,8 @@
     "critical": false,
     "mandatory": false,
     "signed": false,
-    "downloadEnabled": true,
-    "installerUrl": "https://github.com/EzerchE/couchmode-releases/releases/download/v0.6.0-rc.15/CouchMode-Setup-0.6.0-rc.15.exe",
+    "downloadEnabled": false,
+    "installerUrl": null,
     "minimumSupportedVersion": "0.4.10.30",
     "minimumSupportedVersionNumeric": "0.4.10.30",
     "summary": "CouchMode 0.6.0-rc.15",

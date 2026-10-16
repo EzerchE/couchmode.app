@@ -1,9 +1,11 @@
 import { rc15Editorial } from "../../rc15-editorial";
+import { rc16Editorial } from "../../rc16-editorial";
 import type { ReleaseEditorialOverlay } from "../../release-editorial";
 
 // Versions are join keys; release dates, binaries and checksums stay in releases.json.
 export const polishReleaseEditorialOverlay = {
   entries: [
+    { version: "0.6.0-rc.16", ...rc16Editorial["pl"] },
     { version: "0.6.0-rc.15", ...rc15Editorial["pl"] },
     {
       version: "0.6.0-rc.10",
