@@ -302,6 +302,15 @@ function fakeDist(dir, extraHtml = "") {
   writeFileSync(join(dir, "dist/client/index.html"), `<html><body>${links}${extraHtml}</body></html>`);
 }
 const safety = (dir) => node(dir, "validate-release-safety.mjs");
+// latest.json of the scenario world WITHOUT a preview (what a preview must leave unchanged).
+function worldLatest() {
+  const dir = scratch();
+  try {
+    const r = node(dir, "gen-releases.mjs");
+    assert.equal(r.status, 0, r.stderr);
+    return readFileSync(join(feeds(dir), "latest.json"), "utf8");
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+}
 
 check("standard feed compatibility: with no preview the generated latest.json/releases.json are byte-identical to the repo's", () => {
   const dir = liveScratch();
@@ -329,7 +338,7 @@ check("approved preview: beta.json has exactly the rc.15-readable shape; latest.
     assert.equal(beta.downloadPageUrl, PREVIEW_DESTINATION);
     assert.equal(beta.sha256, SHA16);
     assert.ok(!Object.values(beta).some((v) => typeof v === "string" && /\.exe\b/i.test(v)), "no installer URL in the feed");
-    assert.equal(readFileSync(join(feeds(dir), "latest.json"), "utf8"), committed("public/updates/windows/latest.json"));
+    assert.equal(readFileSync(join(feeds(dir), "latest.json"), "utf8"), worldLatest(), "the preview leaves latest.json unchanged");
     const history = JSON.parse(readFileSync(join(feeds(dir), "releases.json"), "utf8"));
     assert.deepEqual(history.map((x) => x.version), withPreview().map((x) => x.version), "history preserved, preview listed");
     fakeDist(dir);
