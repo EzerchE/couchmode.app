@@ -102,6 +102,11 @@ export function trackEvent(name: AnalyticsEventName, properties: AnalyticsProper
 
   const sanitized: Record<string, string> = {};
   const withPage: AnalyticsProperties = { page: getPage(), ...properties };
+  if (name === "patreon_click" || name === "support_coffee_click") {
+    const attribution = getCampaignAttribution();
+    withPage.campaign_id = attribution.campaignId;
+    withPage.attribution_source = attribution.attributionSource;
+  }
 
   for (const [key, value] of Object.entries(withPage)) {
     if (!propertyNames.has(key)) continue;

@@ -7,9 +7,11 @@ export const COFFEE_URL = "https://buymeacoffee.com/ezerche";
 export function SupportActions({
   copy,
   source = "website",
+  placement = source,
 }: {
   copy: SupporterCopy;
   source?: ProUpgradeSource;
+  placement?: ProUpgradeSource | "download_page";
 }) {
   const patreon = patreonMembershipUrlFor(source);
   return (
@@ -17,7 +19,7 @@ export function SupportActions({
       <a
         href={patreon}
         rel="noopener noreferrer"
-        onClick={() => trackEvent("patreon_click", { placement: source, target: patreon })}
+        onClick={() => trackEvent("patreon_click", { placement, target: patreon })}
         className="inline-flex min-w-0 items-center justify-center gap-2 rounded-full bg-aurora px-6 py-3.5 text-center text-sm font-semibold text-primary-foreground glow-violet transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
       >
         <Heart aria-hidden="true" className="h-4 w-4 shrink-0" />
@@ -29,7 +31,7 @@ export function SupportActions({
         target="_blank"
         rel="noopener noreferrer"
         onClick={() =>
-          trackEvent("support_coffee_click", { placement: source, target: COFFEE_URL })
+          trackEvent("support_coffee_click", { placement, target: COFFEE_URL })
         }
         className="inline-flex min-w-0 items-center justify-center gap-2 rounded-full border border-yellow-300/50 bg-yellow-300/10 px-6 py-3.5 text-center text-sm font-semibold text-yellow-200 transition hover:border-yellow-200 hover:bg-yellow-300/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-300 focus-visible:ring-offset-4 focus-visible:ring-offset-background"
       >
@@ -65,7 +67,7 @@ export function SupportPanel({
         </h2>
         <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">{copy.description}</p>
         <div className="mt-7">
-          <SupportActions copy={copy} source={compact ? "website" : "pricing"} />
+          <SupportActions copy={copy} source={compact ? "website" : "pricing"} placement={compact ? "download_page" : "pricing"} />
         </div>
         <p className="mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground">
           {copy.oneTime}
