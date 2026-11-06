@@ -1,6 +1,8 @@
 import type { LocaleId } from "./config";
+import { supportPageCopy, type SupportPageCopy } from "./support-page-copy";
 
 export type SupporterCopy = {
+  page: SupportPageCopy;
   heading: string;
   description: string;
   free: string;
@@ -20,6 +22,7 @@ export type SupporterCopy = {
 
 export const supporterCopy: Record<LocaleId, SupporterCopy> = {
   en: {
+    page: supportPageCopy.en,
     heading: "Support CouchMode",
     description:
       "If CouchMode helps you, you can support continued development, compatibility testing and future improvements.",
@@ -48,6 +51,7 @@ export const supporterCopy: Record<LocaleId, SupporterCopy> = {
     nav: "Support us",
   },
   de: {
+    page: supportPageCopy.de,
     heading: "CouchMode unterstützen",
     description:
       "Wenn CouchMode dir hilft, kannst du die Weiterentwicklung, Kompatibilitätstests und künftige Verbesserungen unterstützen.",
@@ -76,6 +80,7 @@ export const supporterCopy: Record<LocaleId, SupporterCopy> = {
     nav: "Unterstützen",
   },
   tr: {
+    page: supportPageCopy.tr,
     heading: "CouchMode'u destekleyin",
     description:
       "CouchMode işinize yarıyorsa geliştirme çalışmalarına, uyumluluk testlerine ve gelecek iyileştirmelere destek olabilirsiniz.",
@@ -105,6 +110,7 @@ export const supporterCopy: Record<LocaleId, SupporterCopy> = {
     nav: "Destek ol",
   },
   fr: {
+    page: supportPageCopy.fr,
     heading: "Soutenir CouchMode",
     description:
       "Si CouchMode vous est utile, vous pouvez soutenir son développement, les tests de compatibilité et les améliorations à venir.",
@@ -134,6 +140,7 @@ export const supporterCopy: Record<LocaleId, SupporterCopy> = {
     nav: "Soutenir",
   },
   es: {
+    page: supportPageCopy.es,
     heading: "Apoya CouchMode",
     description:
       "Si CouchMode te resulta útil, puedes apoyar su desarrollo, las pruebas de compatibilidad y las futuras mejoras.",
@@ -163,6 +170,7 @@ export const supporterCopy: Record<LocaleId, SupporterCopy> = {
     nav: "Apoyar",
   },
   it: {
+    page: supportPageCopy.it,
     heading: "Sostieni CouchMode",
     description:
       "Se CouchMode ti è utile, puoi sostenere lo sviluppo, i test di compatibilità e i miglioramenti futuri.",
@@ -191,6 +199,7 @@ export const supporterCopy: Record<LocaleId, SupporterCopy> = {
     nav: "Sostieni",
   },
   "pt-BR": {
+    page: supportPageCopy["pt-BR"],
     heading: "Apoie o CouchMode",
     description:
       "Se o CouchMode ajuda você, contribua com o desenvolvimento, os testes de compatibilidade e as próximas melhorias.",
@@ -219,6 +228,7 @@ export const supporterCopy: Record<LocaleId, SupporterCopy> = {
     nav: "Apoiar",
   },
   pl: {
+    page: supportPageCopy.pl,
     heading: "Wesprzyj CouchMode",
     description:
       "Jeśli CouchMode Ci się przydaje, możesz wesprzeć rozwój, testy zgodności i kolejne ulepszenia.",
@@ -247,6 +257,7 @@ export const supporterCopy: Record<LocaleId, SupporterCopy> = {
     nav: "Wesprzyj",
   },
   ja: {
+    page: supportPageCopy.ja,
     heading: "CouchModeを支援する",
     description:
       "CouchModeが役に立ったと感じたら、開発の継続や互換性テスト、今後の改善を支援していただけるとうれしいです。",
@@ -276,6 +287,7 @@ export const supporterCopy: Record<LocaleId, SupporterCopy> = {
     nav: "支援する",
   },
   ko: {
+    page: supportPageCopy.ko,
     heading: "CouchMode 후원하기",
     description:
       "CouchMode를 유용하게 쓰고 계신다면 지속적인 개발과 호환성 테스트, 앞으로의 개선을 후원해 주세요.",
